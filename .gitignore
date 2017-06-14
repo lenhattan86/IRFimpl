@@ -31,6 +31,5 @@
 *.out
 *.app
 
-# customized
-*.log
-*.json
+# FOR ME
+tf_analysis/*.log

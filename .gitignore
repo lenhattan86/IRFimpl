@@ -33,7 +33,7 @@
 *.app
 
 # FOR ME
-*.json
+*.swp
 /tf_analysis/benchmarks/*.log
 
 ## TENSORFLOW
@@ -55,5 +55,3 @@ tensorflow-1.1.0/*.pyc
 __pycache__
 /tensorflow-1.1.0/*.swp
 /tensorflow-1.1.0/.vscode/
-
-

@@ -53,5 +53,5 @@ __pycache__
 /tensorflow-1.1.0/.vscode/
 
 # FOR ME
-tf_analysis/benchmarks/*.json
-tf_analysis/benchmarks/*.log
+/tf_analysis/benchmarks/*.json
+/tf_analysis/benchmarks/*.log

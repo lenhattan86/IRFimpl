@@ -53,4 +53,4 @@ __pycache__
 /tensorflow-1.1.0/.vscode/
 
 # FOR ME
-/tf_analysis/*.json
+#/tf_analysis/*.json

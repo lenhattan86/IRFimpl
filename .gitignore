@@ -33,7 +33,7 @@
 *.app
 
 # FOR ME
-tf_analysis/benchmarks/*.swp
+/tf_analysis/benchmarks/*.swp
 /tf_analysis/benchmarks/*.log
 
 ## TENSORFLOW

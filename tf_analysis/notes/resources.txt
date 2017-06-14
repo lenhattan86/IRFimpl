@@ -1,0 +1,2 @@
+https://wookayin.github.io/tensorflow-talk-debugging/#1
+https://github.com/tensorflow/tensorflow/issues/1824

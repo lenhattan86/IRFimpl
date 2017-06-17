@@ -33,11 +33,12 @@
 *.app
 
 # FOR ME
-#/tf_analysis/benchmarks/*.swp
+/tf_analysis/benchmarks/*.swp
 /tf_analysis/benchmarks/*.log
+/tf_analysis/benchmarks/*.json
+/tf_analysis/scripts/*.log
 
 ## TENSORFLOW
-
 /tensorflow-1.1.0/.DS_Store
 /tensorflow-1.1.0/.ipynb_checkpoints
 /tensorflow-1.1.0/node_modules

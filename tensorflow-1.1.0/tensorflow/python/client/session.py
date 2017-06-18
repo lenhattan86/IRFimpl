@@ -766,6 +766,7 @@ class BaseSession(SessionInterface):
       ValueError: If `fetches` or `feed_dict` keys are invalid or refer to a
         `Tensor` that doesn't exist.
     """
+    print("[tan] session.py session.run()")
     run_metadata_ptr = tf_session.TF_NewBuffer()
     if options:
       options_ptr = tf_session.TF_NewBufferFromString(
@@ -1329,6 +1330,9 @@ class InteractiveSession(BaseSession):
       self._default_graph = graph.as_default()
       self._default_graph.enforce_nesting = False
       self._default_graph.__enter__()
+
+  def _run(self, handle, fetches, feed_dict, options, run_metadata):
+    return super(InteractiveSession, self)._run(handle, fetches, feed_dict, options, run_metadata)
 
   def close(self):
     """Closes an `InteractiveSession`."""

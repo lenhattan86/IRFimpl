@@ -67,7 +67,7 @@ username="tanle"
 
 java_home='/usr/lib/jvm/java-8-oracle'
 
-## tensorflow 
+## tensorflow
 
 tensorflow_ver="1.1"
 
@@ -75,12 +75,12 @@ PARALLEL=2
 
 if $isLocalhost
 then
-	hostname="localhost"; 
+	hostname="localhost";
 else
 
 	if [ -z "$1" ]
 	then
-		hostname="ctl.tensor.yarnrm-pg0.utah.clemson.us"; cp ~/.ssh/config.tensor ~/.ssh/config; 
+		hostname="ctl.tensor.yarnrm-pg0.utah.clemson.us"; cp ~/.ssh/config.tensor ~/.ssh/config;
 	else
 		hostname="ctl.$1.yarnrm-pg0.utah.clemson.us"; cp ~/.ssh/config.tensor.$1 ~/.ssh/config;
 	fi
@@ -91,7 +91,7 @@ echo "[INFO] =====set up $hostname====="
 REBOOT=false
 
 isUploadKey=false
-isGenerateKey=false	
+isGenerateKey=false
 isPasswordlessSSH=false
 isAddToGroup=false
 
@@ -145,7 +145,7 @@ then
 	if $isOfficial
 	then
 		numOfworkers=1
-		serverList="$masterNode cp-1"		
+		serverList="$masterNode cp-1"
 		slaveNodes="cp-1"
 	fi
 elif $isAmazonEC
@@ -155,7 +155,7 @@ fi
 
 if $REBOOT
 then
-echo ############### REBOOT all servers #############################	
+echo ############### REBOOT all servers #############################
 	while true; do
 	    read -p "Do you wish to reboot the whole cluster?" yn
 	    case $yn in
@@ -165,7 +165,7 @@ echo ############### REBOOT all servers #############################
 	    esac
 	done
 
-	for server in $serverList; do		
+	for server in $serverList; do
 		echo reboot server $server
 		$SSH_CMD $username@$server "ssh $server 'sudo reboot'" &
 	done
@@ -185,17 +185,17 @@ fi
 
 
 if $isUploadKey
-then		
+then
 echo ################################# passwordless SSH ####################################
-	if $isGenerateKey 
+	if $isGenerateKey
 	then
             while true; do
             	read -p "Do you wish to generate new public keys ?" yn
             case $yn in
-                [Yy]* ) 
+                [Yy]* )
 			sudo rm -rf $HOME/.ssh/id_rsa*
 			sudo rm -rf $HOME/.ssh/authorized_keys*
-			yes Y | ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa	
+			yes Y | ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa
 			cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
 			sudo chmod 0600 $HOME/.ssh/id_rsa*
 			sudo chmod 0600 ~/.ssh/authorized_keys
@@ -208,17 +208,17 @@ echo ################################# passwordless SSH ########################
                 [Nn]* ) exit;;
                 * ) echo "Please answer yes or no.";;
             esac
-	    done 	
-		
+	    done
+
 	fi
-	uploadKeys () { 
+	uploadKeys () {
 		echo upload keys to $1
 		$SSH_CMD $username@$1 'sudo rm -rf $HOME/.ssh/id_rsa*'
 		scp ~/.ssh/id_rsa* $username@$1:~/.ssh/
 		$SSH_CMD $username@$1 "cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys ;
-		 chmod 0600 ~/.ssh/id_rsa*; 
-		 chmod 0600 ~/.ssh/authorized_keys; 
-		 rm -rf ~/.ssh/known_hosts; 	
+		 chmod 0600 ~/.ssh/id_rsa*;
+		 chmod 0600 ~/.ssh/authorized_keys;
+		 rm -rf ~/.ssh/known_hosts;
 		 echo 'StrictHostKeyChecking no' >> ~/.ssh/config"
 	}
 	rm -rf ~/.ssh/known_hosts
@@ -226,7 +226,7 @@ echo ################################# passwordless SSH ########################
 	echo "[INFO] uploading keys"
 	for server in $serverList; do
 		uploadKeys $server &
-	done	
+	done
 	wait
 fi
 
@@ -237,26 +237,35 @@ then
 		$SSH_CMD $username@$1 "sudo apt-get -y install $SSH_CMD
 			sudo apt-get purge -y openjdk*
 			sudo apt-get purge -y oracle-java*
-			sudo apt-get install -y software-properties-common			
+			sudo apt-get install -y software-properties-common
 			yes='' | sudo add-apt-repository ppa:webupd8team/java
 			sudo apt-get update
-			sudo echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections	
+			sudo echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections
 			sudo apt-get install -y oracle-java8-installer"
-		$SSH_CMD $username@$1 "sudo apt-get install -y cgroup-tools; sudo apt-get install -y scala; sudo apt-get install -y vim"	
+		$SSH_CMD $username@$1 "sudo apt-get install -y cgroup-tools; sudo apt-get install -y scala; sudo apt-get install -y vim"
 	}
 	counter=0;
 	for server in $serverList; do
 		counter=$((counter+1))
-		installPackages $server &		
+		installPackages $server &
 		if [[ "$counter" -gt $PARALLEL ]]; then
 	       		counter=0;
 			wait
-	       	fi		
+	       	fi
 	done
 	wait
+
+
+	echo "################################# install Bazel ######################################"
+	echo "deb [arch=amd64] http://storage.googleapis.com/bazel-apt stable jdk1.8" | sudo tee /etc/apt/sources.list.d/bazel.list
+	curl https://bazel.build/bazel-release.pub.gpg | sudo apt-key add -
+	sudo apt-get update && sudo apt-get install bazel
+	sudo apt-get upgrade bazel
+
+
 	echo ################################ install screen #####################################
 	$SSH_CMD $username@$masterNode "sudo apt-get install -y screen"
-	
+
 fi
 
 
@@ -269,15 +278,15 @@ echo ################################# install Ganglia #########################
 	# we may restart the Apache2 twice
 	#$SSH_CMD $username@$masterNode 'sudo apt-get install -y rrdtool  ganglia-webfrontend'
 	$SSH_CMD $username@$masterNode 'sudo apt-get install -y ganglia-monitor gmetad'
-	
-	# 
+
+	#
 	$SSH_CMD $username@$masterNode "sudo cp /etc/ganglia-webfrontend/apache.conf /etc/apache2/sites-enabled/ganglia.conf ;
 	sudo sed -i -e 's/data_source \"my cluster\" localhost/data_source \"sbu flink\" 1 localhost/g' /etc/ganglia/gmetad.conf;
 	sudo sed -i -e 's/name = \"unspecified\"/name = \"sbu flink\"/g' /etc/ganglia/gmond.conf ;
 	sudo sed -i -e 's/mcast_join = 239.2.11.71/#mcast_join = 239.2.11.71/g' /etc/ganglia/gmond.conf;
 	sudo sed -i -e 's/bind = 239.2.11.71/#bind = 239.2.11.71/g' /etc/ganglia/gmond.conf"
 	$SSH_CMD $username@$masterNode "sudo sed -i -e 's/udp_send_channel {/udp_send_channel { host=$masterNode/g' /etc/ganglia/gmond.conf"
-	
+
 	installGangliaFunc(){
 		$SSH_CMD $username@$1 "yes Y | sudo apt-get purge ganglia-monitor;
 		sudo apt-get install -y ganglia-monitor;
@@ -288,7 +297,7 @@ echo ################################# install Ganglia #########################
 
 	for server in $slaveNodes; do
 		installGangliaFunc $server &
-	done	
+	done
 	wait
 
 fi
@@ -301,11 +310,23 @@ then
 	for server in $slaveNodes; do
 		$SSH_CMD $username@$server 'sudo service ganglia-monitor restart' &
 	done
-	wait	
+	wait
 fi
 
 ########################################### TENSOR-FLOW ##########################################
-
+if $isCPUCluster
+then
+	echo ########################################### Installing TENSOR-FLOW (CPU only) ##########################################
+	git clone https://github.com/tensorflow/tensorflow
+	cd tensorflow
+	git checkout r1.1
+	sudo apt-get install python-numpy python-dev python-pip python-wheel
+	cd tensorflow
+	./configure
+	bazel build --config=opt //tensorflow/tools/pip_package:build_pip_package
+	bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg
+	sudo pip install /tmp/tensorflow_pkg/tensorflow-1.2.0-py2-none-any.whl
+fi
 
 ############################################# END #################################################
 

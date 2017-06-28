@@ -321,7 +321,6 @@ then
 	cd tensorflow
 	git checkout r1.1
 	sudo apt-get install python-numpy python-dev python-pip python-wheel
-	cd tensorflow
 	./configure
 	bazel build --config=opt //tensorflow/tools/pip_package:build_pip_package
 	bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg

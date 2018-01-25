@@ -1,0 +1,24 @@
+Install Kurbernetes
+
+
+1. https://github.com/kubernetes/kubernetes/tree/master/build
+- (optional) install docker https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/#install-using-the-repository
+- build/run.sh make
+- build/release.sh
+
+
+2. GoEclipse
+- install golang
+sudo apt install golang-go
+- install guru
+
+- install 
+
+
+### notes
+admission.go
+  namespaceList
+  
+  
+
+

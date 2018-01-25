@@ -1,0 +1,1 @@
+Error from server (NotFound): error when creating "./jobs/user1-1.yaml": namespaces "\"user1\"" not found

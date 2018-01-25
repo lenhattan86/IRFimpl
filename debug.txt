@@ -1,0 +1,4 @@
+debug
+
+# journalctl -u apiserver -f
+# sudo journalctl --since "2017-12-04 13:00:00" -u kubelet

@@ -1,0 +1,47 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: user2-2
+spec:
+  containers:
+  - name: user2-2
+    image: lenhattan86/bench
+    command:
+    - "/bin/bash"
+    - "-c"
+    - "python /benchmarks/scripts/tf_benchmarks/tf_cnn_benchmarks.py --device=cpu --model=alexnet --data_format=NHWC --batch_size=32 --num_batches=100"  
+    resources:
+      requests:
+        alpha.kubernetes.io/nvidia-gpu: 0
+        cpu: 2
+        memory: 2Gi
+      limits:
+        alpha.kubernetes.io/nvidia-gpu: 0
+        cpu: 2
+        memory: 2Gi
+    volumeMounts:
+    - name: nvidia-driver-384-98
+      mountPath: /usr/local/nvidia
+      readOnly: true
+    - name: libcuda-so
+      mountPath: /usr/lib/x86_64-linux-gnu/libcuda.so
+    - name: libcuda-so-1
+      mountPath: /usr/lib/x86_64-linux-gnu/libcuda.so.1
+    - name: libcuda-so-384-98
+      mountPath: /usr/lib/x86_64-linux-gnu/libcuda.so.384.98
+      readOnly: true
+  restartPolicy: Never
+  volumes:
+  - name: nvidia-driver-384-98
+    hostPath:
+      path: /usr/lib/nvidia-384
+  - name: libcuda-so
+    hostPath:
+      path: /usr/lib/x86_64-linux-gnu/libcuda.so
+  - name: libcuda-so-1
+    hostPath:
+      path: /usr/lib/x86_64-linux-gnu/libcuda.so.1
+  - name: libcuda-so-384-98
+    hostPath:
+      path: /usr/lib/x86_64-linux-gnu/libcuda.so.384.98
+

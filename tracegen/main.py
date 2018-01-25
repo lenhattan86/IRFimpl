@@ -5,11 +5,26 @@ import matplotlib.pyplot as plt
 import os
 import shutil
 
+class ofile(file):
+    #subclass file to have a more convienient use of writeline
+    def __init__(self, name, mode = 'r'):
+        self = file.__init__(self, name, mode)
+
+    def wl(self, string):
+        self.writelines(string + '\n')
+        return None
+
+def make_executable(path):
+    mode = os.stat(path).st_mode
+    mode |= (mode & 0o444) >> 2    # copy R bits to X
+    os.chmod(path, mode)
+
+
 # parameters
-mu, sigma = 0, 0.1
+mu, sigma = 10, 4
 nUsers = 2;
 nJobs = 3;
-sleepTime = np.random.normal(mu, sigma, nJobs)
+sleepTime = abs(np.random.normal(mu, sigma, nJobs))
 jobNames = ["alexnet"]
 username = "userA"
 device="cpu"
@@ -18,11 +33,14 @@ cpuDemands=[2]
 gpuDemands=[1]
 memDemands=[1]
 
+commands = ["tf_cnn_benchmarks.py"]
+
 ## constants
 batchSize=32
 
 ## main code
-fileUser = open(username+".sh","w")
+fileName=username+".sh";
+fileUser = ofile(fileName,"w")
 directory= username
 # create folder for username
 try:
@@ -36,61 +54,60 @@ os.mkdir(directory)
 for i in range(nJobs):
     # create yaml file
     fileYamlName = "job_" +str(i)+ ".yaml"
-    fileYaml = open(directory + "/" + fileYamlName,"w")
-    fileYaml.write("apiVersion: v1")
-    fileYaml.write("kind: Pod")
-    fileYaml.write("metadata:")
-    fileYaml.write("  name: tensorflow-alexnet-cpu")
-    fileYaml.write("spec:")
-    fileYaml.write("  containers:")
-    fileYaml.write("  - name: tensorflow-alexnet-cpu")
-    fileYaml.write("    image: swiftdiaries/bench")
-    fileYaml.write("    command:")
-    fileYaml.write("    - \"/bin/bash\"")
-    fileYaml.write("    - \"-c\"")
-    fileYaml.write("    - \"python tf_cnn_benchmarks.py --device="+device+" --model="+jobNames[i%len(jobNames)]+" --data_format=NHWC --batch_size="+str(batchSize)+"\"")
-    fileYaml.write("    resources:")
-    fileYaml.write("      requests:")
-    fileYaml.write("        cpu: 40")
-    fileYaml.write("      limits:")
-    fileYaml.write("        cpu: 40")
-    fileYaml.write("    volumeMounts:")
-    fileYaml.write("    - name: nvidia-driver-375-82")
-    fileYaml.write("      mountPath: /usr/local/nvidia")
-    fileYaml.write("      readOnly: true")
-    fileYaml.write("    - name: libcuda-so")
-    fileYaml.write("      mountPath: /usr/lib/x86_64-linux-gnu/libcuda.so")
-    fileYaml.write("    - name: libcuda-so-1")
-    fileYaml.write("      mountPath: /usr/lib/x86_64-linux-gnu/libcuda.so.1")
-    fileYaml.write("    - name: libcuda-so-375-82")
-    fileYaml.write("      mountPath: /usr/lib/x86_64-linux-gnu/libcuda.so.375.82")
-    fileYaml.write("      readOnly: true")
-    fileYaml.write("  restartPolicy: Never")
-    fileYaml.write("  volumes:")
-    fileYaml.write("  - name: nvidia-driver-375-82")
-    fileYaml.write("    hostPath:")
-    fileYaml.write("      path: /usr/lib/nvidia-375")
-    fileYaml.write("  - name: libcuda-so")
-    fileYaml.write("    hostPath:")
-    fileYaml.write("      path: /usr/lib/x86_64-linux-gnu/libcuda.so")
-    fileYaml.write("  - name: libcuda-so-1")
-    fileYaml.write("    hostPath:")
-    fileYaml.write("      path: /usr/lib/x86_64-linux-gnu/libcuda.so.1")
-    fileYaml.write("  - name: libcuda-so-375-82")
-    fileYaml.write("    hostPath:")
-    fileYaml.write("      path: /usr/lib/x86_64-linux-gnu/libcuda.so.375.82")
+    fileYaml = ofile(directory + "/" + fileYamlName,"w")
+    fileYaml.wl("apiVersion: v1")
+    fileYaml.wl("kind: Pod")
+    fileYaml.wl("metadata:")
+    fileYaml.wl("  name: tensorflow-alexnet-cpu")
+    fileYaml.wl("spec:")
+    fileYaml.wl("  containers:")
+    fileYaml.wl("  - name: tensorflow-alexnet-cpu")
+    fileYaml.wl("    image: swiftdiaries/bench")
+    fileYaml.wl("    command:")
+    fileYaml.wl("    - \"/bin/bash\"")
+    fileYaml.wl("    - \"-c\"")
+    fileYaml.wl("    - \"python "+commands[i%len(commands)]+" --device="+device+" --model="+jobNames[i%len(jobNames)]+" --data_format=NHWC --batch_size="+str(batchSize)+"\"")
+    fileYaml.wl("    resources:")
+    fileYaml.wl("      requests:")
+    fileYaml.wl("        cpu: 1")
+    fileYaml.wl("      limits:")
+    fileYaml.wl("        cpu: 1")
+    fileYaml.wl("    volumeMounts:")
+    fileYaml.wl("    - name: nvidia-driver-375-82")
+    fileYaml.wl("      mountPath: /usr/local/nvidia")
+    fileYaml.wl("      readOnly: true")
+    fileYaml.wl("    - name: libcuda-so")
+    fileYaml.wl("      mountPath: /usr/lib/x86_64-linux-gnu/libcuda.so")
+    fileYaml.wl("    - name: libcuda-so-1")
+    fileYaml.wl("      mountPath: /usr/lib/x86_64-linux-gnu/libcuda.so.1")
+    fileYaml.wl("    - name: libcuda-so-375-82")
+    fileYaml.wl("      mountPath: /usr/lib/x86_64-linux-gnu/libcuda.so.375.82")
+    fileYaml.wl("      readOnly: true")
+    fileYaml.wl("  restartPolicy: Never")
+    fileYaml.wl("  volumes:")
+    fileYaml.wl("  - name: nvidia-driver-375-82")
+    fileYaml.wl("    hostPath:")
+    fileYaml.wl("      path: /usr/lib/nvidia-375")
+    fileYaml.wl("  - name: libcuda-so")
+    fileYaml.wl("    hostPath:")
+    fileYaml.wl("      path: /usr/lib/x86_64-linux-gnu/libcuda.so")
+    fileYaml.wl("  - name: libcuda-so-1")
+    fileYaml.wl("    hostPath:")
+    fileYaml.wl("      path: /usr/lib/x86_64-linux-gnu/libcuda.so.1")
+    fileYaml.wl("  - name: libcuda-so-375-82")
+    fileYaml.wl("    hostPath:")
+    fileYaml.wl("      path: /usr/lib/x86_64-linux-gnu/libcuda.so.375.82")
     fileYaml.close()
 
     # create job file
     jobFileName="job"+str(i)+".sh";
-    fileJob = open(directory +"/"+jobFileName,"w")
-    fileJob.write("kubectl --namespace=\""+username+"\" create -f ./"+directory+"/"+fileYamlName)
-
+    fileJob = ofile(directory +"/"+jobFileName,"w")
+    fileJob.wl("kubectl --namespace=\""+username+"\" create -f ./"+directory+"/"+fileYamlName)
+    fileJob.close()
+    make_executable(directory +"/"+jobFileName)
     # add job shell to the file
-    fileUser.write("sleep "+str(sleepTime.item(i)))
-    fileUser.write(directory + "/" +jobFileName +" &")
+    fileUser.wl("sleep "+str(sleepTime.item(i)))
+    fileUser.wl(directory +"/"+jobFileName +" &")
 
 fileUser.close()
-
-
-
+make_executable(fileName)

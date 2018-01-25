@@ -15,7 +15,7 @@ sudo apt-get update
 sudo apt-get install -y cuda
 export PATH=/usr/local/cuda-8.0/bin${PATH:+:${PATH}}
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64"
-wget https://www.dropbox.com/s/vrhgg7z856402s6/cudnn-8.0-linux-x64-v5.1.tgz
+wget https://www.dropbox.com/s/ygjvedybap9p577/cudnn-8.0-linux-x64-v5.1.tgz
 tar -xzvf cudnn-8.0-linux-x64-v5.1.tgz
 sudo cp cuda/include/cudnn.h /usr/local/cuda/include
 sudo cp cuda/lib64/libcudnn* /usr/local/cuda/lib64

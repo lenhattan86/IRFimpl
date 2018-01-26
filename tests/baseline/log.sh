@@ -71,8 +71,8 @@ while $isTiming; do
 	      echo "$podName Running"
 	      #kubectl delete pod $podName
 	      # echo "Running, $(date +%s) " >> $logFile
+	      isNotRunning=false
 	    fi
-	    isNotRunning=false
 	fi
 
     if [ "$podStatus" == "$COMPLETED" ]
@@ -85,7 +85,7 @@ while $isTiming; do
       elapsed1="$(bc <<<"$end_time-$start_time")"
       elapsed2="$(bc <<<"$end_time-$creating_time")"
       elapsed3="$(bc <<<"$end_time-$running_time")"
-      
+
       echo "$podName, $start_time, $creating_time, $running_time, $end_time, $elapsed1, $elapsed2, $elapsed3, " >> logs/time.log
       exit
     fi

@@ -1,5 +1,17 @@
 #!/bin/bash
 
+if [ -z "$1" ]
+then
+	echo "./log.sh username podname"
+	exit
+fi
+
+if [ -z "$2" ]
+then
+	echo "./log.sh username podname"
+	exit
+fi
+
 
 COMPLETED="Completed"
 RUNNING="Running"
@@ -18,7 +30,7 @@ rm -rf $tempFile
 
 logFile="logs/$podName.log"
 
-echo "submitted, " > $logFile
+echo "submitted, $(date +%s)" > $logFile
 
 isNotCreated=true
 isNotRunning=true
@@ -27,6 +39,7 @@ while $isTiming; do
   kubectl get pods $podName --namespace $username > $tempFile 
 #  kubectl get pods --all-namespaces
   null="NULL"
+  isNothing=true
   while read line; do
     null=$line
     read -a arr <<< $line      
@@ -34,6 +47,7 @@ while $isTiming; do
 	    podStatus=${arr[2]}
 
     if $isNotCreated
+    then
 		if [ "$podStatus" == "$Creating" ]
 	    then
 	      echo "$podName creating"
@@ -42,7 +56,9 @@ while $isTiming; do
 	      isNotCreated=false
 	    fi
 	fi
-	if $isNotRunning
+
+	if $isNotRunning	
+	then
 	    if [ "$podStatus" == "$RUNNING" ]
 	    then
 	      echo "$podName Running"
@@ -59,8 +75,14 @@ while $isTiming; do
       kubectl delete pod $podName --namespace $username
       break;
     fi
-
+    
+  isNothing=false  
   done < $tempFile
-  
+	  
+  if $isNothing
+  then
+  	break;
+  fi
+
   sleep $timer
 done

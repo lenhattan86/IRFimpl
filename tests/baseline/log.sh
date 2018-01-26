@@ -31,7 +31,11 @@ rm -rf $tempFile
 
 logFile="logs/$podName.log"
 
+start_time="$(date -u +%s.%N)"
 echo "submitted, $(date +%s)" > $logFile
+creating_time=0
+running_time=0
+sleep $timer
 
 isNotCreated=true
 isNotRunning=true
@@ -53,6 +57,7 @@ while $isTiming; do
 	    then
 	      echo "$podName creating"
 	      #kubectl delete pod $podName
+	      creating_time="$(date -u +%s.%N)"
 	      echo "creating, $(date +%s) " >> $logFile
 	      isNotCreated=false
 	    fi
@@ -62,6 +67,7 @@ while $isTiming; do
 	then
 	    if [ "$podStatus" == "$RUNNING" ]
 	    then
+	      running_time="$(date -u +%s.%N)"
 	      echo "$podName Running"
 	      #kubectl delete pod $podName
 	      echo "Running, $(date +%s) " >> $logFile
@@ -73,7 +79,12 @@ while $isTiming; do
     then
       echo "$podName completed"      
       echo "completed, $(date +%s)" >> $logFile
+      end_time="$(date -u +%s.%N)"
       kubectl delete pod $podName --namespace $username
+      elapsed1="$(bc <<<"$end_time-$start_time")"
+      elapsed2="$(bc <<<"$end_time-$creating_time")"
+      elapsed3="$(bc <<<"$end_time-$running_time")"
+      echo "$podName, $elapsed1, $elapsed2, $elapsed3" >> logs/time.log
       exit
     fi
 

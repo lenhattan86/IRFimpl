@@ -23,7 +23,7 @@ elif [ "$jobname" == "s-linear-gpu" ];
 then
   CMD="python linear_regression.py"
 else
-  echo "no job detected."
+  CMD="$jobname"
 fi
 
 cuda="384" # 375

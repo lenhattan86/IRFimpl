@@ -73,9 +73,9 @@ while $isTiming; do
       echo "$podName completed"      
       echo "completed, $(date +%s)" >> $logFile
       kubectl delete pod $podName --namespace $username
-      break;
+      exit
     fi
-    
+
   isNothing=false  
   done < $tempFile
 	  

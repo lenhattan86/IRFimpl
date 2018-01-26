@@ -79,4 +79,5 @@ spec:
       path: /usr/lib/x86_64-linux-gnu/libcuda.so.$cuda_suffix
 " > ./jobs/$podname.yaml
     
-kubectl --namespace="$username" create -f ./jobs/$podname.yaml
+kubectl --namespace="$username" create -f ./jobs/$podname.yaml &
+./log.sh --namespace="$username" $podname

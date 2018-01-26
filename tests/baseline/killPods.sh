@@ -37,3 +37,4 @@ done
 # kubectl delete pod --all --namespace user1
 # kubectl delete pod --all --namespace user2
 # kubectl logs -p 
+# kubectl get pods --all-namespaces

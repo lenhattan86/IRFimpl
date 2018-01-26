@@ -1,4 +1,7 @@
 #!/bin/bash
+sudo apt install bc
+rm -rf logs/time.log
+
 userid="user1 user2";
 initTime=1
 

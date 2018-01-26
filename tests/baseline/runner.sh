@@ -42,10 +42,10 @@ user_func () {
 
 START=$(date +%s)
 
-user_func user1 3 1 3 2 "sleep 30" 30 &
+user_func user1 3 1 3 2 "sleep 27" 30 &
 sleep 15
-user_func user2 3 26 1 2 "sleep 30" 30 & 
-user_func user3 3 26 0 2 "sleep 30" 30 & 
+user_func user2 3 26 1 2 "sleep 27" 30 & 
+user_func user3 3 26 0 2 "sleep 27" 30 & 
 
 END=$(date +%s)
 DIFF=$(( $END - $START ))

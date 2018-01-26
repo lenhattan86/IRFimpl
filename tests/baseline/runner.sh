@@ -1,5 +1,9 @@
 #!/bin/bash
 sudo apt install bc
+
+mkdir logs
+mkdir jobs
+
 rm -rf logs/time.log
 
 userid="user1 user2";
@@ -15,9 +19,7 @@ then
   done	
 fi
 
-mkdir logs
-mkdir jobs
-mkdir time
+
 
 defaultJob=alexnet-cpu
 
@@ -32,7 +34,7 @@ user_func () {
 	period=$7
 	for i in `seq 1 $jobNum`;
 	do  
-		./job.sh $userName $userName-$i $jobName $cpu $gpu $mem &
+		./job.sh $userName $userName-$i "$jobName" $cpu $gpu $mem &
 		sleep $period
 	done
 	wait

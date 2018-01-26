@@ -86,7 +86,22 @@ while $isTiming; do
       elapsed2="$(bc <<<"$end_time-$creating_time")"
       elapsed3="$(bc <<<"$end_time-$running_time")"
 
-      echo "$podName, $start_time, $creating_time, $running_time, $end_time, $elapsed1, $elapsed2, $elapsed3, " >> logs/time.log
+      echo "$podName, $start_time, $creating_time, $running_time, $end_time, $elapsed1, $elapsed2, $elapsed3, Completed" >> logs/time.log
+      exit
+    fi
+
+    if [ "$podStatus" == "$ERROR" ]
+    then
+      echo "$podName Error"      
+      # echo "completed, $(date +%s)" >> $logFile
+      end_time="$(date -u +%s.%N)"
+      kubectl delete pod $podName --namespace $username
+
+      elapsed1="$(bc <<<"$end_time-$start_time")"
+      elapsed2="$(bc <<<"$end_time-$creating_time")"
+      elapsed3="$(bc <<<"$end_time-$running_time")"
+
+      echo "$podName, $start_time, $creating_time, $running_time, $end_time, $elapsed1, $elapsed2, $elapsed3, Error" >> logs/time.log
       exit
     fi
 

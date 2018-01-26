@@ -12,6 +12,7 @@ then
 	exit
 fi
 
+mkdir logs
 
 COMPLETED="Completed"
 RUNNING="Running"

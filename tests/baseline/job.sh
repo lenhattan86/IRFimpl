@@ -80,4 +80,4 @@ spec:
 " > ./jobs/$podname.yaml
     
 kubectl --namespace="$username" create -f ./jobs/$podname.yaml &
-./log.sh --namespace="$username" $podname
+./log.sh $username $podname

@@ -1,0 +1,36 @@
+
+## TEST
+# build kubescheduler -> doesn't work well
+
+# make all WHAT='plugin/cmd/kube-scheduler'
+
+# go build k8s.io/kubernetes/plugin/cmd/kube-scheduler
+ 
+## from Adhita
+if false
+then
+  wget https://dl.k8s.io/v1.8.0/kubernetes.tar.gz
+  tar -C -zvf sourcekubernetes/ kubernetes.tar.gz
+  cd sourcekubernetes/
+  docker build -t my-kube-scheduler:1.0 .
+  docker tag my-kube-scheduler:1.0 swiftdiaries/my-kube-scheduler:1.0
+  docker push swiftdiaries/my-kube-scheduler:1.0
+  kubectl create -f my-scheduler.yaml
+  kubectl get pods --namespace=kube-system
+fi
+
+## GOOD
+if true
+then
+  kubernetes_src="/usr/local/go/src/k8s.io/kubernetes"
+#https://kubernetes.io/docs/tasks/administer-cluster/configure-multiple-schedulers/
+# Dockfile
+# FROM busybox
+# ADD ./_output/dockerized/bin/linux/amd64/kube-scheduler /usr/local/bin/kube-scheduler
+  docker build -t my-kube-scheduler:1.0 $kubernetes_src
+  docker tag my-kube-scheduler:1.0 gcr.io/kube-scheduler/my-kube-scheduler:1.0
+  # images may disappear before this command
+  gcloud docker -- push gcr.io/kube-scheduler/my-kube-scheduler:1.0
+  # upload my scheduler
+  kubectl create -f my-scheduler.yaml
+fi

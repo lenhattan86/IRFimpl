@@ -32,8 +32,9 @@ while $isTiming; do
     break
   fi
   sleep $timer
-done
-
+do
+ne
+# kubectl delete pod --all
 # kubectl delete pod --all --namespace user1
 # kubectl delete pod --all --namespace user2
 # kubectl logs -p 

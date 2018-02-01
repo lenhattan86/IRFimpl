@@ -4,8 +4,9 @@
 # 2: check port:  netstat -punta | grep 2379
 # 3: #Environment="KUBELET_EXTRA_ARGS=--fail-swap-on=false"
 
-isInstallFromInternet=false
+isInstallFromInternet=true
 kubernetes_src="/usr/local/go/src/k8s.io/kubernetes"
+#kubernetes_src="/home/tanle/go/src/k8s.io/kubernetes"
 
 isAddSource=false
 
@@ -39,6 +40,21 @@ sudo rm -rf /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
 sudo apt-get install -y etcd
 sudo apt-get purge -y etcd
 
+
+if false
+then
+  # install docker
+  sudo apt-get install -y docker.io
+  # add repo for kubernetes
+  sudo apt-get update && sudo apt-get install -y apt-transport-https
+  curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+  sudo echo "deb http://apt.kubernetes.io/ kubernetes-xenial main" > /etc/apt/sources.list.d/kubernetes.list
+#  sudo cat <<EOF >/etc/apt/sources.list.d/kubernetes.list
+#  deb http://apt.kubernetes.io/ kubernetes-xenial main
+#  EOF
+  sudo apt-get update
+fi
+
 if $isInstallFromInternet
 then
 	sudo apt-get install -y kubelet kubeadm kubectl kubernetes-cni
@@ -70,7 +86,8 @@ then
 	mkdir -p $HOME/.kube
 	sudo cp -f /etc/kubernetes/admin.conf $HOME/.kube/config
 	sudo chown $(id -u):$(id -g) $HOME/.kube/config
-	export KUBECONFIG=~/.kube/config
+	export KUBECONFIG=$HOME/.kube/config
+
 
 	sudo kubectl apply -f http://docs.projectcalico.org/v2.3/getting-started/kubernetes/installation/hosted/kubeadm/1.6/calico.yaml
 	sudo kubectl taint nodes --all node-role.kubernetes.io/master-	
@@ -80,7 +97,7 @@ then
 
 else
 	echo "install from compiled source  "
-	
+	  # need to install docker-ce first.
 	# 
 	#export KUBERNETES_PROVIDER=local; wget -q -O - https://get.k8s.io | bash
 	# http://dougbtv.com/nfvpe/2017/05/12/kubernetes-from-source/
@@ -97,6 +114,7 @@ else
 	sudo cp $kubernetes_src/build/debs/10-kubeadm.conf /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
 
 	#vi /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
+	# add these two lines above ExecStart=
 	#Environment="KUBELET_AUTHZ_ARGS=--authorization-mode=Webhook --client-ca-file=/etc/kubernetes/pki/ca.crt"
 	#Environment="KUBELET_CGROUP_ARGS=--cgroup-driver=systemd"
 
@@ -121,14 +139,17 @@ else
 	sudo swapoff -a
 	sudo free -m
 
+  echo " kubeadm init"
 	sudo kubeadm init # --skip-preflight-checks
-
+  echo " kubeadm init - end "
+  
 	mkdir -p $HOME/.kube
 	sudo cp -f /etc/kubernetes/admin.conf $HOME/.kube/config
 	sudo chown $(id -u):$(id -g) $HOME/.kube/config
 	export KUBECONFIG=~/.kube/config
 
 	sudo kubectl apply -f http://docs.projectcalico.org/v2.3/getting-started/kubernetes/installation/hosted/kubeadm/1.6/calico.yaml
+  echo "kubectl taint nodes --all node-role.kubernetes.io/master-	"
 	sudo kubectl taint nodes --all node-role.kubernetes.io/master-	
 	mkdir -p ~/config
 	sudo cp -f /etc/kubernetes/admin.conf ~/config/admin.conf

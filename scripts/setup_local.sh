@@ -57,6 +57,7 @@ fi
 
 if $isInstallFromInternet
 then
+# https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/
 	sudo apt-get install -y kubelet kubeadm kubectl kubernetes-cni
 	sudo kubeadm reset # create setting files
 
@@ -89,11 +90,13 @@ then
 	export KUBECONFIG=$HOME/.kube/config
 
 
-	sudo kubectl apply -f http://docs.projectcalico.org/v2.3/getting-started/kubernetes/installation/hosted/kubeadm/1.6/calico.yaml
+	sudo kubectl apply -f https://docs.projectcalico.org/v2.6/getting-started/kubernetes/installation/hosted/kubeadm/1.6/calico.yaml
 	sudo kubectl taint nodes --all node-role.kubernetes.io/master-	
 	mkdir -p ~/config
 	sudo cp -f /etc/kubernetes/admin.conf ~/config/admin.conf
 	sudo chmod 777 ~/config/admin.conf
+	
+	kubectl create clusterrolebinding --user system:serviceaccount:kube-system:default kube-system-cluster-admin --clusterrole cluster-admin
 
 else
 	echo "install from compiled source  "
@@ -148,10 +151,13 @@ else
 	sudo chown $(id -u):$(id -g) $HOME/.kube/config
 	export KUBECONFIG=~/.kube/config
 
-	sudo kubectl apply -f http://docs.projectcalico.org/v2.3/getting-started/kubernetes/installation/hosted/kubeadm/1.6/calico.yaml
+	sudo kubectl apply -f https://docs.projectcalico.org/v2.6/getting-started/kubernetes/installation/hosted/kubeadm/1.6/calico.yaml
   echo "kubectl taint nodes --all node-role.kubernetes.io/master-	"
+#  If you want to be able to schedule pods on the master
 	sudo kubectl taint nodes --all node-role.kubernetes.io/master-	
 	mkdir -p ~/config
 	sudo cp -f /etc/kubernetes/admin.conf ~/config/admin.conf
 	sudo chmod 777 ~/config/admin.conf
+	
+	kubectl create clusterrolebinding --user system:serviceaccount:kube-system:default kube-system-cluster-admin --clusterrole cluster-admin
 fi

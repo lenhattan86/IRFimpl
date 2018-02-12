@@ -18,6 +18,8 @@ spec:
       containers:
       - command:
         - /usr/local/bin/kube-scheduler
+          {{params}}
+          1>>/var/log/kube-scheduler.log 2>&1
         - --address=0.0.0.0
         - --leader-elect=false
         - --scheduler-name=my-scheduler
@@ -37,7 +39,13 @@ spec:
             cpu: '0.1'
         securityContext:
           privileged: false
-        volumeMounts: []
+        volumeMounts:
+        - name: logfile
+          mountPath: /var/log/kube-scheduler.log
       hostNetwork: false
       hostPID: false
-      volumes: []
+      volumes:
+      - name: logfile
+        hostPath:
+          path: /var/log/kube-scheduler.log
+          type: FileOrCreate

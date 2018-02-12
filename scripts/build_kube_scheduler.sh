@@ -42,21 +42,23 @@ fi
 ## push to docker.io
 if true
 then
+  version=1.2
   #kubernetes_src="/usr/local/go/src/k8s.io/kubernetes"
-  #kubernetes_src="$HOME/go/src/k8s.io/kubernetes"
-  kubernetes_src="$HOME/go/src/k8s.io/kubernetes-1.9.2"
+  kubernetes_src="$HOME/go/src/k8s.io/kubernetes"
+#  kubernetes_src="$HOME/go/src/k8s.io/kubernetes-1.9.2"
 # https://kubernetes.io/docs/tasks/administer-cluster/configure-multiple-schedulers/
 # Dockfile
 # FROM busybox
 # ADD ./_output/dockerized/bin/linux/amd64/kube-scheduler /usr/local/bin/kube-scheduler
 echo "FROM busybox
 ADD ./_output/dockerized/bin/linux/amd64/kube-scheduler /usr/local/bin/kube-scheduler" > $kubernetes_src/Dockerfile
-  docker build -t my-kube-scheduler:1.0 $kubernetes_src
-  docker tag my-kube-scheduler:1.0 lenhattan86/my-kube-scheduler:1.0
+  docker build -t my-kube-scheduler:$version $kubernetes_src
+  docker tag my-kube-scheduler:$version lenhattan86/my-kube-scheduler:$version
   # images may disappear before this command
-  docker push lenhattan86/my-kube-scheduler:1.0
+  docker push lenhattan86/my-kube-scheduler:$version
   # upload my scheduler
 #  kubectl delete -f my-scheduler.yaml
 #  kubectl create -f my-scheduler.yaml
+echo $kubernetes_src $version
 fi
 

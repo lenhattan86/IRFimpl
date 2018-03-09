@@ -1,0 +1,13 @@
+# jobId
+# beta
+# cpu (milliCPU) 0   mem (byte) complTime (secs)  # run on CPU
+# cpu (milliCPU) gpu mem (byte) complTime (secs) # run on GPU
+# command to run the job
+1
+1000 0 10 100
+1024 100 10 50
+run alexnet
+2
+1000 0 10 100
+1024 100 10 50
+run long

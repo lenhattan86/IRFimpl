@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: user2-1
+  name: user2-0
 spec:
   containers:
-  - name: user2-1
+  - name: user2-0
     image: lenhattan86/bench
     command:
     - "/bin/bash"
@@ -13,11 +13,11 @@ spec:
     resources:
       requests:
         alpha.kubernetes.io/nvidia-gpu: 0
-        cpu: 1.0
+        cpu: 23.0
         memory: 1Gi
       limits:
         alpha.kubernetes.io/nvidia-gpu: 0
-        cpu: 1.0
+        cpu: 23.0
         memory: 1Gi
     volumeMounts:
     - name: nvidia-driver-384-98

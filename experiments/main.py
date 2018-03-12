@@ -10,16 +10,16 @@ from kubernetes import *
 this_path = os.path.dirname(os.path.realpath(__file__))
 NUM_NODES = 2
 NUM_PHY_CPU_PER_NODE = 2
-NUM_CORES_PER_CPU = 24
+NUM_CORES_PER_CPU = 46
 NUM_PHY_GPU_PER_NODE = 2
-MEM_PER_NODE = 128 # Gi
+MEM_PER_NODE = 120 #134956859392 bytes
 
 CPU_OVERHEADS = 0
 MEM_OVERHEADS = 0
        
 def createDRFExperiement():
     print('DRF experiemnts')
-     ## for DRF
+    ## for DRF
     f = open(this_path +'/' + 'DRF_experiments.sh','w')
     f.write('dummy file')
     f.close()
@@ -74,12 +74,11 @@ def main():
 
     # given fill the jobs & allocation enforce,  prepare the job cripts
     print("================= Resource Enforcement ================")
-    for i in range(len(users)):
-    # for i in range(1):
-        print("Prepare the jobs for " + users[i].username)
-        loggedJobs = enforceAllocation(shares[i], users[i].jobs)   
-        prepareKubernetesJobs(users[i].username, loggedJobs)
-
     mainShell(users)
+    for i in range(len(users)):
+    # for i in range(1):        
+        loggedJobs = enforceAllocation(shares[i], users[i].jobs) 
+        print("Prepare the jobs for " + users[i].username + ": " + str(len(loggedJobs)))  
+        prepareKubernetesJobs(users[i].username, loggedJobs)    
 
 if __name__ == "__main__": main()

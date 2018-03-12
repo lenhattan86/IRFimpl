@@ -55,13 +55,13 @@ def DRF(capacity, isFDRF, users):
         ratio = dorminantShare * maxDemands[i]
         milliCPU = int(demands[i].MilliCPU  / ratio)        
         memory = int(demands[i].Memory  / ratio)        
-        
-        if(borrowGPU < -1):
-            NvidiaGPU = round(demands[i].NvidiaGPU  / ratio)
-            borrowGPU = borrowGPU +  round(demands[i].NvidiaGPU  / ratio) - (demands[i].NvidiaGPU  / ratio)
-        else:
-            NvidiaGPU = int(demands[i].NvidiaGPU  / ratio)
-            borrowGPU = borrowGPU +  int(demands[i].NvidiaGPU  / ratio) - (demands[i].NvidiaGPU  / ratio)
+        NvidiaGPU = int(demands[i].NvidiaGPU  / ratio)
+        # if(borrowGPU < -1):
+        #     NvidiaGPU = round(demands[i].NvidiaGPU  / ratio)
+        #     borrowGPU = borrowGPU +  round(demands[i].NvidiaGPU  / ratio) - (demands[i].NvidiaGPU  / ratio)
+        # else:
+        #     NvidiaGPU = int(demands[i].NvidiaGPU  / ratio)
+        #     borrowGPU = borrowGPU +  int(demands[i].NvidiaGPU  / ratio) - (demands[i].NvidiaGPU  / ratio)
         
 
         shares.append(Resource(milliCPU, memory, NvidiaGPU))

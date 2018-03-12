@@ -16,7 +16,7 @@ echo "You also need to provide the chameleon.pem file"
 
 master="gpus";
 masterIP="129.114.108.87";
-slavesIP=""
+slavesIP="129.114.108.155"
 slaves=""
 servers="$master $slaves";
 serversIP="$masterIP $slavesIP";

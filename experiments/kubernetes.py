@@ -1,5 +1,6 @@
 from job import *
 import os 
+import shutil
 
 JOB_FOLDER = "/jobs"
 
@@ -102,11 +103,9 @@ def prepareKubernetesJobs(username, loggedJobs):
 def mainShell(users):
     this_path = os.path.dirname(os.path.realpath(__file__))
     job_folder = this_path + JOB_FOLDER
-    try:
-        os.stat(job_folder )
-    except:
-        os.mkdir(job_folder)
-
+    shutil.rmtree(job_folder, ignore_errors=True)
+    os.mkdir(job_folder)
+    
     shellFile = job_folder + "/main.sh"
     f = open(shellFile,'w')
     strShell = ""

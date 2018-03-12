@@ -41,7 +41,7 @@ class JobProfile:
     def toString(self):    
         return "JobProfile: " + self.demand.toString() + " compl: " + str(self.compl)
 
-JOB_LINES = 5
+JOB_LINES = 4
 def readJobs(this_path, jobFile):    
     # try:
     f = open(this_path + '/' + jobFile)
@@ -52,30 +52,26 @@ def readJobs(this_path, jobFile):
     lines = f.readlines()
     jobs = []
     jobLineCount = 0
-
+    jobId = 0
     for line in lines:
         strLine = line.strip()
-        if not strLine.startswith("#"):            
-            
+        if not strLine.startswith("#"):   
             jobLineCount = jobLineCount + 1
             strArray = strLine.split()
 
-            if (jobLineCount == 1):                
-                jobId = int(strLine)
-
-            elif(jobLineCount == 2):
+            if(jobLineCount == 1):
                 cCpu = int(strArray[0])
                 cGPu = int(strArray[1]) # must be zero
                 cMem = int(strArray[2])
                 cCompl = int(strArray[3])                
 
-            elif(jobLineCount == 3):
+            elif(jobLineCount == 2):
                 gCpu = int(strArray[0])
                 gGPu = int(strArray[1])
                 gMem = int(strArray[2])
                 gCompl = int(strArray[3])         
                 
-            elif(jobLineCount == 4):
+            elif(jobLineCount == 3):
                 cpuCommand = strLine 
 
             elif(jobLineCount == JOB_LINES):     
@@ -90,9 +86,9 @@ def readJobs(this_path, jobFile):
 
                 job = Job(jobId, cpuProfile, gpuProfile, beta)
                 jobs.append(job)
+                jobId = jobId + 1
                 
-                jobLineCount = 0
-                
+                jobLineCount = 0                
 
     f.close()
     return jobs

@@ -1,19 +1,47 @@
+from resource import *
+
 class Job:    
-    def __init__ (self, cpuProfile, gpuProfile, beta, command):
+    def __init__ (self, jobId, cpuProfile, gpuProfile, beta):
         self.cpuProfile = cpuProfile
         self.gpuProfile = gpuProfile
-        self.beta = beta
-        self.command = command
+        self.beta = beta        
+        self.jobId = jobId
 
+    def fit(self, alloc):
+        # print("gpuProfile: " + self.gpuProfile.toString())
+        # print("cpuProfile: " + self.cpuProfile.toString())
+        if self.gpuProfile.demand.isFit(alloc, True):
+            return self.gpuProfile
+
+        if self.cpuProfile.demand.isFit(alloc, False):
+            return self.cpuProfile
+
+        return None
+
+
+class ActiveJob:
+    def __init__ (self, usage, startTime, endTime, jobId, jobCmd):
+        self.usage = usage
+        self.startTime = startTime
+        self.endTime = endTime
+        self.jobId = jobId
+        self.jobCmd = jobCmd
+
+    def isFinished(self, currTime):
+        if currTime >= self.endTime:
+            return True
+        return False
 
 class JobProfile:
-    def __init__(self, cpu, gpu, mem, compl):
-        self.cpu = cpu
-        self.gpu = gpu
-        self.mem = mem
+    def __init__(self, demand, compl, jobCmd):
+        self.demand = demand
         self.compl = compl
+        self.jobCmd = jobCmd
 
+    def toString(self):    
+        return "JobProfile: " + self.demand.toString() + " compl: " + str(self.compl)
 
+JOB_LINES = 5
 def readJobs(this_path, jobFile):    
     # try:
     f = open(this_path + '/' + jobFile)
@@ -23,7 +51,6 @@ def readJobs(this_path, jobFile):
 
     lines = f.readlines()
     jobs = []
-    JOB_LINES = 4
     jobLineCount = 0
 
     for line in lines:
@@ -48,13 +75,20 @@ def readJobs(this_path, jobFile):
                 gMem = int(strArray[2])
                 gCompl = int(strArray[3])         
                 
+            elif(jobLineCount == 4):
+                cpuCommand = strLine 
 
             elif(jobLineCount == JOB_LINES):     
                 beta  = cCompl/gCompl           
-                command = strLine
-                cpuProfile = JobProfile(cCpu, cGPu, cMem, cCompl)
-                gpuProfile = JobProfile(gCpu, gGPu, gMem, gCompl)
-                job = Job(cpuProfile, gpuProfile, beta, command)
+                gpuCommand = strLine
+
+                cpuDemand = Resource(cCpu, cMem, cGPu)
+                cpuProfile = JobProfile(cpuDemand, cCompl, cpuCommand)
+
+                gpuDemand = Resource(gCpu,  gMem, gGPu)
+                gpuProfile = JobProfile(gpuDemand, gCompl, gpuCommand)
+
+                job = Job(jobId, cpuProfile, gpuProfile, beta)
                 jobs.append(job)
                 
                 jobLineCount = 0

@@ -1,0 +1,1 @@
+Error from server (AlreadyExists): error when creating "user1-0.yaml": pods "user1-0" already exists

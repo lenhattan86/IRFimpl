@@ -1,3 +1,3 @@
-user1.sh &
-user2.sh &
+./user1.sh &
+./user2.sh &
 wait

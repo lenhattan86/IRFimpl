@@ -10,9 +10,9 @@ from kubernetes import *
 this_path = os.path.dirname(os.path.realpath(__file__))
 NUM_NODES = 2
 NUM_PHY_CPU_PER_NODE = 2
-NUM_CORES_PER_CPU = 46
+NUM_CORES_PER_CPU = 23
 NUM_PHY_GPU_PER_NODE = 2
-MEM_PER_NODE = 120 #134956859392 bytes
+MEM_PER_NODE = 120  #134956859392 bytes
 
 CPU_OVERHEADS = 0
 MEM_OVERHEADS = 0
@@ -51,11 +51,11 @@ def main():
     CPU = NUM_NODES* NUM_PHY_CPU_PER_NODE * NUM_CORES_PER_CPU
     GPU = NUM_NODES* NUM_PHY_GPU_PER_NODE
     MEM = MEM_PER_NODE * NUM_NODES
-    # capacity = Resource(10000, 128, 12)    
+    # capacity = Resource(10000, 128, 12)
     capacity = Resource(CPU*1000, MEM, GPU)
     print("capacity: "+capacity.toString())    
 
-    userStrArray = ["user1", "user2", "user3"]
+    userStrArray = ["user1", "user2"]
     users = []
     workload = 'simple'
     for strUser in userStrArray:
@@ -69,16 +69,17 @@ def main():
         users.append(newUser)
     # allocators
     print("====================== ALLOCATION =====================")
-    shares = DRF(capacity, False, users)   
+    shares = DRF(capacity, True, users)   
     printShares(shares) 
 
     # given fill the jobs & allocation enforce,  prepare the job cripts
     print("================= Resource Enforcement ================")
     mainShell(users)
+    stopTime = 200
     for i in range(len(users)):
     # for i in range(1):        
-        loggedJobs = enforceAllocation(shares[i], users[i].jobs) 
+        loggedJobs = enforceAllocation(shares[i], users[i].jobs, stopTime) 
         print("Prepare the jobs for " + users[i].username + ": " + str(len(loggedJobs)))  
-        prepareKubernetesJobs(users[i].username, loggedJobs)    
+        prepareKubernetesJobs(users[i].username, loggedJobs)
 
 if __name__ == "__main__": main()

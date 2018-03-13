@@ -19,14 +19,14 @@ def DRF(capacity, isFDRF, users):
             if user.demand.beta > 1:
                 resDemand.MilliCPU = 0.0
                 resDemand.NvidiaGPU = float(user.demand.computation) / float(user.demand.beta) / 1000.0
-                resDemand.Memory = 1.0 #user.demand.mem
+                resDemand.Memory = user.demand.mem
             else:
                 resDemand.MilliCPU = user.demand.computation 
                 resDemand.NvidiaGPU = 0.0
                 resDemand.Memory = user.demand.mem
         else:
-            resDemand.MilliCPU = float(user.demand.computation)  / (1.0 + float(user.demand.beta))
-            resDemand.NvidiaGPU = float(user.demand.computation)  / (1.0 + float(user.demand.beta)) /1000.0
+            resDemand.MilliCPU = float(user.demand.computation / 1000.0) / (1.0 + float(user.demand.beta))
+            resDemand.NvidiaGPU = float(user.demand.computation)  / (1.0 + float(user.demand.beta)) / 1000.0
             resDemand.Memory = user.demand.mem
         
         # print("resDemand: " + resDemand.toString())
@@ -34,7 +34,7 @@ def DRF(capacity, isFDRF, users):
         normalizedDemand[0] = float(resDemand.MilliCPU) / float(capacity.MilliCPU)
         normalizedDemand[1] = float(resDemand.Memory) / float(capacity.Memory)
         normalizedDemand[2] = float(resDemand.NvidiaGPU) / float(capacity.NvidiaGPU)   
-        # print("normalized demand: " + str(normalizedDemand))
+        print("normalized demand: " + str(normalizedDemand))
 
         demands.append(resDemand)   
 
@@ -70,7 +70,7 @@ def DRF(capacity, isFDRF, users):
     return shares
 
 ###############################    
-def enforceAllocation(share, jobs):    
+def enforceAllocation(share, jobs, stopTime):    
     # cpu = share.MilliCPU
     # mem = share.Memory
     # gpu = share.NvidiaGPU
@@ -82,7 +82,8 @@ def enforceAllocation(share, jobs):
     runningJobs = {}
     # loggedJobs = {}
     loggedJobs = []
-    for iTime in range(maxTime): 
+    # for iTime in range(maxTime): 
+    for iTime in range(stopTime):
         # compute current resource
         currentUsage = Resource(0, 0, 0)
         for jobId in runningJobs:

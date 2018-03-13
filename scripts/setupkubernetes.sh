@@ -4,15 +4,15 @@ echo "################################# Install nvidia-375 #####################
 sudo apt-get install -y software-properties-common
 sudo add-apt-repository ppa:graphics-drivers -y
 sudo apt-get update -y
-sudo apt install -y nvidia-375
-#sudo apt install -y nvidia-384
+#sudo apt install -y nvidia-375
+sudo apt install -y nvidia-384
 echo "######################### CUDA, CuDNN ##########################################"
 sudo apt-get install -y linux-headers-$(uname -r)
 wget https://developer.nvidia.com/compute/cuda/8.0/Prod2/local_installers/cuda-repo-ubuntu1604-8-0-local-ga2_8.0.61-1_amd64-deb
 mv cuda-repo-ubuntu1604-8-0-local-ga2_8.0.61-1_amd64-deb  cuda-repo-ubuntu1604-8-0-local-ga2_8.0.61-1_amd64.deb
 sudo dpkg -i cuda-repo-ubuntu1604-8-0-local-ga2_8.0.61-1_amd64.deb
 sudo apt-get update
-sudo apt-get install -y cuda
+sudo apt-get install -y cuda # this also incall nvidia-384
 export PATH=/usr/local/cuda-8.0/bin${PATH:+:${PATH}}
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64"
 wget https://www.dropbox.com/s/ygjvedybap9p577/cudnn-8.0-linux-x64-v5.1.tgz
@@ -21,7 +21,8 @@ sudo cp cuda/include/cudnn.h /usr/local/cuda/include
 sudo cp cuda/lib64/libcudnn* /usr/local/cuda/lib64
 sudo chmod a+r /usr/local/cuda/include/cudnn.h /usr/local/cuda/lib64/libcudnn*
 sudo rm cudnn-8.0-linux-x64-v6.0.tgz
-
+echo "==================testing cuda drivers===================="
+nvidia-smi
 #sudo apt install nvidia-cuda-toolkit
 echo "######################### CUPTI-DEV ##########################################"
 wget https://www.dropbox.com/s/n683yo6vrb9ip5r/cuptiruntime.deb

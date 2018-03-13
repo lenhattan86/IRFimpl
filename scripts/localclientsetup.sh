@@ -9,7 +9,7 @@ else
 fi
 if [ -z "$2" ]
 then
-	hostIP="129.114.109.88"
+	hostIP="129.114.108.87"
 else
 	hostIP="$2"
 fi

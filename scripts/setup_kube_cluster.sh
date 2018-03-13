@@ -14,11 +14,8 @@
 echo "This file need to be executed on the master node instead of your local machine for chameleon"
 echo "You also need to provide the chameleon.pem file"
 
-master="gpus";
-masterIP="129.114.108.87";
-slavesIP="129.114.108.155"
-slaves=""
-servers="$master $slaves";
+masterIP="10.52.1.213";
+slavesIP="10.52.1.233"
 serversIP="$masterIP $slavesIP";
 
 if [ -z "$1" ]
@@ -61,10 +58,11 @@ wait
 
 sudo sh -c "echo '127.0.0.1 $master' >> /etc/hosts"
 ./masterkubeup.sh $masterIP
-echo "Enter Token :"
-read token
+#  kubeadm join --token c91d8c.c90c8bb2666e5eab 10.52.1.213:6443 --discovery-token-ca-cert-hash sha256:bda98d8e38201b1328e8039c677572a4b3e33d5843f95626e3cda4028db5d4e8:
+echo "Enter command"
+read command
 for server in $slavesIP; do
-		$SSH_CMD $username@$server 'bash -s' < ./slavejoin.sh $token $masterIP &
+		$SSH_CMD $username@$server 'bash -s' < ./slavejoin.sh $command $masterIP &
 done
 wait
 

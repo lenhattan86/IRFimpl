@@ -19,7 +19,7 @@ MEM_OVERHEADS = 0
        
 def createDRFExperiement():
     print('DRF experiemnts')
-    ## for DRF
+    ## for DRF134956859392
     f = open(this_path +'/' + 'DRF_experiments.sh','w')
     f.write('dummy file')
     f.close()
@@ -69,7 +69,7 @@ def main():
         users.append(newUser)
     # allocators
     print("====================== ALLOCATION =====================")
-    shares = DRF(capacity, True, users)   
+    shares = DRF(capacity, False, users)   
     printShares(shares) 
 
     # given fill the jobs & allocation enforce,  prepare the job cripts

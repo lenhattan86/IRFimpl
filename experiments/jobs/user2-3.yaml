@@ -1,0 +1,46 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: user2-3
+spec:
+  containers:
+  - name: user2-3
+    image: lenhattan86/bench
+    command:
+    - "/bin/bash"
+    - "-c"
+    - "sleep 50"
+    resources:
+      requests:
+        alpha.kubernetes.io/nvidia-gpu: 0
+        cpu: 23.0
+        memory: 10Gi
+      limits:
+        alpha.kubernetes.io/nvidia-gpu: 0
+        cpu: 23.0
+        memory: 10Gi
+    volumeMounts:
+    - name: nvidia-driver-384-98
+      mountPath: /usr/local/nvidia
+      readOnly: true
+    - name: libcuda-so
+      mountPath: /usr/lib/x86_64-linux-gnu/libcuda.so
+    - name: libcuda-so-1
+      mountPath: /usr/lib/x86_64-linux-gnu/libcuda.so.1
+    - name: libcuda-so-384-98
+      mountPath: /usr/lib/x86_64-linux-gnu/libcuda.so.384.98
+      readOnly: true
+  restartPolicy: Never
+  volumes:
+  - name: nvidia-driver-384-98
+    hostPath:
+      path: /usr/lib/nvidia-384
+  - name: libcuda-so
+    hostPath:
+      path: /usr/lib/x86_64-linux-gnu/libcuda.so
+  - name: libcuda-so-1
+    hostPath:
+      path: /usr/lib/x86_64-linux-gnu/libcuda.so.1
+  - name: libcuda-so-384-98
+    hostPath:
+      path: /usr/lib/x86_64-linux-gnu/libcuda.so.384.98

@@ -87,6 +87,10 @@ def prepareKubernetesJobs(username, loggedJobs):
     strShell = ""
     arrivalTime = 0
     # print("num of loggedJobs = "  + str(len(loggedJobs)))
+    #         
+    strShell = strShell + "kubectl create -f " + username + ".yaml \n"
+    strShell = strShell + "sleep 30 \n"
+
     for jobId in range(len(loggedJobs)):        
         job = loggedJobs[jobId]
         # print("job "  + str(jobId))
@@ -110,11 +114,7 @@ def mainShell(users):
     f = open(shellFile,'w')
     strShell = ""
     # print("num of loggedJobs = "  + str(len(loggedJobs)))
-    for user in users:                
-        strShell = strShell + "kubectl create -f " + user.username + ".yaml \n"
-
-    strShell = strShell + "sleep 30 \n"
-
+    
     for user in users:                
         strShell = strShell + user.username + ".sh &\n"
         

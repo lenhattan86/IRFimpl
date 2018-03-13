@@ -9,9 +9,9 @@ def strUserYaml(username):
     strYaml = strYaml + "apiVersion: v1" + "\n"
     strYaml = strYaml + "kind: Namespace" + "\n"
     strYaml = strYaml + "metadata:" + "\n"
-    strYaml = strYaml + "  name: user1"
+    strYaml = strYaml + "  name: " + username
     return strYaml
-
+Gi = 1024*1024*1024
 def strPodYaml(username, activeJob):
     strYaml = ""        
     strYaml = strYaml + "apiVersion: v1" + "\n"
@@ -19,6 +19,7 @@ def strPodYaml(username, activeJob):
     strYaml = strYaml + "metadata:" + "\n"
     strYaml = strYaml + "  name: "+username+"-" + str(activeJob.jobId) + "\n"
     strYaml = strYaml + "spec:" + "\n"
+    strYaml = strYaml + "  schedulerName: my-scheduler"
     strYaml = strYaml + "  containers:" + "\n"
     strYaml = strYaml + "  - name: "+username+"-" + str(activeJob.jobId) + "\n"
     strYaml = strYaml + "    image: lenhattan86/bench" + "\n"
@@ -30,11 +31,11 @@ def strPodYaml(username, activeJob):
     strYaml = strYaml + "      requests:" + "\n"
     strYaml = strYaml + "        alpha.kubernetes.io/nvidia-gpu: " + str(int(activeJob.usage.NvidiaGPU)) + "\n"
     strYaml = strYaml + "        cpu: " + str(float(activeJob.usage.MilliCPU)/1000) + "\n"
-    strYaml = strYaml + "        memory: " + str(int(activeJob.usage.Memory)) + "Gi" + "\n"
+    strYaml = strYaml + "        memory: " + str(int(activeJob.usage.Memory/Gi)) + "Gi" + "\n"
     strYaml = strYaml + "      limits:" + "\n"
     strYaml = strYaml + "        alpha.kubernetes.io/nvidia-gpu: " + str(int(activeJob.usage.NvidiaGPU)) + "\n"
     strYaml = strYaml + "        cpu: " + str(float(activeJob.usage.MilliCPU)/1000) + "\n"
-    strYaml = strYaml + "        memory: " + str(int(activeJob.usage.Memory)) + "Gi" + "\n"
+    strYaml = strYaml + "        memory: " + str(int(activeJob.usage.Memory/Gi)) + "Gi" + "\n"
     strYaml = strYaml + "    volumeMounts:" + "\n"
     strYaml = strYaml + "    - name: nvidia-driver-384-98" + "\n"
     strYaml = strYaml + "      mountPath: /usr/local/nvidia" + "\n"
@@ -95,7 +96,8 @@ def prepareKubernetesJobs(username, loggedJobs):
         job = loggedJobs[jobId]
         # print("job "  + str(jobId))
         interarrival = job.startTime - arrivalTime
-        strShell = strShell + "sleep " + str(interarrival) + "; "
+        if (interarrival>0):            
+            strShell = strShell + "sleep 1; "        
         strShell = strShell + "kubectl --namespace=\""+username+"\" create -f "+ username +"-"+str(jobId) +".yaml 2> " + username +"-"+str(jobId) +".log & \n"
         arrivalTime = job.startTime
     strShell = strShell + "wait"
@@ -116,7 +118,7 @@ def mainShell(users):
     # print("num of loggedJobs = "  + str(len(loggedJobs)))
     
     for user in users:                
-        strShell = strShell + user.username + ".sh &\n"
+        strShell = strShell + "./" + user.username + ".sh &\n"
         
     strShell = strShell + "wait"
     f.write(strShell)        

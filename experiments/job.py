@@ -42,6 +42,7 @@ class JobProfile:
         return "JobProfile: " + self.demand.toString() + " compl: " + str(self.compl)
 
 JOB_LINES = 4
+Gi = 1024*1024*1024
 def readJobs(this_path, jobFile):    
     # try:
     f = open(this_path + '/' + jobFile)
@@ -62,13 +63,13 @@ def readJobs(this_path, jobFile):
             if(jobLineCount == 1):
                 cCpu = int(strArray[0])
                 cGPu = int(strArray[1]) # must be zero
-                cMem = int(strArray[2])
+                cMem = int(strArray[2]) * Gi
                 cCompl = int(strArray[3])                
 
             elif(jobLineCount == 2):
                 gCpu = int(strArray[0])
                 gGPu = int(strArray[1])
-                gMem = int(strArray[2])
+                gMem = int(strArray[2]) * Gi
                 gCompl = int(strArray[3])         
                 
             elif(jobLineCount == 3):

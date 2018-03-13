@@ -42,7 +42,7 @@ fi
 ## push to docker.io
 if true
 then
-  version=1.2
+  version=1.0
   #kubernetes_src="/usr/local/go/src/k8s.io/kubernetes"
   kubernetes_src="$HOME/go/src/k8s.io/kubernetes"
 #  kubernetes_src="$HOME/go/src/k8s.io/kubernetes-1.9.2"

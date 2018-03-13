@@ -8,14 +8,18 @@ from allocator import *
 from kubernetes import *
 
 this_path = os.path.dirname(os.path.realpath(__file__))
+Gi = 1024*1024*1024
+
 NUM_NODES = 2
 NUM_PHY_CPU_PER_NODE = 2
 NUM_CORES_PER_CPU = 23
 NUM_PHY_GPU_PER_NODE = 2
-MEM_PER_NODE = 120  #134956859392 bytes
+MEM_PER_NODE = 120 * Gi #134956859392 bytes
 
 CPU_OVERHEADS = 0
 MEM_OVERHEADS = 0
+
+
        
 def createDRFExperiement():
     print('DRF experiemnts')

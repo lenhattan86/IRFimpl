@@ -3,7 +3,7 @@ kind: Pod
 metadata:
   name: user1-1
 spec:
-  containers:
+  schedulerName: my-scheduler  containers:
   - name: user1-1
     image: lenhattan86/bench
     command:

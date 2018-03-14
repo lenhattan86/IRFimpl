@@ -4,6 +4,8 @@ import shutil
 
 JOB_FOLDER = "/jobs"
 
+Gi = 1024*1024*1024
+
 def strUserYaml(username):
     strYaml = ""    
     strYaml = strYaml + "apiVersion: v1" + "\n"
@@ -11,7 +13,9 @@ def strUserYaml(username):
     strYaml = strYaml + "metadata:" + "\n"
     strYaml = strYaml + "  name: " + username
     return strYaml
-Gi = 1024*1024*1024
+
+
+
 def strPodYaml(username, activeJob):
     strYaml = ""        
     strYaml = strYaml + "apiVersion: v1" + "\n"
@@ -19,7 +23,7 @@ def strPodYaml(username, activeJob):
     strYaml = strYaml + "metadata:" + "\n"
     strYaml = strYaml + "  name: "+username+"-" + str(activeJob.jobId) + "\n"
     strYaml = strYaml + "spec:" + "\n"
-    strYaml = strYaml + "  schedulerName: my-scheduler"
+    strYaml = strYaml + "  schedulerName: my-scheduler" + "\n"
     strYaml = strYaml + "  containers:" + "\n"
     strYaml = strYaml + "  - name: "+username+"-" + str(activeJob.jobId) + "\n"
     strYaml = strYaml + "    image: lenhattan86/bench" + "\n"
@@ -114,8 +118,10 @@ def mainShell(users):
     
     shellFile = job_folder + "/main.sh"
     f = open(shellFile,'w')
-    strShell = ""
-    # print("num of loggedJobs = "  + str(len(loggedJobs)))
+    strShell = ""   
+
+    for user in users:                
+        strShell = strShell + "kubectl delete pod --all --namespace " + user.username + "\n"
     
     for user in users:                
         strShell = strShell + "./" + user.username + ".sh &\n"

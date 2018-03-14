@@ -94,7 +94,6 @@ def prepareKubernetesJobs(username, loggedJobs):
     # print("num of loggedJobs = "  + str(len(loggedJobs)))
     #         
     strShell = strShell + "kubectl create -f " + username + ".yaml \n"
-    strShell = strShell + "sleep 30 \n"
 
     for jobId in range(len(loggedJobs)):        
         job = loggedJobs[jobId]
@@ -122,6 +121,8 @@ def mainShell(users):
 
     for user in users:                
         strShell = strShell + "kubectl delete pod --all --namespace " + user.username + "\n"
+
+    strShell = strShell + "sleep 10 \n"
     
     for user in users:                
         strShell = strShell + "./" + user.username + ".sh &\n"

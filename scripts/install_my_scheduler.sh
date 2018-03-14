@@ -1,18 +1,18 @@
 echo "./install_my_scheduler.sh version"
 if [ -z "$1" ]
 then
-	version=1.2
+	version=1.0
 else
 	version="$1"
 fi
 
 yamlFile="my-scheduler.yaml"
 kubectl delete -f $yamlFile
-sleep 10
 sudo docker images
 echo "Enter my-scheduler $version image id: "
 read image_id
-sudo docker rmi $image_id
+sudo docker rmi -f $image_id
+sleep 15 # wait for docker completely removes the image.
 
 echo "apiVersion: apps/v1
 kind: Deployment
@@ -62,7 +62,10 @@ spec:
       hostPID: false
       volumes: []" > $yamlFile
 
+kubectl create clusterrolebinding --user system:serviceaccount:kube-system:default kube-system-cluster-admin --clusterrole cluster-admin
 kubectl create -f $yamlFile
 kubectl get pods --all-namespaces
 echo "kubectl get pods --all-namespaces"
 echo "kubectl logs --namespace=kube-system [pod name]"
+
+# kubectl get pods --all-namespaces --field-selector=status.phase==Running

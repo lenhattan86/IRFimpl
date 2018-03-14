@@ -39,13 +39,19 @@ ADD ./_output/dockerized/bin/linux/amd64/kube-scheduler /usr/local/bin/kube-sche
   kubectl create -f my-scheduler.yaml
 fi
 
+if [ -z "$1" ]
+then
+	version=1.0
+else
+	version="$1"
+fi
+
 ## push to docker.io
 if true
 then
-  version=1.0
     #kubernetes_src="/usr/local/go/src/k8s.io/kubernetes"
-    # kubernetes_src="$HOME/go/src/k8s.io/kubernetes"
-  kubernetes_src="$HOME/go/src/k8s.io/kubernetes-1.9.2"
+  kubernetes_src="$HOME/go/src/k8s.io/kubernetes"
+  #kubernetes_src="$HOME/go/src/k8s.io/kubernetes-1.9.2"
   # https://kubernetes.io/docs/tasks/administer-cluster/configure-multiple-schedulers/
   # Dockfile
   # FROM busybox

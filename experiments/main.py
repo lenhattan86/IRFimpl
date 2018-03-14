@@ -71,6 +71,7 @@ def main():
         newUser = User(strUser, demand, jobs)
         # print(newUser.toString())
         users.append(newUser)
+        
     # allocators
     print("====================== ALLOCATION =====================")
     shares = DRF(capacity, False, users)   

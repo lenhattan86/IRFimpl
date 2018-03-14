@@ -33,7 +33,7 @@ spec:
         - --address=0.0.0.0
         - --leader-elect=false
         - --scheduler-name=my-scheduler
-        image: gcr.io/my-gcp-project/my-kube-scheduler:1.0
+        image: lenhattan86/my-kube-scheduler:$version
         livenessProbe:
           httpGet:
             path: /healthz

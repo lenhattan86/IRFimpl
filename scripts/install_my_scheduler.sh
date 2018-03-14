@@ -8,8 +8,8 @@ fi
 
 yamlFile="my-scheduler.yaml"
 kubectl delete -f $yamlFile
-sleep 15
-docker images
+sleep 10
+sudo docker images
 echo "Enter my-scheduler $version image id: "
 read image_id
 sudo docker rmi $image_id

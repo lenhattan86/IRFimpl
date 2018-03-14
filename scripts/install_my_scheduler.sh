@@ -1,5 +1,6 @@
 version=1.2
 kubectl delete -f my-scheduler.yaml
+sleep 15
 docker images
 echo "Enter my-scheduler $version image id: "
 read image_id
@@ -60,3 +61,4 @@ spec:
 kubectl create -f my-scheduler.yaml
 kubectl get pods --all-namespaces
 echo "kubectl get pods --all-namespaces"
+echo "kubectl logs --namespace=kube-system [pod name]"

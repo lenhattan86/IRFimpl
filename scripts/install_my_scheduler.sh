@@ -58,3 +58,5 @@ spec:
           type: FileOrCreate" > my_scheduler.yaml
 
 kubectl create -f my-scheduler.yaml
+kubectl get pods --all-namespaces
+echo "kubectl get pods --all-namespaces"

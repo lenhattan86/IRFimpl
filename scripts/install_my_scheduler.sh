@@ -1,0 +1,60 @@
+version = 1.2
+kubectl delete -f my-scheduler.yaml
+docker images
+echo "Enter my-scheduler $version image id: "
+read image_id
+sudo docker rmi $image_id
+
+echo "apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    component: scheduler
+    tier: control-plane
+  name: my-scheduler
+  namespace: kube-system
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        component: scheduler
+        tier: control-plane
+        version: second
+    spec:
+      containers:
+      - command:
+        - /usr/local/bin/kube-scheduler
+          {{params}}
+          1>>/var/log/kube-scheduler.log 2>&1
+        - --address=0.0.0.0
+        - --leader-elect=false
+        - --scheduler-name=my-scheduler
+        image: lenhattan86/my-kube-scheduler:$version
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 10251
+          initialDelaySeconds: 15
+        name: kube-second-scheduler
+        readinessProbe:
+          httpGet:
+            path: /healthz
+            port: 10251
+        resources:
+          requests:
+            cpu: '0.1'
+        securityContext:
+          privileged: false
+        volumeMounts:
+        - name: logfile
+          mountPath: /var/log/kube-scheduler.log
+      hostNetwork: false
+      hostPID: false
+      volumes:
+      - name: logfile
+        hostPath:
+          path: /var/log/kube-scheduler.log
+          type: FileOrCreate" > my_scheduler.yaml
+
+kubectl create -f my-scheduler.yaml

@@ -6,7 +6,7 @@ echo "Enter my-scheduler $version image id: "
 read image_id
 sudo docker rmi $image_id
 
-echo "apiVersion: apps/v1beta1
+echo "apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
@@ -15,6 +15,10 @@ metadata:
   name: my-scheduler
   namespace: kube-system
 spec:
+  selector:
+    matchLabels:
+      component: scheduler
+      tier: control-plane
   replicas: 1
   template:
     metadata:
@@ -29,7 +33,7 @@ spec:
         - --address=0.0.0.0
         - --leader-elect=false
         - --scheduler-name=my-scheduler
-        image: lenhattan86/my-kube-scheduler:$version
+        image: gcr.io/my-gcp-project/my-kube-scheduler:1.0
         livenessProbe:
           httpGet:
             path: /healthz
@@ -45,16 +49,10 @@ spec:
             cpu: '0.1'
         securityContext:
           privileged: false
-        volumeMounts:
-        - name: logfile
-          mountPath: /var/log/kube-scheduler.log
+        volumeMounts: []
       hostNetwork: false
       hostPID: false
-      volumes:
-      - name: logfile
-        hostPath:
-          path: /var/log/kube-scheduler.log
-          type: FileOrCreate" > my_scheduler.yaml
+      volumes: []" > my_scheduler.yaml
 
 kubectl create -f my-scheduler.yaml
 kubectl get pods --all-namespaces

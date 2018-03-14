@@ -1,4 +1,4 @@
-version = 1.2
+version=1.2
 kubectl delete -f my-scheduler.yaml
 docker images
 echo "Enter my-scheduler $version image id: "

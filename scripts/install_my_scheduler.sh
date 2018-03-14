@@ -52,7 +52,7 @@ spec:
         volumeMounts: []
       hostNetwork: false
       hostPID: false
-      volumes: []" > my_scheduler.yaml
+      volumes: []" > my-scheduler.yaml
 
 kubectl create -f my-scheduler.yaml
 kubectl get pods --all-namespaces

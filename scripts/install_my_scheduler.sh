@@ -1,5 +1,13 @@
-version=1.2
-kubectl delete -f my-scheduler.yaml
+echo "./install_my_scheduler.sh version"
+if [ -z "$1" ]
+then
+	version=1.2
+else
+	version="$1"
+fi
+
+yamlFile="my-scheduler.yaml"
+kubectl delete -f $yamlFile
 sleep 15
 docker images
 echo "Enter my-scheduler $version image id: "
@@ -52,9 +60,9 @@ spec:
         volumeMounts: []
       hostNetwork: false
       hostPID: false
-      volumes: []" > my-scheduler.yaml
+      volumes: []" > $yamlFile
 
-kubectl create -f my-scheduler.yaml
+kubectl create -f $yamlFile
 kubectl get pods --all-namespaces
 echo "kubectl get pods --all-namespaces"
 echo "kubectl logs --namespace=kube-system [pod name]"

@@ -26,8 +26,6 @@ spec:
       containers:
       - command:
         - /usr/local/bin/kube-scheduler
-          {{params}}
-          1>>/var/log/kube-scheduler.log 2>&1
         - --address=0.0.0.0
         - --leader-elect=false
         - --scheduler-name=my-scheduler

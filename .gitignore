@@ -38,6 +38,9 @@
 /tf_analysis/benchmarks/*.json
 /tf_analysis/scripts/*.log
 
+## python
+*.pyc
+
 ## TENSORFLOW
 /tensorflow-1.1.0/.DS_Store
 /tensorflow-1.1.0/.ipynb_checkpoints
@@ -58,6 +61,8 @@ __pycache__
 /tensorflow-1.1.0/.vscode/
 ./scripts/cuda/lib64/libcudnn_static.a
 ./scripts/cuda/lib64/libcudnn.so.5.1.10
+./scripts/cuda/lib64/libcudnn.so.5.1.10
+./.git/objects/c3/c981750b56834beb2a7cf817d17436f977e15d
 ./scripts/cuda/lib64/libcudnn.so.5.1.10
 ./.git/objects/c3/c981750b56834beb2a7cf817d17436f977e15d
 ./scripts/cuda/lib64/libcudnn.so.5.1.10

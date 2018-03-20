@@ -1,6 +1,6 @@
 #!/bin/bash
 # usage:
-# ./kubernetes_cluster.sh [username] [key file location]
+# ./kubernetes_cluster.sh masterIP [username] [key file location]
 # this script has to be executed on the master node on Chameleon.
 # copy the pem/key file to the master node before running this script.
 # also manually add hostname to /etc/hosts
@@ -17,28 +17,29 @@ cd..; git config credential.helper store; cd scripts
 echo "This file need to be executed on the master node instead of your local machine for chameleon"
 echo "You also need to provide the chameleon.pem file"
 
-masterIP="10.52.1.213";
-slavesIP="10.52.1.233"
+masterIP="129.114.108.87";
+slavesIP=""
 serversIP="$masterIP $slavesIP";
 
 if [ -z "$1" ]
 then
-	username="cc"
+	echo "no input for master IP"
 else
-	username="$1"
+	masterIP="$1"
 fi
 if [ -z "$2" ]
 then
-	keyfile=chameleon.pem
+	username="cc"
 else
-	keyfile="$2"
+	username="$2"
 fi
 if [ -z "$3" ]
 then
-	echo "no input for master IP"
+	keyfile=chameleon.pem
 else
-	masterIP="$3"
+	keyfile="$3"
 fi
+
 
 SSH_CMD="ssh -i $keyfile"
 
@@ -64,6 +65,7 @@ sudo sh -c "echo '127.0.0.1 $master' >> /etc/hosts"
 #  kubeadm join --token c91d8c.c90c8bb2666e5eab 10.52.1.213:6443 --discovery-token-ca-cert-hash sha256:bda98d8e38201b1328e8039c677572a4b3e33d5843f95626e3cda4028db5d4e8:
 echo "Enter command"
 read command
+echo $command > command.txt # save command for using later
 for server in $slavesIP; do
 		$SSH_CMD $username@$server 'bash -s' < ./slavejoin.sh $command $masterIP &
 done

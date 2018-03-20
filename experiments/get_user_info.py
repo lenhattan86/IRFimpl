@@ -53,7 +53,7 @@ while True:
         break
     else:
         lines=output.split("\n")
-        for line in lines[2:len(lines)]:            
+        for line in lines[2:len(lines)-1]:            
             strArr=line.split()            
             podName=strArr[0]
             podStatus=strArr[2]

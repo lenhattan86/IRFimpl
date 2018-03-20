@@ -67,9 +67,9 @@ def strPodYaml(username, activeJob):
     strYaml = strYaml + "      path: /usr/lib/x86_64-linux-gnu/libcuda.so.384.98"
     return strYaml
     
-def prepareKubernetesJobs(username, loggedJobs):
+def prepareKubernetesJobs(username, expFolder, loggedJobs):
     this_path = os.path.dirname(os.path.realpath(__file__))
-    job_folder = this_path + JOB_FOLDER
+    job_folder = this_path + "/" + expFolder
     try:
         os.stat(job_folder )
     except:
@@ -100,7 +100,8 @@ def prepareKubernetesJobs(username, loggedJobs):
         # print("job "  + str(jobId))
         interarrival = job.startTime - arrivalTime
         if (interarrival>0):            
-            strShell = strShell + "sleep 1; "        
+            strShell = strShell + "sleep 1; "    
+        strShell = strShell + "sleep "+str(interarrival)+"; "                    
         strShell = strShell + "kubectl --namespace=\""+username+"\" create -f "+ username +"-"+str(jobId) +".yaml 2> " + username +"-"+str(jobId) +".log & \n"
         arrivalTime = job.startTime
     strShell = strShell + "wait"
@@ -109,9 +110,9 @@ def prepareKubernetesJobs(username, loggedJobs):
     os.chmod(shellFile, 0700)
 
 
-def mainShell(users):
+def mainShell(users,expFolder):
     this_path = os.path.dirname(os.path.realpath(__file__))
-    job_folder = this_path + JOB_FOLDER
+    job_folder = this_path + "/" +expFolder
     shutil.rmtree(job_folder, ignore_errors=True)
     os.mkdir(job_folder)
     

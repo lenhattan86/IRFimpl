@@ -7,6 +7,7 @@ def DRF(capacity, isFDRF, users):
     demands = []
     normalizedDemands = []
     shares = []
+    computedShares = []
     maxDemands = []
 
     dorminantRates = [0.0, 0.0, 0.0]
@@ -25,7 +26,7 @@ def DRF(capacity, isFDRF, users):
                 resDemand.NvidiaGPU = 0.0
                 resDemand.Memory = user.demand.mem
         else:
-            resDemand.MilliCPU = float(user.demand.computation / 1000.0) / (1.0 + float(user.demand.beta))
+            resDemand.MilliCPU = float(user.demand.computation) / (1.0 + float(user.demand.beta))
             resDemand.NvidiaGPU = float(user.demand.computation)  / (1.0 + float(user.demand.beta)) / 1000.0
             resDemand.Memory = user.demand.mem
         
@@ -65,11 +66,21 @@ def DRF(capacity, isFDRF, users):
         
 
         shares.append(Resource(milliCPU, memory, NvidiaGPU))
+        computedShares.append(Resource(demands[i].MilliCPU  / ratio, demands[i].Memory  / ratio, demands[i].NvidiaGPU  / ratio))
 
     # compute normalized demand
+    printShares(computedShares)
     return shares
+    
+def printShares(shares):
+    strShares = "{"
+    for share in shares:
+        strShares = strShares + share.toString() + ","
+    strShares = strShares + "}"
+    print(strShares)
 
-###############################    
+##############################################
+
 def enforceAllocation(share, jobs, stopTime):    
     # cpu = share.MilliCPU
     # mem = share.Memory

@@ -1,4 +1,4 @@
-echo "./install_my_scheduler.sh version"
+echo "You may run this script TWICE as it images must be cached somewhere else."
 if [ -z "$1" ]
 then
 	version=1.0
@@ -12,7 +12,8 @@ sudo docker images
 echo "Enter my-scheduler $version image id: "
 read image_id
 sudo docker rmi -f $image_id
-sleep 15 # wait for docker completely removes the image.
+#sleep 15 # wait for docker completely removes the image.
+
 
 echo "apiVersion: apps/v1
 kind: Deployment

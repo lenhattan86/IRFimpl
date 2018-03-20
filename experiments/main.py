@@ -18,8 +18,6 @@ MEM_PER_NODE = 120 * Gi #134956859392 bytes
 
 CPU_OVERHEADS = 0
 MEM_OVERHEADS = 0
-
-
        
 def createDRFExperiement():
     print('DRF experiemnts')
@@ -43,13 +41,6 @@ def computeDemand(jobs):
     demand.mem = demand.mem/ cpuTime
     return demand
 
-def printShares(shares):
-    strShares = "{"
-    for share in shares:
-        strShares = strShares + share.toString() + ","
-    strShares = strShares + "}"
-    print(strShares)
-
 def main():
     # capacity = Resource(48000, 128*1024*1024, 4)
     CPU = NUM_NODES* NUM_PHY_CPU_PER_NODE * NUM_CORES_PER_CPU
@@ -62,6 +53,7 @@ def main():
     userStrArray = ["user1", "user2"]
     users = []
     workload = 'simple'
+
     for strUser in userStrArray:
         # print("read " + strUser)
         jobs = readJobs(this_path+"/"+workload, strUser+".txt")        
@@ -73,18 +65,33 @@ def main():
         users.append(newUser)
         
     # allocators
-    print("====================== ALLOCATION =====================")
+    print("====================== DRF ALLOCATION =====================")
+    expFolder = "DRF"
     shares = DRF(capacity, False, users)   
     printShares(shares) 
-
     # given fill the jobs & allocation enforce,  prepare the job cripts
     print("================= Resource Enforcement ================")
-    mainShell(users)
+    mainShell(users, expFolder)
     stopTime = 200
     for i in range(len(users)):
-    # for i in range(1):        
+    # for i in range(1):
         loggedJobs = enforceAllocation(shares[i], users[i].jobs, stopTime) 
         print("Prepare the jobs for " + users[i].username + ": " + str(len(loggedJobs)))  
-        prepareKubernetesJobs(users[i].username, loggedJobs)
+        prepareKubernetesJobs(users[i].username, expFolder, loggedJobs)
+
+    # allocators
+    print("====================== FDRF ALLOCATION =====================")
+    expFolder = "FDRF"
+    shares = DRF(capacity, True, users)   
+    printShares(shares) 
+    # given fill the jobs & allocation enforce,  prepare the job cripts
+    print("================= Resource Enforcement ================")
+    mainShell(users, expFolder)
+    stopTime = 200
+    for i in range(len(users)):
+    # for i in range(1):
+        loggedJobs = enforceAllocation(shares[i], users[i].jobs, stopTime) 
+        print("Prepare the jobs for " + users[i].username + ": " + str(len(loggedJobs)))  
+        prepareKubernetesJobs(users[i].username, expFolder, loggedJobs)
 
 if __name__ == "__main__": main()

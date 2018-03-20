@@ -1,3 +1,5 @@
+Gi = 1024*1024*1024
+
 class Resource:
     def __init__(self, MilliCPU, Memory, NvidiaGPU):
         self.MilliCPU = MilliCPU
@@ -5,7 +7,7 @@ class Resource:
         self.NvidiaGPU = NvidiaGPU
 
     def toString(self):
-        strRes = "{"+str(self.MilliCPU) +","+str(self.Memory) +","+str(self.NvidiaGPU) +"}"
+        strRes = "{"+str(self.MilliCPU) +" MilliCPU,"+str(self.Memory/Gi) +" Gi,"+str(self.NvidiaGPU) +" gpus}"
         return strRes
         
     def isFit(self, capacity, isGPU):

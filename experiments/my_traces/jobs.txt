@@ -1,0 +1,6 @@
+A. Small beta
+- https://en.wikipedia.org/wiki/Prefix_sum
+- AES possibly, if the CPU has an AES accelerator
+- password hashing: https://en.wikipedia.org/wiki/Bcrypt
+
+B. Large beta

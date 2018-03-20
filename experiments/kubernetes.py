@@ -130,8 +130,8 @@ def mainShell(users,expFolder, stopTime, interval):
 
     ## Run the monitoring script
     for user in users:                
-        strShell = strShell + "python ../get_user_info.py --user="+user.username+ \
-        "--interval="+str(interval) + " --stop-time="+str(stopTime)+" --file="+user.username+".log & \n"    
+        strShell = strShell + "python ../get_user_info.py --user "+user.username+ \
+        " --interval="+str(interval) + " --stopTime="+str(stopTime)+" --file="+user.username+".log & \n"    
     
     ## Run the jobs
     for user in users:                

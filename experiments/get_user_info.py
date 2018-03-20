@@ -16,22 +16,22 @@ from time import sleep
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--user', help='YARN ResourceManager URL', required=True)
-parser.add_argument('--interval (secs)', help='Polling interval', required=True)
+parser.add_argument('--interval', help='Polling interval  (secs)', required=True)
 parser.add_argument('--file', help='log file', required=True)
-parser.add_argument('--stop-time', help='stop time (secs)', required=True)
+parser.add_argument('--stopTime', help='stop time (secs)', required=True)
 args = vars(parser.parse_args())
 
 interval = int(args['interval'])
 user = args['user']
 file_name = args['file']
-stop_time = int(args['stop-time'])
+stop_time = int(args['stopTime'])
 
 # interval=1
 # user="user1"
 # file_name="user1.log"
 # stop_time=10
 
-this_path = os.path.dirname(os.path.realpath(__file__))
+# this_path = os.path.dirname(os.path.realpath(__file__))
 # ofile  = open(this_path  + "/" + file_name, "wb")
 ofile  = open(file_name, "wb")
 writer = csv.writer(ofile, dialect='excel')
@@ -46,6 +46,8 @@ while True:
     (output, err) = p.communicate()    
     p_status = p.wait() 
     #"""NAME                                       READY     STATUS    RESTARTS   AGE"""
+    # p_status=0
+    # writer.writerow([1, 2])
     if p_status != 0:        
         print 'Could not access the kubernetes'
         break
@@ -56,7 +58,7 @@ while True:
             podName=strArr[0]
             podStatus=strArr[2]
             row = [now, user, podName, podStatus]
-            writer.writerow(row)    
+            writer.writerow(row)
 
     if (end_time - start_time > stop_time):
         print("stop after " + str(stop_time) + " seconds")

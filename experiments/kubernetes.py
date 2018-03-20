@@ -93,14 +93,13 @@ def prepareKubernetesJobs(username, expFolder, loggedJobs):
     arrivalTime = 0
     # print("num of loggedJobs = "  + str(len(loggedJobs)))
     #         
-    strShell = strShell + "kubectl create -f " + username + ".yaml \n"
 
     for jobId in range(len(loggedJobs)):        
         job = loggedJobs[jobId]
         # print("job "  + str(jobId))
         interarrival = job.startTime - arrivalTime
-        if (interarrival>0):            
-            strShell = strShell + "sleep 1; "    
+        # if (interarrival>0):            
+        #     strShell = strShell + "sleep 1; "    
         strShell = strShell + "sleep "+str(interarrival)+"; "                    
         strShell = strShell + "kubectl --namespace=\""+username+"\" create -f "+ username +"-"+str(jobId) +".yaml 2> " + username +"-"+str(jobId) +".log & \n"
         arrivalTime = job.startTime
@@ -110,7 +109,7 @@ def prepareKubernetesJobs(username, expFolder, loggedJobs):
     os.chmod(shellFile, 0700)
 
 
-def mainShell(users,expFolder):
+def mainShell(users,expFolder, stopTime, interval):
     this_path = os.path.dirname(os.path.realpath(__file__))
     job_folder = this_path + "/" +expFolder
     shutil.rmtree(job_folder, ignore_errors=True)
@@ -124,7 +123,17 @@ def mainShell(users,expFolder):
         strShell = strShell + "kubectl delete pod --all --namespace " + user.username + "\n"
 
     strShell = strShell + "sleep 10 \n"
+
+    ## create namespaces
+    for user in users:                
+        strShell = strShell + "kubectl create -f " + user.username + ".yaml \n"
+
+    ## Run the monitoring script
+    for user in users:                
+        strShell = strShell + "python ../get_user_info.py --user="+user.username+ \
+        "--interval="+str(interval) + " --stop-time="+str(stopTime)+" --file="+user.username+".log & \n"    
     
+    ## Run the jobs
     for user in users:                
         strShell = strShell + "./" + user.username + ".sh &\n"
         

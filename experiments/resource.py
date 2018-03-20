@@ -8,6 +8,7 @@ class Resource:
 
     def toString(self):
         strRes = "{"+str(self.MilliCPU) +" MilliCPU,"+str(self.Memory/Gi) +" Gi,"+str(self.NvidiaGPU) +" gpus}"
+        # strRes = "{"+str(self.MilliCPU) +" MilliCPU,"+str(self.Memory) +" bytes,"+str(self.NvidiaGPU) +" gpus}"
         return strRes
         
     def isFit(self, capacity, isGPU):

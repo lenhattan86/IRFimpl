@@ -1,5 +1,5 @@
 #!/bin/bash
-#Usage: ./slavejoin.sh [join-token] [masterIPaddress]
+#Usage: ./slavejoin.sh [command] [masterIPaddress]
 #Assumes Kubernetes is already-installed using setupkubernetes.sh
 if [ -z "$1" ]
 then
@@ -27,6 +27,7 @@ sudo sed -i -e "s/ExecStart=\/usr\/bin\/kubelet /ExecStart=\/usr\/bin\/kubelet -
 sudo systemctl daemon-reload
 sudo systemctl restart kubelet
 sudo $command
+echo "sudo $command"
 
 # support for NodeAffinity
 NVIDIA_GPU_NAME=$(nvidia-smi --query-gpu=gpu_name --format=csv,noheader --id=0)

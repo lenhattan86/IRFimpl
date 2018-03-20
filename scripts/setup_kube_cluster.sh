@@ -40,7 +40,6 @@ else
 	keyfile="$3"
 fi
 
-
 SSH_CMD="ssh -i $keyfile"
 
 chmod 600 $keyfile
@@ -53,7 +52,7 @@ done
 # setup kubernetes
 ./setupkubernetes.sh &
 for server in $slavesIP; do
-		$SSH_CMD $username@$server 'bash -s' < ./setupkubernetes.sh &
+	$SSH_CMD $username@$server 'bash -s' < ./setupkubernetes.sh &
 done	
 wait
 
@@ -67,9 +66,10 @@ echo "Enter command"
 read command
 echo $command > command.txt # save command for using later
 for server in $slavesIP; do
-		$SSH_CMD $username@$server 'bash -s' < ./slavejoin.sh $command $masterIP &
+	$SSH_CMD $username@$server 'bash -s' < ./slavejoin.sh $command $masterIP &
 done
 wait
+git config credential.helper store
 
 # https://kukulinski.com/10-most-common-reasons-kubernetes-deployments-fail-part-1/
 

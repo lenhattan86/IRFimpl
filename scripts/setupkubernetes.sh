@@ -1,5 +1,8 @@
 #!/bin/bash
 #usage: ./setupkubernetes.sh
+
+sudo apt-get purge -y kubelet kubeadm kubectl kubernetes-cni
+
 echo "################################# Install nvidia-375 ######################################"
 sudo apt-get install -y software-properties-common
 sudo add-apt-repository ppa:graphics-drivers -y

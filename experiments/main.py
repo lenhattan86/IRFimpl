@@ -54,6 +54,10 @@ def main():
     users = []
     workload = 'simple'
 
+    stopTime = 200
+    monitor_time = 300
+    interval = 1
+
     for strUser in userStrArray:
         # print("read " + strUser)
         jobs = readJobs(this_path+"/"+workload, strUser+".txt")        
@@ -70,9 +74,8 @@ def main():
     shares = DRF(capacity, False, users)   
     printShares(shares) 
     # given fill the jobs & allocation enforce,  prepare the job cripts
-    print("================= Resource Enforcement ================")
-    mainShell(users, expFolder)
-    stopTime = 200
+    print("================= Resource Enforcement ================")   
+    mainShell(users, expFolder, monitor_time, interval)
     for i in range(len(users)):
     # for i in range(1):
         loggedJobs = enforceAllocation(shares[i], users[i].jobs, stopTime) 
@@ -85,9 +88,8 @@ def main():
     shares = DRF(capacity, True, users)   
     printShares(shares) 
     # given fill the jobs & allocation enforce,  prepare the job cripts
-    print("================= Resource Enforcement ================")
-    mainShell(users, expFolder)
-    stopTime = 200
+    print("================= Resource Enforcement ================")    
+    mainShell(users, expFolder, monitor_time, interval)
     for i in range(len(users)):
     # for i in range(1):
         loggedJobs = enforceAllocation(shares[i], users[i].jobs, stopTime) 

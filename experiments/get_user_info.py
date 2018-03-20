@@ -48,6 +48,7 @@ while True:
     #"""NAME                                       READY     STATUS    RESTARTS   AGE"""
     # p_status=0
     # writer.writerow([1, 2])
+    elapse=end_time - start_time 
     if p_status != 0:        
         print 'Could not access the kubernetes'
         break
@@ -57,10 +58,10 @@ while True:
             strArr=line.split()            
             podName=strArr[0]
             podStatus=strArr[2]
-            row = [now, user, podName, podStatus]
+            row = [now, elapse, user, podName, podStatus]
             writer.writerow(row)
 
-    if (end_time - start_time > stop_time):
+    if (elapse > stop_time):
         print("stop after " + str(stop_time) + " seconds")
         break
 

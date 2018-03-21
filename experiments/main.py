@@ -18,6 +18,8 @@ MEM_PER_NODE = 120 * Gi #134956859392 bytes
 
 CPU_OVERHEADS = 0
 MEM_OVERHEADS = 0
+
+CPU_TO_GPU_RATIO = NUM_PHY_CPU_PER_NODE*NUM_CORES_PER_CPU/NUM_PHY_GPU_PER_NODE * 1000
        
 def createDRFExperiement():
     print('DRF experiemnts')
@@ -26,17 +28,20 @@ def createDRFExperiement():
     f.write('dummy file')
     f.close()
 
-def computeDemand(jobs):
+def computeDemand(jobs, cpu2gpuRatio):
     demand = Demand(0, 0, 0)
     cpuTime = 0.0
     gpuTime = 0.0    
+    gpuDemand = 0.0
     for job in jobs:        
         cpuTime = cpuTime + job.cpuProfile.compl
         gpuTime = gpuTime + job.gpuProfile.compl
         demand.computation = demand.computation + job.cpuProfile.demand.MilliCPU *  job.cpuProfile.compl
+        gpuDemand = gpuDemand + job.gpuProfile.demand.NvidiaGPU *  job.gpuProfile.compl
         demand.mem = demand.mem + job.cpuProfile.demand.Memory *  job.cpuProfile.compl
 
-    demand.beta = cpuTime / gpuTime
+    # demand.beta = cpuTime / gpuTime
+    demand.beta = demand.computation / gpuDemand / cpu2gpuRatio
     demand.computation = demand.computation/ cpuTime
     demand.mem = demand.mem/ cpuTime
     return demand
@@ -62,16 +67,16 @@ def main():
         # print("read " + strUser)
         jobs = readJobs(this_path+"/"+workload, strUser+".txt")        
         # compute betas
-        demand = computeDemand(jobs)
+        demand = computeDemand(jobs, CPU_TO_GPU_RATIO)
         print(demand.toString())
         newUser = User(strUser, demand, jobs)
         # print(newUser.toString())
         users.append(newUser)
         
-    # allocators
+
     print("====================== DRF ALLOCATION =====================")
     expFolder = "DRF"
-    shares = DRF(capacity, False, users)   
+    shares = DRF(capacity, False, users, CPU_TO_GPU_RATIO)   
     printShares(shares) 
     # given fill the jobs & allocation enforce,  prepare the job cripts
     print("================= Resource Enforcement ================")   
@@ -82,10 +87,9 @@ def main():
         print("Prepare the jobs for " + users[i].username + ": " + str(len(loggedJobs)))  
         prepareKubernetesJobs(users[i].username, expFolder, loggedJobs)
 
-    # allocators
     print("====================== FDRF ALLOCATION =====================")
     expFolder = "FDRF"
-    shares = DRF(capacity, True, users)   
+    shares = DRF(capacity, True, users,CPU_TO_GPU_RATIO)   
     printShares(shares) 
     # given fill the jobs & allocation enforce,  prepare the job cripts
     print("================= Resource Enforcement ================")    

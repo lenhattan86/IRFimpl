@@ -2,7 +2,7 @@ from resource import *
 from user import *
 from job import *
 
-def DRF(capacity, isFDRF, users):
+def DRF(capacity, isFDRF, users, cpu2gpuRatio):
     # foreach user 
     demands = []
     normalizedDemands = []
@@ -19,7 +19,7 @@ def DRF(capacity, isFDRF, users):
         if not isFDRF:
             if user.demand.beta > 1:
                 resDemand.MilliCPU = 0.0
-                resDemand.NvidiaGPU = float(user.demand.computation) / float(user.demand.beta) / 1000.0
+                resDemand.NvidiaGPU = float(user.demand.computation) / float(user.demand.beta) / cpu2gpuRatio
                 resDemand.Memory = user.demand.mem
             else:
                 resDemand.MilliCPU = user.demand.computation 
@@ -27,7 +27,7 @@ def DRF(capacity, isFDRF, users):
                 resDemand.Memory = user.demand.mem
         else:
             resDemand.MilliCPU = float(user.demand.computation) / (1.0 + float(user.demand.beta))
-            resDemand.NvidiaGPU = float(user.demand.computation)  / (1.0 + float(user.demand.beta)) / 1000.0
+            resDemand.NvidiaGPU = float(user.demand.computation)  / (1.0 + float(user.demand.beta)) / cpu2gpuRatio 
             resDemand.Memory = user.demand.mem
         
         # print("resDemand: " + resDemand.toString())

@@ -36,10 +36,9 @@ stop_time = int(args['stopTime'])
 ofile  = open(file_name, "wb")
 writer = csv.writer(ofile, dialect='excel')
 
-start_time=time()
-
+time_step = 0 
 while True:
-    now = datetime.datetime.now()
+    now = datetime.datetime.now()    
     end_time = time()
     p = subprocess.Popen(["kubectl get pods --show-all --namespace=" + user], 
         stdout=subprocess.PIPE, shell=True)                   
@@ -48,21 +47,20 @@ while True:
     #"""NAME                                       READY     STATUS    RESTARTS   AGE"""
     # p_status=0
     # writer.writerow([1, 2])
-    elapse=end_time - start_time 
+    time_step = time_step + interval
     if p_status != 0:        
         print 'Could not access the kubernetes'
-        break
     else:
         lines=output.split("\n")
         for line in lines[2:len(lines)-1]:            
             strArr=line.split()            
             podName=strArr[0]
             podStatus=strArr[2]
-            row = [now, elapse, user, podName, podStatus]
+            row = [now, time_step, user, podName, podStatus]
             writer.writerow(row)
 
-    if (elapse > stop_time):
+    if (time_step > stop_time):
         print("stop after " + str(stop_time) + " seconds")
         break
 
-    sleep(interval)
+    sleep(interval)    

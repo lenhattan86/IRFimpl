@@ -100,4 +100,31 @@ def main():
         print("Prepare the jobs for " + users[i].username + ": " + str(len(loggedJobs)))  
         prepareKubernetesJobs(users[i].username, expFolder, loggedJobs)
 
+
+    print("====================== ES ALLOCATION =====================")
+    expFolder = "ES"
+    shares = ES(capacity, users)   
+    printShares(shares) 
+    # given fill the jobs & allocation enforce,  prepare the job cripts
+    print("================= Resource Enforcement ================")    
+    mainShell(users, expFolder, monitor_time, interval)
+    for i in range(len(users)):
+    # for i in range(1):
+        loggedJobs = enforceAllocation(shares[i], users[i].jobs, stopTime) 
+        print("Prepare the jobs for " + users[i].username + ": " + str(len(loggedJobs)))  
+        prepareKubernetesJobs(users[i].username, expFolder, loggedJobs)
+
+    print("====================== Pricing ALLOCATION =====================")
+    expFolder = "Pricing"
+    shares = Pricing(capacity, True, users, CPU_TO_GPU_RATIO)
+    printShares(shares) 
+    # given fill the jobs & allocation enforce,  prepare the job cripts
+    print("================= Resource Enforcement ================")    
+    mainShell(users, expFolder, monitor_time, interval)
+    for i in range(len(users)):
+    # for i in range(1):
+        loggedJobs = enforceAllocation(shares[i], users[i].jobs, stopTime) 
+        print("Prepare the jobs for " + users[i].username + ": " + str(len(loggedJobs)))  
+        prepareKubernetesJobs(users[i].username, expFolder, loggedJobs)    
+
 if __name__ == "__main__": main()

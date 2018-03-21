@@ -6,9 +6,13 @@ class Resource:
         self.Memory = Memory
         self.NvidiaGPU = NvidiaGPU
 
+    def createNorm(self, baseRes):
+        self.norm = Resource(self.MilliCPU/ baseRes.MilliCPU, self.Memory / baseRes.Memory, self.NvidiaGPU / baseRes.NvidiaGPU)
+        self.baseRes = baseRes
+
     def toString(self):
-        strRes = "{"+str(self.MilliCPU) +" MilliCPU,"+str(self.Memory/Gi) +" Gi,"+str(self.NvidiaGPU) +" gpus}"
-        # strRes = "{"+str(self.MilliCPU) +" MilliCPU,"+str(self.Memory) +" bytes,"+str(self.NvidiaGPU) +" gpus}"
+        # strRes = "{"+str(self.MilliCPU) +" MilliCPU,"+str(self.Memory/Gi) +" Gi,"+str(self.NvidiaGPU) +" gpus}"
+        strRes = "{"+str(self.MilliCPU) +" MilliCPU,"+str(self.Memory) +" bytes,"+str(self.NvidiaGPU) +" gpus}"
         return strRes
         
     def isFit(self, capacity, isGPU):
@@ -23,6 +27,14 @@ class Resource:
 
         return True
 
+def sumResource(resources):
+    result = Resource(0,0,0)
+    for res in resources:
+        result.MilliCPU = result.MilliCPU + res.MilliCPU
+        result.Memory = result.Memory + res.Memory
+        result.NvidiaGPU = result.NvidiaGPU + res.NvidiaGPU
+
+    return result
 
 def substract(aRes, bRes):
     result = Resource(0, 0, 0)

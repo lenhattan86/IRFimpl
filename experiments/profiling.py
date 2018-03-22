@@ -8,14 +8,15 @@ from allocator import *
 from kubernetes import *
 
 
-### alexnet batch size 16 requires at least 2GI mem.
+### alexnet batch size=16 requires at least 2GI mem.
+# batch_size = 16, num_batch = 100: cpu 42 secs, gpu 2 secs (without overheads)
 # num_batches: default(100)
 # batch_size= 
 # num_intra_threads (similar to cpu threads -> speed up the job)
 
 JOB_NAME = "alexnet"
-CPU_COMMAND = "python tf_cnn_benchmarks.py --device=cpu --model="+JOB_NAME+" --data_format=NHWC --batch_size=16 --num_batches=100 --num_intra_threads=23 "
-GPU_COMMAND = "python tf_cnn_benchmarks.py --device=gpu --model="+JOB_NAME+" --batch_size=16 --num_batches=100 --num_gpus=1"
+CPU_COMMAND = "python tf_cnn_benchmarks.py --device=cpu --model="+JOB_NAME+" --data_format=NHWC --batch_size=16 --num_batches=1000 --num_intra_threads=23 "
+GPU_COMMAND = "python tf_cnn_benchmarks.py --device=gpu --model="+JOB_NAME+" --batch_size=16 --num_batches=1000 --num_gpus=1"
 
 NUM_JOBS = 5
 
@@ -30,7 +31,7 @@ CPU_cpu = 23*1000
 CPU_mem = MEM
 CPU_gpu = 0
 
-GPU_cpu = 0.1 *1000
+GPU_cpu = 1 *1000
 GPU_mem = MEM
 GPU_gpu = 1
 
@@ -41,6 +42,7 @@ def shellProfiling(job_folder, job_number, cpuResource, cpuCmd, gpuResource, gpu
     f = open(shellFile,'w')
     strShell = ""   
 
+    strShell = strShell + "kubectl delete pods --all --namespace=default"
     strShell = strShell + "sudo docker pull lenhattan86/cpu \n"
     strShell = strShell + "sudo docker pull lenhattan86/gpu \n"
     

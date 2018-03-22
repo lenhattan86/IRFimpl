@@ -1,0 +1,8 @@
+*.log
+*.time
+
+multiple-cpus/logs/
+multiple-cpus/time/
+
+multiple-gpus/logs/
+multiple-gpus/time/

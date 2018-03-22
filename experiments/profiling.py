@@ -8,13 +8,32 @@ from allocator import *
 from kubernetes import *
 
 
+NUM_JOBS = 5
+
+FOLDER = "profiling"
+GI = 1024*1024*1024
+CPU_cpu = 23*1000
+CPU_mem = 1*GI
+CPU_gpu = 0
+
+GPU_cpu = 0.1 *1000
+GPU_mem = 1 * GI
+GPU_gpu = 1
+
+JOB_NAME = "alexnet"
+CPU_COMMAND = "python tf_cnn_benchmarks.py --device=cpu --model="+JOB_NAME+" --data_format=NHWC --batch_size=16 --num_batches=100 --num_intra_threads=23 "
+GPU_COMMAND = "python tf_cnn_benchmarks.py --device=gpu --model="+JOB_NAME+" --batch_size=16 --num_batches=100 --num_gpus=1"
 
 this_path = os.path.dirname(os.path.realpath(__file__))
 
 def shellProfiling(job_folder, job_number, cpuResource, cpuCmd, gpuResource, gpuCmd, job_name):    
-    shellFile = job_folder + "/main.sh"
+    shellFile = job_folder + "/profiling.sh"
     f = open(shellFile,'w')
     strShell = ""   
+
+    strShell = strShell + "python ../../get_user_info.py --user=default" \
+        " --interval="+str(1) + " --stopTime=-1 --file="+job_name+".csv & \n"  
+
     ## create CPU jobs
     shellJobs(job_folder, job_number, cpuResource, cpuCmd, job_name+"_cpu")
     ## create GPU jobs
@@ -52,22 +71,6 @@ def shellJobs(job_folder, job_number, job_resource, cmd, fileName):
     os.chmod(shellFile, 0700)
 
 def main():
-
-    NUM_JOBS = 5
-
-    FOLDER = "profiling"
-    GI = 1024*1024*1024
-    CPU_cpu = 23*1000
-    CPU_mem = 1*GI
-    CPU_gpu = 0
-
-    GPU_cpu = 0.1 *1000
-    GPU_mem = 1 * GI
-    GPU_gpu = 1
-
-    JOB_NAME = "alexnet"
-    CPU_COMMAND = "sleep 100"
-    GPU_COMMAND = "sleep 10"
     
     profiling_folder = this_path + "/" + FOLDER  
     try:

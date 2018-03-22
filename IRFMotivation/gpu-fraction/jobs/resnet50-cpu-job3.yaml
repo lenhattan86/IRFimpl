@@ -1,0 +1,47 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: tensorflow-resnet50-gpu3
+spec:
+  containers:
+  - name: tensorflow-resnet50-gpu
+    image: swiftdiaries/bench
+    command:
+    - "/bin/bash"
+    - "-c"
+    - "echo start...  & python tf_cnn_benchmarks.py --device=gpu --model=resnet50 --data_format=NHWC --batch_size=16 --num_batches=1000 --gpu_mem_fraction=0.3 & python tf_cnn_benchmarks.py --device=gpu --model=resnet50 --data_format=NHWC --batch_size=16 --num_batches=1000 --gpu_mem_fraction=0.3 & python tf_cnn_benchmarks.py --device=gpu --model=resnet50 --data_format=NHWC --batch_size=16 --num_batches=1000 --gpu_mem_fraction=0.3"  
+    resources:
+      requests:
+        alpha.kubernetes.io/nvidia-gpu: 1
+        cpu: 1
+        memory: 16Gi
+      limits:
+        alpha.kubernetes.io/nvidia-gpu: 1
+        cpu: 1
+        memory: 16Gi
+    volumeMounts:
+    - name: nvidia-driver-375-82
+      mountPath: /usr/local/nvidia
+      readOnly: true
+    - name: libcuda-so
+      mountPath: /usr/lib/x86_64-linux-gnu/libcuda.so
+    - name: libcuda-so-1
+      mountPath: /usr/lib/x86_64-linux-gnu/libcuda.so.1
+    - name: libcuda-so-375-82
+      mountPath: /usr/lib/x86_64-linux-gnu/libcuda.so.375.82
+      readOnly: true
+  restartPolicy: Never
+  volumes:
+  - name: nvidia-driver-375-82
+    hostPath:
+      path: /usr/lib/nvidia-375
+  - name: libcuda-so
+    hostPath:
+      path: /usr/lib/x86_64-linux-gnu/libcuda.so
+  - name: libcuda-so-1
+    hostPath:
+      path: /usr/lib/x86_64-linux-gnu/libcuda.so.1
+  - name: libcuda-so-375-82
+    hostPath:
+      path: /usr/lib/x86_64-linux-gnu/libcuda.so.375.82
+    

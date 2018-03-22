@@ -1,0 +1,5 @@
+Intel E3 2670 2.3 GHz 12 cores (24 vcores).
+GPU: Tesla P100
+RAM: 
+
+run on nvidia-docker

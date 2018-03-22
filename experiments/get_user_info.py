@@ -59,7 +59,7 @@ while True:
             row = [now, time_step, user, podName, podStatus]
             writer.writerow(row)
 
-    if (time_step > stop_time):
+    if (stop_time > 0 and time_step > stop_time):
         print("stop after " + str(stop_time) + " seconds")
         break
 

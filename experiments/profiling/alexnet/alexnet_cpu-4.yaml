@@ -9,7 +9,7 @@ spec:
     command:
     - "/bin/bash"
     - "-c"
-    - "sleep 100"
+    - "python tf_cnn_benchmarks.py --device=cpu --model=alexnet --data_format=NHWC --batch_size=16 --num_batches=100 --num_intra_threads=23 "
     resources:
       requests:
         alpha.kubernetes.io/nvidia-gpu: 0

@@ -14,11 +14,11 @@ spec:
       requests:
         alpha.kubernetes.io/nvidia-gpu: 0
         cpu: 23.0
-        memory: 2Gi
+        memory: 3Gi
       limits:
         alpha.kubernetes.io/nvidia-gpu: 0
         cpu: 23.0
-        memory: 2Gi
+        memory: 3Gi
     volumeMounts:
     - name: nvidia-driver-384-98
       mountPath: /usr/local/nvidia

@@ -8,8 +8,10 @@ from allocator import *
 from kubernetes import *
 
 
-### alexnet batch size=16 requires at least 2GI mem.
+### alexnet 
+# batch size=16 & num_batches=100 requires at least 2GI mem. IF we increase both of these parameters, it requires more memory.
 # batch_size = 16, num_batch = 100: cpu 42 secs, gpu 2 secs (without overheads)
+# batch_size = 16, num_batch = 1000: cpu 478 secs, gpu 18 secs (without overheads)
 # num_batches: default(100)
 # batch_size= 
 # num_intra_threads (similar to cpu threads -> speed up the job)
@@ -25,7 +27,7 @@ STOP_TIME = 10000
 FOLDER = "profiling"
 
 GI = 1024*1024*1024
-MEM = 2*GI
+MEM = 3*GI
 
 CPU_cpu = 23*1000
 CPU_mem = MEM
@@ -42,7 +44,7 @@ def shellProfiling(job_folder, job_number, cpuResource, cpuCmd, gpuResource, gpu
     f = open(shellFile,'w')
     strShell = ""   
 
-    strShell = strShell + "kubectl delete pods --all --namespace=default"
+    strShell = strShell + "kubectl delete pods --all --namespace=default \n"
     strShell = strShell + "sudo docker pull lenhattan86/cpu \n"
     strShell = strShell + "sudo docker pull lenhattan86/gpu \n"
     

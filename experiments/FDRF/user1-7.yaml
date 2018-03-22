@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: user1-47
+  name: user1-7
 spec:
   schedulerName: my-scheduler
   containers:
-  - name: user1-47
+  - name: user1-7
     image: lenhattan86/bench
     command:
     - "/bin/bash"
@@ -15,11 +15,11 @@ spec:
       requests:
         alpha.kubernetes.io/nvidia-gpu: 1
         cpu: 0.1
-        memory: 10Gi
+        memory: 1Gi
       limits:
         alpha.kubernetes.io/nvidia-gpu: 1
         cpu: 0.1
-        memory: 10Gi
+        memory: 1Gi
     volumeMounts:
     - name: nvidia-driver-384-98
       mountPath: /usr/local/nvidia

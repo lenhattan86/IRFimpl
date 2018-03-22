@@ -57,7 +57,7 @@ def main():
 
     userStrArray = ["user1", "user2"]
     users = []
-    workload = 'simple'
+    workload = 'simple1.1'
 
     stopTime = 200
     monitor_time = 300
@@ -71,8 +71,23 @@ def main():
         print(demand.toString())
         newUser = User(strUser, demand, jobs)
         # print(newUser.toString())
-        users.append(newUser)
+        users.append(newUser)        
         
+    print("====================== ES ALLOCATION =====================")
+    expFolder = "ES"
+    shares = ES(capacity, users)   
+    printShares(shares) 
+    # given fill the jobs & allocation enforce,  prepare the job cripts
+    print("================= Resource Enforcement ================")    
+    mainShell(users, expFolder, monitor_time, interval)
+    for i in range(len(users)):
+    # for i in range(1):
+        user = users[i]
+        share = shares[i]
+        jobs = user.jobs[:]
+        loggedJobs = enforceAllocation(share, jobs, stopTime) 
+        print("Prepare the jobs for " + user.username + ": " + str(len(loggedJobs)))  
+        prepareKubernetesJobs(user.username, expFolder, loggedJobs)        
 
     print("====================== DRF ALLOCATION =====================")
     expFolder = "DRF"
@@ -83,9 +98,12 @@ def main():
     mainShell(users, expFolder, monitor_time, interval)
     for i in range(len(users)):
     # for i in range(1):
-        loggedJobs = enforceAllocation(shares[i], users[i].jobs, stopTime) 
-        print("Prepare the jobs for " + users[i].username + ": " + str(len(loggedJobs)))  
-        prepareKubernetesJobs(users[i].username, expFolder, loggedJobs)
+        user = users[i]
+        share = shares[i]
+        jobs = user.jobs[:]
+        loggedJobs = enforceAllocation(share, jobs, stopTime) 
+        print("Prepare the jobs for " + user.username + ": " + str(len(loggedJobs)))  
+        prepareKubernetesJobs(user.username, expFolder, loggedJobs)
 
     print("====================== FDRF ALLOCATION =====================")
     expFolder = "FDRF"
@@ -96,35 +114,30 @@ def main():
     mainShell(users, expFolder, monitor_time, interval)
     for i in range(len(users)):
     # for i in range(1):
-        loggedJobs = enforceAllocation(shares[i], users[i].jobs, stopTime) 
-        print("Prepare the jobs for " + users[i].username + ": " + str(len(loggedJobs)))  
-        prepareKubernetesJobs(users[i].username, expFolder, loggedJobs)
+        user = users[i]
+        share = shares[i]
+        jobs = user.jobs[:]
+        loggedJobs = enforceAllocation(share, jobs, stopTime) 
+        print("Prepare the jobs for " + user.username + ": " + str(len(loggedJobs)))  
+        prepareKubernetesJobs(user.username, expFolder, loggedJobs)
 
 
-    print("====================== ES ALLOCATION =====================")
-    expFolder = "ES"
-    shares = ES(capacity, users)   
-    printShares(shares) 
-    # given fill the jobs & allocation enforce,  prepare the job cripts
-    print("================= Resource Enforcement ================")    
-    mainShell(users, expFolder, monitor_time, interval)
-    for i in range(len(users)):
-    # for i in range(1):
-        loggedJobs = enforceAllocation(shares[i], users[i].jobs, stopTime) 
-        print("Prepare the jobs for " + users[i].username + ": " + str(len(loggedJobs)))  
-        prepareKubernetesJobs(users[i].username, expFolder, loggedJobs)
+
 
     print("====================== Pricing ALLOCATION =====================")
     expFolder = "Pricing"
-    shares = Pricing(capacity, True, users, CPU_TO_GPU_RATIO)
+    shares = Pricing(capacity, True, users)
     printShares(shares) 
     # given fill the jobs & allocation enforce,  prepare the job cripts
     print("================= Resource Enforcement ================")    
     mainShell(users, expFolder, monitor_time, interval)
     for i in range(len(users)):
     # for i in range(1):
-        loggedJobs = enforceAllocation(shares[i], users[i].jobs, stopTime) 
-        print("Prepare the jobs for " + users[i].username + ": " + str(len(loggedJobs)))  
-        prepareKubernetesJobs(users[i].username, expFolder, loggedJobs)    
+        user = users[i]
+        share = shares[i]
+        jobs = user.jobs[:]
+        loggedJobs = enforceAllocation(share, jobs, stopTime) 
+        print("Prepare the jobs for " + user.username + ": " + str(len(loggedJobs)))  
+        prepareKubernetesJobs(user.username, expFolder, loggedJobs)  
 
 if __name__ == "__main__": main()

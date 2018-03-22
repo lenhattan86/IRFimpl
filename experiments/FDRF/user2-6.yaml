@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: user2-18
+  name: user2-6
 spec:
   schedulerName: my-scheduler
   containers:
-  - name: user2-18
+  - name: user2-6
     image: lenhattan86/bench
     command:
     - "/bin/bash"
@@ -13,13 +13,13 @@ spec:
     - "sleep 50"
     resources:
       requests:
-        alpha.kubernetes.io/nvidia-gpu: 0
-        cpu: 23.0
-        memory: 10Gi
+        alpha.kubernetes.io/nvidia-gpu: 1
+        cpu: 0.1
+        memory: 1Gi
       limits:
-        alpha.kubernetes.io/nvidia-gpu: 0
-        cpu: 23.0
-        memory: 10Gi
+        alpha.kubernetes.io/nvidia-gpu: 1
+        cpu: 0.1
+        memory: 1Gi
     volumeMounts:
     - name: nvidia-driver-384-98
       mountPath: /usr/local/nvidia

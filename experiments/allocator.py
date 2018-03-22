@@ -17,7 +17,7 @@ def DRF(capacity, isFDRF, users, cpu2gpuRatio):
         normalizedDemand = [0.0, 0.0, 0.0]
         # print("user demand: "+ user.demand.toString() )
         if not isFDRF:
-            if user.demand.beta > 1:
+            if user.demand.beta >= 1:
                 resDemand.MilliCPU = 0.0
                 resDemand.NvidiaGPU = float(user.demand.computation) / float(user.demand.beta) / cpu2gpuRatio
                 resDemand.Memory = user.demand.mem
@@ -90,7 +90,7 @@ def ES(capacity, users):
     return shares
 
 
-def Pricing(capacity, isFDRF, users, baseRes):
+def Pricing(capacity, isFDRF, users):
     shares = []
     N = len(users)
     # step 1: sort users based on beta (ascending)
@@ -99,7 +99,7 @@ def Pricing(capacity, isFDRF, users, baseRes):
     ratios = []
     betas = []
     for user in users:
-        ratio = user.demand.mem / user.demand.computation / ( baseRes.Memory / baseRes.MilliCPU) # normalized ratio 
+        ratio = user.demand.mem / user.demand.computation / ( capacity.Memory / capacity.MilliCPU) # normalized ratio 
         ratios.append(ratio)
         betas.append(user.demand.beta)
 
@@ -133,6 +133,7 @@ def Pricing(capacity, isFDRF, users, baseRes):
 
     # step 4: pricing
     error = 0.0001
+    step = 0.0001
     while (abs(currLoad.MilliCPU - currLoad.NvidiaGPU) > error and flag):
         gpumin = gpumin -1 
         if(gpumin < 0):
@@ -140,34 +141,93 @@ def Pricing(capacity, isFDRF, users, baseRes):
         price[0] = 1
         price[1] = betas[gpumin]
         price[2] = 1 + betas[gpumin]
+        useralloc = userallocRes(betas, ratios, price)
+        currLoad = sumResource(useralloc)
+
+        if (currLoad.MilliCPU > currLoad.NvidiaGPU):
+            userAllocG = userallocGPU(betas, ratios, price)
+            currLoadG = sumResource(userAllocG)
+            if (currLoadG.MilliCPU > currLoadG.NvidiaGPU):
+                continue
+            else :
+                finalAlloc = useralloc
+                finalAlloc[gpumin].MilliCPU = 0
+                finalAlloc[gpumin].NvidiaGPU = 0
+                currLoadG = sumResource(finalAlloc)
+                finalAlloc[gpumin].NvidiaGPU = (currLoadG.MilliCPU - currLoadG.NvidiaGPU + (finalAlloc[gpumin].Memory/ ratios[gpumin])) / (1 + betas[gpumin])
+                finalAlloc[gpumin].MilliCPU = currLoadG.NvidiaGPU + finalAlloc[gpumin].NvidiaGPU - currLoadG.MilliCPU
+                break
+        else:
+            
+            # for k = betas[gpumin + 1]; k >= betas[gpumin]; k = k - step :
+            k = betas[gpumin + 1]
+            while k >= k >= betas[gpumin]:
+                price[0] = 1
+                price[1] = k
+                price[2] = k + 1
+                useralloc = userallocGPU(betas, ratios, price)
+                currLoad = sumResource(useralloc)
+                if (abs(currLoad.MilliCPU - currLoad.NvidiaGPU) < error) :
+                    finalAlloc = useralloc
+                    flag = False
+                    break
+                k = k - step
+
+
+    if (N > 1) :
+        sumAlloc = sumResource(finalAlloc)
+        budget = max(sumAlloc.MilliCPU, sumAlloc.NvidiaGPU, sumAlloc.Memory) 
+        for i in range(3):
+            price[i] = price[i]* budget
+        for j in range(N): 
+            finalAlloc[j].MilliCPU = finalAlloc[j].MilliCPU /budget
+            finalAlloc[j].NvidiaGPU = finalAlloc[j].NvidiaGPU /budget
+            finalAlloc[j].Memory = finalAlloc[j].Memory /budget
 
     # step 5: create the real shares.
-    for user in users:
-        print("beta: " + str(user.demand.beta))
-        ratio= 1
-        milliCPU = int(capacity.MilliCPU  / ratio)        
-        memory = int(capacity.Memory  / ratio)        
-        NvidiaGPU = int(capacity.NvidiaGPU  / ratio)
-        shares.append(Resource(milliCPU, memory, NvidiaGPU))
-
+    for i in range(N):
+        cpu = finalAlloc[i].MilliCPU * capacity.MilliCPU
+        gpu = finalAlloc[i].NvidiaGPU * capacity.NvidiaGPU
+        mem = finalAlloc[i].Memory * capacity.Memory
+        shares.append(Resource(int(cpu), int(mem), int(gpu)))
+        # print(finalAlloc[i].toString())
+    
     return shares
 
 
 def userallocGPU(betas, ratios, currentPrices):
     userAlloc = [] 
 
-    for j in range(betas):
+    for j in range(len(betas)):
+        beta = betas[j]
+        ratio = ratios[j]
+        alloc = Resource(0, 0, 0)
+        alloc.Memory = min(1 / currentPrices[2], max(ratio, beta * ratio/currentPrices[1]))
+        if (beta < currentPrices[1]) :
+            alloc.MilliCPU = alloc.Memory/ ratio
+            alloc.NvidiaGPU = 0
+        else: # if beta = price, put it in GPU.
+            alloc.MilliCPU = 0
+            alloc.NvidiaGPU = alloc.Memory/(ratio*beta)
+        userAlloc.append(alloc)
+
+    return userAlloc 
+
+def userallocRes(betas, ratios, currentPrices):
+    userAlloc = [] 
+
+    for j in range(len(betas)):
         beta = betas[j]
         ratio = ratios[j]
         alloc = Resource(0, 0, 0)
         alloc.Memory = min(1 / currentPrices[2], max(ratio, beta * ratio/currentPrices[1]))
 
-        if (beta < currentPrices[1]) :
-            alloc.MilliCPU = userAlloc[j].resource(2) / ratio
+        if (beta <= currentPrices[1]) :
+            alloc.MilliCPU = alloc.Memory/ ratio
             alloc.NvidiaGPU = 0
         else: # if beta = price, put it in GPU.
             alloc.MilliCPU = 0
-            alloc.NvidiaGPU = alloc.MilliCPU/(ratio*beta)
+            alloc.NvidiaGPU = alloc.Memory/(ratio*beta)
         userAlloc.append(alloc)
 
     return userAlloc   

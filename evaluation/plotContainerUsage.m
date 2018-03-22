@@ -7,11 +7,11 @@ userNames = {'user1', 'user2'};
 folder = '.';
 interval = 1;
 stopTime = 400;
-times = interval:interval:stopTime
+times = interval:interval:stopTime;
 userUsages = zeros(stopTime, length(userNames));
 
-for iUser = 1:length(userNames)
-  filename = [folder '/' userNames{iUser} '.csv'];
+for iUser = 2:length(userNames)
+  filename = [folder '/' userNames{iUser} '.log'];
   [datetimes, steps, users, podnames,statuses] = importUserInfo(filename);
   
   start_time_idx = 1;
@@ -34,4 +34,4 @@ for iUser = 1:length(userNames)
   end
 end
 %%
-bar(userUsages, 'stacked');
+bar(userUsages, 1.0, 'stacked');

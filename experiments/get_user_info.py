@@ -17,7 +17,7 @@ from time import sleep
 parser = argparse.ArgumentParser()
 parser.add_argument('--user', help='YARN ResourceManager URL', required=True)
 parser.add_argument('--interval', help='Polling interval  (secs)', required=True)
-parser.add_argument('--file', help='log file', required=True)
+parser.add_argument('--file', help='csv file', required=True)
 parser.add_argument('--stopTime', help='stop time (secs)', required=True)
 args = vars(parser.parse_args())
 
@@ -28,7 +28,7 @@ stop_time = int(args['stopTime'])
 
 # interval=1
 # user="user1"
-# file_name="user1.log"
+# file_name="user1.csv"
 # stop_time=10
 
 # this_path = os.path.dirname(os.path.realpath(__file__))

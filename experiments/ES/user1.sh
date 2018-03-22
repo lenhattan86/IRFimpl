@@ -26,4 +26,9 @@ sleep 10; kubectl --namespace="user1" create -f user1-24.yaml 2> user1-24.log &
 sleep 0; kubectl --namespace="user1" create -f user1-25.yaml 2> user1-25.log & 
 sleep 10; kubectl --namespace="user1" create -f user1-26.yaml 2> user1-26.log & 
 sleep 0; kubectl --namespace="user1" create -f user1-27.yaml 2> user1-27.log & 
+sleep 10; kubectl --namespace="user1" create -f user1-28.yaml 2> user1-28.log & 
+sleep 0; kubectl --namespace="user1" create -f user1-29.yaml 2> user1-29.log & 
+sleep 10; kubectl --namespace="user1" create -f user1-30.yaml 2> user1-30.log & 
+sleep 0; kubectl --namespace="user1" create -f user1-31.yaml 2> user1-31.log & 
+sleep 10; kubectl --namespace="user1" create -f user1-32.yaml 2> user1-32.log & 
 wait

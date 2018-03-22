@@ -16,14 +16,15 @@ def strUserYaml(username):
 
 
 
-def strPodYaml(username, activeJob):
+def strPodYaml(username, activeJob, scheduler):
     strYaml = ""        
     strYaml = strYaml + "apiVersion: v1" + "\n"
     strYaml = strYaml + "kind: Pod" + "\n"
     strYaml = strYaml + "metadata:" + "\n"
     strYaml = strYaml + "  name: "+username+"-" + str(activeJob.jobId) + "\n"
     strYaml = strYaml + "spec:" + "\n"
-    strYaml = strYaml + "  schedulerName: my-scheduler" + "\n"
+    if (scheduler != "kube-scheduler"):
+        strYaml = strYaml + "  schedulerName: " + scheduler + "\n"
     strYaml = strYaml + "  containers:" + "\n"
     strYaml = strYaml + "  - name: "+username+"-" + str(activeJob.jobId) + "\n"
     strYaml = strYaml + "    image: lenhattan86/bench" + "\n"
@@ -84,7 +85,7 @@ def prepareKubernetesJobs(username, expFolder, loggedJobs):
     for jobId in range(len(loggedJobs)):
         activeJob = loggedJobs[jobId]
         f = open(job_folder + '/' + username +"-"+str(jobId) + ".yaml",'w')
-        f.write(strPodYaml(username, activeJob))
+        f.write(strPodYaml(username, activeJob, 'my-scheduler'))
         f.close()
 
     shellFile = job_folder + '/' + username + ".sh"
@@ -131,7 +132,7 @@ def mainShell(users,expFolder, stopTime, interval):
     ## Run the monitoring script
     for user in users:                
         strShell = strShell + "python ../get_user_info.py --user "+user.username+ \
-        " --interval="+str(interval) + " --stopTime="+str(stopTime)+" --file="+user.username+".log & \n"    
+        " --interval="+str(interval) + " --stopTime="+str(stopTime)+" --file="+user.username+".csv & \n"    
     
     ## Run the jobs
     for user in users:                

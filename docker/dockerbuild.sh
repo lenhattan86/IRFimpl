@@ -1,31 +1,18 @@
 #!/bin/bash
-#Usage: ./dockerbuild.sh tagname username
 
-if [ -z "$1" ]
-then
-	tagname="gpu"
-	#tagname="cpu"
-else
-	tagname="$1"
-fi
+username="lenhattan86"
+repo="ira"
 
-if [ -z "$2" ]
-then
-	username="lenhattan86"
-else
-	username="$2"
-fi
+## build TF-GPU
+tagname="gpu"
+docker_file="Dockerfile"
+docker build -f $docker_file -t $repo:$tagname .
+docker tag $repo:$tagname $username/$repo:$tagname
+docker push $username/$repo:$tagname
 
-if [ -z "$3" ]
-then
-	docker_file="Dockerfile"
-	#docker_file="dockerfilecpu"
-else
-	docker_file="$3"
-fi
-
-docker build -f $docker_file -t $tagname .
-docker tag $tagname $username/$tagname
-docker push $username/$tagname
-# errors:
-# Temporary failure resolving 'archive.ubuntu.com' -> docker version
+## build TF-CPU
+tagname="cpu"
+docker_file="dockerfilecpu"
+docker build -f $docker_file -t $repo:$tagname .
+docker tag $repo:$tagname $username/$repo:$tagname
+docker push $username/$repo:$tagname

@@ -8,53 +8,68 @@ from allocator import *
 from kubernetes import *
 
 
-NUM_JOBS = 5
-
-FOLDER = "profiling"
-GI = 1024*1024*1024
-CPU_cpu = 23*1000
-CPU_mem = 1*GI
-CPU_gpu = 0
-
-GPU_cpu = 0.1 *1000
-GPU_mem = 1 * GI
-GPU_gpu = 1
+### alexnet batch size 16 requires at least 2GI mem.
+# num_batches: default(100)
+# batch_size= 
+# num_intra_threads (similar to cpu threads -> speed up the job)
 
 JOB_NAME = "alexnet"
 CPU_COMMAND = "python tf_cnn_benchmarks.py --device=cpu --model="+JOB_NAME+" --data_format=NHWC --batch_size=16 --num_batches=100 --num_intra_threads=23 "
 GPU_COMMAND = "python tf_cnn_benchmarks.py --device=gpu --model="+JOB_NAME+" --batch_size=16 --num_batches=100 --num_gpus=1"
 
+NUM_JOBS = 5
+
+STOP_TIME = 10000
+
+FOLDER = "profiling"
+
+GI = 1024*1024*1024
+MEM = 2*GI
+
+CPU_cpu = 23*1000
+CPU_mem = MEM
+CPU_gpu = 0
+
+GPU_cpu = 0.1 *1000
+GPU_mem = MEM
+GPU_gpu = 1
+
 this_path = os.path.dirname(os.path.realpath(__file__))
 
-def shellProfiling(job_folder, job_number, cpuResource, cpuCmd, gpuResource, gpuCmd, job_name):    
+def shellProfiling(job_folder, job_number, cpuResource, cpuCmd, gpuResource, gpuCmd, job_name,stopTime):    
     shellFile = job_folder + "/profiling.sh"
     f = open(shellFile,'w')
     strShell = ""   
 
+    strShell = strShell + "sudo docker pull lenhattan86/cpu \n"
+    strShell = strShell + "sudo docker pull lenhattan86/gpu \n"
+    
     strShell = strShell + "python ../../get_user_info.py --user=default" \
-        " --interval="+str(1) + " --stopTime=-1 --file="+job_name+".csv & \n"  
+        " --interval="+str(1) + " --stopTime="+str(stopTime)+" --file="+job_name+".csv & pythonScript=$! \n"  
 
     ## create CPU jobs
     shellJobs(job_folder, job_number, cpuResource, cpuCmd, job_name+"-cpu")
     ## create GPU jobs
     shellJobs(job_folder, job_number, gpuResource, gpuCmd, job_name+"-gpu")
 
-    strShell = strShell + "./" +job_name+"-cpu" + ".sh &\n"               
-    strShell = strShell + "./" + job_name+"-gpu"+ ".sh &\n"
+    strShell = strShell + "./" +job_name+"-cpu" + ".sh & cpuScript=$! \n"               
+    strShell = strShell + "./" + job_name+"-gpu"+ ".sh & gpuScript=$!\n"
 
-    strShell = strShell + "wait"
+    strShell = strShell + "wait"    
     f.write(strShell)        
     f.close()
     os.chmod(shellFile, 0700)
 
 def shellJobs(job_folder, job_number, job_resource, cmd, fileName):
-    
+    isGPU = False
     ## create yaml files
     for i in range(job_number):
         usage = Resource(job_resource.MilliCPU, job_resource.Memory, job_resource.NvidiaGPU)
         activeJob = ActiveJob(usage, 0, 0, fileName+'-'+str(i),cmd)
         f_yaml = open(job_folder + '/' + fileName + '-'+str(i) + ".yaml",'w')
-        f_yaml.write(strPodYaml('job', activeJob, 'kube-scheduler'))
+        if job_resource.NvidiaGPU > 0:
+            isGPU = True
+        f_yaml.write(strPodYaml('job', activeJob, 'kube-scheduler', isGPU))
         f_yaml.close()        
 
     shellFile = job_folder + "/" + fileName + ".sh"
@@ -65,7 +80,7 @@ def shellJobs(job_folder, job_number, job_resource, cmd, fileName):
     for i in range(job_number):                        
         strShell = strShell + "kubectl create -f "+ fileName + '-'+str(i) +".yaml 2> " + fileName + '-'+str(i) +".log & \n"        
 
-    strShell = strShell + "wait"
+    # strShell = strShell + "wait"
     f.write(strShell)        
     f.close()
     os.chmod(shellFile, 0700)
@@ -85,7 +100,7 @@ def main():
     cpu_res = Resource(CPU_cpu, CPU_mem, CPU_gpu)
     gpu_res = Resource(GPU_cpu, GPU_mem, GPU_gpu)
 
-    shellProfiling(job_folder, NUM_JOBS, cpu_res, CPU_COMMAND, gpu_res, GPU_COMMAND, JOB_NAME)
+    shellProfiling(job_folder, NUM_JOBS, cpu_res, CPU_COMMAND, gpu_res, GPU_COMMAND, JOB_NAME, STOP_TIME)
 
     print("======= DONE ==============")
 

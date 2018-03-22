@@ -16,7 +16,7 @@ def strUserYaml(username):
 
 
 
-def strPodYaml(username, activeJob, scheduler):
+def strPodYaml(username, activeJob, scheduler, isGPU):
     strYaml = ""        
     strYaml = strYaml + "apiVersion: v1" + "\n"
     strYaml = strYaml + "kind: Pod" + "\n"
@@ -27,7 +27,10 @@ def strPodYaml(username, activeJob, scheduler):
         strYaml = strYaml + "  schedulerName: " + scheduler + "\n"
     strYaml = strYaml + "  containers:" + "\n"
     strYaml = strYaml + "  - name: "+username+"-" + str(activeJob.jobId) + "\n"
-    strYaml = strYaml + "    image: lenhattan86/bench" + "\n"
+    if isGPU:
+        strYaml = strYaml + "    image: lenhattan86/ira:gpu" + "\n"
+    else:
+        strYaml = strYaml + "    image: lenhattan86/ira:cpu" + "\n"
     strYaml = strYaml + "    command:" + "\n"
     strYaml = strYaml + "    - \"/bin/bash\"" + "\n"
     strYaml = strYaml + "    - \"-c\"" + "\n"
@@ -84,8 +87,11 @@ def prepareKubernetesJobs(username, expFolder, loggedJobs):
     # for each job, create a yaml file
     for jobId in range(len(loggedJobs)):
         activeJob = loggedJobs[jobId]
+        isGPU = False
+        if activeJob.usage.NvidiaGPU > 0:
+            isGPU = True
         f = open(job_folder + '/' + username +"-"+str(jobId) + ".yaml",'w')
-        f.write(strPodYaml(username, activeJob, 'my-scheduler'))
+        f.write(strPodYaml(username, activeJob, 'my-scheduler', isGPU))
         f.close()
 
     shellFile = job_folder + '/' + username + ".sh"
@@ -117,8 +123,11 @@ def mainShell(users,expFolder, stopTime, interval):
     os.mkdir(job_folder)
     
     shellFile = job_folder + "/main.sh"
-    f = open(shellFile,'w')
+    f = open(shellFile,'w')    
     strShell = ""   
+
+    strShell = strShell + "sudo docker pull lenhattan86/ira:cpu \n"
+    strShell = strShell + "sudo docker pull lenhattan86/ira:gpu \n"
 
     for user in users:                
         strShell = strShell + "kubectl delete pod --all --namespace " + user.username + "\n"

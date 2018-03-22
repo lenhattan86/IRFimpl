@@ -5,7 +5,7 @@ metadata:
 spec:
   containers:
   - name: job-alexnet-gpu-3
-    image: lenhattan86/bench
+    image: lenhattan86/ira:gpu
     command:
     - "/bin/bash"
     - "-c"
@@ -14,11 +14,11 @@ spec:
       requests:
         alpha.kubernetes.io/nvidia-gpu: 1
         cpu: 0.1
-        memory: 1Gi
+        memory: 2Gi
       limits:
         alpha.kubernetes.io/nvidia-gpu: 1
         cpu: 0.1
-        memory: 1Gi
+        memory: 2Gi
     volumeMounts:
     - name: nvidia-driver-384-98
       mountPath: /usr/local/nvidia

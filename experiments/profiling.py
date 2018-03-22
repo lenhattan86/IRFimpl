@@ -35,12 +35,12 @@ def shellProfiling(job_folder, job_number, cpuResource, cpuCmd, gpuResource, gpu
         " --interval="+str(1) + " --stopTime=-1 --file="+job_name+".csv & \n"  
 
     ## create CPU jobs
-    shellJobs(job_folder, job_number, cpuResource, cpuCmd, job_name+"_cpu")
+    shellJobs(job_folder, job_number, cpuResource, cpuCmd, job_name+"-cpu")
     ## create GPU jobs
-    shellJobs(job_folder, job_number, gpuResource, gpuCmd, job_name+"_gpu")
+    shellJobs(job_folder, job_number, gpuResource, gpuCmd, job_name+"-gpu")
 
-    strShell = strShell + "./" +job_name+"_cpu" + ".sh &\n"               
-    strShell = strShell + "./" + job_name+"_gpu"+ ".sh &\n"
+    strShell = strShell + "./" +job_name+"-cpu" + ".sh &\n"               
+    strShell = strShell + "./" + job_name+"-gpu"+ ".sh &\n"
 
     strShell = strShell + "wait"
     f.write(strShell)        
@@ -54,7 +54,7 @@ def shellJobs(job_folder, job_number, job_resource, cmd, fileName):
         usage = Resource(job_resource.MilliCPU, job_resource.Memory, job_resource.NvidiaGPU)
         activeJob = ActiveJob(usage, 0, 0, fileName+'-'+str(i),cmd)
         f_yaml = open(job_folder + '/' + fileName + '-'+str(i) + ".yaml",'w')
-        f_yaml.write(strPodYaml('default', activeJob, 'kube-scheduler'))
+        f_yaml.write(strPodYaml('job', activeJob, 'kube-scheduler'))
         f_yaml.close()        
 
     shellFile = job_folder + "/" + fileName + ".sh"

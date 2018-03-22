@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: default-alexnet_gpu-2
+  name: job-alexnet-gpu-3
 spec:
   containers:
-  - name: default-alexnet_gpu-2
+  - name: job-alexnet-gpu-3
     image: lenhattan86/bench
     command:
     - "/bin/bash"

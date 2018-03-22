@@ -1,23 +1,23 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: default-alexnet_gpu-4
+  name: job-alexnet-cpu-1
 spec:
   containers:
-  - name: default-alexnet_gpu-4
+  - name: job-alexnet-cpu-1
     image: lenhattan86/bench
     command:
     - "/bin/bash"
     - "-c"
-    - "python tf_cnn_benchmarks.py --device=gpu --model=alexnet --batch_size=16 --num_batches=100 --num_gpus=1"
+    - "python tf_cnn_benchmarks.py --device=cpu --model=alexnet --data_format=NHWC --batch_size=16 --num_batches=100 --num_intra_threads=23 "
     resources:
       requests:
-        alpha.kubernetes.io/nvidia-gpu: 1
-        cpu: 0.1
+        alpha.kubernetes.io/nvidia-gpu: 0
+        cpu: 23.0
         memory: 1Gi
       limits:
-        alpha.kubernetes.io/nvidia-gpu: 1
-        cpu: 0.1
+        alpha.kubernetes.io/nvidia-gpu: 0
+        cpu: 23.0
         memory: 1Gi
     volumeMounts:
     - name: nvidia-driver-384-98

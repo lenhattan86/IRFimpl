@@ -10,8 +10,8 @@ stopTime = 400;
 times = interval:interval:stopTime;
 userUsages = zeros(stopTime, length(userNames));
 
-for iUser = 2:length(userNames)
-  filename = [folder '/' userNames{iUser} '.log'];
+for iUser = 1:length(userNames)
+  filename = [folder '/' userNames{iUser} '.csv'];
   [datetimes, steps, users, podnames,statuses] = importUserInfo(filename);
   
   start_time_idx = 1;

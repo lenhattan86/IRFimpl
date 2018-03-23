@@ -58,7 +58,7 @@ def shellProfiling(job_folder, job_number, cpuResource, cpuCmd, gpuResource, gpu
 
     strShell = strShell + "kubectl delete pods --all --namespace=default \n"
     strShell = strShell + "echo wait... \n"
-    strShell = strShell + "sleep 90 \n"
+    strShell = strShell + "sleep 60 \n"
     strShell = strShell + "sudo docker pull lenhattan86/cpu \n"
     strShell = strShell + "sudo docker pull lenhattan86/gpu \n"
     

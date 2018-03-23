@@ -10,16 +10,16 @@ spec:
     command:
     - "/bin/bash"
     - "-c"
-    - "sleep 50"
+    - "python tf_cnn_benchmarks.py --device=gpu --model=alexnet --batch_size=16 --num_batches=300 --num_gpus=1"
     resources:
       requests:
         alpha.kubernetes.io/nvidia-gpu: 1
-        cpu: 0.1
-        memory: 1Gi
+        cpu: 1.0
+        memory: 3Gi
       limits:
         alpha.kubernetes.io/nvidia-gpu: 1
-        cpu: 0.1
-        memory: 1Gi
+        cpu: 1.0
+        memory: 3Gi
     volumeMounts:
     - name: nvidia-driver-384-98
       mountPath: /usr/local/nvidia

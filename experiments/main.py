@@ -61,7 +61,7 @@ def main():
     workload = 'real1.0'
     # workload = 'simple1.1'
     stopTime = 2000
-    monitor_time = 2000
+    monitor_time = stopTime*1.5
     interval = 1
 
     for strUser in userStrArray:
@@ -121,8 +121,6 @@ def main():
         loggedJobs = enforceAllocation(share, jobs, stopTime) 
         print("Prepare the jobs for " + user.username + ": " + str(len(loggedJobs)))  
         prepareKubernetesJobs(user.username, expFolder, loggedJobs)
-
-
 
 
     print("====================== Pricing ALLOCATION =====================")

@@ -30,7 +30,7 @@ def DRF(capacity, isFDRF, users, cpu2gpuRatio):
             resDemand.NvidiaGPU = float(user.demand.computation)  / (1.0 + float(user.demand.beta)) / cpu2gpuRatio 
             resDemand.Memory = user.demand.mem
         
-        # print("resDemand: " + resDemand.toString())
+        print("resDemand: " + resDemand.toString())
 
         normalizedDemand[0] = float(resDemand.MilliCPU) / float(capacity.MilliCPU)
         normalizedDemand[1] = float(resDemand.Memory) / float(capacity.Memory)
@@ -259,7 +259,8 @@ def enforceAllocation(share, jobs, stopTime):
         currentUsage = Resource(0, 0, 0)
         for jobId in runningJobs:
             runningJob = runningJobs[jobId]
-            currentUsage.MilliCPU = currentUsage.MilliCPU + runningJob.usage.MilliCPU
+            if runningJob.usage.NvidiaGPU == 0: # ignore the cpu overhead for GPU jobs               
+                currentUsage.MilliCPU = currentUsage.MilliCPU + runningJob.usage.MilliCPU
             currentUsage.Memory = currentUsage.Memory + runningJob.usage.Memory
             currentUsage.NvidiaGPU = currentUsage.NvidiaGPU + runningJob.usage.NvidiaGPU            
 

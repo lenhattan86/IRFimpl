@@ -4,9 +4,10 @@ common_settings;
 
 %%
 userNames = {'user1', 'user2'};
-folder = '.';
+% folder = 'DRF';
+folder = 'FDRF';
 interval = 1;
-stopTime = 400;
+stopTime = 300;
 times = interval:interval:stopTime;
 userUsages = zeros(stopTime, length(userNames));
 
@@ -18,7 +19,7 @@ for iUser = 1:length(userNames)
   for iTime = 1:length(times)
     
     numContainer = 0;
-    for timeIdx = start_time_idx:length(steps)    
+    for timeIdx = start_time_idx:length(steps)-1   
       if steps(timeIdx) > times(iTime)
         end_time_idx = timeIdx;
         break
@@ -35,3 +36,7 @@ for iUser = 1:length(userNames)
 end
 %%
 bar(userUsages, 1.0, 'stacked');
+xlabel('time steps (each step > 1 secs)');
+ylabel('number of containers');
+strLegend = {'user1', 'user2'};
+legend(strLegend);

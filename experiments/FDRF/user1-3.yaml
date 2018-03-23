@@ -6,19 +6,19 @@ spec:
   schedulerName: my-scheduler
   containers:
   - name: user1-3
-    image: lenhattan86/ira:gpu
+    image: lenhattan86/ira:cpu
     command:
     - "/bin/bash"
     - "-c"
-    - "python tf_cnn_benchmarks.py --device=gpu --model=alexnet --batch_size=16 --num_batches=1000 --num_gpus=1"
+    - "python tf_cnn_benchmarks.py --device=cpu --model=alexnet --data_format=NHWC --batch_size=16 --num_batches=1000 --num_intra_threads=23"
     resources:
       requests:
-        alpha.kubernetes.io/nvidia-gpu: 1
-        cpu: 1.0
+        alpha.kubernetes.io/nvidia-gpu: 0
+        cpu: 23.0
         memory: 3Gi
       limits:
-        alpha.kubernetes.io/nvidia-gpu: 1
-        cpu: 1.0
+        alpha.kubernetes.io/nvidia-gpu: 0
+        cpu: 23.0
         memory: 3Gi
     volumeMounts:
     - name: nvidia-driver-384-98

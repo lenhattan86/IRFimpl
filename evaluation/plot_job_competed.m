@@ -2,7 +2,7 @@ clear; clc; close all;
 
 
 %%
-job_completed = [26 30;
+job_completed = [13 10;
                 30 43];
              
 bar(job_completed, 'group');

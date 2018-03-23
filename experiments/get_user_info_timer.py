@@ -17,22 +17,22 @@ import sched
 from threading import Timer
 
 
-# parser = argparse.ArgumentParser()
-# parser.add_argument('--user', help='YARN ResourceManager URL', required=True)
-# parser.add_argument('--interval', help='Polling interval  (secs)', required=True)
-# parser.add_argument('--file', help='csv file', required=True)
-# parser.add_argument('--stopTime', help='stop time (secs)', required=True)
-# args = vars(parser.parse_args())
+parser = argparse.ArgumentParser()
+parser.add_argument('--user', help='YARN ResourceManager URL', required=True)
+parser.add_argument('--interval', help='Polling interval  (secs)', required=True)
+parser.add_argument('--file', help='csv file', required=True)
+parser.add_argument('--stopTime', help='stop time (secs)', required=True)
+args = vars(parser.parse_args())
 
-# interval = int(args['interval'])
-# user = args['user']
-# file_name = args['file']
-# stop_time = int(args['stopTime'])
+interval = int(args['interval'])
+user = args['user']
+file_name = args['file']
+stop_time = int(args['stopTime'])
 
-interval=0.5
-user="user1"
-file_name="user1.csv"
-stop_time=3
+# interval=0.5
+# user="user1"
+# file_name="user1.csv"
+# stop_time=3
 
 def capture(timeStep):
     now = datetime.datetime.now()        
@@ -41,11 +41,11 @@ def capture(timeStep):
     (output, err) = p.communicate()    
     p_status = p.wait() 
 
-    output = """NAME                READY     STATUS      RESTARTS   AGE
-job-alexnet-cpu-0   0/1       OOMKilled   0          52m
-job-alexnet-gpu-0   0/1       Completed   0          52m
-"""
-    p_status=0    
+#     output = """NAME                READY     STATUS      RESTARTS   AGE
+# job-alexnet-cpu-0   0/1       OOMKilled   0          52m
+# job-alexnet-gpu-0   0/1       Completed   0          52m
+# """
+#     p_status=0    
 
     completedJobs = 0
     # time_step = time_step + interval
@@ -61,17 +61,6 @@ job-alexnet-gpu-0   0/1       Completed   0          52m
             writer.writerow(row)
             if (podStatus == "Completed") or (podStatus == "OOMKilled") or(podStatus == "Error"):
                 completedJobs = completedJobs + 1
-
-    # if (completedJobs > 0) and (completedJobs >= len(lines)-2):
-    #     print("all jobs finished.")
-    #     break
-
-    # if (stop_time > 0 and time_step > stop_time):
-    #     print("stop after " + str(stop_time) + " seconds")
-    #     break
-        
-    # sleep(interval)    
-
 
 # this_path = os.path.dirname(os.path.realpath(__file__))
 # ofile  = open(this_path  + "/" + file_name, "wb")

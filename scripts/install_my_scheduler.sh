@@ -1,4 +1,3 @@
-echo "You may run this script TWICE as it images must be cached somewhere else."
 if [ -z "$1" ]
 then
 	version=1.0

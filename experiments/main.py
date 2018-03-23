@@ -61,7 +61,7 @@ def main():
     workload = 'real1.0'
     # workload = 'simple1.1'
     stopTime = 2000
-    monitor_time = stopTime*1.5
+    monitor_time = int(stopTime*1.5)
     interval = 1
 
     for strUser in userStrArray:

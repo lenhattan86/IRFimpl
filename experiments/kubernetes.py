@@ -135,7 +135,7 @@ def mainShell(users,expFolder, stopTime, interval):
     for user in users:                
         strShell = strShell + "kubectl delete pod --all --namespace " + user.username + "\n"
 
-    strShell = strShell + "sleep 90 \n"
+    strShell = strShell + "echo wait.... ; sleep 60 \n"
 
     ## create namespaces
     for user in users:                

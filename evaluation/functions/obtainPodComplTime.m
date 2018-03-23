@@ -1,28 +1,36 @@
-function [ startTime, startRun, stopTime, conCreateTime, complTime ] = obtainPodComplTime(givenPodName,  podnames,  statuses,steps )
+function [ startTime, startRunTime, stopTime, conCreateTime, complTime ] = obtainPodComplTime(givenPodName,  podnames,  statuses,  steps, datetimes )
   
   PENDING = 'Pending';
   RUNNING = 'Running';
   COMPLETED = 'Completed';
   
   complTime = -1;
-  startTime = -1;
-  startRun = -1;
+  startStep = -1;
+  startRunStep = -1;
   conCreateTime = -1;
+  stopStep = -1;
+  
+  startTime = -1;
   stopTime = -1;
+  startRunTime = -1;
 
   for iTime = 1:length(steps)
     if strcmp(givenPodName, podnames{iTime}) && ~strcmp(statuses{iTime}, PENDING)
-      if (startTime < 0)
-        startTime = steps(iTime);
+      dt = datetimes{iTime}; 
+      if (startStep < 0)
+        startStep = steps(iTime);        
+        startTime = datetime(dt(1:length(dt)-7),'InputFormat','yyyy-MM-dd HH:mm:ss');
       end
-      if startRun < 0 && strcmp(statuses{iTime}, RUNNING)
-        startRun = steps(iTime);
-        conCreateTime = startRun - startTime;
+      if startRunStep < 0 && strcmp(statuses{iTime}, RUNNING)
+        startRunStep = steps(iTime);
+        startRunTime = datetime(dt(1:length(dt)-7),'InputFormat','yyyy-MM-dd HH:mm:ss');
+        conCreateTime = seconds(startRunTime - startTime);
       end
 
-      if stopTime< 0 && strcmp(statuses{iTime}, COMPLETED)
-        stopTime = steps(iTime);
-        complTime = stopTime - startTime;
+      if stopStep< 0 && strcmp(statuses{iTime}, COMPLETED)
+        stopStep = steps(iTime);
+        stopTime = datetime(dt(1:length(dt)-7),'InputFormat','yyyy-MM-dd HH:mm:ss');
+        complTime = seconds(stopTime - startTime);
       end
     end
   end

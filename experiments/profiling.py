@@ -7,6 +7,7 @@ from resource import *
 from allocator import *
 from kubernetes import *
 
+#TF-gpu overhead ~100 secs, while TF-cpu = ~ 30 secs
 
 ### alexnet 
 # batch size=16 & num_batches=100 requires at least 2GI mem. IF we increase both of these parameters, it requires more memory.
@@ -17,13 +18,17 @@ from kubernetes import *
 # num_intra_threads (similar to cpu threads -> speed up the job)
 
 JOB_NAME = "alexnet"
-## for beta = 3.62
+## for beta = 3.26
 # CPU_COMMAND = "python tf_cnn_benchmarks.py --device=cpu --model="+JOB_NAME+" --data_format=NHWC --batch_size=16 --num_batches=1000 --num_intra_threads=23 "
 # GPU_COMMAND = "python tf_cnn_benchmarks.py --device=gpu --model="+JOB_NAME+" --batch_size=16 --num_batches=1000 --num_gpus=1"
 
-## for beta = 1
-CPU_COMMAND = "python tf_cnn_benchmarks.py --device=cpu --model="+JOB_NAME+" --data_format=NHWC --batch_size=16 --num_batches=100 --num_intra_threads=23 "
-GPU_COMMAND = "python tf_cnn_benchmarks.py --device=gpu --model="+JOB_NAME+" --batch_size=16 --num_batches=100 --num_gpus=1"
+## for beta = 0.56
+# CPU_COMMAND = "python tf_cnn_benchmarks.py --device=cpu --model="+JOB_NAME+" --data_format=NHWC --batch_size=16 --num_batches=100 --num_intra_threads=23 "
+# GPU_COMMAND = "python tf_cnn_benchmarks.py --device=gpu --model="+JOB_NAME+" --batch_size=16 --num_batches=100 --num_gpus=1"
+
+## for beta = ?
+CPU_COMMAND = "python tf_cnn_benchmarks.py --device=cpu --model="+JOB_NAME+" --data_format=NHWC --batch_size=16 --num_batches=300 --num_intra_threads=23 "
+GPU_COMMAND = "python tf_cnn_benchmarks.py --device=gpu --model="+JOB_NAME+" --batch_size=16 --num_batches=300 --num_gpus=1"
 
 ##########################
 

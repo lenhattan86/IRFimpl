@@ -10,15 +10,22 @@ from kubernetes import *
 
 ### alexnet 
 # batch size=16 & num_batches=100 requires at least 2GI mem. IF we increase both of these parameters, it requires more memory.
-# batch_size = 16, num_batch = 100: cpu 42 secs, gpu 2 secs (without overheads)
-# batch_size = 16, num_batch = 1000: cpu 478 secs, gpu 18 secs (without overheads)
+# batch_size = 16, num_batch = 100: cpu 42 secs, gpu 2 secs (without overheads) (2Gi Mem. ~ 140 secs for TF-gpu)
+# batch_size = 16, num_batch = 1000: cpu 400~522 secs, gpu 20 secs (without overheads ~ 70 secs for TF-cpu)
 # num_batches: default(100)
 # batch_size= 
 # num_intra_threads (similar to cpu threads -> speed up the job)
 
 JOB_NAME = "alexnet"
-CPU_COMMAND = "python tf_cnn_benchmarks.py --device=cpu --model="+JOB_NAME+" --data_format=NHWC --batch_size=16 --num_batches=1000 --num_intra_threads=23 "
-GPU_COMMAND = "python tf_cnn_benchmarks.py --device=gpu --model="+JOB_NAME+" --batch_size=16 --num_batches=1000 --num_gpus=1"
+## for beta = 3.62
+# CPU_COMMAND = "python tf_cnn_benchmarks.py --device=cpu --model="+JOB_NAME+" --data_format=NHWC --batch_size=16 --num_batches=1000 --num_intra_threads=23 "
+# GPU_COMMAND = "python tf_cnn_benchmarks.py --device=gpu --model="+JOB_NAME+" --batch_size=16 --num_batches=1000 --num_gpus=1"
+
+## for beta = 1
+CPU_COMMAND = "python tf_cnn_benchmarks.py --device=cpu --model="+JOB_NAME+" --data_format=NHWC --batch_size=16 --num_batches=100 --num_intra_threads=23 "
+GPU_COMMAND = "python tf_cnn_benchmarks.py --device=gpu --model="+JOB_NAME+" --batch_size=16 --num_batches=100 --num_gpus=1"
+
+##########################
 
 NUM_JOBS = 5
 
@@ -46,11 +53,11 @@ def shellProfiling(job_folder, job_number, cpuResource, cpuCmd, gpuResource, gpu
 
     strShell = strShell + "kubectl delete pods --all --namespace=default \n"
     strShell = strShell + "echo wait... \n"
-    strShell = strShell + "sleep 30 \n"
+    strShell = strShell + "sleep 90 \n"
     strShell = strShell + "sudo docker pull lenhattan86/cpu \n"
     strShell = strShell + "sudo docker pull lenhattan86/gpu \n"
     
-    strShell = strShell + "python ../../get_user_info.py --user=default" \
+    strShell = strShell + "python ../../get_user_info_timer.py --user=default" \
         " --interval="+str(1) + " --stopTime="+str(stopTime)+" --file="+job_name+".csv & pythonScript=$! \n"  
 
     ## create CPU jobs

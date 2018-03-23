@@ -64,13 +64,13 @@ def readJobs(this_path, jobFile):
                 cCpu = int(strArray[0])
                 cGPu = int(strArray[1]) # must be zero
                 cMem = int(strArray[2]) * Gi
-                cCompl = int(strArray[3])                
+                cCompl = float(strArray[3])                
 
             elif(jobLineCount == 2):
                 gCpu = int(strArray[0])
                 gGPu = int(strArray[1])
                 gMem = int(strArray[2]) * Gi
-                gCompl = int(strArray[3])         
+                gCompl = float(strArray[3])         
                 
             elif(jobLineCount == 3):
                 cpuCommand = strLine 

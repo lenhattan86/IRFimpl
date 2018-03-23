@@ -48,8 +48,7 @@ while True:
 # job-alexnet-cpu-0   0/1       OOMKilled   0          52m
 # job-alexnet-gpu-0   0/1       Completed   0          52m
 # """
-#     p_status=0
-    
+#     p_status=0    
     
     completedJobs = 0
     time_step = time_step + interval
@@ -73,5 +72,5 @@ while True:
     if (stop_time > 0 and time_step > stop_time):
         print("stop after " + str(stop_time) + " seconds")
         break
-
+        
     sleep(interval)    

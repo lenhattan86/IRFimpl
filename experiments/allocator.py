@@ -289,7 +289,7 @@ def enforceAllocation(share, jobs, stopTime):
         # remove the finished jobs from the running jobs
         for jobId in runningJobs.keys():
             job = runningJobs[jobId]
-            if job.endTime == iTime:
+            if iTime >= job.endTime:
                 runningJobs.pop(jobId)            
     
     return loggedJobs

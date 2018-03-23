@@ -57,10 +57,11 @@ def main():
 
     userStrArray = ["user1", "user2"]
     users = []
-    workload = 'simple1.1'
 
+    workload = 'real1.0'
+    # workload = 'simple1.1'
     stopTime = 200
-    monitor_time = 300
+    monitor_time = 20000
     interval = 1
 
     for strUser in userStrArray:

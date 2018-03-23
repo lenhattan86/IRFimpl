@@ -104,12 +104,13 @@ def prepareKubernetesJobs(username, expFolder, loggedJobs):
     for jobId in range(len(loggedJobs)):        
         job = loggedJobs[jobId]
         # print("job "  + str(jobId))
-        interarrival = job.startTime - arrivalTime
+        interarrival = job.startTime - arrivalTime + 1
         # if (interarrival>0):            
         #     strShell = strShell + "sleep 1; "    
         strShell = strShell + "sleep "+str(interarrival)+"; "                    
         strShell = strShell + "kubectl --namespace=\""+username+"\" create -f "+ username +"-"+str(jobId) +".yaml 2> " + username +"-"+str(jobId) +".log & \n"
         arrivalTime = job.startTime
+
     strShell = strShell + "wait"
     f.write(strShell)        
     f.close()
@@ -132,7 +133,7 @@ def mainShell(users,expFolder, stopTime, interval):
     for user in users:                
         strShell = strShell + "kubectl delete pod --all --namespace " + user.username + "\n"
 
-    strShell = strShell + "sleep 10 \n"
+    strShell = strShell + "sleep 90 \n"
 
     ## create namespaces
     for user in users:                
@@ -140,7 +141,7 @@ def mainShell(users,expFolder, stopTime, interval):
 
     ## Run the monitoring script
     for user in users:                
-        strShell = strShell + "python ../get_user_info.py --user "+user.username+ \
+        strShell = strShell + "python ../get_user_info_timer.py --user "+user.username+ \
         " --interval="+str(interval) + " --stopTime="+str(stopTime)+" --file="+user.username+".csv & \n"    
     
     ## Run the jobs

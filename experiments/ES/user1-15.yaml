@@ -6,7 +6,7 @@ spec:
   schedulerName: my-scheduler
   containers:
   - name: user1-15
-    image: lenhattan86/bench
+    image: lenhattan86/ira:gpu
     command:
     - "/bin/bash"
     - "-c"

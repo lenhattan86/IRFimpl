@@ -1,0 +1,9 @@
+# jobname, cpu, mem, gpu, avg compl, cmd, 
+alexnet, 23, 3, 0, 523.8, python tf_cnn_benchmarks.py --device=cpu --model=alexnet --data_format=NHWC --batch_size=16 --num_batches=1000 --num_intra_threads=23
+alexnet, 1, 3, 1, 160.4, python tf_cnn_benchmarks.py --device=gpu --model=alexnet --batch_size=16 --num_batches=1000 --num_gpus=1
+alexnet, 23, 3, 0, 154.4, python tf_cnn_benchmarks.py --device=cpu --model=alexnet --data_format=NHWC --batch_size=16 --num_batches=300 --num_intra_threads=23
+alexnet, 1, 3, 1, 136, python tf_cnn_benchmarks.py --device=gpu --model=alexnet --batch_size=16 --num_batches=300 --num_gpus=1
+alexnet, 22, 3, 0, ??, python tf_cnn_benchmarks.py --device=cpu --model=alexnet --data_format=NHWC --batch_size=16 --num_batches=1000 --num_intra_threads=22
+alexnet, 1, 3, 1, ??, python tf_cnn_benchmarks.py --device=gpu --model=alexnet --batch_size=16 --num_batches=1000 --num_gpus=1
+alexnet, 22, 3, 0, ??, python tf_cnn_benchmarks.py --device=cpu --model=alexnet --data_format=NHWC --batch_size=16 --num_batches=300 --num_intra_threads=22
+alexnet, 1, 3, 1, ??, python tf_cnn_benchmarks.py --device=gpu --model=alexnet --batch_size=16 --num_batches=300 --num_gpus=1

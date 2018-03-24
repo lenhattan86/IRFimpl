@@ -27,8 +27,12 @@ JOB_NAME = "alexnet"
 # GPU_COMMAND = "python tf_cnn_benchmarks.py --device=gpu --model="+JOB_NAME+" --batch_size=16 --num_batches=100 --num_gpus=1"
 
 ## for beta = ?
-CPU_COMMAND = "python tf_cnn_benchmarks.py --device=cpu --model="+JOB_NAME+" --data_format=NHWC --batch_size=16 --num_batches=300 --num_intra_threads=23 "
-GPU_COMMAND = "python tf_cnn_benchmarks.py --device=gpu --model="+JOB_NAME+" --batch_size=16 --num_batches=300 --num_gpus=1"
+CPU_COMMAND = "python tf_cnn_benchmarks.py --device=cpu --model="+JOB_NAME+" --data_format=NHWC --batch_size=16 --num_batches=1000 --num_intra_threads=22 "
+GPU_COMMAND = "python tf_cnn_benchmarks.py --device=gpu --model="+JOB_NAME+" --batch_size=16 --num_batches=1000 --num_gpus=1"
+
+## for beta = ?
+# CPU_COMMAND = "python tf_cnn_benchmarks.py --device=cpu --model=alexnet --data_format=NHWC --batch_size=16 --num_batches=300 --num_intra_threads=22 "
+# GPU_COMMAND = "python tf_cnn_benchmarks.py --device=gpu --model=alexnet --batch_size=16 --num_batches=300 --num_gpus=1"
 
 ##########################
 
@@ -41,7 +45,7 @@ FOLDER = "profiling"
 GI = 1024*1024*1024
 MEM = 3*GI
 
-CPU_cpu = 23*1000
+CPU_cpu = 22*1000
 CPU_mem = MEM
 CPU_gpu = 0
 

@@ -7,6 +7,8 @@ from resource import *
 from allocator import *
 from kubernetes import *
 
+### NEED TO warm up GPU first ####
+
 #TF-gpu overhead ~100 secs, while TF-cpu = ~ 30 secs
 
 ### alexnet 
@@ -26,13 +28,13 @@ JOB_NAME = "alexnet"
 # CPU_COMMAND = "python tf_cnn_benchmarks.py --device=cpu --model="+JOB_NAME+" --data_format=NHWC --batch_size=16 --num_batches=100 --num_intra_threads=23 "
 # GPU_COMMAND = "python tf_cnn_benchmarks.py --device=gpu --model="+JOB_NAME+" --batch_size=16 --num_batches=100 --num_gpus=1"
 
-## for beta = ?
-CPU_COMMAND = "python tf_cnn_benchmarks.py --device=cpu --model="+JOB_NAME+" --data_format=NHWC --batch_size=16 --num_batches=1000 --num_intra_threads=22 "
-GPU_COMMAND = "python tf_cnn_benchmarks.py --device=gpu --model="+JOB_NAME+" --batch_size=16 --num_batches=1000 --num_gpus=1"
+## for beta = 2.5478
+# CPU_COMMAND = "python tf_cnn_benchmarks.py --device=cpu --model="+JOB_NAME+" --data_format=NHWC --batch_size=16 --num_batches=1000 --num_intra_threads=22 "
+# GPU_COMMAND = "python tf_cnn_benchmarks.py --device=gpu --model="+JOB_NAME+" --batch_size=16 --num_batches=1000 --num_gpus=1"
 
 ## for beta = ?
-# CPU_COMMAND = "python tf_cnn_benchmarks.py --device=cpu --model=alexnet --data_format=NHWC --batch_size=16 --num_batches=300 --num_intra_threads=22 "
-# GPU_COMMAND = "python tf_cnn_benchmarks.py --device=gpu --model=alexnet --batch_size=16 --num_batches=300 --num_gpus=1"
+CPU_COMMAND = "python tf_cnn_benchmarks.py --device=cpu --model=alexnet --data_format=NHWC --batch_size=16 --num_batches=300 --num_intra_threads=22 "
+GPU_COMMAND = "python tf_cnn_benchmarks.py --device=gpu --model=alexnet --batch_size=16 --num_batches=300 --num_gpus=1"
 
 ##########################
 

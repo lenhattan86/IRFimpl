@@ -4,8 +4,7 @@ addpath('functions');
 common_settings;
 %% parameters
 folder = 'profiling';
-% csv_file =  'alexnet_3.26.csv';
-csv_file =  'alexnet_1.14.csv';
+csv_file =  'alexnet.csv';
 %% download the csv file
 % system('scp cc@p100:~/IRFimpl/experiments/profiling/alexnet/alexnet.csv /home/tanle/projects/IRFimpl/evaluation/profiling/' );
 %% 

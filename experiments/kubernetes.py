@@ -105,7 +105,8 @@ def prepareKubernetesJobs(username, expFolder, loggedJobs):
         job = loggedJobs[jobId]
         # print("job "  + str(jobId))
         interarrival = job.startTime - arrivalTime
-        interarrival = max(0, interarrival - 10)
+        if interarrival > 0:
+            interarrival = max(1, interarrival*0.85)
         # if (interarrival>0):            
         #     strShell = strShell + "sleep 1; "  
           

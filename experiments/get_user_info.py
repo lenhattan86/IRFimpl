@@ -65,9 +65,9 @@ while True:
             if (podStatus == "Completed") or (podStatus == "OOMKilled") or(podStatus == "Error"):
                 completedJobs = completedJobs + 1
 
-    if (completedJobs > 0) and (completedJobs >= len(lines)-2):
-        print("all jobs finished.")
-        break
+    # if (completedJobs > 0) and (completedJobs >= len(lines)-2):
+    #     print("all jobs finished.")
+    #     break
 
     if (stop_time > 0 and time_step > stop_time):
         print("stop after " + str(stop_time) + " seconds")

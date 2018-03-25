@@ -62,6 +62,11 @@ job-alexnet-gpu-0   0/1       Completed   0          52m
             if (podStatus == "Completed") or (podStatus == "OOMKilled") or(podStatus == "Error"):
                 completedJobs = completedJobs + 1
 
+def testFunc(strVal):    
+    now = datetime.datetime.now()
+    sleep(0.5)
+    print(str(now) + " ==== " + strVal)
+
 # this_path = os.path.dirname(os.path.realpath(__file__))
 # ofile  = open(this_path  + "/" + file_name, "wb")
 ofile  = open(file_name, "wb")
@@ -71,6 +76,6 @@ mTime = 0
 while True:        
     if (stop_time > 0 and mTime*interval > stop_time):        
         break
-    # Timer(mTime*interval, capture, (str(mTime))).start()
-    Timer(mTime*interval, capture, ('a')).start()
+    # Timer(mTime*interval, capture, (str(mTime))).start()    
+    Timer(mTime*interval, testFunc, (str(mTime))).start()
     mTime = mTime + 1

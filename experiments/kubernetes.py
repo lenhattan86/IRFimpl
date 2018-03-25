@@ -107,10 +107,8 @@ def prepareKubernetesJobs(username, expFolder, loggedJobs):
         interarrival = job.startTime - arrivalTime
         if interarrival > 0:
             interarrival = max(1, interarrival*0.85)
-        # if (interarrival>0):            
-        #     strShell = strShell + "sleep 1; "  
-          
-        strShell = strShell + "sleep "+str(interarrival)+"; "                    
+            strShell = strShell + "sleep "+str(interarrival)+"; "          
+                            
         strShell = strShell + "kubectl --namespace=\""+username+"\" create -f "+ username +"-"+str(jobId) +".yaml 2> " + username +"-"+str(jobId) +".log & \n"
         arrivalTime = job.startTime
 

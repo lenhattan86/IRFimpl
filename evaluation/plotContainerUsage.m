@@ -4,8 +4,8 @@ common_settings;
 
 %%
 userNames = {'user1', 'user2'};
-% folder = 'DRF';
-folder = 'FDRF';
+folder = 'DRF';
+% folder = 'FDRF';
 interval = 1;
 stopTime = 1000;
 times = interval:interval:stopTime;

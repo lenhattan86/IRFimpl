@@ -41,11 +41,11 @@ def capture(timeStep, writer):
     (output, err) = p.communicate()    
     p_status = p.wait() 
 
-    output = """NAME                READY     STATUS      RESTARTS   AGE
-job-alexnet-cpu-0   0/1       OOMKilled   0          52m
-job-alexnet-gpu-0   0/1       Completed   0          52m
-"""
-    p_status=0    
+#     output = """NAME                READY     STATUS      RESTARTS   AGE
+# job-alexnet-cpu-0   0/1       OOMKilled   0          52m
+# job-alexnet-gpu-0   0/1       Completed   0          52m
+# """
+#     p_status=0    
 
     completedJobs = 0
     # time_step = time_step + interval

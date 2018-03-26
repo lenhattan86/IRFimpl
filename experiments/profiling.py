@@ -75,7 +75,7 @@ def shellProfiling(job_folder, job_number, cpuResource, cpuCmd, gpuResource, gpu
     strShell = strShell + "sudo docker pull lenhattan86/cpu \n"
     strShell = strShell + "sudo docker pull lenhattan86/gpu \n"
     
-    strShell = strShell + "python ../../get_user_info.py --user=default" \
+    strShell = strShell + "python ../../get_user_info_timer.py --user=default" \
         " --interval="+str(1) + " --stopTime="+str(stopTime)+" --file="+job_name+".csv & pythonScript=$! \n"  
 
     ## create CPU jobs

@@ -142,8 +142,9 @@ def mainShell(users,expFolder, stopTime, interval):
 
     ## Run the monitoring script
     for user in users:                
-        strShell = strShell + "python ../get_user_info_timer.py --user "+user.username+ \
-        " --interval="+str(interval) + " --stopTime="+str(stopTime)+" --file="+user.username+".csv & \n"    
+        # strShell = strShell + "python ../get_user_info.py --user "+user.username+ \
+        strShell = strShell + "python ../get_user_info_timer.py " + \
+        " --interval="+str(interval) + " --stopTime="+str(stopTime)+" --file=pods.csv & \n"    
     
     ## Run the jobs
     for user in users:                

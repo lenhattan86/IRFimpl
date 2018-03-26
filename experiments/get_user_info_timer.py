@@ -42,9 +42,9 @@ def capture(timeStep, writer):
     (output, err) = p.communicate()    
     p_status = p.wait() 
 
-#     output = """NAME                READY     STATUS      RESTARTS   AGE
-# job-alexnet-cpu-0   0/1       OOMKilled   0          52m
-# job-alexnet-gpu-0   0/1       Completed   0          52m
+#     output = """NAMESPACE     NAME                                       READY     STATUS      RESTARTS   AGE
+# default       job-alexnet-cpu-0                          0/1       Completed   0          19h
+# default       job-alexnet-cpu-1                          0/1       Completed   0          19h
 # """
 #     p_status=0    
 
@@ -56,8 +56,9 @@ def capture(timeStep, writer):
         lines=output.split("\n")                
         for line in lines[1:len(lines)-1]:            
             strArr=line.split()            
-            podName=strArr[0]
-            podStatus=strArr[2]
+            user=strArr[0]
+            podName=strArr[1]
+            podStatus=strArr[3]
             row = [now, timeStep, user, podName, podStatus]                            
             writer.writerow(row)
             if (podStatus == "Completed") or (podStatus == "OOMKilled") or(podStatus == "Error"):

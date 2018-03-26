@@ -25,7 +25,7 @@ parser.add_argument('--stopTime', help='stop time (secs)', required=True)
 args = vars(parser.parse_args())
 
 interval = int(args['interval'])
-user = args['user']
+# user = args['user']
 file_name = args['file']
 stop_time = int(args['stopTime'])
 

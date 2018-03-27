@@ -161,7 +161,7 @@ def Pricing(capacity, isFDRF, users):
             
             # for k = betas[gpumin + 1]; k >= betas[gpumin]; k = k - step :
             k = betas[gpumin + 1]
-            while k >= k >= betas[gpumin]:
+            while k >= betas[gpumin]:
                 price[0] = 1
                 price[1] = k
                 price[2] = k + 1
@@ -191,7 +191,6 @@ def Pricing(capacity, isFDRF, users):
         mem = finalAlloc[i].Memory * capacity.Memory
         shares.append(Resource(int(cpu), int(mem), int(gpu)))
         # print(finalAlloc[i].toString())
-    
     return shares
 
 

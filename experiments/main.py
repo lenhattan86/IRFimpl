@@ -60,7 +60,7 @@ def main():
 
     workload = 'real1.0'
     # workload = 'simple1.1'
-    stopTime = 4000
+    stopTime = 600
     monitor_time = int(stopTime*1.5)
     interval = 1
 

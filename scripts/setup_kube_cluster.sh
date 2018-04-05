@@ -12,13 +12,13 @@
 #cp ~/.ssh/config.chameleon ~/.ssh/config;  005b93.59de673135d75968
 
 # remember the git user/pass
-cd..; git config credential.helper store; cd scripts
+#cd..; git config credential.helper store; cd scripts
 
 echo "This file need to be executed on the master node instead of your local machine for chameleon"
 echo "You also need to provide the chameleon.pem file"
 
-masterIP="129.114.108.87";
-slavesIP=""
+masterIP="10.52.0.110"; 
+slavesIP="10.52.0.24"
 serversIP="$masterIP $slavesIP";
 
 if [ -z "$1" ]
@@ -61,12 +61,15 @@ wait
 
 sudo sh -c "echo '127.0.0.1 $master' >> /etc/hosts"
 ./masterkubeup.sh $masterIP
-#  kubeadm join --token c91d8c.c90c8bb2666e5eab 10.52.1.213:6443 --discovery-token-ca-cert-hash sha256:bda98d8e38201b1328e8039c677572a4b3e33d5843f95626e3cda4028db5d4e8:
-echo "Enter command"
-read command
-echo $command > command.txt # save command for using later
+#kubeadm join --token c91d8c.c90c8bb2666e5eab 10.52.1.213:6443 --discovery-token-ca-cert-hash sha256:f3f3d8a49a371628f7086f29d78601bc8e0ff1c2ab48f5a8ffc9696520dd2102
+echo "Enter token:"
+read token
+echo "Enter sha256:"
+read sha256
+echo $token > token.txt # save command for using later
+echo $sha256 > sha256.txt
 for server in $slavesIP; do
-	$SSH_CMD $username@$server 'bash -s' < ./slavejoin.sh $command $masterIP &
+	$SSH_CMD $username@$server 'bash -s' < ./slavejoin.sh $token $sha256 $masterIP &
 done
 wait
 git config credential.helper store

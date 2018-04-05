@@ -2,7 +2,7 @@ from resource import *
 from user import *
 from job import *
 
-def DRF(capacity, isFDRF, users, cpu2gpuRatio):
+def DRF(capacity, isFDRF, users):
     # foreach user 
     demands = []
     normalizedDemands = []
@@ -19,7 +19,7 @@ def DRF(capacity, isFDRF, users, cpu2gpuRatio):
         if not isFDRF:
             if user.demand.beta >= 1:
                 resDemand.MilliCPU = 0.0
-                resDemand.NvidiaGPU = float(user.demand.computation) / float(user.demand.beta) / cpu2gpuRatio
+                resDemand.NvidiaGPU = float(user.demand.computation) / float(user.demand.beta) 
                 resDemand.Memory = user.demand.mem
             else:
                 resDemand.MilliCPU = user.demand.computation 
@@ -27,14 +27,14 @@ def DRF(capacity, isFDRF, users, cpu2gpuRatio):
                 resDemand.Memory = user.demand.mem
         else:
             resDemand.MilliCPU = float(user.demand.computation) / (1.0 + float(user.demand.beta))
-            resDemand.NvidiaGPU = float(user.demand.computation)  / (1.0 + float(user.demand.beta)) / cpu2gpuRatio 
+            resDemand.NvidiaGPU = float(user.demand.computation)  / (1.0 + float(user.demand.beta)) 
             resDemand.Memory = user.demand.mem
         
         print("resDemand: " + resDemand.toString())
 
-        normalizedDemand[0] = float(resDemand.MilliCPU) / float(capacity.MilliCPU)
-        normalizedDemand[1] = float(resDemand.Memory) / float(capacity.Memory)
-        normalizedDemand[2] = float(resDemand.NvidiaGPU) / float(capacity.NvidiaGPU)   
+        normalizedDemand[0] = float(resDemand.MilliCPU) 
+        normalizedDemand[1] = float(resDemand.Memory) 
+        normalizedDemand[2] = float(resDemand.NvidiaGPU) 
         print("normalized demand: " + str(normalizedDemand))
 
         demands.append(resDemand)   
@@ -54,9 +54,9 @@ def DRF(capacity, isFDRF, users, cpu2gpuRatio):
     for i in range(len(users)):
         
         ratio = dorminantShare * maxDemands[i]
-        milliCPU = int(demands[i].MilliCPU  / ratio)        
-        memory = int(demands[i].Memory  / ratio)        
-        NvidiaGPU = int(demands[i].NvidiaGPU  / ratio)
+        milliCPU = int(demands[i].MilliCPU  / ratio*capacity.MilliCPU )
+        memory = int(demands[i].Memory  / ratio*capacity.Memory)
+        NvidiaGPU = int(demands[i].NvidiaGPU  / ratio * capacity.NvidiaGPU)
         # if(borrowGPU < -1):
         #     NvidiaGPU = round(demands[i].NvidiaGPU  / ratio)
         #     borrowGPU = borrowGPU +  round(demands[i].NvidiaGPU  / ratio) - (demands[i].NvidiaGPU  / ratio)
@@ -69,7 +69,6 @@ def DRF(capacity, isFDRF, users, cpu2gpuRatio):
         computedShares.append(Resource(demands[i].MilliCPU  / ratio, demands[i].Memory  / ratio, demands[i].NvidiaGPU  / ratio))
 
     # compute normalized demand
-    printShares(computedShares)
     return shares
 
 
@@ -99,7 +98,7 @@ def Pricing(capacity, isFDRF, users):
     ratios = []
     betas = []
     for user in users:
-        ratio = user.demand.mem / user.demand.computation / ( capacity.Memory / capacity.MilliCPU) # normalized ratio 
+        ratio = user.demand.mem / user.demand.computation  # normalized ratio 
         ratios.append(ratio)
         betas.append(user.demand.beta)
 
@@ -178,7 +177,7 @@ def Pricing(capacity, isFDRF, users):
         sumAlloc = sumResource(finalAlloc)
         budget = max(sumAlloc.MilliCPU, sumAlloc.NvidiaGPU, sumAlloc.Memory) 
         for i in range(3):
-            price[i] = price[i]* budget
+            price[i] = price[i]* budget 
         for j in range(N): 
             finalAlloc[j].MilliCPU = finalAlloc[j].MilliCPU /budget
             finalAlloc[j].NvidiaGPU = finalAlloc[j].NvidiaGPU /budget

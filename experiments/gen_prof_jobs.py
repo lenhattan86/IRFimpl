@@ -13,5 +13,4 @@ BATCH_SIZE         = [16, 32, 64, 128, 256]
 BATCH_SIZE_MIN_MEM = [3, 6, 9, 12]
 NUM_OF_BATCHES     = [3, 6, 9, 12]
 
-
 # 

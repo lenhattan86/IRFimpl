@@ -17,9 +17,9 @@
 echo "This file need to be executed on the master node instead of your local machine for chameleon"
 echo "You also need to provide the chameleon.pem file"
 
-masterIP="10.52.0.110"; 
+masterIP="10.52.0.110" 
 slavesIP="10.52.0.24"
-serversIP="$masterIP $slavesIP";
+serversIP="$masterIP $slavesIP"
 
 if [ -z "$1" ]
 then
@@ -72,7 +72,6 @@ for server in $slavesIP; do
 	$SSH_CMD $username@$server 'bash -s' < ./slavejoin.sh $token $sha256 $masterIP &
 done
 wait
-git config credential.helper store
-
-# https://kukulinski.com/10-most-common-reasons-kubernetes-deployments-fail-part-1/
+#git config credential.helper store
+#https://kukulinski.com/10-most-common-reasons-kubernetes-deployments-fail-part-1/
 

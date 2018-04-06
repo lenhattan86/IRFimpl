@@ -11,6 +11,7 @@ aws_region = "us-east-2"
 #instance_ids= {"", ""}
 
 def main():
+    startInstance()
     # read arguments from the command line and 
     # check whether at least two elements were entered
     if len(sys.argv) < 2:

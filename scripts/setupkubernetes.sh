@@ -23,14 +23,15 @@ tar -xzvf cudnn-8.0-linux-x64-v5.1.tgz
 sudo cp cuda/include/cudnn.h /usr/local/cuda/include
 sudo cp cuda/lib64/libcudnn* /usr/local/cuda/lib64
 sudo chmod a+r /usr/local/cuda/include/cudnn.h /usr/local/cuda/lib64/libcudnn*
-sudo rm cudnn-8.0-linux-x64-v6.0.tgz
+sudo rm cudnn-8.0-linux-x64-v5.1.tgz
 echo "==================testing cuda drivers===================="
 nvidia-smi
 #sudo apt install nvidia-cuda-toolkit
 echo "######################### CUPTI-DEV ##########################################"
-wget https://www.dropbox.com/s/n683yo6vrb9ip5r/cuptiruntime.deb
-wget https://www.dropbox.com/s/g644z0kgcsdvra1/cuptidevlib.deb
-wget https://www.dropbox.com/s/uoxd92ecc9dwbmt/cuptidoclib.deb
+wget https://www.dropbox.com/s/n683yo6vrb9ip5r/cuptiruntime.deb & 
+wget https://www.dropbox.com/s/g644z0kgcsdvra1/cuptidevlib.deb &
+wget https://www.dropbox.com/s/uoxd92ecc9dwbmt/cuptidoclib.deb &
+wait
 sudo dpkg -i cuptiruntime.deb
 sudo dpkg -i cuptidevlib.deb
 sudo dpkg -i cuptidoclib.deb
@@ -38,10 +39,11 @@ sudo apt-get update -y
 sudo apt-get install -y libcupti-dev
 sudo rm *.deb
 echo "######################### DOCKER ##########################################"
+sudo apt-get libltdl7
 sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common
 wget https://apt.dockerproject.org/repo/pool/main/d/docker-engine/docker-engine_1.12.6-0~ubuntu-xenial_amd64.deb
 sudo dpkg -i docker-engine_1.12.6-0~ubuntu-xenial_amd64.deb
-sudo apt install -y ~/docker-engine_1.12.6-0~ubuntu-xenial_amd64.deb
+#sudo apt install -y docker-engine_1.12.6-0~ubuntu-xenial_amd64.deb
 sudo groupadd docker
 sudo usermod -aG docker $USER
 
@@ -51,8 +53,8 @@ sudo systemctl stop docker
 sudo systemctl daemon-reload
 sudo rsync -aqxP /var/lib/docker/ /dev/project
 sudo systemctl start docker
-
 echo 'You might need to reboot / relogin to make docker work correctly'
+
 echo "######################### KUBERNETES ##########################################"
 sudo bash -c 'apt-get update && apt-get install -y apt-transport-https
 curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
@@ -85,8 +87,15 @@ echo "######################### KUBEADM RESET ##################################
 sudo kubeadm reset
 echo "######################### Clean-up ##########################################"
 sudo rm -rf *.tgz *.deb
+
 echo "######################### DOCKER-PULL ##########################################"
 sudo docker pull lenhattan86/bench
+sudo docker pull lenhattan86/ira:cpu
+sudo docker pull lenhattan86/ira:gpu
+sudo docker pull lenhattan86/my-kube-scheduler:pricing
+sudo docker pull lenhattan86/my-kube-scheduler:drf
+sudo docker pull lenhattan86/my-kube-scheduler:es
+sudo docker pull lenhattan86/my-kube-scheduler:fdrf
 
 
 # tensorflow

@@ -36,7 +36,7 @@ stop_time = int(args['stopTime'])
 
 def capture(timeStep, writer):
     now = datetime.datetime.now()        
-    p = subprocess.Popen(["kubectl get pods --show-all --all-namespaces"], 
+    p = subprocess.Popen(["kubectl get pods --all-namespaces"], 
         stdout=subprocess.PIPE, shell=True)                   
     (output, err) = p.communicate()    
     p_status = p.wait() 

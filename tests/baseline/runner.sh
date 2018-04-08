@@ -51,4 +51,4 @@ END=$(date +%s)
 DIFF=$(( $END - $START ))
 echo "It took $DIFF seconds"
 echo "It took $DIFF seconds" > runner.logs
-# kubectl get pods --all-namespaces --show-all
+# kubectl get pods --all-namespaces 

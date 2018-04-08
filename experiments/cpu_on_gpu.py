@@ -63,7 +63,8 @@ def shellJobs(job_folder, job_number, cmd, fileName):
             miliCPU = cpu*MILLI
             gpu_res = Resource(miliCPU, MEM, 1)
             fName = fileName+'-'+str(cpu)+'-'+str(i)
-            activeJob = ActiveJob(gpu_res, 0, 0, fName,cmd)
+            jobId = fileName+'-'+str(cpu*10)+'-'+str(i)
+            activeJob = ActiveJob(gpu_res, 0, 0, jobId,cmd)
             f_yaml = open(job_folder + '/' + fName+ ".yaml",'w')   
             f_yaml.write(strPodYaml('job', activeJob, SCHEDULER, isGPU))
             f_yaml.close()      

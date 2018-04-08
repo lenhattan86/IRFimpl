@@ -40,7 +40,7 @@ time_step = 0
 while True:
     now = datetime.datetime.now()    
     end_time = time()
-    p = subprocess.Popen(["kubectl get pods --show-all --namespace=" + user], 
+    p = subprocess.Popen(["kubectl get pods --namespace=" + user], 
         stdout=subprocess.PIPE, shell=True)                   
     (output, err) = p.communicate()    
     p_status = p.wait() 

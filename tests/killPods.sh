@@ -10,7 +10,7 @@ isTiming=true
 noResource="No resources found."
 
 while $isTiming; do  
-  kubectl get pods --show-all > $tempFile 
+  kubectl get pods > $tempFile 
 #  kubectl get pods --all-namespaces
   null="NULL"
   while read line; do

@@ -9,7 +9,7 @@ timer=2
 isTiming=true
 
 while $isTiming; do  
-  kubectl get pods --show-all > $tempFile
+  kubectl get pods > $tempFile
   null="NULL"
   while read line; do
     null=$line    

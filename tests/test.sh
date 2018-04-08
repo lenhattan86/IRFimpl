@@ -11,7 +11,7 @@ defaultJob=alexnet-cpu
 echo "wait..."
 sleep 5
 
-kubectl get pods --all-namespaces --show-all
+kubectl get pods --all-namespaces 
 
 echo "wait..."
 

@@ -10,7 +10,7 @@ isTiming=true
 noResource="No resources found."
 
 while $isTiming; do  
-  kubectl get pods --show-all > $tempFile 
+  kubectl get pods > $tempFile 
 #  kubectl get pods --all-namespaces
   null="NULL"
   while read line; do
@@ -40,5 +40,5 @@ ne
 # kubectl logs -p 
 # kubectl get pods --all-namespaces
 
-#kubectl get pods --show-all --namespace user1
+#kubectl get pods --namespace user1
 #kubectl logs -p user2-1 --namespace user2

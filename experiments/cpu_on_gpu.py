@@ -41,7 +41,7 @@ def shellProfiling(job_folder, job_number, gpuCmd, job_name, stopTime):
     
     strShell = strShell + "sudo docker pull lenhattan86/gpu \n"
     
-    strShell = strShell + "python ../../get_user_info_timer.py --user=default" \
+    strShell = strShell + "python ../../get_user_info_timer.py " \
         " --interval="+str(1) + " --stopTime="+str(stopTime)+" --file="+job_name+".csv & pythonScript=$! \n"  
 
     ## create GPU jobs

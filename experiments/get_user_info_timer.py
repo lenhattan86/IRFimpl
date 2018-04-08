@@ -18,7 +18,7 @@ from threading import Timer
 
 
 parser = argparse.ArgumentParser()
-# parser.add_argument('--user', help='YARN ResourceManager URL', required=True)
+# parser.add_argument('--user', help='user', required=True)
 parser.add_argument('--interval', help='Polling interval  (secs)', required=True)
 parser.add_argument('--file', help='csv file', required=True)
 parser.add_argument('--stopTime', help='stop time (secs)', required=True)

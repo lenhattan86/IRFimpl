@@ -1,0 +1,16 @@
+kubectl create -f alexnet-0.1-0.yaml 2> alexnet-0.1-0.log & 
+kubectl create -f alexnet-0.2-0.yaml 2> alexnet-0.2-0.log & 
+kubectl create -f alexnet-0.4-0.yaml 2> alexnet-0.4-0.log & 
+kubectl create -f alexnet-0.8-0.yaml 2> alexnet-0.8-0.log & 
+kubectl create -f alexnet-1.0-0.yaml 2> alexnet-1.0-0.log & 
+kubectl create -f alexnet-1.5-0.yaml 2> alexnet-1.5-0.log & 
+kubectl create -f alexnet-2.0-0.yaml 2> alexnet-2.0-0.log & 
+kubectl create -f alexnet-3.0-0.yaml 2> alexnet-3.0-0.log & 
+kubectl create -f alexnet-0.1-1.yaml 2> alexnet-0.1-1.log & 
+kubectl create -f alexnet-0.2-1.yaml 2> alexnet-0.2-1.log & 
+kubectl create -f alexnet-0.4-1.yaml 2> alexnet-0.4-1.log & 
+kubectl create -f alexnet-0.8-1.yaml 2> alexnet-0.8-1.log & 
+kubectl create -f alexnet-1.0-1.yaml 2> alexnet-1.0-1.log & 
+kubectl create -f alexnet-1.5-1.yaml 2> alexnet-1.5-1.log & 
+kubectl create -f alexnet-2.0-1.yaml 2> alexnet-2.0-1.log & 
+kubectl create -f alexnet-3.0-1.yaml 2> alexnet-3.0-1.log & 

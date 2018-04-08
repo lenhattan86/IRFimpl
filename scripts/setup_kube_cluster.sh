@@ -17,8 +17,8 @@
 echo "This file need to be executed on the master node instead of your local machine for chameleon"
 echo "You also need to provide the chameleon.pem file"
 
-masterIP="10.52.0.110" 
-slavesIP="10.52.0.24"
+masterIP="127.0.0.1" 
+slavesIP=""
 serversIP="$masterIP $slavesIP"
 
 if [ -z "$1" ]

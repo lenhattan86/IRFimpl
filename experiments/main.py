@@ -9,6 +9,7 @@ from kubernetes import *
 
 this_path = os.path.dirname(os.path.realpath(__file__))
 Gi = 1024*1024*1024
+MILLI=1000
 
 NUM_NODES = 2
 NUM_PHY_CPU_PER_NODE = 2

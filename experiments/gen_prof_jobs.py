@@ -15,32 +15,25 @@ from kubernetes import *
 # batch-size 
 # num. of batches
 
-CPUs               = [1, 2, 3, 4]
+CPU_4_GPU = 1 # GPU job
+GPU = 1
+CPU = 3 # CPU job
+
+CPUs               = [1, 2, 3, 4] # vs. 1 GPU
+
+
 MEM_GBs            = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
 BATCH_SIZE         = [16, 32, 64, 128, 256]
 BATCH_SIZE_MIN_MEM = [3, 6, 9, 12]
 NUM_OF_BATCHES     = [3, 6, 9, 12]
 
+MAIN_COMMAND
+
 # 
 
-##########################
-
-NUM_JOBS = 5
-
+NUM_JOBS = 1
 STOP_TIME = 10000
-
-FOLDER = "profiling"
-
-GI = 1024*1024*1024
-MEM = 3*GI
-
-CPU_cpu = 22*1000
-CPU_mem = MEM
-CPU_gpu = 0
-
-GPU_cpu = 1 *1000
-GPU_mem = MEM
-GPU_gpu = 1
+FOLDER = "gen_prof_jobs"
 
 this_path = os.path.dirname(os.path.realpath(__file__))
 
@@ -104,16 +97,16 @@ def main():
     except:
         os.mkdir(profiling_folder)        
 
-    job_folder = this_path + "/" + FOLDER + "/" + JOB_NAME    
+    job_folder = this_path + "/" + FOLDER + "/logs"
     shutil.rmtree(job_folder, ignore_errors=True) # delete previous folder.
     os.mkdir(job_folder)    
     print("======= generate profiling scripts ==============")
-    cpu_res = Resource(CPU_cpu, CPU_mem, CPU_gpu)
-    gpu_res = Resource(GPU_cpu, GPU_mem, GPU_gpu)
 
-    shellProfiling(job_folder, NUM_JOBS, cpu_res, CPU_COMMAND, gpu_res, GPU_COMMAND, JOB_NAME, STOP_TIME)
+    for mem in range(MEM_GBs):        
+        cpu_res = Resource(CPU, mem, 0)
+        gpu_res = Resource(CPU_4_GPU, mem, GPU)
+        shellProfiling(job_folder, NUM_JOBS, cpu_res, CPU_COMMAND, gpu_res, GPU_COMMAND, JOB_NAME, STOP_TIME)
 
     print("======= DONE ==============")
-
 
 if __name__ == "__main__": main()

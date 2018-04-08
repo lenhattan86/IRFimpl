@@ -17,13 +17,13 @@ JOB_NAME = "alexnet"
 benchmarks = "tf_cnn_benchmarks.py"
 
 #CPU_COMMAND = "python tf_cnn_benchmarks.py --device=cpu --model="+JOB_NAME+" --data_format=NHWC --batch_size=16 --num_batches=400 --num_intra_threads=22 "
-GPU_COMMAND = "python tf_cnn_benchmarks.py --device=gpu --model="+JOB_NAME+" --batch_size=16 --num_batches=100 --num_gpus=1"
+GPU_COMMAND = "python tf_cnn_benchmarks.py --device=gpu --model="+JOB_NAME+" --batch_size=16 --num_batches=200 --num_gpus=1"
 CPUs = [0.1, 0.2, 0.4, 0.8, 1.0, 1.5, 2.0, 3.0]
 ##########################
 
 MILLI=1000
 NUM_JOBS = 5
-STOP_TIME = 10000
+STOP_TIME = 36000
 FOLDER = "cpu_on_gpu"
 GI = 1024*1024*1024
 MEM = 3*GI
@@ -46,6 +46,8 @@ def shellProfiling(job_folder, job_number, gpuCmd, job_name, stopTime):
 
     ## create GPU jobs
     shellJobs(job_folder, job_number, gpuCmd, job_name)
+
+    getLogScript(job_folder, NUM_JOBS, job_name)
 
     strShell = strShell + "./" +job_name+".sh & cpuScript=$! \n"               
 
@@ -80,6 +82,25 @@ def shellJobs(job_folder, job_number, cmd, fileName):
     f.close()
     os.chmod(shellFile, 0700)
 
+def getLogScript(job_folder, job_number, job_name):
+    strShell = ""
+    for i in range(job_number):
+        for cpu in CPUs:
+            fName = job_name+'-'+str(cpu)+'-'+str(i)
+            jobId = job_name+'-'+str(int(cpu*10))+'-'+str(i)
+
+            # log the pod  
+            strShell = strShell + "kubectl logs job-"+ jobId +"> " + fName +".log & \n" 
+
+    shellFile = job_folder + "/log_pod.sh"
+    f = open(shellFile,'w')
+
+
+    # strShell = strShell + "wait"
+    f.write(strShell)        
+    f.close()
+    os.chmod(shellFile, 0700)
+
 def main():
     
     profiling_folder = this_path + "/" + FOLDER  
@@ -94,6 +115,7 @@ def main():
     print("======= generate profiling scripts ==============")
 
     shellProfiling(job_folder, NUM_JOBS, GPU_COMMAND, JOB_NAME, STOP_TIME)
+   
 
     print("======= DONE ==============")
 

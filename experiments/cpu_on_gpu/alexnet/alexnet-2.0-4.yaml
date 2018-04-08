@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: job-alexnet-20.0-4
+  name: job-alexnet-20-4
 spec:
   containers:
-  - name: job-alexnet-20.0-4
+  - name: job-alexnet-20-4
     image: lenhattan86/ira:gpu
     command:
     - "/bin/bash"

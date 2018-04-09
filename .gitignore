@@ -204,3 +204,6 @@ __pycache__
 ./scripts/cuda/lib64/libcudnn.so.5.1.10
 ./scripts/cuda/lib64/libcudnn_static.a
 ./.git/objects/pack/pack-8e685a364677982eb2a2f62f59bafdc1112f3e43.pack
+./scripts/cuda/lib64/libcudnn.so.5.1.10
+./scripts/cuda/lib64/libcudnn_static.a
+./.git/objects/pack/pack-8e685a364677982eb2a2f62f59bafdc1112f3e43.pack

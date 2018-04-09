@@ -96,8 +96,6 @@ def getLogScript(job_folder, job_number, job_name, ):
             for batchSize in BatchSizes:
                 for batchNum in BatchNums:
                     for numThread in NUM_THREADs:
-                        miliCPU = cpu*MILLI
-                        gpu_res = Resource(miliCPU, MEM, 1)
                         fName = job_name+'-'+str(cpu)+'-'+str(mem)+'-'+str(batchSize)+'-'+str(batchNum)+'-'+str(numThread)
                         jobId = job_name+'-'+str(cpu)+'-'+str(mem)+'-'+str(batchSize)+'-'+str(batchNum)+'-'+str(numThread)
 
@@ -106,7 +104,6 @@ def getLogScript(job_folder, job_number, job_name, ):
 
     shellFile = job_folder + "/log_pod.sh"
     f = open(shellFile,'w')
-
 
     # strShell = strShell + "wait"
     f.write(strShell)        

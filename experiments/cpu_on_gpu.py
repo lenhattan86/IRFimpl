@@ -1,7 +1,4 @@
 # this file generate the script to evaluate the impact of cpu on GPU jobs.
-import sys
-sys.path.insert(0, './lib')
-
 import os 
 import allocator
 from job import *

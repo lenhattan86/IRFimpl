@@ -70,11 +70,11 @@ def shellJobs(job_folder, job_number, cmd, fileName):
                 for batchNum in BatchNums:
                     for numThread in NUM_THREADs:
                         miliCPU = cpu*MILLI
-                        gpu_res = Resource(miliCPU, MEM, 1)
+                        res = Resource(miliCPU, mem*GI, 0)
                         fName = fileName+'-'+str(cpu)+'-'+str(mem)+'-'+str(batchSize)+'-'+str(batchNum)+'-'+str(numThread)
                         jobId = fileName+'-'+str(cpu)+'-'+str(mem)+'-'+str(batchSize)+'-'+str(batchNum)+'-'+str(numThread)
                         fullCommand = cmd + "--batch_size="+str(batchSize)+" --num_batches="+str(batchNum)+" --num_intra_threads=" + str(numThread)
-                        activeJob = ActiveJob(gpu_res, 0, 0, jobId,fullCommand)
+                        activeJob = ActiveJob(res, 0, 0, jobId,fullCommand)
                         f_yaml = open(job_folder + '/' + fName+ ".yaml",'w')   
                         f_yaml.write(strPodYaml('job', activeJob, SCHEDULER, isGPU))
                         f_yaml.close()      

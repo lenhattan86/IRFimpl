@@ -12,13 +12,13 @@ spec:
     - "python tf_cnn_benchmarks.py --device=cpu --model=alexnet --data_format=NHWC --batch_size=16 --num_batches=100 --num_intra_threads=4"
     resources:
       requests:
-        alpha.kubernetes.io/nvidia-gpu: 1
+        alpha.kubernetes.io/nvidia-gpu: 0
         cpu: 4.0
-        memory: 3Gi
+        memory: 7Gi
       limits:
-        alpha.kubernetes.io/nvidia-gpu: 1
+        alpha.kubernetes.io/nvidia-gpu: 0
         cpu: 4.0
-        memory: 3Gi
+        memory: 7Gi
     volumeMounts:
     - name: nvidia-driver-384-98
       mountPath: /usr/local/nvidia

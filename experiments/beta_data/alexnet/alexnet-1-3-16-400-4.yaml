@@ -12,11 +12,11 @@ spec:
     - "python tf_cnn_benchmarks.py --device=cpu --model=alexnet --data_format=NHWC --batch_size=16 --num_batches=400 --num_intra_threads=4"
     resources:
       requests:
-        alpha.kubernetes.io/nvidia-gpu: 1
+        alpha.kubernetes.io/nvidia-gpu: 0
         cpu: 1.0
         memory: 3Gi
       limits:
-        alpha.kubernetes.io/nvidia-gpu: 1
+        alpha.kubernetes.io/nvidia-gpu: 0
         cpu: 1.0
         memory: 3Gi
     volumeMounts:

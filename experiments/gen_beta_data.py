@@ -17,7 +17,8 @@ benchmarks = "tf_cnn_benchmarks.py"
 CPU_COMMAND = "python tf_cnn_benchmarks.py --device=cpu --model="+JOB_NAME+" --data_format=NHWC "
 
 #model = ["alenext", "vgg16"]
-CPUs  = [1, 2, 3, 4]
+# CPUs  = [1, 2, 3, 4]
+CPUs  = [0]
 MEMs   = [3, 5, 7, 9]
 BatchSizes = [16]
 # BatchSizeMinMem = [3]
@@ -61,7 +62,7 @@ def shellProfiling(job_folder, job_number, gpuCmd, job_name, stopTime):
     os.chmod(shellFile, 0700)
 
 def shellJobs(job_folder, job_number, cmd, fileName):
-    isGPU = False
+    
     ## create yaml files
     strShell = ""
     for cpu in CPUs:
@@ -70,7 +71,12 @@ def shellJobs(job_folder, job_number, cmd, fileName):
                 for batchNum in BatchNums:
                     for numThread in NUM_THREADs:
                         miliCPU = cpu*MILLI
-                        res = Resource(miliCPU, mem*GI, 0)
+                        if(cpu>0):
+                            isGPU = False
+                            res = Resource(miliCPU, mem*GI, 0)
+                        else:
+                            isGPU = True
+                            res = Resource(MILLI, mem*GI, 1)
                         fName = fileName+'-'+str(cpu)+'-'+str(mem)+'-'+str(batchSize)+'-'+str(batchNum)+'-'+str(numThread)
                         jobId = fileName+'-'+str(cpu)+'-'+str(mem)+'-'+str(batchSize)+'-'+str(batchNum)+'-'+str(numThread)
                         fullCommand = cmd + "--batch_size="+str(batchSize)+" --num_batches="+str(batchNum)+" --num_intra_threads=" + str(numThread)

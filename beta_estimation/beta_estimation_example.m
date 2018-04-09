@@ -8,8 +8,14 @@ W       = zeros(nFeatures + 1, nTrain);
 % 
 iFeature = 1;
 
+
 GPUs = [0, 1, 0];
-iFeature = iFeature + 1;
+
+
+
+
+iFeature = iFeature +
+1;
 XTrain(:,iFeature) = GPUs;
 
 CPUs        =   [1, 2, 3];

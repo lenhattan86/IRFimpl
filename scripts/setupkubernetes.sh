@@ -49,11 +49,11 @@ sudo dpkg -i docker-engine_1.12.6-0~ubuntu-xenial_amd64.deb
 sudo groupadd docker
 sudo usermod -aG docker $USER
 
-sudo mkdir /dev/project; sudo chmod 777 /dev/project; mkdir /dev/project/docker
-sudo sed -i -e "s/ExecStart=\/usr\/bin\/dockerd -H /ExecStart=\/usr\/bin\/dockerd -g \/dev\/project\/docker -H /g" /lib/systemd/system/docker.service
+sudo mkdir /dev/projects; sudo chmod 777 /dev/projects; mkdir /dev/projects/docker
+sudo sed -i -e "s/ExecStart=\/usr\/bin\/dockerd -H /ExecStart=\/usr\/bin\/dockerd -g \/dev\/projects\/docker -H /g" /lib/systemd/system/docker.service
 sudo systemctl stop docker
 sudo systemctl daemon-reload
-sudo rsync -aqxP /var/lib/docker/ /dev/project/docker
+sudo rsync -aqxP /var/lib/docker/ /dev/projects/docker
 sudo systemctl start docker
 echo 'You might need to reboot / relogin to make docker work correctly'
 

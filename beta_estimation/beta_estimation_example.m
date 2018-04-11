@@ -12,10 +12,7 @@ iFeature = 1;
 GPUs = [0, 1, 0];
 
 
-
-
-iFeature = iFeature +
-1;
+iFeature = iFeature +1;
 XTrain(:,iFeature) = GPUs;
 
 CPUs        =   [1, 2, 3];
@@ -50,7 +47,7 @@ YTrain = [10, 20, 30]';
 
 %% compute W
 W = XTrain\YTrain;
-W_2 = transpose(YTrain) * XTrain*(transpose(XTrain)*XTrain)^(-1);
+W_2 = transpose(YTrain) * XTrain *(transpose(XTrain)*XTrain)^(-1);
 
 %% 
 YTest= XTrain*W;

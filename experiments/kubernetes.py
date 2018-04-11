@@ -35,6 +35,7 @@ def strPodYaml(username, activeJob, scheduler, isGPU):
     strYaml = strYaml + "    - \"/bin/bash\"" + "\n"
     strYaml = strYaml + "    - \"-c\"" + "\n"
     strYaml = strYaml + "    - \"" + activeJob.jobCmd+ "\"" + "\n"
+    strYaml = strYaml + "    - \"" + activeJob.seJobCmd+ "\"" + "\n"
     strYaml = strYaml + "    resources:" + "\n"
     strYaml = strYaml + "      requests:" + "\n"
     strYaml = strYaml + "        alpha.kubernetes.io/nvidia-gpu: " + str(int(activeJob.usage.NvidiaGPU)) + "\n"

@@ -10,22 +10,28 @@ class Job:
     def fit(self, alloc):
         # print("gpuProfile: " + self.gpuProfile.toString())
         # print("cpuProfile: " + self.cpuProfile.toString())
+        result = []
         if self.gpuProfile.demand.isFit(alloc, True):
-            return self.gpuProfile
+            result.append(self.gpuProfile)
+            result.append(self.cpuProfile)
+            return result
 
         if self.cpuProfile.demand.isFit(alloc, False):
-            return self.cpuProfile
+            result.append(self.cpuProfile)
+            result.append(self.gpuProfile)
+            return result
 
-        return None
+        return result
 
 
 class ActiveJob:
-    def __init__ (self, usage, startTime, endTime, jobId, jobCmd):
+    def __init__ (self, usage, startTime, endTime, jobId, priJobCmd, seJobCmd):
         self.usage = usage
         self.startTime = startTime
         self.endTime = endTime
         self.jobId = jobId
-        self.jobCmd = jobCmd
+        self.jobCmd = priJobCmd
+        self.seJobCmd = seJobCmd
 
     def isFinished(self, currTime):
         if currTime >= self.endTime:

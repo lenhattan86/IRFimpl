@@ -268,10 +268,12 @@ def enforceAllocation(share, jobs, stopTime):
         # print("Time" + str(iTime) + " currentUsage: " + currentUsage.toString() + " Remain: " + remainRes.toString())
         jobsTobeRemoved = []
         for job in jobs:
-            jobProfile = job.fit(remainRes)            
-            if jobProfile != None:
+            jobProfiles = job.fit(remainRes)
+            if len(jobProfiles)>0:
+                jobProfile = jobProfiles[0]
+                seCmd = jobProfiles[1].jobCmd
                 # print("jobProfile.demand: " + jobProfile.demand.toString())
-                activeJob = ActiveJob(jobProfile.demand, iTime, iTime + jobProfile.compl - 1, job.jobId, jobProfile.jobCmd)
+                activeJob = ActiveJob(jobProfile.demand, iTime, iTime + jobProfile.compl - 1, job.jobId, jobProfile.jobCmd, seCmd)
                 # print("remove job " + str(job.jobId))
                 jobsTobeRemoved.append(job)
                 runningJobs.update({job.jobId: activeJob})

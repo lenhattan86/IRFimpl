@@ -80,7 +80,7 @@ def shellJobs(job_folder, job_number, cmd, fileName):
                         fName = fileName+'-'+str(cpu)+'-'+str(mem)+'-'+str(batchSize)+'-'+str(batchNum)+'-'+str(numThread)
                         jobId = fileName+'-'+str(cpu)+'-'+str(mem)+'-'+str(batchSize)+'-'+str(batchNum)+'-'+str(numThread)
                         fullCommand = cmd + "--batch_size="+str(batchSize)+" --num_batches="+str(batchNum)+" --num_intra_threads=" + str(numThread)
-                        activeJob = ActiveJob(res, 0, 0, jobId,fullCommand)
+                        activeJob = ActiveJob(res, 0, 0, jobId, fullCommand,"")
                         f_yaml = open(job_folder + '/' + fName+ ".yaml",'w')   
                         f_yaml.write(strPodYaml('job', activeJob, SCHEDULER, isGPU))
                         f_yaml.close()      

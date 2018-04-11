@@ -53,7 +53,7 @@ def shellProfiling(job_folder, job_number, gpuCmd, job_name, stopTime):
     f.close()
     os.chmod(shellFile, 0700)
 
-def shellJobs(job_folder, job_number, cmd, fileName):
+def shellJobs(job_folder, job_number, cmd, seCmd, fileName):
     isGPU = True
     ## create yaml files
     strShell = ""
@@ -63,7 +63,7 @@ def shellJobs(job_folder, job_number, cmd, fileName):
             gpu_res = Resource(miliCPU, MEM, 1)
             fName = fileName+'-'+str(cpu)+'-'+str(i)
             jobId = fileName+'-'+str(int(cpu*10))+'-'+str(i)
-            activeJob = ActiveJob(gpu_res, 0, 0, jobId,cmd)
+            activeJob = ActiveJob(gpu_res, 0, 0, jobId,cmd, seCmd)
             f_yaml = open(job_folder + '/' + fName+ ".yaml",'w')   
             f_yaml.write(strPodYaml('job', activeJob, SCHEDULER, isGPU))
             f_yaml.close()      

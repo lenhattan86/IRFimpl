@@ -73,9 +73,9 @@ def shellJobs(job_folder, job_number, cmd, fileName):
         batchSize = BatchSizes[iName]
         for iJob in range(NUM_JOBS):
             commonName = str(CPU)+'-'+ str(MEM)+'-'+str(batchSize)+'-'+str(NUM_THREADs)+'-'+str(iJob)
-            
-            fNameCpu = jobName+'-cpu-'+str(CPU)+'-'+ commonName
-            jobId    = jobName+'-cpu-'+str(CPU)+'-'+ commonName            
+
+            fNameCpu = jobName+'-cpu-'+commonName
+            jobId    = jobName+'-cpu-'+commonName            
             fullCommand = CPU_COMMAND + "--batch_size="+str(batchSize)+" --num_batches="+str(BatchNUm)+" --num_intra_threads=" + str(NUM_THREADs)
             activeJob = ActiveJob(cpu_usage, 0, 0, jobId, fullCommand,"")
             f_yaml = open(job_folder + '/' + fNameCpu+ ".yaml",'w')   

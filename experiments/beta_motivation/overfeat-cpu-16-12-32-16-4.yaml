@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: job-overfeat-cpu-16-12-32-4
+  name: job-overfeat-cpu-16-12-32-16-4
 spec:
   containers:
-  - name: job-overfeat-cpu-16-12-32-4
+  - name: job-overfeat-cpu-16-12-32-16-4
     image: lenhattan86/ira:cpu
     command:
     - "/bin/bash"

@@ -5,7 +5,7 @@ metadata:
 spec:
   containers:
   - name: job-resnet50-gpu-16-12-64-16-1
-    image: lenhattan86/ira:cpu
+    image: lenhattan86/ira:gpu
     command:
     - "/bin/bash"
     - "-c"

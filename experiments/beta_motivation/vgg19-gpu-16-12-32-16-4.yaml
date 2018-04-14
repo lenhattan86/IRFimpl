@@ -5,7 +5,7 @@ metadata:
 spec:
   containers:
   - name: job-vgg19-gpu-16-12-32-16-4
-    image: lenhattan86/ira:cpu
+    image: lenhattan86/ira:gpu
     command:
     - "/bin/bash"
     - "-c"

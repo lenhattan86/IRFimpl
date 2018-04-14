@@ -72,21 +72,22 @@ def shellJobs(job_folder, job_number, cmd, fileName):
         jobName = JOB_NAMEs[iName]
         batchSize = BatchSizes[iName]
         for iJob in range(NUM_JOBS):
-
-            fNameCpu = jobName+'-cpu-'+str(CPU)+'-'+str(MEM)+'-'+str(batchSize)+'-'+str(NUM_THREADs)+'-'+str(iJob)
-            jobId = jobName+'-cpu-'+str(CPU)+'-'+str(MEM)+'-'+str(batchSize)+'-'+str(iJob)            
+            commonName = str(CPU)+'-'+ str(MEM)+'-'+str(batchSize)+'-'+str(NUM_THREADs)+'-'+str(iJob)
+            
+            fNameCpu = jobName+'-cpu-'+str(CPU)+'-'+ commonName
+            jobId    = jobName+'-cpu-'+str(CPU)+'-'+ commonName            
             fullCommand = CPU_COMMAND + "--batch_size="+str(batchSize)+" --num_batches="+str(BatchNUm)+" --num_intra_threads=" + str(NUM_THREADs)
             activeJob = ActiveJob(cpu_usage, 0, 0, jobId, fullCommand,"")
             f_yaml = open(job_folder + '/' + fNameCpu+ ".yaml",'w')   
             f_yaml.write(strPodYaml('job', activeJob, SCHEDULER, False))
-            f_yaml.close()     
+            f_yaml.close()
 
-            fNameGpu = jobName+'-gpu-'+str(CPU)+'-'+str(MEM)+'-'+str(batchSize)+'-'+str(NUM_THREADs)+'-'+str(iJob)
-            jobId = jobName+'-gpu-'+str(CPU)+'-'+str(MEM)+'-'+str(batchSize)+'-'+str(NUM_THREADs)+'-'+str(iJob)           
+            fNameGpu = jobName+'-gpu-'+ commonName
+            jobId    = jobName+'-gpu-'+ commonName           
             fullCommand = GPU_COMMAND + "--batch_size="+str(batchSize)+" --num_batches="+str(BatchNUm)
             activeJob = ActiveJob(gpu_usage, 0, 0, jobId, fullCommand,"")
             f_yaml = open(job_folder + '/' + fNameGpu+ ".yaml",'w')   
-            f_yaml.write(strPodYaml('job', activeJob, SCHEDULER, False))
+            f_yaml.write(strPodYaml('job', activeJob, SCHEDULER, True))
             f_yaml.close() 
 
             # submit these two jobs

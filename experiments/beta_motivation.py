@@ -40,7 +40,7 @@ def shellProfiling(job_folder, job_number, gpuCmd, exp_name, stopTime):
     f = open(shellFile,'w')
     strShell = ""   
 
-    strShell = strShell + "kubectl delete pods --all --namespace=default \n"
+    strShell = strShell + "kubectl delete pods --all --namespace=default --grace-period=0 --force \n"
     strShell = strShell + "echo wait... \n"
     strShell = strShell + "sleep 60 \n"
     
@@ -65,25 +65,26 @@ def shellJobs(job_folder, job_number, cmd, fileName):
     strShell = ""
     strLogShell = ""
     miliCPU = CPU*MILLI
-    cpu_usage = Resource(miliCPU, MEM, 0)
-    gpu_usage = Resource(MILLI, MEM, 1)
+    mem = MEM*GI
+    cpu_usage = Resource(miliCPU, mem, 0)
+    gpu_usage = Resource(MILLI, mem, 1)
     for iName in range(len(JOB_NAMEs)):
         jobName = JOB_NAMEs[iName]
         batchSize = BatchSizes[iName]
         for iJob in range(NUM_JOBS):
 
-            fNameCpu = jobName+'-cpu-'+str(CPU)+'-'+str(MEM)+'-'+str(batchSize)+'-'+str(NUM_THREADs)
-            jobId = jobName+'-cpu-'+str(CPU)+'-'+str(MEM)+'-'+str(batchSize)+'-'+str(NUM_THREADs)            
+            fNameCpu = jobName+'-cpu-'+str(CPU)+'-'+str(MEM)+'-'+str(batchSize)+'-'+str(NUM_THREADs)+'-'+str(iJob)
+            jobId = jobName+'-cpu-'+str(CPU)+'-'+str(MEM)+'-'+str(batchSize)+'-'+str(iJob)            
             fullCommand = CPU_COMMAND + "--batch_size="+str(batchSize)+" --num_batches="+str(BatchNUm)+" --num_intra_threads=" + str(NUM_THREADs)
             activeJob = ActiveJob(cpu_usage, 0, 0, jobId, fullCommand,"")
             f_yaml = open(job_folder + '/' + fNameCpu+ ".yaml",'w')   
             f_yaml.write(strPodYaml('job', activeJob, SCHEDULER, False))
             f_yaml.close()     
 
-            fNameGpu = jobName+'-gpu-'+str(CPU)+'-'+str(MEM)+'-'+str(batchSize)+'-'+str(NUM_THREADs)
-            jobId = jobName+'-gpu-'+str(CPU)+'-'+str(MEM)+'-'+str(batchSize)+'-'+str(NUM_THREADs)            
+            fNameGpu = jobName+'-gpu-'+str(CPU)+'-'+str(MEM)+'-'+str(batchSize)+'-'+str(NUM_THREADs)+'-'+str(iJob)
+            jobId = jobName+'-gpu-'+str(CPU)+'-'+str(MEM)+'-'+str(batchSize)+'-'+str(NUM_THREADs)+'-'+str(iJob)           
             fullCommand = GPU_COMMAND + "--batch_size="+str(batchSize)+" --num_batches="+str(BatchNUm)
-            activeJob = ActiveJob(cpu_usage, 0, 0, jobId, fullCommand,"")
+            activeJob = ActiveJob(gpu_usage, 0, 0, jobId, fullCommand,"")
             f_yaml = open(job_folder + '/' + fNameGpu+ ".yaml",'w')   
             f_yaml.write(strPodYaml('job', activeJob, SCHEDULER, False))
             f_yaml.close() 

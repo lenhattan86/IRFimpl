@@ -1,4 +1,4 @@
-kubectl delete pods --all --namespace=default 
+kubectl delete pods --all --namespace=default --grace-period=0 --force 
 echo wait... 
 sleep 60 
 sudo docker pull lenhattan86/gpu 

@@ -49,6 +49,7 @@ for server in $slavesIP; do
 		$SSH_CMD $username@$server "echo hello $slavesIP" -y
 done	
 
+
 # setup kubernetes
 ./setupkubernetes.sh &
 for server in $slavesIP; do

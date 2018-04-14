@@ -53,7 +53,7 @@ if plots(2)
   % container&pod: 10 secs
   % Tensorflow initialization: 1.5 mins
 %     gpus = [1 4 8 12 16]; avgCompTimes = [29661 12481 11304 11454 11551] - 90; % 90 is the overhead of creating pod & containers
-    gpus = 1:16; 
+    cpus = 1:16; 
     avgCompTimesVgg16 = [13470.2084558 4477.23197985 3121.00815487 2354.038589 1905.38305998 1649.93166399 1428.36598802 1256.65069079 1149.84947181 1016.70234394 945.18821907 891.494543076 841.729991913 789.562747955 787.856372118 725.062942028];
     avgCompTimesAlexnet= [779.599501848 256.972734928 190.229606152 153.816900015 118.416475058 98.0824620724 89.83385396 80.2840998173 75.8588907719 63.7092180252 62.4828259945 55.936978817 56.9669809341 53.1801769733 52.4265050888 52.695677042]*10;
     avgCompTimesInception3 = [67149 23739.132509 17546.838275 12695.951973 10343.7046371 8767.93623996 7890.0594449 7157.99404001 6227.78157997 5943.72728205 5457.38579893  5358.01161313  5003.74721479 4877.29865718 4707.582726 4624.07803512];
@@ -62,11 +62,11 @@ if plots(2)
 %   title([method '- CPUs'],'fontsize',fontLegend);      
 
     
-    plot(gpus, avgCompTimesAlexnet(1)./avgCompTimesAlexnet, lineWithPlus,'linewidth',LineWidth);         
+    plot(cpus, avgCompTimesAlexnet(1)./avgCompTimesAlexnet, lineWithPlus,'linewidth',LineWidth);         
     hold on; 
-    plot(gpus, avgCompTimesInception3(1)./avgCompTimesInception3, LineDotted,'linewidth',LineWidth); 
+    plot(cpus, avgCompTimesInception3(1)./avgCompTimesInception3, LineDotted,'linewidth',LineWidth); 
     hold on;
-    plot(gpus, avgCompTimesResnet50(1)./avgCompTimesResnet50, lineWithDot,'linewidth',LineWidth);      
+    plot(cpus, avgCompTimesResnet50(1)./avgCompTimesResnet50, lineWithDot,'linewidth',LineWidth);      
     hold on;
     hPlot = plot(gpus,avgCompTimesVgg16(1)./ avgCompTimesVgg16, lineWithCircles,'linewidth',LineWidth);               
     

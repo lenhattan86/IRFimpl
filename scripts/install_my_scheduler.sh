@@ -4,7 +4,7 @@ then
 else
 	version="$1"
 fi
-kubectl delete pods --all
+kubectl delete pods --all --grace-period=0 --force
 yamlFile="my-scheduler.yaml"
 kubectl delete -f $yamlFile
 #sudo docker images

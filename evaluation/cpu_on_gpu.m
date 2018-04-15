@@ -1,5 +1,6 @@
 clear; clc; close all;
 common_settings;
+
 %%
 folder = 'cpu_on_gpu';
 job_name = 'alexnet';
@@ -16,23 +17,8 @@ complTimes = zeros(length(cpus), numExperiments);
 for iCpu = 1:length(cpus)
   for i=0:(numExperiments-1)
     cpu = cpus(iCpu);
-    file_name = [folder '/' job_name '/' job_name '-' sprintf('%0.1f',cpu) '-' num2str(i) '.log'];
-    cmpl = -1;
-    % read file to get the completion time
-    fid = fopen(file_name);  % Open the file
-    while(1)
-      line_ex = fgetl(fid);
-      if(line_ex < 1)        
-        break;
-      end
-      if (strfind(line_ex,'Total time taken:'))
-        strArr = strsplit(line_ex);
-        cmpl = str2double(strArr(4));
-        complTimes(iCpu,i+1) = cmpl;
-        break;
-      end
-    end    
-    fclose(fid);
+    filename = [folder '/' job_name '/' job_name '-' sprintf('%0.1f',cpu) '-' num2str(i) '.log'];
+    complTimes(iCpu,i+1) = getComplFromLog(filename);
   end
 end
 avgCompls = mean(complTimes,2);

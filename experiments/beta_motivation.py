@@ -79,17 +79,17 @@ def shellJobs(job_folder, job_number, cmd, fileName):
             commonName = str(CPU)+'-'+ str(MEM)+'-'+str(batchSize)+'-'+str(NUM_THREADs)+'-'+str(iJob)
 
             fNameCpu = jobName+'-cpu-'+commonName
-            jobId    = jobName+'-cpu-'+commonName            
+            cpuJobId    = jobName+'-cpu-'+commonName            
             fullCommand = CPU_COMMAND + "--batch_size="+str(batchSize)+" --num_batches="+str(BatchNUm)+" --num_intra_threads=" + str(NUM_THREADs)
-            activeJob = ActiveJob(cpu_usage, 0, 0, jobId, fullCommand,"")
+            activeJob = ActiveJob(cpu_usage, 0, 0, cpuJobId, fullCommand,"")
             f_yaml = open(job_folder + '/' + fNameCpu+ ".yaml",'w')   
             f_yaml.write(strPodYaml('job', activeJob, SCHEDULER, False))
             f_yaml.close()
 
             fNameGpu = jobName+'-gpu-'+ commonName
-            jobId    = jobName+'-gpu-'+ commonName           
+            gpuJobId    = jobName+'-gpu-'+ commonName           
             fullCommand = GPU_COMMAND + "--batch_size="+str(batchSize)+" --num_batches="+str(BatchNUm)
-            activeJob = ActiveJob(gpu_usage, 0, 0, jobId, fullCommand,"")
+            activeJob = ActiveJob(gpu_usage, 0, 0, gpuJobId, fullCommand,"")
             f_yaml = open(job_folder + '/' + fNameGpu+ ".yaml",'w')   
             f_yaml.write(strPodYaml('job', activeJob, SCHEDULER, True))
             f_yaml.close() 
@@ -99,8 +99,8 @@ def shellJobs(job_folder, job_number, cmd, fileName):
             strShell = strShell + "kubectl create -f "+ fNameGpu +".yaml 2> " + fNameGpu +".log & \n" 
 
             # log the pod  
-            strLogShell = strLogShell + "kubectl logs job-"+ jobId +"> " + fNameCpu +".log & \n" 
-            strLogShell = strLogShell + "kubectl logs job-"+ jobId +"> " + fNameGpu +".log & \n" 
+            strLogShell = strLogShell + "kubectl logs job-"+ cpuJobId +"> " + fNameCpu +".log & \n" 
+            strLogShell = strLogShell + "kubectl logs job-"+ gpuJobId +"> " + fNameGpu +".log & \n" 
 
     shellFile = job_folder + "/" + fileName + ".sh"
     f = open(shellFile,'w')

@@ -249,3 +249,10 @@ __pycache__
 ./scripts/cuda/lib64/libcudnn.so.5.1.10
 ./scripts/cuda/lib64/libcudnn_static.a
 ./.git/objects/pack/pack-8e685a364677982eb2a2f62f59bafdc1112f3e43.pack
+./scripts/cuda/lib64/libcudnn.so.5.1.10
+./scripts/cuda/lib64/libcudnn_static.a
+./evaluation/beta_motivation/beta_motivation/beta_mov.csv
+./.git/objects/pack/pack-8e685a364677982eb2a2f62f59bafdc1112f3e43.pack
+./scripts/cuda/lib64/libcudnn.so.5.1.10
+./scripts/cuda/lib64/libcudnn_static.a
+./.git/objects/pack/pack-ce646e7df53eacdf5351bb07668a64431ea380f3.pack

@@ -1,4 +1,5 @@
 clear; close all; clc;
+addpath('functions');
 
 fontSize=10;
 

@@ -1,0 +1,47 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: job-inception3-cpu-16-12-32-16-0
+spec:
+  containers:
+  - name: job-inception3-cpu-16-12-32-16-0
+    image: lenhattan86/ira:cpu
+    command:
+    - "/bin/bash"
+    - "-c"
+    - "python tf_cnn_benchmarks.py --device=cpu --data_format=NHWC --batch_size=32 --num_batches=500 --num_intra_threads=16"
+    - ""
+    resources:
+      requests:
+        alpha.kubernetes.io/nvidia-gpu: 0
+        cpu: 16.0
+        memory: 12Gi
+      limits:
+        alpha.kubernetes.io/nvidia-gpu: 0
+        cpu: 16.0
+        memory: 12Gi
+    volumeMounts:
+    - name: nvidia-driver-384-98
+      mountPath: /usr/local/nvidia
+      readOnly: true
+    - name: libcuda-so
+      mountPath: /usr/lib/x86_64-linux-gnu/libcuda.so
+    - name: libcuda-so-1
+      mountPath: /usr/lib/x86_64-linux-gnu/libcuda.so.1
+    - name: libcuda-so-384-98
+      mountPath: /usr/lib/x86_64-linux-gnu/libcuda.so.384.98
+      readOnly: true
+  restartPolicy: Never
+  volumes:
+  - name: nvidia-driver-384-98
+    hostPath:
+      path: /usr/lib/nvidia-384
+  - name: libcuda-so
+    hostPath:
+      path: /usr/lib/x86_64-linux-gnu/libcuda.so
+  - name: libcuda-so-1
+    hostPath:
+      path: /usr/lib/x86_64-linux-gnu/libcuda.so.1
+  - name: libcuda-so-384-98
+    hostPath:
+      path: /usr/lib/x86_64-linux-gnu/libcuda.so.384.98

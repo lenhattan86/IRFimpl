@@ -14,8 +14,8 @@ benchmarks = "tf_cnn_benchmarks.py"
 # https://www.tensorflow.org/performance/benchmarks
 NUM_JOBS = 5
 JOB_NAMEs   = ['vgg11', 'vgg16', 'vgg19', 'lenet', 'googlenet', 'overfeat', 'alexnet', 'trivial', 'inception3', 'inception4', 'resnet50', 'resnet101', 'resnet152']
-# BatchSizes  = [32,      32,      32,      32,      32,          32,         512,       32,        32,           64,           64,         64,          64, ]
-BatchSizes    = [512,    512,     512,     512,      512,        512,         512,       512,        512,           512,           512,         512,          512, ]
+BatchSizes  = [32,      32,      32,      32,      32,          32,         512,       32,        32,           64,           64,         64,          64, ]
+# BatchSizes    = [512,    512,     512,     512,      512,        512,         512,       512,        512,           512,           512,         512,          512, ]
 # JOB_NAMEs   = ['vgg11', 'vgg16']
 # BatchSizes  = [32,      32,    ]
 

@@ -1,6 +1,5 @@
 function comptTime = getComplFromLog(filename)
 
-
 comptTime = -1;
 % read file to get the completion time
 fid = fopen(filename);  % Open the file

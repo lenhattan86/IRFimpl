@@ -20,7 +20,7 @@ BatchSizes  = [32,      32,      32,      32,      32,          32,         512,
 # BatchSizes  = [32,      32,    ]
 
 CPU = 16
-NUM_THREADs = 16
+NUM_THREADs = 1
 MEM = 12
 
 BatchNUm = 500

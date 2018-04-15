@@ -13,10 +13,20 @@ MEM = '12';
 NUM_THREAD = 16;
 MODEL_NAMES = {'vgg11', 'vgg16', 'vgg19', 'lenet', 'googlenet', 'overfeat', 'alexnet', 'trivial', 'inception3', 'inception4', 'resnet50', 'resnet101', 'resnet152'};
 BATCH_NUMS = [32,      32,      32,      32,      32,          32,         512,       32,        32,           64,           64,         64,          64];
+
+% BATCH_NUMS = 512*ones(1,length(MODEL_NAMES));
+
 NUM_JOBS = 5;
 MAIN_FOLDER = 'beta_motivation';
-TAR_FILE    = 'beta_motivation_20180414.tar.gz'
+TAR_FILE    = 'beta_motivation_20180414a.tar.gz';
 subfolder   = 'beta_motivation';
+try
+   rmdir([MAIN_FOLDER '/' subfolder],'s');
+catch fileIO
+   
+end
+
+untar([MAIN_FOLDER '/' TAR_FILE], [MAIN_FOLDER]);
 FOLDER = [MAIN_FOLDER '/' subfolder];
 
 cpuCmpl = zeros(length(MODEL_NAMES), NUM_JOBS);
@@ -37,6 +47,11 @@ for iModel = 1:length(MODEL_NAMES)
 end
 betas = mean(cpuCmpl,2)./mean(gpuCmpl,2);
 
+try
+   rmdir([MAIN_FOLDER '/' subfolder],'s');
+catch fileIO
+   error('no directories to be deleted');
+end
 %% plots
 if plots(1) 
   figure;

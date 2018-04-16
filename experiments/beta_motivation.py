@@ -13,6 +13,9 @@ benchmarks = "tf_cnn_benchmarks.py"
 
 # https://www.tensorflow.org/performance/benchmarks
 NUM_JOBS = 5
+GPU_CPU = 1
+# GPU_CPU = 16
+
 # JOB_NAMEs   = ['vgg11', 'vgg16', 'vgg19', 'lenet', 'googlenet', 'overfeat', 'alexnet', 'trivial', 'inception3', 'inception4', 'resnet50', 'resnet101', 'resnet152']
 # BatchSizes  = [32,      32,      32,      32,      32,          32,         512,       32,        32,           64,           64,         64,          64, ]
 
@@ -32,8 +35,7 @@ CPU_COMMAND = "python tf_cnn_benchmarks.py --device=cpu --data_format=NHWC "
 GPU_COMMAND = "python tf_cnn_benchmarks.py --device=gpu "
  #--model=alexnet --batch_size=16 --num_batches=200 --num_gpus=1
 MILLI=1000
-# GPU_CPU = 1
-GPU_CPU = 16
+
 
 ##########################
 

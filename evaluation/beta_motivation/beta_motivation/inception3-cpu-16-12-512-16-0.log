@@ -1,0 +1,77 @@
+2018-04-15 01:26:52.025941: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2018-04-15 01:26:52.025982: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2018-04-15 01:26:52.026005: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2018-04-15 01:26:52.026013: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+2018-04-15 01:26:52.026022: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+TensorFlow:  1.1
+Model:       trivial
+Mode:        training
+Batch size:  512 global
+             512 per device
+Devices:     ['/cpu:0']
+Data format: NHWC
+Optimizer:   sgd
+Variables:   parameter_server
+GPU memory fraction:  1.0
+==========
+Generating model
+Running warm up
+Done warm up
+Step	Img/sec	loss
+Starting real work at step 10 at time Sun Apr 15 01:26:56 2018
+1	images/sec: 2277.3 +/- 0.0 (jitter = 0.0)	7.086
+10	images/sec: 2498.8 +/- 47.1 (jitter = 178.2)	7.086
+20	images/sec: 2482.9 +/- 26.1 (jitter = 83.9)	7.086
+30	images/sec: 2477.6 +/- 23.4 (jitter = 115.4)	7.086
+40	images/sec: 2469.5 +/- 23.0 (jitter = 156.0)	7.086
+50	images/sec: 2488.7 +/- 22.1 (jitter = 169.9)	7.085
+60	images/sec: 2489.4 +/- 19.7 (jitter = 162.3)	7.085
+70	images/sec: 2499.0 +/- 18.1 (jitter = 163.0)	7.085
+80	images/sec: 2488.9 +/- 18.5 (jitter = 189.4)	7.085
+90	images/sec: 2483.9 +/- 17.0 (jitter = 180.5)	7.085
+100	images/sec: 2479.4 +/- 15.8 (jitter = 179.1)	7.085
+110	images/sec: 2480.5 +/- 15.2 (jitter = 178.3)	7.085
+120	images/sec: 2488.2 +/- 14.7 (jitter = 175.6)	7.084
+130	images/sec: 2492.8 +/- 14.5 (jitter = 180.5)	7.084
+140	images/sec: 2482.8 +/- 14.2 (jitter = 188.9)	7.084
+150	images/sec: 2479.7 +/- 13.5 (jitter = 188.0)	7.084
+160	images/sec: 2472.0 +/- 13.3 (jitter = 193.2)	7.084
+170	images/sec: 2469.1 +/- 13.3 (jitter = 193.2)	7.084
+180	images/sec: 2466.5 +/- 12.9 (jitter = 195.8)	7.084
+190	images/sec: 2455.3 +/- 13.0 (jitter = 191.4)	7.084
+200	images/sec: 2455.2 +/- 12.9 (jitter = 192.5)	7.083
+210	images/sec: 2456.1 +/- 12.6 (jitter = 192.5)	7.083
+220	images/sec: 2456.3 +/- 12.2 (jitter = 192.5)	7.083
+230	images/sec: 2453.3 +/- 11.9 (jitter = 193.3)	7.083
+240	images/sec: 2452.9 +/- 11.6 (jitter = 190.1)	7.083
+250	images/sec: 2451.5 +/- 11.7 (jitter = 193.9)	7.083
+260	images/sec: 2459.4 +/- 11.7 (jitter = 196.6)	7.083
+270	images/sec: 2463.6 +/- 11.7 (jitter = 198.6)	7.082
+280	images/sec: 2458.0 +/- 11.5 (jitter = 199.7)	7.082
+290	images/sec: 2454.8 +/- 11.3 (jitter = 200.2)	7.082
+300	images/sec: 2452.1 +/- 11.0 (jitter = 200.0)	7.082
+310	images/sec: 2453.5 +/- 10.9 (jitter = 201.0)	7.082
+320	images/sec: 2452.3 +/- 10.7 (jitter = 203.3)	7.082
+330	images/sec: 2452.3 +/- 10.4 (jitter = 203.3)	7.082
+340	images/sec: 2452.0 +/- 10.2 (jitter = 192.3)	7.082
+350	images/sec: 2449.2 +/- 10.0 (jitter = 194.3)	7.081
+360	images/sec: 2450.5 +/- 9.9 (jitter = 192.5)	7.081
+370	images/sec: 2449.4 +/- 9.7 (jitter = 191.6)	7.081
+380	images/sec: 2448.2 +/- 9.6 (jitter = 188.1)	7.081
+390	images/sec: 2449.6 +/- 9.5 (jitter = 190.1)	7.081
+400	images/sec: 2450.1 +/- 9.3 (jitter = 187.1)	7.081
+410	images/sec: 2451.0 +/- 9.1 (jitter = 185.0)	7.081
+420	images/sec: 2452.1 +/- 9.0 (jitter = 183.2)	7.080
+430	images/sec: 2452.5 +/- 9.0 (jitter = 183.2)	7.080
+440	images/sec: 2452.8 +/- 8.8 (jitter = 184.1)	7.080
+450	images/sec: 2456.2 +/- 8.8 (jitter = 186.1)	7.080
+460	images/sec: 2455.5 +/- 8.6 (jitter = 184.2)	7.080
+470	images/sec: 2455.6 +/- 8.6 (jitter = 184.7)	7.080
+480	images/sec: 2460.0 +/- 8.6 (jitter = 188.9)	7.080
+490	images/sec: 2460.5 +/- 8.5 (jitter = 189.3)	7.080
+Finishing real work at step 509 at time Sun Apr 15 01:28:40 2018
+Total time taken: 103.887817144 and percentage of GPU used: 1.0
+500	images/sec: 2462.9 +/- 8.4 (jitter = 190.2)	7.079
+----------------------------------------------------------------
+total images/sec: 2459.27
+----------------------------------------------------------------

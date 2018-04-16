@@ -12,7 +12,7 @@ from kubernetes import *
 benchmarks = "tf_cnn_benchmarks.py"
 
 # https://www.tensorflow.org/performance/benchmarks
-NUM_JOBS = 5
+NUM_JOBS = 3
 GPU_CPU = 1
 # GPU_CPU = 16
 
@@ -22,11 +22,11 @@ GPU_CPU = 1
 # BatchSizes    = [512,    512,     512,     512,      512,        512,         512,       512,        512,           512,           512,         512,          512, ]
 # BatchSizes    = [512,    512,     512,     512,      512,        512,         512,       512,        512,           512,           512,         512,          512, ]
 
-JOB_NAMEs   = ['vgg16', 'alexnet', 'resnet50', 'inception3']
-BatchSizes  = [64     ,       512,         64,           64]
+JOB_NAMEs   = ['vgg16', 'lenet', 'googlenet', 'alexnet', 'trivial', 'resnet50', 'inception3']
+BatchSizes  = [32     ,  32     ,         32,      512,         32,         64,           64]
 
 CPU = 16
-NUM_THREADs = 1
+NUM_THREADs = 16
 MEM = 12
 
 BatchNUm = 200

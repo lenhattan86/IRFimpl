@@ -56,6 +56,9 @@ for iModel = 1:length(MODEL_NAMES)
     gpuLogFile = [FOLDER '/' MODEL_NAMES{iModel} '-gpu-' strCommon '.log'];
     gpuCmpl(iModel, iJob+1) = getComplFromLog(gpuLogFile);
   end
+  if min(cpuCmpl(iModel, :)) < 0
+    cpuCmpl(iModel, :) = 0;
+  end
 end
 betas = mean(cpuCmpl,2)./mean(gpuCmpl,2);
 

@@ -28,10 +28,13 @@ BatchNUm = 500
 CPU_COMMAND = "python tf_cnn_benchmarks.py --device=cpu --data_format=NHWC "
 GPU_COMMAND = "python tf_cnn_benchmarks.py --device=gpu "
  #--model=alexnet --batch_size=16 --num_batches=200 --num_gpus=1
+MILLI=1000
+# GPU_CPU = 1
+GPU_CPU = 16
 
 ##########################
 
-MILLI=1000
+
 
 STOP_TIME = 36000
 FOLDER = "beta_motivation"
@@ -71,7 +74,7 @@ def shellJobs(job_folder, job_number, cmd, fileName):
     miliCPU = CPU*MILLI
     mem = MEM*GI
     cpu_usage = Resource(miliCPU, mem, 0)
-    gpu_usage = Resource(MILLI, mem, 1)
+    gpu_usage = Resource(GPU_CPU*MILLI, mem, 1)
     for iName in range(len(JOB_NAMEs)):
         jobName = JOB_NAMEs[iName]
         batchSize = BatchSizes[iName]

@@ -62,3 +62,12 @@ __pycache__
 /tensorflow-1.1.0/*.swp
 /tensorflow-1.1.0/.vscode/./scripts/cuda/lib64/libcudnn.so.5.1.10
 ./scripts/cuda/lib64/libcudnn_static.a
+./evaluation/beta_motivation/beta_motivation/beta_mov.csv
+./scripts/cuda/lib64/libcudnn.so.5.1.10
+./scripts/cuda/lib64/libcudnn_static.a
+./scripts/cuda/lib64/libcudnn.so.5.1.10
+./scripts/cuda/lib64/libcudnn_static.a
+
+
+/evaluation/beta_motivation/beta_motivation/*./scripts/cuda/lib64/libcudnn.so.5.1.10
+./scripts/cuda/lib64/libcudnn_static.a

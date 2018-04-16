@@ -5,20 +5,26 @@ plots=[1];
 is_printed=true;
 LOCAL_FIG='';
 extraStr='';
-figureSize=figSizeOneCol;
+figureSize=figSize2ColWidth;
 
 %% load data
 CPU = '16';
 MEM = '12';
 NUM_THREAD = 16;
 MODEL_NAMES = {'vgg11', 'vgg16', 'vgg19', 'lenet', 'googlenet', 'overfeat', 'alexnet', 'trivial', 'inception3', 'inception4', 'resnet50', 'resnet101', 'resnet152'};
+
+TAR_FILE    = 'beta_motivation_20180414a.tar.gz';
 BATCH_NUMS = [32,      32,      32,      32,      32,          32,         512,       32,        32,           64,           64,         64,          64];
 
+% TAR_FILE    = 'beta_motivation_20180414b.tar.gz';
 % BATCH_NUMS = 512*ones(1,length(MODEL_NAMES));
+% 
+% TAR_FILE   = 'beta_motivation_20180414c.tar.gz'; NUM_THREAD = 1;
+% BATCH_NUMS = [32,      32,      32,      32,      32,          32,         512,       32,        32,           64,           64,         64,          64];
 
 NUM_JOBS = 5;
 MAIN_FOLDER = 'beta_motivation';
-TAR_FILE    = 'beta_motivation_20180414a.tar.gz';
+
 subfolder   = 'beta_motivation';
 try
    rmdir([MAIN_FOLDER '/' subfolder],'s');
@@ -69,7 +75,7 @@ if plots(1)
   set (gcf, 'Units', 'Inches', 'Position', figureSize, 'PaperUnits', 'inches', 'PaperPosition', figureSize);  
   if is_printed   
     figIdx=figIdx +1;
-    fileNames{figIdx} = [extraStr 'beta'];        
+    fileNames{figIdx} = [extraStr 'beta_mov'];        
     epsFile = [ LOCAL_FIG fileNames{figIdx} '.eps'];
     print ('-depsc', epsFile);
   end

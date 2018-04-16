@@ -22,6 +22,8 @@ figSizeHalfCol = 1/2*figSizeOneCol;
 figSizeTwothirdCol = 2/3*figSizeOneCol;
 figSizeFourFifthCol = 4/5*figSizeOneCol;
 
+figSize2ColWidth = [1 1 2.5 1].*figSizeOneCol;
+
 %%
 
 barLineWidth=0;

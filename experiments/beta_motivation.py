@@ -15,17 +15,18 @@ benchmarks = "tf_cnn_benchmarks.py"
 NUM_JOBS = 5
 # JOB_NAMEs   = ['vgg11', 'vgg16', 'vgg19', 'lenet', 'googlenet', 'overfeat', 'alexnet', 'trivial', 'inception3', 'inception4', 'resnet50', 'resnet101', 'resnet152']
 # BatchSizes  = [32,      32,      32,      32,      32,          32,         512,       32,        32,           64,           64,         64,          64, ]
+
 # BatchSizes    = [512,    512,     512,     512,      512,        512,         512,       512,        512,           512,           512,         512,          512, ]
 # BatchSizes    = [512,    512,     512,     512,      512,        512,         512,       512,        512,           512,           512,         512,          512, ]
 
-JOB_NAMEs   = ['vgg11', 'alexnet']
-BatchSizes  = [1024,      1024, ]
+JOB_NAMEs   = ['vgg16', 'alexnet', 'resnet50', 'inception3']
+BatchSizes  = [64     ,       512,         64,           64]
 
 CPU = 16
 NUM_THREADs = 1
 MEM = 12
 
-BatchNUm = 500
+BatchNUm = 200
 
 CPU_COMMAND = "python tf_cnn_benchmarks.py --device=cpu --data_format=NHWC "
 GPU_COMMAND = "python tf_cnn_benchmarks.py --device=gpu "
@@ -83,7 +84,7 @@ def shellJobs(job_folder, job_number, cmd, fileName):
 
             fNameCpu = jobName+'-cpu-'+commonName
             cpuJobId    = jobName+'-cpu-'+commonName            
-            fullCommand = CPU_COMMAND + "--batch_size="+str(batchSize)+" --num_batches="+str(BatchNUm)+" --num_intra_threads=" + str(NUM_THREADs)
+            fullCommand = CPU_COMMAND + " --model=" + jobName + " --batch_size="+str(batchSize)+" --num_batches="+str(BatchNUm)+" --num_intra_threads=" + str(NUM_THREADs)
             activeJob = ActiveJob(cpu_usage, 0, 0, cpuJobId, fullCommand,"")
             f_yaml = open(job_folder + '/' + fNameCpu+ ".yaml",'w')   
             f_yaml.write(strPodYaml('job', activeJob, SCHEDULER, False))
@@ -91,7 +92,7 @@ def shellJobs(job_folder, job_number, cmd, fileName):
 
             fNameGpu = jobName+'-gpu-'+ commonName
             gpuJobId    = jobName+'-gpu-'+ commonName           
-            fullCommand = GPU_COMMAND + "--batch_size="+str(batchSize)+" --num_batches="+str(BatchNUm)
+            fullCommand = GPU_COMMAND + " --model=" + jobName + " --batch_size="+str(batchSize)+" --num_batches="+str(BatchNUm)
             activeJob = ActiveJob(gpu_usage, 0, 0, gpuJobId, fullCommand,"")
             f_yaml = open(job_folder + '/' + fNameGpu+ ".yaml",'w')   
             f_yaml.write(strPodYaml('job', activeJob, SCHEDULER, True))

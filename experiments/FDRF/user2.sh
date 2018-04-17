@@ -1291,4 +1291,10 @@ kubectl --namespace="user2" create -f user2-1289.yaml 2> user2-1289.log &
 kubectl --namespace="user2" create -f user2-1290.yaml 2> user2-1290.log & 
 kubectl --namespace="user2" create -f user2-1291.yaml 2> user2-1291.log & 
 kubectl --namespace="user2" create -f user2-1292.yaml 2> user2-1292.log & 
+sleep 8.5; kubectl --namespace="user2" create -f user2-1293.yaml 2> user2-1293.log & 
+kubectl --namespace="user2" create -f user2-1294.yaml 2> user2-1294.log & 
+sleep 2.55; kubectl --namespace="user2" create -f user2-1295.yaml 2> user2-1295.log & 
+kubectl --namespace="user2" create -f user2-1296.yaml 2> user2-1296.log & 
+kubectl --namespace="user2" create -f user2-1297.yaml 2> user2-1297.log & 
+sleep 5.95; kubectl --namespace="user2" create -f user2-1298.yaml 2> user2-1298.log & 
 wait

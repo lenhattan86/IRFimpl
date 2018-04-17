@@ -23,7 +23,7 @@ GPU_CPU = 1
 # BatchSizes    = [512,    512,     512,     512,      512,        512,         512,       512,        512,           512,           512,         512,          512, ]
 
 JOB_NAMEs   = ['vgg16', 'lenet', 'googlenet', 'alexnet', 'trivial', 'resnet50', 'inception3']
-BatchSizes  = [32     ,  32     ,         32,      512,         32,         64,           64]
+BatchSizes  = [32     ,  32    ,          32,      512,         32,         64,           64]
 
 CPU = 16
 NUM_THREADs = 16
@@ -86,7 +86,7 @@ def shellJobs(job_folder, job_number, cmd, fileName):
 
             fNameCpu = jobName+'-cpu-'+commonName
             cpuJobId    = jobName+'-cpu-'+commonName            
-            fullCommand = CPU_COMMAND + " --model=" + jobName + " --batch_size="+str(batchSize)+" --num_batches="+str(BatchNUm)+" --num_intra_threads=" + str(NUM_THREADs)
+            fullCommand = CPU_COMMAND + " --model=" + jobName + " --batch_size="+str(batchSize)+" --num_intra_threads=" + str(NUM_THREADs) +" --num_batches="+str(BatchNUm)
             activeJob = ActiveJob(cpu_usage, 0, 0, cpuJobId, fullCommand,"")
             f_yaml = open(job_folder + '/' + fNameCpu+ ".yaml",'w')   
             f_yaml.write(strPodYaml('job', activeJob, SCHEDULER, False))

@@ -14,6 +14,13 @@ class Resource:
         strRes = "{"+str(self.MilliCPU) +" MilliCPU,"+str(self.Memory/Gi) +" Gi,"+str(self.NvidiaGPU) +" gpus}"
         # strRes = "{"+str(self.MilliCPU) +" MilliCPU, "+str(self.Memory) +" bytes, "+str(self.NvidiaGPU) +" gpus}"
         return strRes
+
+    def normalize(self, capacity):
+        normalizeRes = Resource(0,0,0)
+        normalizeRes.MilliCPU = float(self.MilliCPU/capacity.MilliCPU)
+        normalizeRes.Memory = float(self.Memory/capacity.Memory)
+        normalizeRes.NvidiaGPU = float(self.MilliCPU/capacity.NvidiaGPU)
+        return normalizeRes
         
     def isFit(self, capacity, isGPU):
         if ((not isGPU) and (self.MilliCPU > capacity.MilliCPU)):

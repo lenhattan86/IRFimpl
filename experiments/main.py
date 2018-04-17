@@ -64,7 +64,7 @@ def main():
     userStrArray = ["user1", "user2"]
     users = []
 
-    workload = 'real1.0'
+    workload = 'traces/motivation'
     # workload = 'simple1.1'
     stopTime = 600
     monitor_time = int(stopTime*1.5)
@@ -85,7 +85,6 @@ def main():
     shares = ES(capacity, users)   
     printShares(shares) 
     # given fill the jobs & allocation enforce,  prepare the job cripts
-    print("================= Resource Enforcement ================")    
     mainShell(users, expFolder, monitor_time, interval)
     for i in range(len(users)):
     # for i in range(1):
@@ -101,7 +100,6 @@ def main():
     shares = DRF(capacity, False, users)   
     printShares(shares) 
     # given fill the jobs & allocation enforce,  prepare the job cripts
-    print("================= Resource Enforcement ================")   
     mainShell(users, expFolder, monitor_time, interval)
     for i in range(len(users)):
     # for i in range(1):
@@ -112,12 +110,44 @@ def main():
         print("Prepare the jobs for " + user.username + ": " + str(len(loggedJobs)))  
         prepareKubernetesJobs(user.username, expFolder, loggedJobs)
 
+    print("====================== Naive DRF ALLOCATION =====================")
+    expFolder = "naiveDRF"
+    demands=[]
+    demands.append(Resource(1000,12*GI, 1))
+    demands.append(Resource(1000,12*GI, 1))
+    shares = naiveDRF(capacity, False, users, demands)   
+    printShares(shares) 
+    # given fill the jobs & allocation enforce,  prepare the job cripts
+    mainShell(users, expFolder, monitor_time, interval)
+    for i in range(len(users)):
+    # for i in range(1):
+        user = users[i]
+        share = shares[i]
+        jobs = user.jobs[:]
+        loggedJobs = enforceAllocation(share, jobs, stopTime) 
+        print("Prepare the jobs for " + user.username + ": " + str(len(loggedJobs)))  
+        prepareKubernetesJobs(user.username, expFolder, loggedJobs)
+
+    print("====================== Static ALLOCATION =====================")
+    expFolder = "static"
+    shares = Static(capacity, users)   
+    printShares(shares) 
+    # given fill the jobs & allocation enforce,  prepare the job cripts
+    mainShell(users, expFolder, monitor_time, interval)
+    for i in range(len(users)):
+    # for i in range(1):
+        user = users[i]
+        share = shares[i]
+        jobs = user.jobs[:]
+        loggedJobs = enforceAllocation(share, jobs, stopTime) 
+        print("Prepare the jobs for " + user.username + ": " + str(len(loggedJobs)))  
+        prepareKubernetesJobs(user.username, expFolder, loggedJobs)    
+
     print("====================== FDRF ALLOCATION =====================")
     expFolder = "FDRF"
     shares = DRF(capacity, True, users)   
     printShares(shares) 
     # given fill the jobs & allocation enforce,  prepare the job cripts
-    print("================= Resource Enforcement ================")    
     mainShell(users, expFolder, monitor_time, interval)
     for i in range(len(users)):
     # for i in range(1):
@@ -134,15 +164,6 @@ def main():
     shares = Pricing(capacity, True, users)
     printShares(shares) 
     # given fill the jobs & allocation enforce,  prepare the job cripts
-
-    print("====================== Static ALLOCATION =====================")
-    expFolder = "Pricing"
-    shares = Pricing(capacity, True, users)
-    printShares(shares) 
-    # given fill the jobs & allocation enforce,  prepare the job cripts
-
-
-    print("================= Resource Enforcement ================")    
     mainShell(users, expFolder, monitor_time, interval)
     for i in range(len(users)):
     # for i in range(1):

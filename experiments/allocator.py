@@ -2,6 +2,9 @@ from resource import *
 from user import *
 from job import *
 
+MILLI = 1000
+GI = 1024*1024*1024
+
 def DRF(capacity, isFDRF, users):
     # foreach user 
     demands = []
@@ -72,6 +75,46 @@ def DRF(capacity, isFDRF, users):
     return shares
 
 
+def naiveDRF(capacity, isFDRF, users, demands):
+    # foreach user 
+    shares = []
+    computedShares = []
+    maxDemands = []
+    dorminantRates = [0.0, 0.0, 0.0]
+    for i in range(len(users)):
+    # convert to DRF or FDRF demands
+        resDemand = demands[i]
+        normalizedDemand = [0.0, 0.0, 0.0]
+        
+        normalizedDemand[0] = float(resDemand.MilliCPU)/capacity.MilliCPU 
+        normalizedDemand[1] = float(resDemand.Memory)  /capacity.Memory 
+        normalizedDemand[2] = float(resDemand.NvidiaGPU) /capacity.NvidiaGPU
+        # print("normalized demand: " + str(normalizedDemand))
+
+        maxDemand = max(normalizedDemand)
+        # print("max demand: " + str(maxDemand))
+        maxDemands.append(maxDemand)
+
+        dorminantRates[0] = dorminantRates[0] + normalizedDemand[0]/maxDemand
+        dorminantRates[1] = dorminantRates[1] + normalizedDemand[1]/maxDemand
+        dorminantRates[2] = dorminantRates[2] + normalizedDemand[2]/maxDemand
+
+    # get total dorimant share for each all users
+    dorminantShare = max(dorminantRates)
+
+    # compute the share for each users
+    for i in range(len(users)):
+        ratio = dorminantShare * maxDemands[i]
+        milliCPU = int(demands[i].MilliCPU  / ratio )
+        memory = int(demands[i].Memory  / ratio )
+        NvidiaGPU = int(demands[i].NvidiaGPU  / ratio)
+
+        shares.append(Resource(milliCPU, memory, NvidiaGPU))
+        # computedShares.append(Resource(demands[i].MilliCPU  / ratio, demands[i].Memory  / ratio, demands[i].NvidiaGPU  / ratio))
+
+    # compute normalized demand
+    return shares
+
 def ES(capacity, users):
     shares = []
     computedShares = []
@@ -88,6 +131,22 @@ def ES(capacity, users):
     printShares(computedShares)
     return shares
 
+def Static(capacity, users):
+    shares = []
+    
+    # user 1
+    milliCPU = int(2*MILLI)        
+    memory = int(24*GI)        
+    NvidiaGPU = int(2)
+    shares.append(Resource(milliCPU, memory, NvidiaGPU))
+
+    # user2
+    milliCPU = capacity.MilliCPU - milliCPU        
+    memory = capacity.Memory - memory       
+    NvidiaGPU = capacity.NvidiaGPU - NvidiaGPU
+    shares.append(Resource(milliCPU, memory, NvidiaGPU))
+
+    return shares
 
 def Pricing(capacity, isFDRF, users):
     shares = []

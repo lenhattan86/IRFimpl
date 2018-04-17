@@ -33,8 +33,12 @@ NUM_JOBS = 5;
 %%
 MODEL_NAMES   = {'vgg16', 'lenet', 'googlenet', 'alexnet', 'trivial', 'resnet50', 'inception3'};
 
-TAR_FILE    = 'beta_motivation_good.tar.gz';
+% TAR_FILE    = 'beta_motivation_good.tar.gz';
+% BATCH_NUMS  = [32     ,     32,         32,      512,         32,         64,           64];
+
+TAR_FILE    = 'beta_motivation.tar.gz';
 BATCH_NUMS  = [32     ,     32,         32,      512,         32,         64,           64];
+
 
 % TAR_FILE    = 'beta_motivation_m3G.tar.gz';
 % MEM = '3';

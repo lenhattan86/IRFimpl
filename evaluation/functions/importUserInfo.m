@@ -56,10 +56,14 @@ fclose(fileID);
 % script.
 
 %% Allocate imported array to column variable names
-datetimes = dataArray{:, 1};
-steps = dataArray{:, 2};
-users = dataArray{:, 3};
-podnames = dataArray{:, 4};
+
 statuses = dataArray{:, 5};
+dataLen = length(statuses);
+
+datetimes = dataArray{:, 1}(1:dataLen);
+steps = dataArray{:, 2}(1:dataLen);
+users = dataArray{:, 3}(1:dataLen);
+podnames = dataArray{:, 4}(1:dataLen);
+
 
 

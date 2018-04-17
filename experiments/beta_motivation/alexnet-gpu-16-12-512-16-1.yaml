@@ -9,7 +9,7 @@ spec:
     command:
     - "/bin/bash"
     - "-c"
-    - "python tf_cnn_benchmarks.py --device=gpu  --model=alexnet --batch_size=512 --num_batches=200"
+    - "python tf_cnn_benchmarks.py --device=gpu --num_warmup_batches=0  --model=alexnet --batch_size=512 --num_batches=200"
     - ""
     resources:
       requests:

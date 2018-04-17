@@ -4,6 +4,7 @@ function [ startTime, startRunTime, stopTime, conCreateTime, complTime ] = ...
   PENDING = 'Pending';
   RUNNING = 'Running';
   COMPLETED = 'Completed';
+  OOM = 'OOMKilled';
   
   complTime = -1;
   startStep = -1;

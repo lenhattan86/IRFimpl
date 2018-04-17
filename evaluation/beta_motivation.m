@@ -1,13 +1,14 @@
 clear all; clc; close all;
 common_settings;
 %% parameters
-plots=[1 0];
+plots=[1 1];
 is_printed=true;
 LOCAL_FIG='';
 extraStr='';
 figureSize=figSizeOneCol;
 
 %% load data
+csv_file = 'beta_mov.csv';
 CPU = '16';
 MEM = '12';
 NUM_THREAD = 16;
@@ -34,6 +35,10 @@ MODEL_NAMES   = {'vgg16', 'lenet', 'googlenet', 'alexnet', 'trivial', 'resnet50'
 
 TAR_FILE    = 'beta_motivation_good.tar.gz';
 BATCH_NUMS  = [32     ,     32,         32,      512,         32,         64,           64];
+
+% TAR_FILE    = 'beta_motivation_m3G.tar.gz';
+% MEM = '3';
+% BATCH_NUMS  = [32     ,     32,         32,      512,         32,         64,           64];
 
 NUM_JOBS = 3;
 MAIN_FOLDER = 'beta_motivation';
@@ -71,7 +76,39 @@ betas = mean(cpuCmpl,2)./mean(gpuCmpl,2);
 
 %%
 
-betasWithOverheads = betas;
+[datetimes,steps,users,podnames,statuses] = importUserInfo([MAIN_FOLDER '/' subfolder '/' csv_file]);
+
+uniquePodnames = cell(1,0);
+iPod = 0;
+cpuComplTimes = [];
+cpuOverheadTimes = [];
+gpuComplTimes = [];
+gpuOverheadTimes = [];
+
+cpuCmplOverhead = zeros(length(MODEL_NAMES), NUM_JOBS);
+gpuCmplOverhead = zeros(length(MODEL_NAMES), NUM_JOBS);
+
+strJob = 'job-';
+for iModel = 1:length(MODEL_NAMES)
+  for iJob = 0:NUM_JOBS-1
+    strCommon = [num2str(CPU) '-' num2str(MEM) '-' num2str(BATCH_NUMS(iModel)) '-' num2str(NUM_THREAD) '-' num2str(iJob)];
+    % read cpu    
+    cpuPodName = [strJob MODEL_NAMES{iModel} '-cpu-' strCommon ];
+    [ startTime, startRunTime, stopTime, conCreateTime, complTime ] = ...
+        obtainPodComplTime(cpuPodName,  podnames,  statuses,  steps, datetimes );
+    cpuCmplOverhead(iModel, iJob+1) = complTime;
+    
+    % read gpu
+    gpuPodName = [strJob MODEL_NAMES{iModel} '-gpu-' strCommon ];
+    [ startTime, startRunTime, stopTime, conCreateTime, complTime ] = ...
+        obtainPodComplTime(gpuPodName,  podnames,  statuses,  steps, datetimes );
+    gpuCmplOverhead(iModel, iJob+1) = complTime;    
+  end
+  if min(cpuCmplOverhead(iModel, :)) < 0
+    cpuCmplOverhead(iModel, :) = 0;
+  end
+end
+betasWithOverheads = mean(cpuCmplOverhead,2)./mean(gpuCmplOverhead,2);
 %%
 try
    rmdir([MAIN_FOLDER '/' subfolder],'s');
@@ -102,49 +139,35 @@ if plots(1)
   end
 end
 
+%%
 if plots(2) 
   figure;
   
   xLabels = MODEL_NAMES;  
   %https://github.com/minimaxir/deep-learning-cpu-gpu-benchmark
   
-  hBar=bar(betasWithOverheads, 0.4, 'EdgeColor','none');  
+  hBar=bar(betasWithOverheads, 0.5, 'EdgeColor','none');  
   %barColors={colorBursty0};   set(hBar,{'FaceColor'},barColors);   
-  
-  xlabel('workloads'); ylabel('speedup rates ');
+  xlim([0.5 length(betasWithOverheads)+0.5]);
+%   xlabel('workloads'); 
+  ylabel('speedup rates ');
   set(gca,'xticklabel',xLabels,'FontSize',fontAxis);
 %   set(gca,'YScale','log');
   set (gcf, 'Units', 'Inches', 'Position', figureSize, 'PaperUnits', 'inches', 'PaperPosition', figureSize);  
-%   if is_printed   
-%     figIdx=figIdx +1;
-%     fileNames{figIdx} = [extraStr 'beta_mov'];        
-%     epsFile = [ LOCAL_FIG fileNames{figIdx} '.eps'];
-%     print ('-depsc', epsFile);
-%   end
+  if is_printed   
+    figIdx=figIdx +1;
+    fileNames{figIdx} = [extraStr 'beta_mov'];        
+    epsFile = [ LOCAL_FIG fileNames{figIdx} '.eps'];
+    print ('-depsc', epsFile);
+  end
 end
 
-if plots(2) 
-  figure;
-  
-  xLabels = MODEL_NAMES;
-  
-  %https://github.com/minimaxir/deep-learning-cpu-gpu-benchmark
-  
-  hBar=bar(betasWithOverheads, 0.4, 'EdgeColor','none');  
-  %barColors={colorBursty0};   set(hBar,{'FaceColor'},barColors);   
-  
-  xlabel('workloads'); ylabel('speedup rates ');
-  set(gca,'xticklabel',xLabels,'FontSize',fontAxis);
-%   set(gca,'YScale','log');
-  set (gcf, 'Units', 'Inches', 'Position', figureSize, 'PaperUnits', 'inches', 'PaperPosition', figureSize);  
-%   if is_printed   
-%     figIdx=figIdx +1;
-%     fileNames{figIdx} = [extraStr 'beta_mov'];        
-%     epsFile = [ LOCAL_FIG fileNames{figIdx} '.eps'];
-%     print ('-depsc', epsFile);
-%   end
-end
+%%
+cpuOverheads  = cpuCmplOverhead - cpuCmpl;
+gpuOverheads = gpuCmplOverhead - gpuCmpl;
 
+mean(cpuCmplOverhead,2)
+mean(gpuCmplOverhead,2)
 return;
 %%
 for i=1:length(fileNames)

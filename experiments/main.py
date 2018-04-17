@@ -134,6 +134,14 @@ def main():
     shares = Pricing(capacity, True, users)
     printShares(shares) 
     # given fill the jobs & allocation enforce,  prepare the job cripts
+
+    print("====================== Static ALLOCATION =====================")
+    expFolder = "Pricing"
+    shares = Pricing(capacity, True, users)
+    printShares(shares) 
+    # given fill the jobs & allocation enforce,  prepare the job cripts
+
+
     print("================= Resource Enforcement ================")    
     mainShell(users, expFolder, monitor_time, interval)
     for i in range(len(users)):

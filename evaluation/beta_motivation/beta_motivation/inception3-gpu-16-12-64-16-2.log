@@ -1,0 +1,60 @@
+2018-04-17 11:18:59.859821: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2018-04-17 11:18:59.859888: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2018-04-17 11:18:59.859905: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2018-04-17 11:18:59.859920: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+2018-04-17 11:18:59.859935: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+2018-04-17 11:19:00.023132: I tensorflow/core/common_runtime/gpu/gpu_device.cc:887] Found device 0 with properties: 
+name: Tesla K80
+major: 3 minor: 7 memoryClockRate (GHz) 0.8235
+pciBusID 0000:06:00.0
+Total memory: 11.17GiB
+Free memory: 11.10GiB
+2018-04-17 11:19:00.023200: I tensorflow/core/common_runtime/gpu/gpu_device.cc:908] DMA: 0 
+2018-04-17 11:19:00.023216: I tensorflow/core/common_runtime/gpu/gpu_device.cc:918] 0:   Y 
+2018-04-17 11:19:00.023243: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Tesla K80, pci bus id: 0000:06:00.0)
+2018-04-17 11:19:00.077604: E tensorflow/stream_executor/cuda/cuda_driver.cc:893] failed to allocate 11.17G (11995578368 bytes) from device: CUDA_ERROR_OUT_OF_MEMORY
+2018-04-17 11:19:09.769673: W tensorflow/core/common_runtime/bfc_allocator.cc:217] Allocator (GPU_0_bfc) ran out of memory trying to allocate 3.82GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory is available.
+2018-04-17 11:19:10.267276: W tensorflow/core/common_runtime/bfc_allocator.cc:217] Allocator (GPU_0_bfc) ran out of memory trying to allocate 3.27GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory is available.
+2018-04-17 11:19:10.751153: W tensorflow/core/common_runtime/bfc_allocator.cc:217] Allocator (GPU_0_bfc) ran out of memory trying to allocate 3.82GiB. The caller indicates that this is not a failure, but may mean that there could be performance gains if more memory is available.
+TensorFlow:  1.1
+Model:       inception3
+Mode:        training
+Batch size:  64 global
+             64 per device
+Devices:     ['/gpu:0']
+Data format: NCHW
+Optimizer:   sgd
+Variables:   parameter_server
+GPU memory fraction:  1.0
+==========
+Generating model
+Running warm up
+Done warm up
+Step	Img/sec	loss
+Starting real work at step 10 at time Tue Apr 17 11:19:37 2018
+1	images/sec: 30.1 +/- 0.0 (jitter = 0.0)	7.199
+10	images/sec: 30.2 +/- 0.0 (jitter = 0.1)	6.970
+20	images/sec: 30.3 +/- 0.0 (jitter = 0.1)	6.727
+30	images/sec: 30.2 +/- 0.0 (jitter = 0.1)	6.503
+40	images/sec: 30.2 +/- 0.0 (jitter = 0.1)	6.297
+50	images/sec: 30.2 +/- 0.0 (jitter = 0.1)	6.091
+60	images/sec: 30.2 +/- 0.0 (jitter = 0.1)	5.933
+70	images/sec: 30.1 +/- 0.0 (jitter = 0.1)	5.774
+80	images/sec: 30.1 +/- 0.0 (jitter = 0.1)	5.611
+90	images/sec: 30.1 +/- 0.0 (jitter = 0.1)	5.515
+100	images/sec: 30.1 +/- 0.0 (jitter = 0.1)	5.362
+110	images/sec: 30.1 +/- 0.0 (jitter = 0.1)	5.237
+120	images/sec: 30.1 +/- 0.0 (jitter = 0.1)	5.148
+130	images/sec: 30.1 +/- 0.0 (jitter = 0.1)	5.035
+140	images/sec: 30.1 +/- 0.0 (jitter = 0.1)	4.936
+150	images/sec: 30.1 +/- 0.0 (jitter = 0.1)	4.821
+160	images/sec: 30.1 +/- 0.0 (jitter = 0.1)	4.744
+170	images/sec: 30.1 +/- 0.0 (jitter = 0.2)	4.674
+180	images/sec: 30.1 +/- 0.0 (jitter = 0.1)	4.566
+190	images/sec: 30.1 +/- 0.0 (jitter = 0.1)	4.455
+Finishing real work at step 209 at time Tue Apr 17 11:26:41 2018
+Total time taken: 423.786766052 and percentage of GPU used: 1.0
+200	images/sec: 30.1 +/- 0.0 (jitter = 0.1)	4.387
+----------------------------------------------------------------
+total images/sec: 30.05
+----------------------------------------------------------------

@@ -2,11 +2,24 @@ clear; clc; close all;
 addpath('functions');
 common_settings;
 
+
 %%
 userNames = {'user1', 'user2'};
-folder = 'DRF';
+%% 
+%% 
 % folder = 'FDRF';
 % folder = '.';
+MAIN_FOLDER = 'motivation';
+subfolder = 'naiveDRF';
+TAR_FILE = [subfolder '.tar.gz'];
+folder = [MAIN_FOLDER '/' subfolder];
+try
+   rmdir(folder,'s');
+catch fileIO   
+end
+untar([MAIN_FOLDER '/' TAR_FILE], [MAIN_FOLDER]);
+
+%%
 interval = 1;
 stopTime = 1000;
 times = interval:interval:stopTime;
@@ -46,6 +59,13 @@ for iUser = 1:length(userNames)
     userUsages(iTime, iUser) = numContainer;
     start_time_idx = end_time_idx;
   end
+end
+
+%%
+try
+   rmdir(folder,'s');
+catch fileIO
+   error('no directories to be deleted');
 end
 %%
 bar(userUsages, 1.0, 'stacked');

@@ -1,0 +1,47 @@
+2018-04-17 13:15:20.247426: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2018-04-17 13:15:20.247478: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2018-04-17 13:15:20.247495: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2018-04-17 13:15:20.247509: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+2018-04-17 13:15:20.247523: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+TensorFlow:  1.1
+Model:       resnet50
+Mode:        training
+Batch size:  64 global
+             64 per device
+Devices:     ['/cpu:0']
+Data format: NHWC
+Optimizer:   sgd
+Variables:   parameter_server
+GPU memory fraction:  1.0
+==========
+Generating model
+Running warm up
+Done warm up
+Step	Img/sec	loss
+Starting real work at step 10 at time Tue Apr 17 13:18:14 2018
+1	images/sec: 3.7 +/- 0.0 (jitter = 0.0)	6.989
+10	images/sec: 3.7 +/- 0.0 (jitter = 0.0)	6.115
+20	images/sec: 3.7 +/- 0.0 (jitter = 0.0)	5.606
+30	images/sec: 3.7 +/- 0.0 (jitter = 0.0)	5.377
+40	images/sec: 3.7 +/- 0.0 (jitter = 0.0)	5.244
+50	images/sec: 3.7 +/- 0.0 (jitter = 0.0)	5.183
+60	images/sec: 3.7 +/- 0.0 (jitter = 0.0)	5.154
+70	images/sec: 3.7 +/- 0.0 (jitter = 0.0)	5.142
+80	images/sec: 3.7 +/- 0.0 (jitter = 0.0)	5.110
+90	images/sec: 3.7 +/- 0.0 (jitter = 0.0)	5.109
+100	images/sec: 3.7 +/- 0.0 (jitter = 0.0)	5.077
+110	images/sec: 3.7 +/- 0.0 (jitter = 0.0)	5.045
+120	images/sec: 3.7 +/- 0.0 (jitter = 0.0)	5.049
+130	images/sec: 3.7 +/- 0.0 (jitter = 0.0)	4.976
+140	images/sec: 3.7 +/- 0.0 (jitter = 0.0)	4.939
+150	images/sec: 3.7 +/- 0.0 (jitter = 0.0)	5.050
+160	images/sec: 3.7 +/- 0.0 (jitter = 0.0)	5.028
+170	images/sec: 3.7 +/- 0.0 (jitter = 0.0)	4.957
+180	images/sec: 3.7 +/- 0.0 (jitter = 0.0)	4.938
+190	images/sec: 3.7 +/- 0.0 (jitter = 0.0)	4.975
+Finishing real work at step 209 at time Tue Apr 17 14:14:48 2018
+Total time taken: 3393.2863071 and percentage of GPU used: 1.0
+200	images/sec: 3.8 +/- 0.0 (jitter = 0.0)	4.823
+----------------------------------------------------------------
+total images/sec: 3.75
+----------------------------------------------------------------

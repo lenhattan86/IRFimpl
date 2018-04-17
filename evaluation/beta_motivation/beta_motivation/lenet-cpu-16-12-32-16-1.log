@@ -1,0 +1,47 @@
+2018-04-17 11:34:10.961747: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2018-04-17 11:34:10.961848: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2018-04-17 11:34:10.961870: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2018-04-17 11:34:10.961901: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+2018-04-17 11:34:10.961922: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+TensorFlow:  1.1
+Model:       lenet
+Mode:        training
+Batch size:  32 global
+             32 per device
+Devices:     ['/cpu:0']
+Data format: NHWC
+Optimizer:   sgd
+Variables:   parameter_server
+GPU memory fraction:  1.0
+==========
+Generating model
+Running warm up
+Done warm up
+Step	Img/sec	loss
+1	images/sec: 959.2 +/- 0.0 (jitter = 0.0)	6.808
+Starting real work at step 13 at time Tue Apr 17 11:34:11 2018
+10	images/sec: 965.8 +/- 17.7 (jitter = 58.1)	6.592
+20	images/sec: 989.5 +/- 10.9 (jitter = 47.6)	5.943
+30	images/sec: 1008.0 +/- 9.8 (jitter = 41.1)	4.635
+40	images/sec: 1012.9 +/- 8.4 (jitter = 45.4)	3.730
+50	images/sec: 1008.9 +/- 7.6 (jitter = 44.7)	3.561
+60	images/sec: 1007.0 +/- 7.2 (jitter = 51.6)	3.534
+70	images/sec: 1015.6 +/- 6.7 (jitter = 54.8)	3.524
+80	images/sec: 1017.4 +/- 6.0 (jitter = 53.0)	3.519
+90	images/sec: 1001.2 +/- 8.0 (jitter = 58.7)	3.517
+100	images/sec: 1002.7 +/- 7.3 (jitter = 54.0)	3.515
+110	images/sec: 1013.0 +/- 7.6 (jitter = 51.3)	3.513
+120	images/sec: 1018.3 +/- 7.2 (jitter = 54.5)	3.512
+130	images/sec: 1022.9 +/- 6.8 (jitter = 56.8)	3.512
+140	images/sec: 1025.6 +/- 6.5 (jitter = 56.0)	3.511
+150	images/sec: 1031.2 +/- 6.4 (jitter = 57.1)	3.511
+160	images/sec: 1034.5 +/- 6.0 (jitter = 58.1)	3.510
+170	images/sec: 1037.9 +/- 5.8 (jitter = 61.7)	3.510
+180	images/sec: 1041.5 +/- 5.7 (jitter = 62.6)	3.510
+190	images/sec: 1045.5 +/- 5.5 (jitter = 69.7)	3.510
+200	images/sec: 1047.3 +/- 5.3 (jitter = 71.2)	3.509
+Finishing real work at step 210 at time Tue Apr 17 11:34:17 2018
+Total time taken: 6.01889109612 and percentage of GPU used: 1.0
+----------------------------------------------------------------
+total images/sec: 1047.37
+----------------------------------------------------------------

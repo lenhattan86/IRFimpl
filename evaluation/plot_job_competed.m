@@ -1,15 +1,31 @@
 clear; clc; close all;
+common_settings;
 addpath('functions');
+extraStr ='';
+plots = [1];
 %%
-stopTime = 600;
-folder  = '.';
-methods ={'DRF','FDRF','Pricing'};
-strUsers = {'user1','user2'};
+MAIN_FOLDER = 'motivation';
+stopTime = 650;
+% methods ={'DRF','FDRF','Pricing'};
 
-job_completed = zeros(length(strUsers), length(methods));
-for iMethod = 1:length(methods)-1
-  method = methods{iMethod};
-  filename = [folder '/' method '/pods.csv'];
+UserIds = {'user1','user2'};
+strUsers   = {'alexnet','lenet'};
+FOLDERS ={'naiveDRF','static'};
+methods = {'DRF', 'Optimal'};
+
+job_completed = zeros(length(UserIds), length(methods));
+
+for iMethod = 1:length(methods)
+  folder = [MAIN_FOLDER '/' FOLDERS{iMethod}];
+  subfolder = FOLDERS{iMethod};
+  TAR_FILE = [subfolder '.tar.gz'];
+  try
+   rmdir(folder,'s');
+  catch fileIO   
+  end  
+  untar([MAIN_FOLDER '/' TAR_FILE], [MAIN_FOLDER]);
+%%
+  filename = [folder '/' '/pods.csv'];
   [datetimes, steps, users, podnames,statuses] = importUserInfo(filename);  
   
   stepIds = (steps==stopTime);
@@ -18,17 +34,52 @@ for iMethod = 1:length(methods)-1
   statuses = statuses(stepIds);
 %   podnames = podnames(stepIds);
   
-  for iUser = 1:length(strUsers)
-    user = strUsers{iUser};
+  for iUser = 1:length(UserIds)
+    user = UserIds{iUser};
     ids = strcmp(users, user);
     mStatuses = statuses(ids);
     job_completed(iUser,iMethod) = sum(strcmp(mStatuses,'Completed'));
   end  
+%%  
+  try
+    rmdir(folder,'s');
+  catch fileIO
+     error('no directories to be deleted');
+  end
 end
-job_completed(:,3) = [12, 9];
+
 %%             
-bar(job_completed, 'group');
-ylabel('job completed');
-xlabel('Users');
-strLegend={'DRF','FDRF','Pricing'};
-legend(strLegend);
+
+if plots(1) 
+  figure;
+  figureSize = figSizeOneCol;
+  hBar=bar(job_completed, 'group', 'EdgeColor','none');
+  ylabel('job completed');
+  xlabel('Users');
+  strLegend=methods;
+  legend(strLegend, 'Location','northwest');
+  xLabels = strUsers;  
+  
+  xlim([0.5 length(strUsers)+0.5]);
+  set(gca, 'xticklabel',xLabels,'FontSize',fontAxis);
+  set (gcf, 'Units', 'Inches', 'Position', figureSize, 'PaperUnits', 'inches', 'PaperPosition', figureSize);  
+  if is_printed   
+    figIdx=figIdx +1;
+    fileNames{figIdx} = [extraStr 'num_job_completed'];        
+    epsFile = [ LOCAL_FIG fileNames{figIdx} '.eps'];
+    print ('-depsc', epsFile);
+  end
+end
+
+return;
+%%
+for i=1:length(fileNames)
+    fileName = fileNames{i};
+    epsFile = [ LOCAL_FIG fileName '.eps'];
+    pdfFile = [ fig_path fileName  '.pdf']    
+    cmd = sprintf(PS_CMD_FORMAT, epsFile, pdfFile);    
+    status = system(cmd);
+    status = system(['rm -rf ' epsFile]);
+end
+
+

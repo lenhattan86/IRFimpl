@@ -1,11 +1,11 @@
 clear all; clc; close all;
 common_settings;
 %% parameters
-plots=[1];
+plots=[1 0];
 is_printed=true;
 LOCAL_FIG='';
 extraStr='';
-figureSize=figSize2ColWidth;
+figureSize=figSizeOneCol;
 
 %% load data
 CPU = '16';
@@ -32,7 +32,7 @@ NUM_JOBS = 5;
 %%
 MODEL_NAMES   = {'vgg16', 'lenet', 'googlenet', 'alexnet', 'trivial', 'resnet50', 'inception3'};
 
-TAR_FILE   = 'beta_motivation_good.tar.gz';
+TAR_FILE    = 'beta_motivation_good.tar.gz';
 BATCH_NUMS  = [32     ,     32,         32,      512,         32,         64,           64];
 
 NUM_JOBS = 3;
@@ -69,6 +69,10 @@ for iModel = 1:length(MODEL_NAMES)
 end
 betas = mean(cpuCmpl,2)./mean(gpuCmpl,2);
 
+%%
+
+betasWithOverheads = betas;
+%%
 try
    rmdir([MAIN_FOLDER '/' subfolder],'s');
 catch fileIO
@@ -82,11 +86,12 @@ if plots(1)
   
   %https://github.com/minimaxir/deep-learning-cpu-gpu-benchmark
   
-  hBar=bar(betas, 0.4, 'EdgeColor','none');  
+  hBar=bar(betas, 0.5, 'EdgeColor','none');  
   %barColors={colorBursty0};   set(hBar,{'FaceColor'},barColors);   
-  
-  xlabel('workloads'); ylabel('speedup rates ');
-  set(gca,'xticklabel',xLabels,'FontSize',fontAxis);
+  xlim([0.5 length(betas)+0.5]);
+%   xlabel('workloads'); 
+  ylabel('speedup rates ');
+  set(gca,'xticklabel',xLabels, 'FontSize',fontAxis-1);
 %   set(gca,'YScale','log');
   set (gcf, 'Units', 'Inches', 'Position', figureSize, 'PaperUnits', 'inches', 'PaperPosition', figureSize);  
   if is_printed   
@@ -95,6 +100,49 @@ if plots(1)
     epsFile = [ LOCAL_FIG fileNames{figIdx} '.eps'];
     print ('-depsc', epsFile);
   end
+end
+
+if plots(2) 
+  figure;
+  
+  xLabels = MODEL_NAMES;  
+  %https://github.com/minimaxir/deep-learning-cpu-gpu-benchmark
+  
+  hBar=bar(betasWithOverheads, 0.4, 'EdgeColor','none');  
+  %barColors={colorBursty0};   set(hBar,{'FaceColor'},barColors);   
+  
+  xlabel('workloads'); ylabel('speedup rates ');
+  set(gca,'xticklabel',xLabels,'FontSize',fontAxis);
+%   set(gca,'YScale','log');
+  set (gcf, 'Units', 'Inches', 'Position', figureSize, 'PaperUnits', 'inches', 'PaperPosition', figureSize);  
+%   if is_printed   
+%     figIdx=figIdx +1;
+%     fileNames{figIdx} = [extraStr 'beta_mov'];        
+%     epsFile = [ LOCAL_FIG fileNames{figIdx} '.eps'];
+%     print ('-depsc', epsFile);
+%   end
+end
+
+if plots(2) 
+  figure;
+  
+  xLabels = MODEL_NAMES;
+  
+  %https://github.com/minimaxir/deep-learning-cpu-gpu-benchmark
+  
+  hBar=bar(betasWithOverheads, 0.4, 'EdgeColor','none');  
+  %barColors={colorBursty0};   set(hBar,{'FaceColor'},barColors);   
+  
+  xlabel('workloads'); ylabel('speedup rates ');
+  set(gca,'xticklabel',xLabels,'FontSize',fontAxis);
+%   set(gca,'YScale','log');
+  set (gcf, 'Units', 'Inches', 'Position', figureSize, 'PaperUnits', 'inches', 'PaperPosition', figureSize);  
+%   if is_printed   
+%     figIdx=figIdx +1;
+%     fileNames{figIdx} = [extraStr 'beta_mov'];        
+%     epsFile = [ LOCAL_FIG fileNames{figIdx} '.eps'];
+%     print ('-depsc', epsFile);
+%   end
 end
 
 return;

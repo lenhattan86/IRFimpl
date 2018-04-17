@@ -11,14 +11,15 @@ figureSize=figSize2ColWidth;
 CPU = '16';
 MEM = '12';
 NUM_THREAD = 16;
-
-MODEL_NAMES = {'vgg11', 'vgg16', 'vgg19', 'lenet', 'googlenet', 'overfeat', 'alexnet', 'trivial', 'inception3', 'inception4', 'resnet50', 'resnet101', 'resnet152'};
+%%
+NUM_JOBS = 5;
+% MODEL_NAMES = {'vgg11', 'vgg16', 'vgg19', 'lenet', 'googlenet', 'overfeat', 'alexnet', 'trivial', 'inception3', 'inception4', 'resnet50', 'resnet101', 'resnet152'};
 
 % TAR_FILE    = 'beta_motivation_20180414a.tar.gz';
 % BATCH_NUMS = [32,      32,      32,      32,      32,          32,         512,       32,        32,           64,           64,         64,          64];
 
-TAR_FILE    = 'beta_motivation_20180414b.tar.gz';
-BATCH_NUMS = 512*ones(1,length(MODEL_NAMES));
+% TAR_FILE    = 'beta_motivation_20180414b.tar.gz';
+% BATCH_NUMS = 512*ones(1,length(MODEL_NAMES));
 % 
 
 % TAR_FILE   = 'beta_motivation_20180414c.tar.gz'; NUM_THREAD = 1;
@@ -28,7 +29,13 @@ BATCH_NUMS = 512*ones(1,length(MODEL_NAMES));
 % TAR_FILE   = 'beta_motivation_20180415_gcpu16.tar.gz'; NUM_THREAD = 1;
 % BATCH_NUMS = [32,      32,      32,      32,      32,          32,         512,       32,        32,           64,           64,         64,          64];
 
-NUM_JOBS = 5;
+%%
+MODEL_NAMES   = {'vgg16', 'lenet', 'googlenet', 'alexnet', 'trivial', 'resnet50', 'inception3'};
+
+TAR_FILE   = 'beta_motivation_good.tar.gz';
+BATCH_NUMS  = [32     ,     32,         32,      512,         32,         64,           64];
+
+NUM_JOBS = 3;
 MAIN_FOLDER = 'beta_motivation';
 subfolder   = 'beta_motivation';
 %%

@@ -27,7 +27,7 @@ BatchSizes  = [32     ,  32     ,         32,      512,         32,         64, 
 
 CPU = 16
 NUM_THREADs = 16
-MEM = 12
+MEM = 3
 
 BatchNUm = 200
 

@@ -38,7 +38,8 @@ LOCAL_FIG = 'figs/';
 %PS_CMD_FORMAT='ps2pdf -dEmbedAllFonts#true -dSubsetFonts#true -dEPSCrop#true -dPDFSETTINGS#/prepress %s %s';
 PS_CMD_FORMAT='ps2pdf -dEmbedAllFonts#true -dSubsetFonts#true -dEPSCrop#false -dPDFSETTINGS#/prepress %s %s';
 
-fig_path = ['figs/'];
+% fig_path = ['figs/'];
+fig_path = ['/home/tanle/Dropbox/Papers/IRF/InterchangeableResources/OSDI2018/figs/'];
 
 %%
 

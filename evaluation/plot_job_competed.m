@@ -2,30 +2,33 @@ clear; clc; close all;
 common_settings;
 addpath('functions');
 extraStr ='';
-plots = [1];
+plots = [1 1];
 %%
-MAIN_FOLDER = 'motivation';
-stopTime = 650;
-% methods ={'DRF','FDRF','Pricing'};
+stopTime = 3000;
+TAR_FILEs ={'naiveDRF2','static2'};
+% stopTime = 660;
+% TAR_FILEs ={'naiveDRF1','static1'};
 
+MAIN_FOLDER = 'motivation';
+
+% methods ={'DRF','FDRF','Pricing'};
 UserIds = {'user1','user2'};
 strUsers   = {'alexnet','lenet'};
-FOLDERS ={'naiveDRF','static'};
+OUT_FOLDERS ={'naiveDRF','static'};
 methods = {'DRF', 'Optimal'};
 
 job_completed = zeros(length(UserIds), length(methods));
 
 for iMethod = 1:length(methods)
-  folder = [MAIN_FOLDER '/' FOLDERS{iMethod}];
-  subfolder = FOLDERS{iMethod};
-  TAR_FILE = [subfolder '.tar.gz'];
+  folder = [MAIN_FOLDER '/' OUT_FOLDERS{iMethod}];
+  TAR_FILE = [TAR_FILEs{iMethod} '.tar.gz'];
   try
    rmdir(folder,'s');
   catch fileIO   
   end  
   untar([MAIN_FOLDER '/' TAR_FILE], [MAIN_FOLDER]);
 %%
-  filename = [folder '/' '/pods.csv'];
+  filename = [folder '/pods.csv'];
   [datetimes, steps, users, podnames,statuses] = importUserInfo(filename);  
   
   stepIds = (steps==stopTime);
@@ -48,7 +51,7 @@ for iMethod = 1:length(methods)
   end
 end
 
-%%             
+%%
 
 if plots(1) 
   figure;
@@ -70,8 +73,8 @@ if plots(1)
     print ('-depsc', epsFile);
   end
 end
-
 return;
+
 %%
 for i=1:length(fileNames)
     fileName = fileNames{i};

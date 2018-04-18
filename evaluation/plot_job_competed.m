@@ -4,10 +4,10 @@ addpath('functions');
 extraStr ='';
 plots = [1 1];
 %%
-stopTime = 3000;
-TAR_FILEs ={'naiveDRF2','static2'};
-% stopTime = 660;
-% TAR_FILEs ={'naiveDRF1','static1'};
+% stopTime = 3000;
+% TAR_FILEs ={'naiveDRF2','static2'};
+stopTime = 660;
+TAR_FILEs ={'naiveDRF1','static1'};
 
 MAIN_FOLDER = 'motivation';
 

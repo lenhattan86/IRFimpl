@@ -38,13 +38,16 @@ MODEL_NAMES   = {'vgg16', 'lenet', 'googlenet', 'alexnet',  'resnet50', 'incepti
 % TAR_FILE    = 'beta_motivation_good.tar.gz';
 % BATCH_NUMS  = [32     ,     32,         32,      512,               64,           64];
 
-TAR_FILE    = 'beta_motivation.tar.gz';
-BATCH_NUMS  = [32     ,     32,         32,      512,                64,           64];
+% TAR_FILE    = 'beta_motivation.tar.gz';
+% BATCH_NUMS  = [32     ,     32,         32,      512,                64,           64];
 
 
 % TAR_FILE    = 'beta_motivation_m3G.tar.gz';
 % MEM = '3';
 % BATCH_NUMS  = [32     ,     32,         32,      512,                64,           64];
+
+TAR_FILE    = 'beta_motivation_512.tar.gz';
+BATCH_NUMS  = [512     ,     512,         512,      512,                512,           512];
 
 NUM_JOBS = 3;
 MAIN_FOLDER = 'beta_motivation';

@@ -27,7 +27,7 @@ GPU_CPU = 1
 
 
 JOB_NAMEs   = ['vgg16', 'lenet', 'googlenet', 'alexnet',  'resnet50', 'inception3']
-BatchSizes  = [512     ,  512    ,       512,      512,         512,         512]
+BatchSizes  = [16     ,  16    ,       16,      16,         16,         16]
 
 CPU = 16
 NUM_THREADs = 16

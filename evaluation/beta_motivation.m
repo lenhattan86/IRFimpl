@@ -31,18 +31,20 @@ NUM_JOBS = 5;
 % BATCH_NUMS = [32,      32,      32,      32,      32,          32,         512,       32,        32,           64,           64,         64,          64];
 
 %%
-MODEL_NAMES   = {'vgg16', 'lenet', 'googlenet', 'alexnet', 'trivial', 'resnet50', 'inception3'};
+% MODEL_NAMES   = {'vgg16', 'lenet', 'googlenet', 'alexnet', 'trivial',
+% 'resnet50', 'inception3'}; %remove trivial 32
+MODEL_NAMES   = {'vgg16', 'lenet', 'googlenet', 'alexnet',  'resnet50', 'inception3'};
 
 % TAR_FILE    = 'beta_motivation_good.tar.gz';
-% BATCH_NUMS  = [32     ,     32,         32,      512,         32,         64,           64];
+% BATCH_NUMS  = [32     ,     32,         32,      512,               64,           64];
 
 TAR_FILE    = 'beta_motivation.tar.gz';
-BATCH_NUMS  = [32     ,     32,         32,      512,         32,         64,           64];
+BATCH_NUMS  = [32     ,     32,         32,      512,                64,           64];
 
 
 % TAR_FILE    = 'beta_motivation_m3G.tar.gz';
 % MEM = '3';
-% BATCH_NUMS  = [32     ,     32,         32,      512,         32,         64,           64];
+% BATCH_NUMS  = [32     ,     32,         32,      512,                64,           64];
 
 NUM_JOBS = 3;
 MAIN_FOLDER = 'beta_motivation';
@@ -160,7 +162,7 @@ if plots(2)
   set (gcf, 'Units', 'Inches', 'Position', figureSize, 'PaperUnits', 'inches', 'PaperPosition', figureSize);  
   if is_printed   
     figIdx=figIdx +1;
-    fileNames{figIdx} = [extraStr 'beta_mov'];        
+    fileNames{figIdx} = [extraStr 'beta_mov_wOverhead'];        
     epsFile = [ LOCAL_FIG fileNames{figIdx} '.eps'];
     print ('-depsc', epsFile);
   end

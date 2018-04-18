@@ -22,8 +22,12 @@ GPU_CPU = 1
 # BatchSizes    = [512,    512,     512,     512,      512,        512,         512,       512,        512,           512,           512,         512,          512, ]
 # BatchSizes    = [512,    512,     512,     512,      512,        512,         512,       512,        512,           512,           512,         512,          512, ]
 
-JOB_NAMEs   = ['vgg16', 'lenet', 'googlenet', 'alexnet', 'trivial', 'resnet50', 'inception3']
-BatchSizes  = [32     ,  32    ,          32,      512,         32,         64,           64]
+# JOB_NAMEs   = ['vgg16', 'lenet', 'googlenet', 'alexnet',  'resnet50', 'inception3']
+# BatchSizes  = [32     ,  32    ,          32,      512,           64,           64]
+
+
+JOB_NAMEs   = ['vgg16', 'lenet', 'googlenet', 'alexnet',  'resnet50', 'inception3']
+BatchSizes  = [512     ,  512    ,       512,      512,         512,         512]
 
 CPU = 16
 NUM_THREADs = 16

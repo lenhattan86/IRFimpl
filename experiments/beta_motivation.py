@@ -33,7 +33,10 @@ JOB_NAMEs   = ['vgg16', 'lenet', 'googlenet', 'alexnet',  'resnet50', 'inception
 JOB_NAMEs   = ['lenet', 'googlenet', 'alexnet']
 # BatchSizes  = [128    ,       128,      128] 
 # BatchSizes  = [256,          256,         256] 
-BatchSizes  = [512,          512,         512] 
+# 512 googlenet out of memory
+JOB_NAMEs   = ['lenet', 'alexnet']
+BatchSizes  = [512,          512] 
+BatchSizes  = [1024,     1024]
 
 CPU = 16
 NUM_THREADs = 16
@@ -43,7 +46,7 @@ BatchNUm = 200
 
 CPU_COMMAND = "python tf_cnn_benchmarks.py --device=cpu --data_format=NHWC --num_warmup_batches=0 "
 GPU_COMMAND = "python tf_cnn_benchmarks.py --device=gpu --num_warmup_batches=0 "
- #--model=alexnet --batch_size=16 --num_batches=200 --num_gpus=1
+#--model=alexnet --batch_size=16 --num_batches=200 --num_gpus=1
 MILLI=1000
 
 

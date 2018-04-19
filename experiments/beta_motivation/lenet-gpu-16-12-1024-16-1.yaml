@@ -1,15 +1,15 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: job-lenet-gpu-16-12-512-16-2
+  name: job-lenet-gpu-16-12-1024-16-1
 spec:
   containers:
-  - name: job-lenet-gpu-16-12-512-16-2
+  - name: job-lenet-gpu-16-12-1024-16-1
     image: lenhattan86/ira:gpu
     command:
     - "/bin/bash"
     - "-c"
-    - "python tf_cnn_benchmarks.py --device=gpu --num_warmup_batches=0  --model=lenet --batch_size=512 --num_batches=200"
+    - "python tf_cnn_benchmarks.py --device=gpu --num_warmup_batches=0  --model=lenet --batch_size=1024 --num_batches=200"
     - ""
     resources:
       requests:

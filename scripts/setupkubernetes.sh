@@ -91,13 +91,13 @@ echo "######################### Clean-up #######################################
 sudo rm -rf *.tgz *.deb
 
 echo "######################### DOCKER-PULL ##########################################"
+sudo docker rmi lenhattan86/bench
+sudo docker rmi lenhattan86/ira:cpu
+sudo docker rmi lenhattan86/ira:gpu
+
 sudo docker pull lenhattan86/bench
 sudo docker pull lenhattan86/ira:cpu
 sudo docker pull lenhattan86/ira:gpu
-sudo docker pull lenhattan86/my-kube-scheduler:pricing
-sudo docker pull lenhattan86/my-kube-scheduler:drf
-sudo docker pull lenhattan86/my-kube-scheduler:es
-sudo docker pull lenhattan86/my-kube-scheduler:fdrf
 
 
 # tensorflow

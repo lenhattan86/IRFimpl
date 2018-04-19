@@ -36,7 +36,7 @@ JOB_NAMEs   = ['lenet', 'googlenet', 'alexnet']
 # 512 googlenet out of memory
 JOB_NAMEs   = ['lenet', 'alexnet']
 BatchSizes  = [512,          512] 
-BatchSizes  = [1024,     1024]
+# BatchSizes  = [1024,     1024]
 
 CPU = 16
 NUM_THREADs = 16

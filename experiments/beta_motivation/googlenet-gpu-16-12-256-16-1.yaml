@@ -1,15 +1,15 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: job-googlenet-gpu-16-12-128-16-0
+  name: job-googlenet-gpu-16-12-256-16-1
 spec:
   containers:
-  - name: job-googlenet-gpu-16-12-128-16-0
+  - name: job-googlenet-gpu-16-12-256-16-1
     image: lenhattan86/ira:gpu
     command:
     - "/bin/bash"
     - "-c"
-    - "python tf_cnn_benchmarks.py --device=gpu --num_warmup_batches=0  --model=googlenet --batch_size=128 --num_batches=200"
+    - "python tf_cnn_benchmarks.py --device=gpu --num_warmup_batches=0  --model=googlenet --batch_size=256 --num_batches=200"
     - ""
     resources:
       requests:

@@ -5,6 +5,8 @@ else
 	version="$1"
 fi
 kubectl delete pods --all --grace-period=0 --force
+kubectl delete pods --all -n user1
+kubectl delete pods --all -n user2
 yamlFile="my-scheduler.yaml"
 kubectl delete -f $yamlFile
 #sudo docker images

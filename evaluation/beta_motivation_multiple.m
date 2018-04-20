@@ -107,6 +107,9 @@ for iFile = 1: length(TAR_FILEs)
   end
 end
 
+disp('Run the next code block to plot the figures');
+return;
+
 %% plots
 close all;
 if plots(1) 
@@ -158,7 +161,6 @@ if plots(2)
   end  
 end
 
-%%
 cpuOverheads  = cpuCmplOverhead - cpuCmpl;
 gpuOverheads = gpuCmplOverhead - gpuCmpl;
 

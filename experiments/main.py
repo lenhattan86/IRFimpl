@@ -60,7 +60,8 @@ def main():
     MEM = MEM_PER_NODE * NUM_NODES
     # capacity = Resource(10000, 128, 12)
     capacity = Resource(CPU*1000, MEM, GPU)
-    scheduler='kube-scheduler'
+    # scheduler='kube-scheduler'
+    scheduler='my-scheduler'
     isQueuedUp = True
     isBestFit = True # MUST BE False
 

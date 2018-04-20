@@ -53,14 +53,19 @@ def computeDemand(jobs, capacity):
     return demand
 
 def main():
-    isBestFit = False
+    
     # capacity = Resource(48000, 128*1024*1024, 4)
     CPU = NUM_NODES* NUM_PHY_CPU_PER_NODE * NUM_CORES_PER_CPU
     GPU = NUM_NODES* NUM_PHY_GPU_PER_NODE
     MEM = MEM_PER_NODE * NUM_NODES
     # capacity = Resource(10000, 128, 12)
     capacity = Resource(CPU*1000, MEM, GPU)
-    print("capacity: "+capacity.toString())    
+    scheduler='my-scheduler'
+    isQueuedUp = True
+    isBestFit = True # MUST BE False
+    print("capacity: "+capacity.toString())
+    print("isBestFit: "+str(isBestFit) )   
+    print("isQueuedUp: "+str(isQueuedUp) ) 
 
     userStrArray = ["user1", "user2"]
     users = []
@@ -94,7 +99,7 @@ def main():
         jobs = user.jobs[:]
         loggedJobs = enforceAllocation(share, jobs, stopTime, isBestFit) 
         print("Prepare the jobs for " + user.username + ": " + str(len(loggedJobs)))  
-        prepareKubernetesJobs(user.username, expFolder, loggedJobs)        
+        prepareKubernetesJobs(user.username, scheduler, expFolder, loggedJobs, isQueuedUp)        
 
     print("====================== DRF ALLOCATION =====================")
     expFolder = "DRF"
@@ -109,7 +114,7 @@ def main():
         jobs = user.jobs[:]
         loggedJobs = enforceAllocation(share, jobs, stopTime, isBestFit) 
         print("Prepare the jobs for " + user.username + ": " + str(len(loggedJobs)))  
-        prepareKubernetesJobs(user.username, expFolder, loggedJobs)
+        prepareKubernetesJobs(user.username, scheduler, expFolder, loggedJobs, isQueuedUp)
 
     print("====================== Naive DRF ALLOCATION =====================")
     expFolder = "naiveDRF"
@@ -127,7 +132,7 @@ def main():
         jobs = user.jobs[:]
         loggedJobs = enforceAllocation(share, jobs, stopTime, isBestFit) 
         print("Prepare the jobs for " + user.username + ": " + str(len(loggedJobs)))  
-        prepareKubernetesJobs(user.username, expFolder, loggedJobs)
+        prepareKubernetesJobs(user.username, scheduler, expFolder, loggedJobs, isQueuedUp)
 
     print("====================== Static ALLOCATION =====================")
     expFolder = "static"
@@ -142,7 +147,7 @@ def main():
         jobs = user.jobs[:]
         loggedJobs = enforceAllocation(share, jobs, stopTime, isBestFit) 
         print("Prepare the jobs for " + user.username + ": " + str(len(loggedJobs))) 
-        prepareKubernetesJobs(user.username, expFolder, loggedJobs)    
+        prepareKubernetesJobs(user.username, scheduler, expFolder, loggedJobs, isQueuedUp)    
 
     print("====================== FDRF ALLOCATION =====================")
     expFolder = "FDRF"
@@ -157,7 +162,7 @@ def main():
         jobs = user.jobs[:]
         loggedJobs = enforceAllocation(share, jobs, stopTime, isBestFit) 
         print("Prepare the jobs for " + user.username + ": " + str(len(loggedJobs)))
-        prepareKubernetesJobs(user.username, expFolder, loggedJobs)
+        prepareKubernetesJobs(user.username, scheduler, expFolder, loggedJobs, isQueuedUp)
 
 
     print("====================== Pricing ALLOCATION =====================")
@@ -173,6 +178,6 @@ def main():
         jobs = user.jobs[:]
         loggedJobs = enforceAllocation(share, jobs, stopTime, isBestFit) 
         print("Prepare the jobs for " + user.username + ": " + str(len(loggedJobs)))  
-        prepareKubernetesJobs(user.username, expFolder, loggedJobs)  
+        prepareKubernetesJobs(user.username, scheduler, expFolder, loggedJobs, isQueuedUp)  
 
 if __name__ == "__main__": main()

@@ -75,7 +75,7 @@ def strPodYaml(username, activeJob, scheduler, isGPU):
     strYaml = strYaml + "      path: /usr/lib/x86_64-linux-gnu/libcuda.so.384.98"
     return strYaml
     
-def prepareKubernetesJobs(username, expFolder, loggedJobs):
+def prepareKubernetesJobs(username, scheduler, expFolder, loggedJobs, isQueuedUp):
     this_path = os.path.dirname(os.path.realpath(__file__))
     job_folder = this_path + "/" + expFolder
     try:
@@ -95,7 +95,7 @@ def prepareKubernetesJobs(username, expFolder, loggedJobs):
         if activeJob.usage.NvidiaGPU > 0:
             isGPU = True
         f = open(job_folder + '/' + username +"-"+str(jobId) + ".yaml",'w')
-        f.write(strPodYaml(username, activeJob, 'my-scheduler', isGPU))
+        f.write(strPodYaml(username, activeJob, scheduler, isGPU))
         f.close()
 
     shellFile = job_folder + '/' + username + ".sh"
@@ -108,10 +108,13 @@ def prepareKubernetesJobs(username, expFolder, loggedJobs):
     for jobId in range(len(loggedJobs)):        
         job = loggedJobs[jobId]
         # print("job "  + str(jobId))
-        interarrival = job.startTime - arrivalTime
-        if interarrival > 0:
-            interarrival = max(1, interarrival*0.85)
-            strShell = strShell + "sleep "+str(interarrival)+"; "          
+        if isQueuedUp:
+            interarrival = 0
+        else:
+            interarrival = job.startTime - arrivalTime
+            if interarrival > 0:
+                interarrival = max(1, interarrival*0.85)
+                strShell = strShell + "sleep "+str(interarrival)+"; "
                             
         strShell = strShell + "kubectl --namespace=\""+username+"\" create -f "+ username +"-"+str(jobId) +".yaml 2> " + username +"-"+str(jobId) +".log & \n"
         arrivalTime = job.startTime

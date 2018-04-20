@@ -176,7 +176,7 @@ def main():
         jobs = user.jobs[:]
         loggedJobs = enforceAllocation(share, jobs, stopTime, isBestFit) 
         print("Prepare the jobs for " + user.username + ": " + str(len(loggedJobs)))  
-        prepareKubernetesJobs(user.username, scheduler, expFolder, loggedJobs, isQueuedUp)  
+        prepareKubernetesJobs(user.username, scheduler, expFolder, loggedJobs, isQueuedUp)
 
 
     print("==================================================================")
@@ -185,5 +185,5 @@ def main():
     print("isQueuedUp: "+str(isQueuedUp) ) 
     print("scheduler: "+str(scheduler) ) 
     print("==================================================================")
-    
+
 if __name__ == "__main__": main()

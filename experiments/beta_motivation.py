@@ -44,7 +44,8 @@ JOB_NAMEs   = ['lenet']
 # BatchSizes  = [2048]
 # BatchSizes  = [4096]
 # BatchSizes  = [8192]
-BatchSizes  = [16384]
+# BatchSizes  = [16384]
+BatchSizes  = [32768]
 
 CPU = 16
 NUM_THREADs = 16
@@ -76,6 +77,7 @@ def shellProfiling(job_folder, job_number, gpuCmd, exp_name, stopTime):
     strShell = strShell + "sleep 60 \n"
     
     strShell = strShell + "sudo docker pull lenhattan86/gpu \n"
+    strShell = strShell + "sudo docker pull lenhattan86/cpu \n"
     
     strShell = strShell + "python ../get_user_info_timer.py " \
         " --interval="+str(1) + " --stopTime="+str(stopTime)+" --file="+exp_name+".csv & pythonScript=$! \n"  

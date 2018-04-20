@@ -3,7 +3,6 @@ kind: Pod
 metadata:
   name: user2-127
 spec:
-  schedulerName: my-scheduler
   containers:
   - name: user2-127
     image: lenhattan86/ira:gpu

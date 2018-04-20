@@ -60,12 +60,10 @@ def main():
     MEM = MEM_PER_NODE * NUM_NODES
     # capacity = Resource(10000, 128, 12)
     capacity = Resource(CPU*1000, MEM, GPU)
-    scheduler='my-scheduler'
+    scheduler='kube-scheduler'
     isQueuedUp = True
     isBestFit = True # MUST BE False
-    print("capacity: "+capacity.toString())
-    print("isBestFit: "+str(isBestFit) )   
-    print("isQueuedUp: "+str(isQueuedUp) ) 
+
 
     userStrArray = ["user1", "user2"]
     users = []
@@ -180,4 +178,12 @@ def main():
         print("Prepare the jobs for " + user.username + ": " + str(len(loggedJobs)))  
         prepareKubernetesJobs(user.username, scheduler, expFolder, loggedJobs, isQueuedUp)  
 
+
+    print("==================================================================")
+    print("capacity: "+capacity.toString())
+    print("isBestFit: "+str(isBestFit) )   
+    print("isQueuedUp: "+str(isQueuedUp) ) 
+    print("scheduler: "+str(scheduler) ) 
+    print("==================================================================")
+    
 if __name__ == "__main__": main()

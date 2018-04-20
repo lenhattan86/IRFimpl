@@ -38,32 +38,17 @@ LOCAL_FIG = 'figs/';
 %PS_CMD_FORMAT='ps2pdf -dEmbedAllFonts#true -dSubsetFonts#true -dEPSCrop#true -dPDFSETTINGS#/prepress %s %s';
 PS_CMD_FORMAT='ps2pdf -dEmbedAllFonts#true -dSubsetFonts#true -dEPSCrop#false -dPDFSETTINGS#/prepress %s %s';
 
-% fig_path = ['figs/'];
-fig_path = ['/home/tanle/Dropbox/Papers/IRF/InterchangeableResources/OSDI2018/figs/'];
+fig_path = ['figs/'];
+% fig_path = ['/home/tanle/Dropbox/Papers/IRF/InterchangeableResources/OSDI2018/figs/'];
 
 %%
 
-strLQ = 'LQ';
-strTQ = 'TQ';
-
-strLQs = 'LQs';
-strTQs = 'TQs';
-
-strUnalloc = 'unallocated';
-
-strDRF = 'DRF';
-strDRFW = 'DRF-W';
-strStrict = 'SP';
-strProposed = 'BPF';
-strHard = 'N-BPF'; %
-
+strBatchSize = 'batch size';
+strSpeedUpRate = 'speed-up rate';
 strEstimationErr = 'std. of estimation errors [%]';
 strFactorImprove = 'factor of improvement';
 strAvgComplTime = 'avg. compl. (secs)';
 
-strSlowDown = '';
-
-strCpuCores = 'CPU cores';
 
 %% line specs
 lineSolid = '-';

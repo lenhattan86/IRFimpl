@@ -42,7 +42,8 @@ GPU_CPU = 1
 # 2048 Alexnet out of memory
 JOB_NAMEs   = ['lenet']
 # BatchSizes  = [2048]
-BatchSizes  = [4096]
+# BatchSizes  = [4096]
+BatchSizes  = [8192]
 
 CPU = 16
 NUM_THREADs = 16

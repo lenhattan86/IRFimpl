@@ -3,6 +3,7 @@ kind: Pod
 metadata:
   name: user1-3
 spec:
+  schedulerName: my-scheduler
   containers:
   - name: user1-3
     image: lenhattan86/ira:cpu

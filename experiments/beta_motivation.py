@@ -26,18 +26,23 @@ GPU_CPU = 1
 # BatchSizes  = [32     ,  32    ,          32,      512,           64,           64]
 
 
-JOB_NAMEs   = ['vgg16', 'lenet', 'googlenet', 'alexnet',  'resnet50', 'inception3']
+# JOB_NAMEs   = ['vgg16', 'lenet', 'googlenet', 'alexnet',  'resnet50', 'inception3']
 # BatchSizes  = [32     ,  32    ,       32,      32,         32,         32]
 # BatchSizes  = [64     ,  64    ,       64,      64,         64,         64]
 #64 or 128 outofmemory: resnet50, vgg16, inception3
-JOB_NAMEs   = ['lenet', 'googlenet', 'alexnet']
+
+# JOB_NAMEs   = ['lenet', 'googlenet', 'alexnet']
 # BatchSizes  = [128    ,       128,      128] 
 # BatchSizes  = [256,          256,         256] 
 # 512 googlenet out of memory
-JOB_NAMEs   = ['lenet', 'alexnet']
+
+# JOB_NAMEs   = ['lenet', 'alexnet']
 # BatchSizes  = [512,          512] 
 # BatchSizes  = [1024,     1024]
-BatchSizes  = [2048,     2048]
+# 2048 Alexnet out of memory
+JOB_NAMEs   = ['lenet']
+# BatchSizes  = [2048]
+BatchSizes  = [4096]
 
 CPU = 16
 NUM_THREADs = 16

@@ -20,13 +20,20 @@ class Job:
             result.append(self.cpuProfile)
             result.append(self.gpuProfile)
             return result
+        
+        return result
 
+    def jobProfiles(self):
+        result = []
+        result.append(self.gpuProfile)
+        result.append(self.cpuProfile)
         return result
 
 
 class ActiveJob:
-    def __init__ (self, usage, startTime, endTime, jobId, priJobCmd, seJobCmd):
+    def __init__ (self, usage, secUsage, startTime, endTime, jobId, priJobCmd, seJobCmd):
         self.usage = usage
+        self.secUsage = secUsage
         self.startTime = startTime
         self.endTime = endTime
         self.jobId = jobId

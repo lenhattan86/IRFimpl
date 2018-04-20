@@ -53,6 +53,7 @@ def computeDemand(jobs, capacity):
     return demand
 
 def main():
+    isBestFit = False
     # capacity = Resource(48000, 128*1024*1024, 4)
     CPU = NUM_NODES* NUM_PHY_CPU_PER_NODE * NUM_CORES_PER_CPU
     GPU = NUM_NODES* NUM_PHY_GPU_PER_NODE
@@ -65,8 +66,8 @@ def main():
     users = []
 
     workload = 'traces/motivation'
-    # workload = 'simple1.1'
-    stopTime = 3500
+    # workload = 'traces/simple1.1'
+    stopTime = 800
     monitor_time = int(stopTime*1.5)
     interval = 1
 
@@ -91,7 +92,7 @@ def main():
         user = users[i]
         share = shares[i]
         jobs = user.jobs[:]
-        loggedJobs = enforceAllocation(share, jobs, stopTime) 
+        loggedJobs = enforceAllocation(share, jobs, stopTime, isBestFit) 
         print("Prepare the jobs for " + user.username + ": " + str(len(loggedJobs)))  
         prepareKubernetesJobs(user.username, expFolder, loggedJobs)        
 
@@ -106,7 +107,7 @@ def main():
         user = users[i]
         share = shares[i]
         jobs = user.jobs[:]
-        loggedJobs = enforceAllocation(share, jobs, stopTime) 
+        loggedJobs = enforceAllocation(share, jobs, stopTime, isBestFit) 
         print("Prepare the jobs for " + user.username + ": " + str(len(loggedJobs)))  
         prepareKubernetesJobs(user.username, expFolder, loggedJobs)
 
@@ -124,7 +125,7 @@ def main():
         user = users[i]
         share = shares[i]
         jobs = user.jobs[:]
-        loggedJobs = enforceAllocation(share, jobs, stopTime) 
+        loggedJobs = enforceAllocation(share, jobs, stopTime, isBestFit) 
         print("Prepare the jobs for " + user.username + ": " + str(len(loggedJobs)))  
         prepareKubernetesJobs(user.username, expFolder, loggedJobs)
 
@@ -139,8 +140,8 @@ def main():
         user = users[i]
         share = shares[i]
         jobs = user.jobs[:]
-        loggedJobs = enforceAllocation(share, jobs, stopTime) 
-        print("Prepare the jobs for " + user.username + ": " + str(len(loggedJobs)))  
+        loggedJobs = enforceAllocation(share, jobs, stopTime, isBestFit) 
+        print("Prepare the jobs for " + user.username + ": " + str(len(loggedJobs))) 
         prepareKubernetesJobs(user.username, expFolder, loggedJobs)    
 
     print("====================== FDRF ALLOCATION =====================")
@@ -154,8 +155,8 @@ def main():
         user = users[i]
         share = shares[i]
         jobs = user.jobs[:]
-        loggedJobs = enforceAllocation(share, jobs, stopTime) 
-        print("Prepare the jobs for " + user.username + ": " + str(len(loggedJobs)))  
+        loggedJobs = enforceAllocation(share, jobs, stopTime, isBestFit) 
+        print("Prepare the jobs for " + user.username + ": " + str(len(loggedJobs)))
         prepareKubernetesJobs(user.username, expFolder, loggedJobs)
 
 
@@ -170,7 +171,7 @@ def main():
         user = users[i]
         share = shares[i]
         jobs = user.jobs[:]
-        loggedJobs = enforceAllocation(share, jobs, stopTime) 
+        loggedJobs = enforceAllocation(share, jobs, stopTime, isBestFit) 
         print("Prepare the jobs for " + user.username + ": " + str(len(loggedJobs)))  
         prepareKubernetesJobs(user.username, expFolder, loggedJobs)  
 

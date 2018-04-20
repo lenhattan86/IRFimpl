@@ -135,15 +135,16 @@ def Static(capacity, users):
     shares = []
     
     # user 1
+    milliCPU = int(2*MILLI)        
+    memory = int(24*GI)        
+    NvidiaGPU = int(2)    
+    shares.append(Resource(milliCPU, memory, NvidiaGPU))
+
+    # user2        
     milliCPU = int(86*MILLI)        
     memory = int(116*GI)    
     NvidiaGPU = 2
-    shares.append(Resource(milliCPU, memory, NvidiaGPU))
 
-    # user2    
-    milliCPU = int(2*MILLI)        
-    memory = int(24*GI)        
-    NvidiaGPU = int(2)
     shares.append(Resource(milliCPU, memory, NvidiaGPU))
 
     return shares
@@ -298,11 +299,10 @@ def printShares(shares):
 
 ##############################################
 
-def enforceAllocation(share, jobs, stopTime):    
+def enforceAllocation(share, jobs, stopTime, isBestFit):    
     # cpu = share.MilliCPU
     # mem = share.Memory
     # gpu = share.NvidiaGPU
-
     maxTime = 0
     for job in jobs:
         maxTime = maxTime + max(job.cpuProfile.compl, job.gpuProfile.compl)
@@ -322,22 +322,30 @@ def enforceAllocation(share, jobs, stopTime):
             currentUsage.NvidiaGPU = currentUsage.NvidiaGPU + runningJob.usage.NvidiaGPU            
 
         # allocate new jobs
-        
         remainRes = substract(share, currentUsage)
         # print("Time" + str(iTime) + " currentUsage: " + currentUsage.toString() + " Remain: " + remainRes.toString())
         jobsTobeRemoved = []
         for job in jobs:
-            jobProfiles = job.fit(remainRes)
-            if len(jobProfiles)>0:
-                jobProfile = jobProfiles[0]
-                seCmd = jobProfiles[1].jobCmd
+            bestFitJobProfiles = job.fit(remainRes)
+            defaultJobProfiles = job.jobProfiles()
+            
+            if len(bestFitJobProfiles)>0:
+                jobProfile = bestFitJobProfiles[0]
+                secProfile = bestFitJobProfiles[1]
                 # print("jobProfile.demand: " + jobProfile.demand.toString())
-                activeJob = ActiveJob(jobProfile.demand, iTime, iTime + jobProfile.compl - 1, job.jobId, jobProfile.jobCmd, seCmd)
+                activeJob = ActiveJob(jobProfile.demand,secProfile.demand, iTime, iTime + jobProfile.compl - 1, job.jobId, jobProfile.jobCmd, secProfile.jobCmd)
                 # print("remove job " + str(job.jobId))
                 jobsTobeRemoved.append(job)
                 runningJobs.update({job.jobId: activeJob})
                 # loggedJobs.update({job.jobId: activeJob})
-                loggedJobs.append(activeJob)
+
+                if isBestFit:
+                    loggedJobs.append(activeJob)
+                else:
+                    defaultJob = ActiveJob(defaultJobProfiles[0].demand,defaultJobProfiles[1].demand, iTime, iTime + jobProfile.compl - 1, 
+                            job.jobId, defaultJobProfiles[0].jobCmd, defaultJobProfiles[1].jobCmd)
+                    loggedJobs.append(defaultJob)
+                
                 remainRes = substract(remainRes, jobProfile.demand)
 
         # print(jobsTobeRemoved)

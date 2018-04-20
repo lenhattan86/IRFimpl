@@ -45,7 +45,7 @@ JOB_NAMEs   = ['lenet']
 # BatchSizes  = [4096]
 # BatchSizes  = [8192]
 # BatchSizes  = [16384]
-BatchSizes  = [32768]
+# BatchSizes  = [32768] # all are out of memory.
 
 CPU = 16
 NUM_THREADs = 16

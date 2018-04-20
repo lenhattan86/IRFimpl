@@ -1,15 +1,15 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: job-lenet-cpu-16-12-8192-16-0
+  name: job-lenet-cpu-16-12-16384-16-0
 spec:
   containers:
-  - name: job-lenet-cpu-16-12-8192-16-0
+  - name: job-lenet-cpu-16-12-16384-16-0
     image: lenhattan86/ira:cpu
     command:
     - "/bin/bash"
     - "-c"
-    - "python tf_cnn_benchmarks.py --device=cpu --data_format=NHWC --num_warmup_batches=0  --model=lenet --batch_size=8192 --num_intra_threads=16 --num_batches=200"
+    - "python tf_cnn_benchmarks.py --device=cpu --data_format=NHWC --num_warmup_batches=0  --model=lenet --batch_size=16384 --num_intra_threads=16 --num_batches=200"
     - ""
     resources:
       requests:

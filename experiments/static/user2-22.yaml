@@ -34,7 +34,7 @@ spec:
     - name: libcuda-so-384-98
       mountPath: /usr/lib/x86_64-linux-gnu/libcuda.so.384.98
       readOnly: true
-  restartPolicy: Always
+  restartPolicy: OnFailure
   volumes:
   - name: nvidia-driver-384-98
     hostPath:

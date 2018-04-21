@@ -147,18 +147,19 @@ def mainShell(users,expFolder, stopTime, interval):
     for user in users:                
         strShell = strShell + "kubectl create -f " + user.username + ".yaml \n"
 
+    
+    
+    ## Run the jobs
+    for user in users:                
+        strShell = strShell + "./" + user.username + ".sh &\n"
+
     ## Run the monitoring script
     # for user in users:                
         # strShell = strShell + "python ../get_user_info.py --user "+user.username+ \
         # " --interval="+str(interval) + " --stopTime="+str(stopTime)+" --file="+user.username+".csv & \n" 
     strShell = strShell + "python ../get_user_info_timer.py " + \
-    " --interval="+str(interval) + " --stopTime="+str(stopTime)+" --file=pods.csv & \n"    
+    " --interval="+str(interval) + " --stopTime="+str(stopTime)+" --file=pods.csv \n"                
     
-    ## Run the jobs
-    for user in users:                
-        strShell = strShell + "./" + user.username + ".sh &\n"
-        
-    strShell = strShell + "wait"
     f.write(strShell)        
     f.close()
     os.chmod(shellFile, 0700)

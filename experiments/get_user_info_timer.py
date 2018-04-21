@@ -65,6 +65,9 @@ def capture(timeStep, writer):
 
 # this_path = os.path.dirname(os.path.realpath(__file__))
 # ofile  = open(this_path  + "/" + file_name, "wb")
+if os.path.exists(file_name): 
+    os.remove(file_name)
+
 ofile  = open(file_name, "wb")
 writer = csv.writer(ofile, dialect='excel')
 mTime = 1

@@ -72,7 +72,8 @@ def main():
     workload = 'traces/motivation'
     # workload = 'traces/simple1.1'
     stopTime = 800
-    monitor_time = int(stopTime*1.5)
+    extraTime = 1800 # 30 minutes
+    monitor_time = int(stopTime + extraTime)
     interval = 1
 
     for strUser in userStrArray:

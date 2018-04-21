@@ -5,7 +5,7 @@ kubectl delete pod --all --namespace user2
 echo wait.... ; sleep 60 
 kubectl create -f user1.yaml 
 kubectl create -f user2.yaml 
-python ../get_user_info_timer.py  --interval=1 --stopTime=1200 --file=pods.csv & 
+python ../get_user_info_timer.py  --interval=1 --stopTime=2600 --file=pods.csv & 
 ./user1.sh &
 ./user2.sh &
 wait

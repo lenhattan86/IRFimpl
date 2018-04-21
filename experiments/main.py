@@ -63,7 +63,7 @@ def main():
     # scheduler='kube-scheduler'
     scheduler='my-scheduler'
     isQueuedUp = True
-    isBestFit = True # MUST BE False
+    isBestFit = False # MUST BE False
 
 
     userStrArray = ["user1", "user2"]

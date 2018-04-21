@@ -149,6 +149,23 @@ def Static(capacity, users):
 
     return shares
 
+def Static2(capacity, users):
+    shares = []
+    
+    # user 1
+    milliCPU = int(86*MILLI)        
+    memory = int(116*GI)    
+    NvidiaGPU = 2  
+    shares.append(Resource(milliCPU, memory, NvidiaGPU))
+
+    # user2
+    milliCPU = int(2*MILLI)        
+    memory = int(24*GI)        
+    NvidiaGPU = int(2)  
+    shares.append(Resource(milliCPU, memory, NvidiaGPU))
+
+    return shares
+
 def Pricing(capacity, isFDRF, users):
     shares = []
     N = len(users)

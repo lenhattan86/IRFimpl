@@ -147,7 +147,22 @@ def main():
         jobs = user.jobs[:]
         loggedJobs = enforceAllocation(share, jobs, stopTime, isBestFit) 
         print("Prepare the jobs for " + user.username + ": " + str(len(loggedJobs))) 
-        prepareKubernetesJobs(user.username, scheduler, expFolder, loggedJobs, isQueuedUp)    
+        prepareKubernetesJobs(user.username, scheduler, expFolder, loggedJobs, isQueuedUp)
+
+    print("====================== Static2 ALLOCATION =====================")
+    expFolder = "static2"
+    shares = Static2(capacity, users)   
+    printShares(shares) 
+    # given fill the jobs & allocation enforce,  prepare the job cripts
+    mainShell(users, expFolder, monitor_time, interval)
+    for i in range(len(users)):
+    # for i in range(1):
+        user = users[i]
+        share = shares[i]
+        jobs = user.jobs[:]
+        loggedJobs = enforceAllocation(share, jobs, stopTime, isBestFit) 
+        print("Prepare the jobs for " + user.username + ": " + str(len(loggedJobs))) 
+        prepareKubernetesJobs(user.username, scheduler, expFolder, loggedJobs, isQueuedUp)          
 
     print("====================== FDRF ALLOCATION =====================")
     expFolder = "FDRF"

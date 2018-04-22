@@ -13,8 +13,8 @@ kubectl delete -f $yamlFile
 #echo "Enter my-scheduler $version image id: "
 #read image_id
 #sudo docker rmi -f $image_id
-#sleep 15 # wait for docker completely removes the image.
 
+sleep 15 # wait for docker completely removes the image.
 docker rmi lenhattan86/my-kube-scheduler:$version
 sudo docker pull lenhattan86/my-kube-scheduler:$version
 

@@ -7,4 +7,4 @@ kubectl create -f user1.yaml
 kubectl create -f user2.yaml 
 ./user1.sh &
 ./user2.sh &
-python ../get_user_info_timer.py  --interval=1 --stopTime=5800 --file=pods.csv 
+python ../get_user_info_timer.py  --interval=1 --stopTime=2200 --file=pods.csv 

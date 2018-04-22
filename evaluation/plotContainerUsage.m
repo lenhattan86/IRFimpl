@@ -10,8 +10,11 @@ userNames = {'user1', 'user2'};
 % folder = 'FDRF';
 % folder = '.';
 MAIN_FOLDER = 'motivation';
-subfolder = 'naiveDRF';
-TAR_FILE = [subfolder '.tar.gz'];
+% subfolder = 'naiveDRF';
+% TAR_FILE = ['naiveDRF' '.tar.gz'];
+subfolder = 'static';
+TAR_FILE = ['static2' '.tar.gz'];
+
 folder = [MAIN_FOLDER '/' subfolder];
 try
    rmdir(folder,'s');
@@ -27,6 +30,7 @@ userUsages = zeros(stopTime, length(userNames));
 
 filename = [folder '/pods.csv'];
 [datetimes, steps, users, podnames,statuses] = importUserInfo(filename);
+
   
 for iUser = 1:length(userNames) 
   ids = find(strcmp(users(1:length(users)-1),userNames{iUser}));

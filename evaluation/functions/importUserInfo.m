@@ -74,6 +74,9 @@ datetimes = dataArray{:, 1}(1:dataLen);
 steps = dataArray{:, 2}(1:dataLen);
 users = dataArray{:, 3}(1:dataLen);
 podnames = dataArray{:, 4}(1:dataLen);
-
-
-
+%%
+[steps,sortedIds] = sort(steps,'ascend');
+statuses = statuses(sortedIds);
+users = users(sortedIds);
+podnames = podnames(sortedIds);
+datetimes = datetimes(sortedIds);

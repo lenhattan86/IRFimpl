@@ -7,15 +7,13 @@ plots = [1 1];
 % stopTime = 3000;
 % TAR_FILEs ={'naiveDRF2','static2'};
 stopTime = 660;
-TAR_FILEs ={'naiveDRF1','static1'};
+TAR_FILEs ={'naiveDRF','static1','static2'};
+OUT_FOLDERS ={'naiveDRF','static','static'};
+methods ={'DRF','FDRF','Pricing'};
 
 MAIN_FOLDER = 'motivation';
-
-% methods ={'DRF','FDRF','Pricing'};
-UserIds = {'user1','user2'};
+UserIds    = {'user1','user2'};
 strUsers   = {'alexnet','lenet'};
-OUT_FOLDERS ={'naiveDRF','static'};
-methods = {'DRF', 'Optimal'};
 
 job_completed = zeros(length(UserIds), length(methods));
 

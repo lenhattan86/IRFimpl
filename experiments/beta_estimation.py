@@ -55,7 +55,7 @@ def shellProfiling(job_folder, job_number, gpuCmd, exp_name, stopTime):
     strShell = strShell + "./" +exp_name+".sh & cpuScript=$! \n"               
 
     strShell = strShell + "python ../get_user_info_timer.py " \
-        " --interval="+str(1) + " --stopTime="+str(stopTime)+" --file="+exp_name+".csv & pythonScript=$! \n"  
+        " --interval="+str(1) + " --stopTime="+str(stopTime)+" --file=pods.csv & pythonScript=$! \n"  
 
     strShell = strShell + "wait"    
     f.write(strShell)        

@@ -40,8 +40,8 @@ JOB_NAME = "alexnet"
 # CPU_COMMAND = "python tf_cnn_benchmarks.py --device=cpu --model="+JOB_NAME+" --data_format=NHWC --batch_size=16 --num_batches=1000 --num_intra_threads=22 "
 # GPU_COMMAND = "python tf_cnn_benchmarks.py --device=gpu --model="+JOB_NAME+" --batch_size=16 --num_batches=1000 --num_gpus=1"
 
-CPU_COMMAND = "python tf_cnn_benchmarks.py --device=cpu --model=alexnet --data_format=NHWC --batch_size=16 --num_batches=400 --num_intra_threads=22 "
-GPU_COMMAND = "python tf_cnn_benchmarks.py --device=gpu --model=alexnet --batch_size=16 --num_batches=400 --num_gpus=1"
+CPU_COMMAND = "python tf_cnn_benchmarks.py --device=cpu --model=alexnet --data_format=NHWC --batch_size=16 --num_intra_threads=16 --num_batches=400 "
+GPU_COMMAND = "python tf_cnn_benchmarks.py --device=gpu --model=alexnet --num_batches=400 --num_gpus=1 --batch_size=16 "
 
 ##########################
 

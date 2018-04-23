@@ -20,10 +20,13 @@ NUM_THREADs = 16
 MEM = 12
 
 
-JOB_NAMEs   = ['vgg16', 'lenet', 'googlenet', 'alexnet',  'resnet50', 'inception3']
-BatchSizes  = [32     ,  32    ,          32,      512,           64,           64]
+# JOB_NAMEs   = ['vgg16', 'lenet', 'googlenet', 'alexnet',  'resnet50', 'inception3']
+# BatchSizes  = [32     ,  32    ,          32,      512,           64,           64]
+JOB_NAMEs   = ['lenet','alexnet',]
+BatchSizes  = [32, 512]
 BatchNUm = 100
-kArray = [2, 5, 10, 15, 20]
+# kArray = [2, 5, 10, 15, 20]
+kArray = [10]
 
 CPU_COMMAND = "python tf_cnn_benchmarks.py --device=cpu --data_format=NHWC --num_warmup_batches=0 "
 GPU_COMMAND = "python tf_cnn_benchmarks.py --device=gpu --num_warmup_batches=0 "

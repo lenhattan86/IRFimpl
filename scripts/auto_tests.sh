@@ -7,7 +7,7 @@ sleep 5400
 ./install_my_scheduler.sh naivedrf
 
 cd ../experiments/naiveDRF
-# ls ./main.sh
+./main.sh
 
 ## run beta estimation 
 cd ../beta_estimation
@@ -16,4 +16,5 @@ kubectl delete pods --all -n user1
 kubectl delete pods --all -n user2
 ./install_my_scheduler.sh profiling
 ./install_my_scheduler.sh profiling
+sleep 15
 ./main.sh

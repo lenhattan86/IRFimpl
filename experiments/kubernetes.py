@@ -110,7 +110,7 @@ def prepareKubernetesJobs(username, scheduler, expFolder, loggedJobs, isQueuedUp
         # print("job "  + str(jobId))
         if isQueuedUp:
             interarrival = 0
-            # strShell = strShell + "sleep "+str(2)+"; "
+            strShell = strShell + "sleep "+str(1)+"; "
         else:
             interarrival = job.startTime - arrivalTime
             if interarrival > 0:

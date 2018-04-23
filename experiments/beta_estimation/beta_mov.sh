@@ -1,44 +1,66 @@
+sleep 5 
 kubectl create -f lenet-cpu-16-12-32-16-10-0.yaml 2> lenet-cpu-16-12-32-16-10-0.log 
 kubectl create -f lenet-gpu-16-12-32-16-10-0.yaml 2> lenet-gpu-16-12-32-16-10-0.log 
+sleep 5 
 kubectl create -f lenet-cpu-16-12-32-16-10-1.yaml 2> lenet-cpu-16-12-32-16-10-1.log 
 kubectl create -f lenet-gpu-16-12-32-16-10-1.yaml 2> lenet-gpu-16-12-32-16-10-1.log 
+sleep 5 
 kubectl create -f lenet-cpu-16-12-32-16-10-2.yaml 2> lenet-cpu-16-12-32-16-10-2.log 
 kubectl create -f lenet-gpu-16-12-32-16-10-2.yaml 2> lenet-gpu-16-12-32-16-10-2.log 
+sleep 5 
 kubectl create -f lenet-cpu-16-12-32-16-10-3.yaml 2> lenet-cpu-16-12-32-16-10-3.log 
 kubectl create -f lenet-gpu-16-12-32-16-10-3.yaml 2> lenet-gpu-16-12-32-16-10-3.log 
+sleep 5 
 kubectl create -f lenet-cpu-16-12-32-16-10-4.yaml 2> lenet-cpu-16-12-32-16-10-4.log 
 kubectl create -f lenet-gpu-16-12-32-16-10-4.yaml 2> lenet-gpu-16-12-32-16-10-4.log 
+sleep 5 
 kubectl create -f lenet-cpu-16-12-32-16-10-5.yaml 2> lenet-cpu-16-12-32-16-10-5.log 
 kubectl create -f lenet-gpu-16-12-32-16-10-5.yaml 2> lenet-gpu-16-12-32-16-10-5.log 
+sleep 5 
 kubectl create -f lenet-cpu-16-12-32-16-10-6.yaml 2> lenet-cpu-16-12-32-16-10-6.log 
 kubectl create -f lenet-gpu-16-12-32-16-10-6.yaml 2> lenet-gpu-16-12-32-16-10-6.log 
+sleep 5 
 kubectl create -f lenet-cpu-16-12-32-16-10-7.yaml 2> lenet-cpu-16-12-32-16-10-7.log 
 kubectl create -f lenet-gpu-16-12-32-16-10-7.yaml 2> lenet-gpu-16-12-32-16-10-7.log 
+sleep 5 
 kubectl create -f lenet-cpu-16-12-32-16-10-8.yaml 2> lenet-cpu-16-12-32-16-10-8.log 
 kubectl create -f lenet-gpu-16-12-32-16-10-8.yaml 2> lenet-gpu-16-12-32-16-10-8.log 
+sleep 5 
 kubectl create -f lenet-cpu-16-12-32-16-10-9.yaml 2> lenet-cpu-16-12-32-16-10-9.log 
 kubectl create -f lenet-gpu-16-12-32-16-10-9.yaml 2> lenet-gpu-16-12-32-16-10-9.log 
+sleep 5 
 kubectl create -f lenet-cpu-16-12-32-16-10-10.yaml 2> lenet-cpu-16-12-32-16-10-10.log 
 kubectl create -f lenet-gpu-16-12-32-16-10-10.yaml 2> lenet-gpu-16-12-32-16-10-10.log 
+sleep 5 
 kubectl create -f alexnet-cpu-16-12-512-16-10-0.yaml 2> alexnet-cpu-16-12-512-16-10-0.log 
 kubectl create -f alexnet-gpu-16-12-512-16-10-0.yaml 2> alexnet-gpu-16-12-512-16-10-0.log 
+sleep 5 
 kubectl create -f alexnet-cpu-16-12-512-16-10-1.yaml 2> alexnet-cpu-16-12-512-16-10-1.log 
 kubectl create -f alexnet-gpu-16-12-512-16-10-1.yaml 2> alexnet-gpu-16-12-512-16-10-1.log 
+sleep 5 
 kubectl create -f alexnet-cpu-16-12-512-16-10-2.yaml 2> alexnet-cpu-16-12-512-16-10-2.log 
 kubectl create -f alexnet-gpu-16-12-512-16-10-2.yaml 2> alexnet-gpu-16-12-512-16-10-2.log 
+sleep 5 
 kubectl create -f alexnet-cpu-16-12-512-16-10-3.yaml 2> alexnet-cpu-16-12-512-16-10-3.log 
 kubectl create -f alexnet-gpu-16-12-512-16-10-3.yaml 2> alexnet-gpu-16-12-512-16-10-3.log 
+sleep 5 
 kubectl create -f alexnet-cpu-16-12-512-16-10-4.yaml 2> alexnet-cpu-16-12-512-16-10-4.log 
 kubectl create -f alexnet-gpu-16-12-512-16-10-4.yaml 2> alexnet-gpu-16-12-512-16-10-4.log 
+sleep 5 
 kubectl create -f alexnet-cpu-16-12-512-16-10-5.yaml 2> alexnet-cpu-16-12-512-16-10-5.log 
 kubectl create -f alexnet-gpu-16-12-512-16-10-5.yaml 2> alexnet-gpu-16-12-512-16-10-5.log 
+sleep 5 
 kubectl create -f alexnet-cpu-16-12-512-16-10-6.yaml 2> alexnet-cpu-16-12-512-16-10-6.log 
 kubectl create -f alexnet-gpu-16-12-512-16-10-6.yaml 2> alexnet-gpu-16-12-512-16-10-6.log 
+sleep 5 
 kubectl create -f alexnet-cpu-16-12-512-16-10-7.yaml 2> alexnet-cpu-16-12-512-16-10-7.log 
 kubectl create -f alexnet-gpu-16-12-512-16-10-7.yaml 2> alexnet-gpu-16-12-512-16-10-7.log 
+sleep 5 
 kubectl create -f alexnet-cpu-16-12-512-16-10-8.yaml 2> alexnet-cpu-16-12-512-16-10-8.log 
 kubectl create -f alexnet-gpu-16-12-512-16-10-8.yaml 2> alexnet-gpu-16-12-512-16-10-8.log 
+sleep 5 
 kubectl create -f alexnet-cpu-16-12-512-16-10-9.yaml 2> alexnet-cpu-16-12-512-16-10-9.log 
 kubectl create -f alexnet-gpu-16-12-512-16-10-9.yaml 2> alexnet-gpu-16-12-512-16-10-9.log 
+sleep 5 
 kubectl create -f alexnet-cpu-16-12-512-16-10-10.yaml 2> alexnet-cpu-16-12-512-16-10-10.log 
 kubectl create -f alexnet-gpu-16-12-512-16-10-10.yaml 2> alexnet-gpu-16-12-512-16-10-10.log 

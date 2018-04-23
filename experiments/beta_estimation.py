@@ -22,7 +22,7 @@ MEM = 12
 
 # JOB_NAMEs   = ['vgg16', 'lenet', 'googlenet', 'alexnet',  'resnet50', 'inception3']
 # BatchSizes  = [32     ,  32    ,          32,      512,           64,           64]
-JOB_NAMEs   = ['lenet','alexnet',]
+JOB_NAMEs   = ['lenet', 'alexnet',]
 BatchSizes  = [32, 512]
 BatchNUm = 100
 # kArray = [2, 5, 10, 15, 20]
@@ -99,10 +99,12 @@ def shellJobs(job_folder, job_number, cmd, fileName):
                 f_yaml.close() 
 
                 # submit these two jobs
+                strShell = strShell + "sleep 5 \n" 
                 strShell = strShell + "kubectl create -f "+ fNameCpu +".yaml 2> " + fNameCpu +".log \n" 
                 strShell = strShell + "kubectl create -f "+ fNameGpu +".yaml 2> " + fNameGpu +".log \n" 
 
                 # log the pod
+
                 strLogShell = strLogShell + "kubectl logs job-"+ cpuJobId +"> " + fNameCpu +".log \n" 
                 strLogShell = strLogShell + "kubectl logs job-"+ gpuJobId +"> " + fNameGpu +".log \n" 
 

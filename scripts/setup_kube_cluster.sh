@@ -51,9 +51,9 @@ done
 
 
 # setup kubernetes
-./setupkubernetes.sh &
+./setupkubernetes_gpu.sh &
 for server in $slavesIP; do
-	$SSH_CMD $username@$server 'bash -s' < ./setupkubernetes.sh &
+	$SSH_CMD $username@$server 'bash -s' < ./setupkubernetes_gpu.sh &
 done	
 wait
 

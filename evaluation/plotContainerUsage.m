@@ -12,7 +12,7 @@ userNames = {'user1', 'user2'};
 MAIN_FOLDER = 'motivation';
 % subfolder = 'naiveDRF';
 % TAR_FILE = ['naiveDRF' '.tar.gz'];
-subfolder = 'static';
+subfolder = 'static2';
 TAR_FILE = ['static2' '.tar.gz'];
 
 folder = [MAIN_FOLDER '/' subfolder];
@@ -24,7 +24,7 @@ untar([MAIN_FOLDER '/' TAR_FILE], [MAIN_FOLDER]);
 
 %%
 interval = 1;
-stopTime = 1000;
+stopTime = 4000;
 times = interval:interval:stopTime;
 userUsages = zeros(stopTime, length(userNames));
 

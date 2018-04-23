@@ -2,7 +2,7 @@ sudo docker pull lenhattan86/ira:cpu
 sudo docker pull lenhattan86/ira:gpu 
 kubectl delete pod --all --namespace user2
 kubectl delete pod --all --namespace user1
-echo wait.... ; sleep 10 
+echo wait.... ; sleep 60 
 kubectl create -f user2.yaml 
 kubectl create -f user1.yaml 
 ./user2.sh &

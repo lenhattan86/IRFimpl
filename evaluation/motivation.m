@@ -4,10 +4,11 @@ addpath('functions');
 extraStr ='';
 plots = [1 1];
 %%
+% startTimes = [100 100 0];
 startTimes = [0 0 0];
-stopTime = 400;
-TAR_FILEs ={'naiveDRF','static1','static2'};
-OUT_FOLDERS ={'naiveDRF','static','static'};
+stopTime = 3500;
+TAR_FILEs ={'naiveDRF','static','static2'};
+OUT_FOLDERS ={'naiveDRF','static','static2'};
 methods ={'DRF','sol. 1','sol. 2'};
 MAIN_FOLDER = 'motivation';
 UserIds    = {'user1','user2'};
@@ -27,7 +28,7 @@ for iMethod = 1:length(methods)
   filename = [folder '/pods.csv'];
   [datetimes, steps, users, podnames, statuses] = importUserInfo(filename);  
   
-  stepIds = (steps==(startTimes(iMethod) + stopTime));
+  stepIds = (steps==(stopTime-startTimes(iMethod)));
   steps = steps(stepIds);
   users = users(stepIds);
   statuses = statuses(stepIds);

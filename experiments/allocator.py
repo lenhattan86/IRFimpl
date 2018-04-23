@@ -316,6 +316,18 @@ def printShares(shares):
 
 ##############################################
 
+def toActiveJobs(jobs):    
+    loggedJobs = []
+    # for iTime in range(maxTime): 
+    for job in jobs:
+        defaultJobProfiles = job.jobProfiles()
+        jobProfile = defaultJobProfiles[0]
+        secProfile = defaultJobProfiles[1]
+        activeJob = ActiveJob(jobProfile.demand, secProfile.demand, 0, 0 , job.jobId, jobProfile.jobCmd, secProfile.jobCmd)
+        loggedJobs.append(activeJob)
+            
+    return loggedJobs
+
 def enforceAllocation(share, jobs, stopTime, isBestFit):    
     # cpu = share.MilliCPU
     # mem = share.Memory
@@ -327,6 +339,7 @@ def enforceAllocation(share, jobs, stopTime, isBestFit):
     runningJobs = {}
     # loggedJobs = {}
     loggedJobs = []
+    numOfJobs = 0
     # for iTime in range(maxTime): 
     for iTime in range(stopTime):
         # compute current resource

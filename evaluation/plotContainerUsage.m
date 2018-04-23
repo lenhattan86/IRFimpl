@@ -12,8 +12,13 @@ userNames = {'user1', 'user2'};
 MAIN_FOLDER = 'motivation';
 % subfolder = 'naiveDRF';
 % TAR_FILE = ['naiveDRF' '.tar.gz'];
+
+% subfolder = 'static';
+% TAR_FILE = ['static' '.tar.gz'];
+
 subfolder = 'static2';
 TAR_FILE = ['static2' '.tar.gz'];
+
 
 folder = [MAIN_FOLDER '/' subfolder];
 try

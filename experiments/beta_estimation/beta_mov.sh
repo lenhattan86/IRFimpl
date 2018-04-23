@@ -1,660 +1,660 @@
-kubectl create -f vgg16-cpu-16-12-32-16-2-0.yaml 2> vgg16-cpu-16-12-32-16-2-0.log & 
-kubectl create -f vgg16-gpu-16-12-32-16-2-0.yaml 2> vgg16-gpu-16-12-32-16-2-0.log & 
-kubectl create -f vgg16-cpu-16-12-32-16-2-1.yaml 2> vgg16-cpu-16-12-32-16-2-1.log & 
-kubectl create -f vgg16-gpu-16-12-32-16-2-1.yaml 2> vgg16-gpu-16-12-32-16-2-1.log & 
-kubectl create -f vgg16-cpu-16-12-32-16-2-2.yaml 2> vgg16-cpu-16-12-32-16-2-2.log & 
-kubectl create -f vgg16-gpu-16-12-32-16-2-2.yaml 2> vgg16-gpu-16-12-32-16-2-2.log & 
-kubectl create -f vgg16-cpu-16-12-32-16-2-3.yaml 2> vgg16-cpu-16-12-32-16-2-3.log & 
-kubectl create -f vgg16-gpu-16-12-32-16-2-3.yaml 2> vgg16-gpu-16-12-32-16-2-3.log & 
-kubectl create -f vgg16-cpu-16-12-32-16-2-4.yaml 2> vgg16-cpu-16-12-32-16-2-4.log & 
-kubectl create -f vgg16-gpu-16-12-32-16-2-4.yaml 2> vgg16-gpu-16-12-32-16-2-4.log & 
-kubectl create -f vgg16-cpu-16-12-32-16-2-5.yaml 2> vgg16-cpu-16-12-32-16-2-5.log & 
-kubectl create -f vgg16-gpu-16-12-32-16-2-5.yaml 2> vgg16-gpu-16-12-32-16-2-5.log & 
-kubectl create -f vgg16-cpu-16-12-32-16-2-6.yaml 2> vgg16-cpu-16-12-32-16-2-6.log & 
-kubectl create -f vgg16-gpu-16-12-32-16-2-6.yaml 2> vgg16-gpu-16-12-32-16-2-6.log & 
-kubectl create -f vgg16-cpu-16-12-32-16-2-7.yaml 2> vgg16-cpu-16-12-32-16-2-7.log & 
-kubectl create -f vgg16-gpu-16-12-32-16-2-7.yaml 2> vgg16-gpu-16-12-32-16-2-7.log & 
-kubectl create -f vgg16-cpu-16-12-32-16-2-8.yaml 2> vgg16-cpu-16-12-32-16-2-8.log & 
-kubectl create -f vgg16-gpu-16-12-32-16-2-8.yaml 2> vgg16-gpu-16-12-32-16-2-8.log & 
-kubectl create -f vgg16-cpu-16-12-32-16-2-9.yaml 2> vgg16-cpu-16-12-32-16-2-9.log & 
-kubectl create -f vgg16-gpu-16-12-32-16-2-9.yaml 2> vgg16-gpu-16-12-32-16-2-9.log & 
-kubectl create -f vgg16-cpu-16-12-32-16-2-10.yaml 2> vgg16-cpu-16-12-32-16-2-10.log & 
-kubectl create -f vgg16-gpu-16-12-32-16-2-10.yaml 2> vgg16-gpu-16-12-32-16-2-10.log & 
-kubectl create -f vgg16-cpu-16-12-32-16-5-0.yaml 2> vgg16-cpu-16-12-32-16-5-0.log & 
-kubectl create -f vgg16-gpu-16-12-32-16-5-0.yaml 2> vgg16-gpu-16-12-32-16-5-0.log & 
-kubectl create -f vgg16-cpu-16-12-32-16-5-1.yaml 2> vgg16-cpu-16-12-32-16-5-1.log & 
-kubectl create -f vgg16-gpu-16-12-32-16-5-1.yaml 2> vgg16-gpu-16-12-32-16-5-1.log & 
-kubectl create -f vgg16-cpu-16-12-32-16-5-2.yaml 2> vgg16-cpu-16-12-32-16-5-2.log & 
-kubectl create -f vgg16-gpu-16-12-32-16-5-2.yaml 2> vgg16-gpu-16-12-32-16-5-2.log & 
-kubectl create -f vgg16-cpu-16-12-32-16-5-3.yaml 2> vgg16-cpu-16-12-32-16-5-3.log & 
-kubectl create -f vgg16-gpu-16-12-32-16-5-3.yaml 2> vgg16-gpu-16-12-32-16-5-3.log & 
-kubectl create -f vgg16-cpu-16-12-32-16-5-4.yaml 2> vgg16-cpu-16-12-32-16-5-4.log & 
-kubectl create -f vgg16-gpu-16-12-32-16-5-4.yaml 2> vgg16-gpu-16-12-32-16-5-4.log & 
-kubectl create -f vgg16-cpu-16-12-32-16-5-5.yaml 2> vgg16-cpu-16-12-32-16-5-5.log & 
-kubectl create -f vgg16-gpu-16-12-32-16-5-5.yaml 2> vgg16-gpu-16-12-32-16-5-5.log & 
-kubectl create -f vgg16-cpu-16-12-32-16-5-6.yaml 2> vgg16-cpu-16-12-32-16-5-6.log & 
-kubectl create -f vgg16-gpu-16-12-32-16-5-6.yaml 2> vgg16-gpu-16-12-32-16-5-6.log & 
-kubectl create -f vgg16-cpu-16-12-32-16-5-7.yaml 2> vgg16-cpu-16-12-32-16-5-7.log & 
-kubectl create -f vgg16-gpu-16-12-32-16-5-7.yaml 2> vgg16-gpu-16-12-32-16-5-7.log & 
-kubectl create -f vgg16-cpu-16-12-32-16-5-8.yaml 2> vgg16-cpu-16-12-32-16-5-8.log & 
-kubectl create -f vgg16-gpu-16-12-32-16-5-8.yaml 2> vgg16-gpu-16-12-32-16-5-8.log & 
-kubectl create -f vgg16-cpu-16-12-32-16-5-9.yaml 2> vgg16-cpu-16-12-32-16-5-9.log & 
-kubectl create -f vgg16-gpu-16-12-32-16-5-9.yaml 2> vgg16-gpu-16-12-32-16-5-9.log & 
-kubectl create -f vgg16-cpu-16-12-32-16-5-10.yaml 2> vgg16-cpu-16-12-32-16-5-10.log & 
-kubectl create -f vgg16-gpu-16-12-32-16-5-10.yaml 2> vgg16-gpu-16-12-32-16-5-10.log & 
-kubectl create -f vgg16-cpu-16-12-32-16-10-0.yaml 2> vgg16-cpu-16-12-32-16-10-0.log & 
-kubectl create -f vgg16-gpu-16-12-32-16-10-0.yaml 2> vgg16-gpu-16-12-32-16-10-0.log & 
-kubectl create -f vgg16-cpu-16-12-32-16-10-1.yaml 2> vgg16-cpu-16-12-32-16-10-1.log & 
-kubectl create -f vgg16-gpu-16-12-32-16-10-1.yaml 2> vgg16-gpu-16-12-32-16-10-1.log & 
-kubectl create -f vgg16-cpu-16-12-32-16-10-2.yaml 2> vgg16-cpu-16-12-32-16-10-2.log & 
-kubectl create -f vgg16-gpu-16-12-32-16-10-2.yaml 2> vgg16-gpu-16-12-32-16-10-2.log & 
-kubectl create -f vgg16-cpu-16-12-32-16-10-3.yaml 2> vgg16-cpu-16-12-32-16-10-3.log & 
-kubectl create -f vgg16-gpu-16-12-32-16-10-3.yaml 2> vgg16-gpu-16-12-32-16-10-3.log & 
-kubectl create -f vgg16-cpu-16-12-32-16-10-4.yaml 2> vgg16-cpu-16-12-32-16-10-4.log & 
-kubectl create -f vgg16-gpu-16-12-32-16-10-4.yaml 2> vgg16-gpu-16-12-32-16-10-4.log & 
-kubectl create -f vgg16-cpu-16-12-32-16-10-5.yaml 2> vgg16-cpu-16-12-32-16-10-5.log & 
-kubectl create -f vgg16-gpu-16-12-32-16-10-5.yaml 2> vgg16-gpu-16-12-32-16-10-5.log & 
-kubectl create -f vgg16-cpu-16-12-32-16-10-6.yaml 2> vgg16-cpu-16-12-32-16-10-6.log & 
-kubectl create -f vgg16-gpu-16-12-32-16-10-6.yaml 2> vgg16-gpu-16-12-32-16-10-6.log & 
-kubectl create -f vgg16-cpu-16-12-32-16-10-7.yaml 2> vgg16-cpu-16-12-32-16-10-7.log & 
-kubectl create -f vgg16-gpu-16-12-32-16-10-7.yaml 2> vgg16-gpu-16-12-32-16-10-7.log & 
-kubectl create -f vgg16-cpu-16-12-32-16-10-8.yaml 2> vgg16-cpu-16-12-32-16-10-8.log & 
-kubectl create -f vgg16-gpu-16-12-32-16-10-8.yaml 2> vgg16-gpu-16-12-32-16-10-8.log & 
-kubectl create -f vgg16-cpu-16-12-32-16-10-9.yaml 2> vgg16-cpu-16-12-32-16-10-9.log & 
-kubectl create -f vgg16-gpu-16-12-32-16-10-9.yaml 2> vgg16-gpu-16-12-32-16-10-9.log & 
-kubectl create -f vgg16-cpu-16-12-32-16-10-10.yaml 2> vgg16-cpu-16-12-32-16-10-10.log & 
-kubectl create -f vgg16-gpu-16-12-32-16-10-10.yaml 2> vgg16-gpu-16-12-32-16-10-10.log & 
-kubectl create -f vgg16-cpu-16-12-32-16-15-0.yaml 2> vgg16-cpu-16-12-32-16-15-0.log & 
-kubectl create -f vgg16-gpu-16-12-32-16-15-0.yaml 2> vgg16-gpu-16-12-32-16-15-0.log & 
-kubectl create -f vgg16-cpu-16-12-32-16-15-1.yaml 2> vgg16-cpu-16-12-32-16-15-1.log & 
-kubectl create -f vgg16-gpu-16-12-32-16-15-1.yaml 2> vgg16-gpu-16-12-32-16-15-1.log & 
-kubectl create -f vgg16-cpu-16-12-32-16-15-2.yaml 2> vgg16-cpu-16-12-32-16-15-2.log & 
-kubectl create -f vgg16-gpu-16-12-32-16-15-2.yaml 2> vgg16-gpu-16-12-32-16-15-2.log & 
-kubectl create -f vgg16-cpu-16-12-32-16-15-3.yaml 2> vgg16-cpu-16-12-32-16-15-3.log & 
-kubectl create -f vgg16-gpu-16-12-32-16-15-3.yaml 2> vgg16-gpu-16-12-32-16-15-3.log & 
-kubectl create -f vgg16-cpu-16-12-32-16-15-4.yaml 2> vgg16-cpu-16-12-32-16-15-4.log & 
-kubectl create -f vgg16-gpu-16-12-32-16-15-4.yaml 2> vgg16-gpu-16-12-32-16-15-4.log & 
-kubectl create -f vgg16-cpu-16-12-32-16-15-5.yaml 2> vgg16-cpu-16-12-32-16-15-5.log & 
-kubectl create -f vgg16-gpu-16-12-32-16-15-5.yaml 2> vgg16-gpu-16-12-32-16-15-5.log & 
-kubectl create -f vgg16-cpu-16-12-32-16-15-6.yaml 2> vgg16-cpu-16-12-32-16-15-6.log & 
-kubectl create -f vgg16-gpu-16-12-32-16-15-6.yaml 2> vgg16-gpu-16-12-32-16-15-6.log & 
-kubectl create -f vgg16-cpu-16-12-32-16-15-7.yaml 2> vgg16-cpu-16-12-32-16-15-7.log & 
-kubectl create -f vgg16-gpu-16-12-32-16-15-7.yaml 2> vgg16-gpu-16-12-32-16-15-7.log & 
-kubectl create -f vgg16-cpu-16-12-32-16-15-8.yaml 2> vgg16-cpu-16-12-32-16-15-8.log & 
-kubectl create -f vgg16-gpu-16-12-32-16-15-8.yaml 2> vgg16-gpu-16-12-32-16-15-8.log & 
-kubectl create -f vgg16-cpu-16-12-32-16-15-9.yaml 2> vgg16-cpu-16-12-32-16-15-9.log & 
-kubectl create -f vgg16-gpu-16-12-32-16-15-9.yaml 2> vgg16-gpu-16-12-32-16-15-9.log & 
-kubectl create -f vgg16-cpu-16-12-32-16-15-10.yaml 2> vgg16-cpu-16-12-32-16-15-10.log & 
-kubectl create -f vgg16-gpu-16-12-32-16-15-10.yaml 2> vgg16-gpu-16-12-32-16-15-10.log & 
-kubectl create -f vgg16-cpu-16-12-32-16-20-0.yaml 2> vgg16-cpu-16-12-32-16-20-0.log & 
-kubectl create -f vgg16-gpu-16-12-32-16-20-0.yaml 2> vgg16-gpu-16-12-32-16-20-0.log & 
-kubectl create -f vgg16-cpu-16-12-32-16-20-1.yaml 2> vgg16-cpu-16-12-32-16-20-1.log & 
-kubectl create -f vgg16-gpu-16-12-32-16-20-1.yaml 2> vgg16-gpu-16-12-32-16-20-1.log & 
-kubectl create -f vgg16-cpu-16-12-32-16-20-2.yaml 2> vgg16-cpu-16-12-32-16-20-2.log & 
-kubectl create -f vgg16-gpu-16-12-32-16-20-2.yaml 2> vgg16-gpu-16-12-32-16-20-2.log & 
-kubectl create -f vgg16-cpu-16-12-32-16-20-3.yaml 2> vgg16-cpu-16-12-32-16-20-3.log & 
-kubectl create -f vgg16-gpu-16-12-32-16-20-3.yaml 2> vgg16-gpu-16-12-32-16-20-3.log & 
-kubectl create -f vgg16-cpu-16-12-32-16-20-4.yaml 2> vgg16-cpu-16-12-32-16-20-4.log & 
-kubectl create -f vgg16-gpu-16-12-32-16-20-4.yaml 2> vgg16-gpu-16-12-32-16-20-4.log & 
-kubectl create -f vgg16-cpu-16-12-32-16-20-5.yaml 2> vgg16-cpu-16-12-32-16-20-5.log & 
-kubectl create -f vgg16-gpu-16-12-32-16-20-5.yaml 2> vgg16-gpu-16-12-32-16-20-5.log & 
-kubectl create -f vgg16-cpu-16-12-32-16-20-6.yaml 2> vgg16-cpu-16-12-32-16-20-6.log & 
-kubectl create -f vgg16-gpu-16-12-32-16-20-6.yaml 2> vgg16-gpu-16-12-32-16-20-6.log & 
-kubectl create -f vgg16-cpu-16-12-32-16-20-7.yaml 2> vgg16-cpu-16-12-32-16-20-7.log & 
-kubectl create -f vgg16-gpu-16-12-32-16-20-7.yaml 2> vgg16-gpu-16-12-32-16-20-7.log & 
-kubectl create -f vgg16-cpu-16-12-32-16-20-8.yaml 2> vgg16-cpu-16-12-32-16-20-8.log & 
-kubectl create -f vgg16-gpu-16-12-32-16-20-8.yaml 2> vgg16-gpu-16-12-32-16-20-8.log & 
-kubectl create -f vgg16-cpu-16-12-32-16-20-9.yaml 2> vgg16-cpu-16-12-32-16-20-9.log & 
-kubectl create -f vgg16-gpu-16-12-32-16-20-9.yaml 2> vgg16-gpu-16-12-32-16-20-9.log & 
-kubectl create -f vgg16-cpu-16-12-32-16-20-10.yaml 2> vgg16-cpu-16-12-32-16-20-10.log & 
-kubectl create -f vgg16-gpu-16-12-32-16-20-10.yaml 2> vgg16-gpu-16-12-32-16-20-10.log & 
-kubectl create -f lenet-cpu-16-12-32-16-2-0.yaml 2> lenet-cpu-16-12-32-16-2-0.log & 
-kubectl create -f lenet-gpu-16-12-32-16-2-0.yaml 2> lenet-gpu-16-12-32-16-2-0.log & 
-kubectl create -f lenet-cpu-16-12-32-16-2-1.yaml 2> lenet-cpu-16-12-32-16-2-1.log & 
-kubectl create -f lenet-gpu-16-12-32-16-2-1.yaml 2> lenet-gpu-16-12-32-16-2-1.log & 
-kubectl create -f lenet-cpu-16-12-32-16-2-2.yaml 2> lenet-cpu-16-12-32-16-2-2.log & 
-kubectl create -f lenet-gpu-16-12-32-16-2-2.yaml 2> lenet-gpu-16-12-32-16-2-2.log & 
-kubectl create -f lenet-cpu-16-12-32-16-2-3.yaml 2> lenet-cpu-16-12-32-16-2-3.log & 
-kubectl create -f lenet-gpu-16-12-32-16-2-3.yaml 2> lenet-gpu-16-12-32-16-2-3.log & 
-kubectl create -f lenet-cpu-16-12-32-16-2-4.yaml 2> lenet-cpu-16-12-32-16-2-4.log & 
-kubectl create -f lenet-gpu-16-12-32-16-2-4.yaml 2> lenet-gpu-16-12-32-16-2-4.log & 
-kubectl create -f lenet-cpu-16-12-32-16-2-5.yaml 2> lenet-cpu-16-12-32-16-2-5.log & 
-kubectl create -f lenet-gpu-16-12-32-16-2-5.yaml 2> lenet-gpu-16-12-32-16-2-5.log & 
-kubectl create -f lenet-cpu-16-12-32-16-2-6.yaml 2> lenet-cpu-16-12-32-16-2-6.log & 
-kubectl create -f lenet-gpu-16-12-32-16-2-6.yaml 2> lenet-gpu-16-12-32-16-2-6.log & 
-kubectl create -f lenet-cpu-16-12-32-16-2-7.yaml 2> lenet-cpu-16-12-32-16-2-7.log & 
-kubectl create -f lenet-gpu-16-12-32-16-2-7.yaml 2> lenet-gpu-16-12-32-16-2-7.log & 
-kubectl create -f lenet-cpu-16-12-32-16-2-8.yaml 2> lenet-cpu-16-12-32-16-2-8.log & 
-kubectl create -f lenet-gpu-16-12-32-16-2-8.yaml 2> lenet-gpu-16-12-32-16-2-8.log & 
-kubectl create -f lenet-cpu-16-12-32-16-2-9.yaml 2> lenet-cpu-16-12-32-16-2-9.log & 
-kubectl create -f lenet-gpu-16-12-32-16-2-9.yaml 2> lenet-gpu-16-12-32-16-2-9.log & 
-kubectl create -f lenet-cpu-16-12-32-16-2-10.yaml 2> lenet-cpu-16-12-32-16-2-10.log & 
-kubectl create -f lenet-gpu-16-12-32-16-2-10.yaml 2> lenet-gpu-16-12-32-16-2-10.log & 
-kubectl create -f lenet-cpu-16-12-32-16-5-0.yaml 2> lenet-cpu-16-12-32-16-5-0.log & 
-kubectl create -f lenet-gpu-16-12-32-16-5-0.yaml 2> lenet-gpu-16-12-32-16-5-0.log & 
-kubectl create -f lenet-cpu-16-12-32-16-5-1.yaml 2> lenet-cpu-16-12-32-16-5-1.log & 
-kubectl create -f lenet-gpu-16-12-32-16-5-1.yaml 2> lenet-gpu-16-12-32-16-5-1.log & 
-kubectl create -f lenet-cpu-16-12-32-16-5-2.yaml 2> lenet-cpu-16-12-32-16-5-2.log & 
-kubectl create -f lenet-gpu-16-12-32-16-5-2.yaml 2> lenet-gpu-16-12-32-16-5-2.log & 
-kubectl create -f lenet-cpu-16-12-32-16-5-3.yaml 2> lenet-cpu-16-12-32-16-5-3.log & 
-kubectl create -f lenet-gpu-16-12-32-16-5-3.yaml 2> lenet-gpu-16-12-32-16-5-3.log & 
-kubectl create -f lenet-cpu-16-12-32-16-5-4.yaml 2> lenet-cpu-16-12-32-16-5-4.log & 
-kubectl create -f lenet-gpu-16-12-32-16-5-4.yaml 2> lenet-gpu-16-12-32-16-5-4.log & 
-kubectl create -f lenet-cpu-16-12-32-16-5-5.yaml 2> lenet-cpu-16-12-32-16-5-5.log & 
-kubectl create -f lenet-gpu-16-12-32-16-5-5.yaml 2> lenet-gpu-16-12-32-16-5-5.log & 
-kubectl create -f lenet-cpu-16-12-32-16-5-6.yaml 2> lenet-cpu-16-12-32-16-5-6.log & 
-kubectl create -f lenet-gpu-16-12-32-16-5-6.yaml 2> lenet-gpu-16-12-32-16-5-6.log & 
-kubectl create -f lenet-cpu-16-12-32-16-5-7.yaml 2> lenet-cpu-16-12-32-16-5-7.log & 
-kubectl create -f lenet-gpu-16-12-32-16-5-7.yaml 2> lenet-gpu-16-12-32-16-5-7.log & 
-kubectl create -f lenet-cpu-16-12-32-16-5-8.yaml 2> lenet-cpu-16-12-32-16-5-8.log & 
-kubectl create -f lenet-gpu-16-12-32-16-5-8.yaml 2> lenet-gpu-16-12-32-16-5-8.log & 
-kubectl create -f lenet-cpu-16-12-32-16-5-9.yaml 2> lenet-cpu-16-12-32-16-5-9.log & 
-kubectl create -f lenet-gpu-16-12-32-16-5-9.yaml 2> lenet-gpu-16-12-32-16-5-9.log & 
-kubectl create -f lenet-cpu-16-12-32-16-5-10.yaml 2> lenet-cpu-16-12-32-16-5-10.log & 
-kubectl create -f lenet-gpu-16-12-32-16-5-10.yaml 2> lenet-gpu-16-12-32-16-5-10.log & 
-kubectl create -f lenet-cpu-16-12-32-16-10-0.yaml 2> lenet-cpu-16-12-32-16-10-0.log & 
-kubectl create -f lenet-gpu-16-12-32-16-10-0.yaml 2> lenet-gpu-16-12-32-16-10-0.log & 
-kubectl create -f lenet-cpu-16-12-32-16-10-1.yaml 2> lenet-cpu-16-12-32-16-10-1.log & 
-kubectl create -f lenet-gpu-16-12-32-16-10-1.yaml 2> lenet-gpu-16-12-32-16-10-1.log & 
-kubectl create -f lenet-cpu-16-12-32-16-10-2.yaml 2> lenet-cpu-16-12-32-16-10-2.log & 
-kubectl create -f lenet-gpu-16-12-32-16-10-2.yaml 2> lenet-gpu-16-12-32-16-10-2.log & 
-kubectl create -f lenet-cpu-16-12-32-16-10-3.yaml 2> lenet-cpu-16-12-32-16-10-3.log & 
-kubectl create -f lenet-gpu-16-12-32-16-10-3.yaml 2> lenet-gpu-16-12-32-16-10-3.log & 
-kubectl create -f lenet-cpu-16-12-32-16-10-4.yaml 2> lenet-cpu-16-12-32-16-10-4.log & 
-kubectl create -f lenet-gpu-16-12-32-16-10-4.yaml 2> lenet-gpu-16-12-32-16-10-4.log & 
-kubectl create -f lenet-cpu-16-12-32-16-10-5.yaml 2> lenet-cpu-16-12-32-16-10-5.log & 
-kubectl create -f lenet-gpu-16-12-32-16-10-5.yaml 2> lenet-gpu-16-12-32-16-10-5.log & 
-kubectl create -f lenet-cpu-16-12-32-16-10-6.yaml 2> lenet-cpu-16-12-32-16-10-6.log & 
-kubectl create -f lenet-gpu-16-12-32-16-10-6.yaml 2> lenet-gpu-16-12-32-16-10-6.log & 
-kubectl create -f lenet-cpu-16-12-32-16-10-7.yaml 2> lenet-cpu-16-12-32-16-10-7.log & 
-kubectl create -f lenet-gpu-16-12-32-16-10-7.yaml 2> lenet-gpu-16-12-32-16-10-7.log & 
-kubectl create -f lenet-cpu-16-12-32-16-10-8.yaml 2> lenet-cpu-16-12-32-16-10-8.log & 
-kubectl create -f lenet-gpu-16-12-32-16-10-8.yaml 2> lenet-gpu-16-12-32-16-10-8.log & 
-kubectl create -f lenet-cpu-16-12-32-16-10-9.yaml 2> lenet-cpu-16-12-32-16-10-9.log & 
-kubectl create -f lenet-gpu-16-12-32-16-10-9.yaml 2> lenet-gpu-16-12-32-16-10-9.log & 
-kubectl create -f lenet-cpu-16-12-32-16-10-10.yaml 2> lenet-cpu-16-12-32-16-10-10.log & 
-kubectl create -f lenet-gpu-16-12-32-16-10-10.yaml 2> lenet-gpu-16-12-32-16-10-10.log & 
-kubectl create -f lenet-cpu-16-12-32-16-15-0.yaml 2> lenet-cpu-16-12-32-16-15-0.log & 
-kubectl create -f lenet-gpu-16-12-32-16-15-0.yaml 2> lenet-gpu-16-12-32-16-15-0.log & 
-kubectl create -f lenet-cpu-16-12-32-16-15-1.yaml 2> lenet-cpu-16-12-32-16-15-1.log & 
-kubectl create -f lenet-gpu-16-12-32-16-15-1.yaml 2> lenet-gpu-16-12-32-16-15-1.log & 
-kubectl create -f lenet-cpu-16-12-32-16-15-2.yaml 2> lenet-cpu-16-12-32-16-15-2.log & 
-kubectl create -f lenet-gpu-16-12-32-16-15-2.yaml 2> lenet-gpu-16-12-32-16-15-2.log & 
-kubectl create -f lenet-cpu-16-12-32-16-15-3.yaml 2> lenet-cpu-16-12-32-16-15-3.log & 
-kubectl create -f lenet-gpu-16-12-32-16-15-3.yaml 2> lenet-gpu-16-12-32-16-15-3.log & 
-kubectl create -f lenet-cpu-16-12-32-16-15-4.yaml 2> lenet-cpu-16-12-32-16-15-4.log & 
-kubectl create -f lenet-gpu-16-12-32-16-15-4.yaml 2> lenet-gpu-16-12-32-16-15-4.log & 
-kubectl create -f lenet-cpu-16-12-32-16-15-5.yaml 2> lenet-cpu-16-12-32-16-15-5.log & 
-kubectl create -f lenet-gpu-16-12-32-16-15-5.yaml 2> lenet-gpu-16-12-32-16-15-5.log & 
-kubectl create -f lenet-cpu-16-12-32-16-15-6.yaml 2> lenet-cpu-16-12-32-16-15-6.log & 
-kubectl create -f lenet-gpu-16-12-32-16-15-6.yaml 2> lenet-gpu-16-12-32-16-15-6.log & 
-kubectl create -f lenet-cpu-16-12-32-16-15-7.yaml 2> lenet-cpu-16-12-32-16-15-7.log & 
-kubectl create -f lenet-gpu-16-12-32-16-15-7.yaml 2> lenet-gpu-16-12-32-16-15-7.log & 
-kubectl create -f lenet-cpu-16-12-32-16-15-8.yaml 2> lenet-cpu-16-12-32-16-15-8.log & 
-kubectl create -f lenet-gpu-16-12-32-16-15-8.yaml 2> lenet-gpu-16-12-32-16-15-8.log & 
-kubectl create -f lenet-cpu-16-12-32-16-15-9.yaml 2> lenet-cpu-16-12-32-16-15-9.log & 
-kubectl create -f lenet-gpu-16-12-32-16-15-9.yaml 2> lenet-gpu-16-12-32-16-15-9.log & 
-kubectl create -f lenet-cpu-16-12-32-16-15-10.yaml 2> lenet-cpu-16-12-32-16-15-10.log & 
-kubectl create -f lenet-gpu-16-12-32-16-15-10.yaml 2> lenet-gpu-16-12-32-16-15-10.log & 
-kubectl create -f lenet-cpu-16-12-32-16-20-0.yaml 2> lenet-cpu-16-12-32-16-20-0.log & 
-kubectl create -f lenet-gpu-16-12-32-16-20-0.yaml 2> lenet-gpu-16-12-32-16-20-0.log & 
-kubectl create -f lenet-cpu-16-12-32-16-20-1.yaml 2> lenet-cpu-16-12-32-16-20-1.log & 
-kubectl create -f lenet-gpu-16-12-32-16-20-1.yaml 2> lenet-gpu-16-12-32-16-20-1.log & 
-kubectl create -f lenet-cpu-16-12-32-16-20-2.yaml 2> lenet-cpu-16-12-32-16-20-2.log & 
-kubectl create -f lenet-gpu-16-12-32-16-20-2.yaml 2> lenet-gpu-16-12-32-16-20-2.log & 
-kubectl create -f lenet-cpu-16-12-32-16-20-3.yaml 2> lenet-cpu-16-12-32-16-20-3.log & 
-kubectl create -f lenet-gpu-16-12-32-16-20-3.yaml 2> lenet-gpu-16-12-32-16-20-3.log & 
-kubectl create -f lenet-cpu-16-12-32-16-20-4.yaml 2> lenet-cpu-16-12-32-16-20-4.log & 
-kubectl create -f lenet-gpu-16-12-32-16-20-4.yaml 2> lenet-gpu-16-12-32-16-20-4.log & 
-kubectl create -f lenet-cpu-16-12-32-16-20-5.yaml 2> lenet-cpu-16-12-32-16-20-5.log & 
-kubectl create -f lenet-gpu-16-12-32-16-20-5.yaml 2> lenet-gpu-16-12-32-16-20-5.log & 
-kubectl create -f lenet-cpu-16-12-32-16-20-6.yaml 2> lenet-cpu-16-12-32-16-20-6.log & 
-kubectl create -f lenet-gpu-16-12-32-16-20-6.yaml 2> lenet-gpu-16-12-32-16-20-6.log & 
-kubectl create -f lenet-cpu-16-12-32-16-20-7.yaml 2> lenet-cpu-16-12-32-16-20-7.log & 
-kubectl create -f lenet-gpu-16-12-32-16-20-7.yaml 2> lenet-gpu-16-12-32-16-20-7.log & 
-kubectl create -f lenet-cpu-16-12-32-16-20-8.yaml 2> lenet-cpu-16-12-32-16-20-8.log & 
-kubectl create -f lenet-gpu-16-12-32-16-20-8.yaml 2> lenet-gpu-16-12-32-16-20-8.log & 
-kubectl create -f lenet-cpu-16-12-32-16-20-9.yaml 2> lenet-cpu-16-12-32-16-20-9.log & 
-kubectl create -f lenet-gpu-16-12-32-16-20-9.yaml 2> lenet-gpu-16-12-32-16-20-9.log & 
-kubectl create -f lenet-cpu-16-12-32-16-20-10.yaml 2> lenet-cpu-16-12-32-16-20-10.log & 
-kubectl create -f lenet-gpu-16-12-32-16-20-10.yaml 2> lenet-gpu-16-12-32-16-20-10.log & 
-kubectl create -f googlenet-cpu-16-12-32-16-2-0.yaml 2> googlenet-cpu-16-12-32-16-2-0.log & 
-kubectl create -f googlenet-gpu-16-12-32-16-2-0.yaml 2> googlenet-gpu-16-12-32-16-2-0.log & 
-kubectl create -f googlenet-cpu-16-12-32-16-2-1.yaml 2> googlenet-cpu-16-12-32-16-2-1.log & 
-kubectl create -f googlenet-gpu-16-12-32-16-2-1.yaml 2> googlenet-gpu-16-12-32-16-2-1.log & 
-kubectl create -f googlenet-cpu-16-12-32-16-2-2.yaml 2> googlenet-cpu-16-12-32-16-2-2.log & 
-kubectl create -f googlenet-gpu-16-12-32-16-2-2.yaml 2> googlenet-gpu-16-12-32-16-2-2.log & 
-kubectl create -f googlenet-cpu-16-12-32-16-2-3.yaml 2> googlenet-cpu-16-12-32-16-2-3.log & 
-kubectl create -f googlenet-gpu-16-12-32-16-2-3.yaml 2> googlenet-gpu-16-12-32-16-2-3.log & 
-kubectl create -f googlenet-cpu-16-12-32-16-2-4.yaml 2> googlenet-cpu-16-12-32-16-2-4.log & 
-kubectl create -f googlenet-gpu-16-12-32-16-2-4.yaml 2> googlenet-gpu-16-12-32-16-2-4.log & 
-kubectl create -f googlenet-cpu-16-12-32-16-2-5.yaml 2> googlenet-cpu-16-12-32-16-2-5.log & 
-kubectl create -f googlenet-gpu-16-12-32-16-2-5.yaml 2> googlenet-gpu-16-12-32-16-2-5.log & 
-kubectl create -f googlenet-cpu-16-12-32-16-2-6.yaml 2> googlenet-cpu-16-12-32-16-2-6.log & 
-kubectl create -f googlenet-gpu-16-12-32-16-2-6.yaml 2> googlenet-gpu-16-12-32-16-2-6.log & 
-kubectl create -f googlenet-cpu-16-12-32-16-2-7.yaml 2> googlenet-cpu-16-12-32-16-2-7.log & 
-kubectl create -f googlenet-gpu-16-12-32-16-2-7.yaml 2> googlenet-gpu-16-12-32-16-2-7.log & 
-kubectl create -f googlenet-cpu-16-12-32-16-2-8.yaml 2> googlenet-cpu-16-12-32-16-2-8.log & 
-kubectl create -f googlenet-gpu-16-12-32-16-2-8.yaml 2> googlenet-gpu-16-12-32-16-2-8.log & 
-kubectl create -f googlenet-cpu-16-12-32-16-2-9.yaml 2> googlenet-cpu-16-12-32-16-2-9.log & 
-kubectl create -f googlenet-gpu-16-12-32-16-2-9.yaml 2> googlenet-gpu-16-12-32-16-2-9.log & 
-kubectl create -f googlenet-cpu-16-12-32-16-2-10.yaml 2> googlenet-cpu-16-12-32-16-2-10.log & 
-kubectl create -f googlenet-gpu-16-12-32-16-2-10.yaml 2> googlenet-gpu-16-12-32-16-2-10.log & 
-kubectl create -f googlenet-cpu-16-12-32-16-5-0.yaml 2> googlenet-cpu-16-12-32-16-5-0.log & 
-kubectl create -f googlenet-gpu-16-12-32-16-5-0.yaml 2> googlenet-gpu-16-12-32-16-5-0.log & 
-kubectl create -f googlenet-cpu-16-12-32-16-5-1.yaml 2> googlenet-cpu-16-12-32-16-5-1.log & 
-kubectl create -f googlenet-gpu-16-12-32-16-5-1.yaml 2> googlenet-gpu-16-12-32-16-5-1.log & 
-kubectl create -f googlenet-cpu-16-12-32-16-5-2.yaml 2> googlenet-cpu-16-12-32-16-5-2.log & 
-kubectl create -f googlenet-gpu-16-12-32-16-5-2.yaml 2> googlenet-gpu-16-12-32-16-5-2.log & 
-kubectl create -f googlenet-cpu-16-12-32-16-5-3.yaml 2> googlenet-cpu-16-12-32-16-5-3.log & 
-kubectl create -f googlenet-gpu-16-12-32-16-5-3.yaml 2> googlenet-gpu-16-12-32-16-5-3.log & 
-kubectl create -f googlenet-cpu-16-12-32-16-5-4.yaml 2> googlenet-cpu-16-12-32-16-5-4.log & 
-kubectl create -f googlenet-gpu-16-12-32-16-5-4.yaml 2> googlenet-gpu-16-12-32-16-5-4.log & 
-kubectl create -f googlenet-cpu-16-12-32-16-5-5.yaml 2> googlenet-cpu-16-12-32-16-5-5.log & 
-kubectl create -f googlenet-gpu-16-12-32-16-5-5.yaml 2> googlenet-gpu-16-12-32-16-5-5.log & 
-kubectl create -f googlenet-cpu-16-12-32-16-5-6.yaml 2> googlenet-cpu-16-12-32-16-5-6.log & 
-kubectl create -f googlenet-gpu-16-12-32-16-5-6.yaml 2> googlenet-gpu-16-12-32-16-5-6.log & 
-kubectl create -f googlenet-cpu-16-12-32-16-5-7.yaml 2> googlenet-cpu-16-12-32-16-5-7.log & 
-kubectl create -f googlenet-gpu-16-12-32-16-5-7.yaml 2> googlenet-gpu-16-12-32-16-5-7.log & 
-kubectl create -f googlenet-cpu-16-12-32-16-5-8.yaml 2> googlenet-cpu-16-12-32-16-5-8.log & 
-kubectl create -f googlenet-gpu-16-12-32-16-5-8.yaml 2> googlenet-gpu-16-12-32-16-5-8.log & 
-kubectl create -f googlenet-cpu-16-12-32-16-5-9.yaml 2> googlenet-cpu-16-12-32-16-5-9.log & 
-kubectl create -f googlenet-gpu-16-12-32-16-5-9.yaml 2> googlenet-gpu-16-12-32-16-5-9.log & 
-kubectl create -f googlenet-cpu-16-12-32-16-5-10.yaml 2> googlenet-cpu-16-12-32-16-5-10.log & 
-kubectl create -f googlenet-gpu-16-12-32-16-5-10.yaml 2> googlenet-gpu-16-12-32-16-5-10.log & 
-kubectl create -f googlenet-cpu-16-12-32-16-10-0.yaml 2> googlenet-cpu-16-12-32-16-10-0.log & 
-kubectl create -f googlenet-gpu-16-12-32-16-10-0.yaml 2> googlenet-gpu-16-12-32-16-10-0.log & 
-kubectl create -f googlenet-cpu-16-12-32-16-10-1.yaml 2> googlenet-cpu-16-12-32-16-10-1.log & 
-kubectl create -f googlenet-gpu-16-12-32-16-10-1.yaml 2> googlenet-gpu-16-12-32-16-10-1.log & 
-kubectl create -f googlenet-cpu-16-12-32-16-10-2.yaml 2> googlenet-cpu-16-12-32-16-10-2.log & 
-kubectl create -f googlenet-gpu-16-12-32-16-10-2.yaml 2> googlenet-gpu-16-12-32-16-10-2.log & 
-kubectl create -f googlenet-cpu-16-12-32-16-10-3.yaml 2> googlenet-cpu-16-12-32-16-10-3.log & 
-kubectl create -f googlenet-gpu-16-12-32-16-10-3.yaml 2> googlenet-gpu-16-12-32-16-10-3.log & 
-kubectl create -f googlenet-cpu-16-12-32-16-10-4.yaml 2> googlenet-cpu-16-12-32-16-10-4.log & 
-kubectl create -f googlenet-gpu-16-12-32-16-10-4.yaml 2> googlenet-gpu-16-12-32-16-10-4.log & 
-kubectl create -f googlenet-cpu-16-12-32-16-10-5.yaml 2> googlenet-cpu-16-12-32-16-10-5.log & 
-kubectl create -f googlenet-gpu-16-12-32-16-10-5.yaml 2> googlenet-gpu-16-12-32-16-10-5.log & 
-kubectl create -f googlenet-cpu-16-12-32-16-10-6.yaml 2> googlenet-cpu-16-12-32-16-10-6.log & 
-kubectl create -f googlenet-gpu-16-12-32-16-10-6.yaml 2> googlenet-gpu-16-12-32-16-10-6.log & 
-kubectl create -f googlenet-cpu-16-12-32-16-10-7.yaml 2> googlenet-cpu-16-12-32-16-10-7.log & 
-kubectl create -f googlenet-gpu-16-12-32-16-10-7.yaml 2> googlenet-gpu-16-12-32-16-10-7.log & 
-kubectl create -f googlenet-cpu-16-12-32-16-10-8.yaml 2> googlenet-cpu-16-12-32-16-10-8.log & 
-kubectl create -f googlenet-gpu-16-12-32-16-10-8.yaml 2> googlenet-gpu-16-12-32-16-10-8.log & 
-kubectl create -f googlenet-cpu-16-12-32-16-10-9.yaml 2> googlenet-cpu-16-12-32-16-10-9.log & 
-kubectl create -f googlenet-gpu-16-12-32-16-10-9.yaml 2> googlenet-gpu-16-12-32-16-10-9.log & 
-kubectl create -f googlenet-cpu-16-12-32-16-10-10.yaml 2> googlenet-cpu-16-12-32-16-10-10.log & 
-kubectl create -f googlenet-gpu-16-12-32-16-10-10.yaml 2> googlenet-gpu-16-12-32-16-10-10.log & 
-kubectl create -f googlenet-cpu-16-12-32-16-15-0.yaml 2> googlenet-cpu-16-12-32-16-15-0.log & 
-kubectl create -f googlenet-gpu-16-12-32-16-15-0.yaml 2> googlenet-gpu-16-12-32-16-15-0.log & 
-kubectl create -f googlenet-cpu-16-12-32-16-15-1.yaml 2> googlenet-cpu-16-12-32-16-15-1.log & 
-kubectl create -f googlenet-gpu-16-12-32-16-15-1.yaml 2> googlenet-gpu-16-12-32-16-15-1.log & 
-kubectl create -f googlenet-cpu-16-12-32-16-15-2.yaml 2> googlenet-cpu-16-12-32-16-15-2.log & 
-kubectl create -f googlenet-gpu-16-12-32-16-15-2.yaml 2> googlenet-gpu-16-12-32-16-15-2.log & 
-kubectl create -f googlenet-cpu-16-12-32-16-15-3.yaml 2> googlenet-cpu-16-12-32-16-15-3.log & 
-kubectl create -f googlenet-gpu-16-12-32-16-15-3.yaml 2> googlenet-gpu-16-12-32-16-15-3.log & 
-kubectl create -f googlenet-cpu-16-12-32-16-15-4.yaml 2> googlenet-cpu-16-12-32-16-15-4.log & 
-kubectl create -f googlenet-gpu-16-12-32-16-15-4.yaml 2> googlenet-gpu-16-12-32-16-15-4.log & 
-kubectl create -f googlenet-cpu-16-12-32-16-15-5.yaml 2> googlenet-cpu-16-12-32-16-15-5.log & 
-kubectl create -f googlenet-gpu-16-12-32-16-15-5.yaml 2> googlenet-gpu-16-12-32-16-15-5.log & 
-kubectl create -f googlenet-cpu-16-12-32-16-15-6.yaml 2> googlenet-cpu-16-12-32-16-15-6.log & 
-kubectl create -f googlenet-gpu-16-12-32-16-15-6.yaml 2> googlenet-gpu-16-12-32-16-15-6.log & 
-kubectl create -f googlenet-cpu-16-12-32-16-15-7.yaml 2> googlenet-cpu-16-12-32-16-15-7.log & 
-kubectl create -f googlenet-gpu-16-12-32-16-15-7.yaml 2> googlenet-gpu-16-12-32-16-15-7.log & 
-kubectl create -f googlenet-cpu-16-12-32-16-15-8.yaml 2> googlenet-cpu-16-12-32-16-15-8.log & 
-kubectl create -f googlenet-gpu-16-12-32-16-15-8.yaml 2> googlenet-gpu-16-12-32-16-15-8.log & 
-kubectl create -f googlenet-cpu-16-12-32-16-15-9.yaml 2> googlenet-cpu-16-12-32-16-15-9.log & 
-kubectl create -f googlenet-gpu-16-12-32-16-15-9.yaml 2> googlenet-gpu-16-12-32-16-15-9.log & 
-kubectl create -f googlenet-cpu-16-12-32-16-15-10.yaml 2> googlenet-cpu-16-12-32-16-15-10.log & 
-kubectl create -f googlenet-gpu-16-12-32-16-15-10.yaml 2> googlenet-gpu-16-12-32-16-15-10.log & 
-kubectl create -f googlenet-cpu-16-12-32-16-20-0.yaml 2> googlenet-cpu-16-12-32-16-20-0.log & 
-kubectl create -f googlenet-gpu-16-12-32-16-20-0.yaml 2> googlenet-gpu-16-12-32-16-20-0.log & 
-kubectl create -f googlenet-cpu-16-12-32-16-20-1.yaml 2> googlenet-cpu-16-12-32-16-20-1.log & 
-kubectl create -f googlenet-gpu-16-12-32-16-20-1.yaml 2> googlenet-gpu-16-12-32-16-20-1.log & 
-kubectl create -f googlenet-cpu-16-12-32-16-20-2.yaml 2> googlenet-cpu-16-12-32-16-20-2.log & 
-kubectl create -f googlenet-gpu-16-12-32-16-20-2.yaml 2> googlenet-gpu-16-12-32-16-20-2.log & 
-kubectl create -f googlenet-cpu-16-12-32-16-20-3.yaml 2> googlenet-cpu-16-12-32-16-20-3.log & 
-kubectl create -f googlenet-gpu-16-12-32-16-20-3.yaml 2> googlenet-gpu-16-12-32-16-20-3.log & 
-kubectl create -f googlenet-cpu-16-12-32-16-20-4.yaml 2> googlenet-cpu-16-12-32-16-20-4.log & 
-kubectl create -f googlenet-gpu-16-12-32-16-20-4.yaml 2> googlenet-gpu-16-12-32-16-20-4.log & 
-kubectl create -f googlenet-cpu-16-12-32-16-20-5.yaml 2> googlenet-cpu-16-12-32-16-20-5.log & 
-kubectl create -f googlenet-gpu-16-12-32-16-20-5.yaml 2> googlenet-gpu-16-12-32-16-20-5.log & 
-kubectl create -f googlenet-cpu-16-12-32-16-20-6.yaml 2> googlenet-cpu-16-12-32-16-20-6.log & 
-kubectl create -f googlenet-gpu-16-12-32-16-20-6.yaml 2> googlenet-gpu-16-12-32-16-20-6.log & 
-kubectl create -f googlenet-cpu-16-12-32-16-20-7.yaml 2> googlenet-cpu-16-12-32-16-20-7.log & 
-kubectl create -f googlenet-gpu-16-12-32-16-20-7.yaml 2> googlenet-gpu-16-12-32-16-20-7.log & 
-kubectl create -f googlenet-cpu-16-12-32-16-20-8.yaml 2> googlenet-cpu-16-12-32-16-20-8.log & 
-kubectl create -f googlenet-gpu-16-12-32-16-20-8.yaml 2> googlenet-gpu-16-12-32-16-20-8.log & 
-kubectl create -f googlenet-cpu-16-12-32-16-20-9.yaml 2> googlenet-cpu-16-12-32-16-20-9.log & 
-kubectl create -f googlenet-gpu-16-12-32-16-20-9.yaml 2> googlenet-gpu-16-12-32-16-20-9.log & 
-kubectl create -f googlenet-cpu-16-12-32-16-20-10.yaml 2> googlenet-cpu-16-12-32-16-20-10.log & 
-kubectl create -f googlenet-gpu-16-12-32-16-20-10.yaml 2> googlenet-gpu-16-12-32-16-20-10.log & 
-kubectl create -f alexnet-cpu-16-12-512-16-2-0.yaml 2> alexnet-cpu-16-12-512-16-2-0.log & 
-kubectl create -f alexnet-gpu-16-12-512-16-2-0.yaml 2> alexnet-gpu-16-12-512-16-2-0.log & 
-kubectl create -f alexnet-cpu-16-12-512-16-2-1.yaml 2> alexnet-cpu-16-12-512-16-2-1.log & 
-kubectl create -f alexnet-gpu-16-12-512-16-2-1.yaml 2> alexnet-gpu-16-12-512-16-2-1.log & 
-kubectl create -f alexnet-cpu-16-12-512-16-2-2.yaml 2> alexnet-cpu-16-12-512-16-2-2.log & 
-kubectl create -f alexnet-gpu-16-12-512-16-2-2.yaml 2> alexnet-gpu-16-12-512-16-2-2.log & 
-kubectl create -f alexnet-cpu-16-12-512-16-2-3.yaml 2> alexnet-cpu-16-12-512-16-2-3.log & 
-kubectl create -f alexnet-gpu-16-12-512-16-2-3.yaml 2> alexnet-gpu-16-12-512-16-2-3.log & 
-kubectl create -f alexnet-cpu-16-12-512-16-2-4.yaml 2> alexnet-cpu-16-12-512-16-2-4.log & 
-kubectl create -f alexnet-gpu-16-12-512-16-2-4.yaml 2> alexnet-gpu-16-12-512-16-2-4.log & 
-kubectl create -f alexnet-cpu-16-12-512-16-2-5.yaml 2> alexnet-cpu-16-12-512-16-2-5.log & 
-kubectl create -f alexnet-gpu-16-12-512-16-2-5.yaml 2> alexnet-gpu-16-12-512-16-2-5.log & 
-kubectl create -f alexnet-cpu-16-12-512-16-2-6.yaml 2> alexnet-cpu-16-12-512-16-2-6.log & 
-kubectl create -f alexnet-gpu-16-12-512-16-2-6.yaml 2> alexnet-gpu-16-12-512-16-2-6.log & 
-kubectl create -f alexnet-cpu-16-12-512-16-2-7.yaml 2> alexnet-cpu-16-12-512-16-2-7.log & 
-kubectl create -f alexnet-gpu-16-12-512-16-2-7.yaml 2> alexnet-gpu-16-12-512-16-2-7.log & 
-kubectl create -f alexnet-cpu-16-12-512-16-2-8.yaml 2> alexnet-cpu-16-12-512-16-2-8.log & 
-kubectl create -f alexnet-gpu-16-12-512-16-2-8.yaml 2> alexnet-gpu-16-12-512-16-2-8.log & 
-kubectl create -f alexnet-cpu-16-12-512-16-2-9.yaml 2> alexnet-cpu-16-12-512-16-2-9.log & 
-kubectl create -f alexnet-gpu-16-12-512-16-2-9.yaml 2> alexnet-gpu-16-12-512-16-2-9.log & 
-kubectl create -f alexnet-cpu-16-12-512-16-2-10.yaml 2> alexnet-cpu-16-12-512-16-2-10.log & 
-kubectl create -f alexnet-gpu-16-12-512-16-2-10.yaml 2> alexnet-gpu-16-12-512-16-2-10.log & 
-kubectl create -f alexnet-cpu-16-12-512-16-5-0.yaml 2> alexnet-cpu-16-12-512-16-5-0.log & 
-kubectl create -f alexnet-gpu-16-12-512-16-5-0.yaml 2> alexnet-gpu-16-12-512-16-5-0.log & 
-kubectl create -f alexnet-cpu-16-12-512-16-5-1.yaml 2> alexnet-cpu-16-12-512-16-5-1.log & 
-kubectl create -f alexnet-gpu-16-12-512-16-5-1.yaml 2> alexnet-gpu-16-12-512-16-5-1.log & 
-kubectl create -f alexnet-cpu-16-12-512-16-5-2.yaml 2> alexnet-cpu-16-12-512-16-5-2.log & 
-kubectl create -f alexnet-gpu-16-12-512-16-5-2.yaml 2> alexnet-gpu-16-12-512-16-5-2.log & 
-kubectl create -f alexnet-cpu-16-12-512-16-5-3.yaml 2> alexnet-cpu-16-12-512-16-5-3.log & 
-kubectl create -f alexnet-gpu-16-12-512-16-5-3.yaml 2> alexnet-gpu-16-12-512-16-5-3.log & 
-kubectl create -f alexnet-cpu-16-12-512-16-5-4.yaml 2> alexnet-cpu-16-12-512-16-5-4.log & 
-kubectl create -f alexnet-gpu-16-12-512-16-5-4.yaml 2> alexnet-gpu-16-12-512-16-5-4.log & 
-kubectl create -f alexnet-cpu-16-12-512-16-5-5.yaml 2> alexnet-cpu-16-12-512-16-5-5.log & 
-kubectl create -f alexnet-gpu-16-12-512-16-5-5.yaml 2> alexnet-gpu-16-12-512-16-5-5.log & 
-kubectl create -f alexnet-cpu-16-12-512-16-5-6.yaml 2> alexnet-cpu-16-12-512-16-5-6.log & 
-kubectl create -f alexnet-gpu-16-12-512-16-5-6.yaml 2> alexnet-gpu-16-12-512-16-5-6.log & 
-kubectl create -f alexnet-cpu-16-12-512-16-5-7.yaml 2> alexnet-cpu-16-12-512-16-5-7.log & 
-kubectl create -f alexnet-gpu-16-12-512-16-5-7.yaml 2> alexnet-gpu-16-12-512-16-5-7.log & 
-kubectl create -f alexnet-cpu-16-12-512-16-5-8.yaml 2> alexnet-cpu-16-12-512-16-5-8.log & 
-kubectl create -f alexnet-gpu-16-12-512-16-5-8.yaml 2> alexnet-gpu-16-12-512-16-5-8.log & 
-kubectl create -f alexnet-cpu-16-12-512-16-5-9.yaml 2> alexnet-cpu-16-12-512-16-5-9.log & 
-kubectl create -f alexnet-gpu-16-12-512-16-5-9.yaml 2> alexnet-gpu-16-12-512-16-5-9.log & 
-kubectl create -f alexnet-cpu-16-12-512-16-5-10.yaml 2> alexnet-cpu-16-12-512-16-5-10.log & 
-kubectl create -f alexnet-gpu-16-12-512-16-5-10.yaml 2> alexnet-gpu-16-12-512-16-5-10.log & 
-kubectl create -f alexnet-cpu-16-12-512-16-10-0.yaml 2> alexnet-cpu-16-12-512-16-10-0.log & 
-kubectl create -f alexnet-gpu-16-12-512-16-10-0.yaml 2> alexnet-gpu-16-12-512-16-10-0.log & 
-kubectl create -f alexnet-cpu-16-12-512-16-10-1.yaml 2> alexnet-cpu-16-12-512-16-10-1.log & 
-kubectl create -f alexnet-gpu-16-12-512-16-10-1.yaml 2> alexnet-gpu-16-12-512-16-10-1.log & 
-kubectl create -f alexnet-cpu-16-12-512-16-10-2.yaml 2> alexnet-cpu-16-12-512-16-10-2.log & 
-kubectl create -f alexnet-gpu-16-12-512-16-10-2.yaml 2> alexnet-gpu-16-12-512-16-10-2.log & 
-kubectl create -f alexnet-cpu-16-12-512-16-10-3.yaml 2> alexnet-cpu-16-12-512-16-10-3.log & 
-kubectl create -f alexnet-gpu-16-12-512-16-10-3.yaml 2> alexnet-gpu-16-12-512-16-10-3.log & 
-kubectl create -f alexnet-cpu-16-12-512-16-10-4.yaml 2> alexnet-cpu-16-12-512-16-10-4.log & 
-kubectl create -f alexnet-gpu-16-12-512-16-10-4.yaml 2> alexnet-gpu-16-12-512-16-10-4.log & 
-kubectl create -f alexnet-cpu-16-12-512-16-10-5.yaml 2> alexnet-cpu-16-12-512-16-10-5.log & 
-kubectl create -f alexnet-gpu-16-12-512-16-10-5.yaml 2> alexnet-gpu-16-12-512-16-10-5.log & 
-kubectl create -f alexnet-cpu-16-12-512-16-10-6.yaml 2> alexnet-cpu-16-12-512-16-10-6.log & 
-kubectl create -f alexnet-gpu-16-12-512-16-10-6.yaml 2> alexnet-gpu-16-12-512-16-10-6.log & 
-kubectl create -f alexnet-cpu-16-12-512-16-10-7.yaml 2> alexnet-cpu-16-12-512-16-10-7.log & 
-kubectl create -f alexnet-gpu-16-12-512-16-10-7.yaml 2> alexnet-gpu-16-12-512-16-10-7.log & 
-kubectl create -f alexnet-cpu-16-12-512-16-10-8.yaml 2> alexnet-cpu-16-12-512-16-10-8.log & 
-kubectl create -f alexnet-gpu-16-12-512-16-10-8.yaml 2> alexnet-gpu-16-12-512-16-10-8.log & 
-kubectl create -f alexnet-cpu-16-12-512-16-10-9.yaml 2> alexnet-cpu-16-12-512-16-10-9.log & 
-kubectl create -f alexnet-gpu-16-12-512-16-10-9.yaml 2> alexnet-gpu-16-12-512-16-10-9.log & 
-kubectl create -f alexnet-cpu-16-12-512-16-10-10.yaml 2> alexnet-cpu-16-12-512-16-10-10.log & 
-kubectl create -f alexnet-gpu-16-12-512-16-10-10.yaml 2> alexnet-gpu-16-12-512-16-10-10.log & 
-kubectl create -f alexnet-cpu-16-12-512-16-15-0.yaml 2> alexnet-cpu-16-12-512-16-15-0.log & 
-kubectl create -f alexnet-gpu-16-12-512-16-15-0.yaml 2> alexnet-gpu-16-12-512-16-15-0.log & 
-kubectl create -f alexnet-cpu-16-12-512-16-15-1.yaml 2> alexnet-cpu-16-12-512-16-15-1.log & 
-kubectl create -f alexnet-gpu-16-12-512-16-15-1.yaml 2> alexnet-gpu-16-12-512-16-15-1.log & 
-kubectl create -f alexnet-cpu-16-12-512-16-15-2.yaml 2> alexnet-cpu-16-12-512-16-15-2.log & 
-kubectl create -f alexnet-gpu-16-12-512-16-15-2.yaml 2> alexnet-gpu-16-12-512-16-15-2.log & 
-kubectl create -f alexnet-cpu-16-12-512-16-15-3.yaml 2> alexnet-cpu-16-12-512-16-15-3.log & 
-kubectl create -f alexnet-gpu-16-12-512-16-15-3.yaml 2> alexnet-gpu-16-12-512-16-15-3.log & 
-kubectl create -f alexnet-cpu-16-12-512-16-15-4.yaml 2> alexnet-cpu-16-12-512-16-15-4.log & 
-kubectl create -f alexnet-gpu-16-12-512-16-15-4.yaml 2> alexnet-gpu-16-12-512-16-15-4.log & 
-kubectl create -f alexnet-cpu-16-12-512-16-15-5.yaml 2> alexnet-cpu-16-12-512-16-15-5.log & 
-kubectl create -f alexnet-gpu-16-12-512-16-15-5.yaml 2> alexnet-gpu-16-12-512-16-15-5.log & 
-kubectl create -f alexnet-cpu-16-12-512-16-15-6.yaml 2> alexnet-cpu-16-12-512-16-15-6.log & 
-kubectl create -f alexnet-gpu-16-12-512-16-15-6.yaml 2> alexnet-gpu-16-12-512-16-15-6.log & 
-kubectl create -f alexnet-cpu-16-12-512-16-15-7.yaml 2> alexnet-cpu-16-12-512-16-15-7.log & 
-kubectl create -f alexnet-gpu-16-12-512-16-15-7.yaml 2> alexnet-gpu-16-12-512-16-15-7.log & 
-kubectl create -f alexnet-cpu-16-12-512-16-15-8.yaml 2> alexnet-cpu-16-12-512-16-15-8.log & 
-kubectl create -f alexnet-gpu-16-12-512-16-15-8.yaml 2> alexnet-gpu-16-12-512-16-15-8.log & 
-kubectl create -f alexnet-cpu-16-12-512-16-15-9.yaml 2> alexnet-cpu-16-12-512-16-15-9.log & 
-kubectl create -f alexnet-gpu-16-12-512-16-15-9.yaml 2> alexnet-gpu-16-12-512-16-15-9.log & 
-kubectl create -f alexnet-cpu-16-12-512-16-15-10.yaml 2> alexnet-cpu-16-12-512-16-15-10.log & 
-kubectl create -f alexnet-gpu-16-12-512-16-15-10.yaml 2> alexnet-gpu-16-12-512-16-15-10.log & 
-kubectl create -f alexnet-cpu-16-12-512-16-20-0.yaml 2> alexnet-cpu-16-12-512-16-20-0.log & 
-kubectl create -f alexnet-gpu-16-12-512-16-20-0.yaml 2> alexnet-gpu-16-12-512-16-20-0.log & 
-kubectl create -f alexnet-cpu-16-12-512-16-20-1.yaml 2> alexnet-cpu-16-12-512-16-20-1.log & 
-kubectl create -f alexnet-gpu-16-12-512-16-20-1.yaml 2> alexnet-gpu-16-12-512-16-20-1.log & 
-kubectl create -f alexnet-cpu-16-12-512-16-20-2.yaml 2> alexnet-cpu-16-12-512-16-20-2.log & 
-kubectl create -f alexnet-gpu-16-12-512-16-20-2.yaml 2> alexnet-gpu-16-12-512-16-20-2.log & 
-kubectl create -f alexnet-cpu-16-12-512-16-20-3.yaml 2> alexnet-cpu-16-12-512-16-20-3.log & 
-kubectl create -f alexnet-gpu-16-12-512-16-20-3.yaml 2> alexnet-gpu-16-12-512-16-20-3.log & 
-kubectl create -f alexnet-cpu-16-12-512-16-20-4.yaml 2> alexnet-cpu-16-12-512-16-20-4.log & 
-kubectl create -f alexnet-gpu-16-12-512-16-20-4.yaml 2> alexnet-gpu-16-12-512-16-20-4.log & 
-kubectl create -f alexnet-cpu-16-12-512-16-20-5.yaml 2> alexnet-cpu-16-12-512-16-20-5.log & 
-kubectl create -f alexnet-gpu-16-12-512-16-20-5.yaml 2> alexnet-gpu-16-12-512-16-20-5.log & 
-kubectl create -f alexnet-cpu-16-12-512-16-20-6.yaml 2> alexnet-cpu-16-12-512-16-20-6.log & 
-kubectl create -f alexnet-gpu-16-12-512-16-20-6.yaml 2> alexnet-gpu-16-12-512-16-20-6.log & 
-kubectl create -f alexnet-cpu-16-12-512-16-20-7.yaml 2> alexnet-cpu-16-12-512-16-20-7.log & 
-kubectl create -f alexnet-gpu-16-12-512-16-20-7.yaml 2> alexnet-gpu-16-12-512-16-20-7.log & 
-kubectl create -f alexnet-cpu-16-12-512-16-20-8.yaml 2> alexnet-cpu-16-12-512-16-20-8.log & 
-kubectl create -f alexnet-gpu-16-12-512-16-20-8.yaml 2> alexnet-gpu-16-12-512-16-20-8.log & 
-kubectl create -f alexnet-cpu-16-12-512-16-20-9.yaml 2> alexnet-cpu-16-12-512-16-20-9.log & 
-kubectl create -f alexnet-gpu-16-12-512-16-20-9.yaml 2> alexnet-gpu-16-12-512-16-20-9.log & 
-kubectl create -f alexnet-cpu-16-12-512-16-20-10.yaml 2> alexnet-cpu-16-12-512-16-20-10.log & 
-kubectl create -f alexnet-gpu-16-12-512-16-20-10.yaml 2> alexnet-gpu-16-12-512-16-20-10.log & 
-kubectl create -f resnet50-cpu-16-12-64-16-2-0.yaml 2> resnet50-cpu-16-12-64-16-2-0.log & 
-kubectl create -f resnet50-gpu-16-12-64-16-2-0.yaml 2> resnet50-gpu-16-12-64-16-2-0.log & 
-kubectl create -f resnet50-cpu-16-12-64-16-2-1.yaml 2> resnet50-cpu-16-12-64-16-2-1.log & 
-kubectl create -f resnet50-gpu-16-12-64-16-2-1.yaml 2> resnet50-gpu-16-12-64-16-2-1.log & 
-kubectl create -f resnet50-cpu-16-12-64-16-2-2.yaml 2> resnet50-cpu-16-12-64-16-2-2.log & 
-kubectl create -f resnet50-gpu-16-12-64-16-2-2.yaml 2> resnet50-gpu-16-12-64-16-2-2.log & 
-kubectl create -f resnet50-cpu-16-12-64-16-2-3.yaml 2> resnet50-cpu-16-12-64-16-2-3.log & 
-kubectl create -f resnet50-gpu-16-12-64-16-2-3.yaml 2> resnet50-gpu-16-12-64-16-2-3.log & 
-kubectl create -f resnet50-cpu-16-12-64-16-2-4.yaml 2> resnet50-cpu-16-12-64-16-2-4.log & 
-kubectl create -f resnet50-gpu-16-12-64-16-2-4.yaml 2> resnet50-gpu-16-12-64-16-2-4.log & 
-kubectl create -f resnet50-cpu-16-12-64-16-2-5.yaml 2> resnet50-cpu-16-12-64-16-2-5.log & 
-kubectl create -f resnet50-gpu-16-12-64-16-2-5.yaml 2> resnet50-gpu-16-12-64-16-2-5.log & 
-kubectl create -f resnet50-cpu-16-12-64-16-2-6.yaml 2> resnet50-cpu-16-12-64-16-2-6.log & 
-kubectl create -f resnet50-gpu-16-12-64-16-2-6.yaml 2> resnet50-gpu-16-12-64-16-2-6.log & 
-kubectl create -f resnet50-cpu-16-12-64-16-2-7.yaml 2> resnet50-cpu-16-12-64-16-2-7.log & 
-kubectl create -f resnet50-gpu-16-12-64-16-2-7.yaml 2> resnet50-gpu-16-12-64-16-2-7.log & 
-kubectl create -f resnet50-cpu-16-12-64-16-2-8.yaml 2> resnet50-cpu-16-12-64-16-2-8.log & 
-kubectl create -f resnet50-gpu-16-12-64-16-2-8.yaml 2> resnet50-gpu-16-12-64-16-2-8.log & 
-kubectl create -f resnet50-cpu-16-12-64-16-2-9.yaml 2> resnet50-cpu-16-12-64-16-2-9.log & 
-kubectl create -f resnet50-gpu-16-12-64-16-2-9.yaml 2> resnet50-gpu-16-12-64-16-2-9.log & 
-kubectl create -f resnet50-cpu-16-12-64-16-2-10.yaml 2> resnet50-cpu-16-12-64-16-2-10.log & 
-kubectl create -f resnet50-gpu-16-12-64-16-2-10.yaml 2> resnet50-gpu-16-12-64-16-2-10.log & 
-kubectl create -f resnet50-cpu-16-12-64-16-5-0.yaml 2> resnet50-cpu-16-12-64-16-5-0.log & 
-kubectl create -f resnet50-gpu-16-12-64-16-5-0.yaml 2> resnet50-gpu-16-12-64-16-5-0.log & 
-kubectl create -f resnet50-cpu-16-12-64-16-5-1.yaml 2> resnet50-cpu-16-12-64-16-5-1.log & 
-kubectl create -f resnet50-gpu-16-12-64-16-5-1.yaml 2> resnet50-gpu-16-12-64-16-5-1.log & 
-kubectl create -f resnet50-cpu-16-12-64-16-5-2.yaml 2> resnet50-cpu-16-12-64-16-5-2.log & 
-kubectl create -f resnet50-gpu-16-12-64-16-5-2.yaml 2> resnet50-gpu-16-12-64-16-5-2.log & 
-kubectl create -f resnet50-cpu-16-12-64-16-5-3.yaml 2> resnet50-cpu-16-12-64-16-5-3.log & 
-kubectl create -f resnet50-gpu-16-12-64-16-5-3.yaml 2> resnet50-gpu-16-12-64-16-5-3.log & 
-kubectl create -f resnet50-cpu-16-12-64-16-5-4.yaml 2> resnet50-cpu-16-12-64-16-5-4.log & 
-kubectl create -f resnet50-gpu-16-12-64-16-5-4.yaml 2> resnet50-gpu-16-12-64-16-5-4.log & 
-kubectl create -f resnet50-cpu-16-12-64-16-5-5.yaml 2> resnet50-cpu-16-12-64-16-5-5.log & 
-kubectl create -f resnet50-gpu-16-12-64-16-5-5.yaml 2> resnet50-gpu-16-12-64-16-5-5.log & 
-kubectl create -f resnet50-cpu-16-12-64-16-5-6.yaml 2> resnet50-cpu-16-12-64-16-5-6.log & 
-kubectl create -f resnet50-gpu-16-12-64-16-5-6.yaml 2> resnet50-gpu-16-12-64-16-5-6.log & 
-kubectl create -f resnet50-cpu-16-12-64-16-5-7.yaml 2> resnet50-cpu-16-12-64-16-5-7.log & 
-kubectl create -f resnet50-gpu-16-12-64-16-5-7.yaml 2> resnet50-gpu-16-12-64-16-5-7.log & 
-kubectl create -f resnet50-cpu-16-12-64-16-5-8.yaml 2> resnet50-cpu-16-12-64-16-5-8.log & 
-kubectl create -f resnet50-gpu-16-12-64-16-5-8.yaml 2> resnet50-gpu-16-12-64-16-5-8.log & 
-kubectl create -f resnet50-cpu-16-12-64-16-5-9.yaml 2> resnet50-cpu-16-12-64-16-5-9.log & 
-kubectl create -f resnet50-gpu-16-12-64-16-5-9.yaml 2> resnet50-gpu-16-12-64-16-5-9.log & 
-kubectl create -f resnet50-cpu-16-12-64-16-5-10.yaml 2> resnet50-cpu-16-12-64-16-5-10.log & 
-kubectl create -f resnet50-gpu-16-12-64-16-5-10.yaml 2> resnet50-gpu-16-12-64-16-5-10.log & 
-kubectl create -f resnet50-cpu-16-12-64-16-10-0.yaml 2> resnet50-cpu-16-12-64-16-10-0.log & 
-kubectl create -f resnet50-gpu-16-12-64-16-10-0.yaml 2> resnet50-gpu-16-12-64-16-10-0.log & 
-kubectl create -f resnet50-cpu-16-12-64-16-10-1.yaml 2> resnet50-cpu-16-12-64-16-10-1.log & 
-kubectl create -f resnet50-gpu-16-12-64-16-10-1.yaml 2> resnet50-gpu-16-12-64-16-10-1.log & 
-kubectl create -f resnet50-cpu-16-12-64-16-10-2.yaml 2> resnet50-cpu-16-12-64-16-10-2.log & 
-kubectl create -f resnet50-gpu-16-12-64-16-10-2.yaml 2> resnet50-gpu-16-12-64-16-10-2.log & 
-kubectl create -f resnet50-cpu-16-12-64-16-10-3.yaml 2> resnet50-cpu-16-12-64-16-10-3.log & 
-kubectl create -f resnet50-gpu-16-12-64-16-10-3.yaml 2> resnet50-gpu-16-12-64-16-10-3.log & 
-kubectl create -f resnet50-cpu-16-12-64-16-10-4.yaml 2> resnet50-cpu-16-12-64-16-10-4.log & 
-kubectl create -f resnet50-gpu-16-12-64-16-10-4.yaml 2> resnet50-gpu-16-12-64-16-10-4.log & 
-kubectl create -f resnet50-cpu-16-12-64-16-10-5.yaml 2> resnet50-cpu-16-12-64-16-10-5.log & 
-kubectl create -f resnet50-gpu-16-12-64-16-10-5.yaml 2> resnet50-gpu-16-12-64-16-10-5.log & 
-kubectl create -f resnet50-cpu-16-12-64-16-10-6.yaml 2> resnet50-cpu-16-12-64-16-10-6.log & 
-kubectl create -f resnet50-gpu-16-12-64-16-10-6.yaml 2> resnet50-gpu-16-12-64-16-10-6.log & 
-kubectl create -f resnet50-cpu-16-12-64-16-10-7.yaml 2> resnet50-cpu-16-12-64-16-10-7.log & 
-kubectl create -f resnet50-gpu-16-12-64-16-10-7.yaml 2> resnet50-gpu-16-12-64-16-10-7.log & 
-kubectl create -f resnet50-cpu-16-12-64-16-10-8.yaml 2> resnet50-cpu-16-12-64-16-10-8.log & 
-kubectl create -f resnet50-gpu-16-12-64-16-10-8.yaml 2> resnet50-gpu-16-12-64-16-10-8.log & 
-kubectl create -f resnet50-cpu-16-12-64-16-10-9.yaml 2> resnet50-cpu-16-12-64-16-10-9.log & 
-kubectl create -f resnet50-gpu-16-12-64-16-10-9.yaml 2> resnet50-gpu-16-12-64-16-10-9.log & 
-kubectl create -f resnet50-cpu-16-12-64-16-10-10.yaml 2> resnet50-cpu-16-12-64-16-10-10.log & 
-kubectl create -f resnet50-gpu-16-12-64-16-10-10.yaml 2> resnet50-gpu-16-12-64-16-10-10.log & 
-kubectl create -f resnet50-cpu-16-12-64-16-15-0.yaml 2> resnet50-cpu-16-12-64-16-15-0.log & 
-kubectl create -f resnet50-gpu-16-12-64-16-15-0.yaml 2> resnet50-gpu-16-12-64-16-15-0.log & 
-kubectl create -f resnet50-cpu-16-12-64-16-15-1.yaml 2> resnet50-cpu-16-12-64-16-15-1.log & 
-kubectl create -f resnet50-gpu-16-12-64-16-15-1.yaml 2> resnet50-gpu-16-12-64-16-15-1.log & 
-kubectl create -f resnet50-cpu-16-12-64-16-15-2.yaml 2> resnet50-cpu-16-12-64-16-15-2.log & 
-kubectl create -f resnet50-gpu-16-12-64-16-15-2.yaml 2> resnet50-gpu-16-12-64-16-15-2.log & 
-kubectl create -f resnet50-cpu-16-12-64-16-15-3.yaml 2> resnet50-cpu-16-12-64-16-15-3.log & 
-kubectl create -f resnet50-gpu-16-12-64-16-15-3.yaml 2> resnet50-gpu-16-12-64-16-15-3.log & 
-kubectl create -f resnet50-cpu-16-12-64-16-15-4.yaml 2> resnet50-cpu-16-12-64-16-15-4.log & 
-kubectl create -f resnet50-gpu-16-12-64-16-15-4.yaml 2> resnet50-gpu-16-12-64-16-15-4.log & 
-kubectl create -f resnet50-cpu-16-12-64-16-15-5.yaml 2> resnet50-cpu-16-12-64-16-15-5.log & 
-kubectl create -f resnet50-gpu-16-12-64-16-15-5.yaml 2> resnet50-gpu-16-12-64-16-15-5.log & 
-kubectl create -f resnet50-cpu-16-12-64-16-15-6.yaml 2> resnet50-cpu-16-12-64-16-15-6.log & 
-kubectl create -f resnet50-gpu-16-12-64-16-15-6.yaml 2> resnet50-gpu-16-12-64-16-15-6.log & 
-kubectl create -f resnet50-cpu-16-12-64-16-15-7.yaml 2> resnet50-cpu-16-12-64-16-15-7.log & 
-kubectl create -f resnet50-gpu-16-12-64-16-15-7.yaml 2> resnet50-gpu-16-12-64-16-15-7.log & 
-kubectl create -f resnet50-cpu-16-12-64-16-15-8.yaml 2> resnet50-cpu-16-12-64-16-15-8.log & 
-kubectl create -f resnet50-gpu-16-12-64-16-15-8.yaml 2> resnet50-gpu-16-12-64-16-15-8.log & 
-kubectl create -f resnet50-cpu-16-12-64-16-15-9.yaml 2> resnet50-cpu-16-12-64-16-15-9.log & 
-kubectl create -f resnet50-gpu-16-12-64-16-15-9.yaml 2> resnet50-gpu-16-12-64-16-15-9.log & 
-kubectl create -f resnet50-cpu-16-12-64-16-15-10.yaml 2> resnet50-cpu-16-12-64-16-15-10.log & 
-kubectl create -f resnet50-gpu-16-12-64-16-15-10.yaml 2> resnet50-gpu-16-12-64-16-15-10.log & 
-kubectl create -f resnet50-cpu-16-12-64-16-20-0.yaml 2> resnet50-cpu-16-12-64-16-20-0.log & 
-kubectl create -f resnet50-gpu-16-12-64-16-20-0.yaml 2> resnet50-gpu-16-12-64-16-20-0.log & 
-kubectl create -f resnet50-cpu-16-12-64-16-20-1.yaml 2> resnet50-cpu-16-12-64-16-20-1.log & 
-kubectl create -f resnet50-gpu-16-12-64-16-20-1.yaml 2> resnet50-gpu-16-12-64-16-20-1.log & 
-kubectl create -f resnet50-cpu-16-12-64-16-20-2.yaml 2> resnet50-cpu-16-12-64-16-20-2.log & 
-kubectl create -f resnet50-gpu-16-12-64-16-20-2.yaml 2> resnet50-gpu-16-12-64-16-20-2.log & 
-kubectl create -f resnet50-cpu-16-12-64-16-20-3.yaml 2> resnet50-cpu-16-12-64-16-20-3.log & 
-kubectl create -f resnet50-gpu-16-12-64-16-20-3.yaml 2> resnet50-gpu-16-12-64-16-20-3.log & 
-kubectl create -f resnet50-cpu-16-12-64-16-20-4.yaml 2> resnet50-cpu-16-12-64-16-20-4.log & 
-kubectl create -f resnet50-gpu-16-12-64-16-20-4.yaml 2> resnet50-gpu-16-12-64-16-20-4.log & 
-kubectl create -f resnet50-cpu-16-12-64-16-20-5.yaml 2> resnet50-cpu-16-12-64-16-20-5.log & 
-kubectl create -f resnet50-gpu-16-12-64-16-20-5.yaml 2> resnet50-gpu-16-12-64-16-20-5.log & 
-kubectl create -f resnet50-cpu-16-12-64-16-20-6.yaml 2> resnet50-cpu-16-12-64-16-20-6.log & 
-kubectl create -f resnet50-gpu-16-12-64-16-20-6.yaml 2> resnet50-gpu-16-12-64-16-20-6.log & 
-kubectl create -f resnet50-cpu-16-12-64-16-20-7.yaml 2> resnet50-cpu-16-12-64-16-20-7.log & 
-kubectl create -f resnet50-gpu-16-12-64-16-20-7.yaml 2> resnet50-gpu-16-12-64-16-20-7.log & 
-kubectl create -f resnet50-cpu-16-12-64-16-20-8.yaml 2> resnet50-cpu-16-12-64-16-20-8.log & 
-kubectl create -f resnet50-gpu-16-12-64-16-20-8.yaml 2> resnet50-gpu-16-12-64-16-20-8.log & 
-kubectl create -f resnet50-cpu-16-12-64-16-20-9.yaml 2> resnet50-cpu-16-12-64-16-20-9.log & 
-kubectl create -f resnet50-gpu-16-12-64-16-20-9.yaml 2> resnet50-gpu-16-12-64-16-20-9.log & 
-kubectl create -f resnet50-cpu-16-12-64-16-20-10.yaml 2> resnet50-cpu-16-12-64-16-20-10.log & 
-kubectl create -f resnet50-gpu-16-12-64-16-20-10.yaml 2> resnet50-gpu-16-12-64-16-20-10.log & 
-kubectl create -f inception3-cpu-16-12-64-16-2-0.yaml 2> inception3-cpu-16-12-64-16-2-0.log & 
-kubectl create -f inception3-gpu-16-12-64-16-2-0.yaml 2> inception3-gpu-16-12-64-16-2-0.log & 
-kubectl create -f inception3-cpu-16-12-64-16-2-1.yaml 2> inception3-cpu-16-12-64-16-2-1.log & 
-kubectl create -f inception3-gpu-16-12-64-16-2-1.yaml 2> inception3-gpu-16-12-64-16-2-1.log & 
-kubectl create -f inception3-cpu-16-12-64-16-2-2.yaml 2> inception3-cpu-16-12-64-16-2-2.log & 
-kubectl create -f inception3-gpu-16-12-64-16-2-2.yaml 2> inception3-gpu-16-12-64-16-2-2.log & 
-kubectl create -f inception3-cpu-16-12-64-16-2-3.yaml 2> inception3-cpu-16-12-64-16-2-3.log & 
-kubectl create -f inception3-gpu-16-12-64-16-2-3.yaml 2> inception3-gpu-16-12-64-16-2-3.log & 
-kubectl create -f inception3-cpu-16-12-64-16-2-4.yaml 2> inception3-cpu-16-12-64-16-2-4.log & 
-kubectl create -f inception3-gpu-16-12-64-16-2-4.yaml 2> inception3-gpu-16-12-64-16-2-4.log & 
-kubectl create -f inception3-cpu-16-12-64-16-2-5.yaml 2> inception3-cpu-16-12-64-16-2-5.log & 
-kubectl create -f inception3-gpu-16-12-64-16-2-5.yaml 2> inception3-gpu-16-12-64-16-2-5.log & 
-kubectl create -f inception3-cpu-16-12-64-16-2-6.yaml 2> inception3-cpu-16-12-64-16-2-6.log & 
-kubectl create -f inception3-gpu-16-12-64-16-2-6.yaml 2> inception3-gpu-16-12-64-16-2-6.log & 
-kubectl create -f inception3-cpu-16-12-64-16-2-7.yaml 2> inception3-cpu-16-12-64-16-2-7.log & 
-kubectl create -f inception3-gpu-16-12-64-16-2-7.yaml 2> inception3-gpu-16-12-64-16-2-7.log & 
-kubectl create -f inception3-cpu-16-12-64-16-2-8.yaml 2> inception3-cpu-16-12-64-16-2-8.log & 
-kubectl create -f inception3-gpu-16-12-64-16-2-8.yaml 2> inception3-gpu-16-12-64-16-2-8.log & 
-kubectl create -f inception3-cpu-16-12-64-16-2-9.yaml 2> inception3-cpu-16-12-64-16-2-9.log & 
-kubectl create -f inception3-gpu-16-12-64-16-2-9.yaml 2> inception3-gpu-16-12-64-16-2-9.log & 
-kubectl create -f inception3-cpu-16-12-64-16-2-10.yaml 2> inception3-cpu-16-12-64-16-2-10.log & 
-kubectl create -f inception3-gpu-16-12-64-16-2-10.yaml 2> inception3-gpu-16-12-64-16-2-10.log & 
-kubectl create -f inception3-cpu-16-12-64-16-5-0.yaml 2> inception3-cpu-16-12-64-16-5-0.log & 
-kubectl create -f inception3-gpu-16-12-64-16-5-0.yaml 2> inception3-gpu-16-12-64-16-5-0.log & 
-kubectl create -f inception3-cpu-16-12-64-16-5-1.yaml 2> inception3-cpu-16-12-64-16-5-1.log & 
-kubectl create -f inception3-gpu-16-12-64-16-5-1.yaml 2> inception3-gpu-16-12-64-16-5-1.log & 
-kubectl create -f inception3-cpu-16-12-64-16-5-2.yaml 2> inception3-cpu-16-12-64-16-5-2.log & 
-kubectl create -f inception3-gpu-16-12-64-16-5-2.yaml 2> inception3-gpu-16-12-64-16-5-2.log & 
-kubectl create -f inception3-cpu-16-12-64-16-5-3.yaml 2> inception3-cpu-16-12-64-16-5-3.log & 
-kubectl create -f inception3-gpu-16-12-64-16-5-3.yaml 2> inception3-gpu-16-12-64-16-5-3.log & 
-kubectl create -f inception3-cpu-16-12-64-16-5-4.yaml 2> inception3-cpu-16-12-64-16-5-4.log & 
-kubectl create -f inception3-gpu-16-12-64-16-5-4.yaml 2> inception3-gpu-16-12-64-16-5-4.log & 
-kubectl create -f inception3-cpu-16-12-64-16-5-5.yaml 2> inception3-cpu-16-12-64-16-5-5.log & 
-kubectl create -f inception3-gpu-16-12-64-16-5-5.yaml 2> inception3-gpu-16-12-64-16-5-5.log & 
-kubectl create -f inception3-cpu-16-12-64-16-5-6.yaml 2> inception3-cpu-16-12-64-16-5-6.log & 
-kubectl create -f inception3-gpu-16-12-64-16-5-6.yaml 2> inception3-gpu-16-12-64-16-5-6.log & 
-kubectl create -f inception3-cpu-16-12-64-16-5-7.yaml 2> inception3-cpu-16-12-64-16-5-7.log & 
-kubectl create -f inception3-gpu-16-12-64-16-5-7.yaml 2> inception3-gpu-16-12-64-16-5-7.log & 
-kubectl create -f inception3-cpu-16-12-64-16-5-8.yaml 2> inception3-cpu-16-12-64-16-5-8.log & 
-kubectl create -f inception3-gpu-16-12-64-16-5-8.yaml 2> inception3-gpu-16-12-64-16-5-8.log & 
-kubectl create -f inception3-cpu-16-12-64-16-5-9.yaml 2> inception3-cpu-16-12-64-16-5-9.log & 
-kubectl create -f inception3-gpu-16-12-64-16-5-9.yaml 2> inception3-gpu-16-12-64-16-5-9.log & 
-kubectl create -f inception3-cpu-16-12-64-16-5-10.yaml 2> inception3-cpu-16-12-64-16-5-10.log & 
-kubectl create -f inception3-gpu-16-12-64-16-5-10.yaml 2> inception3-gpu-16-12-64-16-5-10.log & 
-kubectl create -f inception3-cpu-16-12-64-16-10-0.yaml 2> inception3-cpu-16-12-64-16-10-0.log & 
-kubectl create -f inception3-gpu-16-12-64-16-10-0.yaml 2> inception3-gpu-16-12-64-16-10-0.log & 
-kubectl create -f inception3-cpu-16-12-64-16-10-1.yaml 2> inception3-cpu-16-12-64-16-10-1.log & 
-kubectl create -f inception3-gpu-16-12-64-16-10-1.yaml 2> inception3-gpu-16-12-64-16-10-1.log & 
-kubectl create -f inception3-cpu-16-12-64-16-10-2.yaml 2> inception3-cpu-16-12-64-16-10-2.log & 
-kubectl create -f inception3-gpu-16-12-64-16-10-2.yaml 2> inception3-gpu-16-12-64-16-10-2.log & 
-kubectl create -f inception3-cpu-16-12-64-16-10-3.yaml 2> inception3-cpu-16-12-64-16-10-3.log & 
-kubectl create -f inception3-gpu-16-12-64-16-10-3.yaml 2> inception3-gpu-16-12-64-16-10-3.log & 
-kubectl create -f inception3-cpu-16-12-64-16-10-4.yaml 2> inception3-cpu-16-12-64-16-10-4.log & 
-kubectl create -f inception3-gpu-16-12-64-16-10-4.yaml 2> inception3-gpu-16-12-64-16-10-4.log & 
-kubectl create -f inception3-cpu-16-12-64-16-10-5.yaml 2> inception3-cpu-16-12-64-16-10-5.log & 
-kubectl create -f inception3-gpu-16-12-64-16-10-5.yaml 2> inception3-gpu-16-12-64-16-10-5.log & 
-kubectl create -f inception3-cpu-16-12-64-16-10-6.yaml 2> inception3-cpu-16-12-64-16-10-6.log & 
-kubectl create -f inception3-gpu-16-12-64-16-10-6.yaml 2> inception3-gpu-16-12-64-16-10-6.log & 
-kubectl create -f inception3-cpu-16-12-64-16-10-7.yaml 2> inception3-cpu-16-12-64-16-10-7.log & 
-kubectl create -f inception3-gpu-16-12-64-16-10-7.yaml 2> inception3-gpu-16-12-64-16-10-7.log & 
-kubectl create -f inception3-cpu-16-12-64-16-10-8.yaml 2> inception3-cpu-16-12-64-16-10-8.log & 
-kubectl create -f inception3-gpu-16-12-64-16-10-8.yaml 2> inception3-gpu-16-12-64-16-10-8.log & 
-kubectl create -f inception3-cpu-16-12-64-16-10-9.yaml 2> inception3-cpu-16-12-64-16-10-9.log & 
-kubectl create -f inception3-gpu-16-12-64-16-10-9.yaml 2> inception3-gpu-16-12-64-16-10-9.log & 
-kubectl create -f inception3-cpu-16-12-64-16-10-10.yaml 2> inception3-cpu-16-12-64-16-10-10.log & 
-kubectl create -f inception3-gpu-16-12-64-16-10-10.yaml 2> inception3-gpu-16-12-64-16-10-10.log & 
-kubectl create -f inception3-cpu-16-12-64-16-15-0.yaml 2> inception3-cpu-16-12-64-16-15-0.log & 
-kubectl create -f inception3-gpu-16-12-64-16-15-0.yaml 2> inception3-gpu-16-12-64-16-15-0.log & 
-kubectl create -f inception3-cpu-16-12-64-16-15-1.yaml 2> inception3-cpu-16-12-64-16-15-1.log & 
-kubectl create -f inception3-gpu-16-12-64-16-15-1.yaml 2> inception3-gpu-16-12-64-16-15-1.log & 
-kubectl create -f inception3-cpu-16-12-64-16-15-2.yaml 2> inception3-cpu-16-12-64-16-15-2.log & 
-kubectl create -f inception3-gpu-16-12-64-16-15-2.yaml 2> inception3-gpu-16-12-64-16-15-2.log & 
-kubectl create -f inception3-cpu-16-12-64-16-15-3.yaml 2> inception3-cpu-16-12-64-16-15-3.log & 
-kubectl create -f inception3-gpu-16-12-64-16-15-3.yaml 2> inception3-gpu-16-12-64-16-15-3.log & 
-kubectl create -f inception3-cpu-16-12-64-16-15-4.yaml 2> inception3-cpu-16-12-64-16-15-4.log & 
-kubectl create -f inception3-gpu-16-12-64-16-15-4.yaml 2> inception3-gpu-16-12-64-16-15-4.log & 
-kubectl create -f inception3-cpu-16-12-64-16-15-5.yaml 2> inception3-cpu-16-12-64-16-15-5.log & 
-kubectl create -f inception3-gpu-16-12-64-16-15-5.yaml 2> inception3-gpu-16-12-64-16-15-5.log & 
-kubectl create -f inception3-cpu-16-12-64-16-15-6.yaml 2> inception3-cpu-16-12-64-16-15-6.log & 
-kubectl create -f inception3-gpu-16-12-64-16-15-6.yaml 2> inception3-gpu-16-12-64-16-15-6.log & 
-kubectl create -f inception3-cpu-16-12-64-16-15-7.yaml 2> inception3-cpu-16-12-64-16-15-7.log & 
-kubectl create -f inception3-gpu-16-12-64-16-15-7.yaml 2> inception3-gpu-16-12-64-16-15-7.log & 
-kubectl create -f inception3-cpu-16-12-64-16-15-8.yaml 2> inception3-cpu-16-12-64-16-15-8.log & 
-kubectl create -f inception3-gpu-16-12-64-16-15-8.yaml 2> inception3-gpu-16-12-64-16-15-8.log & 
-kubectl create -f inception3-cpu-16-12-64-16-15-9.yaml 2> inception3-cpu-16-12-64-16-15-9.log & 
-kubectl create -f inception3-gpu-16-12-64-16-15-9.yaml 2> inception3-gpu-16-12-64-16-15-9.log & 
-kubectl create -f inception3-cpu-16-12-64-16-15-10.yaml 2> inception3-cpu-16-12-64-16-15-10.log & 
-kubectl create -f inception3-gpu-16-12-64-16-15-10.yaml 2> inception3-gpu-16-12-64-16-15-10.log & 
-kubectl create -f inception3-cpu-16-12-64-16-20-0.yaml 2> inception3-cpu-16-12-64-16-20-0.log & 
-kubectl create -f inception3-gpu-16-12-64-16-20-0.yaml 2> inception3-gpu-16-12-64-16-20-0.log & 
-kubectl create -f inception3-cpu-16-12-64-16-20-1.yaml 2> inception3-cpu-16-12-64-16-20-1.log & 
-kubectl create -f inception3-gpu-16-12-64-16-20-1.yaml 2> inception3-gpu-16-12-64-16-20-1.log & 
-kubectl create -f inception3-cpu-16-12-64-16-20-2.yaml 2> inception3-cpu-16-12-64-16-20-2.log & 
-kubectl create -f inception3-gpu-16-12-64-16-20-2.yaml 2> inception3-gpu-16-12-64-16-20-2.log & 
-kubectl create -f inception3-cpu-16-12-64-16-20-3.yaml 2> inception3-cpu-16-12-64-16-20-3.log & 
-kubectl create -f inception3-gpu-16-12-64-16-20-3.yaml 2> inception3-gpu-16-12-64-16-20-3.log & 
-kubectl create -f inception3-cpu-16-12-64-16-20-4.yaml 2> inception3-cpu-16-12-64-16-20-4.log & 
-kubectl create -f inception3-gpu-16-12-64-16-20-4.yaml 2> inception3-gpu-16-12-64-16-20-4.log & 
-kubectl create -f inception3-cpu-16-12-64-16-20-5.yaml 2> inception3-cpu-16-12-64-16-20-5.log & 
-kubectl create -f inception3-gpu-16-12-64-16-20-5.yaml 2> inception3-gpu-16-12-64-16-20-5.log & 
-kubectl create -f inception3-cpu-16-12-64-16-20-6.yaml 2> inception3-cpu-16-12-64-16-20-6.log & 
-kubectl create -f inception3-gpu-16-12-64-16-20-6.yaml 2> inception3-gpu-16-12-64-16-20-6.log & 
-kubectl create -f inception3-cpu-16-12-64-16-20-7.yaml 2> inception3-cpu-16-12-64-16-20-7.log & 
-kubectl create -f inception3-gpu-16-12-64-16-20-7.yaml 2> inception3-gpu-16-12-64-16-20-7.log & 
-kubectl create -f inception3-cpu-16-12-64-16-20-8.yaml 2> inception3-cpu-16-12-64-16-20-8.log & 
-kubectl create -f inception3-gpu-16-12-64-16-20-8.yaml 2> inception3-gpu-16-12-64-16-20-8.log & 
-kubectl create -f inception3-cpu-16-12-64-16-20-9.yaml 2> inception3-cpu-16-12-64-16-20-9.log & 
-kubectl create -f inception3-gpu-16-12-64-16-20-9.yaml 2> inception3-gpu-16-12-64-16-20-9.log & 
-kubectl create -f inception3-cpu-16-12-64-16-20-10.yaml 2> inception3-cpu-16-12-64-16-20-10.log & 
-kubectl create -f inception3-gpu-16-12-64-16-20-10.yaml 2> inception3-gpu-16-12-64-16-20-10.log & 
+kubectl create -f vgg16-cpu-16-12-32-16-2-0.yaml 2> vgg16-cpu-16-12-32-16-2-0.log 
+kubectl create -f vgg16-gpu-16-12-32-16-2-0.yaml 2> vgg16-gpu-16-12-32-16-2-0.log 
+kubectl create -f vgg16-cpu-16-12-32-16-2-1.yaml 2> vgg16-cpu-16-12-32-16-2-1.log 
+kubectl create -f vgg16-gpu-16-12-32-16-2-1.yaml 2> vgg16-gpu-16-12-32-16-2-1.log 
+kubectl create -f vgg16-cpu-16-12-32-16-2-2.yaml 2> vgg16-cpu-16-12-32-16-2-2.log 
+kubectl create -f vgg16-gpu-16-12-32-16-2-2.yaml 2> vgg16-gpu-16-12-32-16-2-2.log 
+kubectl create -f vgg16-cpu-16-12-32-16-2-3.yaml 2> vgg16-cpu-16-12-32-16-2-3.log 
+kubectl create -f vgg16-gpu-16-12-32-16-2-3.yaml 2> vgg16-gpu-16-12-32-16-2-3.log 
+kubectl create -f vgg16-cpu-16-12-32-16-2-4.yaml 2> vgg16-cpu-16-12-32-16-2-4.log 
+kubectl create -f vgg16-gpu-16-12-32-16-2-4.yaml 2> vgg16-gpu-16-12-32-16-2-4.log 
+kubectl create -f vgg16-cpu-16-12-32-16-2-5.yaml 2> vgg16-cpu-16-12-32-16-2-5.log 
+kubectl create -f vgg16-gpu-16-12-32-16-2-5.yaml 2> vgg16-gpu-16-12-32-16-2-5.log 
+kubectl create -f vgg16-cpu-16-12-32-16-2-6.yaml 2> vgg16-cpu-16-12-32-16-2-6.log 
+kubectl create -f vgg16-gpu-16-12-32-16-2-6.yaml 2> vgg16-gpu-16-12-32-16-2-6.log 
+kubectl create -f vgg16-cpu-16-12-32-16-2-7.yaml 2> vgg16-cpu-16-12-32-16-2-7.log 
+kubectl create -f vgg16-gpu-16-12-32-16-2-7.yaml 2> vgg16-gpu-16-12-32-16-2-7.log 
+kubectl create -f vgg16-cpu-16-12-32-16-2-8.yaml 2> vgg16-cpu-16-12-32-16-2-8.log 
+kubectl create -f vgg16-gpu-16-12-32-16-2-8.yaml 2> vgg16-gpu-16-12-32-16-2-8.log 
+kubectl create -f vgg16-cpu-16-12-32-16-2-9.yaml 2> vgg16-cpu-16-12-32-16-2-9.log 
+kubectl create -f vgg16-gpu-16-12-32-16-2-9.yaml 2> vgg16-gpu-16-12-32-16-2-9.log 
+kubectl create -f vgg16-cpu-16-12-32-16-2-10.yaml 2> vgg16-cpu-16-12-32-16-2-10.log 
+kubectl create -f vgg16-gpu-16-12-32-16-2-10.yaml 2> vgg16-gpu-16-12-32-16-2-10.log 
+kubectl create -f vgg16-cpu-16-12-32-16-5-0.yaml 2> vgg16-cpu-16-12-32-16-5-0.log 
+kubectl create -f vgg16-gpu-16-12-32-16-5-0.yaml 2> vgg16-gpu-16-12-32-16-5-0.log 
+kubectl create -f vgg16-cpu-16-12-32-16-5-1.yaml 2> vgg16-cpu-16-12-32-16-5-1.log 
+kubectl create -f vgg16-gpu-16-12-32-16-5-1.yaml 2> vgg16-gpu-16-12-32-16-5-1.log 
+kubectl create -f vgg16-cpu-16-12-32-16-5-2.yaml 2> vgg16-cpu-16-12-32-16-5-2.log 
+kubectl create -f vgg16-gpu-16-12-32-16-5-2.yaml 2> vgg16-gpu-16-12-32-16-5-2.log 
+kubectl create -f vgg16-cpu-16-12-32-16-5-3.yaml 2> vgg16-cpu-16-12-32-16-5-3.log 
+kubectl create -f vgg16-gpu-16-12-32-16-5-3.yaml 2> vgg16-gpu-16-12-32-16-5-3.log 
+kubectl create -f vgg16-cpu-16-12-32-16-5-4.yaml 2> vgg16-cpu-16-12-32-16-5-4.log 
+kubectl create -f vgg16-gpu-16-12-32-16-5-4.yaml 2> vgg16-gpu-16-12-32-16-5-4.log 
+kubectl create -f vgg16-cpu-16-12-32-16-5-5.yaml 2> vgg16-cpu-16-12-32-16-5-5.log 
+kubectl create -f vgg16-gpu-16-12-32-16-5-5.yaml 2> vgg16-gpu-16-12-32-16-5-5.log 
+kubectl create -f vgg16-cpu-16-12-32-16-5-6.yaml 2> vgg16-cpu-16-12-32-16-5-6.log 
+kubectl create -f vgg16-gpu-16-12-32-16-5-6.yaml 2> vgg16-gpu-16-12-32-16-5-6.log 
+kubectl create -f vgg16-cpu-16-12-32-16-5-7.yaml 2> vgg16-cpu-16-12-32-16-5-7.log 
+kubectl create -f vgg16-gpu-16-12-32-16-5-7.yaml 2> vgg16-gpu-16-12-32-16-5-7.log 
+kubectl create -f vgg16-cpu-16-12-32-16-5-8.yaml 2> vgg16-cpu-16-12-32-16-5-8.log 
+kubectl create -f vgg16-gpu-16-12-32-16-5-8.yaml 2> vgg16-gpu-16-12-32-16-5-8.log 
+kubectl create -f vgg16-cpu-16-12-32-16-5-9.yaml 2> vgg16-cpu-16-12-32-16-5-9.log 
+kubectl create -f vgg16-gpu-16-12-32-16-5-9.yaml 2> vgg16-gpu-16-12-32-16-5-9.log 
+kubectl create -f vgg16-cpu-16-12-32-16-5-10.yaml 2> vgg16-cpu-16-12-32-16-5-10.log 
+kubectl create -f vgg16-gpu-16-12-32-16-5-10.yaml 2> vgg16-gpu-16-12-32-16-5-10.log 
+kubectl create -f vgg16-cpu-16-12-32-16-10-0.yaml 2> vgg16-cpu-16-12-32-16-10-0.log 
+kubectl create -f vgg16-gpu-16-12-32-16-10-0.yaml 2> vgg16-gpu-16-12-32-16-10-0.log 
+kubectl create -f vgg16-cpu-16-12-32-16-10-1.yaml 2> vgg16-cpu-16-12-32-16-10-1.log 
+kubectl create -f vgg16-gpu-16-12-32-16-10-1.yaml 2> vgg16-gpu-16-12-32-16-10-1.log 
+kubectl create -f vgg16-cpu-16-12-32-16-10-2.yaml 2> vgg16-cpu-16-12-32-16-10-2.log 
+kubectl create -f vgg16-gpu-16-12-32-16-10-2.yaml 2> vgg16-gpu-16-12-32-16-10-2.log 
+kubectl create -f vgg16-cpu-16-12-32-16-10-3.yaml 2> vgg16-cpu-16-12-32-16-10-3.log 
+kubectl create -f vgg16-gpu-16-12-32-16-10-3.yaml 2> vgg16-gpu-16-12-32-16-10-3.log 
+kubectl create -f vgg16-cpu-16-12-32-16-10-4.yaml 2> vgg16-cpu-16-12-32-16-10-4.log 
+kubectl create -f vgg16-gpu-16-12-32-16-10-4.yaml 2> vgg16-gpu-16-12-32-16-10-4.log 
+kubectl create -f vgg16-cpu-16-12-32-16-10-5.yaml 2> vgg16-cpu-16-12-32-16-10-5.log 
+kubectl create -f vgg16-gpu-16-12-32-16-10-5.yaml 2> vgg16-gpu-16-12-32-16-10-5.log 
+kubectl create -f vgg16-cpu-16-12-32-16-10-6.yaml 2> vgg16-cpu-16-12-32-16-10-6.log 
+kubectl create -f vgg16-gpu-16-12-32-16-10-6.yaml 2> vgg16-gpu-16-12-32-16-10-6.log 
+kubectl create -f vgg16-cpu-16-12-32-16-10-7.yaml 2> vgg16-cpu-16-12-32-16-10-7.log 
+kubectl create -f vgg16-gpu-16-12-32-16-10-7.yaml 2> vgg16-gpu-16-12-32-16-10-7.log 
+kubectl create -f vgg16-cpu-16-12-32-16-10-8.yaml 2> vgg16-cpu-16-12-32-16-10-8.log 
+kubectl create -f vgg16-gpu-16-12-32-16-10-8.yaml 2> vgg16-gpu-16-12-32-16-10-8.log 
+kubectl create -f vgg16-cpu-16-12-32-16-10-9.yaml 2> vgg16-cpu-16-12-32-16-10-9.log 
+kubectl create -f vgg16-gpu-16-12-32-16-10-9.yaml 2> vgg16-gpu-16-12-32-16-10-9.log 
+kubectl create -f vgg16-cpu-16-12-32-16-10-10.yaml 2> vgg16-cpu-16-12-32-16-10-10.log 
+kubectl create -f vgg16-gpu-16-12-32-16-10-10.yaml 2> vgg16-gpu-16-12-32-16-10-10.log 
+kubectl create -f vgg16-cpu-16-12-32-16-15-0.yaml 2> vgg16-cpu-16-12-32-16-15-0.log 
+kubectl create -f vgg16-gpu-16-12-32-16-15-0.yaml 2> vgg16-gpu-16-12-32-16-15-0.log 
+kubectl create -f vgg16-cpu-16-12-32-16-15-1.yaml 2> vgg16-cpu-16-12-32-16-15-1.log 
+kubectl create -f vgg16-gpu-16-12-32-16-15-1.yaml 2> vgg16-gpu-16-12-32-16-15-1.log 
+kubectl create -f vgg16-cpu-16-12-32-16-15-2.yaml 2> vgg16-cpu-16-12-32-16-15-2.log 
+kubectl create -f vgg16-gpu-16-12-32-16-15-2.yaml 2> vgg16-gpu-16-12-32-16-15-2.log 
+kubectl create -f vgg16-cpu-16-12-32-16-15-3.yaml 2> vgg16-cpu-16-12-32-16-15-3.log 
+kubectl create -f vgg16-gpu-16-12-32-16-15-3.yaml 2> vgg16-gpu-16-12-32-16-15-3.log 
+kubectl create -f vgg16-cpu-16-12-32-16-15-4.yaml 2> vgg16-cpu-16-12-32-16-15-4.log 
+kubectl create -f vgg16-gpu-16-12-32-16-15-4.yaml 2> vgg16-gpu-16-12-32-16-15-4.log 
+kubectl create -f vgg16-cpu-16-12-32-16-15-5.yaml 2> vgg16-cpu-16-12-32-16-15-5.log 
+kubectl create -f vgg16-gpu-16-12-32-16-15-5.yaml 2> vgg16-gpu-16-12-32-16-15-5.log 
+kubectl create -f vgg16-cpu-16-12-32-16-15-6.yaml 2> vgg16-cpu-16-12-32-16-15-6.log 
+kubectl create -f vgg16-gpu-16-12-32-16-15-6.yaml 2> vgg16-gpu-16-12-32-16-15-6.log 
+kubectl create -f vgg16-cpu-16-12-32-16-15-7.yaml 2> vgg16-cpu-16-12-32-16-15-7.log 
+kubectl create -f vgg16-gpu-16-12-32-16-15-7.yaml 2> vgg16-gpu-16-12-32-16-15-7.log 
+kubectl create -f vgg16-cpu-16-12-32-16-15-8.yaml 2> vgg16-cpu-16-12-32-16-15-8.log 
+kubectl create -f vgg16-gpu-16-12-32-16-15-8.yaml 2> vgg16-gpu-16-12-32-16-15-8.log 
+kubectl create -f vgg16-cpu-16-12-32-16-15-9.yaml 2> vgg16-cpu-16-12-32-16-15-9.log 
+kubectl create -f vgg16-gpu-16-12-32-16-15-9.yaml 2> vgg16-gpu-16-12-32-16-15-9.log 
+kubectl create -f vgg16-cpu-16-12-32-16-15-10.yaml 2> vgg16-cpu-16-12-32-16-15-10.log 
+kubectl create -f vgg16-gpu-16-12-32-16-15-10.yaml 2> vgg16-gpu-16-12-32-16-15-10.log 
+kubectl create -f vgg16-cpu-16-12-32-16-20-0.yaml 2> vgg16-cpu-16-12-32-16-20-0.log 
+kubectl create -f vgg16-gpu-16-12-32-16-20-0.yaml 2> vgg16-gpu-16-12-32-16-20-0.log 
+kubectl create -f vgg16-cpu-16-12-32-16-20-1.yaml 2> vgg16-cpu-16-12-32-16-20-1.log 
+kubectl create -f vgg16-gpu-16-12-32-16-20-1.yaml 2> vgg16-gpu-16-12-32-16-20-1.log 
+kubectl create -f vgg16-cpu-16-12-32-16-20-2.yaml 2> vgg16-cpu-16-12-32-16-20-2.log 
+kubectl create -f vgg16-gpu-16-12-32-16-20-2.yaml 2> vgg16-gpu-16-12-32-16-20-2.log 
+kubectl create -f vgg16-cpu-16-12-32-16-20-3.yaml 2> vgg16-cpu-16-12-32-16-20-3.log 
+kubectl create -f vgg16-gpu-16-12-32-16-20-3.yaml 2> vgg16-gpu-16-12-32-16-20-3.log 
+kubectl create -f vgg16-cpu-16-12-32-16-20-4.yaml 2> vgg16-cpu-16-12-32-16-20-4.log 
+kubectl create -f vgg16-gpu-16-12-32-16-20-4.yaml 2> vgg16-gpu-16-12-32-16-20-4.log 
+kubectl create -f vgg16-cpu-16-12-32-16-20-5.yaml 2> vgg16-cpu-16-12-32-16-20-5.log 
+kubectl create -f vgg16-gpu-16-12-32-16-20-5.yaml 2> vgg16-gpu-16-12-32-16-20-5.log 
+kubectl create -f vgg16-cpu-16-12-32-16-20-6.yaml 2> vgg16-cpu-16-12-32-16-20-6.log 
+kubectl create -f vgg16-gpu-16-12-32-16-20-6.yaml 2> vgg16-gpu-16-12-32-16-20-6.log 
+kubectl create -f vgg16-cpu-16-12-32-16-20-7.yaml 2> vgg16-cpu-16-12-32-16-20-7.log 
+kubectl create -f vgg16-gpu-16-12-32-16-20-7.yaml 2> vgg16-gpu-16-12-32-16-20-7.log 
+kubectl create -f vgg16-cpu-16-12-32-16-20-8.yaml 2> vgg16-cpu-16-12-32-16-20-8.log 
+kubectl create -f vgg16-gpu-16-12-32-16-20-8.yaml 2> vgg16-gpu-16-12-32-16-20-8.log 
+kubectl create -f vgg16-cpu-16-12-32-16-20-9.yaml 2> vgg16-cpu-16-12-32-16-20-9.log 
+kubectl create -f vgg16-gpu-16-12-32-16-20-9.yaml 2> vgg16-gpu-16-12-32-16-20-9.log 
+kubectl create -f vgg16-cpu-16-12-32-16-20-10.yaml 2> vgg16-cpu-16-12-32-16-20-10.log 
+kubectl create -f vgg16-gpu-16-12-32-16-20-10.yaml 2> vgg16-gpu-16-12-32-16-20-10.log 
+kubectl create -f lenet-cpu-16-12-32-16-2-0.yaml 2> lenet-cpu-16-12-32-16-2-0.log 
+kubectl create -f lenet-gpu-16-12-32-16-2-0.yaml 2> lenet-gpu-16-12-32-16-2-0.log 
+kubectl create -f lenet-cpu-16-12-32-16-2-1.yaml 2> lenet-cpu-16-12-32-16-2-1.log 
+kubectl create -f lenet-gpu-16-12-32-16-2-1.yaml 2> lenet-gpu-16-12-32-16-2-1.log 
+kubectl create -f lenet-cpu-16-12-32-16-2-2.yaml 2> lenet-cpu-16-12-32-16-2-2.log 
+kubectl create -f lenet-gpu-16-12-32-16-2-2.yaml 2> lenet-gpu-16-12-32-16-2-2.log 
+kubectl create -f lenet-cpu-16-12-32-16-2-3.yaml 2> lenet-cpu-16-12-32-16-2-3.log 
+kubectl create -f lenet-gpu-16-12-32-16-2-3.yaml 2> lenet-gpu-16-12-32-16-2-3.log 
+kubectl create -f lenet-cpu-16-12-32-16-2-4.yaml 2> lenet-cpu-16-12-32-16-2-4.log 
+kubectl create -f lenet-gpu-16-12-32-16-2-4.yaml 2> lenet-gpu-16-12-32-16-2-4.log 
+kubectl create -f lenet-cpu-16-12-32-16-2-5.yaml 2> lenet-cpu-16-12-32-16-2-5.log 
+kubectl create -f lenet-gpu-16-12-32-16-2-5.yaml 2> lenet-gpu-16-12-32-16-2-5.log 
+kubectl create -f lenet-cpu-16-12-32-16-2-6.yaml 2> lenet-cpu-16-12-32-16-2-6.log 
+kubectl create -f lenet-gpu-16-12-32-16-2-6.yaml 2> lenet-gpu-16-12-32-16-2-6.log 
+kubectl create -f lenet-cpu-16-12-32-16-2-7.yaml 2> lenet-cpu-16-12-32-16-2-7.log 
+kubectl create -f lenet-gpu-16-12-32-16-2-7.yaml 2> lenet-gpu-16-12-32-16-2-7.log 
+kubectl create -f lenet-cpu-16-12-32-16-2-8.yaml 2> lenet-cpu-16-12-32-16-2-8.log 
+kubectl create -f lenet-gpu-16-12-32-16-2-8.yaml 2> lenet-gpu-16-12-32-16-2-8.log 
+kubectl create -f lenet-cpu-16-12-32-16-2-9.yaml 2> lenet-cpu-16-12-32-16-2-9.log 
+kubectl create -f lenet-gpu-16-12-32-16-2-9.yaml 2> lenet-gpu-16-12-32-16-2-9.log 
+kubectl create -f lenet-cpu-16-12-32-16-2-10.yaml 2> lenet-cpu-16-12-32-16-2-10.log 
+kubectl create -f lenet-gpu-16-12-32-16-2-10.yaml 2> lenet-gpu-16-12-32-16-2-10.log 
+kubectl create -f lenet-cpu-16-12-32-16-5-0.yaml 2> lenet-cpu-16-12-32-16-5-0.log 
+kubectl create -f lenet-gpu-16-12-32-16-5-0.yaml 2> lenet-gpu-16-12-32-16-5-0.log 
+kubectl create -f lenet-cpu-16-12-32-16-5-1.yaml 2> lenet-cpu-16-12-32-16-5-1.log 
+kubectl create -f lenet-gpu-16-12-32-16-5-1.yaml 2> lenet-gpu-16-12-32-16-5-1.log 
+kubectl create -f lenet-cpu-16-12-32-16-5-2.yaml 2> lenet-cpu-16-12-32-16-5-2.log 
+kubectl create -f lenet-gpu-16-12-32-16-5-2.yaml 2> lenet-gpu-16-12-32-16-5-2.log 
+kubectl create -f lenet-cpu-16-12-32-16-5-3.yaml 2> lenet-cpu-16-12-32-16-5-3.log 
+kubectl create -f lenet-gpu-16-12-32-16-5-3.yaml 2> lenet-gpu-16-12-32-16-5-3.log 
+kubectl create -f lenet-cpu-16-12-32-16-5-4.yaml 2> lenet-cpu-16-12-32-16-5-4.log 
+kubectl create -f lenet-gpu-16-12-32-16-5-4.yaml 2> lenet-gpu-16-12-32-16-5-4.log 
+kubectl create -f lenet-cpu-16-12-32-16-5-5.yaml 2> lenet-cpu-16-12-32-16-5-5.log 
+kubectl create -f lenet-gpu-16-12-32-16-5-5.yaml 2> lenet-gpu-16-12-32-16-5-5.log 
+kubectl create -f lenet-cpu-16-12-32-16-5-6.yaml 2> lenet-cpu-16-12-32-16-5-6.log 
+kubectl create -f lenet-gpu-16-12-32-16-5-6.yaml 2> lenet-gpu-16-12-32-16-5-6.log 
+kubectl create -f lenet-cpu-16-12-32-16-5-7.yaml 2> lenet-cpu-16-12-32-16-5-7.log 
+kubectl create -f lenet-gpu-16-12-32-16-5-7.yaml 2> lenet-gpu-16-12-32-16-5-7.log 
+kubectl create -f lenet-cpu-16-12-32-16-5-8.yaml 2> lenet-cpu-16-12-32-16-5-8.log 
+kubectl create -f lenet-gpu-16-12-32-16-5-8.yaml 2> lenet-gpu-16-12-32-16-5-8.log 
+kubectl create -f lenet-cpu-16-12-32-16-5-9.yaml 2> lenet-cpu-16-12-32-16-5-9.log 
+kubectl create -f lenet-gpu-16-12-32-16-5-9.yaml 2> lenet-gpu-16-12-32-16-5-9.log 
+kubectl create -f lenet-cpu-16-12-32-16-5-10.yaml 2> lenet-cpu-16-12-32-16-5-10.log 
+kubectl create -f lenet-gpu-16-12-32-16-5-10.yaml 2> lenet-gpu-16-12-32-16-5-10.log 
+kubectl create -f lenet-cpu-16-12-32-16-10-0.yaml 2> lenet-cpu-16-12-32-16-10-0.log 
+kubectl create -f lenet-gpu-16-12-32-16-10-0.yaml 2> lenet-gpu-16-12-32-16-10-0.log 
+kubectl create -f lenet-cpu-16-12-32-16-10-1.yaml 2> lenet-cpu-16-12-32-16-10-1.log 
+kubectl create -f lenet-gpu-16-12-32-16-10-1.yaml 2> lenet-gpu-16-12-32-16-10-1.log 
+kubectl create -f lenet-cpu-16-12-32-16-10-2.yaml 2> lenet-cpu-16-12-32-16-10-2.log 
+kubectl create -f lenet-gpu-16-12-32-16-10-2.yaml 2> lenet-gpu-16-12-32-16-10-2.log 
+kubectl create -f lenet-cpu-16-12-32-16-10-3.yaml 2> lenet-cpu-16-12-32-16-10-3.log 
+kubectl create -f lenet-gpu-16-12-32-16-10-3.yaml 2> lenet-gpu-16-12-32-16-10-3.log 
+kubectl create -f lenet-cpu-16-12-32-16-10-4.yaml 2> lenet-cpu-16-12-32-16-10-4.log 
+kubectl create -f lenet-gpu-16-12-32-16-10-4.yaml 2> lenet-gpu-16-12-32-16-10-4.log 
+kubectl create -f lenet-cpu-16-12-32-16-10-5.yaml 2> lenet-cpu-16-12-32-16-10-5.log 
+kubectl create -f lenet-gpu-16-12-32-16-10-5.yaml 2> lenet-gpu-16-12-32-16-10-5.log 
+kubectl create -f lenet-cpu-16-12-32-16-10-6.yaml 2> lenet-cpu-16-12-32-16-10-6.log 
+kubectl create -f lenet-gpu-16-12-32-16-10-6.yaml 2> lenet-gpu-16-12-32-16-10-6.log 
+kubectl create -f lenet-cpu-16-12-32-16-10-7.yaml 2> lenet-cpu-16-12-32-16-10-7.log 
+kubectl create -f lenet-gpu-16-12-32-16-10-7.yaml 2> lenet-gpu-16-12-32-16-10-7.log 
+kubectl create -f lenet-cpu-16-12-32-16-10-8.yaml 2> lenet-cpu-16-12-32-16-10-8.log 
+kubectl create -f lenet-gpu-16-12-32-16-10-8.yaml 2> lenet-gpu-16-12-32-16-10-8.log 
+kubectl create -f lenet-cpu-16-12-32-16-10-9.yaml 2> lenet-cpu-16-12-32-16-10-9.log 
+kubectl create -f lenet-gpu-16-12-32-16-10-9.yaml 2> lenet-gpu-16-12-32-16-10-9.log 
+kubectl create -f lenet-cpu-16-12-32-16-10-10.yaml 2> lenet-cpu-16-12-32-16-10-10.log 
+kubectl create -f lenet-gpu-16-12-32-16-10-10.yaml 2> lenet-gpu-16-12-32-16-10-10.log 
+kubectl create -f lenet-cpu-16-12-32-16-15-0.yaml 2> lenet-cpu-16-12-32-16-15-0.log 
+kubectl create -f lenet-gpu-16-12-32-16-15-0.yaml 2> lenet-gpu-16-12-32-16-15-0.log 
+kubectl create -f lenet-cpu-16-12-32-16-15-1.yaml 2> lenet-cpu-16-12-32-16-15-1.log 
+kubectl create -f lenet-gpu-16-12-32-16-15-1.yaml 2> lenet-gpu-16-12-32-16-15-1.log 
+kubectl create -f lenet-cpu-16-12-32-16-15-2.yaml 2> lenet-cpu-16-12-32-16-15-2.log 
+kubectl create -f lenet-gpu-16-12-32-16-15-2.yaml 2> lenet-gpu-16-12-32-16-15-2.log 
+kubectl create -f lenet-cpu-16-12-32-16-15-3.yaml 2> lenet-cpu-16-12-32-16-15-3.log 
+kubectl create -f lenet-gpu-16-12-32-16-15-3.yaml 2> lenet-gpu-16-12-32-16-15-3.log 
+kubectl create -f lenet-cpu-16-12-32-16-15-4.yaml 2> lenet-cpu-16-12-32-16-15-4.log 
+kubectl create -f lenet-gpu-16-12-32-16-15-4.yaml 2> lenet-gpu-16-12-32-16-15-4.log 
+kubectl create -f lenet-cpu-16-12-32-16-15-5.yaml 2> lenet-cpu-16-12-32-16-15-5.log 
+kubectl create -f lenet-gpu-16-12-32-16-15-5.yaml 2> lenet-gpu-16-12-32-16-15-5.log 
+kubectl create -f lenet-cpu-16-12-32-16-15-6.yaml 2> lenet-cpu-16-12-32-16-15-6.log 
+kubectl create -f lenet-gpu-16-12-32-16-15-6.yaml 2> lenet-gpu-16-12-32-16-15-6.log 
+kubectl create -f lenet-cpu-16-12-32-16-15-7.yaml 2> lenet-cpu-16-12-32-16-15-7.log 
+kubectl create -f lenet-gpu-16-12-32-16-15-7.yaml 2> lenet-gpu-16-12-32-16-15-7.log 
+kubectl create -f lenet-cpu-16-12-32-16-15-8.yaml 2> lenet-cpu-16-12-32-16-15-8.log 
+kubectl create -f lenet-gpu-16-12-32-16-15-8.yaml 2> lenet-gpu-16-12-32-16-15-8.log 
+kubectl create -f lenet-cpu-16-12-32-16-15-9.yaml 2> lenet-cpu-16-12-32-16-15-9.log 
+kubectl create -f lenet-gpu-16-12-32-16-15-9.yaml 2> lenet-gpu-16-12-32-16-15-9.log 
+kubectl create -f lenet-cpu-16-12-32-16-15-10.yaml 2> lenet-cpu-16-12-32-16-15-10.log 
+kubectl create -f lenet-gpu-16-12-32-16-15-10.yaml 2> lenet-gpu-16-12-32-16-15-10.log 
+kubectl create -f lenet-cpu-16-12-32-16-20-0.yaml 2> lenet-cpu-16-12-32-16-20-0.log 
+kubectl create -f lenet-gpu-16-12-32-16-20-0.yaml 2> lenet-gpu-16-12-32-16-20-0.log 
+kubectl create -f lenet-cpu-16-12-32-16-20-1.yaml 2> lenet-cpu-16-12-32-16-20-1.log 
+kubectl create -f lenet-gpu-16-12-32-16-20-1.yaml 2> lenet-gpu-16-12-32-16-20-1.log 
+kubectl create -f lenet-cpu-16-12-32-16-20-2.yaml 2> lenet-cpu-16-12-32-16-20-2.log 
+kubectl create -f lenet-gpu-16-12-32-16-20-2.yaml 2> lenet-gpu-16-12-32-16-20-2.log 
+kubectl create -f lenet-cpu-16-12-32-16-20-3.yaml 2> lenet-cpu-16-12-32-16-20-3.log 
+kubectl create -f lenet-gpu-16-12-32-16-20-3.yaml 2> lenet-gpu-16-12-32-16-20-3.log 
+kubectl create -f lenet-cpu-16-12-32-16-20-4.yaml 2> lenet-cpu-16-12-32-16-20-4.log 
+kubectl create -f lenet-gpu-16-12-32-16-20-4.yaml 2> lenet-gpu-16-12-32-16-20-4.log 
+kubectl create -f lenet-cpu-16-12-32-16-20-5.yaml 2> lenet-cpu-16-12-32-16-20-5.log 
+kubectl create -f lenet-gpu-16-12-32-16-20-5.yaml 2> lenet-gpu-16-12-32-16-20-5.log 
+kubectl create -f lenet-cpu-16-12-32-16-20-6.yaml 2> lenet-cpu-16-12-32-16-20-6.log 
+kubectl create -f lenet-gpu-16-12-32-16-20-6.yaml 2> lenet-gpu-16-12-32-16-20-6.log 
+kubectl create -f lenet-cpu-16-12-32-16-20-7.yaml 2> lenet-cpu-16-12-32-16-20-7.log 
+kubectl create -f lenet-gpu-16-12-32-16-20-7.yaml 2> lenet-gpu-16-12-32-16-20-7.log 
+kubectl create -f lenet-cpu-16-12-32-16-20-8.yaml 2> lenet-cpu-16-12-32-16-20-8.log 
+kubectl create -f lenet-gpu-16-12-32-16-20-8.yaml 2> lenet-gpu-16-12-32-16-20-8.log 
+kubectl create -f lenet-cpu-16-12-32-16-20-9.yaml 2> lenet-cpu-16-12-32-16-20-9.log 
+kubectl create -f lenet-gpu-16-12-32-16-20-9.yaml 2> lenet-gpu-16-12-32-16-20-9.log 
+kubectl create -f lenet-cpu-16-12-32-16-20-10.yaml 2> lenet-cpu-16-12-32-16-20-10.log 
+kubectl create -f lenet-gpu-16-12-32-16-20-10.yaml 2> lenet-gpu-16-12-32-16-20-10.log 
+kubectl create -f googlenet-cpu-16-12-32-16-2-0.yaml 2> googlenet-cpu-16-12-32-16-2-0.log 
+kubectl create -f googlenet-gpu-16-12-32-16-2-0.yaml 2> googlenet-gpu-16-12-32-16-2-0.log 
+kubectl create -f googlenet-cpu-16-12-32-16-2-1.yaml 2> googlenet-cpu-16-12-32-16-2-1.log 
+kubectl create -f googlenet-gpu-16-12-32-16-2-1.yaml 2> googlenet-gpu-16-12-32-16-2-1.log 
+kubectl create -f googlenet-cpu-16-12-32-16-2-2.yaml 2> googlenet-cpu-16-12-32-16-2-2.log 
+kubectl create -f googlenet-gpu-16-12-32-16-2-2.yaml 2> googlenet-gpu-16-12-32-16-2-2.log 
+kubectl create -f googlenet-cpu-16-12-32-16-2-3.yaml 2> googlenet-cpu-16-12-32-16-2-3.log 
+kubectl create -f googlenet-gpu-16-12-32-16-2-3.yaml 2> googlenet-gpu-16-12-32-16-2-3.log 
+kubectl create -f googlenet-cpu-16-12-32-16-2-4.yaml 2> googlenet-cpu-16-12-32-16-2-4.log 
+kubectl create -f googlenet-gpu-16-12-32-16-2-4.yaml 2> googlenet-gpu-16-12-32-16-2-4.log 
+kubectl create -f googlenet-cpu-16-12-32-16-2-5.yaml 2> googlenet-cpu-16-12-32-16-2-5.log 
+kubectl create -f googlenet-gpu-16-12-32-16-2-5.yaml 2> googlenet-gpu-16-12-32-16-2-5.log 
+kubectl create -f googlenet-cpu-16-12-32-16-2-6.yaml 2> googlenet-cpu-16-12-32-16-2-6.log 
+kubectl create -f googlenet-gpu-16-12-32-16-2-6.yaml 2> googlenet-gpu-16-12-32-16-2-6.log 
+kubectl create -f googlenet-cpu-16-12-32-16-2-7.yaml 2> googlenet-cpu-16-12-32-16-2-7.log 
+kubectl create -f googlenet-gpu-16-12-32-16-2-7.yaml 2> googlenet-gpu-16-12-32-16-2-7.log 
+kubectl create -f googlenet-cpu-16-12-32-16-2-8.yaml 2> googlenet-cpu-16-12-32-16-2-8.log 
+kubectl create -f googlenet-gpu-16-12-32-16-2-8.yaml 2> googlenet-gpu-16-12-32-16-2-8.log 
+kubectl create -f googlenet-cpu-16-12-32-16-2-9.yaml 2> googlenet-cpu-16-12-32-16-2-9.log 
+kubectl create -f googlenet-gpu-16-12-32-16-2-9.yaml 2> googlenet-gpu-16-12-32-16-2-9.log 
+kubectl create -f googlenet-cpu-16-12-32-16-2-10.yaml 2> googlenet-cpu-16-12-32-16-2-10.log 
+kubectl create -f googlenet-gpu-16-12-32-16-2-10.yaml 2> googlenet-gpu-16-12-32-16-2-10.log 
+kubectl create -f googlenet-cpu-16-12-32-16-5-0.yaml 2> googlenet-cpu-16-12-32-16-5-0.log 
+kubectl create -f googlenet-gpu-16-12-32-16-5-0.yaml 2> googlenet-gpu-16-12-32-16-5-0.log 
+kubectl create -f googlenet-cpu-16-12-32-16-5-1.yaml 2> googlenet-cpu-16-12-32-16-5-1.log 
+kubectl create -f googlenet-gpu-16-12-32-16-5-1.yaml 2> googlenet-gpu-16-12-32-16-5-1.log 
+kubectl create -f googlenet-cpu-16-12-32-16-5-2.yaml 2> googlenet-cpu-16-12-32-16-5-2.log 
+kubectl create -f googlenet-gpu-16-12-32-16-5-2.yaml 2> googlenet-gpu-16-12-32-16-5-2.log 
+kubectl create -f googlenet-cpu-16-12-32-16-5-3.yaml 2> googlenet-cpu-16-12-32-16-5-3.log 
+kubectl create -f googlenet-gpu-16-12-32-16-5-3.yaml 2> googlenet-gpu-16-12-32-16-5-3.log 
+kubectl create -f googlenet-cpu-16-12-32-16-5-4.yaml 2> googlenet-cpu-16-12-32-16-5-4.log 
+kubectl create -f googlenet-gpu-16-12-32-16-5-4.yaml 2> googlenet-gpu-16-12-32-16-5-4.log 
+kubectl create -f googlenet-cpu-16-12-32-16-5-5.yaml 2> googlenet-cpu-16-12-32-16-5-5.log 
+kubectl create -f googlenet-gpu-16-12-32-16-5-5.yaml 2> googlenet-gpu-16-12-32-16-5-5.log 
+kubectl create -f googlenet-cpu-16-12-32-16-5-6.yaml 2> googlenet-cpu-16-12-32-16-5-6.log 
+kubectl create -f googlenet-gpu-16-12-32-16-5-6.yaml 2> googlenet-gpu-16-12-32-16-5-6.log 
+kubectl create -f googlenet-cpu-16-12-32-16-5-7.yaml 2> googlenet-cpu-16-12-32-16-5-7.log 
+kubectl create -f googlenet-gpu-16-12-32-16-5-7.yaml 2> googlenet-gpu-16-12-32-16-5-7.log 
+kubectl create -f googlenet-cpu-16-12-32-16-5-8.yaml 2> googlenet-cpu-16-12-32-16-5-8.log 
+kubectl create -f googlenet-gpu-16-12-32-16-5-8.yaml 2> googlenet-gpu-16-12-32-16-5-8.log 
+kubectl create -f googlenet-cpu-16-12-32-16-5-9.yaml 2> googlenet-cpu-16-12-32-16-5-9.log 
+kubectl create -f googlenet-gpu-16-12-32-16-5-9.yaml 2> googlenet-gpu-16-12-32-16-5-9.log 
+kubectl create -f googlenet-cpu-16-12-32-16-5-10.yaml 2> googlenet-cpu-16-12-32-16-5-10.log 
+kubectl create -f googlenet-gpu-16-12-32-16-5-10.yaml 2> googlenet-gpu-16-12-32-16-5-10.log 
+kubectl create -f googlenet-cpu-16-12-32-16-10-0.yaml 2> googlenet-cpu-16-12-32-16-10-0.log 
+kubectl create -f googlenet-gpu-16-12-32-16-10-0.yaml 2> googlenet-gpu-16-12-32-16-10-0.log 
+kubectl create -f googlenet-cpu-16-12-32-16-10-1.yaml 2> googlenet-cpu-16-12-32-16-10-1.log 
+kubectl create -f googlenet-gpu-16-12-32-16-10-1.yaml 2> googlenet-gpu-16-12-32-16-10-1.log 
+kubectl create -f googlenet-cpu-16-12-32-16-10-2.yaml 2> googlenet-cpu-16-12-32-16-10-2.log 
+kubectl create -f googlenet-gpu-16-12-32-16-10-2.yaml 2> googlenet-gpu-16-12-32-16-10-2.log 
+kubectl create -f googlenet-cpu-16-12-32-16-10-3.yaml 2> googlenet-cpu-16-12-32-16-10-3.log 
+kubectl create -f googlenet-gpu-16-12-32-16-10-3.yaml 2> googlenet-gpu-16-12-32-16-10-3.log 
+kubectl create -f googlenet-cpu-16-12-32-16-10-4.yaml 2> googlenet-cpu-16-12-32-16-10-4.log 
+kubectl create -f googlenet-gpu-16-12-32-16-10-4.yaml 2> googlenet-gpu-16-12-32-16-10-4.log 
+kubectl create -f googlenet-cpu-16-12-32-16-10-5.yaml 2> googlenet-cpu-16-12-32-16-10-5.log 
+kubectl create -f googlenet-gpu-16-12-32-16-10-5.yaml 2> googlenet-gpu-16-12-32-16-10-5.log 
+kubectl create -f googlenet-cpu-16-12-32-16-10-6.yaml 2> googlenet-cpu-16-12-32-16-10-6.log 
+kubectl create -f googlenet-gpu-16-12-32-16-10-6.yaml 2> googlenet-gpu-16-12-32-16-10-6.log 
+kubectl create -f googlenet-cpu-16-12-32-16-10-7.yaml 2> googlenet-cpu-16-12-32-16-10-7.log 
+kubectl create -f googlenet-gpu-16-12-32-16-10-7.yaml 2> googlenet-gpu-16-12-32-16-10-7.log 
+kubectl create -f googlenet-cpu-16-12-32-16-10-8.yaml 2> googlenet-cpu-16-12-32-16-10-8.log 
+kubectl create -f googlenet-gpu-16-12-32-16-10-8.yaml 2> googlenet-gpu-16-12-32-16-10-8.log 
+kubectl create -f googlenet-cpu-16-12-32-16-10-9.yaml 2> googlenet-cpu-16-12-32-16-10-9.log 
+kubectl create -f googlenet-gpu-16-12-32-16-10-9.yaml 2> googlenet-gpu-16-12-32-16-10-9.log 
+kubectl create -f googlenet-cpu-16-12-32-16-10-10.yaml 2> googlenet-cpu-16-12-32-16-10-10.log 
+kubectl create -f googlenet-gpu-16-12-32-16-10-10.yaml 2> googlenet-gpu-16-12-32-16-10-10.log 
+kubectl create -f googlenet-cpu-16-12-32-16-15-0.yaml 2> googlenet-cpu-16-12-32-16-15-0.log 
+kubectl create -f googlenet-gpu-16-12-32-16-15-0.yaml 2> googlenet-gpu-16-12-32-16-15-0.log 
+kubectl create -f googlenet-cpu-16-12-32-16-15-1.yaml 2> googlenet-cpu-16-12-32-16-15-1.log 
+kubectl create -f googlenet-gpu-16-12-32-16-15-1.yaml 2> googlenet-gpu-16-12-32-16-15-1.log 
+kubectl create -f googlenet-cpu-16-12-32-16-15-2.yaml 2> googlenet-cpu-16-12-32-16-15-2.log 
+kubectl create -f googlenet-gpu-16-12-32-16-15-2.yaml 2> googlenet-gpu-16-12-32-16-15-2.log 
+kubectl create -f googlenet-cpu-16-12-32-16-15-3.yaml 2> googlenet-cpu-16-12-32-16-15-3.log 
+kubectl create -f googlenet-gpu-16-12-32-16-15-3.yaml 2> googlenet-gpu-16-12-32-16-15-3.log 
+kubectl create -f googlenet-cpu-16-12-32-16-15-4.yaml 2> googlenet-cpu-16-12-32-16-15-4.log 
+kubectl create -f googlenet-gpu-16-12-32-16-15-4.yaml 2> googlenet-gpu-16-12-32-16-15-4.log 
+kubectl create -f googlenet-cpu-16-12-32-16-15-5.yaml 2> googlenet-cpu-16-12-32-16-15-5.log 
+kubectl create -f googlenet-gpu-16-12-32-16-15-5.yaml 2> googlenet-gpu-16-12-32-16-15-5.log 
+kubectl create -f googlenet-cpu-16-12-32-16-15-6.yaml 2> googlenet-cpu-16-12-32-16-15-6.log 
+kubectl create -f googlenet-gpu-16-12-32-16-15-6.yaml 2> googlenet-gpu-16-12-32-16-15-6.log 
+kubectl create -f googlenet-cpu-16-12-32-16-15-7.yaml 2> googlenet-cpu-16-12-32-16-15-7.log 
+kubectl create -f googlenet-gpu-16-12-32-16-15-7.yaml 2> googlenet-gpu-16-12-32-16-15-7.log 
+kubectl create -f googlenet-cpu-16-12-32-16-15-8.yaml 2> googlenet-cpu-16-12-32-16-15-8.log 
+kubectl create -f googlenet-gpu-16-12-32-16-15-8.yaml 2> googlenet-gpu-16-12-32-16-15-8.log 
+kubectl create -f googlenet-cpu-16-12-32-16-15-9.yaml 2> googlenet-cpu-16-12-32-16-15-9.log 
+kubectl create -f googlenet-gpu-16-12-32-16-15-9.yaml 2> googlenet-gpu-16-12-32-16-15-9.log 
+kubectl create -f googlenet-cpu-16-12-32-16-15-10.yaml 2> googlenet-cpu-16-12-32-16-15-10.log 
+kubectl create -f googlenet-gpu-16-12-32-16-15-10.yaml 2> googlenet-gpu-16-12-32-16-15-10.log 
+kubectl create -f googlenet-cpu-16-12-32-16-20-0.yaml 2> googlenet-cpu-16-12-32-16-20-0.log 
+kubectl create -f googlenet-gpu-16-12-32-16-20-0.yaml 2> googlenet-gpu-16-12-32-16-20-0.log 
+kubectl create -f googlenet-cpu-16-12-32-16-20-1.yaml 2> googlenet-cpu-16-12-32-16-20-1.log 
+kubectl create -f googlenet-gpu-16-12-32-16-20-1.yaml 2> googlenet-gpu-16-12-32-16-20-1.log 
+kubectl create -f googlenet-cpu-16-12-32-16-20-2.yaml 2> googlenet-cpu-16-12-32-16-20-2.log 
+kubectl create -f googlenet-gpu-16-12-32-16-20-2.yaml 2> googlenet-gpu-16-12-32-16-20-2.log 
+kubectl create -f googlenet-cpu-16-12-32-16-20-3.yaml 2> googlenet-cpu-16-12-32-16-20-3.log 
+kubectl create -f googlenet-gpu-16-12-32-16-20-3.yaml 2> googlenet-gpu-16-12-32-16-20-3.log 
+kubectl create -f googlenet-cpu-16-12-32-16-20-4.yaml 2> googlenet-cpu-16-12-32-16-20-4.log 
+kubectl create -f googlenet-gpu-16-12-32-16-20-4.yaml 2> googlenet-gpu-16-12-32-16-20-4.log 
+kubectl create -f googlenet-cpu-16-12-32-16-20-5.yaml 2> googlenet-cpu-16-12-32-16-20-5.log 
+kubectl create -f googlenet-gpu-16-12-32-16-20-5.yaml 2> googlenet-gpu-16-12-32-16-20-5.log 
+kubectl create -f googlenet-cpu-16-12-32-16-20-6.yaml 2> googlenet-cpu-16-12-32-16-20-6.log 
+kubectl create -f googlenet-gpu-16-12-32-16-20-6.yaml 2> googlenet-gpu-16-12-32-16-20-6.log 
+kubectl create -f googlenet-cpu-16-12-32-16-20-7.yaml 2> googlenet-cpu-16-12-32-16-20-7.log 
+kubectl create -f googlenet-gpu-16-12-32-16-20-7.yaml 2> googlenet-gpu-16-12-32-16-20-7.log 
+kubectl create -f googlenet-cpu-16-12-32-16-20-8.yaml 2> googlenet-cpu-16-12-32-16-20-8.log 
+kubectl create -f googlenet-gpu-16-12-32-16-20-8.yaml 2> googlenet-gpu-16-12-32-16-20-8.log 
+kubectl create -f googlenet-cpu-16-12-32-16-20-9.yaml 2> googlenet-cpu-16-12-32-16-20-9.log 
+kubectl create -f googlenet-gpu-16-12-32-16-20-9.yaml 2> googlenet-gpu-16-12-32-16-20-9.log 
+kubectl create -f googlenet-cpu-16-12-32-16-20-10.yaml 2> googlenet-cpu-16-12-32-16-20-10.log 
+kubectl create -f googlenet-gpu-16-12-32-16-20-10.yaml 2> googlenet-gpu-16-12-32-16-20-10.log 
+kubectl create -f alexnet-cpu-16-12-512-16-2-0.yaml 2> alexnet-cpu-16-12-512-16-2-0.log 
+kubectl create -f alexnet-gpu-16-12-512-16-2-0.yaml 2> alexnet-gpu-16-12-512-16-2-0.log 
+kubectl create -f alexnet-cpu-16-12-512-16-2-1.yaml 2> alexnet-cpu-16-12-512-16-2-1.log 
+kubectl create -f alexnet-gpu-16-12-512-16-2-1.yaml 2> alexnet-gpu-16-12-512-16-2-1.log 
+kubectl create -f alexnet-cpu-16-12-512-16-2-2.yaml 2> alexnet-cpu-16-12-512-16-2-2.log 
+kubectl create -f alexnet-gpu-16-12-512-16-2-2.yaml 2> alexnet-gpu-16-12-512-16-2-2.log 
+kubectl create -f alexnet-cpu-16-12-512-16-2-3.yaml 2> alexnet-cpu-16-12-512-16-2-3.log 
+kubectl create -f alexnet-gpu-16-12-512-16-2-3.yaml 2> alexnet-gpu-16-12-512-16-2-3.log 
+kubectl create -f alexnet-cpu-16-12-512-16-2-4.yaml 2> alexnet-cpu-16-12-512-16-2-4.log 
+kubectl create -f alexnet-gpu-16-12-512-16-2-4.yaml 2> alexnet-gpu-16-12-512-16-2-4.log 
+kubectl create -f alexnet-cpu-16-12-512-16-2-5.yaml 2> alexnet-cpu-16-12-512-16-2-5.log 
+kubectl create -f alexnet-gpu-16-12-512-16-2-5.yaml 2> alexnet-gpu-16-12-512-16-2-5.log 
+kubectl create -f alexnet-cpu-16-12-512-16-2-6.yaml 2> alexnet-cpu-16-12-512-16-2-6.log 
+kubectl create -f alexnet-gpu-16-12-512-16-2-6.yaml 2> alexnet-gpu-16-12-512-16-2-6.log 
+kubectl create -f alexnet-cpu-16-12-512-16-2-7.yaml 2> alexnet-cpu-16-12-512-16-2-7.log 
+kubectl create -f alexnet-gpu-16-12-512-16-2-7.yaml 2> alexnet-gpu-16-12-512-16-2-7.log 
+kubectl create -f alexnet-cpu-16-12-512-16-2-8.yaml 2> alexnet-cpu-16-12-512-16-2-8.log 
+kubectl create -f alexnet-gpu-16-12-512-16-2-8.yaml 2> alexnet-gpu-16-12-512-16-2-8.log 
+kubectl create -f alexnet-cpu-16-12-512-16-2-9.yaml 2> alexnet-cpu-16-12-512-16-2-9.log 
+kubectl create -f alexnet-gpu-16-12-512-16-2-9.yaml 2> alexnet-gpu-16-12-512-16-2-9.log 
+kubectl create -f alexnet-cpu-16-12-512-16-2-10.yaml 2> alexnet-cpu-16-12-512-16-2-10.log 
+kubectl create -f alexnet-gpu-16-12-512-16-2-10.yaml 2> alexnet-gpu-16-12-512-16-2-10.log 
+kubectl create -f alexnet-cpu-16-12-512-16-5-0.yaml 2> alexnet-cpu-16-12-512-16-5-0.log 
+kubectl create -f alexnet-gpu-16-12-512-16-5-0.yaml 2> alexnet-gpu-16-12-512-16-5-0.log 
+kubectl create -f alexnet-cpu-16-12-512-16-5-1.yaml 2> alexnet-cpu-16-12-512-16-5-1.log 
+kubectl create -f alexnet-gpu-16-12-512-16-5-1.yaml 2> alexnet-gpu-16-12-512-16-5-1.log 
+kubectl create -f alexnet-cpu-16-12-512-16-5-2.yaml 2> alexnet-cpu-16-12-512-16-5-2.log 
+kubectl create -f alexnet-gpu-16-12-512-16-5-2.yaml 2> alexnet-gpu-16-12-512-16-5-2.log 
+kubectl create -f alexnet-cpu-16-12-512-16-5-3.yaml 2> alexnet-cpu-16-12-512-16-5-3.log 
+kubectl create -f alexnet-gpu-16-12-512-16-5-3.yaml 2> alexnet-gpu-16-12-512-16-5-3.log 
+kubectl create -f alexnet-cpu-16-12-512-16-5-4.yaml 2> alexnet-cpu-16-12-512-16-5-4.log 
+kubectl create -f alexnet-gpu-16-12-512-16-5-4.yaml 2> alexnet-gpu-16-12-512-16-5-4.log 
+kubectl create -f alexnet-cpu-16-12-512-16-5-5.yaml 2> alexnet-cpu-16-12-512-16-5-5.log 
+kubectl create -f alexnet-gpu-16-12-512-16-5-5.yaml 2> alexnet-gpu-16-12-512-16-5-5.log 
+kubectl create -f alexnet-cpu-16-12-512-16-5-6.yaml 2> alexnet-cpu-16-12-512-16-5-6.log 
+kubectl create -f alexnet-gpu-16-12-512-16-5-6.yaml 2> alexnet-gpu-16-12-512-16-5-6.log 
+kubectl create -f alexnet-cpu-16-12-512-16-5-7.yaml 2> alexnet-cpu-16-12-512-16-5-7.log 
+kubectl create -f alexnet-gpu-16-12-512-16-5-7.yaml 2> alexnet-gpu-16-12-512-16-5-7.log 
+kubectl create -f alexnet-cpu-16-12-512-16-5-8.yaml 2> alexnet-cpu-16-12-512-16-5-8.log 
+kubectl create -f alexnet-gpu-16-12-512-16-5-8.yaml 2> alexnet-gpu-16-12-512-16-5-8.log 
+kubectl create -f alexnet-cpu-16-12-512-16-5-9.yaml 2> alexnet-cpu-16-12-512-16-5-9.log 
+kubectl create -f alexnet-gpu-16-12-512-16-5-9.yaml 2> alexnet-gpu-16-12-512-16-5-9.log 
+kubectl create -f alexnet-cpu-16-12-512-16-5-10.yaml 2> alexnet-cpu-16-12-512-16-5-10.log 
+kubectl create -f alexnet-gpu-16-12-512-16-5-10.yaml 2> alexnet-gpu-16-12-512-16-5-10.log 
+kubectl create -f alexnet-cpu-16-12-512-16-10-0.yaml 2> alexnet-cpu-16-12-512-16-10-0.log 
+kubectl create -f alexnet-gpu-16-12-512-16-10-0.yaml 2> alexnet-gpu-16-12-512-16-10-0.log 
+kubectl create -f alexnet-cpu-16-12-512-16-10-1.yaml 2> alexnet-cpu-16-12-512-16-10-1.log 
+kubectl create -f alexnet-gpu-16-12-512-16-10-1.yaml 2> alexnet-gpu-16-12-512-16-10-1.log 
+kubectl create -f alexnet-cpu-16-12-512-16-10-2.yaml 2> alexnet-cpu-16-12-512-16-10-2.log 
+kubectl create -f alexnet-gpu-16-12-512-16-10-2.yaml 2> alexnet-gpu-16-12-512-16-10-2.log 
+kubectl create -f alexnet-cpu-16-12-512-16-10-3.yaml 2> alexnet-cpu-16-12-512-16-10-3.log 
+kubectl create -f alexnet-gpu-16-12-512-16-10-3.yaml 2> alexnet-gpu-16-12-512-16-10-3.log 
+kubectl create -f alexnet-cpu-16-12-512-16-10-4.yaml 2> alexnet-cpu-16-12-512-16-10-4.log 
+kubectl create -f alexnet-gpu-16-12-512-16-10-4.yaml 2> alexnet-gpu-16-12-512-16-10-4.log 
+kubectl create -f alexnet-cpu-16-12-512-16-10-5.yaml 2> alexnet-cpu-16-12-512-16-10-5.log 
+kubectl create -f alexnet-gpu-16-12-512-16-10-5.yaml 2> alexnet-gpu-16-12-512-16-10-5.log 
+kubectl create -f alexnet-cpu-16-12-512-16-10-6.yaml 2> alexnet-cpu-16-12-512-16-10-6.log 
+kubectl create -f alexnet-gpu-16-12-512-16-10-6.yaml 2> alexnet-gpu-16-12-512-16-10-6.log 
+kubectl create -f alexnet-cpu-16-12-512-16-10-7.yaml 2> alexnet-cpu-16-12-512-16-10-7.log 
+kubectl create -f alexnet-gpu-16-12-512-16-10-7.yaml 2> alexnet-gpu-16-12-512-16-10-7.log 
+kubectl create -f alexnet-cpu-16-12-512-16-10-8.yaml 2> alexnet-cpu-16-12-512-16-10-8.log 
+kubectl create -f alexnet-gpu-16-12-512-16-10-8.yaml 2> alexnet-gpu-16-12-512-16-10-8.log 
+kubectl create -f alexnet-cpu-16-12-512-16-10-9.yaml 2> alexnet-cpu-16-12-512-16-10-9.log 
+kubectl create -f alexnet-gpu-16-12-512-16-10-9.yaml 2> alexnet-gpu-16-12-512-16-10-9.log 
+kubectl create -f alexnet-cpu-16-12-512-16-10-10.yaml 2> alexnet-cpu-16-12-512-16-10-10.log 
+kubectl create -f alexnet-gpu-16-12-512-16-10-10.yaml 2> alexnet-gpu-16-12-512-16-10-10.log 
+kubectl create -f alexnet-cpu-16-12-512-16-15-0.yaml 2> alexnet-cpu-16-12-512-16-15-0.log 
+kubectl create -f alexnet-gpu-16-12-512-16-15-0.yaml 2> alexnet-gpu-16-12-512-16-15-0.log 
+kubectl create -f alexnet-cpu-16-12-512-16-15-1.yaml 2> alexnet-cpu-16-12-512-16-15-1.log 
+kubectl create -f alexnet-gpu-16-12-512-16-15-1.yaml 2> alexnet-gpu-16-12-512-16-15-1.log 
+kubectl create -f alexnet-cpu-16-12-512-16-15-2.yaml 2> alexnet-cpu-16-12-512-16-15-2.log 
+kubectl create -f alexnet-gpu-16-12-512-16-15-2.yaml 2> alexnet-gpu-16-12-512-16-15-2.log 
+kubectl create -f alexnet-cpu-16-12-512-16-15-3.yaml 2> alexnet-cpu-16-12-512-16-15-3.log 
+kubectl create -f alexnet-gpu-16-12-512-16-15-3.yaml 2> alexnet-gpu-16-12-512-16-15-3.log 
+kubectl create -f alexnet-cpu-16-12-512-16-15-4.yaml 2> alexnet-cpu-16-12-512-16-15-4.log 
+kubectl create -f alexnet-gpu-16-12-512-16-15-4.yaml 2> alexnet-gpu-16-12-512-16-15-4.log 
+kubectl create -f alexnet-cpu-16-12-512-16-15-5.yaml 2> alexnet-cpu-16-12-512-16-15-5.log 
+kubectl create -f alexnet-gpu-16-12-512-16-15-5.yaml 2> alexnet-gpu-16-12-512-16-15-5.log 
+kubectl create -f alexnet-cpu-16-12-512-16-15-6.yaml 2> alexnet-cpu-16-12-512-16-15-6.log 
+kubectl create -f alexnet-gpu-16-12-512-16-15-6.yaml 2> alexnet-gpu-16-12-512-16-15-6.log 
+kubectl create -f alexnet-cpu-16-12-512-16-15-7.yaml 2> alexnet-cpu-16-12-512-16-15-7.log 
+kubectl create -f alexnet-gpu-16-12-512-16-15-7.yaml 2> alexnet-gpu-16-12-512-16-15-7.log 
+kubectl create -f alexnet-cpu-16-12-512-16-15-8.yaml 2> alexnet-cpu-16-12-512-16-15-8.log 
+kubectl create -f alexnet-gpu-16-12-512-16-15-8.yaml 2> alexnet-gpu-16-12-512-16-15-8.log 
+kubectl create -f alexnet-cpu-16-12-512-16-15-9.yaml 2> alexnet-cpu-16-12-512-16-15-9.log 
+kubectl create -f alexnet-gpu-16-12-512-16-15-9.yaml 2> alexnet-gpu-16-12-512-16-15-9.log 
+kubectl create -f alexnet-cpu-16-12-512-16-15-10.yaml 2> alexnet-cpu-16-12-512-16-15-10.log 
+kubectl create -f alexnet-gpu-16-12-512-16-15-10.yaml 2> alexnet-gpu-16-12-512-16-15-10.log 
+kubectl create -f alexnet-cpu-16-12-512-16-20-0.yaml 2> alexnet-cpu-16-12-512-16-20-0.log 
+kubectl create -f alexnet-gpu-16-12-512-16-20-0.yaml 2> alexnet-gpu-16-12-512-16-20-0.log 
+kubectl create -f alexnet-cpu-16-12-512-16-20-1.yaml 2> alexnet-cpu-16-12-512-16-20-1.log 
+kubectl create -f alexnet-gpu-16-12-512-16-20-1.yaml 2> alexnet-gpu-16-12-512-16-20-1.log 
+kubectl create -f alexnet-cpu-16-12-512-16-20-2.yaml 2> alexnet-cpu-16-12-512-16-20-2.log 
+kubectl create -f alexnet-gpu-16-12-512-16-20-2.yaml 2> alexnet-gpu-16-12-512-16-20-2.log 
+kubectl create -f alexnet-cpu-16-12-512-16-20-3.yaml 2> alexnet-cpu-16-12-512-16-20-3.log 
+kubectl create -f alexnet-gpu-16-12-512-16-20-3.yaml 2> alexnet-gpu-16-12-512-16-20-3.log 
+kubectl create -f alexnet-cpu-16-12-512-16-20-4.yaml 2> alexnet-cpu-16-12-512-16-20-4.log 
+kubectl create -f alexnet-gpu-16-12-512-16-20-4.yaml 2> alexnet-gpu-16-12-512-16-20-4.log 
+kubectl create -f alexnet-cpu-16-12-512-16-20-5.yaml 2> alexnet-cpu-16-12-512-16-20-5.log 
+kubectl create -f alexnet-gpu-16-12-512-16-20-5.yaml 2> alexnet-gpu-16-12-512-16-20-5.log 
+kubectl create -f alexnet-cpu-16-12-512-16-20-6.yaml 2> alexnet-cpu-16-12-512-16-20-6.log 
+kubectl create -f alexnet-gpu-16-12-512-16-20-6.yaml 2> alexnet-gpu-16-12-512-16-20-6.log 
+kubectl create -f alexnet-cpu-16-12-512-16-20-7.yaml 2> alexnet-cpu-16-12-512-16-20-7.log 
+kubectl create -f alexnet-gpu-16-12-512-16-20-7.yaml 2> alexnet-gpu-16-12-512-16-20-7.log 
+kubectl create -f alexnet-cpu-16-12-512-16-20-8.yaml 2> alexnet-cpu-16-12-512-16-20-8.log 
+kubectl create -f alexnet-gpu-16-12-512-16-20-8.yaml 2> alexnet-gpu-16-12-512-16-20-8.log 
+kubectl create -f alexnet-cpu-16-12-512-16-20-9.yaml 2> alexnet-cpu-16-12-512-16-20-9.log 
+kubectl create -f alexnet-gpu-16-12-512-16-20-9.yaml 2> alexnet-gpu-16-12-512-16-20-9.log 
+kubectl create -f alexnet-cpu-16-12-512-16-20-10.yaml 2> alexnet-cpu-16-12-512-16-20-10.log 
+kubectl create -f alexnet-gpu-16-12-512-16-20-10.yaml 2> alexnet-gpu-16-12-512-16-20-10.log 
+kubectl create -f resnet50-cpu-16-12-64-16-2-0.yaml 2> resnet50-cpu-16-12-64-16-2-0.log 
+kubectl create -f resnet50-gpu-16-12-64-16-2-0.yaml 2> resnet50-gpu-16-12-64-16-2-0.log 
+kubectl create -f resnet50-cpu-16-12-64-16-2-1.yaml 2> resnet50-cpu-16-12-64-16-2-1.log 
+kubectl create -f resnet50-gpu-16-12-64-16-2-1.yaml 2> resnet50-gpu-16-12-64-16-2-1.log 
+kubectl create -f resnet50-cpu-16-12-64-16-2-2.yaml 2> resnet50-cpu-16-12-64-16-2-2.log 
+kubectl create -f resnet50-gpu-16-12-64-16-2-2.yaml 2> resnet50-gpu-16-12-64-16-2-2.log 
+kubectl create -f resnet50-cpu-16-12-64-16-2-3.yaml 2> resnet50-cpu-16-12-64-16-2-3.log 
+kubectl create -f resnet50-gpu-16-12-64-16-2-3.yaml 2> resnet50-gpu-16-12-64-16-2-3.log 
+kubectl create -f resnet50-cpu-16-12-64-16-2-4.yaml 2> resnet50-cpu-16-12-64-16-2-4.log 
+kubectl create -f resnet50-gpu-16-12-64-16-2-4.yaml 2> resnet50-gpu-16-12-64-16-2-4.log 
+kubectl create -f resnet50-cpu-16-12-64-16-2-5.yaml 2> resnet50-cpu-16-12-64-16-2-5.log 
+kubectl create -f resnet50-gpu-16-12-64-16-2-5.yaml 2> resnet50-gpu-16-12-64-16-2-5.log 
+kubectl create -f resnet50-cpu-16-12-64-16-2-6.yaml 2> resnet50-cpu-16-12-64-16-2-6.log 
+kubectl create -f resnet50-gpu-16-12-64-16-2-6.yaml 2> resnet50-gpu-16-12-64-16-2-6.log 
+kubectl create -f resnet50-cpu-16-12-64-16-2-7.yaml 2> resnet50-cpu-16-12-64-16-2-7.log 
+kubectl create -f resnet50-gpu-16-12-64-16-2-7.yaml 2> resnet50-gpu-16-12-64-16-2-7.log 
+kubectl create -f resnet50-cpu-16-12-64-16-2-8.yaml 2> resnet50-cpu-16-12-64-16-2-8.log 
+kubectl create -f resnet50-gpu-16-12-64-16-2-8.yaml 2> resnet50-gpu-16-12-64-16-2-8.log 
+kubectl create -f resnet50-cpu-16-12-64-16-2-9.yaml 2> resnet50-cpu-16-12-64-16-2-9.log 
+kubectl create -f resnet50-gpu-16-12-64-16-2-9.yaml 2> resnet50-gpu-16-12-64-16-2-9.log 
+kubectl create -f resnet50-cpu-16-12-64-16-2-10.yaml 2> resnet50-cpu-16-12-64-16-2-10.log 
+kubectl create -f resnet50-gpu-16-12-64-16-2-10.yaml 2> resnet50-gpu-16-12-64-16-2-10.log 
+kubectl create -f resnet50-cpu-16-12-64-16-5-0.yaml 2> resnet50-cpu-16-12-64-16-5-0.log 
+kubectl create -f resnet50-gpu-16-12-64-16-5-0.yaml 2> resnet50-gpu-16-12-64-16-5-0.log 
+kubectl create -f resnet50-cpu-16-12-64-16-5-1.yaml 2> resnet50-cpu-16-12-64-16-5-1.log 
+kubectl create -f resnet50-gpu-16-12-64-16-5-1.yaml 2> resnet50-gpu-16-12-64-16-5-1.log 
+kubectl create -f resnet50-cpu-16-12-64-16-5-2.yaml 2> resnet50-cpu-16-12-64-16-5-2.log 
+kubectl create -f resnet50-gpu-16-12-64-16-5-2.yaml 2> resnet50-gpu-16-12-64-16-5-2.log 
+kubectl create -f resnet50-cpu-16-12-64-16-5-3.yaml 2> resnet50-cpu-16-12-64-16-5-3.log 
+kubectl create -f resnet50-gpu-16-12-64-16-5-3.yaml 2> resnet50-gpu-16-12-64-16-5-3.log 
+kubectl create -f resnet50-cpu-16-12-64-16-5-4.yaml 2> resnet50-cpu-16-12-64-16-5-4.log 
+kubectl create -f resnet50-gpu-16-12-64-16-5-4.yaml 2> resnet50-gpu-16-12-64-16-5-4.log 
+kubectl create -f resnet50-cpu-16-12-64-16-5-5.yaml 2> resnet50-cpu-16-12-64-16-5-5.log 
+kubectl create -f resnet50-gpu-16-12-64-16-5-5.yaml 2> resnet50-gpu-16-12-64-16-5-5.log 
+kubectl create -f resnet50-cpu-16-12-64-16-5-6.yaml 2> resnet50-cpu-16-12-64-16-5-6.log 
+kubectl create -f resnet50-gpu-16-12-64-16-5-6.yaml 2> resnet50-gpu-16-12-64-16-5-6.log 
+kubectl create -f resnet50-cpu-16-12-64-16-5-7.yaml 2> resnet50-cpu-16-12-64-16-5-7.log 
+kubectl create -f resnet50-gpu-16-12-64-16-5-7.yaml 2> resnet50-gpu-16-12-64-16-5-7.log 
+kubectl create -f resnet50-cpu-16-12-64-16-5-8.yaml 2> resnet50-cpu-16-12-64-16-5-8.log 
+kubectl create -f resnet50-gpu-16-12-64-16-5-8.yaml 2> resnet50-gpu-16-12-64-16-5-8.log 
+kubectl create -f resnet50-cpu-16-12-64-16-5-9.yaml 2> resnet50-cpu-16-12-64-16-5-9.log 
+kubectl create -f resnet50-gpu-16-12-64-16-5-9.yaml 2> resnet50-gpu-16-12-64-16-5-9.log 
+kubectl create -f resnet50-cpu-16-12-64-16-5-10.yaml 2> resnet50-cpu-16-12-64-16-5-10.log 
+kubectl create -f resnet50-gpu-16-12-64-16-5-10.yaml 2> resnet50-gpu-16-12-64-16-5-10.log 
+kubectl create -f resnet50-cpu-16-12-64-16-10-0.yaml 2> resnet50-cpu-16-12-64-16-10-0.log 
+kubectl create -f resnet50-gpu-16-12-64-16-10-0.yaml 2> resnet50-gpu-16-12-64-16-10-0.log 
+kubectl create -f resnet50-cpu-16-12-64-16-10-1.yaml 2> resnet50-cpu-16-12-64-16-10-1.log 
+kubectl create -f resnet50-gpu-16-12-64-16-10-1.yaml 2> resnet50-gpu-16-12-64-16-10-1.log 
+kubectl create -f resnet50-cpu-16-12-64-16-10-2.yaml 2> resnet50-cpu-16-12-64-16-10-2.log 
+kubectl create -f resnet50-gpu-16-12-64-16-10-2.yaml 2> resnet50-gpu-16-12-64-16-10-2.log 
+kubectl create -f resnet50-cpu-16-12-64-16-10-3.yaml 2> resnet50-cpu-16-12-64-16-10-3.log 
+kubectl create -f resnet50-gpu-16-12-64-16-10-3.yaml 2> resnet50-gpu-16-12-64-16-10-3.log 
+kubectl create -f resnet50-cpu-16-12-64-16-10-4.yaml 2> resnet50-cpu-16-12-64-16-10-4.log 
+kubectl create -f resnet50-gpu-16-12-64-16-10-4.yaml 2> resnet50-gpu-16-12-64-16-10-4.log 
+kubectl create -f resnet50-cpu-16-12-64-16-10-5.yaml 2> resnet50-cpu-16-12-64-16-10-5.log 
+kubectl create -f resnet50-gpu-16-12-64-16-10-5.yaml 2> resnet50-gpu-16-12-64-16-10-5.log 
+kubectl create -f resnet50-cpu-16-12-64-16-10-6.yaml 2> resnet50-cpu-16-12-64-16-10-6.log 
+kubectl create -f resnet50-gpu-16-12-64-16-10-6.yaml 2> resnet50-gpu-16-12-64-16-10-6.log 
+kubectl create -f resnet50-cpu-16-12-64-16-10-7.yaml 2> resnet50-cpu-16-12-64-16-10-7.log 
+kubectl create -f resnet50-gpu-16-12-64-16-10-7.yaml 2> resnet50-gpu-16-12-64-16-10-7.log 
+kubectl create -f resnet50-cpu-16-12-64-16-10-8.yaml 2> resnet50-cpu-16-12-64-16-10-8.log 
+kubectl create -f resnet50-gpu-16-12-64-16-10-8.yaml 2> resnet50-gpu-16-12-64-16-10-8.log 
+kubectl create -f resnet50-cpu-16-12-64-16-10-9.yaml 2> resnet50-cpu-16-12-64-16-10-9.log 
+kubectl create -f resnet50-gpu-16-12-64-16-10-9.yaml 2> resnet50-gpu-16-12-64-16-10-9.log 
+kubectl create -f resnet50-cpu-16-12-64-16-10-10.yaml 2> resnet50-cpu-16-12-64-16-10-10.log 
+kubectl create -f resnet50-gpu-16-12-64-16-10-10.yaml 2> resnet50-gpu-16-12-64-16-10-10.log 
+kubectl create -f resnet50-cpu-16-12-64-16-15-0.yaml 2> resnet50-cpu-16-12-64-16-15-0.log 
+kubectl create -f resnet50-gpu-16-12-64-16-15-0.yaml 2> resnet50-gpu-16-12-64-16-15-0.log 
+kubectl create -f resnet50-cpu-16-12-64-16-15-1.yaml 2> resnet50-cpu-16-12-64-16-15-1.log 
+kubectl create -f resnet50-gpu-16-12-64-16-15-1.yaml 2> resnet50-gpu-16-12-64-16-15-1.log 
+kubectl create -f resnet50-cpu-16-12-64-16-15-2.yaml 2> resnet50-cpu-16-12-64-16-15-2.log 
+kubectl create -f resnet50-gpu-16-12-64-16-15-2.yaml 2> resnet50-gpu-16-12-64-16-15-2.log 
+kubectl create -f resnet50-cpu-16-12-64-16-15-3.yaml 2> resnet50-cpu-16-12-64-16-15-3.log 
+kubectl create -f resnet50-gpu-16-12-64-16-15-3.yaml 2> resnet50-gpu-16-12-64-16-15-3.log 
+kubectl create -f resnet50-cpu-16-12-64-16-15-4.yaml 2> resnet50-cpu-16-12-64-16-15-4.log 
+kubectl create -f resnet50-gpu-16-12-64-16-15-4.yaml 2> resnet50-gpu-16-12-64-16-15-4.log 
+kubectl create -f resnet50-cpu-16-12-64-16-15-5.yaml 2> resnet50-cpu-16-12-64-16-15-5.log 
+kubectl create -f resnet50-gpu-16-12-64-16-15-5.yaml 2> resnet50-gpu-16-12-64-16-15-5.log 
+kubectl create -f resnet50-cpu-16-12-64-16-15-6.yaml 2> resnet50-cpu-16-12-64-16-15-6.log 
+kubectl create -f resnet50-gpu-16-12-64-16-15-6.yaml 2> resnet50-gpu-16-12-64-16-15-6.log 
+kubectl create -f resnet50-cpu-16-12-64-16-15-7.yaml 2> resnet50-cpu-16-12-64-16-15-7.log 
+kubectl create -f resnet50-gpu-16-12-64-16-15-7.yaml 2> resnet50-gpu-16-12-64-16-15-7.log 
+kubectl create -f resnet50-cpu-16-12-64-16-15-8.yaml 2> resnet50-cpu-16-12-64-16-15-8.log 
+kubectl create -f resnet50-gpu-16-12-64-16-15-8.yaml 2> resnet50-gpu-16-12-64-16-15-8.log 
+kubectl create -f resnet50-cpu-16-12-64-16-15-9.yaml 2> resnet50-cpu-16-12-64-16-15-9.log 
+kubectl create -f resnet50-gpu-16-12-64-16-15-9.yaml 2> resnet50-gpu-16-12-64-16-15-9.log 
+kubectl create -f resnet50-cpu-16-12-64-16-15-10.yaml 2> resnet50-cpu-16-12-64-16-15-10.log 
+kubectl create -f resnet50-gpu-16-12-64-16-15-10.yaml 2> resnet50-gpu-16-12-64-16-15-10.log 
+kubectl create -f resnet50-cpu-16-12-64-16-20-0.yaml 2> resnet50-cpu-16-12-64-16-20-0.log 
+kubectl create -f resnet50-gpu-16-12-64-16-20-0.yaml 2> resnet50-gpu-16-12-64-16-20-0.log 
+kubectl create -f resnet50-cpu-16-12-64-16-20-1.yaml 2> resnet50-cpu-16-12-64-16-20-1.log 
+kubectl create -f resnet50-gpu-16-12-64-16-20-1.yaml 2> resnet50-gpu-16-12-64-16-20-1.log 
+kubectl create -f resnet50-cpu-16-12-64-16-20-2.yaml 2> resnet50-cpu-16-12-64-16-20-2.log 
+kubectl create -f resnet50-gpu-16-12-64-16-20-2.yaml 2> resnet50-gpu-16-12-64-16-20-2.log 
+kubectl create -f resnet50-cpu-16-12-64-16-20-3.yaml 2> resnet50-cpu-16-12-64-16-20-3.log 
+kubectl create -f resnet50-gpu-16-12-64-16-20-3.yaml 2> resnet50-gpu-16-12-64-16-20-3.log 
+kubectl create -f resnet50-cpu-16-12-64-16-20-4.yaml 2> resnet50-cpu-16-12-64-16-20-4.log 
+kubectl create -f resnet50-gpu-16-12-64-16-20-4.yaml 2> resnet50-gpu-16-12-64-16-20-4.log 
+kubectl create -f resnet50-cpu-16-12-64-16-20-5.yaml 2> resnet50-cpu-16-12-64-16-20-5.log 
+kubectl create -f resnet50-gpu-16-12-64-16-20-5.yaml 2> resnet50-gpu-16-12-64-16-20-5.log 
+kubectl create -f resnet50-cpu-16-12-64-16-20-6.yaml 2> resnet50-cpu-16-12-64-16-20-6.log 
+kubectl create -f resnet50-gpu-16-12-64-16-20-6.yaml 2> resnet50-gpu-16-12-64-16-20-6.log 
+kubectl create -f resnet50-cpu-16-12-64-16-20-7.yaml 2> resnet50-cpu-16-12-64-16-20-7.log 
+kubectl create -f resnet50-gpu-16-12-64-16-20-7.yaml 2> resnet50-gpu-16-12-64-16-20-7.log 
+kubectl create -f resnet50-cpu-16-12-64-16-20-8.yaml 2> resnet50-cpu-16-12-64-16-20-8.log 
+kubectl create -f resnet50-gpu-16-12-64-16-20-8.yaml 2> resnet50-gpu-16-12-64-16-20-8.log 
+kubectl create -f resnet50-cpu-16-12-64-16-20-9.yaml 2> resnet50-cpu-16-12-64-16-20-9.log 
+kubectl create -f resnet50-gpu-16-12-64-16-20-9.yaml 2> resnet50-gpu-16-12-64-16-20-9.log 
+kubectl create -f resnet50-cpu-16-12-64-16-20-10.yaml 2> resnet50-cpu-16-12-64-16-20-10.log 
+kubectl create -f resnet50-gpu-16-12-64-16-20-10.yaml 2> resnet50-gpu-16-12-64-16-20-10.log 
+kubectl create -f inception3-cpu-16-12-64-16-2-0.yaml 2> inception3-cpu-16-12-64-16-2-0.log 
+kubectl create -f inception3-gpu-16-12-64-16-2-0.yaml 2> inception3-gpu-16-12-64-16-2-0.log 
+kubectl create -f inception3-cpu-16-12-64-16-2-1.yaml 2> inception3-cpu-16-12-64-16-2-1.log 
+kubectl create -f inception3-gpu-16-12-64-16-2-1.yaml 2> inception3-gpu-16-12-64-16-2-1.log 
+kubectl create -f inception3-cpu-16-12-64-16-2-2.yaml 2> inception3-cpu-16-12-64-16-2-2.log 
+kubectl create -f inception3-gpu-16-12-64-16-2-2.yaml 2> inception3-gpu-16-12-64-16-2-2.log 
+kubectl create -f inception3-cpu-16-12-64-16-2-3.yaml 2> inception3-cpu-16-12-64-16-2-3.log 
+kubectl create -f inception3-gpu-16-12-64-16-2-3.yaml 2> inception3-gpu-16-12-64-16-2-3.log 
+kubectl create -f inception3-cpu-16-12-64-16-2-4.yaml 2> inception3-cpu-16-12-64-16-2-4.log 
+kubectl create -f inception3-gpu-16-12-64-16-2-4.yaml 2> inception3-gpu-16-12-64-16-2-4.log 
+kubectl create -f inception3-cpu-16-12-64-16-2-5.yaml 2> inception3-cpu-16-12-64-16-2-5.log 
+kubectl create -f inception3-gpu-16-12-64-16-2-5.yaml 2> inception3-gpu-16-12-64-16-2-5.log 
+kubectl create -f inception3-cpu-16-12-64-16-2-6.yaml 2> inception3-cpu-16-12-64-16-2-6.log 
+kubectl create -f inception3-gpu-16-12-64-16-2-6.yaml 2> inception3-gpu-16-12-64-16-2-6.log 
+kubectl create -f inception3-cpu-16-12-64-16-2-7.yaml 2> inception3-cpu-16-12-64-16-2-7.log 
+kubectl create -f inception3-gpu-16-12-64-16-2-7.yaml 2> inception3-gpu-16-12-64-16-2-7.log 
+kubectl create -f inception3-cpu-16-12-64-16-2-8.yaml 2> inception3-cpu-16-12-64-16-2-8.log 
+kubectl create -f inception3-gpu-16-12-64-16-2-8.yaml 2> inception3-gpu-16-12-64-16-2-8.log 
+kubectl create -f inception3-cpu-16-12-64-16-2-9.yaml 2> inception3-cpu-16-12-64-16-2-9.log 
+kubectl create -f inception3-gpu-16-12-64-16-2-9.yaml 2> inception3-gpu-16-12-64-16-2-9.log 
+kubectl create -f inception3-cpu-16-12-64-16-2-10.yaml 2> inception3-cpu-16-12-64-16-2-10.log 
+kubectl create -f inception3-gpu-16-12-64-16-2-10.yaml 2> inception3-gpu-16-12-64-16-2-10.log 
+kubectl create -f inception3-cpu-16-12-64-16-5-0.yaml 2> inception3-cpu-16-12-64-16-5-0.log 
+kubectl create -f inception3-gpu-16-12-64-16-5-0.yaml 2> inception3-gpu-16-12-64-16-5-0.log 
+kubectl create -f inception3-cpu-16-12-64-16-5-1.yaml 2> inception3-cpu-16-12-64-16-5-1.log 
+kubectl create -f inception3-gpu-16-12-64-16-5-1.yaml 2> inception3-gpu-16-12-64-16-5-1.log 
+kubectl create -f inception3-cpu-16-12-64-16-5-2.yaml 2> inception3-cpu-16-12-64-16-5-2.log 
+kubectl create -f inception3-gpu-16-12-64-16-5-2.yaml 2> inception3-gpu-16-12-64-16-5-2.log 
+kubectl create -f inception3-cpu-16-12-64-16-5-3.yaml 2> inception3-cpu-16-12-64-16-5-3.log 
+kubectl create -f inception3-gpu-16-12-64-16-5-3.yaml 2> inception3-gpu-16-12-64-16-5-3.log 
+kubectl create -f inception3-cpu-16-12-64-16-5-4.yaml 2> inception3-cpu-16-12-64-16-5-4.log 
+kubectl create -f inception3-gpu-16-12-64-16-5-4.yaml 2> inception3-gpu-16-12-64-16-5-4.log 
+kubectl create -f inception3-cpu-16-12-64-16-5-5.yaml 2> inception3-cpu-16-12-64-16-5-5.log 
+kubectl create -f inception3-gpu-16-12-64-16-5-5.yaml 2> inception3-gpu-16-12-64-16-5-5.log 
+kubectl create -f inception3-cpu-16-12-64-16-5-6.yaml 2> inception3-cpu-16-12-64-16-5-6.log 
+kubectl create -f inception3-gpu-16-12-64-16-5-6.yaml 2> inception3-gpu-16-12-64-16-5-6.log 
+kubectl create -f inception3-cpu-16-12-64-16-5-7.yaml 2> inception3-cpu-16-12-64-16-5-7.log 
+kubectl create -f inception3-gpu-16-12-64-16-5-7.yaml 2> inception3-gpu-16-12-64-16-5-7.log 
+kubectl create -f inception3-cpu-16-12-64-16-5-8.yaml 2> inception3-cpu-16-12-64-16-5-8.log 
+kubectl create -f inception3-gpu-16-12-64-16-5-8.yaml 2> inception3-gpu-16-12-64-16-5-8.log 
+kubectl create -f inception3-cpu-16-12-64-16-5-9.yaml 2> inception3-cpu-16-12-64-16-5-9.log 
+kubectl create -f inception3-gpu-16-12-64-16-5-9.yaml 2> inception3-gpu-16-12-64-16-5-9.log 
+kubectl create -f inception3-cpu-16-12-64-16-5-10.yaml 2> inception3-cpu-16-12-64-16-5-10.log 
+kubectl create -f inception3-gpu-16-12-64-16-5-10.yaml 2> inception3-gpu-16-12-64-16-5-10.log 
+kubectl create -f inception3-cpu-16-12-64-16-10-0.yaml 2> inception3-cpu-16-12-64-16-10-0.log 
+kubectl create -f inception3-gpu-16-12-64-16-10-0.yaml 2> inception3-gpu-16-12-64-16-10-0.log 
+kubectl create -f inception3-cpu-16-12-64-16-10-1.yaml 2> inception3-cpu-16-12-64-16-10-1.log 
+kubectl create -f inception3-gpu-16-12-64-16-10-1.yaml 2> inception3-gpu-16-12-64-16-10-1.log 
+kubectl create -f inception3-cpu-16-12-64-16-10-2.yaml 2> inception3-cpu-16-12-64-16-10-2.log 
+kubectl create -f inception3-gpu-16-12-64-16-10-2.yaml 2> inception3-gpu-16-12-64-16-10-2.log 
+kubectl create -f inception3-cpu-16-12-64-16-10-3.yaml 2> inception3-cpu-16-12-64-16-10-3.log 
+kubectl create -f inception3-gpu-16-12-64-16-10-3.yaml 2> inception3-gpu-16-12-64-16-10-3.log 
+kubectl create -f inception3-cpu-16-12-64-16-10-4.yaml 2> inception3-cpu-16-12-64-16-10-4.log 
+kubectl create -f inception3-gpu-16-12-64-16-10-4.yaml 2> inception3-gpu-16-12-64-16-10-4.log 
+kubectl create -f inception3-cpu-16-12-64-16-10-5.yaml 2> inception3-cpu-16-12-64-16-10-5.log 
+kubectl create -f inception3-gpu-16-12-64-16-10-5.yaml 2> inception3-gpu-16-12-64-16-10-5.log 
+kubectl create -f inception3-cpu-16-12-64-16-10-6.yaml 2> inception3-cpu-16-12-64-16-10-6.log 
+kubectl create -f inception3-gpu-16-12-64-16-10-6.yaml 2> inception3-gpu-16-12-64-16-10-6.log 
+kubectl create -f inception3-cpu-16-12-64-16-10-7.yaml 2> inception3-cpu-16-12-64-16-10-7.log 
+kubectl create -f inception3-gpu-16-12-64-16-10-7.yaml 2> inception3-gpu-16-12-64-16-10-7.log 
+kubectl create -f inception3-cpu-16-12-64-16-10-8.yaml 2> inception3-cpu-16-12-64-16-10-8.log 
+kubectl create -f inception3-gpu-16-12-64-16-10-8.yaml 2> inception3-gpu-16-12-64-16-10-8.log 
+kubectl create -f inception3-cpu-16-12-64-16-10-9.yaml 2> inception3-cpu-16-12-64-16-10-9.log 
+kubectl create -f inception3-gpu-16-12-64-16-10-9.yaml 2> inception3-gpu-16-12-64-16-10-9.log 
+kubectl create -f inception3-cpu-16-12-64-16-10-10.yaml 2> inception3-cpu-16-12-64-16-10-10.log 
+kubectl create -f inception3-gpu-16-12-64-16-10-10.yaml 2> inception3-gpu-16-12-64-16-10-10.log 
+kubectl create -f inception3-cpu-16-12-64-16-15-0.yaml 2> inception3-cpu-16-12-64-16-15-0.log 
+kubectl create -f inception3-gpu-16-12-64-16-15-0.yaml 2> inception3-gpu-16-12-64-16-15-0.log 
+kubectl create -f inception3-cpu-16-12-64-16-15-1.yaml 2> inception3-cpu-16-12-64-16-15-1.log 
+kubectl create -f inception3-gpu-16-12-64-16-15-1.yaml 2> inception3-gpu-16-12-64-16-15-1.log 
+kubectl create -f inception3-cpu-16-12-64-16-15-2.yaml 2> inception3-cpu-16-12-64-16-15-2.log 
+kubectl create -f inception3-gpu-16-12-64-16-15-2.yaml 2> inception3-gpu-16-12-64-16-15-2.log 
+kubectl create -f inception3-cpu-16-12-64-16-15-3.yaml 2> inception3-cpu-16-12-64-16-15-3.log 
+kubectl create -f inception3-gpu-16-12-64-16-15-3.yaml 2> inception3-gpu-16-12-64-16-15-3.log 
+kubectl create -f inception3-cpu-16-12-64-16-15-4.yaml 2> inception3-cpu-16-12-64-16-15-4.log 
+kubectl create -f inception3-gpu-16-12-64-16-15-4.yaml 2> inception3-gpu-16-12-64-16-15-4.log 
+kubectl create -f inception3-cpu-16-12-64-16-15-5.yaml 2> inception3-cpu-16-12-64-16-15-5.log 
+kubectl create -f inception3-gpu-16-12-64-16-15-5.yaml 2> inception3-gpu-16-12-64-16-15-5.log 
+kubectl create -f inception3-cpu-16-12-64-16-15-6.yaml 2> inception3-cpu-16-12-64-16-15-6.log 
+kubectl create -f inception3-gpu-16-12-64-16-15-6.yaml 2> inception3-gpu-16-12-64-16-15-6.log 
+kubectl create -f inception3-cpu-16-12-64-16-15-7.yaml 2> inception3-cpu-16-12-64-16-15-7.log 
+kubectl create -f inception3-gpu-16-12-64-16-15-7.yaml 2> inception3-gpu-16-12-64-16-15-7.log 
+kubectl create -f inception3-cpu-16-12-64-16-15-8.yaml 2> inception3-cpu-16-12-64-16-15-8.log 
+kubectl create -f inception3-gpu-16-12-64-16-15-8.yaml 2> inception3-gpu-16-12-64-16-15-8.log 
+kubectl create -f inception3-cpu-16-12-64-16-15-9.yaml 2> inception3-cpu-16-12-64-16-15-9.log 
+kubectl create -f inception3-gpu-16-12-64-16-15-9.yaml 2> inception3-gpu-16-12-64-16-15-9.log 
+kubectl create -f inception3-cpu-16-12-64-16-15-10.yaml 2> inception3-cpu-16-12-64-16-15-10.log 
+kubectl create -f inception3-gpu-16-12-64-16-15-10.yaml 2> inception3-gpu-16-12-64-16-15-10.log 
+kubectl create -f inception3-cpu-16-12-64-16-20-0.yaml 2> inception3-cpu-16-12-64-16-20-0.log 
+kubectl create -f inception3-gpu-16-12-64-16-20-0.yaml 2> inception3-gpu-16-12-64-16-20-0.log 
+kubectl create -f inception3-cpu-16-12-64-16-20-1.yaml 2> inception3-cpu-16-12-64-16-20-1.log 
+kubectl create -f inception3-gpu-16-12-64-16-20-1.yaml 2> inception3-gpu-16-12-64-16-20-1.log 
+kubectl create -f inception3-cpu-16-12-64-16-20-2.yaml 2> inception3-cpu-16-12-64-16-20-2.log 
+kubectl create -f inception3-gpu-16-12-64-16-20-2.yaml 2> inception3-gpu-16-12-64-16-20-2.log 
+kubectl create -f inception3-cpu-16-12-64-16-20-3.yaml 2> inception3-cpu-16-12-64-16-20-3.log 
+kubectl create -f inception3-gpu-16-12-64-16-20-3.yaml 2> inception3-gpu-16-12-64-16-20-3.log 
+kubectl create -f inception3-cpu-16-12-64-16-20-4.yaml 2> inception3-cpu-16-12-64-16-20-4.log 
+kubectl create -f inception3-gpu-16-12-64-16-20-4.yaml 2> inception3-gpu-16-12-64-16-20-4.log 
+kubectl create -f inception3-cpu-16-12-64-16-20-5.yaml 2> inception3-cpu-16-12-64-16-20-5.log 
+kubectl create -f inception3-gpu-16-12-64-16-20-5.yaml 2> inception3-gpu-16-12-64-16-20-5.log 
+kubectl create -f inception3-cpu-16-12-64-16-20-6.yaml 2> inception3-cpu-16-12-64-16-20-6.log 
+kubectl create -f inception3-gpu-16-12-64-16-20-6.yaml 2> inception3-gpu-16-12-64-16-20-6.log 
+kubectl create -f inception3-cpu-16-12-64-16-20-7.yaml 2> inception3-cpu-16-12-64-16-20-7.log 
+kubectl create -f inception3-gpu-16-12-64-16-20-7.yaml 2> inception3-gpu-16-12-64-16-20-7.log 
+kubectl create -f inception3-cpu-16-12-64-16-20-8.yaml 2> inception3-cpu-16-12-64-16-20-8.log 
+kubectl create -f inception3-gpu-16-12-64-16-20-8.yaml 2> inception3-gpu-16-12-64-16-20-8.log 
+kubectl create -f inception3-cpu-16-12-64-16-20-9.yaml 2> inception3-cpu-16-12-64-16-20-9.log 
+kubectl create -f inception3-gpu-16-12-64-16-20-9.yaml 2> inception3-gpu-16-12-64-16-20-9.log 
+kubectl create -f inception3-cpu-16-12-64-16-20-10.yaml 2> inception3-cpu-16-12-64-16-20-10.log 
+kubectl create -f inception3-gpu-16-12-64-16-20-10.yaml 2> inception3-gpu-16-12-64-16-20-10.log 

@@ -1,660 +1,660 @@
-kubectl logs job-vgg16-cpu-16-12-32-16-2-0> vgg16-cpu-16-12-32-16-2-0.log & 
-kubectl logs job-vgg16-gpu-16-12-32-16-2-0> vgg16-gpu-16-12-32-16-2-0.log & 
-kubectl logs job-vgg16-cpu-16-12-32-16-2-1> vgg16-cpu-16-12-32-16-2-1.log & 
-kubectl logs job-vgg16-gpu-16-12-32-16-2-1> vgg16-gpu-16-12-32-16-2-1.log & 
-kubectl logs job-vgg16-cpu-16-12-32-16-2-2> vgg16-cpu-16-12-32-16-2-2.log & 
-kubectl logs job-vgg16-gpu-16-12-32-16-2-2> vgg16-gpu-16-12-32-16-2-2.log & 
-kubectl logs job-vgg16-cpu-16-12-32-16-2-3> vgg16-cpu-16-12-32-16-2-3.log & 
-kubectl logs job-vgg16-gpu-16-12-32-16-2-3> vgg16-gpu-16-12-32-16-2-3.log & 
-kubectl logs job-vgg16-cpu-16-12-32-16-2-4> vgg16-cpu-16-12-32-16-2-4.log & 
-kubectl logs job-vgg16-gpu-16-12-32-16-2-4> vgg16-gpu-16-12-32-16-2-4.log & 
-kubectl logs job-vgg16-cpu-16-12-32-16-2-5> vgg16-cpu-16-12-32-16-2-5.log & 
-kubectl logs job-vgg16-gpu-16-12-32-16-2-5> vgg16-gpu-16-12-32-16-2-5.log & 
-kubectl logs job-vgg16-cpu-16-12-32-16-2-6> vgg16-cpu-16-12-32-16-2-6.log & 
-kubectl logs job-vgg16-gpu-16-12-32-16-2-6> vgg16-gpu-16-12-32-16-2-6.log & 
-kubectl logs job-vgg16-cpu-16-12-32-16-2-7> vgg16-cpu-16-12-32-16-2-7.log & 
-kubectl logs job-vgg16-gpu-16-12-32-16-2-7> vgg16-gpu-16-12-32-16-2-7.log & 
-kubectl logs job-vgg16-cpu-16-12-32-16-2-8> vgg16-cpu-16-12-32-16-2-8.log & 
-kubectl logs job-vgg16-gpu-16-12-32-16-2-8> vgg16-gpu-16-12-32-16-2-8.log & 
-kubectl logs job-vgg16-cpu-16-12-32-16-2-9> vgg16-cpu-16-12-32-16-2-9.log & 
-kubectl logs job-vgg16-gpu-16-12-32-16-2-9> vgg16-gpu-16-12-32-16-2-9.log & 
-kubectl logs job-vgg16-cpu-16-12-32-16-2-10> vgg16-cpu-16-12-32-16-2-10.log & 
-kubectl logs job-vgg16-gpu-16-12-32-16-2-10> vgg16-gpu-16-12-32-16-2-10.log & 
-kubectl logs job-vgg16-cpu-16-12-32-16-5-0> vgg16-cpu-16-12-32-16-5-0.log & 
-kubectl logs job-vgg16-gpu-16-12-32-16-5-0> vgg16-gpu-16-12-32-16-5-0.log & 
-kubectl logs job-vgg16-cpu-16-12-32-16-5-1> vgg16-cpu-16-12-32-16-5-1.log & 
-kubectl logs job-vgg16-gpu-16-12-32-16-5-1> vgg16-gpu-16-12-32-16-5-1.log & 
-kubectl logs job-vgg16-cpu-16-12-32-16-5-2> vgg16-cpu-16-12-32-16-5-2.log & 
-kubectl logs job-vgg16-gpu-16-12-32-16-5-2> vgg16-gpu-16-12-32-16-5-2.log & 
-kubectl logs job-vgg16-cpu-16-12-32-16-5-3> vgg16-cpu-16-12-32-16-5-3.log & 
-kubectl logs job-vgg16-gpu-16-12-32-16-5-3> vgg16-gpu-16-12-32-16-5-3.log & 
-kubectl logs job-vgg16-cpu-16-12-32-16-5-4> vgg16-cpu-16-12-32-16-5-4.log & 
-kubectl logs job-vgg16-gpu-16-12-32-16-5-4> vgg16-gpu-16-12-32-16-5-4.log & 
-kubectl logs job-vgg16-cpu-16-12-32-16-5-5> vgg16-cpu-16-12-32-16-5-5.log & 
-kubectl logs job-vgg16-gpu-16-12-32-16-5-5> vgg16-gpu-16-12-32-16-5-5.log & 
-kubectl logs job-vgg16-cpu-16-12-32-16-5-6> vgg16-cpu-16-12-32-16-5-6.log & 
-kubectl logs job-vgg16-gpu-16-12-32-16-5-6> vgg16-gpu-16-12-32-16-5-6.log & 
-kubectl logs job-vgg16-cpu-16-12-32-16-5-7> vgg16-cpu-16-12-32-16-5-7.log & 
-kubectl logs job-vgg16-gpu-16-12-32-16-5-7> vgg16-gpu-16-12-32-16-5-7.log & 
-kubectl logs job-vgg16-cpu-16-12-32-16-5-8> vgg16-cpu-16-12-32-16-5-8.log & 
-kubectl logs job-vgg16-gpu-16-12-32-16-5-8> vgg16-gpu-16-12-32-16-5-8.log & 
-kubectl logs job-vgg16-cpu-16-12-32-16-5-9> vgg16-cpu-16-12-32-16-5-9.log & 
-kubectl logs job-vgg16-gpu-16-12-32-16-5-9> vgg16-gpu-16-12-32-16-5-9.log & 
-kubectl logs job-vgg16-cpu-16-12-32-16-5-10> vgg16-cpu-16-12-32-16-5-10.log & 
-kubectl logs job-vgg16-gpu-16-12-32-16-5-10> vgg16-gpu-16-12-32-16-5-10.log & 
-kubectl logs job-vgg16-cpu-16-12-32-16-10-0> vgg16-cpu-16-12-32-16-10-0.log & 
-kubectl logs job-vgg16-gpu-16-12-32-16-10-0> vgg16-gpu-16-12-32-16-10-0.log & 
-kubectl logs job-vgg16-cpu-16-12-32-16-10-1> vgg16-cpu-16-12-32-16-10-1.log & 
-kubectl logs job-vgg16-gpu-16-12-32-16-10-1> vgg16-gpu-16-12-32-16-10-1.log & 
-kubectl logs job-vgg16-cpu-16-12-32-16-10-2> vgg16-cpu-16-12-32-16-10-2.log & 
-kubectl logs job-vgg16-gpu-16-12-32-16-10-2> vgg16-gpu-16-12-32-16-10-2.log & 
-kubectl logs job-vgg16-cpu-16-12-32-16-10-3> vgg16-cpu-16-12-32-16-10-3.log & 
-kubectl logs job-vgg16-gpu-16-12-32-16-10-3> vgg16-gpu-16-12-32-16-10-3.log & 
-kubectl logs job-vgg16-cpu-16-12-32-16-10-4> vgg16-cpu-16-12-32-16-10-4.log & 
-kubectl logs job-vgg16-gpu-16-12-32-16-10-4> vgg16-gpu-16-12-32-16-10-4.log & 
-kubectl logs job-vgg16-cpu-16-12-32-16-10-5> vgg16-cpu-16-12-32-16-10-5.log & 
-kubectl logs job-vgg16-gpu-16-12-32-16-10-5> vgg16-gpu-16-12-32-16-10-5.log & 
-kubectl logs job-vgg16-cpu-16-12-32-16-10-6> vgg16-cpu-16-12-32-16-10-6.log & 
-kubectl logs job-vgg16-gpu-16-12-32-16-10-6> vgg16-gpu-16-12-32-16-10-6.log & 
-kubectl logs job-vgg16-cpu-16-12-32-16-10-7> vgg16-cpu-16-12-32-16-10-7.log & 
-kubectl logs job-vgg16-gpu-16-12-32-16-10-7> vgg16-gpu-16-12-32-16-10-7.log & 
-kubectl logs job-vgg16-cpu-16-12-32-16-10-8> vgg16-cpu-16-12-32-16-10-8.log & 
-kubectl logs job-vgg16-gpu-16-12-32-16-10-8> vgg16-gpu-16-12-32-16-10-8.log & 
-kubectl logs job-vgg16-cpu-16-12-32-16-10-9> vgg16-cpu-16-12-32-16-10-9.log & 
-kubectl logs job-vgg16-gpu-16-12-32-16-10-9> vgg16-gpu-16-12-32-16-10-9.log & 
-kubectl logs job-vgg16-cpu-16-12-32-16-10-10> vgg16-cpu-16-12-32-16-10-10.log & 
-kubectl logs job-vgg16-gpu-16-12-32-16-10-10> vgg16-gpu-16-12-32-16-10-10.log & 
-kubectl logs job-vgg16-cpu-16-12-32-16-15-0> vgg16-cpu-16-12-32-16-15-0.log & 
-kubectl logs job-vgg16-gpu-16-12-32-16-15-0> vgg16-gpu-16-12-32-16-15-0.log & 
-kubectl logs job-vgg16-cpu-16-12-32-16-15-1> vgg16-cpu-16-12-32-16-15-1.log & 
-kubectl logs job-vgg16-gpu-16-12-32-16-15-1> vgg16-gpu-16-12-32-16-15-1.log & 
-kubectl logs job-vgg16-cpu-16-12-32-16-15-2> vgg16-cpu-16-12-32-16-15-2.log & 
-kubectl logs job-vgg16-gpu-16-12-32-16-15-2> vgg16-gpu-16-12-32-16-15-2.log & 
-kubectl logs job-vgg16-cpu-16-12-32-16-15-3> vgg16-cpu-16-12-32-16-15-3.log & 
-kubectl logs job-vgg16-gpu-16-12-32-16-15-3> vgg16-gpu-16-12-32-16-15-3.log & 
-kubectl logs job-vgg16-cpu-16-12-32-16-15-4> vgg16-cpu-16-12-32-16-15-4.log & 
-kubectl logs job-vgg16-gpu-16-12-32-16-15-4> vgg16-gpu-16-12-32-16-15-4.log & 
-kubectl logs job-vgg16-cpu-16-12-32-16-15-5> vgg16-cpu-16-12-32-16-15-5.log & 
-kubectl logs job-vgg16-gpu-16-12-32-16-15-5> vgg16-gpu-16-12-32-16-15-5.log & 
-kubectl logs job-vgg16-cpu-16-12-32-16-15-6> vgg16-cpu-16-12-32-16-15-6.log & 
-kubectl logs job-vgg16-gpu-16-12-32-16-15-6> vgg16-gpu-16-12-32-16-15-6.log & 
-kubectl logs job-vgg16-cpu-16-12-32-16-15-7> vgg16-cpu-16-12-32-16-15-7.log & 
-kubectl logs job-vgg16-gpu-16-12-32-16-15-7> vgg16-gpu-16-12-32-16-15-7.log & 
-kubectl logs job-vgg16-cpu-16-12-32-16-15-8> vgg16-cpu-16-12-32-16-15-8.log & 
-kubectl logs job-vgg16-gpu-16-12-32-16-15-8> vgg16-gpu-16-12-32-16-15-8.log & 
-kubectl logs job-vgg16-cpu-16-12-32-16-15-9> vgg16-cpu-16-12-32-16-15-9.log & 
-kubectl logs job-vgg16-gpu-16-12-32-16-15-9> vgg16-gpu-16-12-32-16-15-9.log & 
-kubectl logs job-vgg16-cpu-16-12-32-16-15-10> vgg16-cpu-16-12-32-16-15-10.log & 
-kubectl logs job-vgg16-gpu-16-12-32-16-15-10> vgg16-gpu-16-12-32-16-15-10.log & 
-kubectl logs job-vgg16-cpu-16-12-32-16-20-0> vgg16-cpu-16-12-32-16-20-0.log & 
-kubectl logs job-vgg16-gpu-16-12-32-16-20-0> vgg16-gpu-16-12-32-16-20-0.log & 
-kubectl logs job-vgg16-cpu-16-12-32-16-20-1> vgg16-cpu-16-12-32-16-20-1.log & 
-kubectl logs job-vgg16-gpu-16-12-32-16-20-1> vgg16-gpu-16-12-32-16-20-1.log & 
-kubectl logs job-vgg16-cpu-16-12-32-16-20-2> vgg16-cpu-16-12-32-16-20-2.log & 
-kubectl logs job-vgg16-gpu-16-12-32-16-20-2> vgg16-gpu-16-12-32-16-20-2.log & 
-kubectl logs job-vgg16-cpu-16-12-32-16-20-3> vgg16-cpu-16-12-32-16-20-3.log & 
-kubectl logs job-vgg16-gpu-16-12-32-16-20-3> vgg16-gpu-16-12-32-16-20-3.log & 
-kubectl logs job-vgg16-cpu-16-12-32-16-20-4> vgg16-cpu-16-12-32-16-20-4.log & 
-kubectl logs job-vgg16-gpu-16-12-32-16-20-4> vgg16-gpu-16-12-32-16-20-4.log & 
-kubectl logs job-vgg16-cpu-16-12-32-16-20-5> vgg16-cpu-16-12-32-16-20-5.log & 
-kubectl logs job-vgg16-gpu-16-12-32-16-20-5> vgg16-gpu-16-12-32-16-20-5.log & 
-kubectl logs job-vgg16-cpu-16-12-32-16-20-6> vgg16-cpu-16-12-32-16-20-6.log & 
-kubectl logs job-vgg16-gpu-16-12-32-16-20-6> vgg16-gpu-16-12-32-16-20-6.log & 
-kubectl logs job-vgg16-cpu-16-12-32-16-20-7> vgg16-cpu-16-12-32-16-20-7.log & 
-kubectl logs job-vgg16-gpu-16-12-32-16-20-7> vgg16-gpu-16-12-32-16-20-7.log & 
-kubectl logs job-vgg16-cpu-16-12-32-16-20-8> vgg16-cpu-16-12-32-16-20-8.log & 
-kubectl logs job-vgg16-gpu-16-12-32-16-20-8> vgg16-gpu-16-12-32-16-20-8.log & 
-kubectl logs job-vgg16-cpu-16-12-32-16-20-9> vgg16-cpu-16-12-32-16-20-9.log & 
-kubectl logs job-vgg16-gpu-16-12-32-16-20-9> vgg16-gpu-16-12-32-16-20-9.log & 
-kubectl logs job-vgg16-cpu-16-12-32-16-20-10> vgg16-cpu-16-12-32-16-20-10.log & 
-kubectl logs job-vgg16-gpu-16-12-32-16-20-10> vgg16-gpu-16-12-32-16-20-10.log & 
-kubectl logs job-lenet-cpu-16-12-32-16-2-0> lenet-cpu-16-12-32-16-2-0.log & 
-kubectl logs job-lenet-gpu-16-12-32-16-2-0> lenet-gpu-16-12-32-16-2-0.log & 
-kubectl logs job-lenet-cpu-16-12-32-16-2-1> lenet-cpu-16-12-32-16-2-1.log & 
-kubectl logs job-lenet-gpu-16-12-32-16-2-1> lenet-gpu-16-12-32-16-2-1.log & 
-kubectl logs job-lenet-cpu-16-12-32-16-2-2> lenet-cpu-16-12-32-16-2-2.log & 
-kubectl logs job-lenet-gpu-16-12-32-16-2-2> lenet-gpu-16-12-32-16-2-2.log & 
-kubectl logs job-lenet-cpu-16-12-32-16-2-3> lenet-cpu-16-12-32-16-2-3.log & 
-kubectl logs job-lenet-gpu-16-12-32-16-2-3> lenet-gpu-16-12-32-16-2-3.log & 
-kubectl logs job-lenet-cpu-16-12-32-16-2-4> lenet-cpu-16-12-32-16-2-4.log & 
-kubectl logs job-lenet-gpu-16-12-32-16-2-4> lenet-gpu-16-12-32-16-2-4.log & 
-kubectl logs job-lenet-cpu-16-12-32-16-2-5> lenet-cpu-16-12-32-16-2-5.log & 
-kubectl logs job-lenet-gpu-16-12-32-16-2-5> lenet-gpu-16-12-32-16-2-5.log & 
-kubectl logs job-lenet-cpu-16-12-32-16-2-6> lenet-cpu-16-12-32-16-2-6.log & 
-kubectl logs job-lenet-gpu-16-12-32-16-2-6> lenet-gpu-16-12-32-16-2-6.log & 
-kubectl logs job-lenet-cpu-16-12-32-16-2-7> lenet-cpu-16-12-32-16-2-7.log & 
-kubectl logs job-lenet-gpu-16-12-32-16-2-7> lenet-gpu-16-12-32-16-2-7.log & 
-kubectl logs job-lenet-cpu-16-12-32-16-2-8> lenet-cpu-16-12-32-16-2-8.log & 
-kubectl logs job-lenet-gpu-16-12-32-16-2-8> lenet-gpu-16-12-32-16-2-8.log & 
-kubectl logs job-lenet-cpu-16-12-32-16-2-9> lenet-cpu-16-12-32-16-2-9.log & 
-kubectl logs job-lenet-gpu-16-12-32-16-2-9> lenet-gpu-16-12-32-16-2-9.log & 
-kubectl logs job-lenet-cpu-16-12-32-16-2-10> lenet-cpu-16-12-32-16-2-10.log & 
-kubectl logs job-lenet-gpu-16-12-32-16-2-10> lenet-gpu-16-12-32-16-2-10.log & 
-kubectl logs job-lenet-cpu-16-12-32-16-5-0> lenet-cpu-16-12-32-16-5-0.log & 
-kubectl logs job-lenet-gpu-16-12-32-16-5-0> lenet-gpu-16-12-32-16-5-0.log & 
-kubectl logs job-lenet-cpu-16-12-32-16-5-1> lenet-cpu-16-12-32-16-5-1.log & 
-kubectl logs job-lenet-gpu-16-12-32-16-5-1> lenet-gpu-16-12-32-16-5-1.log & 
-kubectl logs job-lenet-cpu-16-12-32-16-5-2> lenet-cpu-16-12-32-16-5-2.log & 
-kubectl logs job-lenet-gpu-16-12-32-16-5-2> lenet-gpu-16-12-32-16-5-2.log & 
-kubectl logs job-lenet-cpu-16-12-32-16-5-3> lenet-cpu-16-12-32-16-5-3.log & 
-kubectl logs job-lenet-gpu-16-12-32-16-5-3> lenet-gpu-16-12-32-16-5-3.log & 
-kubectl logs job-lenet-cpu-16-12-32-16-5-4> lenet-cpu-16-12-32-16-5-4.log & 
-kubectl logs job-lenet-gpu-16-12-32-16-5-4> lenet-gpu-16-12-32-16-5-4.log & 
-kubectl logs job-lenet-cpu-16-12-32-16-5-5> lenet-cpu-16-12-32-16-5-5.log & 
-kubectl logs job-lenet-gpu-16-12-32-16-5-5> lenet-gpu-16-12-32-16-5-5.log & 
-kubectl logs job-lenet-cpu-16-12-32-16-5-6> lenet-cpu-16-12-32-16-5-6.log & 
-kubectl logs job-lenet-gpu-16-12-32-16-5-6> lenet-gpu-16-12-32-16-5-6.log & 
-kubectl logs job-lenet-cpu-16-12-32-16-5-7> lenet-cpu-16-12-32-16-5-7.log & 
-kubectl logs job-lenet-gpu-16-12-32-16-5-7> lenet-gpu-16-12-32-16-5-7.log & 
-kubectl logs job-lenet-cpu-16-12-32-16-5-8> lenet-cpu-16-12-32-16-5-8.log & 
-kubectl logs job-lenet-gpu-16-12-32-16-5-8> lenet-gpu-16-12-32-16-5-8.log & 
-kubectl logs job-lenet-cpu-16-12-32-16-5-9> lenet-cpu-16-12-32-16-5-9.log & 
-kubectl logs job-lenet-gpu-16-12-32-16-5-9> lenet-gpu-16-12-32-16-5-9.log & 
-kubectl logs job-lenet-cpu-16-12-32-16-5-10> lenet-cpu-16-12-32-16-5-10.log & 
-kubectl logs job-lenet-gpu-16-12-32-16-5-10> lenet-gpu-16-12-32-16-5-10.log & 
-kubectl logs job-lenet-cpu-16-12-32-16-10-0> lenet-cpu-16-12-32-16-10-0.log & 
-kubectl logs job-lenet-gpu-16-12-32-16-10-0> lenet-gpu-16-12-32-16-10-0.log & 
-kubectl logs job-lenet-cpu-16-12-32-16-10-1> lenet-cpu-16-12-32-16-10-1.log & 
-kubectl logs job-lenet-gpu-16-12-32-16-10-1> lenet-gpu-16-12-32-16-10-1.log & 
-kubectl logs job-lenet-cpu-16-12-32-16-10-2> lenet-cpu-16-12-32-16-10-2.log & 
-kubectl logs job-lenet-gpu-16-12-32-16-10-2> lenet-gpu-16-12-32-16-10-2.log & 
-kubectl logs job-lenet-cpu-16-12-32-16-10-3> lenet-cpu-16-12-32-16-10-3.log & 
-kubectl logs job-lenet-gpu-16-12-32-16-10-3> lenet-gpu-16-12-32-16-10-3.log & 
-kubectl logs job-lenet-cpu-16-12-32-16-10-4> lenet-cpu-16-12-32-16-10-4.log & 
-kubectl logs job-lenet-gpu-16-12-32-16-10-4> lenet-gpu-16-12-32-16-10-4.log & 
-kubectl logs job-lenet-cpu-16-12-32-16-10-5> lenet-cpu-16-12-32-16-10-5.log & 
-kubectl logs job-lenet-gpu-16-12-32-16-10-5> lenet-gpu-16-12-32-16-10-5.log & 
-kubectl logs job-lenet-cpu-16-12-32-16-10-6> lenet-cpu-16-12-32-16-10-6.log & 
-kubectl logs job-lenet-gpu-16-12-32-16-10-6> lenet-gpu-16-12-32-16-10-6.log & 
-kubectl logs job-lenet-cpu-16-12-32-16-10-7> lenet-cpu-16-12-32-16-10-7.log & 
-kubectl logs job-lenet-gpu-16-12-32-16-10-7> lenet-gpu-16-12-32-16-10-7.log & 
-kubectl logs job-lenet-cpu-16-12-32-16-10-8> lenet-cpu-16-12-32-16-10-8.log & 
-kubectl logs job-lenet-gpu-16-12-32-16-10-8> lenet-gpu-16-12-32-16-10-8.log & 
-kubectl logs job-lenet-cpu-16-12-32-16-10-9> lenet-cpu-16-12-32-16-10-9.log & 
-kubectl logs job-lenet-gpu-16-12-32-16-10-9> lenet-gpu-16-12-32-16-10-9.log & 
-kubectl logs job-lenet-cpu-16-12-32-16-10-10> lenet-cpu-16-12-32-16-10-10.log & 
-kubectl logs job-lenet-gpu-16-12-32-16-10-10> lenet-gpu-16-12-32-16-10-10.log & 
-kubectl logs job-lenet-cpu-16-12-32-16-15-0> lenet-cpu-16-12-32-16-15-0.log & 
-kubectl logs job-lenet-gpu-16-12-32-16-15-0> lenet-gpu-16-12-32-16-15-0.log & 
-kubectl logs job-lenet-cpu-16-12-32-16-15-1> lenet-cpu-16-12-32-16-15-1.log & 
-kubectl logs job-lenet-gpu-16-12-32-16-15-1> lenet-gpu-16-12-32-16-15-1.log & 
-kubectl logs job-lenet-cpu-16-12-32-16-15-2> lenet-cpu-16-12-32-16-15-2.log & 
-kubectl logs job-lenet-gpu-16-12-32-16-15-2> lenet-gpu-16-12-32-16-15-2.log & 
-kubectl logs job-lenet-cpu-16-12-32-16-15-3> lenet-cpu-16-12-32-16-15-3.log & 
-kubectl logs job-lenet-gpu-16-12-32-16-15-3> lenet-gpu-16-12-32-16-15-3.log & 
-kubectl logs job-lenet-cpu-16-12-32-16-15-4> lenet-cpu-16-12-32-16-15-4.log & 
-kubectl logs job-lenet-gpu-16-12-32-16-15-4> lenet-gpu-16-12-32-16-15-4.log & 
-kubectl logs job-lenet-cpu-16-12-32-16-15-5> lenet-cpu-16-12-32-16-15-5.log & 
-kubectl logs job-lenet-gpu-16-12-32-16-15-5> lenet-gpu-16-12-32-16-15-5.log & 
-kubectl logs job-lenet-cpu-16-12-32-16-15-6> lenet-cpu-16-12-32-16-15-6.log & 
-kubectl logs job-lenet-gpu-16-12-32-16-15-6> lenet-gpu-16-12-32-16-15-6.log & 
-kubectl logs job-lenet-cpu-16-12-32-16-15-7> lenet-cpu-16-12-32-16-15-7.log & 
-kubectl logs job-lenet-gpu-16-12-32-16-15-7> lenet-gpu-16-12-32-16-15-7.log & 
-kubectl logs job-lenet-cpu-16-12-32-16-15-8> lenet-cpu-16-12-32-16-15-8.log & 
-kubectl logs job-lenet-gpu-16-12-32-16-15-8> lenet-gpu-16-12-32-16-15-8.log & 
-kubectl logs job-lenet-cpu-16-12-32-16-15-9> lenet-cpu-16-12-32-16-15-9.log & 
-kubectl logs job-lenet-gpu-16-12-32-16-15-9> lenet-gpu-16-12-32-16-15-9.log & 
-kubectl logs job-lenet-cpu-16-12-32-16-15-10> lenet-cpu-16-12-32-16-15-10.log & 
-kubectl logs job-lenet-gpu-16-12-32-16-15-10> lenet-gpu-16-12-32-16-15-10.log & 
-kubectl logs job-lenet-cpu-16-12-32-16-20-0> lenet-cpu-16-12-32-16-20-0.log & 
-kubectl logs job-lenet-gpu-16-12-32-16-20-0> lenet-gpu-16-12-32-16-20-0.log & 
-kubectl logs job-lenet-cpu-16-12-32-16-20-1> lenet-cpu-16-12-32-16-20-1.log & 
-kubectl logs job-lenet-gpu-16-12-32-16-20-1> lenet-gpu-16-12-32-16-20-1.log & 
-kubectl logs job-lenet-cpu-16-12-32-16-20-2> lenet-cpu-16-12-32-16-20-2.log & 
-kubectl logs job-lenet-gpu-16-12-32-16-20-2> lenet-gpu-16-12-32-16-20-2.log & 
-kubectl logs job-lenet-cpu-16-12-32-16-20-3> lenet-cpu-16-12-32-16-20-3.log & 
-kubectl logs job-lenet-gpu-16-12-32-16-20-3> lenet-gpu-16-12-32-16-20-3.log & 
-kubectl logs job-lenet-cpu-16-12-32-16-20-4> lenet-cpu-16-12-32-16-20-4.log & 
-kubectl logs job-lenet-gpu-16-12-32-16-20-4> lenet-gpu-16-12-32-16-20-4.log & 
-kubectl logs job-lenet-cpu-16-12-32-16-20-5> lenet-cpu-16-12-32-16-20-5.log & 
-kubectl logs job-lenet-gpu-16-12-32-16-20-5> lenet-gpu-16-12-32-16-20-5.log & 
-kubectl logs job-lenet-cpu-16-12-32-16-20-6> lenet-cpu-16-12-32-16-20-6.log & 
-kubectl logs job-lenet-gpu-16-12-32-16-20-6> lenet-gpu-16-12-32-16-20-6.log & 
-kubectl logs job-lenet-cpu-16-12-32-16-20-7> lenet-cpu-16-12-32-16-20-7.log & 
-kubectl logs job-lenet-gpu-16-12-32-16-20-7> lenet-gpu-16-12-32-16-20-7.log & 
-kubectl logs job-lenet-cpu-16-12-32-16-20-8> lenet-cpu-16-12-32-16-20-8.log & 
-kubectl logs job-lenet-gpu-16-12-32-16-20-8> lenet-gpu-16-12-32-16-20-8.log & 
-kubectl logs job-lenet-cpu-16-12-32-16-20-9> lenet-cpu-16-12-32-16-20-9.log & 
-kubectl logs job-lenet-gpu-16-12-32-16-20-9> lenet-gpu-16-12-32-16-20-9.log & 
-kubectl logs job-lenet-cpu-16-12-32-16-20-10> lenet-cpu-16-12-32-16-20-10.log & 
-kubectl logs job-lenet-gpu-16-12-32-16-20-10> lenet-gpu-16-12-32-16-20-10.log & 
-kubectl logs job-googlenet-cpu-16-12-32-16-2-0> googlenet-cpu-16-12-32-16-2-0.log & 
-kubectl logs job-googlenet-gpu-16-12-32-16-2-0> googlenet-gpu-16-12-32-16-2-0.log & 
-kubectl logs job-googlenet-cpu-16-12-32-16-2-1> googlenet-cpu-16-12-32-16-2-1.log & 
-kubectl logs job-googlenet-gpu-16-12-32-16-2-1> googlenet-gpu-16-12-32-16-2-1.log & 
-kubectl logs job-googlenet-cpu-16-12-32-16-2-2> googlenet-cpu-16-12-32-16-2-2.log & 
-kubectl logs job-googlenet-gpu-16-12-32-16-2-2> googlenet-gpu-16-12-32-16-2-2.log & 
-kubectl logs job-googlenet-cpu-16-12-32-16-2-3> googlenet-cpu-16-12-32-16-2-3.log & 
-kubectl logs job-googlenet-gpu-16-12-32-16-2-3> googlenet-gpu-16-12-32-16-2-3.log & 
-kubectl logs job-googlenet-cpu-16-12-32-16-2-4> googlenet-cpu-16-12-32-16-2-4.log & 
-kubectl logs job-googlenet-gpu-16-12-32-16-2-4> googlenet-gpu-16-12-32-16-2-4.log & 
-kubectl logs job-googlenet-cpu-16-12-32-16-2-5> googlenet-cpu-16-12-32-16-2-5.log & 
-kubectl logs job-googlenet-gpu-16-12-32-16-2-5> googlenet-gpu-16-12-32-16-2-5.log & 
-kubectl logs job-googlenet-cpu-16-12-32-16-2-6> googlenet-cpu-16-12-32-16-2-6.log & 
-kubectl logs job-googlenet-gpu-16-12-32-16-2-6> googlenet-gpu-16-12-32-16-2-6.log & 
-kubectl logs job-googlenet-cpu-16-12-32-16-2-7> googlenet-cpu-16-12-32-16-2-7.log & 
-kubectl logs job-googlenet-gpu-16-12-32-16-2-7> googlenet-gpu-16-12-32-16-2-7.log & 
-kubectl logs job-googlenet-cpu-16-12-32-16-2-8> googlenet-cpu-16-12-32-16-2-8.log & 
-kubectl logs job-googlenet-gpu-16-12-32-16-2-8> googlenet-gpu-16-12-32-16-2-8.log & 
-kubectl logs job-googlenet-cpu-16-12-32-16-2-9> googlenet-cpu-16-12-32-16-2-9.log & 
-kubectl logs job-googlenet-gpu-16-12-32-16-2-9> googlenet-gpu-16-12-32-16-2-9.log & 
-kubectl logs job-googlenet-cpu-16-12-32-16-2-10> googlenet-cpu-16-12-32-16-2-10.log & 
-kubectl logs job-googlenet-gpu-16-12-32-16-2-10> googlenet-gpu-16-12-32-16-2-10.log & 
-kubectl logs job-googlenet-cpu-16-12-32-16-5-0> googlenet-cpu-16-12-32-16-5-0.log & 
-kubectl logs job-googlenet-gpu-16-12-32-16-5-0> googlenet-gpu-16-12-32-16-5-0.log & 
-kubectl logs job-googlenet-cpu-16-12-32-16-5-1> googlenet-cpu-16-12-32-16-5-1.log & 
-kubectl logs job-googlenet-gpu-16-12-32-16-5-1> googlenet-gpu-16-12-32-16-5-1.log & 
-kubectl logs job-googlenet-cpu-16-12-32-16-5-2> googlenet-cpu-16-12-32-16-5-2.log & 
-kubectl logs job-googlenet-gpu-16-12-32-16-5-2> googlenet-gpu-16-12-32-16-5-2.log & 
-kubectl logs job-googlenet-cpu-16-12-32-16-5-3> googlenet-cpu-16-12-32-16-5-3.log & 
-kubectl logs job-googlenet-gpu-16-12-32-16-5-3> googlenet-gpu-16-12-32-16-5-3.log & 
-kubectl logs job-googlenet-cpu-16-12-32-16-5-4> googlenet-cpu-16-12-32-16-5-4.log & 
-kubectl logs job-googlenet-gpu-16-12-32-16-5-4> googlenet-gpu-16-12-32-16-5-4.log & 
-kubectl logs job-googlenet-cpu-16-12-32-16-5-5> googlenet-cpu-16-12-32-16-5-5.log & 
-kubectl logs job-googlenet-gpu-16-12-32-16-5-5> googlenet-gpu-16-12-32-16-5-5.log & 
-kubectl logs job-googlenet-cpu-16-12-32-16-5-6> googlenet-cpu-16-12-32-16-5-6.log & 
-kubectl logs job-googlenet-gpu-16-12-32-16-5-6> googlenet-gpu-16-12-32-16-5-6.log & 
-kubectl logs job-googlenet-cpu-16-12-32-16-5-7> googlenet-cpu-16-12-32-16-5-7.log & 
-kubectl logs job-googlenet-gpu-16-12-32-16-5-7> googlenet-gpu-16-12-32-16-5-7.log & 
-kubectl logs job-googlenet-cpu-16-12-32-16-5-8> googlenet-cpu-16-12-32-16-5-8.log & 
-kubectl logs job-googlenet-gpu-16-12-32-16-5-8> googlenet-gpu-16-12-32-16-5-8.log & 
-kubectl logs job-googlenet-cpu-16-12-32-16-5-9> googlenet-cpu-16-12-32-16-5-9.log & 
-kubectl logs job-googlenet-gpu-16-12-32-16-5-9> googlenet-gpu-16-12-32-16-5-9.log & 
-kubectl logs job-googlenet-cpu-16-12-32-16-5-10> googlenet-cpu-16-12-32-16-5-10.log & 
-kubectl logs job-googlenet-gpu-16-12-32-16-5-10> googlenet-gpu-16-12-32-16-5-10.log & 
-kubectl logs job-googlenet-cpu-16-12-32-16-10-0> googlenet-cpu-16-12-32-16-10-0.log & 
-kubectl logs job-googlenet-gpu-16-12-32-16-10-0> googlenet-gpu-16-12-32-16-10-0.log & 
-kubectl logs job-googlenet-cpu-16-12-32-16-10-1> googlenet-cpu-16-12-32-16-10-1.log & 
-kubectl logs job-googlenet-gpu-16-12-32-16-10-1> googlenet-gpu-16-12-32-16-10-1.log & 
-kubectl logs job-googlenet-cpu-16-12-32-16-10-2> googlenet-cpu-16-12-32-16-10-2.log & 
-kubectl logs job-googlenet-gpu-16-12-32-16-10-2> googlenet-gpu-16-12-32-16-10-2.log & 
-kubectl logs job-googlenet-cpu-16-12-32-16-10-3> googlenet-cpu-16-12-32-16-10-3.log & 
-kubectl logs job-googlenet-gpu-16-12-32-16-10-3> googlenet-gpu-16-12-32-16-10-3.log & 
-kubectl logs job-googlenet-cpu-16-12-32-16-10-4> googlenet-cpu-16-12-32-16-10-4.log & 
-kubectl logs job-googlenet-gpu-16-12-32-16-10-4> googlenet-gpu-16-12-32-16-10-4.log & 
-kubectl logs job-googlenet-cpu-16-12-32-16-10-5> googlenet-cpu-16-12-32-16-10-5.log & 
-kubectl logs job-googlenet-gpu-16-12-32-16-10-5> googlenet-gpu-16-12-32-16-10-5.log & 
-kubectl logs job-googlenet-cpu-16-12-32-16-10-6> googlenet-cpu-16-12-32-16-10-6.log & 
-kubectl logs job-googlenet-gpu-16-12-32-16-10-6> googlenet-gpu-16-12-32-16-10-6.log & 
-kubectl logs job-googlenet-cpu-16-12-32-16-10-7> googlenet-cpu-16-12-32-16-10-7.log & 
-kubectl logs job-googlenet-gpu-16-12-32-16-10-7> googlenet-gpu-16-12-32-16-10-7.log & 
-kubectl logs job-googlenet-cpu-16-12-32-16-10-8> googlenet-cpu-16-12-32-16-10-8.log & 
-kubectl logs job-googlenet-gpu-16-12-32-16-10-8> googlenet-gpu-16-12-32-16-10-8.log & 
-kubectl logs job-googlenet-cpu-16-12-32-16-10-9> googlenet-cpu-16-12-32-16-10-9.log & 
-kubectl logs job-googlenet-gpu-16-12-32-16-10-9> googlenet-gpu-16-12-32-16-10-9.log & 
-kubectl logs job-googlenet-cpu-16-12-32-16-10-10> googlenet-cpu-16-12-32-16-10-10.log & 
-kubectl logs job-googlenet-gpu-16-12-32-16-10-10> googlenet-gpu-16-12-32-16-10-10.log & 
-kubectl logs job-googlenet-cpu-16-12-32-16-15-0> googlenet-cpu-16-12-32-16-15-0.log & 
-kubectl logs job-googlenet-gpu-16-12-32-16-15-0> googlenet-gpu-16-12-32-16-15-0.log & 
-kubectl logs job-googlenet-cpu-16-12-32-16-15-1> googlenet-cpu-16-12-32-16-15-1.log & 
-kubectl logs job-googlenet-gpu-16-12-32-16-15-1> googlenet-gpu-16-12-32-16-15-1.log & 
-kubectl logs job-googlenet-cpu-16-12-32-16-15-2> googlenet-cpu-16-12-32-16-15-2.log & 
-kubectl logs job-googlenet-gpu-16-12-32-16-15-2> googlenet-gpu-16-12-32-16-15-2.log & 
-kubectl logs job-googlenet-cpu-16-12-32-16-15-3> googlenet-cpu-16-12-32-16-15-3.log & 
-kubectl logs job-googlenet-gpu-16-12-32-16-15-3> googlenet-gpu-16-12-32-16-15-3.log & 
-kubectl logs job-googlenet-cpu-16-12-32-16-15-4> googlenet-cpu-16-12-32-16-15-4.log & 
-kubectl logs job-googlenet-gpu-16-12-32-16-15-4> googlenet-gpu-16-12-32-16-15-4.log & 
-kubectl logs job-googlenet-cpu-16-12-32-16-15-5> googlenet-cpu-16-12-32-16-15-5.log & 
-kubectl logs job-googlenet-gpu-16-12-32-16-15-5> googlenet-gpu-16-12-32-16-15-5.log & 
-kubectl logs job-googlenet-cpu-16-12-32-16-15-6> googlenet-cpu-16-12-32-16-15-6.log & 
-kubectl logs job-googlenet-gpu-16-12-32-16-15-6> googlenet-gpu-16-12-32-16-15-6.log & 
-kubectl logs job-googlenet-cpu-16-12-32-16-15-7> googlenet-cpu-16-12-32-16-15-7.log & 
-kubectl logs job-googlenet-gpu-16-12-32-16-15-7> googlenet-gpu-16-12-32-16-15-7.log & 
-kubectl logs job-googlenet-cpu-16-12-32-16-15-8> googlenet-cpu-16-12-32-16-15-8.log & 
-kubectl logs job-googlenet-gpu-16-12-32-16-15-8> googlenet-gpu-16-12-32-16-15-8.log & 
-kubectl logs job-googlenet-cpu-16-12-32-16-15-9> googlenet-cpu-16-12-32-16-15-9.log & 
-kubectl logs job-googlenet-gpu-16-12-32-16-15-9> googlenet-gpu-16-12-32-16-15-9.log & 
-kubectl logs job-googlenet-cpu-16-12-32-16-15-10> googlenet-cpu-16-12-32-16-15-10.log & 
-kubectl logs job-googlenet-gpu-16-12-32-16-15-10> googlenet-gpu-16-12-32-16-15-10.log & 
-kubectl logs job-googlenet-cpu-16-12-32-16-20-0> googlenet-cpu-16-12-32-16-20-0.log & 
-kubectl logs job-googlenet-gpu-16-12-32-16-20-0> googlenet-gpu-16-12-32-16-20-0.log & 
-kubectl logs job-googlenet-cpu-16-12-32-16-20-1> googlenet-cpu-16-12-32-16-20-1.log & 
-kubectl logs job-googlenet-gpu-16-12-32-16-20-1> googlenet-gpu-16-12-32-16-20-1.log & 
-kubectl logs job-googlenet-cpu-16-12-32-16-20-2> googlenet-cpu-16-12-32-16-20-2.log & 
-kubectl logs job-googlenet-gpu-16-12-32-16-20-2> googlenet-gpu-16-12-32-16-20-2.log & 
-kubectl logs job-googlenet-cpu-16-12-32-16-20-3> googlenet-cpu-16-12-32-16-20-3.log & 
-kubectl logs job-googlenet-gpu-16-12-32-16-20-3> googlenet-gpu-16-12-32-16-20-3.log & 
-kubectl logs job-googlenet-cpu-16-12-32-16-20-4> googlenet-cpu-16-12-32-16-20-4.log & 
-kubectl logs job-googlenet-gpu-16-12-32-16-20-4> googlenet-gpu-16-12-32-16-20-4.log & 
-kubectl logs job-googlenet-cpu-16-12-32-16-20-5> googlenet-cpu-16-12-32-16-20-5.log & 
-kubectl logs job-googlenet-gpu-16-12-32-16-20-5> googlenet-gpu-16-12-32-16-20-5.log & 
-kubectl logs job-googlenet-cpu-16-12-32-16-20-6> googlenet-cpu-16-12-32-16-20-6.log & 
-kubectl logs job-googlenet-gpu-16-12-32-16-20-6> googlenet-gpu-16-12-32-16-20-6.log & 
-kubectl logs job-googlenet-cpu-16-12-32-16-20-7> googlenet-cpu-16-12-32-16-20-7.log & 
-kubectl logs job-googlenet-gpu-16-12-32-16-20-7> googlenet-gpu-16-12-32-16-20-7.log & 
-kubectl logs job-googlenet-cpu-16-12-32-16-20-8> googlenet-cpu-16-12-32-16-20-8.log & 
-kubectl logs job-googlenet-gpu-16-12-32-16-20-8> googlenet-gpu-16-12-32-16-20-8.log & 
-kubectl logs job-googlenet-cpu-16-12-32-16-20-9> googlenet-cpu-16-12-32-16-20-9.log & 
-kubectl logs job-googlenet-gpu-16-12-32-16-20-9> googlenet-gpu-16-12-32-16-20-9.log & 
-kubectl logs job-googlenet-cpu-16-12-32-16-20-10> googlenet-cpu-16-12-32-16-20-10.log & 
-kubectl logs job-googlenet-gpu-16-12-32-16-20-10> googlenet-gpu-16-12-32-16-20-10.log & 
-kubectl logs job-alexnet-cpu-16-12-512-16-2-0> alexnet-cpu-16-12-512-16-2-0.log & 
-kubectl logs job-alexnet-gpu-16-12-512-16-2-0> alexnet-gpu-16-12-512-16-2-0.log & 
-kubectl logs job-alexnet-cpu-16-12-512-16-2-1> alexnet-cpu-16-12-512-16-2-1.log & 
-kubectl logs job-alexnet-gpu-16-12-512-16-2-1> alexnet-gpu-16-12-512-16-2-1.log & 
-kubectl logs job-alexnet-cpu-16-12-512-16-2-2> alexnet-cpu-16-12-512-16-2-2.log & 
-kubectl logs job-alexnet-gpu-16-12-512-16-2-2> alexnet-gpu-16-12-512-16-2-2.log & 
-kubectl logs job-alexnet-cpu-16-12-512-16-2-3> alexnet-cpu-16-12-512-16-2-3.log & 
-kubectl logs job-alexnet-gpu-16-12-512-16-2-3> alexnet-gpu-16-12-512-16-2-3.log & 
-kubectl logs job-alexnet-cpu-16-12-512-16-2-4> alexnet-cpu-16-12-512-16-2-4.log & 
-kubectl logs job-alexnet-gpu-16-12-512-16-2-4> alexnet-gpu-16-12-512-16-2-4.log & 
-kubectl logs job-alexnet-cpu-16-12-512-16-2-5> alexnet-cpu-16-12-512-16-2-5.log & 
-kubectl logs job-alexnet-gpu-16-12-512-16-2-5> alexnet-gpu-16-12-512-16-2-5.log & 
-kubectl logs job-alexnet-cpu-16-12-512-16-2-6> alexnet-cpu-16-12-512-16-2-6.log & 
-kubectl logs job-alexnet-gpu-16-12-512-16-2-6> alexnet-gpu-16-12-512-16-2-6.log & 
-kubectl logs job-alexnet-cpu-16-12-512-16-2-7> alexnet-cpu-16-12-512-16-2-7.log & 
-kubectl logs job-alexnet-gpu-16-12-512-16-2-7> alexnet-gpu-16-12-512-16-2-7.log & 
-kubectl logs job-alexnet-cpu-16-12-512-16-2-8> alexnet-cpu-16-12-512-16-2-8.log & 
-kubectl logs job-alexnet-gpu-16-12-512-16-2-8> alexnet-gpu-16-12-512-16-2-8.log & 
-kubectl logs job-alexnet-cpu-16-12-512-16-2-9> alexnet-cpu-16-12-512-16-2-9.log & 
-kubectl logs job-alexnet-gpu-16-12-512-16-2-9> alexnet-gpu-16-12-512-16-2-9.log & 
-kubectl logs job-alexnet-cpu-16-12-512-16-2-10> alexnet-cpu-16-12-512-16-2-10.log & 
-kubectl logs job-alexnet-gpu-16-12-512-16-2-10> alexnet-gpu-16-12-512-16-2-10.log & 
-kubectl logs job-alexnet-cpu-16-12-512-16-5-0> alexnet-cpu-16-12-512-16-5-0.log & 
-kubectl logs job-alexnet-gpu-16-12-512-16-5-0> alexnet-gpu-16-12-512-16-5-0.log & 
-kubectl logs job-alexnet-cpu-16-12-512-16-5-1> alexnet-cpu-16-12-512-16-5-1.log & 
-kubectl logs job-alexnet-gpu-16-12-512-16-5-1> alexnet-gpu-16-12-512-16-5-1.log & 
-kubectl logs job-alexnet-cpu-16-12-512-16-5-2> alexnet-cpu-16-12-512-16-5-2.log & 
-kubectl logs job-alexnet-gpu-16-12-512-16-5-2> alexnet-gpu-16-12-512-16-5-2.log & 
-kubectl logs job-alexnet-cpu-16-12-512-16-5-3> alexnet-cpu-16-12-512-16-5-3.log & 
-kubectl logs job-alexnet-gpu-16-12-512-16-5-3> alexnet-gpu-16-12-512-16-5-3.log & 
-kubectl logs job-alexnet-cpu-16-12-512-16-5-4> alexnet-cpu-16-12-512-16-5-4.log & 
-kubectl logs job-alexnet-gpu-16-12-512-16-5-4> alexnet-gpu-16-12-512-16-5-4.log & 
-kubectl logs job-alexnet-cpu-16-12-512-16-5-5> alexnet-cpu-16-12-512-16-5-5.log & 
-kubectl logs job-alexnet-gpu-16-12-512-16-5-5> alexnet-gpu-16-12-512-16-5-5.log & 
-kubectl logs job-alexnet-cpu-16-12-512-16-5-6> alexnet-cpu-16-12-512-16-5-6.log & 
-kubectl logs job-alexnet-gpu-16-12-512-16-5-6> alexnet-gpu-16-12-512-16-5-6.log & 
-kubectl logs job-alexnet-cpu-16-12-512-16-5-7> alexnet-cpu-16-12-512-16-5-7.log & 
-kubectl logs job-alexnet-gpu-16-12-512-16-5-7> alexnet-gpu-16-12-512-16-5-7.log & 
-kubectl logs job-alexnet-cpu-16-12-512-16-5-8> alexnet-cpu-16-12-512-16-5-8.log & 
-kubectl logs job-alexnet-gpu-16-12-512-16-5-8> alexnet-gpu-16-12-512-16-5-8.log & 
-kubectl logs job-alexnet-cpu-16-12-512-16-5-9> alexnet-cpu-16-12-512-16-5-9.log & 
-kubectl logs job-alexnet-gpu-16-12-512-16-5-9> alexnet-gpu-16-12-512-16-5-9.log & 
-kubectl logs job-alexnet-cpu-16-12-512-16-5-10> alexnet-cpu-16-12-512-16-5-10.log & 
-kubectl logs job-alexnet-gpu-16-12-512-16-5-10> alexnet-gpu-16-12-512-16-5-10.log & 
-kubectl logs job-alexnet-cpu-16-12-512-16-10-0> alexnet-cpu-16-12-512-16-10-0.log & 
-kubectl logs job-alexnet-gpu-16-12-512-16-10-0> alexnet-gpu-16-12-512-16-10-0.log & 
-kubectl logs job-alexnet-cpu-16-12-512-16-10-1> alexnet-cpu-16-12-512-16-10-1.log & 
-kubectl logs job-alexnet-gpu-16-12-512-16-10-1> alexnet-gpu-16-12-512-16-10-1.log & 
-kubectl logs job-alexnet-cpu-16-12-512-16-10-2> alexnet-cpu-16-12-512-16-10-2.log & 
-kubectl logs job-alexnet-gpu-16-12-512-16-10-2> alexnet-gpu-16-12-512-16-10-2.log & 
-kubectl logs job-alexnet-cpu-16-12-512-16-10-3> alexnet-cpu-16-12-512-16-10-3.log & 
-kubectl logs job-alexnet-gpu-16-12-512-16-10-3> alexnet-gpu-16-12-512-16-10-3.log & 
-kubectl logs job-alexnet-cpu-16-12-512-16-10-4> alexnet-cpu-16-12-512-16-10-4.log & 
-kubectl logs job-alexnet-gpu-16-12-512-16-10-4> alexnet-gpu-16-12-512-16-10-4.log & 
-kubectl logs job-alexnet-cpu-16-12-512-16-10-5> alexnet-cpu-16-12-512-16-10-5.log & 
-kubectl logs job-alexnet-gpu-16-12-512-16-10-5> alexnet-gpu-16-12-512-16-10-5.log & 
-kubectl logs job-alexnet-cpu-16-12-512-16-10-6> alexnet-cpu-16-12-512-16-10-6.log & 
-kubectl logs job-alexnet-gpu-16-12-512-16-10-6> alexnet-gpu-16-12-512-16-10-6.log & 
-kubectl logs job-alexnet-cpu-16-12-512-16-10-7> alexnet-cpu-16-12-512-16-10-7.log & 
-kubectl logs job-alexnet-gpu-16-12-512-16-10-7> alexnet-gpu-16-12-512-16-10-7.log & 
-kubectl logs job-alexnet-cpu-16-12-512-16-10-8> alexnet-cpu-16-12-512-16-10-8.log & 
-kubectl logs job-alexnet-gpu-16-12-512-16-10-8> alexnet-gpu-16-12-512-16-10-8.log & 
-kubectl logs job-alexnet-cpu-16-12-512-16-10-9> alexnet-cpu-16-12-512-16-10-9.log & 
-kubectl logs job-alexnet-gpu-16-12-512-16-10-9> alexnet-gpu-16-12-512-16-10-9.log & 
-kubectl logs job-alexnet-cpu-16-12-512-16-10-10> alexnet-cpu-16-12-512-16-10-10.log & 
-kubectl logs job-alexnet-gpu-16-12-512-16-10-10> alexnet-gpu-16-12-512-16-10-10.log & 
-kubectl logs job-alexnet-cpu-16-12-512-16-15-0> alexnet-cpu-16-12-512-16-15-0.log & 
-kubectl logs job-alexnet-gpu-16-12-512-16-15-0> alexnet-gpu-16-12-512-16-15-0.log & 
-kubectl logs job-alexnet-cpu-16-12-512-16-15-1> alexnet-cpu-16-12-512-16-15-1.log & 
-kubectl logs job-alexnet-gpu-16-12-512-16-15-1> alexnet-gpu-16-12-512-16-15-1.log & 
-kubectl logs job-alexnet-cpu-16-12-512-16-15-2> alexnet-cpu-16-12-512-16-15-2.log & 
-kubectl logs job-alexnet-gpu-16-12-512-16-15-2> alexnet-gpu-16-12-512-16-15-2.log & 
-kubectl logs job-alexnet-cpu-16-12-512-16-15-3> alexnet-cpu-16-12-512-16-15-3.log & 
-kubectl logs job-alexnet-gpu-16-12-512-16-15-3> alexnet-gpu-16-12-512-16-15-3.log & 
-kubectl logs job-alexnet-cpu-16-12-512-16-15-4> alexnet-cpu-16-12-512-16-15-4.log & 
-kubectl logs job-alexnet-gpu-16-12-512-16-15-4> alexnet-gpu-16-12-512-16-15-4.log & 
-kubectl logs job-alexnet-cpu-16-12-512-16-15-5> alexnet-cpu-16-12-512-16-15-5.log & 
-kubectl logs job-alexnet-gpu-16-12-512-16-15-5> alexnet-gpu-16-12-512-16-15-5.log & 
-kubectl logs job-alexnet-cpu-16-12-512-16-15-6> alexnet-cpu-16-12-512-16-15-6.log & 
-kubectl logs job-alexnet-gpu-16-12-512-16-15-6> alexnet-gpu-16-12-512-16-15-6.log & 
-kubectl logs job-alexnet-cpu-16-12-512-16-15-7> alexnet-cpu-16-12-512-16-15-7.log & 
-kubectl logs job-alexnet-gpu-16-12-512-16-15-7> alexnet-gpu-16-12-512-16-15-7.log & 
-kubectl logs job-alexnet-cpu-16-12-512-16-15-8> alexnet-cpu-16-12-512-16-15-8.log & 
-kubectl logs job-alexnet-gpu-16-12-512-16-15-8> alexnet-gpu-16-12-512-16-15-8.log & 
-kubectl logs job-alexnet-cpu-16-12-512-16-15-9> alexnet-cpu-16-12-512-16-15-9.log & 
-kubectl logs job-alexnet-gpu-16-12-512-16-15-9> alexnet-gpu-16-12-512-16-15-9.log & 
-kubectl logs job-alexnet-cpu-16-12-512-16-15-10> alexnet-cpu-16-12-512-16-15-10.log & 
-kubectl logs job-alexnet-gpu-16-12-512-16-15-10> alexnet-gpu-16-12-512-16-15-10.log & 
-kubectl logs job-alexnet-cpu-16-12-512-16-20-0> alexnet-cpu-16-12-512-16-20-0.log & 
-kubectl logs job-alexnet-gpu-16-12-512-16-20-0> alexnet-gpu-16-12-512-16-20-0.log & 
-kubectl logs job-alexnet-cpu-16-12-512-16-20-1> alexnet-cpu-16-12-512-16-20-1.log & 
-kubectl logs job-alexnet-gpu-16-12-512-16-20-1> alexnet-gpu-16-12-512-16-20-1.log & 
-kubectl logs job-alexnet-cpu-16-12-512-16-20-2> alexnet-cpu-16-12-512-16-20-2.log & 
-kubectl logs job-alexnet-gpu-16-12-512-16-20-2> alexnet-gpu-16-12-512-16-20-2.log & 
-kubectl logs job-alexnet-cpu-16-12-512-16-20-3> alexnet-cpu-16-12-512-16-20-3.log & 
-kubectl logs job-alexnet-gpu-16-12-512-16-20-3> alexnet-gpu-16-12-512-16-20-3.log & 
-kubectl logs job-alexnet-cpu-16-12-512-16-20-4> alexnet-cpu-16-12-512-16-20-4.log & 
-kubectl logs job-alexnet-gpu-16-12-512-16-20-4> alexnet-gpu-16-12-512-16-20-4.log & 
-kubectl logs job-alexnet-cpu-16-12-512-16-20-5> alexnet-cpu-16-12-512-16-20-5.log & 
-kubectl logs job-alexnet-gpu-16-12-512-16-20-5> alexnet-gpu-16-12-512-16-20-5.log & 
-kubectl logs job-alexnet-cpu-16-12-512-16-20-6> alexnet-cpu-16-12-512-16-20-6.log & 
-kubectl logs job-alexnet-gpu-16-12-512-16-20-6> alexnet-gpu-16-12-512-16-20-6.log & 
-kubectl logs job-alexnet-cpu-16-12-512-16-20-7> alexnet-cpu-16-12-512-16-20-7.log & 
-kubectl logs job-alexnet-gpu-16-12-512-16-20-7> alexnet-gpu-16-12-512-16-20-7.log & 
-kubectl logs job-alexnet-cpu-16-12-512-16-20-8> alexnet-cpu-16-12-512-16-20-8.log & 
-kubectl logs job-alexnet-gpu-16-12-512-16-20-8> alexnet-gpu-16-12-512-16-20-8.log & 
-kubectl logs job-alexnet-cpu-16-12-512-16-20-9> alexnet-cpu-16-12-512-16-20-9.log & 
-kubectl logs job-alexnet-gpu-16-12-512-16-20-9> alexnet-gpu-16-12-512-16-20-9.log & 
-kubectl logs job-alexnet-cpu-16-12-512-16-20-10> alexnet-cpu-16-12-512-16-20-10.log & 
-kubectl logs job-alexnet-gpu-16-12-512-16-20-10> alexnet-gpu-16-12-512-16-20-10.log & 
-kubectl logs job-resnet50-cpu-16-12-64-16-2-0> resnet50-cpu-16-12-64-16-2-0.log & 
-kubectl logs job-resnet50-gpu-16-12-64-16-2-0> resnet50-gpu-16-12-64-16-2-0.log & 
-kubectl logs job-resnet50-cpu-16-12-64-16-2-1> resnet50-cpu-16-12-64-16-2-1.log & 
-kubectl logs job-resnet50-gpu-16-12-64-16-2-1> resnet50-gpu-16-12-64-16-2-1.log & 
-kubectl logs job-resnet50-cpu-16-12-64-16-2-2> resnet50-cpu-16-12-64-16-2-2.log & 
-kubectl logs job-resnet50-gpu-16-12-64-16-2-2> resnet50-gpu-16-12-64-16-2-2.log & 
-kubectl logs job-resnet50-cpu-16-12-64-16-2-3> resnet50-cpu-16-12-64-16-2-3.log & 
-kubectl logs job-resnet50-gpu-16-12-64-16-2-3> resnet50-gpu-16-12-64-16-2-3.log & 
-kubectl logs job-resnet50-cpu-16-12-64-16-2-4> resnet50-cpu-16-12-64-16-2-4.log & 
-kubectl logs job-resnet50-gpu-16-12-64-16-2-4> resnet50-gpu-16-12-64-16-2-4.log & 
-kubectl logs job-resnet50-cpu-16-12-64-16-2-5> resnet50-cpu-16-12-64-16-2-5.log & 
-kubectl logs job-resnet50-gpu-16-12-64-16-2-5> resnet50-gpu-16-12-64-16-2-5.log & 
-kubectl logs job-resnet50-cpu-16-12-64-16-2-6> resnet50-cpu-16-12-64-16-2-6.log & 
-kubectl logs job-resnet50-gpu-16-12-64-16-2-6> resnet50-gpu-16-12-64-16-2-6.log & 
-kubectl logs job-resnet50-cpu-16-12-64-16-2-7> resnet50-cpu-16-12-64-16-2-7.log & 
-kubectl logs job-resnet50-gpu-16-12-64-16-2-7> resnet50-gpu-16-12-64-16-2-7.log & 
-kubectl logs job-resnet50-cpu-16-12-64-16-2-8> resnet50-cpu-16-12-64-16-2-8.log & 
-kubectl logs job-resnet50-gpu-16-12-64-16-2-8> resnet50-gpu-16-12-64-16-2-8.log & 
-kubectl logs job-resnet50-cpu-16-12-64-16-2-9> resnet50-cpu-16-12-64-16-2-9.log & 
-kubectl logs job-resnet50-gpu-16-12-64-16-2-9> resnet50-gpu-16-12-64-16-2-9.log & 
-kubectl logs job-resnet50-cpu-16-12-64-16-2-10> resnet50-cpu-16-12-64-16-2-10.log & 
-kubectl logs job-resnet50-gpu-16-12-64-16-2-10> resnet50-gpu-16-12-64-16-2-10.log & 
-kubectl logs job-resnet50-cpu-16-12-64-16-5-0> resnet50-cpu-16-12-64-16-5-0.log & 
-kubectl logs job-resnet50-gpu-16-12-64-16-5-0> resnet50-gpu-16-12-64-16-5-0.log & 
-kubectl logs job-resnet50-cpu-16-12-64-16-5-1> resnet50-cpu-16-12-64-16-5-1.log & 
-kubectl logs job-resnet50-gpu-16-12-64-16-5-1> resnet50-gpu-16-12-64-16-5-1.log & 
-kubectl logs job-resnet50-cpu-16-12-64-16-5-2> resnet50-cpu-16-12-64-16-5-2.log & 
-kubectl logs job-resnet50-gpu-16-12-64-16-5-2> resnet50-gpu-16-12-64-16-5-2.log & 
-kubectl logs job-resnet50-cpu-16-12-64-16-5-3> resnet50-cpu-16-12-64-16-5-3.log & 
-kubectl logs job-resnet50-gpu-16-12-64-16-5-3> resnet50-gpu-16-12-64-16-5-3.log & 
-kubectl logs job-resnet50-cpu-16-12-64-16-5-4> resnet50-cpu-16-12-64-16-5-4.log & 
-kubectl logs job-resnet50-gpu-16-12-64-16-5-4> resnet50-gpu-16-12-64-16-5-4.log & 
-kubectl logs job-resnet50-cpu-16-12-64-16-5-5> resnet50-cpu-16-12-64-16-5-5.log & 
-kubectl logs job-resnet50-gpu-16-12-64-16-5-5> resnet50-gpu-16-12-64-16-5-5.log & 
-kubectl logs job-resnet50-cpu-16-12-64-16-5-6> resnet50-cpu-16-12-64-16-5-6.log & 
-kubectl logs job-resnet50-gpu-16-12-64-16-5-6> resnet50-gpu-16-12-64-16-5-6.log & 
-kubectl logs job-resnet50-cpu-16-12-64-16-5-7> resnet50-cpu-16-12-64-16-5-7.log & 
-kubectl logs job-resnet50-gpu-16-12-64-16-5-7> resnet50-gpu-16-12-64-16-5-7.log & 
-kubectl logs job-resnet50-cpu-16-12-64-16-5-8> resnet50-cpu-16-12-64-16-5-8.log & 
-kubectl logs job-resnet50-gpu-16-12-64-16-5-8> resnet50-gpu-16-12-64-16-5-8.log & 
-kubectl logs job-resnet50-cpu-16-12-64-16-5-9> resnet50-cpu-16-12-64-16-5-9.log & 
-kubectl logs job-resnet50-gpu-16-12-64-16-5-9> resnet50-gpu-16-12-64-16-5-9.log & 
-kubectl logs job-resnet50-cpu-16-12-64-16-5-10> resnet50-cpu-16-12-64-16-5-10.log & 
-kubectl logs job-resnet50-gpu-16-12-64-16-5-10> resnet50-gpu-16-12-64-16-5-10.log & 
-kubectl logs job-resnet50-cpu-16-12-64-16-10-0> resnet50-cpu-16-12-64-16-10-0.log & 
-kubectl logs job-resnet50-gpu-16-12-64-16-10-0> resnet50-gpu-16-12-64-16-10-0.log & 
-kubectl logs job-resnet50-cpu-16-12-64-16-10-1> resnet50-cpu-16-12-64-16-10-1.log & 
-kubectl logs job-resnet50-gpu-16-12-64-16-10-1> resnet50-gpu-16-12-64-16-10-1.log & 
-kubectl logs job-resnet50-cpu-16-12-64-16-10-2> resnet50-cpu-16-12-64-16-10-2.log & 
-kubectl logs job-resnet50-gpu-16-12-64-16-10-2> resnet50-gpu-16-12-64-16-10-2.log & 
-kubectl logs job-resnet50-cpu-16-12-64-16-10-3> resnet50-cpu-16-12-64-16-10-3.log & 
-kubectl logs job-resnet50-gpu-16-12-64-16-10-3> resnet50-gpu-16-12-64-16-10-3.log & 
-kubectl logs job-resnet50-cpu-16-12-64-16-10-4> resnet50-cpu-16-12-64-16-10-4.log & 
-kubectl logs job-resnet50-gpu-16-12-64-16-10-4> resnet50-gpu-16-12-64-16-10-4.log & 
-kubectl logs job-resnet50-cpu-16-12-64-16-10-5> resnet50-cpu-16-12-64-16-10-5.log & 
-kubectl logs job-resnet50-gpu-16-12-64-16-10-5> resnet50-gpu-16-12-64-16-10-5.log & 
-kubectl logs job-resnet50-cpu-16-12-64-16-10-6> resnet50-cpu-16-12-64-16-10-6.log & 
-kubectl logs job-resnet50-gpu-16-12-64-16-10-6> resnet50-gpu-16-12-64-16-10-6.log & 
-kubectl logs job-resnet50-cpu-16-12-64-16-10-7> resnet50-cpu-16-12-64-16-10-7.log & 
-kubectl logs job-resnet50-gpu-16-12-64-16-10-7> resnet50-gpu-16-12-64-16-10-7.log & 
-kubectl logs job-resnet50-cpu-16-12-64-16-10-8> resnet50-cpu-16-12-64-16-10-8.log & 
-kubectl logs job-resnet50-gpu-16-12-64-16-10-8> resnet50-gpu-16-12-64-16-10-8.log & 
-kubectl logs job-resnet50-cpu-16-12-64-16-10-9> resnet50-cpu-16-12-64-16-10-9.log & 
-kubectl logs job-resnet50-gpu-16-12-64-16-10-9> resnet50-gpu-16-12-64-16-10-9.log & 
-kubectl logs job-resnet50-cpu-16-12-64-16-10-10> resnet50-cpu-16-12-64-16-10-10.log & 
-kubectl logs job-resnet50-gpu-16-12-64-16-10-10> resnet50-gpu-16-12-64-16-10-10.log & 
-kubectl logs job-resnet50-cpu-16-12-64-16-15-0> resnet50-cpu-16-12-64-16-15-0.log & 
-kubectl logs job-resnet50-gpu-16-12-64-16-15-0> resnet50-gpu-16-12-64-16-15-0.log & 
-kubectl logs job-resnet50-cpu-16-12-64-16-15-1> resnet50-cpu-16-12-64-16-15-1.log & 
-kubectl logs job-resnet50-gpu-16-12-64-16-15-1> resnet50-gpu-16-12-64-16-15-1.log & 
-kubectl logs job-resnet50-cpu-16-12-64-16-15-2> resnet50-cpu-16-12-64-16-15-2.log & 
-kubectl logs job-resnet50-gpu-16-12-64-16-15-2> resnet50-gpu-16-12-64-16-15-2.log & 
-kubectl logs job-resnet50-cpu-16-12-64-16-15-3> resnet50-cpu-16-12-64-16-15-3.log & 
-kubectl logs job-resnet50-gpu-16-12-64-16-15-3> resnet50-gpu-16-12-64-16-15-3.log & 
-kubectl logs job-resnet50-cpu-16-12-64-16-15-4> resnet50-cpu-16-12-64-16-15-4.log & 
-kubectl logs job-resnet50-gpu-16-12-64-16-15-4> resnet50-gpu-16-12-64-16-15-4.log & 
-kubectl logs job-resnet50-cpu-16-12-64-16-15-5> resnet50-cpu-16-12-64-16-15-5.log & 
-kubectl logs job-resnet50-gpu-16-12-64-16-15-5> resnet50-gpu-16-12-64-16-15-5.log & 
-kubectl logs job-resnet50-cpu-16-12-64-16-15-6> resnet50-cpu-16-12-64-16-15-6.log & 
-kubectl logs job-resnet50-gpu-16-12-64-16-15-6> resnet50-gpu-16-12-64-16-15-6.log & 
-kubectl logs job-resnet50-cpu-16-12-64-16-15-7> resnet50-cpu-16-12-64-16-15-7.log & 
-kubectl logs job-resnet50-gpu-16-12-64-16-15-7> resnet50-gpu-16-12-64-16-15-7.log & 
-kubectl logs job-resnet50-cpu-16-12-64-16-15-8> resnet50-cpu-16-12-64-16-15-8.log & 
-kubectl logs job-resnet50-gpu-16-12-64-16-15-8> resnet50-gpu-16-12-64-16-15-8.log & 
-kubectl logs job-resnet50-cpu-16-12-64-16-15-9> resnet50-cpu-16-12-64-16-15-9.log & 
-kubectl logs job-resnet50-gpu-16-12-64-16-15-9> resnet50-gpu-16-12-64-16-15-9.log & 
-kubectl logs job-resnet50-cpu-16-12-64-16-15-10> resnet50-cpu-16-12-64-16-15-10.log & 
-kubectl logs job-resnet50-gpu-16-12-64-16-15-10> resnet50-gpu-16-12-64-16-15-10.log & 
-kubectl logs job-resnet50-cpu-16-12-64-16-20-0> resnet50-cpu-16-12-64-16-20-0.log & 
-kubectl logs job-resnet50-gpu-16-12-64-16-20-0> resnet50-gpu-16-12-64-16-20-0.log & 
-kubectl logs job-resnet50-cpu-16-12-64-16-20-1> resnet50-cpu-16-12-64-16-20-1.log & 
-kubectl logs job-resnet50-gpu-16-12-64-16-20-1> resnet50-gpu-16-12-64-16-20-1.log & 
-kubectl logs job-resnet50-cpu-16-12-64-16-20-2> resnet50-cpu-16-12-64-16-20-2.log & 
-kubectl logs job-resnet50-gpu-16-12-64-16-20-2> resnet50-gpu-16-12-64-16-20-2.log & 
-kubectl logs job-resnet50-cpu-16-12-64-16-20-3> resnet50-cpu-16-12-64-16-20-3.log & 
-kubectl logs job-resnet50-gpu-16-12-64-16-20-3> resnet50-gpu-16-12-64-16-20-3.log & 
-kubectl logs job-resnet50-cpu-16-12-64-16-20-4> resnet50-cpu-16-12-64-16-20-4.log & 
-kubectl logs job-resnet50-gpu-16-12-64-16-20-4> resnet50-gpu-16-12-64-16-20-4.log & 
-kubectl logs job-resnet50-cpu-16-12-64-16-20-5> resnet50-cpu-16-12-64-16-20-5.log & 
-kubectl logs job-resnet50-gpu-16-12-64-16-20-5> resnet50-gpu-16-12-64-16-20-5.log & 
-kubectl logs job-resnet50-cpu-16-12-64-16-20-6> resnet50-cpu-16-12-64-16-20-6.log & 
-kubectl logs job-resnet50-gpu-16-12-64-16-20-6> resnet50-gpu-16-12-64-16-20-6.log & 
-kubectl logs job-resnet50-cpu-16-12-64-16-20-7> resnet50-cpu-16-12-64-16-20-7.log & 
-kubectl logs job-resnet50-gpu-16-12-64-16-20-7> resnet50-gpu-16-12-64-16-20-7.log & 
-kubectl logs job-resnet50-cpu-16-12-64-16-20-8> resnet50-cpu-16-12-64-16-20-8.log & 
-kubectl logs job-resnet50-gpu-16-12-64-16-20-8> resnet50-gpu-16-12-64-16-20-8.log & 
-kubectl logs job-resnet50-cpu-16-12-64-16-20-9> resnet50-cpu-16-12-64-16-20-9.log & 
-kubectl logs job-resnet50-gpu-16-12-64-16-20-9> resnet50-gpu-16-12-64-16-20-9.log & 
-kubectl logs job-resnet50-cpu-16-12-64-16-20-10> resnet50-cpu-16-12-64-16-20-10.log & 
-kubectl logs job-resnet50-gpu-16-12-64-16-20-10> resnet50-gpu-16-12-64-16-20-10.log & 
-kubectl logs job-inception3-cpu-16-12-64-16-2-0> inception3-cpu-16-12-64-16-2-0.log & 
-kubectl logs job-inception3-gpu-16-12-64-16-2-0> inception3-gpu-16-12-64-16-2-0.log & 
-kubectl logs job-inception3-cpu-16-12-64-16-2-1> inception3-cpu-16-12-64-16-2-1.log & 
-kubectl logs job-inception3-gpu-16-12-64-16-2-1> inception3-gpu-16-12-64-16-2-1.log & 
-kubectl logs job-inception3-cpu-16-12-64-16-2-2> inception3-cpu-16-12-64-16-2-2.log & 
-kubectl logs job-inception3-gpu-16-12-64-16-2-2> inception3-gpu-16-12-64-16-2-2.log & 
-kubectl logs job-inception3-cpu-16-12-64-16-2-3> inception3-cpu-16-12-64-16-2-3.log & 
-kubectl logs job-inception3-gpu-16-12-64-16-2-3> inception3-gpu-16-12-64-16-2-3.log & 
-kubectl logs job-inception3-cpu-16-12-64-16-2-4> inception3-cpu-16-12-64-16-2-4.log & 
-kubectl logs job-inception3-gpu-16-12-64-16-2-4> inception3-gpu-16-12-64-16-2-4.log & 
-kubectl logs job-inception3-cpu-16-12-64-16-2-5> inception3-cpu-16-12-64-16-2-5.log & 
-kubectl logs job-inception3-gpu-16-12-64-16-2-5> inception3-gpu-16-12-64-16-2-5.log & 
-kubectl logs job-inception3-cpu-16-12-64-16-2-6> inception3-cpu-16-12-64-16-2-6.log & 
-kubectl logs job-inception3-gpu-16-12-64-16-2-6> inception3-gpu-16-12-64-16-2-6.log & 
-kubectl logs job-inception3-cpu-16-12-64-16-2-7> inception3-cpu-16-12-64-16-2-7.log & 
-kubectl logs job-inception3-gpu-16-12-64-16-2-7> inception3-gpu-16-12-64-16-2-7.log & 
-kubectl logs job-inception3-cpu-16-12-64-16-2-8> inception3-cpu-16-12-64-16-2-8.log & 
-kubectl logs job-inception3-gpu-16-12-64-16-2-8> inception3-gpu-16-12-64-16-2-8.log & 
-kubectl logs job-inception3-cpu-16-12-64-16-2-9> inception3-cpu-16-12-64-16-2-9.log & 
-kubectl logs job-inception3-gpu-16-12-64-16-2-9> inception3-gpu-16-12-64-16-2-9.log & 
-kubectl logs job-inception3-cpu-16-12-64-16-2-10> inception3-cpu-16-12-64-16-2-10.log & 
-kubectl logs job-inception3-gpu-16-12-64-16-2-10> inception3-gpu-16-12-64-16-2-10.log & 
-kubectl logs job-inception3-cpu-16-12-64-16-5-0> inception3-cpu-16-12-64-16-5-0.log & 
-kubectl logs job-inception3-gpu-16-12-64-16-5-0> inception3-gpu-16-12-64-16-5-0.log & 
-kubectl logs job-inception3-cpu-16-12-64-16-5-1> inception3-cpu-16-12-64-16-5-1.log & 
-kubectl logs job-inception3-gpu-16-12-64-16-5-1> inception3-gpu-16-12-64-16-5-1.log & 
-kubectl logs job-inception3-cpu-16-12-64-16-5-2> inception3-cpu-16-12-64-16-5-2.log & 
-kubectl logs job-inception3-gpu-16-12-64-16-5-2> inception3-gpu-16-12-64-16-5-2.log & 
-kubectl logs job-inception3-cpu-16-12-64-16-5-3> inception3-cpu-16-12-64-16-5-3.log & 
-kubectl logs job-inception3-gpu-16-12-64-16-5-3> inception3-gpu-16-12-64-16-5-3.log & 
-kubectl logs job-inception3-cpu-16-12-64-16-5-4> inception3-cpu-16-12-64-16-5-4.log & 
-kubectl logs job-inception3-gpu-16-12-64-16-5-4> inception3-gpu-16-12-64-16-5-4.log & 
-kubectl logs job-inception3-cpu-16-12-64-16-5-5> inception3-cpu-16-12-64-16-5-5.log & 
-kubectl logs job-inception3-gpu-16-12-64-16-5-5> inception3-gpu-16-12-64-16-5-5.log & 
-kubectl logs job-inception3-cpu-16-12-64-16-5-6> inception3-cpu-16-12-64-16-5-6.log & 
-kubectl logs job-inception3-gpu-16-12-64-16-5-6> inception3-gpu-16-12-64-16-5-6.log & 
-kubectl logs job-inception3-cpu-16-12-64-16-5-7> inception3-cpu-16-12-64-16-5-7.log & 
-kubectl logs job-inception3-gpu-16-12-64-16-5-7> inception3-gpu-16-12-64-16-5-7.log & 
-kubectl logs job-inception3-cpu-16-12-64-16-5-8> inception3-cpu-16-12-64-16-5-8.log & 
-kubectl logs job-inception3-gpu-16-12-64-16-5-8> inception3-gpu-16-12-64-16-5-8.log & 
-kubectl logs job-inception3-cpu-16-12-64-16-5-9> inception3-cpu-16-12-64-16-5-9.log & 
-kubectl logs job-inception3-gpu-16-12-64-16-5-9> inception3-gpu-16-12-64-16-5-9.log & 
-kubectl logs job-inception3-cpu-16-12-64-16-5-10> inception3-cpu-16-12-64-16-5-10.log & 
-kubectl logs job-inception3-gpu-16-12-64-16-5-10> inception3-gpu-16-12-64-16-5-10.log & 
-kubectl logs job-inception3-cpu-16-12-64-16-10-0> inception3-cpu-16-12-64-16-10-0.log & 
-kubectl logs job-inception3-gpu-16-12-64-16-10-0> inception3-gpu-16-12-64-16-10-0.log & 
-kubectl logs job-inception3-cpu-16-12-64-16-10-1> inception3-cpu-16-12-64-16-10-1.log & 
-kubectl logs job-inception3-gpu-16-12-64-16-10-1> inception3-gpu-16-12-64-16-10-1.log & 
-kubectl logs job-inception3-cpu-16-12-64-16-10-2> inception3-cpu-16-12-64-16-10-2.log & 
-kubectl logs job-inception3-gpu-16-12-64-16-10-2> inception3-gpu-16-12-64-16-10-2.log & 
-kubectl logs job-inception3-cpu-16-12-64-16-10-3> inception3-cpu-16-12-64-16-10-3.log & 
-kubectl logs job-inception3-gpu-16-12-64-16-10-3> inception3-gpu-16-12-64-16-10-3.log & 
-kubectl logs job-inception3-cpu-16-12-64-16-10-4> inception3-cpu-16-12-64-16-10-4.log & 
-kubectl logs job-inception3-gpu-16-12-64-16-10-4> inception3-gpu-16-12-64-16-10-4.log & 
-kubectl logs job-inception3-cpu-16-12-64-16-10-5> inception3-cpu-16-12-64-16-10-5.log & 
-kubectl logs job-inception3-gpu-16-12-64-16-10-5> inception3-gpu-16-12-64-16-10-5.log & 
-kubectl logs job-inception3-cpu-16-12-64-16-10-6> inception3-cpu-16-12-64-16-10-6.log & 
-kubectl logs job-inception3-gpu-16-12-64-16-10-6> inception3-gpu-16-12-64-16-10-6.log & 
-kubectl logs job-inception3-cpu-16-12-64-16-10-7> inception3-cpu-16-12-64-16-10-7.log & 
-kubectl logs job-inception3-gpu-16-12-64-16-10-7> inception3-gpu-16-12-64-16-10-7.log & 
-kubectl logs job-inception3-cpu-16-12-64-16-10-8> inception3-cpu-16-12-64-16-10-8.log & 
-kubectl logs job-inception3-gpu-16-12-64-16-10-8> inception3-gpu-16-12-64-16-10-8.log & 
-kubectl logs job-inception3-cpu-16-12-64-16-10-9> inception3-cpu-16-12-64-16-10-9.log & 
-kubectl logs job-inception3-gpu-16-12-64-16-10-9> inception3-gpu-16-12-64-16-10-9.log & 
-kubectl logs job-inception3-cpu-16-12-64-16-10-10> inception3-cpu-16-12-64-16-10-10.log & 
-kubectl logs job-inception3-gpu-16-12-64-16-10-10> inception3-gpu-16-12-64-16-10-10.log & 
-kubectl logs job-inception3-cpu-16-12-64-16-15-0> inception3-cpu-16-12-64-16-15-0.log & 
-kubectl logs job-inception3-gpu-16-12-64-16-15-0> inception3-gpu-16-12-64-16-15-0.log & 
-kubectl logs job-inception3-cpu-16-12-64-16-15-1> inception3-cpu-16-12-64-16-15-1.log & 
-kubectl logs job-inception3-gpu-16-12-64-16-15-1> inception3-gpu-16-12-64-16-15-1.log & 
-kubectl logs job-inception3-cpu-16-12-64-16-15-2> inception3-cpu-16-12-64-16-15-2.log & 
-kubectl logs job-inception3-gpu-16-12-64-16-15-2> inception3-gpu-16-12-64-16-15-2.log & 
-kubectl logs job-inception3-cpu-16-12-64-16-15-3> inception3-cpu-16-12-64-16-15-3.log & 
-kubectl logs job-inception3-gpu-16-12-64-16-15-3> inception3-gpu-16-12-64-16-15-3.log & 
-kubectl logs job-inception3-cpu-16-12-64-16-15-4> inception3-cpu-16-12-64-16-15-4.log & 
-kubectl logs job-inception3-gpu-16-12-64-16-15-4> inception3-gpu-16-12-64-16-15-4.log & 
-kubectl logs job-inception3-cpu-16-12-64-16-15-5> inception3-cpu-16-12-64-16-15-5.log & 
-kubectl logs job-inception3-gpu-16-12-64-16-15-5> inception3-gpu-16-12-64-16-15-5.log & 
-kubectl logs job-inception3-cpu-16-12-64-16-15-6> inception3-cpu-16-12-64-16-15-6.log & 
-kubectl logs job-inception3-gpu-16-12-64-16-15-6> inception3-gpu-16-12-64-16-15-6.log & 
-kubectl logs job-inception3-cpu-16-12-64-16-15-7> inception3-cpu-16-12-64-16-15-7.log & 
-kubectl logs job-inception3-gpu-16-12-64-16-15-7> inception3-gpu-16-12-64-16-15-7.log & 
-kubectl logs job-inception3-cpu-16-12-64-16-15-8> inception3-cpu-16-12-64-16-15-8.log & 
-kubectl logs job-inception3-gpu-16-12-64-16-15-8> inception3-gpu-16-12-64-16-15-8.log & 
-kubectl logs job-inception3-cpu-16-12-64-16-15-9> inception3-cpu-16-12-64-16-15-9.log & 
-kubectl logs job-inception3-gpu-16-12-64-16-15-9> inception3-gpu-16-12-64-16-15-9.log & 
-kubectl logs job-inception3-cpu-16-12-64-16-15-10> inception3-cpu-16-12-64-16-15-10.log & 
-kubectl logs job-inception3-gpu-16-12-64-16-15-10> inception3-gpu-16-12-64-16-15-10.log & 
-kubectl logs job-inception3-cpu-16-12-64-16-20-0> inception3-cpu-16-12-64-16-20-0.log & 
-kubectl logs job-inception3-gpu-16-12-64-16-20-0> inception3-gpu-16-12-64-16-20-0.log & 
-kubectl logs job-inception3-cpu-16-12-64-16-20-1> inception3-cpu-16-12-64-16-20-1.log & 
-kubectl logs job-inception3-gpu-16-12-64-16-20-1> inception3-gpu-16-12-64-16-20-1.log & 
-kubectl logs job-inception3-cpu-16-12-64-16-20-2> inception3-cpu-16-12-64-16-20-2.log & 
-kubectl logs job-inception3-gpu-16-12-64-16-20-2> inception3-gpu-16-12-64-16-20-2.log & 
-kubectl logs job-inception3-cpu-16-12-64-16-20-3> inception3-cpu-16-12-64-16-20-3.log & 
-kubectl logs job-inception3-gpu-16-12-64-16-20-3> inception3-gpu-16-12-64-16-20-3.log & 
-kubectl logs job-inception3-cpu-16-12-64-16-20-4> inception3-cpu-16-12-64-16-20-4.log & 
-kubectl logs job-inception3-gpu-16-12-64-16-20-4> inception3-gpu-16-12-64-16-20-4.log & 
-kubectl logs job-inception3-cpu-16-12-64-16-20-5> inception3-cpu-16-12-64-16-20-5.log & 
-kubectl logs job-inception3-gpu-16-12-64-16-20-5> inception3-gpu-16-12-64-16-20-5.log & 
-kubectl logs job-inception3-cpu-16-12-64-16-20-6> inception3-cpu-16-12-64-16-20-6.log & 
-kubectl logs job-inception3-gpu-16-12-64-16-20-6> inception3-gpu-16-12-64-16-20-6.log & 
-kubectl logs job-inception3-cpu-16-12-64-16-20-7> inception3-cpu-16-12-64-16-20-7.log & 
-kubectl logs job-inception3-gpu-16-12-64-16-20-7> inception3-gpu-16-12-64-16-20-7.log & 
-kubectl logs job-inception3-cpu-16-12-64-16-20-8> inception3-cpu-16-12-64-16-20-8.log & 
-kubectl logs job-inception3-gpu-16-12-64-16-20-8> inception3-gpu-16-12-64-16-20-8.log & 
-kubectl logs job-inception3-cpu-16-12-64-16-20-9> inception3-cpu-16-12-64-16-20-9.log & 
-kubectl logs job-inception3-gpu-16-12-64-16-20-9> inception3-gpu-16-12-64-16-20-9.log & 
-kubectl logs job-inception3-cpu-16-12-64-16-20-10> inception3-cpu-16-12-64-16-20-10.log & 
-kubectl logs job-inception3-gpu-16-12-64-16-20-10> inception3-gpu-16-12-64-16-20-10.log & 
+kubectl logs job-vgg16-cpu-16-12-32-16-2-0> vgg16-cpu-16-12-32-16-2-0.log 
+kubectl logs job-vgg16-gpu-16-12-32-16-2-0> vgg16-gpu-16-12-32-16-2-0.log 
+kubectl logs job-vgg16-cpu-16-12-32-16-2-1> vgg16-cpu-16-12-32-16-2-1.log 
+kubectl logs job-vgg16-gpu-16-12-32-16-2-1> vgg16-gpu-16-12-32-16-2-1.log 
+kubectl logs job-vgg16-cpu-16-12-32-16-2-2> vgg16-cpu-16-12-32-16-2-2.log 
+kubectl logs job-vgg16-gpu-16-12-32-16-2-2> vgg16-gpu-16-12-32-16-2-2.log 
+kubectl logs job-vgg16-cpu-16-12-32-16-2-3> vgg16-cpu-16-12-32-16-2-3.log 
+kubectl logs job-vgg16-gpu-16-12-32-16-2-3> vgg16-gpu-16-12-32-16-2-3.log 
+kubectl logs job-vgg16-cpu-16-12-32-16-2-4> vgg16-cpu-16-12-32-16-2-4.log 
+kubectl logs job-vgg16-gpu-16-12-32-16-2-4> vgg16-gpu-16-12-32-16-2-4.log 
+kubectl logs job-vgg16-cpu-16-12-32-16-2-5> vgg16-cpu-16-12-32-16-2-5.log 
+kubectl logs job-vgg16-gpu-16-12-32-16-2-5> vgg16-gpu-16-12-32-16-2-5.log 
+kubectl logs job-vgg16-cpu-16-12-32-16-2-6> vgg16-cpu-16-12-32-16-2-6.log 
+kubectl logs job-vgg16-gpu-16-12-32-16-2-6> vgg16-gpu-16-12-32-16-2-6.log 
+kubectl logs job-vgg16-cpu-16-12-32-16-2-7> vgg16-cpu-16-12-32-16-2-7.log 
+kubectl logs job-vgg16-gpu-16-12-32-16-2-7> vgg16-gpu-16-12-32-16-2-7.log 
+kubectl logs job-vgg16-cpu-16-12-32-16-2-8> vgg16-cpu-16-12-32-16-2-8.log 
+kubectl logs job-vgg16-gpu-16-12-32-16-2-8> vgg16-gpu-16-12-32-16-2-8.log 
+kubectl logs job-vgg16-cpu-16-12-32-16-2-9> vgg16-cpu-16-12-32-16-2-9.log 
+kubectl logs job-vgg16-gpu-16-12-32-16-2-9> vgg16-gpu-16-12-32-16-2-9.log 
+kubectl logs job-vgg16-cpu-16-12-32-16-2-10> vgg16-cpu-16-12-32-16-2-10.log 
+kubectl logs job-vgg16-gpu-16-12-32-16-2-10> vgg16-gpu-16-12-32-16-2-10.log 
+kubectl logs job-vgg16-cpu-16-12-32-16-5-0> vgg16-cpu-16-12-32-16-5-0.log 
+kubectl logs job-vgg16-gpu-16-12-32-16-5-0> vgg16-gpu-16-12-32-16-5-0.log 
+kubectl logs job-vgg16-cpu-16-12-32-16-5-1> vgg16-cpu-16-12-32-16-5-1.log 
+kubectl logs job-vgg16-gpu-16-12-32-16-5-1> vgg16-gpu-16-12-32-16-5-1.log 
+kubectl logs job-vgg16-cpu-16-12-32-16-5-2> vgg16-cpu-16-12-32-16-5-2.log 
+kubectl logs job-vgg16-gpu-16-12-32-16-5-2> vgg16-gpu-16-12-32-16-5-2.log 
+kubectl logs job-vgg16-cpu-16-12-32-16-5-3> vgg16-cpu-16-12-32-16-5-3.log 
+kubectl logs job-vgg16-gpu-16-12-32-16-5-3> vgg16-gpu-16-12-32-16-5-3.log 
+kubectl logs job-vgg16-cpu-16-12-32-16-5-4> vgg16-cpu-16-12-32-16-5-4.log 
+kubectl logs job-vgg16-gpu-16-12-32-16-5-4> vgg16-gpu-16-12-32-16-5-4.log 
+kubectl logs job-vgg16-cpu-16-12-32-16-5-5> vgg16-cpu-16-12-32-16-5-5.log 
+kubectl logs job-vgg16-gpu-16-12-32-16-5-5> vgg16-gpu-16-12-32-16-5-5.log 
+kubectl logs job-vgg16-cpu-16-12-32-16-5-6> vgg16-cpu-16-12-32-16-5-6.log 
+kubectl logs job-vgg16-gpu-16-12-32-16-5-6> vgg16-gpu-16-12-32-16-5-6.log 
+kubectl logs job-vgg16-cpu-16-12-32-16-5-7> vgg16-cpu-16-12-32-16-5-7.log 
+kubectl logs job-vgg16-gpu-16-12-32-16-5-7> vgg16-gpu-16-12-32-16-5-7.log 
+kubectl logs job-vgg16-cpu-16-12-32-16-5-8> vgg16-cpu-16-12-32-16-5-8.log 
+kubectl logs job-vgg16-gpu-16-12-32-16-5-8> vgg16-gpu-16-12-32-16-5-8.log 
+kubectl logs job-vgg16-cpu-16-12-32-16-5-9> vgg16-cpu-16-12-32-16-5-9.log 
+kubectl logs job-vgg16-gpu-16-12-32-16-5-9> vgg16-gpu-16-12-32-16-5-9.log 
+kubectl logs job-vgg16-cpu-16-12-32-16-5-10> vgg16-cpu-16-12-32-16-5-10.log 
+kubectl logs job-vgg16-gpu-16-12-32-16-5-10> vgg16-gpu-16-12-32-16-5-10.log 
+kubectl logs job-vgg16-cpu-16-12-32-16-10-0> vgg16-cpu-16-12-32-16-10-0.log 
+kubectl logs job-vgg16-gpu-16-12-32-16-10-0> vgg16-gpu-16-12-32-16-10-0.log 
+kubectl logs job-vgg16-cpu-16-12-32-16-10-1> vgg16-cpu-16-12-32-16-10-1.log 
+kubectl logs job-vgg16-gpu-16-12-32-16-10-1> vgg16-gpu-16-12-32-16-10-1.log 
+kubectl logs job-vgg16-cpu-16-12-32-16-10-2> vgg16-cpu-16-12-32-16-10-2.log 
+kubectl logs job-vgg16-gpu-16-12-32-16-10-2> vgg16-gpu-16-12-32-16-10-2.log 
+kubectl logs job-vgg16-cpu-16-12-32-16-10-3> vgg16-cpu-16-12-32-16-10-3.log 
+kubectl logs job-vgg16-gpu-16-12-32-16-10-3> vgg16-gpu-16-12-32-16-10-3.log 
+kubectl logs job-vgg16-cpu-16-12-32-16-10-4> vgg16-cpu-16-12-32-16-10-4.log 
+kubectl logs job-vgg16-gpu-16-12-32-16-10-4> vgg16-gpu-16-12-32-16-10-4.log 
+kubectl logs job-vgg16-cpu-16-12-32-16-10-5> vgg16-cpu-16-12-32-16-10-5.log 
+kubectl logs job-vgg16-gpu-16-12-32-16-10-5> vgg16-gpu-16-12-32-16-10-5.log 
+kubectl logs job-vgg16-cpu-16-12-32-16-10-6> vgg16-cpu-16-12-32-16-10-6.log 
+kubectl logs job-vgg16-gpu-16-12-32-16-10-6> vgg16-gpu-16-12-32-16-10-6.log 
+kubectl logs job-vgg16-cpu-16-12-32-16-10-7> vgg16-cpu-16-12-32-16-10-7.log 
+kubectl logs job-vgg16-gpu-16-12-32-16-10-7> vgg16-gpu-16-12-32-16-10-7.log 
+kubectl logs job-vgg16-cpu-16-12-32-16-10-8> vgg16-cpu-16-12-32-16-10-8.log 
+kubectl logs job-vgg16-gpu-16-12-32-16-10-8> vgg16-gpu-16-12-32-16-10-8.log 
+kubectl logs job-vgg16-cpu-16-12-32-16-10-9> vgg16-cpu-16-12-32-16-10-9.log 
+kubectl logs job-vgg16-gpu-16-12-32-16-10-9> vgg16-gpu-16-12-32-16-10-9.log 
+kubectl logs job-vgg16-cpu-16-12-32-16-10-10> vgg16-cpu-16-12-32-16-10-10.log 
+kubectl logs job-vgg16-gpu-16-12-32-16-10-10> vgg16-gpu-16-12-32-16-10-10.log 
+kubectl logs job-vgg16-cpu-16-12-32-16-15-0> vgg16-cpu-16-12-32-16-15-0.log 
+kubectl logs job-vgg16-gpu-16-12-32-16-15-0> vgg16-gpu-16-12-32-16-15-0.log 
+kubectl logs job-vgg16-cpu-16-12-32-16-15-1> vgg16-cpu-16-12-32-16-15-1.log 
+kubectl logs job-vgg16-gpu-16-12-32-16-15-1> vgg16-gpu-16-12-32-16-15-1.log 
+kubectl logs job-vgg16-cpu-16-12-32-16-15-2> vgg16-cpu-16-12-32-16-15-2.log 
+kubectl logs job-vgg16-gpu-16-12-32-16-15-2> vgg16-gpu-16-12-32-16-15-2.log 
+kubectl logs job-vgg16-cpu-16-12-32-16-15-3> vgg16-cpu-16-12-32-16-15-3.log 
+kubectl logs job-vgg16-gpu-16-12-32-16-15-3> vgg16-gpu-16-12-32-16-15-3.log 
+kubectl logs job-vgg16-cpu-16-12-32-16-15-4> vgg16-cpu-16-12-32-16-15-4.log 
+kubectl logs job-vgg16-gpu-16-12-32-16-15-4> vgg16-gpu-16-12-32-16-15-4.log 
+kubectl logs job-vgg16-cpu-16-12-32-16-15-5> vgg16-cpu-16-12-32-16-15-5.log 
+kubectl logs job-vgg16-gpu-16-12-32-16-15-5> vgg16-gpu-16-12-32-16-15-5.log 
+kubectl logs job-vgg16-cpu-16-12-32-16-15-6> vgg16-cpu-16-12-32-16-15-6.log 
+kubectl logs job-vgg16-gpu-16-12-32-16-15-6> vgg16-gpu-16-12-32-16-15-6.log 
+kubectl logs job-vgg16-cpu-16-12-32-16-15-7> vgg16-cpu-16-12-32-16-15-7.log 
+kubectl logs job-vgg16-gpu-16-12-32-16-15-7> vgg16-gpu-16-12-32-16-15-7.log 
+kubectl logs job-vgg16-cpu-16-12-32-16-15-8> vgg16-cpu-16-12-32-16-15-8.log 
+kubectl logs job-vgg16-gpu-16-12-32-16-15-8> vgg16-gpu-16-12-32-16-15-8.log 
+kubectl logs job-vgg16-cpu-16-12-32-16-15-9> vgg16-cpu-16-12-32-16-15-9.log 
+kubectl logs job-vgg16-gpu-16-12-32-16-15-9> vgg16-gpu-16-12-32-16-15-9.log 
+kubectl logs job-vgg16-cpu-16-12-32-16-15-10> vgg16-cpu-16-12-32-16-15-10.log 
+kubectl logs job-vgg16-gpu-16-12-32-16-15-10> vgg16-gpu-16-12-32-16-15-10.log 
+kubectl logs job-vgg16-cpu-16-12-32-16-20-0> vgg16-cpu-16-12-32-16-20-0.log 
+kubectl logs job-vgg16-gpu-16-12-32-16-20-0> vgg16-gpu-16-12-32-16-20-0.log 
+kubectl logs job-vgg16-cpu-16-12-32-16-20-1> vgg16-cpu-16-12-32-16-20-1.log 
+kubectl logs job-vgg16-gpu-16-12-32-16-20-1> vgg16-gpu-16-12-32-16-20-1.log 
+kubectl logs job-vgg16-cpu-16-12-32-16-20-2> vgg16-cpu-16-12-32-16-20-2.log 
+kubectl logs job-vgg16-gpu-16-12-32-16-20-2> vgg16-gpu-16-12-32-16-20-2.log 
+kubectl logs job-vgg16-cpu-16-12-32-16-20-3> vgg16-cpu-16-12-32-16-20-3.log 
+kubectl logs job-vgg16-gpu-16-12-32-16-20-3> vgg16-gpu-16-12-32-16-20-3.log 
+kubectl logs job-vgg16-cpu-16-12-32-16-20-4> vgg16-cpu-16-12-32-16-20-4.log 
+kubectl logs job-vgg16-gpu-16-12-32-16-20-4> vgg16-gpu-16-12-32-16-20-4.log 
+kubectl logs job-vgg16-cpu-16-12-32-16-20-5> vgg16-cpu-16-12-32-16-20-5.log 
+kubectl logs job-vgg16-gpu-16-12-32-16-20-5> vgg16-gpu-16-12-32-16-20-5.log 
+kubectl logs job-vgg16-cpu-16-12-32-16-20-6> vgg16-cpu-16-12-32-16-20-6.log 
+kubectl logs job-vgg16-gpu-16-12-32-16-20-6> vgg16-gpu-16-12-32-16-20-6.log 
+kubectl logs job-vgg16-cpu-16-12-32-16-20-7> vgg16-cpu-16-12-32-16-20-7.log 
+kubectl logs job-vgg16-gpu-16-12-32-16-20-7> vgg16-gpu-16-12-32-16-20-7.log 
+kubectl logs job-vgg16-cpu-16-12-32-16-20-8> vgg16-cpu-16-12-32-16-20-8.log 
+kubectl logs job-vgg16-gpu-16-12-32-16-20-8> vgg16-gpu-16-12-32-16-20-8.log 
+kubectl logs job-vgg16-cpu-16-12-32-16-20-9> vgg16-cpu-16-12-32-16-20-9.log 
+kubectl logs job-vgg16-gpu-16-12-32-16-20-9> vgg16-gpu-16-12-32-16-20-9.log 
+kubectl logs job-vgg16-cpu-16-12-32-16-20-10> vgg16-cpu-16-12-32-16-20-10.log 
+kubectl logs job-vgg16-gpu-16-12-32-16-20-10> vgg16-gpu-16-12-32-16-20-10.log 
+kubectl logs job-lenet-cpu-16-12-32-16-2-0> lenet-cpu-16-12-32-16-2-0.log 
+kubectl logs job-lenet-gpu-16-12-32-16-2-0> lenet-gpu-16-12-32-16-2-0.log 
+kubectl logs job-lenet-cpu-16-12-32-16-2-1> lenet-cpu-16-12-32-16-2-1.log 
+kubectl logs job-lenet-gpu-16-12-32-16-2-1> lenet-gpu-16-12-32-16-2-1.log 
+kubectl logs job-lenet-cpu-16-12-32-16-2-2> lenet-cpu-16-12-32-16-2-2.log 
+kubectl logs job-lenet-gpu-16-12-32-16-2-2> lenet-gpu-16-12-32-16-2-2.log 
+kubectl logs job-lenet-cpu-16-12-32-16-2-3> lenet-cpu-16-12-32-16-2-3.log 
+kubectl logs job-lenet-gpu-16-12-32-16-2-3> lenet-gpu-16-12-32-16-2-3.log 
+kubectl logs job-lenet-cpu-16-12-32-16-2-4> lenet-cpu-16-12-32-16-2-4.log 
+kubectl logs job-lenet-gpu-16-12-32-16-2-4> lenet-gpu-16-12-32-16-2-4.log 
+kubectl logs job-lenet-cpu-16-12-32-16-2-5> lenet-cpu-16-12-32-16-2-5.log 
+kubectl logs job-lenet-gpu-16-12-32-16-2-5> lenet-gpu-16-12-32-16-2-5.log 
+kubectl logs job-lenet-cpu-16-12-32-16-2-6> lenet-cpu-16-12-32-16-2-6.log 
+kubectl logs job-lenet-gpu-16-12-32-16-2-6> lenet-gpu-16-12-32-16-2-6.log 
+kubectl logs job-lenet-cpu-16-12-32-16-2-7> lenet-cpu-16-12-32-16-2-7.log 
+kubectl logs job-lenet-gpu-16-12-32-16-2-7> lenet-gpu-16-12-32-16-2-7.log 
+kubectl logs job-lenet-cpu-16-12-32-16-2-8> lenet-cpu-16-12-32-16-2-8.log 
+kubectl logs job-lenet-gpu-16-12-32-16-2-8> lenet-gpu-16-12-32-16-2-8.log 
+kubectl logs job-lenet-cpu-16-12-32-16-2-9> lenet-cpu-16-12-32-16-2-9.log 
+kubectl logs job-lenet-gpu-16-12-32-16-2-9> lenet-gpu-16-12-32-16-2-9.log 
+kubectl logs job-lenet-cpu-16-12-32-16-2-10> lenet-cpu-16-12-32-16-2-10.log 
+kubectl logs job-lenet-gpu-16-12-32-16-2-10> lenet-gpu-16-12-32-16-2-10.log 
+kubectl logs job-lenet-cpu-16-12-32-16-5-0> lenet-cpu-16-12-32-16-5-0.log 
+kubectl logs job-lenet-gpu-16-12-32-16-5-0> lenet-gpu-16-12-32-16-5-0.log 
+kubectl logs job-lenet-cpu-16-12-32-16-5-1> lenet-cpu-16-12-32-16-5-1.log 
+kubectl logs job-lenet-gpu-16-12-32-16-5-1> lenet-gpu-16-12-32-16-5-1.log 
+kubectl logs job-lenet-cpu-16-12-32-16-5-2> lenet-cpu-16-12-32-16-5-2.log 
+kubectl logs job-lenet-gpu-16-12-32-16-5-2> lenet-gpu-16-12-32-16-5-2.log 
+kubectl logs job-lenet-cpu-16-12-32-16-5-3> lenet-cpu-16-12-32-16-5-3.log 
+kubectl logs job-lenet-gpu-16-12-32-16-5-3> lenet-gpu-16-12-32-16-5-3.log 
+kubectl logs job-lenet-cpu-16-12-32-16-5-4> lenet-cpu-16-12-32-16-5-4.log 
+kubectl logs job-lenet-gpu-16-12-32-16-5-4> lenet-gpu-16-12-32-16-5-4.log 
+kubectl logs job-lenet-cpu-16-12-32-16-5-5> lenet-cpu-16-12-32-16-5-5.log 
+kubectl logs job-lenet-gpu-16-12-32-16-5-5> lenet-gpu-16-12-32-16-5-5.log 
+kubectl logs job-lenet-cpu-16-12-32-16-5-6> lenet-cpu-16-12-32-16-5-6.log 
+kubectl logs job-lenet-gpu-16-12-32-16-5-6> lenet-gpu-16-12-32-16-5-6.log 
+kubectl logs job-lenet-cpu-16-12-32-16-5-7> lenet-cpu-16-12-32-16-5-7.log 
+kubectl logs job-lenet-gpu-16-12-32-16-5-7> lenet-gpu-16-12-32-16-5-7.log 
+kubectl logs job-lenet-cpu-16-12-32-16-5-8> lenet-cpu-16-12-32-16-5-8.log 
+kubectl logs job-lenet-gpu-16-12-32-16-5-8> lenet-gpu-16-12-32-16-5-8.log 
+kubectl logs job-lenet-cpu-16-12-32-16-5-9> lenet-cpu-16-12-32-16-5-9.log 
+kubectl logs job-lenet-gpu-16-12-32-16-5-9> lenet-gpu-16-12-32-16-5-9.log 
+kubectl logs job-lenet-cpu-16-12-32-16-5-10> lenet-cpu-16-12-32-16-5-10.log 
+kubectl logs job-lenet-gpu-16-12-32-16-5-10> lenet-gpu-16-12-32-16-5-10.log 
+kubectl logs job-lenet-cpu-16-12-32-16-10-0> lenet-cpu-16-12-32-16-10-0.log 
+kubectl logs job-lenet-gpu-16-12-32-16-10-0> lenet-gpu-16-12-32-16-10-0.log 
+kubectl logs job-lenet-cpu-16-12-32-16-10-1> lenet-cpu-16-12-32-16-10-1.log 
+kubectl logs job-lenet-gpu-16-12-32-16-10-1> lenet-gpu-16-12-32-16-10-1.log 
+kubectl logs job-lenet-cpu-16-12-32-16-10-2> lenet-cpu-16-12-32-16-10-2.log 
+kubectl logs job-lenet-gpu-16-12-32-16-10-2> lenet-gpu-16-12-32-16-10-2.log 
+kubectl logs job-lenet-cpu-16-12-32-16-10-3> lenet-cpu-16-12-32-16-10-3.log 
+kubectl logs job-lenet-gpu-16-12-32-16-10-3> lenet-gpu-16-12-32-16-10-3.log 
+kubectl logs job-lenet-cpu-16-12-32-16-10-4> lenet-cpu-16-12-32-16-10-4.log 
+kubectl logs job-lenet-gpu-16-12-32-16-10-4> lenet-gpu-16-12-32-16-10-4.log 
+kubectl logs job-lenet-cpu-16-12-32-16-10-5> lenet-cpu-16-12-32-16-10-5.log 
+kubectl logs job-lenet-gpu-16-12-32-16-10-5> lenet-gpu-16-12-32-16-10-5.log 
+kubectl logs job-lenet-cpu-16-12-32-16-10-6> lenet-cpu-16-12-32-16-10-6.log 
+kubectl logs job-lenet-gpu-16-12-32-16-10-6> lenet-gpu-16-12-32-16-10-6.log 
+kubectl logs job-lenet-cpu-16-12-32-16-10-7> lenet-cpu-16-12-32-16-10-7.log 
+kubectl logs job-lenet-gpu-16-12-32-16-10-7> lenet-gpu-16-12-32-16-10-7.log 
+kubectl logs job-lenet-cpu-16-12-32-16-10-8> lenet-cpu-16-12-32-16-10-8.log 
+kubectl logs job-lenet-gpu-16-12-32-16-10-8> lenet-gpu-16-12-32-16-10-8.log 
+kubectl logs job-lenet-cpu-16-12-32-16-10-9> lenet-cpu-16-12-32-16-10-9.log 
+kubectl logs job-lenet-gpu-16-12-32-16-10-9> lenet-gpu-16-12-32-16-10-9.log 
+kubectl logs job-lenet-cpu-16-12-32-16-10-10> lenet-cpu-16-12-32-16-10-10.log 
+kubectl logs job-lenet-gpu-16-12-32-16-10-10> lenet-gpu-16-12-32-16-10-10.log 
+kubectl logs job-lenet-cpu-16-12-32-16-15-0> lenet-cpu-16-12-32-16-15-0.log 
+kubectl logs job-lenet-gpu-16-12-32-16-15-0> lenet-gpu-16-12-32-16-15-0.log 
+kubectl logs job-lenet-cpu-16-12-32-16-15-1> lenet-cpu-16-12-32-16-15-1.log 
+kubectl logs job-lenet-gpu-16-12-32-16-15-1> lenet-gpu-16-12-32-16-15-1.log 
+kubectl logs job-lenet-cpu-16-12-32-16-15-2> lenet-cpu-16-12-32-16-15-2.log 
+kubectl logs job-lenet-gpu-16-12-32-16-15-2> lenet-gpu-16-12-32-16-15-2.log 
+kubectl logs job-lenet-cpu-16-12-32-16-15-3> lenet-cpu-16-12-32-16-15-3.log 
+kubectl logs job-lenet-gpu-16-12-32-16-15-3> lenet-gpu-16-12-32-16-15-3.log 
+kubectl logs job-lenet-cpu-16-12-32-16-15-4> lenet-cpu-16-12-32-16-15-4.log 
+kubectl logs job-lenet-gpu-16-12-32-16-15-4> lenet-gpu-16-12-32-16-15-4.log 
+kubectl logs job-lenet-cpu-16-12-32-16-15-5> lenet-cpu-16-12-32-16-15-5.log 
+kubectl logs job-lenet-gpu-16-12-32-16-15-5> lenet-gpu-16-12-32-16-15-5.log 
+kubectl logs job-lenet-cpu-16-12-32-16-15-6> lenet-cpu-16-12-32-16-15-6.log 
+kubectl logs job-lenet-gpu-16-12-32-16-15-6> lenet-gpu-16-12-32-16-15-6.log 
+kubectl logs job-lenet-cpu-16-12-32-16-15-7> lenet-cpu-16-12-32-16-15-7.log 
+kubectl logs job-lenet-gpu-16-12-32-16-15-7> lenet-gpu-16-12-32-16-15-7.log 
+kubectl logs job-lenet-cpu-16-12-32-16-15-8> lenet-cpu-16-12-32-16-15-8.log 
+kubectl logs job-lenet-gpu-16-12-32-16-15-8> lenet-gpu-16-12-32-16-15-8.log 
+kubectl logs job-lenet-cpu-16-12-32-16-15-9> lenet-cpu-16-12-32-16-15-9.log 
+kubectl logs job-lenet-gpu-16-12-32-16-15-9> lenet-gpu-16-12-32-16-15-9.log 
+kubectl logs job-lenet-cpu-16-12-32-16-15-10> lenet-cpu-16-12-32-16-15-10.log 
+kubectl logs job-lenet-gpu-16-12-32-16-15-10> lenet-gpu-16-12-32-16-15-10.log 
+kubectl logs job-lenet-cpu-16-12-32-16-20-0> lenet-cpu-16-12-32-16-20-0.log 
+kubectl logs job-lenet-gpu-16-12-32-16-20-0> lenet-gpu-16-12-32-16-20-0.log 
+kubectl logs job-lenet-cpu-16-12-32-16-20-1> lenet-cpu-16-12-32-16-20-1.log 
+kubectl logs job-lenet-gpu-16-12-32-16-20-1> lenet-gpu-16-12-32-16-20-1.log 
+kubectl logs job-lenet-cpu-16-12-32-16-20-2> lenet-cpu-16-12-32-16-20-2.log 
+kubectl logs job-lenet-gpu-16-12-32-16-20-2> lenet-gpu-16-12-32-16-20-2.log 
+kubectl logs job-lenet-cpu-16-12-32-16-20-3> lenet-cpu-16-12-32-16-20-3.log 
+kubectl logs job-lenet-gpu-16-12-32-16-20-3> lenet-gpu-16-12-32-16-20-3.log 
+kubectl logs job-lenet-cpu-16-12-32-16-20-4> lenet-cpu-16-12-32-16-20-4.log 
+kubectl logs job-lenet-gpu-16-12-32-16-20-4> lenet-gpu-16-12-32-16-20-4.log 
+kubectl logs job-lenet-cpu-16-12-32-16-20-5> lenet-cpu-16-12-32-16-20-5.log 
+kubectl logs job-lenet-gpu-16-12-32-16-20-5> lenet-gpu-16-12-32-16-20-5.log 
+kubectl logs job-lenet-cpu-16-12-32-16-20-6> lenet-cpu-16-12-32-16-20-6.log 
+kubectl logs job-lenet-gpu-16-12-32-16-20-6> lenet-gpu-16-12-32-16-20-6.log 
+kubectl logs job-lenet-cpu-16-12-32-16-20-7> lenet-cpu-16-12-32-16-20-7.log 
+kubectl logs job-lenet-gpu-16-12-32-16-20-7> lenet-gpu-16-12-32-16-20-7.log 
+kubectl logs job-lenet-cpu-16-12-32-16-20-8> lenet-cpu-16-12-32-16-20-8.log 
+kubectl logs job-lenet-gpu-16-12-32-16-20-8> lenet-gpu-16-12-32-16-20-8.log 
+kubectl logs job-lenet-cpu-16-12-32-16-20-9> lenet-cpu-16-12-32-16-20-9.log 
+kubectl logs job-lenet-gpu-16-12-32-16-20-9> lenet-gpu-16-12-32-16-20-9.log 
+kubectl logs job-lenet-cpu-16-12-32-16-20-10> lenet-cpu-16-12-32-16-20-10.log 
+kubectl logs job-lenet-gpu-16-12-32-16-20-10> lenet-gpu-16-12-32-16-20-10.log 
+kubectl logs job-googlenet-cpu-16-12-32-16-2-0> googlenet-cpu-16-12-32-16-2-0.log 
+kubectl logs job-googlenet-gpu-16-12-32-16-2-0> googlenet-gpu-16-12-32-16-2-0.log 
+kubectl logs job-googlenet-cpu-16-12-32-16-2-1> googlenet-cpu-16-12-32-16-2-1.log 
+kubectl logs job-googlenet-gpu-16-12-32-16-2-1> googlenet-gpu-16-12-32-16-2-1.log 
+kubectl logs job-googlenet-cpu-16-12-32-16-2-2> googlenet-cpu-16-12-32-16-2-2.log 
+kubectl logs job-googlenet-gpu-16-12-32-16-2-2> googlenet-gpu-16-12-32-16-2-2.log 
+kubectl logs job-googlenet-cpu-16-12-32-16-2-3> googlenet-cpu-16-12-32-16-2-3.log 
+kubectl logs job-googlenet-gpu-16-12-32-16-2-3> googlenet-gpu-16-12-32-16-2-3.log 
+kubectl logs job-googlenet-cpu-16-12-32-16-2-4> googlenet-cpu-16-12-32-16-2-4.log 
+kubectl logs job-googlenet-gpu-16-12-32-16-2-4> googlenet-gpu-16-12-32-16-2-4.log 
+kubectl logs job-googlenet-cpu-16-12-32-16-2-5> googlenet-cpu-16-12-32-16-2-5.log 
+kubectl logs job-googlenet-gpu-16-12-32-16-2-5> googlenet-gpu-16-12-32-16-2-5.log 
+kubectl logs job-googlenet-cpu-16-12-32-16-2-6> googlenet-cpu-16-12-32-16-2-6.log 
+kubectl logs job-googlenet-gpu-16-12-32-16-2-6> googlenet-gpu-16-12-32-16-2-6.log 
+kubectl logs job-googlenet-cpu-16-12-32-16-2-7> googlenet-cpu-16-12-32-16-2-7.log 
+kubectl logs job-googlenet-gpu-16-12-32-16-2-7> googlenet-gpu-16-12-32-16-2-7.log 
+kubectl logs job-googlenet-cpu-16-12-32-16-2-8> googlenet-cpu-16-12-32-16-2-8.log 
+kubectl logs job-googlenet-gpu-16-12-32-16-2-8> googlenet-gpu-16-12-32-16-2-8.log 
+kubectl logs job-googlenet-cpu-16-12-32-16-2-9> googlenet-cpu-16-12-32-16-2-9.log 
+kubectl logs job-googlenet-gpu-16-12-32-16-2-9> googlenet-gpu-16-12-32-16-2-9.log 
+kubectl logs job-googlenet-cpu-16-12-32-16-2-10> googlenet-cpu-16-12-32-16-2-10.log 
+kubectl logs job-googlenet-gpu-16-12-32-16-2-10> googlenet-gpu-16-12-32-16-2-10.log 
+kubectl logs job-googlenet-cpu-16-12-32-16-5-0> googlenet-cpu-16-12-32-16-5-0.log 
+kubectl logs job-googlenet-gpu-16-12-32-16-5-0> googlenet-gpu-16-12-32-16-5-0.log 
+kubectl logs job-googlenet-cpu-16-12-32-16-5-1> googlenet-cpu-16-12-32-16-5-1.log 
+kubectl logs job-googlenet-gpu-16-12-32-16-5-1> googlenet-gpu-16-12-32-16-5-1.log 
+kubectl logs job-googlenet-cpu-16-12-32-16-5-2> googlenet-cpu-16-12-32-16-5-2.log 
+kubectl logs job-googlenet-gpu-16-12-32-16-5-2> googlenet-gpu-16-12-32-16-5-2.log 
+kubectl logs job-googlenet-cpu-16-12-32-16-5-3> googlenet-cpu-16-12-32-16-5-3.log 
+kubectl logs job-googlenet-gpu-16-12-32-16-5-3> googlenet-gpu-16-12-32-16-5-3.log 
+kubectl logs job-googlenet-cpu-16-12-32-16-5-4> googlenet-cpu-16-12-32-16-5-4.log 
+kubectl logs job-googlenet-gpu-16-12-32-16-5-4> googlenet-gpu-16-12-32-16-5-4.log 
+kubectl logs job-googlenet-cpu-16-12-32-16-5-5> googlenet-cpu-16-12-32-16-5-5.log 
+kubectl logs job-googlenet-gpu-16-12-32-16-5-5> googlenet-gpu-16-12-32-16-5-5.log 
+kubectl logs job-googlenet-cpu-16-12-32-16-5-6> googlenet-cpu-16-12-32-16-5-6.log 
+kubectl logs job-googlenet-gpu-16-12-32-16-5-6> googlenet-gpu-16-12-32-16-5-6.log 
+kubectl logs job-googlenet-cpu-16-12-32-16-5-7> googlenet-cpu-16-12-32-16-5-7.log 
+kubectl logs job-googlenet-gpu-16-12-32-16-5-7> googlenet-gpu-16-12-32-16-5-7.log 
+kubectl logs job-googlenet-cpu-16-12-32-16-5-8> googlenet-cpu-16-12-32-16-5-8.log 
+kubectl logs job-googlenet-gpu-16-12-32-16-5-8> googlenet-gpu-16-12-32-16-5-8.log 
+kubectl logs job-googlenet-cpu-16-12-32-16-5-9> googlenet-cpu-16-12-32-16-5-9.log 
+kubectl logs job-googlenet-gpu-16-12-32-16-5-9> googlenet-gpu-16-12-32-16-5-9.log 
+kubectl logs job-googlenet-cpu-16-12-32-16-5-10> googlenet-cpu-16-12-32-16-5-10.log 
+kubectl logs job-googlenet-gpu-16-12-32-16-5-10> googlenet-gpu-16-12-32-16-5-10.log 
+kubectl logs job-googlenet-cpu-16-12-32-16-10-0> googlenet-cpu-16-12-32-16-10-0.log 
+kubectl logs job-googlenet-gpu-16-12-32-16-10-0> googlenet-gpu-16-12-32-16-10-0.log 
+kubectl logs job-googlenet-cpu-16-12-32-16-10-1> googlenet-cpu-16-12-32-16-10-1.log 
+kubectl logs job-googlenet-gpu-16-12-32-16-10-1> googlenet-gpu-16-12-32-16-10-1.log 
+kubectl logs job-googlenet-cpu-16-12-32-16-10-2> googlenet-cpu-16-12-32-16-10-2.log 
+kubectl logs job-googlenet-gpu-16-12-32-16-10-2> googlenet-gpu-16-12-32-16-10-2.log 
+kubectl logs job-googlenet-cpu-16-12-32-16-10-3> googlenet-cpu-16-12-32-16-10-3.log 
+kubectl logs job-googlenet-gpu-16-12-32-16-10-3> googlenet-gpu-16-12-32-16-10-3.log 
+kubectl logs job-googlenet-cpu-16-12-32-16-10-4> googlenet-cpu-16-12-32-16-10-4.log 
+kubectl logs job-googlenet-gpu-16-12-32-16-10-4> googlenet-gpu-16-12-32-16-10-4.log 
+kubectl logs job-googlenet-cpu-16-12-32-16-10-5> googlenet-cpu-16-12-32-16-10-5.log 
+kubectl logs job-googlenet-gpu-16-12-32-16-10-5> googlenet-gpu-16-12-32-16-10-5.log 
+kubectl logs job-googlenet-cpu-16-12-32-16-10-6> googlenet-cpu-16-12-32-16-10-6.log 
+kubectl logs job-googlenet-gpu-16-12-32-16-10-6> googlenet-gpu-16-12-32-16-10-6.log 
+kubectl logs job-googlenet-cpu-16-12-32-16-10-7> googlenet-cpu-16-12-32-16-10-7.log 
+kubectl logs job-googlenet-gpu-16-12-32-16-10-7> googlenet-gpu-16-12-32-16-10-7.log 
+kubectl logs job-googlenet-cpu-16-12-32-16-10-8> googlenet-cpu-16-12-32-16-10-8.log 
+kubectl logs job-googlenet-gpu-16-12-32-16-10-8> googlenet-gpu-16-12-32-16-10-8.log 
+kubectl logs job-googlenet-cpu-16-12-32-16-10-9> googlenet-cpu-16-12-32-16-10-9.log 
+kubectl logs job-googlenet-gpu-16-12-32-16-10-9> googlenet-gpu-16-12-32-16-10-9.log 
+kubectl logs job-googlenet-cpu-16-12-32-16-10-10> googlenet-cpu-16-12-32-16-10-10.log 
+kubectl logs job-googlenet-gpu-16-12-32-16-10-10> googlenet-gpu-16-12-32-16-10-10.log 
+kubectl logs job-googlenet-cpu-16-12-32-16-15-0> googlenet-cpu-16-12-32-16-15-0.log 
+kubectl logs job-googlenet-gpu-16-12-32-16-15-0> googlenet-gpu-16-12-32-16-15-0.log 
+kubectl logs job-googlenet-cpu-16-12-32-16-15-1> googlenet-cpu-16-12-32-16-15-1.log 
+kubectl logs job-googlenet-gpu-16-12-32-16-15-1> googlenet-gpu-16-12-32-16-15-1.log 
+kubectl logs job-googlenet-cpu-16-12-32-16-15-2> googlenet-cpu-16-12-32-16-15-2.log 
+kubectl logs job-googlenet-gpu-16-12-32-16-15-2> googlenet-gpu-16-12-32-16-15-2.log 
+kubectl logs job-googlenet-cpu-16-12-32-16-15-3> googlenet-cpu-16-12-32-16-15-3.log 
+kubectl logs job-googlenet-gpu-16-12-32-16-15-3> googlenet-gpu-16-12-32-16-15-3.log 
+kubectl logs job-googlenet-cpu-16-12-32-16-15-4> googlenet-cpu-16-12-32-16-15-4.log 
+kubectl logs job-googlenet-gpu-16-12-32-16-15-4> googlenet-gpu-16-12-32-16-15-4.log 
+kubectl logs job-googlenet-cpu-16-12-32-16-15-5> googlenet-cpu-16-12-32-16-15-5.log 
+kubectl logs job-googlenet-gpu-16-12-32-16-15-5> googlenet-gpu-16-12-32-16-15-5.log 
+kubectl logs job-googlenet-cpu-16-12-32-16-15-6> googlenet-cpu-16-12-32-16-15-6.log 
+kubectl logs job-googlenet-gpu-16-12-32-16-15-6> googlenet-gpu-16-12-32-16-15-6.log 
+kubectl logs job-googlenet-cpu-16-12-32-16-15-7> googlenet-cpu-16-12-32-16-15-7.log 
+kubectl logs job-googlenet-gpu-16-12-32-16-15-7> googlenet-gpu-16-12-32-16-15-7.log 
+kubectl logs job-googlenet-cpu-16-12-32-16-15-8> googlenet-cpu-16-12-32-16-15-8.log 
+kubectl logs job-googlenet-gpu-16-12-32-16-15-8> googlenet-gpu-16-12-32-16-15-8.log 
+kubectl logs job-googlenet-cpu-16-12-32-16-15-9> googlenet-cpu-16-12-32-16-15-9.log 
+kubectl logs job-googlenet-gpu-16-12-32-16-15-9> googlenet-gpu-16-12-32-16-15-9.log 
+kubectl logs job-googlenet-cpu-16-12-32-16-15-10> googlenet-cpu-16-12-32-16-15-10.log 
+kubectl logs job-googlenet-gpu-16-12-32-16-15-10> googlenet-gpu-16-12-32-16-15-10.log 
+kubectl logs job-googlenet-cpu-16-12-32-16-20-0> googlenet-cpu-16-12-32-16-20-0.log 
+kubectl logs job-googlenet-gpu-16-12-32-16-20-0> googlenet-gpu-16-12-32-16-20-0.log 
+kubectl logs job-googlenet-cpu-16-12-32-16-20-1> googlenet-cpu-16-12-32-16-20-1.log 
+kubectl logs job-googlenet-gpu-16-12-32-16-20-1> googlenet-gpu-16-12-32-16-20-1.log 
+kubectl logs job-googlenet-cpu-16-12-32-16-20-2> googlenet-cpu-16-12-32-16-20-2.log 
+kubectl logs job-googlenet-gpu-16-12-32-16-20-2> googlenet-gpu-16-12-32-16-20-2.log 
+kubectl logs job-googlenet-cpu-16-12-32-16-20-3> googlenet-cpu-16-12-32-16-20-3.log 
+kubectl logs job-googlenet-gpu-16-12-32-16-20-3> googlenet-gpu-16-12-32-16-20-3.log 
+kubectl logs job-googlenet-cpu-16-12-32-16-20-4> googlenet-cpu-16-12-32-16-20-4.log 
+kubectl logs job-googlenet-gpu-16-12-32-16-20-4> googlenet-gpu-16-12-32-16-20-4.log 
+kubectl logs job-googlenet-cpu-16-12-32-16-20-5> googlenet-cpu-16-12-32-16-20-5.log 
+kubectl logs job-googlenet-gpu-16-12-32-16-20-5> googlenet-gpu-16-12-32-16-20-5.log 
+kubectl logs job-googlenet-cpu-16-12-32-16-20-6> googlenet-cpu-16-12-32-16-20-6.log 
+kubectl logs job-googlenet-gpu-16-12-32-16-20-6> googlenet-gpu-16-12-32-16-20-6.log 
+kubectl logs job-googlenet-cpu-16-12-32-16-20-7> googlenet-cpu-16-12-32-16-20-7.log 
+kubectl logs job-googlenet-gpu-16-12-32-16-20-7> googlenet-gpu-16-12-32-16-20-7.log 
+kubectl logs job-googlenet-cpu-16-12-32-16-20-8> googlenet-cpu-16-12-32-16-20-8.log 
+kubectl logs job-googlenet-gpu-16-12-32-16-20-8> googlenet-gpu-16-12-32-16-20-8.log 
+kubectl logs job-googlenet-cpu-16-12-32-16-20-9> googlenet-cpu-16-12-32-16-20-9.log 
+kubectl logs job-googlenet-gpu-16-12-32-16-20-9> googlenet-gpu-16-12-32-16-20-9.log 
+kubectl logs job-googlenet-cpu-16-12-32-16-20-10> googlenet-cpu-16-12-32-16-20-10.log 
+kubectl logs job-googlenet-gpu-16-12-32-16-20-10> googlenet-gpu-16-12-32-16-20-10.log 
+kubectl logs job-alexnet-cpu-16-12-512-16-2-0> alexnet-cpu-16-12-512-16-2-0.log 
+kubectl logs job-alexnet-gpu-16-12-512-16-2-0> alexnet-gpu-16-12-512-16-2-0.log 
+kubectl logs job-alexnet-cpu-16-12-512-16-2-1> alexnet-cpu-16-12-512-16-2-1.log 
+kubectl logs job-alexnet-gpu-16-12-512-16-2-1> alexnet-gpu-16-12-512-16-2-1.log 
+kubectl logs job-alexnet-cpu-16-12-512-16-2-2> alexnet-cpu-16-12-512-16-2-2.log 
+kubectl logs job-alexnet-gpu-16-12-512-16-2-2> alexnet-gpu-16-12-512-16-2-2.log 
+kubectl logs job-alexnet-cpu-16-12-512-16-2-3> alexnet-cpu-16-12-512-16-2-3.log 
+kubectl logs job-alexnet-gpu-16-12-512-16-2-3> alexnet-gpu-16-12-512-16-2-3.log 
+kubectl logs job-alexnet-cpu-16-12-512-16-2-4> alexnet-cpu-16-12-512-16-2-4.log 
+kubectl logs job-alexnet-gpu-16-12-512-16-2-4> alexnet-gpu-16-12-512-16-2-4.log 
+kubectl logs job-alexnet-cpu-16-12-512-16-2-5> alexnet-cpu-16-12-512-16-2-5.log 
+kubectl logs job-alexnet-gpu-16-12-512-16-2-5> alexnet-gpu-16-12-512-16-2-5.log 
+kubectl logs job-alexnet-cpu-16-12-512-16-2-6> alexnet-cpu-16-12-512-16-2-6.log 
+kubectl logs job-alexnet-gpu-16-12-512-16-2-6> alexnet-gpu-16-12-512-16-2-6.log 
+kubectl logs job-alexnet-cpu-16-12-512-16-2-7> alexnet-cpu-16-12-512-16-2-7.log 
+kubectl logs job-alexnet-gpu-16-12-512-16-2-7> alexnet-gpu-16-12-512-16-2-7.log 
+kubectl logs job-alexnet-cpu-16-12-512-16-2-8> alexnet-cpu-16-12-512-16-2-8.log 
+kubectl logs job-alexnet-gpu-16-12-512-16-2-8> alexnet-gpu-16-12-512-16-2-8.log 
+kubectl logs job-alexnet-cpu-16-12-512-16-2-9> alexnet-cpu-16-12-512-16-2-9.log 
+kubectl logs job-alexnet-gpu-16-12-512-16-2-9> alexnet-gpu-16-12-512-16-2-9.log 
+kubectl logs job-alexnet-cpu-16-12-512-16-2-10> alexnet-cpu-16-12-512-16-2-10.log 
+kubectl logs job-alexnet-gpu-16-12-512-16-2-10> alexnet-gpu-16-12-512-16-2-10.log 
+kubectl logs job-alexnet-cpu-16-12-512-16-5-0> alexnet-cpu-16-12-512-16-5-0.log 
+kubectl logs job-alexnet-gpu-16-12-512-16-5-0> alexnet-gpu-16-12-512-16-5-0.log 
+kubectl logs job-alexnet-cpu-16-12-512-16-5-1> alexnet-cpu-16-12-512-16-5-1.log 
+kubectl logs job-alexnet-gpu-16-12-512-16-5-1> alexnet-gpu-16-12-512-16-5-1.log 
+kubectl logs job-alexnet-cpu-16-12-512-16-5-2> alexnet-cpu-16-12-512-16-5-2.log 
+kubectl logs job-alexnet-gpu-16-12-512-16-5-2> alexnet-gpu-16-12-512-16-5-2.log 
+kubectl logs job-alexnet-cpu-16-12-512-16-5-3> alexnet-cpu-16-12-512-16-5-3.log 
+kubectl logs job-alexnet-gpu-16-12-512-16-5-3> alexnet-gpu-16-12-512-16-5-3.log 
+kubectl logs job-alexnet-cpu-16-12-512-16-5-4> alexnet-cpu-16-12-512-16-5-4.log 
+kubectl logs job-alexnet-gpu-16-12-512-16-5-4> alexnet-gpu-16-12-512-16-5-4.log 
+kubectl logs job-alexnet-cpu-16-12-512-16-5-5> alexnet-cpu-16-12-512-16-5-5.log 
+kubectl logs job-alexnet-gpu-16-12-512-16-5-5> alexnet-gpu-16-12-512-16-5-5.log 
+kubectl logs job-alexnet-cpu-16-12-512-16-5-6> alexnet-cpu-16-12-512-16-5-6.log 
+kubectl logs job-alexnet-gpu-16-12-512-16-5-6> alexnet-gpu-16-12-512-16-5-6.log 
+kubectl logs job-alexnet-cpu-16-12-512-16-5-7> alexnet-cpu-16-12-512-16-5-7.log 
+kubectl logs job-alexnet-gpu-16-12-512-16-5-7> alexnet-gpu-16-12-512-16-5-7.log 
+kubectl logs job-alexnet-cpu-16-12-512-16-5-8> alexnet-cpu-16-12-512-16-5-8.log 
+kubectl logs job-alexnet-gpu-16-12-512-16-5-8> alexnet-gpu-16-12-512-16-5-8.log 
+kubectl logs job-alexnet-cpu-16-12-512-16-5-9> alexnet-cpu-16-12-512-16-5-9.log 
+kubectl logs job-alexnet-gpu-16-12-512-16-5-9> alexnet-gpu-16-12-512-16-5-9.log 
+kubectl logs job-alexnet-cpu-16-12-512-16-5-10> alexnet-cpu-16-12-512-16-5-10.log 
+kubectl logs job-alexnet-gpu-16-12-512-16-5-10> alexnet-gpu-16-12-512-16-5-10.log 
+kubectl logs job-alexnet-cpu-16-12-512-16-10-0> alexnet-cpu-16-12-512-16-10-0.log 
+kubectl logs job-alexnet-gpu-16-12-512-16-10-0> alexnet-gpu-16-12-512-16-10-0.log 
+kubectl logs job-alexnet-cpu-16-12-512-16-10-1> alexnet-cpu-16-12-512-16-10-1.log 
+kubectl logs job-alexnet-gpu-16-12-512-16-10-1> alexnet-gpu-16-12-512-16-10-1.log 
+kubectl logs job-alexnet-cpu-16-12-512-16-10-2> alexnet-cpu-16-12-512-16-10-2.log 
+kubectl logs job-alexnet-gpu-16-12-512-16-10-2> alexnet-gpu-16-12-512-16-10-2.log 
+kubectl logs job-alexnet-cpu-16-12-512-16-10-3> alexnet-cpu-16-12-512-16-10-3.log 
+kubectl logs job-alexnet-gpu-16-12-512-16-10-3> alexnet-gpu-16-12-512-16-10-3.log 
+kubectl logs job-alexnet-cpu-16-12-512-16-10-4> alexnet-cpu-16-12-512-16-10-4.log 
+kubectl logs job-alexnet-gpu-16-12-512-16-10-4> alexnet-gpu-16-12-512-16-10-4.log 
+kubectl logs job-alexnet-cpu-16-12-512-16-10-5> alexnet-cpu-16-12-512-16-10-5.log 
+kubectl logs job-alexnet-gpu-16-12-512-16-10-5> alexnet-gpu-16-12-512-16-10-5.log 
+kubectl logs job-alexnet-cpu-16-12-512-16-10-6> alexnet-cpu-16-12-512-16-10-6.log 
+kubectl logs job-alexnet-gpu-16-12-512-16-10-6> alexnet-gpu-16-12-512-16-10-6.log 
+kubectl logs job-alexnet-cpu-16-12-512-16-10-7> alexnet-cpu-16-12-512-16-10-7.log 
+kubectl logs job-alexnet-gpu-16-12-512-16-10-7> alexnet-gpu-16-12-512-16-10-7.log 
+kubectl logs job-alexnet-cpu-16-12-512-16-10-8> alexnet-cpu-16-12-512-16-10-8.log 
+kubectl logs job-alexnet-gpu-16-12-512-16-10-8> alexnet-gpu-16-12-512-16-10-8.log 
+kubectl logs job-alexnet-cpu-16-12-512-16-10-9> alexnet-cpu-16-12-512-16-10-9.log 
+kubectl logs job-alexnet-gpu-16-12-512-16-10-9> alexnet-gpu-16-12-512-16-10-9.log 
+kubectl logs job-alexnet-cpu-16-12-512-16-10-10> alexnet-cpu-16-12-512-16-10-10.log 
+kubectl logs job-alexnet-gpu-16-12-512-16-10-10> alexnet-gpu-16-12-512-16-10-10.log 
+kubectl logs job-alexnet-cpu-16-12-512-16-15-0> alexnet-cpu-16-12-512-16-15-0.log 
+kubectl logs job-alexnet-gpu-16-12-512-16-15-0> alexnet-gpu-16-12-512-16-15-0.log 
+kubectl logs job-alexnet-cpu-16-12-512-16-15-1> alexnet-cpu-16-12-512-16-15-1.log 
+kubectl logs job-alexnet-gpu-16-12-512-16-15-1> alexnet-gpu-16-12-512-16-15-1.log 
+kubectl logs job-alexnet-cpu-16-12-512-16-15-2> alexnet-cpu-16-12-512-16-15-2.log 
+kubectl logs job-alexnet-gpu-16-12-512-16-15-2> alexnet-gpu-16-12-512-16-15-2.log 
+kubectl logs job-alexnet-cpu-16-12-512-16-15-3> alexnet-cpu-16-12-512-16-15-3.log 
+kubectl logs job-alexnet-gpu-16-12-512-16-15-3> alexnet-gpu-16-12-512-16-15-3.log 
+kubectl logs job-alexnet-cpu-16-12-512-16-15-4> alexnet-cpu-16-12-512-16-15-4.log 
+kubectl logs job-alexnet-gpu-16-12-512-16-15-4> alexnet-gpu-16-12-512-16-15-4.log 
+kubectl logs job-alexnet-cpu-16-12-512-16-15-5> alexnet-cpu-16-12-512-16-15-5.log 
+kubectl logs job-alexnet-gpu-16-12-512-16-15-5> alexnet-gpu-16-12-512-16-15-5.log 
+kubectl logs job-alexnet-cpu-16-12-512-16-15-6> alexnet-cpu-16-12-512-16-15-6.log 
+kubectl logs job-alexnet-gpu-16-12-512-16-15-6> alexnet-gpu-16-12-512-16-15-6.log 
+kubectl logs job-alexnet-cpu-16-12-512-16-15-7> alexnet-cpu-16-12-512-16-15-7.log 
+kubectl logs job-alexnet-gpu-16-12-512-16-15-7> alexnet-gpu-16-12-512-16-15-7.log 
+kubectl logs job-alexnet-cpu-16-12-512-16-15-8> alexnet-cpu-16-12-512-16-15-8.log 
+kubectl logs job-alexnet-gpu-16-12-512-16-15-8> alexnet-gpu-16-12-512-16-15-8.log 
+kubectl logs job-alexnet-cpu-16-12-512-16-15-9> alexnet-cpu-16-12-512-16-15-9.log 
+kubectl logs job-alexnet-gpu-16-12-512-16-15-9> alexnet-gpu-16-12-512-16-15-9.log 
+kubectl logs job-alexnet-cpu-16-12-512-16-15-10> alexnet-cpu-16-12-512-16-15-10.log 
+kubectl logs job-alexnet-gpu-16-12-512-16-15-10> alexnet-gpu-16-12-512-16-15-10.log 
+kubectl logs job-alexnet-cpu-16-12-512-16-20-0> alexnet-cpu-16-12-512-16-20-0.log 
+kubectl logs job-alexnet-gpu-16-12-512-16-20-0> alexnet-gpu-16-12-512-16-20-0.log 
+kubectl logs job-alexnet-cpu-16-12-512-16-20-1> alexnet-cpu-16-12-512-16-20-1.log 
+kubectl logs job-alexnet-gpu-16-12-512-16-20-1> alexnet-gpu-16-12-512-16-20-1.log 
+kubectl logs job-alexnet-cpu-16-12-512-16-20-2> alexnet-cpu-16-12-512-16-20-2.log 
+kubectl logs job-alexnet-gpu-16-12-512-16-20-2> alexnet-gpu-16-12-512-16-20-2.log 
+kubectl logs job-alexnet-cpu-16-12-512-16-20-3> alexnet-cpu-16-12-512-16-20-3.log 
+kubectl logs job-alexnet-gpu-16-12-512-16-20-3> alexnet-gpu-16-12-512-16-20-3.log 
+kubectl logs job-alexnet-cpu-16-12-512-16-20-4> alexnet-cpu-16-12-512-16-20-4.log 
+kubectl logs job-alexnet-gpu-16-12-512-16-20-4> alexnet-gpu-16-12-512-16-20-4.log 
+kubectl logs job-alexnet-cpu-16-12-512-16-20-5> alexnet-cpu-16-12-512-16-20-5.log 
+kubectl logs job-alexnet-gpu-16-12-512-16-20-5> alexnet-gpu-16-12-512-16-20-5.log 
+kubectl logs job-alexnet-cpu-16-12-512-16-20-6> alexnet-cpu-16-12-512-16-20-6.log 
+kubectl logs job-alexnet-gpu-16-12-512-16-20-6> alexnet-gpu-16-12-512-16-20-6.log 
+kubectl logs job-alexnet-cpu-16-12-512-16-20-7> alexnet-cpu-16-12-512-16-20-7.log 
+kubectl logs job-alexnet-gpu-16-12-512-16-20-7> alexnet-gpu-16-12-512-16-20-7.log 
+kubectl logs job-alexnet-cpu-16-12-512-16-20-8> alexnet-cpu-16-12-512-16-20-8.log 
+kubectl logs job-alexnet-gpu-16-12-512-16-20-8> alexnet-gpu-16-12-512-16-20-8.log 
+kubectl logs job-alexnet-cpu-16-12-512-16-20-9> alexnet-cpu-16-12-512-16-20-9.log 
+kubectl logs job-alexnet-gpu-16-12-512-16-20-9> alexnet-gpu-16-12-512-16-20-9.log 
+kubectl logs job-alexnet-cpu-16-12-512-16-20-10> alexnet-cpu-16-12-512-16-20-10.log 
+kubectl logs job-alexnet-gpu-16-12-512-16-20-10> alexnet-gpu-16-12-512-16-20-10.log 
+kubectl logs job-resnet50-cpu-16-12-64-16-2-0> resnet50-cpu-16-12-64-16-2-0.log 
+kubectl logs job-resnet50-gpu-16-12-64-16-2-0> resnet50-gpu-16-12-64-16-2-0.log 
+kubectl logs job-resnet50-cpu-16-12-64-16-2-1> resnet50-cpu-16-12-64-16-2-1.log 
+kubectl logs job-resnet50-gpu-16-12-64-16-2-1> resnet50-gpu-16-12-64-16-2-1.log 
+kubectl logs job-resnet50-cpu-16-12-64-16-2-2> resnet50-cpu-16-12-64-16-2-2.log 
+kubectl logs job-resnet50-gpu-16-12-64-16-2-2> resnet50-gpu-16-12-64-16-2-2.log 
+kubectl logs job-resnet50-cpu-16-12-64-16-2-3> resnet50-cpu-16-12-64-16-2-3.log 
+kubectl logs job-resnet50-gpu-16-12-64-16-2-3> resnet50-gpu-16-12-64-16-2-3.log 
+kubectl logs job-resnet50-cpu-16-12-64-16-2-4> resnet50-cpu-16-12-64-16-2-4.log 
+kubectl logs job-resnet50-gpu-16-12-64-16-2-4> resnet50-gpu-16-12-64-16-2-4.log 
+kubectl logs job-resnet50-cpu-16-12-64-16-2-5> resnet50-cpu-16-12-64-16-2-5.log 
+kubectl logs job-resnet50-gpu-16-12-64-16-2-5> resnet50-gpu-16-12-64-16-2-5.log 
+kubectl logs job-resnet50-cpu-16-12-64-16-2-6> resnet50-cpu-16-12-64-16-2-6.log 
+kubectl logs job-resnet50-gpu-16-12-64-16-2-6> resnet50-gpu-16-12-64-16-2-6.log 
+kubectl logs job-resnet50-cpu-16-12-64-16-2-7> resnet50-cpu-16-12-64-16-2-7.log 
+kubectl logs job-resnet50-gpu-16-12-64-16-2-7> resnet50-gpu-16-12-64-16-2-7.log 
+kubectl logs job-resnet50-cpu-16-12-64-16-2-8> resnet50-cpu-16-12-64-16-2-8.log 
+kubectl logs job-resnet50-gpu-16-12-64-16-2-8> resnet50-gpu-16-12-64-16-2-8.log 
+kubectl logs job-resnet50-cpu-16-12-64-16-2-9> resnet50-cpu-16-12-64-16-2-9.log 
+kubectl logs job-resnet50-gpu-16-12-64-16-2-9> resnet50-gpu-16-12-64-16-2-9.log 
+kubectl logs job-resnet50-cpu-16-12-64-16-2-10> resnet50-cpu-16-12-64-16-2-10.log 
+kubectl logs job-resnet50-gpu-16-12-64-16-2-10> resnet50-gpu-16-12-64-16-2-10.log 
+kubectl logs job-resnet50-cpu-16-12-64-16-5-0> resnet50-cpu-16-12-64-16-5-0.log 
+kubectl logs job-resnet50-gpu-16-12-64-16-5-0> resnet50-gpu-16-12-64-16-5-0.log 
+kubectl logs job-resnet50-cpu-16-12-64-16-5-1> resnet50-cpu-16-12-64-16-5-1.log 
+kubectl logs job-resnet50-gpu-16-12-64-16-5-1> resnet50-gpu-16-12-64-16-5-1.log 
+kubectl logs job-resnet50-cpu-16-12-64-16-5-2> resnet50-cpu-16-12-64-16-5-2.log 
+kubectl logs job-resnet50-gpu-16-12-64-16-5-2> resnet50-gpu-16-12-64-16-5-2.log 
+kubectl logs job-resnet50-cpu-16-12-64-16-5-3> resnet50-cpu-16-12-64-16-5-3.log 
+kubectl logs job-resnet50-gpu-16-12-64-16-5-3> resnet50-gpu-16-12-64-16-5-3.log 
+kubectl logs job-resnet50-cpu-16-12-64-16-5-4> resnet50-cpu-16-12-64-16-5-4.log 
+kubectl logs job-resnet50-gpu-16-12-64-16-5-4> resnet50-gpu-16-12-64-16-5-4.log 
+kubectl logs job-resnet50-cpu-16-12-64-16-5-5> resnet50-cpu-16-12-64-16-5-5.log 
+kubectl logs job-resnet50-gpu-16-12-64-16-5-5> resnet50-gpu-16-12-64-16-5-5.log 
+kubectl logs job-resnet50-cpu-16-12-64-16-5-6> resnet50-cpu-16-12-64-16-5-6.log 
+kubectl logs job-resnet50-gpu-16-12-64-16-5-6> resnet50-gpu-16-12-64-16-5-6.log 
+kubectl logs job-resnet50-cpu-16-12-64-16-5-7> resnet50-cpu-16-12-64-16-5-7.log 
+kubectl logs job-resnet50-gpu-16-12-64-16-5-7> resnet50-gpu-16-12-64-16-5-7.log 
+kubectl logs job-resnet50-cpu-16-12-64-16-5-8> resnet50-cpu-16-12-64-16-5-8.log 
+kubectl logs job-resnet50-gpu-16-12-64-16-5-8> resnet50-gpu-16-12-64-16-5-8.log 
+kubectl logs job-resnet50-cpu-16-12-64-16-5-9> resnet50-cpu-16-12-64-16-5-9.log 
+kubectl logs job-resnet50-gpu-16-12-64-16-5-9> resnet50-gpu-16-12-64-16-5-9.log 
+kubectl logs job-resnet50-cpu-16-12-64-16-5-10> resnet50-cpu-16-12-64-16-5-10.log 
+kubectl logs job-resnet50-gpu-16-12-64-16-5-10> resnet50-gpu-16-12-64-16-5-10.log 
+kubectl logs job-resnet50-cpu-16-12-64-16-10-0> resnet50-cpu-16-12-64-16-10-0.log 
+kubectl logs job-resnet50-gpu-16-12-64-16-10-0> resnet50-gpu-16-12-64-16-10-0.log 
+kubectl logs job-resnet50-cpu-16-12-64-16-10-1> resnet50-cpu-16-12-64-16-10-1.log 
+kubectl logs job-resnet50-gpu-16-12-64-16-10-1> resnet50-gpu-16-12-64-16-10-1.log 
+kubectl logs job-resnet50-cpu-16-12-64-16-10-2> resnet50-cpu-16-12-64-16-10-2.log 
+kubectl logs job-resnet50-gpu-16-12-64-16-10-2> resnet50-gpu-16-12-64-16-10-2.log 
+kubectl logs job-resnet50-cpu-16-12-64-16-10-3> resnet50-cpu-16-12-64-16-10-3.log 
+kubectl logs job-resnet50-gpu-16-12-64-16-10-3> resnet50-gpu-16-12-64-16-10-3.log 
+kubectl logs job-resnet50-cpu-16-12-64-16-10-4> resnet50-cpu-16-12-64-16-10-4.log 
+kubectl logs job-resnet50-gpu-16-12-64-16-10-4> resnet50-gpu-16-12-64-16-10-4.log 
+kubectl logs job-resnet50-cpu-16-12-64-16-10-5> resnet50-cpu-16-12-64-16-10-5.log 
+kubectl logs job-resnet50-gpu-16-12-64-16-10-5> resnet50-gpu-16-12-64-16-10-5.log 
+kubectl logs job-resnet50-cpu-16-12-64-16-10-6> resnet50-cpu-16-12-64-16-10-6.log 
+kubectl logs job-resnet50-gpu-16-12-64-16-10-6> resnet50-gpu-16-12-64-16-10-6.log 
+kubectl logs job-resnet50-cpu-16-12-64-16-10-7> resnet50-cpu-16-12-64-16-10-7.log 
+kubectl logs job-resnet50-gpu-16-12-64-16-10-7> resnet50-gpu-16-12-64-16-10-7.log 
+kubectl logs job-resnet50-cpu-16-12-64-16-10-8> resnet50-cpu-16-12-64-16-10-8.log 
+kubectl logs job-resnet50-gpu-16-12-64-16-10-8> resnet50-gpu-16-12-64-16-10-8.log 
+kubectl logs job-resnet50-cpu-16-12-64-16-10-9> resnet50-cpu-16-12-64-16-10-9.log 
+kubectl logs job-resnet50-gpu-16-12-64-16-10-9> resnet50-gpu-16-12-64-16-10-9.log 
+kubectl logs job-resnet50-cpu-16-12-64-16-10-10> resnet50-cpu-16-12-64-16-10-10.log 
+kubectl logs job-resnet50-gpu-16-12-64-16-10-10> resnet50-gpu-16-12-64-16-10-10.log 
+kubectl logs job-resnet50-cpu-16-12-64-16-15-0> resnet50-cpu-16-12-64-16-15-0.log 
+kubectl logs job-resnet50-gpu-16-12-64-16-15-0> resnet50-gpu-16-12-64-16-15-0.log 
+kubectl logs job-resnet50-cpu-16-12-64-16-15-1> resnet50-cpu-16-12-64-16-15-1.log 
+kubectl logs job-resnet50-gpu-16-12-64-16-15-1> resnet50-gpu-16-12-64-16-15-1.log 
+kubectl logs job-resnet50-cpu-16-12-64-16-15-2> resnet50-cpu-16-12-64-16-15-2.log 
+kubectl logs job-resnet50-gpu-16-12-64-16-15-2> resnet50-gpu-16-12-64-16-15-2.log 
+kubectl logs job-resnet50-cpu-16-12-64-16-15-3> resnet50-cpu-16-12-64-16-15-3.log 
+kubectl logs job-resnet50-gpu-16-12-64-16-15-3> resnet50-gpu-16-12-64-16-15-3.log 
+kubectl logs job-resnet50-cpu-16-12-64-16-15-4> resnet50-cpu-16-12-64-16-15-4.log 
+kubectl logs job-resnet50-gpu-16-12-64-16-15-4> resnet50-gpu-16-12-64-16-15-4.log 
+kubectl logs job-resnet50-cpu-16-12-64-16-15-5> resnet50-cpu-16-12-64-16-15-5.log 
+kubectl logs job-resnet50-gpu-16-12-64-16-15-5> resnet50-gpu-16-12-64-16-15-5.log 
+kubectl logs job-resnet50-cpu-16-12-64-16-15-6> resnet50-cpu-16-12-64-16-15-6.log 
+kubectl logs job-resnet50-gpu-16-12-64-16-15-6> resnet50-gpu-16-12-64-16-15-6.log 
+kubectl logs job-resnet50-cpu-16-12-64-16-15-7> resnet50-cpu-16-12-64-16-15-7.log 
+kubectl logs job-resnet50-gpu-16-12-64-16-15-7> resnet50-gpu-16-12-64-16-15-7.log 
+kubectl logs job-resnet50-cpu-16-12-64-16-15-8> resnet50-cpu-16-12-64-16-15-8.log 
+kubectl logs job-resnet50-gpu-16-12-64-16-15-8> resnet50-gpu-16-12-64-16-15-8.log 
+kubectl logs job-resnet50-cpu-16-12-64-16-15-9> resnet50-cpu-16-12-64-16-15-9.log 
+kubectl logs job-resnet50-gpu-16-12-64-16-15-9> resnet50-gpu-16-12-64-16-15-9.log 
+kubectl logs job-resnet50-cpu-16-12-64-16-15-10> resnet50-cpu-16-12-64-16-15-10.log 
+kubectl logs job-resnet50-gpu-16-12-64-16-15-10> resnet50-gpu-16-12-64-16-15-10.log 
+kubectl logs job-resnet50-cpu-16-12-64-16-20-0> resnet50-cpu-16-12-64-16-20-0.log 
+kubectl logs job-resnet50-gpu-16-12-64-16-20-0> resnet50-gpu-16-12-64-16-20-0.log 
+kubectl logs job-resnet50-cpu-16-12-64-16-20-1> resnet50-cpu-16-12-64-16-20-1.log 
+kubectl logs job-resnet50-gpu-16-12-64-16-20-1> resnet50-gpu-16-12-64-16-20-1.log 
+kubectl logs job-resnet50-cpu-16-12-64-16-20-2> resnet50-cpu-16-12-64-16-20-2.log 
+kubectl logs job-resnet50-gpu-16-12-64-16-20-2> resnet50-gpu-16-12-64-16-20-2.log 
+kubectl logs job-resnet50-cpu-16-12-64-16-20-3> resnet50-cpu-16-12-64-16-20-3.log 
+kubectl logs job-resnet50-gpu-16-12-64-16-20-3> resnet50-gpu-16-12-64-16-20-3.log 
+kubectl logs job-resnet50-cpu-16-12-64-16-20-4> resnet50-cpu-16-12-64-16-20-4.log 
+kubectl logs job-resnet50-gpu-16-12-64-16-20-4> resnet50-gpu-16-12-64-16-20-4.log 
+kubectl logs job-resnet50-cpu-16-12-64-16-20-5> resnet50-cpu-16-12-64-16-20-5.log 
+kubectl logs job-resnet50-gpu-16-12-64-16-20-5> resnet50-gpu-16-12-64-16-20-5.log 
+kubectl logs job-resnet50-cpu-16-12-64-16-20-6> resnet50-cpu-16-12-64-16-20-6.log 
+kubectl logs job-resnet50-gpu-16-12-64-16-20-6> resnet50-gpu-16-12-64-16-20-6.log 
+kubectl logs job-resnet50-cpu-16-12-64-16-20-7> resnet50-cpu-16-12-64-16-20-7.log 
+kubectl logs job-resnet50-gpu-16-12-64-16-20-7> resnet50-gpu-16-12-64-16-20-7.log 
+kubectl logs job-resnet50-cpu-16-12-64-16-20-8> resnet50-cpu-16-12-64-16-20-8.log 
+kubectl logs job-resnet50-gpu-16-12-64-16-20-8> resnet50-gpu-16-12-64-16-20-8.log 
+kubectl logs job-resnet50-cpu-16-12-64-16-20-9> resnet50-cpu-16-12-64-16-20-9.log 
+kubectl logs job-resnet50-gpu-16-12-64-16-20-9> resnet50-gpu-16-12-64-16-20-9.log 
+kubectl logs job-resnet50-cpu-16-12-64-16-20-10> resnet50-cpu-16-12-64-16-20-10.log 
+kubectl logs job-resnet50-gpu-16-12-64-16-20-10> resnet50-gpu-16-12-64-16-20-10.log 
+kubectl logs job-inception3-cpu-16-12-64-16-2-0> inception3-cpu-16-12-64-16-2-0.log 
+kubectl logs job-inception3-gpu-16-12-64-16-2-0> inception3-gpu-16-12-64-16-2-0.log 
+kubectl logs job-inception3-cpu-16-12-64-16-2-1> inception3-cpu-16-12-64-16-2-1.log 
+kubectl logs job-inception3-gpu-16-12-64-16-2-1> inception3-gpu-16-12-64-16-2-1.log 
+kubectl logs job-inception3-cpu-16-12-64-16-2-2> inception3-cpu-16-12-64-16-2-2.log 
+kubectl logs job-inception3-gpu-16-12-64-16-2-2> inception3-gpu-16-12-64-16-2-2.log 
+kubectl logs job-inception3-cpu-16-12-64-16-2-3> inception3-cpu-16-12-64-16-2-3.log 
+kubectl logs job-inception3-gpu-16-12-64-16-2-3> inception3-gpu-16-12-64-16-2-3.log 
+kubectl logs job-inception3-cpu-16-12-64-16-2-4> inception3-cpu-16-12-64-16-2-4.log 
+kubectl logs job-inception3-gpu-16-12-64-16-2-4> inception3-gpu-16-12-64-16-2-4.log 
+kubectl logs job-inception3-cpu-16-12-64-16-2-5> inception3-cpu-16-12-64-16-2-5.log 
+kubectl logs job-inception3-gpu-16-12-64-16-2-5> inception3-gpu-16-12-64-16-2-5.log 
+kubectl logs job-inception3-cpu-16-12-64-16-2-6> inception3-cpu-16-12-64-16-2-6.log 
+kubectl logs job-inception3-gpu-16-12-64-16-2-6> inception3-gpu-16-12-64-16-2-6.log 
+kubectl logs job-inception3-cpu-16-12-64-16-2-7> inception3-cpu-16-12-64-16-2-7.log 
+kubectl logs job-inception3-gpu-16-12-64-16-2-7> inception3-gpu-16-12-64-16-2-7.log 
+kubectl logs job-inception3-cpu-16-12-64-16-2-8> inception3-cpu-16-12-64-16-2-8.log 
+kubectl logs job-inception3-gpu-16-12-64-16-2-8> inception3-gpu-16-12-64-16-2-8.log 
+kubectl logs job-inception3-cpu-16-12-64-16-2-9> inception3-cpu-16-12-64-16-2-9.log 
+kubectl logs job-inception3-gpu-16-12-64-16-2-9> inception3-gpu-16-12-64-16-2-9.log 
+kubectl logs job-inception3-cpu-16-12-64-16-2-10> inception3-cpu-16-12-64-16-2-10.log 
+kubectl logs job-inception3-gpu-16-12-64-16-2-10> inception3-gpu-16-12-64-16-2-10.log 
+kubectl logs job-inception3-cpu-16-12-64-16-5-0> inception3-cpu-16-12-64-16-5-0.log 
+kubectl logs job-inception3-gpu-16-12-64-16-5-0> inception3-gpu-16-12-64-16-5-0.log 
+kubectl logs job-inception3-cpu-16-12-64-16-5-1> inception3-cpu-16-12-64-16-5-1.log 
+kubectl logs job-inception3-gpu-16-12-64-16-5-1> inception3-gpu-16-12-64-16-5-1.log 
+kubectl logs job-inception3-cpu-16-12-64-16-5-2> inception3-cpu-16-12-64-16-5-2.log 
+kubectl logs job-inception3-gpu-16-12-64-16-5-2> inception3-gpu-16-12-64-16-5-2.log 
+kubectl logs job-inception3-cpu-16-12-64-16-5-3> inception3-cpu-16-12-64-16-5-3.log 
+kubectl logs job-inception3-gpu-16-12-64-16-5-3> inception3-gpu-16-12-64-16-5-3.log 
+kubectl logs job-inception3-cpu-16-12-64-16-5-4> inception3-cpu-16-12-64-16-5-4.log 
+kubectl logs job-inception3-gpu-16-12-64-16-5-4> inception3-gpu-16-12-64-16-5-4.log 
+kubectl logs job-inception3-cpu-16-12-64-16-5-5> inception3-cpu-16-12-64-16-5-5.log 
+kubectl logs job-inception3-gpu-16-12-64-16-5-5> inception3-gpu-16-12-64-16-5-5.log 
+kubectl logs job-inception3-cpu-16-12-64-16-5-6> inception3-cpu-16-12-64-16-5-6.log 
+kubectl logs job-inception3-gpu-16-12-64-16-5-6> inception3-gpu-16-12-64-16-5-6.log 
+kubectl logs job-inception3-cpu-16-12-64-16-5-7> inception3-cpu-16-12-64-16-5-7.log 
+kubectl logs job-inception3-gpu-16-12-64-16-5-7> inception3-gpu-16-12-64-16-5-7.log 
+kubectl logs job-inception3-cpu-16-12-64-16-5-8> inception3-cpu-16-12-64-16-5-8.log 
+kubectl logs job-inception3-gpu-16-12-64-16-5-8> inception3-gpu-16-12-64-16-5-8.log 
+kubectl logs job-inception3-cpu-16-12-64-16-5-9> inception3-cpu-16-12-64-16-5-9.log 
+kubectl logs job-inception3-gpu-16-12-64-16-5-9> inception3-gpu-16-12-64-16-5-9.log 
+kubectl logs job-inception3-cpu-16-12-64-16-5-10> inception3-cpu-16-12-64-16-5-10.log 
+kubectl logs job-inception3-gpu-16-12-64-16-5-10> inception3-gpu-16-12-64-16-5-10.log 
+kubectl logs job-inception3-cpu-16-12-64-16-10-0> inception3-cpu-16-12-64-16-10-0.log 
+kubectl logs job-inception3-gpu-16-12-64-16-10-0> inception3-gpu-16-12-64-16-10-0.log 
+kubectl logs job-inception3-cpu-16-12-64-16-10-1> inception3-cpu-16-12-64-16-10-1.log 
+kubectl logs job-inception3-gpu-16-12-64-16-10-1> inception3-gpu-16-12-64-16-10-1.log 
+kubectl logs job-inception3-cpu-16-12-64-16-10-2> inception3-cpu-16-12-64-16-10-2.log 
+kubectl logs job-inception3-gpu-16-12-64-16-10-2> inception3-gpu-16-12-64-16-10-2.log 
+kubectl logs job-inception3-cpu-16-12-64-16-10-3> inception3-cpu-16-12-64-16-10-3.log 
+kubectl logs job-inception3-gpu-16-12-64-16-10-3> inception3-gpu-16-12-64-16-10-3.log 
+kubectl logs job-inception3-cpu-16-12-64-16-10-4> inception3-cpu-16-12-64-16-10-4.log 
+kubectl logs job-inception3-gpu-16-12-64-16-10-4> inception3-gpu-16-12-64-16-10-4.log 
+kubectl logs job-inception3-cpu-16-12-64-16-10-5> inception3-cpu-16-12-64-16-10-5.log 
+kubectl logs job-inception3-gpu-16-12-64-16-10-5> inception3-gpu-16-12-64-16-10-5.log 
+kubectl logs job-inception3-cpu-16-12-64-16-10-6> inception3-cpu-16-12-64-16-10-6.log 
+kubectl logs job-inception3-gpu-16-12-64-16-10-6> inception3-gpu-16-12-64-16-10-6.log 
+kubectl logs job-inception3-cpu-16-12-64-16-10-7> inception3-cpu-16-12-64-16-10-7.log 
+kubectl logs job-inception3-gpu-16-12-64-16-10-7> inception3-gpu-16-12-64-16-10-7.log 
+kubectl logs job-inception3-cpu-16-12-64-16-10-8> inception3-cpu-16-12-64-16-10-8.log 
+kubectl logs job-inception3-gpu-16-12-64-16-10-8> inception3-gpu-16-12-64-16-10-8.log 
+kubectl logs job-inception3-cpu-16-12-64-16-10-9> inception3-cpu-16-12-64-16-10-9.log 
+kubectl logs job-inception3-gpu-16-12-64-16-10-9> inception3-gpu-16-12-64-16-10-9.log 
+kubectl logs job-inception3-cpu-16-12-64-16-10-10> inception3-cpu-16-12-64-16-10-10.log 
+kubectl logs job-inception3-gpu-16-12-64-16-10-10> inception3-gpu-16-12-64-16-10-10.log 
+kubectl logs job-inception3-cpu-16-12-64-16-15-0> inception3-cpu-16-12-64-16-15-0.log 
+kubectl logs job-inception3-gpu-16-12-64-16-15-0> inception3-gpu-16-12-64-16-15-0.log 
+kubectl logs job-inception3-cpu-16-12-64-16-15-1> inception3-cpu-16-12-64-16-15-1.log 
+kubectl logs job-inception3-gpu-16-12-64-16-15-1> inception3-gpu-16-12-64-16-15-1.log 
+kubectl logs job-inception3-cpu-16-12-64-16-15-2> inception3-cpu-16-12-64-16-15-2.log 
+kubectl logs job-inception3-gpu-16-12-64-16-15-2> inception3-gpu-16-12-64-16-15-2.log 
+kubectl logs job-inception3-cpu-16-12-64-16-15-3> inception3-cpu-16-12-64-16-15-3.log 
+kubectl logs job-inception3-gpu-16-12-64-16-15-3> inception3-gpu-16-12-64-16-15-3.log 
+kubectl logs job-inception3-cpu-16-12-64-16-15-4> inception3-cpu-16-12-64-16-15-4.log 
+kubectl logs job-inception3-gpu-16-12-64-16-15-4> inception3-gpu-16-12-64-16-15-4.log 
+kubectl logs job-inception3-cpu-16-12-64-16-15-5> inception3-cpu-16-12-64-16-15-5.log 
+kubectl logs job-inception3-gpu-16-12-64-16-15-5> inception3-gpu-16-12-64-16-15-5.log 
+kubectl logs job-inception3-cpu-16-12-64-16-15-6> inception3-cpu-16-12-64-16-15-6.log 
+kubectl logs job-inception3-gpu-16-12-64-16-15-6> inception3-gpu-16-12-64-16-15-6.log 
+kubectl logs job-inception3-cpu-16-12-64-16-15-7> inception3-cpu-16-12-64-16-15-7.log 
+kubectl logs job-inception3-gpu-16-12-64-16-15-7> inception3-gpu-16-12-64-16-15-7.log 
+kubectl logs job-inception3-cpu-16-12-64-16-15-8> inception3-cpu-16-12-64-16-15-8.log 
+kubectl logs job-inception3-gpu-16-12-64-16-15-8> inception3-gpu-16-12-64-16-15-8.log 
+kubectl logs job-inception3-cpu-16-12-64-16-15-9> inception3-cpu-16-12-64-16-15-9.log 
+kubectl logs job-inception3-gpu-16-12-64-16-15-9> inception3-gpu-16-12-64-16-15-9.log 
+kubectl logs job-inception3-cpu-16-12-64-16-15-10> inception3-cpu-16-12-64-16-15-10.log 
+kubectl logs job-inception3-gpu-16-12-64-16-15-10> inception3-gpu-16-12-64-16-15-10.log 
+kubectl logs job-inception3-cpu-16-12-64-16-20-0> inception3-cpu-16-12-64-16-20-0.log 
+kubectl logs job-inception3-gpu-16-12-64-16-20-0> inception3-gpu-16-12-64-16-20-0.log 
+kubectl logs job-inception3-cpu-16-12-64-16-20-1> inception3-cpu-16-12-64-16-20-1.log 
+kubectl logs job-inception3-gpu-16-12-64-16-20-1> inception3-gpu-16-12-64-16-20-1.log 
+kubectl logs job-inception3-cpu-16-12-64-16-20-2> inception3-cpu-16-12-64-16-20-2.log 
+kubectl logs job-inception3-gpu-16-12-64-16-20-2> inception3-gpu-16-12-64-16-20-2.log 
+kubectl logs job-inception3-cpu-16-12-64-16-20-3> inception3-cpu-16-12-64-16-20-3.log 
+kubectl logs job-inception3-gpu-16-12-64-16-20-3> inception3-gpu-16-12-64-16-20-3.log 
+kubectl logs job-inception3-cpu-16-12-64-16-20-4> inception3-cpu-16-12-64-16-20-4.log 
+kubectl logs job-inception3-gpu-16-12-64-16-20-4> inception3-gpu-16-12-64-16-20-4.log 
+kubectl logs job-inception3-cpu-16-12-64-16-20-5> inception3-cpu-16-12-64-16-20-5.log 
+kubectl logs job-inception3-gpu-16-12-64-16-20-5> inception3-gpu-16-12-64-16-20-5.log 
+kubectl logs job-inception3-cpu-16-12-64-16-20-6> inception3-cpu-16-12-64-16-20-6.log 
+kubectl logs job-inception3-gpu-16-12-64-16-20-6> inception3-gpu-16-12-64-16-20-6.log 
+kubectl logs job-inception3-cpu-16-12-64-16-20-7> inception3-cpu-16-12-64-16-20-7.log 
+kubectl logs job-inception3-gpu-16-12-64-16-20-7> inception3-gpu-16-12-64-16-20-7.log 
+kubectl logs job-inception3-cpu-16-12-64-16-20-8> inception3-cpu-16-12-64-16-20-8.log 
+kubectl logs job-inception3-gpu-16-12-64-16-20-8> inception3-gpu-16-12-64-16-20-8.log 
+kubectl logs job-inception3-cpu-16-12-64-16-20-9> inception3-cpu-16-12-64-16-20-9.log 
+kubectl logs job-inception3-gpu-16-12-64-16-20-9> inception3-gpu-16-12-64-16-20-9.log 
+kubectl logs job-inception3-cpu-16-12-64-16-20-10> inception3-cpu-16-12-64-16-20-10.log 
+kubectl logs job-inception3-gpu-16-12-64-16-20-10> inception3-gpu-16-12-64-16-20-10.log 

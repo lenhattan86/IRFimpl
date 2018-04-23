@@ -38,7 +38,7 @@ SCHEDULER = "my-scheduler"
 this_path = os.path.dirname(os.path.realpath(__file__))
 
 def shellProfiling(job_folder, job_number, gpuCmd, exp_name, stopTime):    
-    shellFile = job_folder + "/profiling.sh"
+    shellFile = job_folder + "/main.sh"
     f = open(shellFile,'w')
     strShell = ""   
 
@@ -55,9 +55,8 @@ def shellProfiling(job_folder, job_number, gpuCmd, exp_name, stopTime):
     strShell = strShell + "./" +exp_name+".sh & cpuScript=$! \n"               
 
     strShell = strShell + "python ../get_user_info_timer.py " \
-        " --interval="+str(1) + " --stopTime="+str(stopTime)+" --file=pods.csv & pythonScript=$! \n"  
+        " --interval="+str(1) + " --stopTime="+str(stopTime)+" --file=pods.csv \n"  
 
-    strShell = strShell + "wait"    
     f.write(strShell)        
     f.close()
     os.chmod(shellFile, 0700)
@@ -97,12 +96,12 @@ def shellJobs(job_folder, job_number, cmd, fileName):
                 f_yaml.close() 
 
                 # submit these two jobs
-                strShell = strShell + "kubectl create -f "+ fNameCpu +".yaml 2> " + fNameCpu +".log & \n" 
-                strShell = strShell + "kubectl create -f "+ fNameGpu +".yaml 2> " + fNameGpu +".log & \n" 
+                strShell = strShell + "kubectl create -f "+ fNameCpu +".yaml 2> " + fNameCpu +".log \n" 
+                strShell = strShell + "kubectl create -f "+ fNameGpu +".yaml 2> " + fNameGpu +".log \n" 
 
                 # log the pod
-                strLogShell = strLogShell + "kubectl logs job-"+ cpuJobId +"> " + fNameCpu +".log & \n" 
-                strLogShell = strLogShell + "kubectl logs job-"+ gpuJobId +"> " + fNameGpu +".log & \n" 
+                strLogShell = strLogShell + "kubectl logs job-"+ cpuJobId +"> " + fNameCpu +".log \n" 
+                strLogShell = strLogShell + "kubectl logs job-"+ gpuJobId +"> " + fNameGpu +".log \n" 
 
     shellFile = job_folder + "/" + fileName + ".sh"
     f = open(shellFile,'w')

@@ -100,7 +100,7 @@ def shellJobs(job_folder, job_number, cmd, fileName):
                 strShell = strShell + "kubectl create -f "+ fNameCpu +".yaml 2> " + fNameCpu +".log & \n" 
                 strShell = strShell + "kubectl create -f "+ fNameGpu +".yaml 2> " + fNameGpu +".log & \n" 
 
-                # log the pod  
+                # log the pod
                 strLogShell = strLogShell + "kubectl logs job-"+ cpuJobId +"> " + fNameCpu +".log & \n" 
                 strLogShell = strLogShell + "kubectl logs job-"+ gpuJobId +"> " + fNameGpu +".log & \n" 
 

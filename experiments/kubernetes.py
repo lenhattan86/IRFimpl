@@ -110,12 +110,13 @@ def prepareKubernetesJobs(username, scheduler, expFolder, loggedJobs, isQueuedUp
         # print("job "  + str(jobId))
         if isQueuedUp:
             interarrival = 0
+            # strShell = strShell + "sleep "+str(interarrival)+"; "
         else:
             interarrival = job.startTime - arrivalTime
             if interarrival > 0:
                 interarrival = max(1, interarrival*0.85)
                 strShell = strShell + "sleep "+str(interarrival)+"; "
-                            
+
         strShell = strShell + "kubectl --namespace=\""+username+"\" create -f "+ username +"-"+str(jobId) +".yaml 2> " + username +"-"+str(jobId) +".log & \n"
         arrivalTime = job.startTime
 
@@ -125,7 +126,7 @@ def prepareKubernetesJobs(username, scheduler, expFolder, loggedJobs, isQueuedUp
     os.chmod(shellFile, 0700)
 
 
-def mainShell(users,expFolder, stopTime, interval):
+def mainShell(users,expFolder, stopTime, interval, startTime):
     this_path = os.path.dirname(os.path.realpath(__file__))
     job_folder = this_path + "/" +expFolder
     shutil.rmtree(job_folder, ignore_errors=True)
@@ -157,6 +158,8 @@ def mainShell(users,expFolder, stopTime, interval):
     # for user in users:                
         # strShell = strShell + "python ../get_user_info.py --user "+user.username+ \
         # " --interval="+str(interval) + " --stopTime="+str(stopTime)+" --file="+user.username+".csv & \n" 
+                      
+    strShell = strShell + "sleep "+str(startTime)+"; "    
     strShell = strShell + "python ../get_user_info_timer.py " + \
     " --interval="+str(interval) + " --stopTime="+str(stopTime)+" --file=pods.csv \n"                
     

@@ -28,6 +28,11 @@ deb http://apt.kubernetes.io/ kubernetes-xenial main
 EOF
 apt-get update'
 sudo apt-get install -y kubelet kubeadm kubectl kubernetes-cni
+
+sudo iptables -F
+sudo swapoff -a
+sudo free -m
+
 echo "######################### KUBEADM RESET ##########################################"
 sudo kubeadm reset
 echo "######################### Clean-up ##########################################"

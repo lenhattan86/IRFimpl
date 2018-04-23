@@ -71,6 +71,7 @@ def main():
 
     workload = 'traces/motivation'
     # workload = 'traces/simple1.1'
+    startLogTime = 100
     stopTime = 4000
     extraTime = 30*60 # 30 minutes
     monitor_time = int(stopTime + extraTime)
@@ -91,7 +92,7 @@ def main():
     shares = ES(capacity, users)   
     printShares(shares) 
     # given fill the jobs & allocation enforce,  prepare the job cripts
-    mainShell(users, expFolder, monitor_time, interval)
+    mainShell(users, expFolder, monitor_time, interval, startLogTime)
     for i in range(len(users)):
     # for i in range(1):
         user = users[i]
@@ -106,7 +107,7 @@ def main():
     shares = DRF(capacity, False, users)   
     printShares(shares) 
     # given fill the jobs & allocation enforce,  prepare the job cripts
-    mainShell(users, expFolder, monitor_time, interval)
+    mainShell(users, expFolder, monitor_time, interval, startLogTime)
     for i in range(len(users)):
     # for i in range(1):
         user = users[i]
@@ -124,7 +125,7 @@ def main():
     shares = naiveDRF(capacity, False, users, demands)   
     printShares(shares) 
     # given fill the jobs & allocation enforce,  prepare the job cripts
-    mainShell(users, expFolder, monitor_time, interval)
+    mainShell(users, expFolder, monitor_time, interval, startLogTime)
     for i in range(len(users)):
     # for i in range(1):
         user = users[i]
@@ -139,7 +140,7 @@ def main():
     shares = Static(capacity, users)   
     printShares(shares) 
     # given fill the jobs & allocation enforce,  prepare the job cripts
-    mainShell(users, expFolder, monitor_time, interval)
+    mainShell(users, expFolder, monitor_time, interval, startLogTime)
     for i in range(len(users)):
     # for i in range(1):
         user = users[i]
@@ -154,7 +155,7 @@ def main():
     shares = Static2(capacity, users)   
     printShares(shares) 
     # given fill the jobs & allocation enforce,  prepare the job cripts
-    mainShell(users, expFolder, monitor_time, interval)
+    mainShell(users, expFolder, monitor_time, interval, startLogTime)
     for i in range(len(users)):
     # for i in range(1):
         user = users[i]
@@ -169,7 +170,7 @@ def main():
     shares = DRF(capacity, True, users)   
     printShares(shares) 
     # given fill the jobs & allocation enforce,  prepare the job cripts
-    mainShell(users, expFolder, monitor_time, interval)
+    mainShell(users, expFolder, monitor_time, interval, startLogTime)
     for i in range(len(users)):
     # for i in range(1):
         user = users[i]
@@ -185,7 +186,7 @@ def main():
     shares = Pricing(capacity, True, users)
     printShares(shares) 
     # given fill the jobs & allocation enforce,  prepare the job cripts
-    mainShell(users, expFolder, monitor_time, interval)
+    mainShell(users, expFolder, monitor_time, interval, startLogTime)
     for i in range(len(users)):
     # for i in range(1):
         user = users[i]

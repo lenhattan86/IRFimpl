@@ -72,7 +72,7 @@ def main():
 
     workload = 'traces/motivation'
     # workload = 'traces/simple1.1'
-    startLogTime = 100
+    startLogTime = 0
     stopTime = 4000
     extraTime = 30*60 # 30 minutes
     monitor_time = int(stopTime + extraTime)

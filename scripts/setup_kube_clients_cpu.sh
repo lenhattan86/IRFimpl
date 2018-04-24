@@ -19,11 +19,11 @@ for server in $slavesIP; do
 done	
 
 for server in $slavesIP; do
-	$SSH_CMD $username@$server 'bash -s' < ./setupkubernetes_gpu.sh &
+	$SSH_CMD $username@$server 'bash -s' < ./setupkubernetes_cpu.sh &
 done	
 wait
 
-sudo sh -c "echo '127.0.0.1 $master' >> /etc/hosts"
+# sudo sh -c "echo '127.0.0.1 $master' >> /etc/hosts"
 echo "Enter token:"
 read token
 echo "Enter sha256:"

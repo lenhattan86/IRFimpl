@@ -1,5 +1,6 @@
 clear; close all; clc;
 addpath('functions');
+addpath('/ssd/projects/IRFimpl/evaluation/functions');
 
 fontSize=10;
 
@@ -28,6 +29,9 @@ figSize2ColWidth = [1 1 2.5 1].*figSizeOneCol;
 
 barLineWidth=0;
 groupBarSize = 0.9;
+
+colorBarMinMax='k';
+lineWidthBarMinMax=1;
 
 %%
 

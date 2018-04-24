@@ -4,8 +4,8 @@ addpath('functions');
 extraStr ='';
 plots = [1 1];
 %%
-% startTimes = [100 100 0];
-startTimes = [0 0 0];
+startTimes = [100 100 0];
+% startTimes = [100 0 0];
 stopTime = 3500;
 TAR_FILEs ={'naiveDRF','static','static2'};
 OUT_FOLDERS ={'naiveDRF','static','static2'};
@@ -47,14 +47,12 @@ for iMethod = 1:length(methods)
      error('no directories to be deleted');
   end
 end
-
 %%
-
 if plots(1) 
   figure;
   figureSize = figSizeOneCol;
-  hBar=bar(job_completed, 'group', 'EdgeColor','none');
-  ylabel('job completed');
+  hBar=bar(job_completed./(job_completed(:,1)*ones(1,3)), 'group', 'EdgeColor','none');
+  ylabel('norm. progress');
   xlabel('Users');
   strLegend=methods;
   legend(strLegend, 'Location','northwest');
@@ -65,7 +63,7 @@ if plots(1)
   set (gcf, 'Units', 'Inches', 'Position', figureSize, 'PaperUnits', 'inches', 'PaperPosition', figureSize);  
   if is_printed   
     figIdx=figIdx +1;
-    fileNames{figIdx} = [extraStr 'num_job_completed'];        
+    fileNames{figIdx} = [extraStr 'mov_progress'];        
     epsFile = [ LOCAL_FIG fileNames{figIdx} '.eps'];
     print ('-depsc', epsFile);
   end
@@ -81,5 +79,3 @@ for i=1:length(fileNames)
     status = system(cmd);
     status = system(['rm -rf ' epsFile]);
 end
-
-

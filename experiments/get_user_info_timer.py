@@ -79,7 +79,7 @@ def captureResource(timeStep, writer):
         lines=output.split("\n")                
         for line in lines[1:len(lines)-1]:            
             node=line
-            nodeCmd = "kubectl describe node "+ node +" | sed '1,/Non-terminated Pods/d'"
+            nodeCmd = "kubectl describe node "+ node +" | sed '1,/kube-system/d'"
             p = subprocess.Popen([nodeCmd], 
                 stdout=subprocess.PIPE, shell=True)                   
             (mOutput, err) = p.communicate()    
@@ -119,13 +119,14 @@ def captureResource(timeStep, writer):
                 memReqPercent = strArr[7]
                 memLimit=strArr[8]
                 memLimitPercent = strArr[9]
+                
                 row = [now, timeStep, user, podName, cpuReq, cpuLimit, memReq, memLimit]                            
                 writer.writerow(row)
 
 
 if os.path.exists(file_name): 
     os.remove(file_name)
-resFile = 'res'+file_name
+resFile = 'allocatedRes.csv'
 if os.path.exists(resFile): 
     os.remove(resFile)
 

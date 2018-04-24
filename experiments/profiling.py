@@ -12,7 +12,7 @@ from kubernetes import *
 benchmarks = "tf_cnn_benchmarks.py"
 
 # https://www.tensorflow.org/performance/benchmarks
-NUM_JOBS = 3
+NUM_JOBS = 12
 GPU_CPU = 1
 # GPU_CPU = 16
 
@@ -102,7 +102,7 @@ def shellJobs(job_folder, job_number, cmd, fileName):
             # submit these two jobs
             strShell = strShell + "kubectl create -f "+ fNameCpu +".yaml 2> " + fNameCpu +".log & \n" 
             strShell = strShell + "kubectl create -f "+ fNameGpu +".yaml 2> " + fNameGpu +".log & \n" 
-            strShell = strShell + "sleep 2 \n" 
+            # strShell = strShell + "sleep 2 \n" 
             # log the pod  
             strLogShell = strLogShell + "kubectl logs job-"+ cpuJobId +"> " + fNameCpu +".log & \n" 
             strLogShell = strLogShell + "kubectl logs job-"+ gpuJobId +"> " + fNameGpu +".log & \n" 

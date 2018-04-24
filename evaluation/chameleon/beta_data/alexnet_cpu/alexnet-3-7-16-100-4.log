@@ -1,0 +1,37 @@
+2018-04-09 11:46:26.896539: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2018-04-09 11:46:26.896584: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2018-04-09 11:46:26.896594: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2018-04-09 11:46:26.896601: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+2018-04-09 11:46:26.896609: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+TensorFlow:  1.1
+Model:       alexnet
+Mode:        training
+Batch size:  16 global
+             16 per device
+Devices:     ['/cpu:0']
+Data format: NHWC
+Optimizer:   sgd
+Variables:   parameter_server
+GPU memory fraction:  1.0
+==========
+Generating model
+Running warm up
+Done warm up
+Step	Img/sec	loss
+Starting real work at step 10 at time Mon Apr  9 11:46:59 2018
+1	images/sec: 5.2 +/- 0.0 (jitter = 0.0)	6.649
+10	images/sec: 5.2 +/- 0.0 (jitter = 0.0)	nan
+20	images/sec: 5.2 +/- 0.0 (jitter = 0.1)	nan
+30	images/sec: 5.3 +/- 0.0 (jitter = 0.1)	nan
+40	images/sec: 5.3 +/- 0.0 (jitter = 0.1)	nan
+50	images/sec: 5.3 +/- 0.0 (jitter = 0.1)	nan
+60	images/sec: 5.3 +/- 0.0 (jitter = 0.1)	nan
+70	images/sec: 5.3 +/- 0.0 (jitter = 0.1)	nan
+80	images/sec: 5.4 +/- 0.0 (jitter = 0.1)	nan
+90	images/sec: 5.4 +/- 0.0 (jitter = 0.1)	nan
+Finishing real work at step 109 at time Mon Apr  9 11:51:51 2018
+Total time taken: 292.483927965 and percentage of GPU used: 1.0
+100	images/sec: 5.4 +/- 0.0 (jitter = 0.1)	nan
+----------------------------------------------------------------
+total images/sec: 5.42
+----------------------------------------------------------------

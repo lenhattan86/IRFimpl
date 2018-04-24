@@ -1,0 +1,59 @@
+2018-04-17 01:15:10.167949: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2018-04-17 01:15:10.168019: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2018-04-17 01:15:10.168045: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2018-04-17 01:15:10.168066: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+2018-04-17 01:15:10.168095: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+2018-04-17 01:15:10.373971: I tensorflow/core/common_runtime/gpu/gpu_device.cc:887] Found device 0 with properties: 
+name: Tesla K80
+major: 3 minor: 7 memoryClockRate (GHz) 0.8235
+pciBusID 0000:06:00.0
+Total memory: 11.17GiB
+Free memory: 11.10GiB
+2018-04-17 01:15:10.374051: I tensorflow/core/common_runtime/gpu/gpu_device.cc:908] DMA: 0 
+2018-04-17 01:15:10.374085: I tensorflow/core/common_runtime/gpu/gpu_device.cc:918] 0:   Y 
+2018-04-17 01:15:10.374117: I tensorflow/core/common_runtime/gpu/gpu_device.cc:977] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Tesla K80, pci bus id: 0000:06:00.0)
+2018-04-17 01:15:10.438444: E tensorflow/stream_executor/cuda/cuda_driver.cc:893] failed to allocate 11.17G (11995578368 bytes) from device: CUDA_ERROR_OUT_OF_MEMORY
+TensorFlow:  1.1
+Model:       lenet
+Mode:        training
+Batch size:  32 global
+             32 per device
+Devices:     ['/gpu:0']
+Data format: NCHW
+Optimizer:   sgd
+Variables:   parameter_server
+GPU memory fraction:  1.0
+==========
+Generating model
+Running warm up
+Done warm up
+Step	Img/sec	loss
+1	images/sec: 3925.9 +/- 0.0 (jitter = 0.0)	6.777
+10	images/sec: 3399.0 +/- 228.7 (jitter = 62.6)	6.485
+Starting real work at step 26 at time Tue Apr 17 01:15:11 2018
+20	images/sec: 3499.2 +/- 156.7 (jitter = 142.6)	5.494
+30	images/sec: 3502.2 +/- 137.2 (jitter = 217.8)	4.066
+40	images/sec: 3587.1 +/- 119.5 (jitter = 272.1)	3.592
+50	images/sec: 3527.0 +/- 119.0 (jitter = 337.6)	3.541
+60	images/sec: 3331.6 +/- 119.9 (jitter = 320.9)	3.527
+70	images/sec: 3346.7 +/- 112.8 (jitter = 371.2)	3.521
+80	images/sec: 3346.0 +/- 107.8 (jitter = 457.7)	3.517
+90	images/sec: 3410.8 +/- 99.8 (jitter = 413.8)	3.515
+100	images/sec: 3434.3 +/- 95.1 (jitter = 408.7)	3.514
+110	images/sec: 3479.5 +/- 90.8 (jitter = 425.8)	3.513
+120	images/sec: 3539.9 +/- 86.9 (jitter = 435.9)	3.512
+130	images/sec: 3567.6 +/- 87.1 (jitter = 463.6)	3.511
+140	images/sec: 3558.5 +/- 87.4 (jitter = 510.2)	3.511
+150	images/sec: 3590.5 +/- 85.6 (jitter = 587.2)	3.510
+160	images/sec: 3655.1 +/- 83.2 (jitter = 680.8)	3.510
+170	images/sec: 3639.8 +/- 82.0 (jitter = 724.2)	3.510
+180	images/sec: 3663.5 +/- 80.2 (jitter = 745.8)	3.510
+190	images/sec: 3652.7 +/- 79.2 (jitter = 760.2)	3.509
+200	images/sec: 3679.7 +/- 77.5 (jitter = 783.6)	3.509
+210	images/sec: 3673.0 +/- 77.2 (jitter = 815.8)	3.509
+220	images/sec: 3716.1 +/- 75.0 (jitter = 828.4)	3.509
+Finishing real work at step 230 at time Tue Apr 17 01:15:13 2018
+Total time taken: 1.76034903526 and percentage of GPU used: 1.0
+----------------------------------------------------------------
+total images/sec: 3708.36
+----------------------------------------------------------------

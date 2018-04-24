@@ -51,10 +51,10 @@ for iMethod = 1:length(methods)
 end
 %%
 close all;
-if job_completed(1,1)==0
-  job_completed(1,1) = job_completed(1,2);
-  job_completed(2,1) = job_completed(2,3);
-end
+% if job_completed(1,1)==0
+%   job_completed(1,1) = job_completed(1,2);
+%   job_completed(2,1) = job_completed(2,3);
+% end
 if plots(1) 
   figure;
   figureSize = figSizeOneCol;

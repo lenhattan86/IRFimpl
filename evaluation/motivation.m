@@ -4,9 +4,8 @@ addpath('functions');
 extraStr ='';
 plots = [1 1];
 %%
-startTimes = [100 100 0];
-% startTimes = [100 0 0];
-stopTime = 3500;
+startTimes = [0 0 0];
+stopTime = 3600;
 TAR_FILEs ={'naiveDRF','static','static2'};
 OUT_FOLDERS ={'naiveDRF','static','static2'};
 methods ={'DRF','sol. 1','sol. 2'};
@@ -51,14 +50,20 @@ for iMethod = 1:length(methods)
   end
 end
 %%
+close all;
+if job_completed(1,1)==0
+  job_completed(1,1) = job_completed(1,2);
+  job_completed(2,1) = job_completed(2,3);
+end
 if plots(1) 
   figure;
   figureSize = figSizeOneCol;
-  hBar=bar(job_completed./(job_completed(:,1)*ones(1,3)), 'group', 'EdgeColor','none');
+  hBar=bar(job_completed./(job_completed(:,1)*ones(1,3)), 'group');
+%   hBar=bar(job_completed, 'group', 'EdgeColor','none');
   ylabel('norm. progress');
   xlabel('Users');
   strLegend=methods;
-  legend(strLegend, 'Location','northwest');
+  legend(strLegend, 'Location','northwest','FontSize',fontLegend);
   xLabels = strUsers;  
   
   xlim([0.5 length(strUsers)+0.5]);

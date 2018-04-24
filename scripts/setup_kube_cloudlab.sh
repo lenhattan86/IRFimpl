@@ -11,7 +11,7 @@
 
 # cp ~/.ssh/config.chameleon ~/.ssh/config;  005b93.59de673135d75968
 
-# kubeadm join 128.104.222.165:6443 --token wpifoy.a90o23w2usq5aqor --discovery-token-ca-cert-hash sha256:c5d769d74d407c6500e39e9f2e8c206cedb7f304121f9cb779644accf72a4c4f
+# kubeadm join 128.104.222.165:6443 --token z6kryk.l5tbb0xoy9gqcwas --discovery-token-ca-cert-hash sha256:fb55d685d9b96fc86393ce1c0b6003d14831eb698272f3e91de85489f711f437
 # remember the git user/pass
 # cd..; git config credential.helper store; cd scripts
 

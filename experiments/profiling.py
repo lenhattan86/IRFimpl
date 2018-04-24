@@ -43,7 +43,7 @@ SCHEDULER = "kube-scheduler"
 this_path = os.path.dirname(os.path.realpath(__file__))
 
 def shellProfiling(job_folder, job_number, gpuCmd, exp_name, stopTime):    
-    shellFile = job_folder + "/profiling.sh"
+    shellFile = job_folder + "/main.sh"
     f = open(shellFile,'w')
     strShell = ""
 
@@ -53,19 +53,22 @@ def shellProfiling(job_folder, job_number, gpuCmd, exp_name, stopTime):
     
     strShell = strShell + "sudo docker pull lenhattan86/gpu \n"
     strShell = strShell + "sudo docker pull lenhattan86/cpu \n"
+
+    strShell = strShell + "sleep 15 \n"
+    strShell = strShell + "./" +exp_name+".sh & cpuScript=$! \n"
     
     strShell = strShell + "python ../get_user_info_timer.py " \
         " --interval="+str(1) + " --stopTime="+str(stopTime)+" --file="+exp_name+".csv & pythonScript=$! \n"  
 
-    ## create GPU jobs
-    shellJobs(job_folder, job_number, gpuCmd, exp_name)
+     
 
-    strShell = strShell + "./" +exp_name+".sh & cpuScript=$! \n"               
-
-    strShell = strShell + "wait"    
     f.write(strShell)        
     f.close()
     os.chmod(shellFile, 0700)
+
+    ## create GPU jobs
+    shellJobs(job_folder, job_number, gpuCmd, exp_name)
+
 
 def shellJobs(job_folder, job_number, cmd, fileName):
     

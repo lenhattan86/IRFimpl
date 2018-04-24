@@ -148,7 +148,7 @@ if plots(2)
     hold on;
   end
   
-  set(gca,'XScale','log');
+%   set(gca,'XScale','log');
   ylabel(strSpeedUpRate);
   xlabel(strBatchSize);
   legend(strLegend, 'Location','northeast','FontSize',fontLegend);

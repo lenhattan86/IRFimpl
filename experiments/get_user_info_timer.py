@@ -33,7 +33,8 @@ stop_time = int(args['stopTime'])
 
 def capture(timeStep, writer):
     now = datetime.datetime.now()        
-    p = subprocess.Popen(["kubectl get pods --all-namespaces --field-selector=status.phase!=Pending"], 
+    # p = subprocess.Popen(["kubectl get pods --all-namespaces --field-selector=status.phase!=Pending"], 
+    p = subprocess.Popen(["kubectl get pods --all-namespaces"], 
         stdout=subprocess.PIPE, shell=True)                   
     (output, err) = p.communicate()    
     p_status = p.wait() 
@@ -57,6 +58,8 @@ def capture(timeStep, writer):
                 continue
             podName=strArr[1]
             podStatus=strArr[3]
+            if podStatus == "Pending":
+                continue    
             row = [now, timeStep, user, podName, podStatus]                            
             writer.writerow(row)
             if (podStatus == "Completed") or (podStatus == "OOMKilled") or(podStatus == "Error"):

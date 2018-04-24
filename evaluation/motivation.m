@@ -18,12 +18,15 @@ job_completed = zeros(length(UserIds), length(methods));
 
 for iMethod = 1:length(methods)
   folder = [MAIN_FOLDER '/' OUT_FOLDERS{iMethod}];
-  TAR_FILE = [TAR_FILEs{iMethod} '.tar.gz'];
+  TAR_FILE = [MAIN_FOLDER '/' TAR_FILEs{iMethod} '.tar.gz'];
+  if ~exist(TAR_FILE, 'file')
+    continue
+  end
   try
    rmdir(folder,'s');
   catch fileIO   
   end  
-  untar([MAIN_FOLDER '/' TAR_FILE], [MAIN_FOLDER]);
+  untar(TAR_FILE, [MAIN_FOLDER]);
 %%
   filename = [folder '/pods.csv'];
   [datetimes, steps, users, podnames, statuses] = importUserInfo(filename);  

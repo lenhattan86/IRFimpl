@@ -39,3 +39,4 @@ cd /dev/projects/IRFimpl/experiments/
 tar -czf ~/$folder.tar.gz $folder"
 mkdir $EVAL_FOLDER
 scp $user@$server:~/$folder.tar.gz $EVAL_FOLDER/$folder$extraStr.tar.gz
+echo $EVAL_FOLDER/$folder$extraStr.tar.gz

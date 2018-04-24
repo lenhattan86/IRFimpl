@@ -121,7 +121,7 @@ def captureResource(timeStep, writer):
                 memLimit=strArr[8]
                 memLimitPercent = strArr[9]
                 
-                row = [now, timeStep, user, podName, cpuReq, cpuLimit, memReq, memLimit]                            
+                row = [now, timeStep, user, podName, node, cpuReq, cpuLimit, memReq, memLimit]                            
                 writer.writerow(row)
 
 

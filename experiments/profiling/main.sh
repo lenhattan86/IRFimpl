@@ -3,5 +3,6 @@ echo wait...
 sleep 60 
 sudo docker pull lenhattan86/gpu 
 sudo docker pull lenhattan86/cpu 
-python ../get_user_info_timer.py  --interval=1 --stopTime=36000 --file=profiling.csv & pythonScript=$! 
-./profiling.sh & cpuScript=$! 
+sleep 15 
+./profiling.sh & 
+python ../get_user_info_timer.py  --interval=1 --stopTime=36000 --file=profiling.csv 

@@ -17,6 +17,7 @@ sudo sed -i -e "s/ExecStart=\/usr\/bin\/dockerd -H /ExecStart=\/usr\/bin\/docker
 sudo systemctl stop docker
 sudo systemctl daemon-reload
 sudo rsync -aqxP /var/lib/docker/ /dev/projects/docker
+
 sudo systemctl start docker
 echo 'You might need to reboot / relogin to make docker work correctly'
 

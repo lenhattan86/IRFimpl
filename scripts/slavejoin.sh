@@ -4,21 +4,21 @@
 
 if [ -z "$1" ]
 then
-	echo "e.g. sudo kubeadm join --token c91d8c.c90c8bb2666e5eab 10.52.1.213:6443 --discovery-token-ca-cert-hash sha256:bda98d8e38201b1328e8039c677572a4b3e33d5843f95626e3cda4028db5d4e8"
+	token="wpifoy.a90o23w2usq5aqor"
 else
 	token="$1"
 fi
 
 if [ -z "$2" ]
 then
-	echo "sha256"
+	sha256="sha256:c5d769d74d407c6500e39e9f2e8c206cedb7f304121f9cb779644accf72a4c4f"
 else
 	sha256="$2"
 fi
 
 if [ -z "$3" ]
 then
-	echo "Master IP address needed to join worker node to master"
+	masterIPaddress="128.104.222.165"
 else
 	masterIPaddress="$3"
 fi

@@ -102,14 +102,13 @@ def captureResource(timeStep, writer):
 # Events:         <none>
 # """
             mLines= mOutput.split("\n")
-            for mLine in mLines[0:len(mLines)-7]:
+            for mLine in mLines[0:len(mLines)-1]:
                 if mLine.startswith('Allocated resources:'):
                     break                                    
                 strArr=mLine.split()            
                 user=strArr[0]
                 if user=="kube-system":
                     continue
-
                 podName=strArr[1]
                 cpuReq=strArr[2]
                 cpuReqPercent = strArr[3]

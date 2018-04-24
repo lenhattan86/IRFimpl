@@ -198,3 +198,5 @@ __pycache__
 ./scripts/cuda/lib64/libcudnn.so.5.1.10
 ./evaluation/beta_motivation/beta_motivation/beta_mov.csv
 ./scripts/cuda/lib64/libcudnn.so.5.1.10
+./evaluation/beta_motivation/beta_motivation/beta_mov.csv
+./scripts/cuda/lib64/libcudnn.so.5.1.10

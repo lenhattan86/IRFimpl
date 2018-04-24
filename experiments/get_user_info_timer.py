@@ -18,25 +18,22 @@ from threading import Timer
 
 
 parser = argparse.ArgumentParser()
-# parser.add_argument('--user', help='user', required=True)
 parser.add_argument('--interval', help='Polling interval  (secs)', required=True)
 parser.add_argument('--file', help='csv file', required=True)
 parser.add_argument('--stopTime', help='stop time (secs)', required=True)
 args = vars(parser.parse_args())
 
 interval = int(args['interval'])
-# user = args['user']
 file_name = args['file']
 stop_time = int(args['stopTime'])
 
 # interval=1
-# user="user1"
 # file_name="user1.csv"
-# stop_time=-1
+# stop_time=1
 
 def capture(timeStep, writer):
     now = datetime.datetime.now()        
-    p = subprocess.Popen(["kubectl get pods --all-namespaces"], 
+    p = subprocess.Popen(["kubectl get pods --all-namespaces --field-selector=status.phase!=Pending"], 
         stdout=subprocess.PIPE, shell=True)                   
     (output, err) = p.communicate()    
     p_status = p.wait() 
@@ -63,17 +60,85 @@ def capture(timeStep, writer):
             if (podStatus == "Completed") or (podStatus == "OOMKilled") or(podStatus == "Error"):
                 completedJobs = completedJobs + 1
 
-# this_path = os.path.dirname(os.path.realpath(__file__))
-# ofile  = open(this_path  + "/" + file_name, "wb")
+
+def captureResource(timeStep, writer):
+    now = datetime.datetime.now()        
+    p = subprocess.Popen(["kubectl get node --no-headers -o custom-columns=NAME:.metadata.name"], 
+        stdout=subprocess.PIPE, shell=True)                   
+    (output, err) = p.communicate()    
+    p_status = p.wait() 
+
+#     output = """k80-1
+# k80-2
+# """
+#     p_status=0    
+
+    if p_status != 0:        
+        print 'Could not access the kubernetes'
+    else:
+        lines=output.split("\n")                
+        for line in lines[1:len(lines)-1]:            
+            node=line
+            nodeCmd = "kubectl describe node "+ node +" | sed '1,/Non-terminated Pods/d'"
+            p = subprocess.Popen([nodeCmd], 
+                stdout=subprocess.PIPE, shell=True)                   
+            (mOutput, err) = p.communicate()    
+            p_status = p.wait() 
+#             p_status=0
+#             mOutput="""kube-system                calico-node-f8trv                            250m (0%)     0 (0%)      0 (0%)           0 (0%)
+#   kube-system                calico-policy-controller-5cf6666d98-958q6    0 (0%)        0 (0%)      0 (0%)           0 (0%)
+#   kube-system                etcd-k80-1                                   0 (0%)        0 (0%)      0 (0%)           0 (0%)
+#   kube-system                kube-apiserver-k80-1                         250m (0%)     0 (0%)      0 (0%)           0 (0%)
+#   kube-system                kube-controller-manager-k80-1                200m (0%)     0 (0%)      0 (0%)           0 (0%)
+#   kube-system                kube-proxy-kvhfk                             0 (0%)        0 (0%)      0 (0%)           0 (0%)
+#   kube-system                kube-scheduler-k80-1                         100m (0%)     0 (0%)      0 (0%)           0 (0%)
+#   kube-system                my-scheduler-7b5fcd755f-b8wf9                100m (0%)     0 (0%)      0 (0%)           0 (0%)
+#   user2                      user2-373                                    16 (33%)      16 (33%)    12Gi (9%)        12Gi (9%)
+# Allocated resources:
+#   (Total limits may be over 100 percent, i.e., overcommitted.)
+#   CPU Requests  CPU Limits  Memory Requests  Memory Limits
+#   ------------  ----------  ---------------  -------------
+#   16900m (35%)  16 (33%)    12Gi (9%)        12Gi (9%)
+# Events:         <none>
+# """
+            mLines= mOutput.split("\n")
+            for mLine in mLines[0:len(mLines)-7]:
+                if mLine.startswith('Allocated resources:'):
+                    break                                    
+                strArr=mLine.split()            
+                user=strArr[0]
+                if user=="kube-system":
+                    continue
+
+                podName=strArr[1]
+                cpuReq=strArr[2]
+                cpuReqPercent = strArr[3]
+                cpuLimit=strArr[4]
+                cpuLimitPercent = strArr[5]
+                memReq=strArr[6]
+                memReqPercent = strArr[7]
+                memLimit=strArr[8]
+                memLimitPercent = strArr[9]
+                row = [now, timeStep, user, podName, cpuReq, cpuLimit, memReq, memLimit]                            
+                writer.writerow(row)
+
+
 if os.path.exists(file_name): 
     os.remove(file_name)
+resFile = 'res'+file_name
+if os.path.exists(resFile): 
+    os.remove(resFile)
 
 ofile  = open(file_name, "wb")
 writer = csv.writer(ofile, dialect='excel')
+oResfile  = open(resFile, "wb")
+resWriter = csv.writer(oResfile, dialect='excel')
+
 mTime = 1
 # for mTime in range(int(stop_time/interval)):
 while True:        
     if (stop_time > 0 and mTime*interval > stop_time):        
         break
     Timer(mTime*interval, capture, [mTime, writer]).start()        
+    Timer(mTime*interval, captureResource, [mTime, resWriter]).start()
     mTime = mTime + 1

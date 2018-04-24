@@ -53,6 +53,8 @@ def capture(timeStep, writer):
         for line in lines[1:len(lines)-1]:            
             strArr=line.split()            
             user=strArr[0]
+            if user == "kube-system":
+                continue
             podName=strArr[1]
             podStatus=strArr[3]
             row = [now, timeStep, user, podName, podStatus]                            

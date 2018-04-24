@@ -20,11 +20,12 @@ NUM_THREADs = 16
 MEM = 12
 
 
-# JOB_NAMEs   = ['vgg16', 'lenet', 'googlenet', 'alexnet',  'resnet50', 'inception3']
-# BatchSizes  = [32     ,  32    ,          32,      512,           64,           64]
-JOB_NAMEs   = ['lenet', 'alexnet',]
-BatchSizes  = [32, 512]
-BatchNUm = 100
+JOB_NAMEs   = ['vgg16', 'lenet', 'googlenet', 'alexnet',  'resnet50', 'inception3']
+BatchNUms = [100, 1000, 100, 100, 100, 100]
+BatchSizes  = [32     ,  512    ,          32,      512,           64,           64]
+# JOB_NAMEs   = ['lenet', 'alexnet',]
+# BatchSizes  = [32, 512]
+
 # kArray = [2, 5, 10, 15, 20]
 kArray = [10]
 
@@ -76,11 +77,12 @@ def shellJobs(job_folder, job_number, cmd, fileName):
     for iName in range(len(JOB_NAMEs)):
         jobName = JOB_NAMEs[iName]
         batchSize = BatchSizes[iName]
+        BatchNum = BatchNUms[iName]
         for iK in range(len(kArray)):
             for iJob in range(NUM_JOBS):
                 commonName = str(CPU)+'-'+ str(MEM)+'-'+str(batchSize)+'-'+str(NUM_THREADs)+'-'+str(kArray[iK])+'-'+str(iJob)
-                cpuFullCommand = CPU_COMMAND + " --model=" + jobName + " --batch_size="+str(batchSize)+" --num_intra_threads=" + str(NUM_THREADs) +" --num_batches="+str(BatchNUm*kArray[iK])
-                gpuFullCommand = GPU_COMMAND + " --model=" + jobName + " --batch_size="+str(batchSize)+" --num_batches="+str(BatchNUm*kArray[iK])
+                cpuFullCommand = CPU_COMMAND + " --model=" + jobName + " --batch_size="+str(batchSize)+" --num_intra_threads=" + str(NUM_THREADs) +" --num_batches="+str(BatchNum*kArray[iK])
+                gpuFullCommand = GPU_COMMAND + " --model=" + jobName + " --batch_size="+str(batchSize)+" --num_batches="+str(BatchNum*kArray[iK])
 
                 fNameCpu = jobName+'-cpu-'+commonName
                 cpuJobId    = jobName+'-cpu-'+commonName            
@@ -100,12 +102,12 @@ def shellJobs(job_folder, job_number, cmd, fileName):
 
                 # submit these two jobs
                 strShell = strShell + "sleep 5 \n" 
-                strShell = strShell + "kubectl create -f "+ fNameCpu +".yaml 2> " + fNameCpu +".log \n" 
+                # strShell = strShell + "kubectl create -f "+ fNameCpu +".yaml 2> " + fNameCpu +".log \n" 
                 strShell = strShell + "kubectl create -f "+ fNameGpu +".yaml 2> " + fNameGpu +".log \n" 
 
                 # log the pod
 
-                strLogShell = strLogShell + "kubectl logs job-"+ cpuJobId +"> " + fNameCpu +".log \n" 
+                # strLogShell = strLogShell + "kubectl logs job-"+ cpuJobId +"> " + fNameCpu +".log \n" 
                 strLogShell = strLogShell + "kubectl logs job-"+ gpuJobId +"> " + fNameGpu +".log \n" 
 
     shellFile = job_folder + "/" + fileName + ".sh"

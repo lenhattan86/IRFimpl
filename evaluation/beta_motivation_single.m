@@ -35,8 +35,8 @@ NUM_JOBS = 5;
 % 'resnet50', 'inception3'}; %remove trivial 32
 MODEL_NAMES   = {'vgg16', 'lenet', 'googlenet', 'alexnet',  'resnet50', 'inception3'};
 
-% TAR_FILE    = 'beta_motivation_good.tar.gz';
-% BATCH_NUMS  = [32     ,     32,         32,      512,               64,           64];
+TAR_FILE    = 'beta_motivation_good.tar.gz';
+BATCH_NUMS  = [32     ,     32,         32,      512,               64,           64];
 
 % TAR_FILE    = 'beta_motivation.tar.gz';
 % BATCH_NUMS  = [32     ,     32,         32,      512,                64,           64];
@@ -46,8 +46,8 @@ MODEL_NAMES   = {'vgg16', 'lenet', 'googlenet', 'alexnet',  'resnet50', 'incepti
 % MEM = '3';
 % BATCH_NUMS  = [32     ,     32,         32,      512,                64,           64];
 
-TAR_FILE    = 'beta_motivation_512.tar.gz';
-BATCH_NUMS  = [512     ,     512,         512,      512,                512,           512];
+% TAR_FILE    = 'beta_motivation_512.tar.gz';
+% BATCH_NUMS  = [512     ,     512,         512,      512,                512,           512];
 
 NUM_JOBS = 3;
 MAIN_FOLDER = 'beta_motivation';

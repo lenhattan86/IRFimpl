@@ -98,7 +98,8 @@ def main():
         loggedJobs = toActiveJobs(jobs) 
         print("Prepare the jobs for " + user.username + ": " + str(userJobNums[i])) 
         prepareKubernetesJobs(user.username, scheduler, expFolder, loggedJobs, isQueuedUp)  
-    return
+    
+    # return
 
     print("====================== ES ALLOCATION =====================")
     expFolder = "ES"
@@ -112,9 +113,14 @@ def main():
         share = shares[i]
         jobs = user.jobs[:]
         loggedJobs = enforceAllocation(share, jobs, stopTime, isBestFit) 
+        print("Number of admitted jobs for " + user.username + ": " + str(len(loggedJobs)))  
         if isBestFit:
-            print("Prepare the jobs for " + user.username + ": " + str(len(loggedJobs)))  
-            prepareKubernetesJobs(user.username, scheduler, expFolder, loggedJobs, isQueuedUp)        
+            prepareKubernetesJobs(user.username, scheduler, expFolder, loggedJobs, isQueuedUp) 
+        else:
+            jobs = user.jobs[1:userJobNums[i]]
+            loggedJobs = toActiveJobs(jobs) 
+            print("Prepare the jobs for " + user.username + ": " + str(userJobNums[i])) 
+            prepareKubernetesJobs(user.username, scheduler, expFolder, loggedJobs, isQueuedUp)         
 
     print("====================== DRF ALLOCATION =====================")
     expFolder = "DRF"
@@ -128,9 +134,14 @@ def main():
         share = shares[i]
         jobs = user.jobs[:]
         loggedJobs = enforceAllocation(share, jobs, stopTime, isBestFit) 
-        if isBestFit:
-            print("Prepare the jobs for " + user.username + ": " + str(len(loggedJobs)))  
-            prepareKubernetesJobs(user.username, scheduler, expFolder, loggedJobs, isQueuedUp)    
+        print("Number of admitted jobs for " + user.username + ": " + str(len(loggedJobs)))  
+        if isBestFit:  
+            prepareKubernetesJobs(user.username, scheduler, expFolder, loggedJobs, isQueuedUp)  
+        else:
+            jobs = user.jobs[1:userJobNums[i]]
+            loggedJobs = toActiveJobs(jobs) 
+            print("Prepare the jobs for " + user.username + ": " + str(userJobNums[i])) 
+            prepareKubernetesJobs(user.username, scheduler, expFolder, loggedJobs, isQueuedUp)     
 
     print("====================== Naive DRF ALLOCATION =====================")
     expFolder = "naiveDRF"
@@ -147,9 +158,14 @@ def main():
         share = shares[i]
         jobs = user.jobs[:]
         loggedJobs = enforceAllocation(share, jobs, stopTime, isBestFit) 
-        if isBestFit:
-            print("Prepare the jobs for " + user.username + ": " + str(len(loggedJobs)))  
-            prepareKubernetesJobs(user.username, scheduler, expFolder, loggedJobs, isQueuedUp)    
+        print("Number of admitted jobs for " + user.username + ": " + str(len(loggedJobs)))  
+        if isBestFit: 
+            prepareKubernetesJobs(user.username, scheduler, expFolder, loggedJobs, isQueuedUp)
+        else:
+            jobs = user.jobs[1:userJobNums[i]]
+            loggedJobs = toActiveJobs(jobs) 
+            print("Prepare the jobs for " + user.username + ": " + str(userJobNums[i])) 
+            prepareKubernetesJobs(user.username, scheduler, expFolder, loggedJobs, isQueuedUp)       
 
     print("====================== Static ALLOCATION =====================")
     expFolder = "static"
@@ -163,9 +179,14 @@ def main():
         share = shares[i]
         jobs = user.jobs[:]
         loggedJobs = enforceAllocation(share, jobs, stopTime, isBestFit) 
+        print("Number of admitted jobs for " + user.username + ": " + str(len(loggedJobs)))  
         if isBestFit:
-            print("Prepare the jobs for " + user.username + ": " + str(len(loggedJobs)))  
-            prepareKubernetesJobs(user.username, scheduler, expFolder, loggedJobs, isQueuedUp)    
+            prepareKubernetesJobs(user.username, scheduler, expFolder, loggedJobs, isQueuedUp) 
+        else:
+            jobs = user.jobs[1:userJobNums[i]]
+            loggedJobs = toActiveJobs(jobs) 
+            print("Prepare the jobs for " + user.username + ": " + str(userJobNums[i])) 
+            prepareKubernetesJobs(user.username, scheduler, expFolder, loggedJobs, isQueuedUp)      
 
     print("====================== Static2 ALLOCATION =====================")
     expFolder = "static2"
@@ -179,8 +200,13 @@ def main():
         share = shares[i]
         jobs = user.jobs[:]
         loggedJobs = enforceAllocation(share, jobs, stopTime, isBestFit) 
+        print("Number of admitted jobs for " + user.username + ": " + str(len(loggedJobs)))  
         if isBestFit:
-            print("Prepare the jobs for " + user.username + ": " + str(len(loggedJobs)))  
+            prepareKubernetesJobs(user.username, scheduler, expFolder, loggedJobs, isQueuedUp)
+        else:
+            jobs = user.jobs[1:userJobNums[i]]
+            loggedJobs = toActiveJobs(jobs) 
+            print("Prepare the jobs for " + user.username + ": " + str(userJobNums[i])) 
             prepareKubernetesJobs(user.username, scheduler, expFolder, loggedJobs, isQueuedUp)             
 
     print("====================== FDRF ALLOCATION =====================")
@@ -195,9 +221,14 @@ def main():
         share = shares[i]
         jobs = user.jobs[:]
         loggedJobs = enforceAllocation(share, jobs, stopTime, isBestFit) 
+        print("Number of admitted jobs for " + user.username + ": " + str(len(loggedJobs)))  
         if isBestFit:
-            print("Prepare the jobs for " + user.username + ": " + str(len(loggedJobs)))  
-            prepareKubernetesJobs(user.username, scheduler, expFolder, loggedJobs, isQueuedUp)    
+            prepareKubernetesJobs(user.username, scheduler, expFolder, loggedJobs, isQueuedUp)  
+        else:
+            jobs = user.jobs[1:userJobNums[i]]
+            loggedJobs = toActiveJobs(jobs) 
+            print("Prepare the jobs for " + user.username + ": " + str(userJobNums[i])) 
+            prepareKubernetesJobs(user.username, scheduler, expFolder, loggedJobs, isQueuedUp)     
 
 
     print("====================== Pricing ALLOCATION =====================")
@@ -212,9 +243,14 @@ def main():
         share = shares[i]
         jobs = user.jobs[:]
         loggedJobs = enforceAllocation(share, jobs, stopTime, isBestFit) 
+        print("Number of admitted jobs for " + user.username + ": " + str(len(loggedJobs)))  
         if isBestFit:
-            print("Prepare the jobs for " + user.username + ": " + str(len(loggedJobs)))  
-            prepareKubernetesJobs(user.username, scheduler, expFolder, loggedJobs, isQueuedUp)    
+            prepareKubernetesJobs(user.username, scheduler, expFolder, loggedJobs, isQueuedUp) 
+        else:
+            jobs = user.jobs[1:userJobNums[i]]
+            loggedJobs = toActiveJobs(jobs) 
+            print("Prepare the jobs for " + user.username + ": " + str(userJobNums[i])) 
+            prepareKubernetesJobs(user.username, scheduler, expFolder, loggedJobs, isQueuedUp)      
 
 
     print("==================================================================")

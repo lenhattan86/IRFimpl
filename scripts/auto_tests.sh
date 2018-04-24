@@ -1,23 +1,50 @@
 #!/bin/bash
 # usage:
 
-echo "wait for static"
-sleep 5400
+echo "static"
 ## run naivedrf
-./install_my_scheduler.sh naivedrf
-./install_my_scheduler.sh naivedrf
-sleep 15
-cd ../experiments/naiveDRF
+./install_my_scheduler.sh static
+sleep 5
+./install_my_scheduler.sh static
+sleep 5
+./install_my_scheduler.sh static
+sleep 30
+cd ../experiments/static
 ./main.sh
-echo "done naiveDRF"
+echo "done static"
 
-## run beta estimation 
-cd ../beta_estimation
-# ls ./profiling.sh
-kubectl delete pods --all -n user1
-kubectl delete pods --all -n user2
-./install_my_scheduler.sh profiling
-./install_my_scheduler.sh profiling
-sleep 15
+echo "static2"
+
+./install_my_scheduler.sh static2
+sleep 5
+./install_my_scheduler.sh static2
+sleep 5
+./install_my_scheduler.sh static2
+sleep 30
+cd ../static2
 ./main.sh
-echo "remember to save scheduler.log"
+echo "done static2"
+
+echo "naivedrf"
+./install_my_scheduler.sh naivedrf
+sleep 5
+./install_my_scheduler.sh naivedrf
+sleep 5
+./install_my_scheduler.sh naivedrf
+sleep 30
+cd ../naiveDRF
+./main.sh
+echo "done naivedrf"
+
+
+echo "beta estimation"
+./install_my_scheduler.sh profiling
+sleep 5
+./install_my_scheduler.sh profiling
+sleep 5
+./install_my_scheduler.sh profiling
+sleep 30
+cd ../beta_estimation
+./main.sh
+echo "done beta estimation -- remember to log scheduler."
+

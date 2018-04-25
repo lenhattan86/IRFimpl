@@ -19,23 +19,26 @@ from threading import Timer
 
 IS_TEST=False
 
-parser = argparse.ArgumentParser()
-parser.add_argument('--interval', help='Polling interval  (secs)', required=True)
-parser.add_argument('--file', help='csv file', required=True)
-parser.add_argument('--stopTime', help='stop time (secs)', required=True)
-args = vars(parser.parse_args())
+if not IS_TEST:
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--interval', help='Polling interval  (secs)', required=True)
+    parser.add_argument('--file', help='csv file', required=True)
+    parser.add_argument('--stopTime', help='stop time (secs)', required=True)
+    args = vars(parser.parse_args())
 
-interval = float(args['interval'])
-file_name = args['file']
-stop_time = int(args['stopTime'])
-
-# interval=1
-# file_name="user1.csv"
-# stop_time=1
+    interval = float(args['interval'])
+    file_name = args['file']
+    stop_time = int(args['stopTime'])
+    writeStep=60
+else:
+    interval=1
+    file_name="user1.csv"
+    stop_time=4
+    writeStep=2
 
 podRows=[]
 resRows=[]
-writeStep=60
+
 
 def capture(timeStep, writer):
     now = datetime.datetime.now()        
@@ -44,12 +47,12 @@ def capture(timeStep, writer):
         stdout=subprocess.PIPE, shell=True)                   
     (output, err) = p.communicate()    
     p_status = p.wait() 
-
-#     output = """NAMESPACE     NAME                                       READY     STATUS      RESTARTS   AGE
-# default       job-alexnet-cpu-0                          0/1       Completed   0          19h
-# default       job-alexnet-cpu-1                          0/1       Completed   0          19h
-# """
-#     p_status=0    
+    if IS_TEST:
+            output = """NAMESPACE     NAME                                       READY     STATUS      RESTARTS   AGE
+default       job-alexnet-cpu-0                          0/1       Completed   0          19h
+default       job-alexnet-cpu-1                          0/1       Completed   0          19h
+"""
+            p_status=0    
 
     # completedJobs = 0
     # time_step = time_step + interval
@@ -81,11 +84,11 @@ def captureResource(timeStep, writer):
         stdout=subprocess.PIPE, shell=True)                   
     (output, err) = p.communicate()    
     p_status = p.wait() 
-
-#     output = """k80-1
-# k80-2
-# """
-#     p_status=0    
+    if IS_TEST:
+        output = """k80-1
+k80-2
+"""
+        p_status=0    
 
     if p_status != 0:        
         print 'Could not access the kubernetes'
@@ -99,25 +102,26 @@ def captureResource(timeStep, writer):
                 stdout=subprocess.PIPE, shell=True)                   
             (mOutput, err) = p.communicate()    
             p_status = p.wait() 
-#             p_status=0
-#             mOutput="""Namespace                  Name                                                           CPU Requests  CPU Limits  Memory Requests  Memory Limits
-# ---------                  ----                                                           ------------  ----------  ---------------  -------------
-#   kube-system                calico-node-f8trv                            250m (0%)     0 (0%)      0 (0%)           0 (0%)
-#   kube-system                calico-policy-controller-5cf6666d98-958q6    0 (0%)        0 (0%)      0 (0%)           0 (0%)
-#   kube-system                etcd-k80-1                                   0 (0%)        0 (0%)      0 (0%)           0 (0%)
-#   kube-system                kube-apiserver-k80-1                         250m (0%)     0 (0%)      0 (0%)           0 (0%)
-#   kube-system                kube-controller-manager-k80-1                200m (0%)     0 (0%)      0 (0%)           0 (0%)
-#   kube-system                kube-proxy-kvhfk                             0 (0%)        0 (0%)      0 (0%)           0 (0%)
-#   kube-system                kube-scheduler-k80-1                         100m (0%)     0 (0%)      0 (0%)           0 (0%)
-#   kube-system                my-scheduler-7b5fcd755f-b8wf9                100m (0%)     0 (0%)      0 (0%)           0 (0%)
-#   user2                      user2-373                                    16 (33%)      16 (33%)    12Gi (9%)        12Gi (9%)
-# Allocated resources:
-#   (Total limits may be over 100 percent, i.e., overcommitted.)
-#   CPU Requests  CPU Limits  Memory Requests  Memory Limits
-#   ------------  ----------  ---------------  -------------
-#   16900m (35%)  16 (33%)    12Gi (9%)        12Gi (9%)
-# Events:         <none>
-# """
+            if IS_TEST:
+                p_status=0
+                mOutput="""Namespace                  Name                                                           CPU Requests  CPU Limits  Memory Requests  Memory Limits
+---------                  ----                                                           ------------  ----------  ---------------  -------------
+  kube-system                calico-node-f8trv                            250m (0%)     0 (0%)      0 (0%)           0 (0%)
+  kube-system                calico-policy-controller-5cf6666d98-958q6    0 (0%)        0 (0%)      0 (0%)           0 (0%)
+  kube-system                etcd-k80-1                                   0 (0%)        0 (0%)      0 (0%)           0 (0%)
+  kube-system                kube-apiserver-k80-1                         250m (0%)     0 (0%)      0 (0%)           0 (0%)
+  kube-system                kube-controller-manager-k80-1                200m (0%)     0 (0%)      0 (0%)           0 (0%)
+  kube-system                kube-proxy-kvhfk                             0 (0%)        0 (0%)      0 (0%)           0 (0%)
+  kube-system                kube-scheduler-k80-1                         100m (0%)     0 (0%)      0 (0%)           0 (0%)
+  kube-system                my-scheduler-7b5fcd755f-b8wf9                100m (0%)     0 (0%)      0 (0%)           0 (0%)
+  user2                      user2-373                                    16 (33%)      16 (33%)    12Gi (9%)        12Gi (9%)
+Allocated resources:
+  (Total limits may be over 100 percent, i.e., overcommitted.)
+  CPU Requests  CPU Limits  Memory Requests  Memory Limits
+  ------------  ----------  ---------------  -------------
+  16900m (35%)  16 (33%)    12Gi (9%)        12Gi (9%)
+Events:         <none>
+"""
             mLines= mOutput.split("\n")            
             for mLine in mLines[2:len(mLines)-1]:
                 if mLine.startswith('Allocated resources:'):
@@ -136,13 +140,17 @@ def captureResource(timeStep, writer):
                 memLimit=strArr[8]
                 memLimitPercent = strArr[9]
                 
-                row = [now, timeStep, user, podName, node, cpuReq, cpuLimit, memReq, memLimit]                            
+                row = [now, timeStep, user, podName, node, cpuReq, cpuLimit, memReq, memLimit]    
                 resRows.append(row)
         # if len(rows) > 0:
         #     writer.writerows(rows)
     if len(resRows) > 0 and timeStep % writeStep == 0:
         writer.writerows(resRows) 
         resRows[:]=[]
+
+if IS_TEST:
+    print("=====get_user_info_timer TEST MODE====")
+    sys.exit()
 
 if os.path.exists(file_name): 
     os.remove(file_name)

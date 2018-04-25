@@ -1,6 +1,7 @@
 #!/bin/bash
 #Usage: ./slavejoin.sh [token] [sha256] [masterIPaddress]
 #Assumes Kubernetes is already-installed using setupkubernetes.sh
+# kubeadm token create --print-join-command
 
 if [ -z "$1" ]
 then
@@ -22,6 +23,16 @@ then
 else
 	masterIPaddress="$3"
 fi
+
+# sudo iptables -F; sudo swapoff -a ;sudo free -m
+
+sudo docker rmi lenhattan86/bench
+sudo docker rmi lenhattan86/ira:cpu
+sudo docker rmi lenhattan86/ira:gpu
+
+sudo docker pull lenhattan86/bench
+sudo docker pull lenhattan86/ira:cpu
+sudo docker pull lenhattan86/ira:gpu
 
 sudo systemctl enable docker
 sudo systemctl start docker

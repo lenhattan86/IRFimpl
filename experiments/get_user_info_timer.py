@@ -18,6 +18,9 @@ from threading import Timer
 
 
 IS_TEST=False
+if IS_TEST:
+    print("=====get_user_info_timer TEST MODE====")
+    sys.exit()
 
 if not IS_TEST:
     parser = argparse.ArgumentParser()
@@ -30,11 +33,15 @@ if not IS_TEST:
     file_name = args['file']
     stop_time = int(args['stopTime'])
     writeStep=60
+    resCommandStep=10
+    resWriteStep=writeStep*resCommandStep
 else:
     interval=1
-    file_name="user1.csv"
+    file_name="pods.csv"
     stop_time=4
     writeStep=2
+    resCommandStep=2
+    resWriteStep=writeStep*resCommandStep
 
 podRows=[]
 resRows=[]
@@ -79,6 +86,13 @@ default       job-alexnet-cpu-1                          0/1       Completed   0
         podRows[:]=[]
 
 def captureResource(timeStep, writer):
+    if len(resRows) > 0 and timeStep % resWriteStep == 0:
+        writer.writerows(resRows) 
+        resRows[:]=[]
+    
+    if (timeStep-1) % resCommandStep != 0:
+        return
+
     now = datetime.datetime.now()        
     p = subprocess.Popen(["kubectl get node --no-headers -o custom-columns=NAME:.metadata.name"], 
         stdout=subprocess.PIPE, shell=True)                   
@@ -144,13 +158,11 @@ Events:         <none>
                 resRows.append(row)
         # if len(rows) > 0:
         #     writer.writerows(rows)
-    if len(resRows) > 0 and timeStep % writeStep == 0:
+    if len(resRows) > 0 and timeStep % (writeStep*10) == 0:
         writer.writerows(resRows) 
         resRows[:]=[]
 
-if IS_TEST:
-    print("=====get_user_info_timer TEST MODE====")
-    sys.exit()
+
 
 if os.path.exists(file_name): 
     os.remove(file_name)
@@ -169,5 +181,5 @@ while True:
     if (stop_time > 0 and mTime*interval > stop_time):        
         break
     Timer(mTime*interval, capture, [mTime, writer]).start()        
-    # Timer(mTime*interval, captureResource, [mTime, resWriter]).start()
+    Timer(mTime*interval, captureResource, [mTime, resWriter]).start()
     mTime = mTime + 1

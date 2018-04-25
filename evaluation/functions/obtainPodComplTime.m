@@ -33,6 +33,7 @@ function [ startTime, startRunTime, stopTime, conCreateTime, complTime ] = ...
         stopStep = steps(iTime);
         stopTime = datetime(dt(1:length(dt)-7),'InputFormat','yyyy-MM-dd HH:mm:ss');
         complTime = seconds(stopTime - startTime);
+        break
       end
     end
   end

@@ -99,7 +99,6 @@ sudo docker pull lenhattan86/bench
 sudo docker pull lenhattan86/ira:cpu
 sudo docker pull lenhattan86/ira:gpu
 
-
 # tensorflow
 #https://pypi.python.org/packages/1b/36/478c5cc40b280061130c30acad118940b442d35b36e11c7ffedd652db58f/tensorflow_gpu-1.1.0-cp27-cp27mu-manylinux1_x86_64.whl#md5=bd1bc90cbd2957947c16b08a4535bc21
 

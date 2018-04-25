@@ -22,10 +22,10 @@ for server in $slavesIP; do
 		$SSH_CMD $username@$server "echo hello $slavesIP" -y
 done	
 
-for server in $slavesIP; do
-	$SSH_CMD $username@$server 'bash -s' < ./setupkubernetes_gpu.sh &
-done	
-wait
+# for server in $slavesIP; do
+# 	$SSH_CMD $username@$server 'bash -s' < ./setupkubernetes_gpu.sh &
+# done	
+# wait
 
 # sudo sh -c "echo '127.0.0.1 $master' >> /etc/hosts"
 echo "Enter token:"

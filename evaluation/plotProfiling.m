@@ -8,8 +8,7 @@ extraStr='';
 figureSize=figSizeOneCol;
 
 %% load data
-% csv_file = 'profiling.csv';
-csv_file = 'user1.csv';
+csv_file = 'profiling.csv';
 CPU = '16';
 MEM = '12';
 NUM_THREAD = 16;
@@ -59,9 +58,9 @@ for iModel = 1:length(MODEL_NAMES)
         obtainPodComplTime(gpuPodName,  podnames,  statuses,  steps, datetimes );
     gpuCmplOverhead(iModel, iJob+1) = complTime;    
   end
-  if min(cpuCmplOverhead(iModel, :)) < 0
-    cpuCmplOverhead(iModel, :) = 0;
-  end
+%   if min(cpuCmplOverhead(iModel, :)) < 0
+%     cpuCmplOverhead(iModel, :) = 0;
+%   end
 end
 betasWithOverheads = mean(cpuCmplOverhead,2)./mean(gpuCmplOverhead,2);
 

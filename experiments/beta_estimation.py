@@ -21,7 +21,7 @@ MEM = 12
 
 
 JOB_NAMEs   = ['vgg16', 'lenet', 'googlenet', 'alexnet',  'resnet50', 'inception3']
-BatchNUms = [100, 1000, 100, 100, 100, 100]
+BatchNUms = [200, 1000, 200, 200, 200, 200]
 BatchSizes  = [32     ,  512    ,          32,      512,           64,           64]
 # JOB_NAMEs   = ['lenet', 'alexnet',]
 # BatchSizes  = [32, 512]

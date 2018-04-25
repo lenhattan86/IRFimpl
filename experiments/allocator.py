@@ -265,7 +265,7 @@ def Pricing(capacity, isFDRF, users):
         cpu = finalAlloc[i].MilliCPU * capacity.MilliCPU
         gpu = finalAlloc[i].NvidiaGPU * capacity.NvidiaGPU
         mem = finalAlloc[i].Memory * capacity.Memory
-        shares.append(Resource(int(cpu), int(mem), int(gpu)))
+        shares.append(Resource(int(cpu), int(mem), round(gpu)))
         # print(finalAlloc[i].toString())
     return shares
 

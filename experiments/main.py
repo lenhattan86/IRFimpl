@@ -40,7 +40,7 @@ def computeDemand_bk(jobs, capacity):
         demand.computation = (demand.computation + job.cpuProfile.demand.MilliCPU *  job.cpuProfile.compl) 
         gpuDemand = gpuDemand + job.gpuProfile.demand.NvidiaGPU *  job.gpuProfile.compl 
         demand.mem = demand.mem + job.cpuProfile.demand.Memory *  job.cpuProfile.compl
-        
+
     # normalize demands
     demand.computation = demand.computation / capacity.MilliCPU
     gpuDemand = gpuDemand / capacity.NvidiaGPU
@@ -75,7 +75,7 @@ def main():
 
     isOfficial = True
     if isOfficial:
-        capacity = Resource(372*1000, 312*GI, 12)
+        capacity = Resource(384*1000, 1152*GI, 12)
         workload = 'traces/evaluation'
         userStrArray = ["user1", "user2", "user3", "user4"]
         userJobNums = [1, 1, 1, 1]

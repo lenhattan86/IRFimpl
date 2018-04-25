@@ -25,13 +25,16 @@ parser.add_argument('--file', help='csv file', required=True)
 parser.add_argument('--stopTime', help='stop time (secs)', required=True)
 args = vars(parser.parse_args())
 
-interval = int(args['interval'])
+interval = float(args['interval'])
 file_name = args['file']
 stop_time = int(args['stopTime'])
 
 # interval=1
 # file_name="user1.csv"
 # stop_time=1
+
+podRows=[]
+resRows=[]
 
 def capture(timeStep, writer):
     now = datetime.datetime.now()        
@@ -52,8 +55,7 @@ def capture(timeStep, writer):
     if p_status != 0:        
         print 'Could not access the kubernetes'
     else:
-        lines=output.split("\n") 
-        rows=[]               
+        lines=output.split("\n")            
         for line in lines[1:len(lines)-1]:            
             strArr=line.split()            
             user=strArr[0]
@@ -64,11 +66,10 @@ def capture(timeStep, writer):
             if podStatus == "Pending":
                 continue    
             row = [now, timeStep, user, podName, podStatus]                            
-            rows.append(row)
+            podRows.append(row)
             # if (podStatus == "Completed") or (podStatus == "OOMKilled") or(podStatus == "Error"):
             #     completedJobs = completedJobs + 1
-        if len(rows) > 0:
-            writer.writerows(rows)
+        
 
 def captureResource(timeStep, writer):
     now = datetime.datetime.now()        
@@ -86,7 +87,7 @@ def captureResource(timeStep, writer):
         print 'Could not access the kubernetes'
     else:
         lines=output.split("\n")   
-        rows = []             
+        # rows = []             
         for line in lines[0:len(lines)-1]:            
             node=line
             nodeCmd = "kubectl describe node "+ node +" | sed '1,/Non-terminated Pods/d'"
@@ -132,9 +133,9 @@ def captureResource(timeStep, writer):
                 memLimitPercent = strArr[9]
                 
                 row = [now, timeStep, user, podName, node, cpuReq, cpuLimit, memReq, memLimit]                            
-                rows.append(row)
-        if len(rows) > 0:
-            writer.writerows(rows)
+                resRows.append(row)
+        # if len(rows) > 0:
+        #     writer.writerows(rows)
 
 
 if os.path.exists(file_name): 
@@ -156,3 +157,8 @@ while True:
     Timer(mTime*interval, capture, [mTime, writer]).start()        
     Timer(mTime*interval, captureResource, [mTime, resWriter]).start()
     mTime = mTime + 1
+
+if len(podRows) > 0:
+    writer.writerows(podRows)    
+if len(resRows) > 0:
+    resWriter.writerows(resRows)

@@ -12,7 +12,7 @@ csv_file = 'profiling.csv';
 CPU = '16';
 MEM = '12';
 NUM_THREAD = 16;
-NUM_JOBS = 3;
+NUM_JOBS = 12;
 MODEL_NAMES   = {'vgg16', 'googlenet', 'alexnet',  'inception3'};
 BATCH_SIZEs    =  [32     ,  16        ,        64,         16];
 % TAR_FILE      = 'profiling_3.tar.gz';
@@ -29,9 +29,7 @@ end
 untar([MAIN_FOLDER '/' TAR_FILE], [MAIN_FOLDER]);
 FOLDER = [MAIN_FOLDER '/' subfolder];
 
-
 %%
-
 [datetimes,steps,users,podnames,statuses] = importUserInfo([MAIN_FOLDER '/' subfolder '/' csv_file]);
 
 uniquePodnames = cell(1,0);
@@ -65,6 +63,7 @@ for iModel = 1:length(MODEL_NAMES)
   end
 end
 betasWithOverheads = mean(cpuCmplOverhead,2)./mean(gpuCmplOverhead,2);
+
 %%
 try
    rmdir([MAIN_FOLDER '/' subfolder],'s');

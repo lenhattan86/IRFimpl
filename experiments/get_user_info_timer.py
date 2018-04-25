@@ -19,19 +19,19 @@ from threading import Timer
 
 IS_TEST=False
 
-parser = argparse.ArgumentParser()
-parser.add_argument('--interval', help='Polling interval  (secs)', required=True)
-parser.add_argument('--file', help='csv file', required=True)
-parser.add_argument('--stopTime', help='stop time (secs)', required=True)
-args = vars(parser.parse_args())
+# parser = argparse.ArgumentParser()
+# parser.add_argument('--interval', help='Polling interval  (secs)', required=True)
+# parser.add_argument('--file', help='csv file', required=True)
+# parser.add_argument('--stopTime', help='stop time (secs)', required=True)
+# args = vars(parser.parse_args())
 
-interval = float(args['interval'])
-file_name = args['file']
-stop_time = int(args['stopTime'])
+# interval = float(args['interval'])
+# file_name = args['file']
+# stop_time = int(args['stopTime'])
 
-# interval=1
-# file_name="user1.csv"
-# stop_time=1
+interval=1
+file_name="user1.csv"
+stop_time=1
 
 podRows=[]
 resRows=[]
@@ -73,6 +73,7 @@ def capture(timeStep, writer):
 
     if len(podRows) > 0 and timeStep % writeStep == 0:
         writer.writerows(podRows) 
+        podRows[:]=[]
 
 def captureResource(timeStep, writer):
     now = datetime.datetime.now()        
@@ -141,6 +142,7 @@ def captureResource(timeStep, writer):
         #     writer.writerows(rows)
     if len(resRows) > 0 and timeStep % writeStep == 0:
         writer.writerows(resRows) 
+        resRows[:]=[]
 
 if os.path.exists(file_name): 
     os.remove(file_name)
@@ -159,5 +161,5 @@ while True:
     if (stop_time > 0 and mTime*interval > stop_time):        
         break
     Timer(mTime*interval, capture, [mTime, writer]).start()        
-    Timer(mTime*interval, captureResource, [mTime, resWriter]).start()
+    # Timer(mTime*interval, captureResource, [mTime, resWriter]).start()
     mTime = mTime + 1

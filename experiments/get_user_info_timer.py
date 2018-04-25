@@ -35,6 +35,7 @@ stop_time = int(args['stopTime'])
 
 podRows=[]
 resRows=[]
+writeStep=60
 
 def capture(timeStep, writer):
     now = datetime.datetime.now()        
@@ -69,7 +70,9 @@ def capture(timeStep, writer):
             podRows.append(row)
             # if (podStatus == "Completed") or (podStatus == "OOMKilled") or(podStatus == "Error"):
             #     completedJobs = completedJobs + 1
-        
+
+    if len(podRows) > 0 and timeStep % writeStep == 0:
+        writer.writerows(podRows) 
 
 def captureResource(timeStep, writer):
     now = datetime.datetime.now()        
@@ -136,7 +139,8 @@ def captureResource(timeStep, writer):
                 resRows.append(row)
         # if len(rows) > 0:
         #     writer.writerows(rows)
-
+    if len(resRows) > 0 and timeStep % writeStep == 0:
+        writer.writerows(resRows) 
 
 if os.path.exists(file_name): 
     os.remove(file_name)
@@ -157,8 +161,3 @@ while True:
     Timer(mTime*interval, capture, [mTime, writer]).start()        
     Timer(mTime*interval, captureResource, [mTime, resWriter]).start()
     mTime = mTime + 1
-
-if len(podRows) > 0:
-    writer.writerows(podRows)    
-if len(resRows) > 0:
-    resWriter.writerows(resRows)

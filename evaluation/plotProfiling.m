@@ -15,9 +15,10 @@ NUM_THREAD = 16;
 NUM_JOBS = 3;
 MODEL_NAMES   = {'vgg16', 'googlenet', 'alexnet',  'inception3'};
 BATCH_SIZEs    =  [32     ,  16        ,        64,         16];
+% TAR_FILE      = 'profiling_3.tar.gz';
 TAR_FILE      = 'profiling.tar.gz';
-MAIN_FOLDER = 'awscloudlab/profiling';
-subfolder   = 'profiling';
+MAIN_FOLDER   = 'awscloudlab/profiling';
+subfolder     = 'profiling';
 %%
 try
    rmdir([MAIN_FOLDER '/' subfolder],'s');
@@ -28,26 +29,6 @@ end
 untar([MAIN_FOLDER '/' TAR_FILE], [MAIN_FOLDER]);
 FOLDER = [MAIN_FOLDER '/' subfolder];
 
-cpuCmpl = zeros(length(MODEL_NAMES), NUM_JOBS);
-gpuCmpl = zeros(length(MODEL_NAMES), NUM_JOBS);
-
-betas = zeros(length(MODEL_NAMES), NUM_JOBS);
-
-for iModel = 1:length(MODEL_NAMES)
-  for iJob = 0:NUM_JOBS-1
-    strCommon = [num2str(CPU) '-' num2str(MEM) '-' num2str(BATCH_SIZEs(iModel)) '-' num2str(NUM_THREAD) '-' num2str(iJob)];
-    % read cpu    
-    cpuLogFile = [FOLDER '/' MODEL_NAMES{iModel} '-cpu-' strCommon '.log'];
-    cpuCmpl(iModel, iJob+1) = getComplFromLog(cpuLogFile);
-    % read gpu
-    gpuLogFile = [FOLDER '/' MODEL_NAMES{iModel} '-gpu-' strCommon '.log'];
-    gpuCmpl(iModel, iJob+1) = getComplFromLog(gpuLogFile);
-  end
-  if min(cpuCmpl(iModel, :)) < 0
-    cpuCmpl(iModel, :) = 0;
-  end
-end
-betas = mean(cpuCmpl,2)./mean(gpuCmpl,2);
 
 %%
 
@@ -90,32 +71,9 @@ try
 catch fileIO
    error('no directories to be deleted');
 end
-%% plots
-if plots(1) 
-  figure;
-  
-  xLabels = MODEL_NAMES;
-  
-  %https://github.com/minimaxir/deep-learning-cpu-gpu-benchmark
-  
-  hBar=bar(betas, 0.5, 'EdgeColor','none');  
-  %barColors={colorBursty0};   set(hBar,{'FaceColor'},barColors);   
-  xlim([0.5 length(betas)+0.5]);
-%   xlabel('workloads'); 
-  ylabel('speedup rates ');
-  set(gca,'xticklabel',xLabels, 'FontSize',fontAxis-1);
-%   set(gca,'YScale','log');
-  set (gcf, 'Units', 'Inches', 'Position', figureSize, 'PaperUnits', 'inches', 'PaperPosition', figureSize);  
-  if is_printed   
-    figIdx=figIdx +1;
-    fileNames{figIdx} = [extraStr 'beta_mov'];        
-    epsFile = [ LOCAL_FIG fileNames{figIdx} '.eps'];
-    print ('-depsc', epsFile);
-  end
-end
 
 %%
-if plots(2) 
+if plots(1) 
   figure;
   
   xLabels = MODEL_NAMES;  
@@ -138,9 +96,6 @@ if plots(2)
 end
 
 %%
-cpuOverheads  = cpuCmplOverhead - cpuCmpl;
-gpuOverheads = gpuCmplOverhead - gpuCmpl;
-
 mean(cpuCmplOverhead,2)
 mean(gpuCmplOverhead,2)
 return;

@@ -17,6 +17,8 @@ import sched
 from threading import Timer
 
 
+IS_TEST=False
+
 parser = argparse.ArgumentParser()
 parser.add_argument('--interval', help='Polling interval  (secs)', required=True)
 parser.add_argument('--file', help='csv file', required=True)
@@ -45,12 +47,13 @@ def capture(timeStep, writer):
 # """
 #     p_status=0    
 
-    completedJobs = 0
+    # completedJobs = 0
     # time_step = time_step + interval
     if p_status != 0:        
         print 'Could not access the kubernetes'
     else:
-        lines=output.split("\n")                
+        lines=output.split("\n") 
+        rows=[]               
         for line in lines[1:len(lines)-1]:            
             strArr=line.split()            
             user=strArr[0]
@@ -61,10 +64,11 @@ def capture(timeStep, writer):
             if podStatus == "Pending":
                 continue    
             row = [now, timeStep, user, podName, podStatus]                            
-            writer.writerow(row)
-            if (podStatus == "Completed") or (podStatus == "OOMKilled") or(podStatus == "Error"):
-                completedJobs = completedJobs + 1
-
+            rows.append(row)
+            # if (podStatus == "Completed") or (podStatus == "OOMKilled") or(podStatus == "Error"):
+            #     completedJobs = completedJobs + 1
+        if len(rows) > 0:
+            writer.writerows(rows)
 
 def captureResource(timeStep, writer):
     now = datetime.datetime.now()        
@@ -81,16 +85,19 @@ def captureResource(timeStep, writer):
     if p_status != 0:        
         print 'Could not access the kubernetes'
     else:
-        lines=output.split("\n")                
-        for line in lines[1:len(lines)-1]:            
+        lines=output.split("\n")   
+        rows = []             
+        for line in lines[0:len(lines)-1]:            
             node=line
-            nodeCmd = "kubectl describe node "+ node +" | sed '1,/kube-system/d'"
+            nodeCmd = "kubectl describe node "+ node +" | sed '1,/Non-terminated Pods/d'"
             p = subprocess.Popen([nodeCmd], 
                 stdout=subprocess.PIPE, shell=True)                   
             (mOutput, err) = p.communicate()    
             p_status = p.wait() 
 #             p_status=0
-#             mOutput="""kube-system                calico-node-f8trv                            250m (0%)     0 (0%)      0 (0%)           0 (0%)
+#             mOutput="""Namespace                  Name                                                           CPU Requests  CPU Limits  Memory Requests  Memory Limits
+# ---------                  ----                                                           ------------  ----------  ---------------  -------------
+#   kube-system                calico-node-f8trv                            250m (0%)     0 (0%)      0 (0%)           0 (0%)
 #   kube-system                calico-policy-controller-5cf6666d98-958q6    0 (0%)        0 (0%)      0 (0%)           0 (0%)
 #   kube-system                etcd-k80-1                                   0 (0%)        0 (0%)      0 (0%)           0 (0%)
 #   kube-system                kube-apiserver-k80-1                         250m (0%)     0 (0%)      0 (0%)           0 (0%)
@@ -106,8 +113,8 @@ def captureResource(timeStep, writer):
 #   16900m (35%)  16 (33%)    12Gi (9%)        12Gi (9%)
 # Events:         <none>
 # """
-            mLines= mOutput.split("\n")
-            for mLine in mLines[0:len(mLines)-1]:
+            mLines= mOutput.split("\n")            
+            for mLine in mLines[2:len(mLines)-1]:
                 if mLine.startswith('Allocated resources:'):
                     break                                    
                 strArr=mLine.split()            
@@ -125,7 +132,9 @@ def captureResource(timeStep, writer):
                 memLimitPercent = strArr[9]
                 
                 row = [now, timeStep, user, podName, node, cpuReq, cpuLimit, memReq, memLimit]                            
-                writer.writerow(row)
+                rows.append(row)
+        if len(rows) > 0:
+            writer.writerows(rows)
 
 
 if os.path.exists(file_name): 

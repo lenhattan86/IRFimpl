@@ -19,19 +19,19 @@ from threading import Timer
 
 IS_TEST=False
 
-# parser = argparse.ArgumentParser()
-# parser.add_argument('--interval', help='Polling interval  (secs)', required=True)
-# parser.add_argument('--file', help='csv file', required=True)
-# parser.add_argument('--stopTime', help='stop time (secs)', required=True)
-# args = vars(parser.parse_args())
+parser = argparse.ArgumentParser()
+parser.add_argument('--interval', help='Polling interval  (secs)', required=True)
+parser.add_argument('--file', help='csv file', required=True)
+parser.add_argument('--stopTime', help='stop time (secs)', required=True)
+args = vars(parser.parse_args())
 
-# interval = float(args['interval'])
-# file_name = args['file']
-# stop_time = int(args['stopTime'])
+interval = float(args['interval'])
+file_name = args['file']
+stop_time = int(args['stopTime'])
 
-interval=1
-file_name="user1.csv"
-stop_time=1
+# interval=1
+# file_name="user1.csv"
+# stop_time=1
 
 podRows=[]
 resRows=[]

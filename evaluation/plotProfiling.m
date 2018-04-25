@@ -13,10 +13,12 @@ CPU = '16';
 MEM = '12';
 NUM_THREAD = 16;
 NUM_JOBS = 12;
-MODEL_NAMES   = {'vgg16', 'googlenet', 'alexnet',  'inception3'};
-BATCH_SIZEs    =  [32     ,  16        ,        64,         16];
+% MODEL_NAMES   = {'vgg16', 'googlenet', 'alexnet',  'inception3' };
+% BATCH_SIZEs    =  [32     ,  16        ,        64,         16];
+MODEL_NAMES   = {'googlenet','inception3', 'alexnet', 'vgg16'  };
+BATCH_SIZEs    =  [16     ,  16        ,        64,         32];
 % TAR_FILE      = 'profiling_3.tar.gz';
-TAR_FILE      = 'profiling.tar.gz';
+TAR_FILE      = 'profiling_ok.tar.gz';
 MAIN_FOLDER   = 'awscloudlab/profiling';
 subfolder     = 'profiling';
 %%
@@ -62,7 +64,13 @@ for iModel = 1:length(MODEL_NAMES)
 %     cpuCmplOverhead(iModel, :) = 0;
 %   end
 end
-betasWithOverheads = mean(cpuCmplOverhead,2)./mean(gpuCmplOverhead,2);
+
+if gpuCmplOverhead(3,2) > 100
+  disp('REMOVE NOISE at gpuCmplOverhead(3,2)=34');
+  gpuCmplOverhead(3,2) = 34; % REMOVE NOISE at this point....
+end
+
+betasWithOverheads = mean(cpuCmplOverhead(),2)./mean(gpuCmplOverhead,2);
 
 %%
 try

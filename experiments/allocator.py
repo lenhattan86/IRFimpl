@@ -33,12 +33,12 @@ def DRF(capacity, isFDRF, users):
             resDemand.NvidiaGPU = float(user.demand.computation)  / (1.0 + float(user.demand.beta)) 
             resDemand.Memory = user.demand.mem
         
-        print("resDemand: " + resDemand.toString())
+        # print("resDemand: " + resDemand.toString())
 
         normalizedDemand[0] = float(resDemand.MilliCPU) 
         normalizedDemand[1] = float(resDemand.Memory) 
         normalizedDemand[2] = float(resDemand.NvidiaGPU) 
-        print("normalized demand: " + str(normalizedDemand))
+        # print("normalized demand: " + str(normalizedDemand))
 
         demands.append(resDemand)   
 

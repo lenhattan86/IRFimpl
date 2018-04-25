@@ -11,17 +11,7 @@ this_path = os.path.dirname(os.path.realpath(__file__))
 Gi = 1024*1024*1024
 MILLI=1000
 
-NUM_NODES = 2
-NUM_PHY_CPU_PER_NODE = 2
-NUM_CORES_PER_CPU = 22 # max cpu - 1 - num(gpus a node)/cpus
-NUM_PHY_GPU_PER_NODE = 2
-MEM_PER_NODE = 120 * Gi #134956859392 bytes
-
-CPU_OVERHEADS = 0
-MEM_OVERHEADS = 0
-
-
-       
+      
 def createDRFExperiement():
     print('DRF experiemnts')
     ## for DRF134956859392
@@ -62,23 +52,23 @@ def computeDemand(jobs, capacity):
 
 def main():
     
-    # capacity = Resource(48000, 128*1024*1024, 4)
-    CPU = NUM_NODES* NUM_PHY_CPU_PER_NODE * NUM_CORES_PER_CPU
-    GPU = NUM_NODES* NUM_PHY_GPU_PER_NODE
-    MEM = MEM_PER_NODE * NUM_NODES
-    # capacity = Resource(10000, 128, 12)
-    capacity = Resource(CPU*1000, MEM, GPU)
-    # scheduler='kube-scheduler'
     scheduler='my-scheduler'
     isQueuedUp = True
     isBestFit = False # MUST BE False
+
+    startLogTime = 0
+    stopTime = 9000
+    extraTime = 30*60 # 30 minutes
+    monitor_time = int(stopTime + extraTime)
+    interval = 1
 
     isOfficial = True
     if isOfficial:
         capacity = Resource(384*1000, 1152*GI, 12)
         workload = 'traces/evaluation'
         userStrArray = ["user1", "user2", "user3", "user4"]
-        userJobNums = [1, 1, 1, 1]
+        jobRepNums = [2000, 2000, 2000, 2000]
+        userJobNums = [2000, 2000, 2000, 2000]
         traditionalDemands=[]
         traditionalDemands.append(Resource(1000,12*GI, 1))
         traditionalDemands.append(Resource(1000,12*GI, 1))
@@ -95,15 +85,12 @@ def main():
     users = []
     
     
-    startLogTime = 0
-    stopTime = 4000
-    extraTime = 30*60 # 30 minutes
-    monitor_time = int(stopTime + extraTime)
-    interval = 1
+    
 
-    for strUser in userStrArray:
+    for i in range(len(userStrArray)):
+        strUser=userStrArray[i]
         # print("read " + strUser)
-        jobs = readJobs(this_path+"/"+workload, strUser+".txt")        
+        jobs = readJobs(this_path+"/"+workload, strUser+".txt", jobRepNums[i])        
         # compute betas
         demand = computeDemand(jobs, capacity)
         print(demand.toString())
@@ -117,9 +104,9 @@ def main():
     for i in range(len(users)):
     # for i in range(1):
         user = users[i]
-        jobs = user.jobs[1:userJobNums[i]]
+        jobs = user.jobs[0:userJobNums[i]]
         loggedJobs = toActiveJobs(jobs) 
-        print("Prepare the jobs for " + user.username + ": " + str(userJobNums[i])) 
+        #print("Prepare the jobs for " + user.username + ": " + str(userJobNums[i])) 
         prepareKubernetesJobs(user.username, scheduler, expFolder, loggedJobs, isQueuedUp)  
     
     # return
@@ -140,9 +127,9 @@ def main():
         if isBestFit:
             prepareKubernetesJobs(user.username, scheduler, expFolder, loggedJobs, isQueuedUp) 
         else:
-            jobs = user.jobs[1:userJobNums[i]]
+            jobs = user.jobs[0:userJobNums[i]]
             loggedJobs = toActiveJobs(jobs) 
-            print("Prepare the jobs for " + user.username + ": " + str(userJobNums[i])) 
+            #print("Prepare the jobs for " + user.username + ": " + str(userJobNums[i])) 
             prepareKubernetesJobs(user.username, scheduler, expFolder, loggedJobs, isQueuedUp)         
 
     # print("====================== DRF ALLOCATION =====================")
@@ -161,9 +148,9 @@ def main():
     #     if isBestFit:  
     #         prepareKubernetesJobs(user.username, scheduler, expFolder, loggedJobs, isQueuedUp)  
     #     else:
-    #         jobs = user.jobs[1:userJobNums[i]]
+    #         jobs = user.jobs[0:userJobNums[i]]
     #         loggedJobs = toActiveJobs(jobs) 
-    #         print("Prepare the jobs for " + user.username + ": " + str(userJobNums[i])) 
+    #         #print("Prepare the jobs for " + user.username + ": " + str(userJobNums[i])) 
     #         prepareKubernetesJobs(user.username, scheduler, expFolder, loggedJobs, isQueuedUp)     
 
     print("====================== Naive DRF ALLOCATION =====================")
@@ -182,9 +169,9 @@ def main():
         if isBestFit: 
             prepareKubernetesJobs(user.username, scheduler, expFolder, loggedJobs, isQueuedUp)
         else:
-            jobs = user.jobs[1:userJobNums[i]]
+            jobs = user.jobs[0:userJobNums[i]]
             loggedJobs = toActiveJobs(jobs) 
-            print("Prepare the jobs for " + user.username + ": " + str(userJobNums[i])) 
+            #print("Prepare the jobs for " + user.username + ": " + str(userJobNums[i])) 
             prepareKubernetesJobs(user.username, scheduler, expFolder, loggedJobs, isQueuedUp)       
 
     if not isOfficial:
@@ -204,9 +191,9 @@ def main():
             if isBestFit:
                 prepareKubernetesJobs(user.username, scheduler, expFolder, loggedJobs, isQueuedUp) 
             else:
-                jobs = user.jobs[1:userJobNums[i]]
+                jobs = user.jobs[0:userJobNums[i]]
                 loggedJobs = toActiveJobs(jobs) 
-                print("Prepare the jobs for " + user.username + ": " + str(userJobNums[i])) 
+                #print("Prepare the jobs for " + user.username + ": " + str(userJobNums[i])) 
                 prepareKubernetesJobs(user.username, scheduler, expFolder, loggedJobs, isQueuedUp)      
 
         print("====================== Static2 ALLOCATION =====================")
@@ -225,9 +212,9 @@ def main():
             if isBestFit:
                 prepareKubernetesJobs(user.username, scheduler, expFolder, loggedJobs, isQueuedUp)
             else:
-                jobs = user.jobs[1:userJobNums[i]]
+                jobs = user.jobs[0:userJobNums[i]]
                 loggedJobs = toActiveJobs(jobs) 
-                print("Prepare the jobs for " + user.username + ": " + str(userJobNums[i])) 
+                #print("Prepare the jobs for " + user.username + ": " + str(userJobNums[i])) 
                 prepareKubernetesJobs(user.username, scheduler, expFolder, loggedJobs, isQueuedUp)             
 
     print("====================== FDRF ALLOCATION =====================")
@@ -246,9 +233,9 @@ def main():
         if isBestFit:
             prepareKubernetesJobs(user.username, scheduler, expFolder, loggedJobs, isQueuedUp)  
         else:
-            jobs = user.jobs[1:userJobNums[i]]
+            jobs = user.jobs[0:userJobNums[i]]
             loggedJobs = toActiveJobs(jobs) 
-            print("Prepare the jobs for " + user.username + ": " + str(userJobNums[i])) 
+            #print("Prepare the jobs for " + user.username + ": " + str(userJobNums[i])) 
             prepareKubernetesJobs(user.username, scheduler, expFolder, loggedJobs, isQueuedUp)     
 
 
@@ -268,9 +255,9 @@ def main():
         if isBestFit:
             prepareKubernetesJobs(user.username, scheduler, expFolder, loggedJobs, isQueuedUp) 
         else:
-            jobs = user.jobs[1:userJobNums[i]]
+            jobs = user.jobs[0:userJobNums[i]]
             loggedJobs = toActiveJobs(jobs) 
-            print("Prepare the jobs for " + user.username + ": " + str(userJobNums[i])) 
+            #print("Prepare the jobs for " + user.username + ": " + str(userJobNums[i])) 
             prepareKubernetesJobs(user.username, scheduler, expFolder, loggedJobs, isQueuedUp)      
 
 

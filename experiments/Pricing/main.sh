@@ -13,4 +13,4 @@ kubectl create -f user4.yaml
 ./user2.sh &
 ./user3.sh &
 ./user4.sh &
-sleep 0; python ../get_user_info_timer.py  --interval=1 --stopTime=5800 --file=pods.csv 
+sleep 0; python ../get_user_info_timer.py  --interval=1 --stopTime=10800 --file=pods.csv 

@@ -56,7 +56,7 @@ class JobProfile:
 
 JOB_LINES = 4
 Gi = 1024*1024*1024
-def readJobs(this_path, jobFile):    
+def readJobs(this_path, jobFile, numRepJobs):    
     # try:
     f = open(this_path + '/' + jobFile)
     # except:
@@ -103,6 +103,13 @@ def readJobs(this_path, jobFile):
                 jobId = jobId + 1
                 
                 jobLineCount = 0                
+    if numRepJobs > 0 and len(jobs)>0:
+        mJob=jobs[0] 
+        jobIdStart = len(jobs)       
+        for i in range(0,numRepJobs-1):
+            jobId= jobIdStart + i
+            newJob = Job(jobId, mJob.cpuProfile, mJob.gpuProfile, mJob.beta)
+            jobs.append(newJob)
 
     f.close()
     return jobs

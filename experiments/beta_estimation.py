@@ -102,13 +102,13 @@ def shellJobs(job_folder, job_number, cmd, fileName):
 
                 # submit these two jobs
                 strShell = strShell + "sleep 5 \n" 
-                # strShell = strShell + "kubectl create -f "+ fNameCpu +".yaml 2> " + fNameCpu +".log \n" 
-                strShell = strShell + "kubectl create -f "+ fNameGpu +".yaml 2> " + fNameGpu +".log \n" 
+                strShell = strShell + "kubectl create -f "+ fNameCpu +".yaml 2> " + fNameCpu +".log \n" 
+                # strShell = strShell + "kubectl create -f "+ fNameGpu +".yaml 2> " + fNameGpu +".log \n" 
 
                 # log the pod
 
-                # strLogShell = strLogShell + "kubectl logs job-"+ cpuJobId +"> " + fNameCpu +".log \n" 
-                strLogShell = strLogShell + "kubectl logs job-"+ gpuJobId +"> " + fNameGpu +".log \n" 
+                strLogShell = strLogShell + "kubectl logs job-"+ cpuJobId +"> " + fNameCpu +".log \n" 
+                # strLogShell = strLogShell + "kubectl logs job-"+ gpuJobId +"> " + fNameGpu +".log \n" 
 
     shellFile = job_folder + "/" + fileName + ".sh"
     f = open(shellFile,'w')

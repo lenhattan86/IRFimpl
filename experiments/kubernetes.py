@@ -110,15 +110,16 @@ def prepareKubernetesJobs(username, scheduler, expFolder, loggedJobs, isQueuedUp
         # print("job "  + str(jobId))
         if isQueuedUp:
             interarrival = 0
-            if jobId % 24 == 0:
-                strShell = strShell + "sleep "+str(10)+"; "
+            # if jobId % 9 == 0:
+            strShell = strShell + "sleep "+str(10)+"; "
         else:
             interarrival = job.startTime - arrivalTime
             if interarrival > 0:
                 interarrival = max(1, interarrival*0.85)
                 strShell = strShell + "sleep "+str(interarrival)+"; "
 
-        strShell = strShell + "kubectl --namespace=\""+username+"\" create -f "+ username +"-"+str(jobId) +".yaml 2> " + username +"-"+str(jobId) +".log & \n"
+        # strShell = strShell + "kubectl --namespace=\""+username+"\" create -f "+ username +"-"+str(jobId) +".yaml 2> " + username +"-"+str(jobId) +".log & \n"
+        strShell = strShell + "kubectl --namespace=\""+username+"\" create -f "+ username +"-"+str(jobId) +".yaml \n"
         arrivalTime = job.startTime
 
     strShell = strShell + "wait"

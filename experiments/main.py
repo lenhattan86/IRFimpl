@@ -57,7 +57,7 @@ def main():
     isBestFit = False # MUST BE False
 
     startLogTime = 0
-    stopTime = 9000
+    stopTime = 600
     extraTime = 30*60 # 30 minutes
     monitor_time = int(stopTime + extraTime)
     interval = 1
@@ -68,7 +68,8 @@ def main():
         workload = 'traces/evaluation'
         userStrArray = ["user1", "user2", "user3", "user4"]
         jobRepNums = [2000, 2000, 2000, 2000]
-        userJobNums = [2000, 2000, 2000, 2000]
+        userJobNums = [250, 250, 250, 250]
+        userJobNums = [10, 10, 10, 10]
         traditionalDemands=[]
         traditionalDemands.append(Resource(1000,12*GI, 1))
         traditionalDemands.append(Resource(1000,12*GI, 1))

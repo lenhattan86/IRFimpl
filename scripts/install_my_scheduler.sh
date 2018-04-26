@@ -68,7 +68,7 @@ spec:
 
 kubectl create clusterrolebinding --user system:serviceaccount:kube-system:default kube-system-cluster-admin --clusterrole cluster-admin
 kubectl create -f $yamlFile
-kubectl get pods --all-namespaces
+kubectl get pods -n kube-system
 echo "kubectl get pods --all-namespaces"
 echo "kubectl logs --namespace=kube-system [pod name]"
 

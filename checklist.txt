@@ -1,0 +1,4 @@
+1. var namespaces = []string{"user1", "user2", "user3", "user4"}
+2. var CAPACITY = schedulercache.Resource{MilliCPU: 384 * 1000, Memory: 1152 * GI, NvidiaGPU: 12}
+3. getTraditionalDemand
+4. getDemand

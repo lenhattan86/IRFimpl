@@ -83,7 +83,7 @@ default       job-alexnet-cpu-1                          0/1       Completed   0
             # if (podStatus == "Completed") or (podStatus == "OOMKilled") or(podStatus == "Error"):
             #     completedJobs = completedJobs + 1
     with threading.Lock():
-        podRows.append(rows)
+        podRows.extend(rows)
         if len(podRows) > 0 and timeStep % writeStep == 0:
             writer.writerows(podRows) 
             podRows[:]=[]
@@ -161,7 +161,7 @@ Events:         <none>
         # if len(rows) > 0:
         #     writer.writerows(rows)
     with threading.Lock():
-        resRows.append(rows)
+        resRows.extend(rows)
         if len(resRows) > 0 and timeStep % resWriteStep == 0:
             writer.writerows(resRows) 
             resRows[:]=[]

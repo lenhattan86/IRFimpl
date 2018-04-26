@@ -49,6 +49,7 @@ resRows=[]
 
 
 def capture(timeStep, writer):
+    rows=[]
     now = datetime.datetime.now()        
     # p = subprocess.Popen(["kubectl get pods --all-namespaces --field-selector=status.phase!=Pending"], 
     p = subprocess.Popen(["kubectl get pods --all-namespaces"], 
@@ -77,23 +78,21 @@ default       job-alexnet-cpu-1                          0/1       Completed   0
             podStatus=strArr[3]
             if podStatus == "Pending":
                 continue    
-            row = [now, timeStep, user, podName, podStatus]                            
-            podRows.append(row)
+            row = [now, timeStep, user, podName, podStatus] 
+            rows.append(row) 
             # if (podStatus == "Completed") or (podStatus == "OOMKilled") or(podStatus == "Error"):
             #     completedJobs = completedJobs + 1
     with threading.Lock():
+        podRows.append(rows)
         if len(podRows) > 0 and timeStep % writeStep == 0:
             writer.writerows(podRows) 
             podRows[:]=[]
 
 def captureResource(timeStep, writer):
-    if len(resRows) > 0 and timeStep % resWriteStep == 0:
-        writer.writerows(resRows) 
-        resRows[:]=[]
-    
-    if (timeStep-1) % resCommandStep != 0:
+    if timeStep % resCommandStep != 0:
         return
 
+    rows = []
     now = datetime.datetime.now()        
     p = subprocess.Popen(["kubectl get node --no-headers -o custom-columns=NAME:.metadata.name"], 
         stdout=subprocess.PIPE, shell=True)                   
@@ -130,7 +129,9 @@ k80-2
   kube-system                kube-scheduler-k80-1                         100m (0%)     0 (0%)      0 (0%)           0 (0%)
   kube-system                my-scheduler-7b5fcd755f-b8wf9                100m (0%)     0 (0%)      0 (0%)           0 (0%)
   user2                      user2-373                                    16 (33%)      16 (33%)    12Gi (9%)        12Gi (9%)
-Allocated resources:
+Allocated resources:if len(resRows) > 0 and timeStep % resWriteStep == 0:
+        writer.writerows(resRows) 
+        resRows[:]=[]
   (Total limits may be over 100 percent, i.e., overcommitted.)
   CPU Requests  CPU Limits  Memory Requests  Memory Limits
   ------------  ----------  ---------------  -------------
@@ -156,10 +157,11 @@ Events:         <none>
                 memLimitPercent = strArr[9]
                 
                 row = [now, timeStep, user, podName, node, cpuReq, cpuLimit, memReq, memLimit]    
-                resRows.append(row)
+                rows.append(row) 
         # if len(rows) > 0:
         #     writer.writerows(rows)
     with threading.Lock():
+        resRows.append(rows)
         if len(resRows) > 0 and timeStep % resWriteStep == 0:
             writer.writerows(resRows) 
             resRows[:]=[]

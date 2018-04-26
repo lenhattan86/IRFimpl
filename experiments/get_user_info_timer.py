@@ -91,7 +91,7 @@ default       job-alexnet-cpu-1                          0/1       Completed   0
 def captureResource(timeStep, writer):
     if timeStep % resCommandStep != 0:
         return
-
+        
     rows = []
     now = datetime.datetime.now()        
     p = subprocess.Popen(["kubectl get node --no-headers -o custom-columns=NAME:.metadata.name"], 

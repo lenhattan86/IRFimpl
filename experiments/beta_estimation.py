@@ -13,7 +13,7 @@ benchmarks = "tf_cnn_benchmarks.py"
 
 # https://www.tensorflow.org/performance/benchmarks
 
-NUM_JOBS = 20
+NUM_JOBS = 3
 GPU_CPU = 1
 CPU = 16
 NUM_THREADs = 16

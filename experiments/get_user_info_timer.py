@@ -18,7 +18,7 @@ from threading import Timer
 import threading
 
 
-# IS_TEST=False
+IS_TEST=False
 if IS_TEST:
     print("=====get_user_info_timer TEST MODE====")
     sys.exit()

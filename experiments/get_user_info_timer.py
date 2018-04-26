@@ -15,6 +15,7 @@ from time import time
 from time import sleep
 import sched
 from threading import Timer
+import threading
 
 
 IS_TEST=False
@@ -80,10 +81,10 @@ default       job-alexnet-cpu-1                          0/1       Completed   0
             podRows.append(row)
             # if (podStatus == "Completed") or (podStatus == "OOMKilled") or(podStatus == "Error"):
             #     completedJobs = completedJobs + 1
-
-    if len(podRows) > 0 and timeStep % writeStep == 0:
-        writer.writerows(podRows) 
-        podRows[:]=[]
+    with threading.Lock():
+        if len(podRows) > 0 and timeStep % writeStep == 0:
+            writer.writerows(podRows) 
+            podRows[:]=[]
 
 def captureResource(timeStep, writer):
     if len(resRows) > 0 and timeStep % resWriteStep == 0:
@@ -158,11 +159,10 @@ Events:         <none>
                 resRows.append(row)
         # if len(rows) > 0:
         #     writer.writerows(rows)
-    if len(resRows) > 0 and timeStep % resWriteStep == 0:
-        writer.writerows(resRows) 
-        resRows[:]=[]
-
-
+    with threading.Lock():
+        if len(resRows) > 0 and timeStep % resWriteStep == 0:
+            writer.writerows(resRows) 
+            resRows[:]=[]
 
 if os.path.exists(file_name): 
     os.remove(file_name)

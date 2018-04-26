@@ -68,8 +68,8 @@ def main():
         workload = 'traces/evaluation'
         userStrArray = ["user1", "user2", "user3", "user4"]
         jobRepNums = [2000, 2000, 2000, 2000]
-        userJobNums = [250, 250, 250, 250]
-        userJobNums = [10, 10, 10, 10]
+        # userJobNums = [250, 250, 250, 250]
+        userJobNums = [24, 24, 24, 24]
         traditionalDemands=[]
         traditionalDemands.append(Resource(1000,12*GI, 1))
         traditionalDemands.append(Resource(1000,12*GI, 1))

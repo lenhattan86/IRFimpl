@@ -33,7 +33,7 @@ if not IS_TEST:
     file_name = args['file']
     stop_time = int(args['stopTime'])
     writeStep=60
-    resCommandStep=10
+    resCommandStep=1
     resWriteStep=writeStep*resCommandStep
 else:
     interval=1
@@ -158,7 +158,7 @@ Events:         <none>
                 resRows.append(row)
         # if len(rows) > 0:
         #     writer.writerows(rows)
-    if len(resRows) > 0 and timeStep % (writeStep*10) == 0:
+    if len(resRows) > 0 and timeStep % resWriteStep == 0:
         writer.writerows(resRows) 
         resRows[:]=[]
 

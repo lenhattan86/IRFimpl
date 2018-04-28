@@ -98,7 +98,7 @@ def shellJobs(job_folder, job_number, cmd, fileName):
                     f_yaml.close() 
 
                     # submit these two jobs
-                    strShell = strShell + "sleep 1 \n" 
+                    strShell = strShell + "sleep 5 \n" 
                     if IS_ON_CPU:
                         strShell = strShell + "kubectl create -f "+ fNameCpu +".yaml 2> " + fNameCpu +".log \n" 
                     if IS_ON_GPU:

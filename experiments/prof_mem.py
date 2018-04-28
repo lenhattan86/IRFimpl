@@ -24,7 +24,7 @@ IS_ON_GPU = False
 
 JOB_NAMEs   = ['vgg16', 'lenet', 'googlenet', 'alexnet',  'resnet50', 'inception3', 'overfeat']
 BatchNum    = 50
-batchSizes  = [32, 64, 128, 256]
+batchSizes  = [32, 64, 128]
 MEMs = [2, 4, 6, 8, 12, 16]
 
 CPU_COMMAND = "python tf_cnn_benchmarks.py --device=cpu --data_format=NHWC --num_warmup_batches=0 "

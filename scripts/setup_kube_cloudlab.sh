@@ -30,7 +30,6 @@ c220g2-011319.wisc.cloudlab.us
 c220g2-011105.wisc.cloudlab.us		
 c220g2-011110.wisc.cloudlab.us		
 c220g2-011314.wisc.cloudlab.us
-c220g2-011018.wisc.cloudlab.us		
 c220g2-011129.wisc.cloudlab.us		
 c220g2-011324.wisc.cloudlab.us		
 c220g2-011332.wisc.cloudlab.us		

@@ -1,0 +1,74 @@
+W0426 20:14:51.496273       1 server.go:158] WARNING: all flags other than --config are deprecated. Please begin using a config file ASAP.
+W0426 20:14:51.496397       1 server.go:515] Neither --kubeconfig nor --master was specified. Using default API client. This might not work.
+I0426 20:14:51.499763       1 server.go:554] Version: v1.10.0-alpha.3.105+009f2582a91b24-dirty
+I0426 20:14:51.499918       1 factory.go:1209] ProfilingFeature %!s(bool=true)
+I0426 20:14:51.499929       1 generic_scheduler.go:1934] version: 2018.04.26 4:00pm
+I0426 20:14:51.499933       1 generic_scheduler.go:1935] ENABLE_MY_SCHEDULER : %!s(bool=false)
+I0426 20:14:51.499937       1 generic_scheduler.go:1936] ============= IRA =============
+I0426 20:14:51.499940       1 generic_scheduler.go:1937] SCHEDULER NaiveDRF
+I0426 20:14:51.499947       1 generic_scheduler.go:1938] CAPACITY {%!s(int64=384000) %!s(int64=1236950581248) %!s(int64=12) %!s(int64=0) %!s(int=0) map[]}
+I0426 20:14:51.499961       1 generic_scheduler.go:1939] namespaces [user1 user2 user3 user4]
+I0426 20:14:51.499975       1 generic_scheduler.go:1960] user1's demand &{%!s(float64=80000) %!s(float64=4000) %!s(float64=0) %!s(float64=2.5)}
+I0426 20:14:51.499989       1 generic_scheduler.go:1961] user1's traditional demand &{%!s(float64=16000) %!s(float64=1.2884901888e+10) %!s(float64=0) %!s(float64=0)}
+I0426 20:14:51.499996       1 generic_scheduler.go:1960] user2's demand &{%!s(float64=112000) %!s(float64=4000) %!s(float64=0) %!s(float64=3.5)}
+I0426 20:14:51.500003       1 generic_scheduler.go:1961] user2's traditional demand &{%!s(float64=16000) %!s(float64=1.2884901888e+10) %!s(float64=0) %!s(float64=0)}
+I0426 20:14:51.500009       1 generic_scheduler.go:1960] user3's demand &{%!s(float64=192000) %!s(float64=4000) %!s(float64=0) %!s(float64=6)}
+I0426 20:14:51.500017       1 generic_scheduler.go:1961] user3's traditional demand &{%!s(float64=16000) %!s(float64=1.2884901888e+10) %!s(float64=0) %!s(float64=0)}
+I0426 20:14:51.500023       1 generic_scheduler.go:1960] user4's demand &{%!s(float64=288000) %!s(float64=4000) %!s(float64=0) %!s(float64=9)}
+I0426 20:14:51.500029       1 generic_scheduler.go:1961] user4's traditional demand &{%!s(float64=16000) %!s(float64=1.2884901888e+10) %!s(float64=0) %!s(float64=0)}
+I0426 20:14:51.500035       1 generic_scheduler.go:1963] shares [%!s(*schedulercache.Resource=&{96000 77309411328 0 0 0 map[]}) %!s(*schedulercache.Resource=&{96000 77309411328 0 0 0 map[]}) %!s(*schedulercache.Resource=&{96000 77309411328 0 0 0 map[]}) %!s(*schedulercache.Resource=&{96000 77309411328 0 0 0 map[]})]
+I0426 20:14:51.500273       1 server.go:573] starting healthz server on 0.0.0.0:10251
+I0426 20:14:52.301160       1 controller_utils.go:1019] Waiting for caches to sync for scheduler controller
+I0426 20:14:52.401316       1 controller_utils.go:1026] Caches are synced for scheduler controller
+I0426 20:17:09.635034       1 scheduler.go:404] attempt to bind pod: default/job-vgg16-cpu-16-12-32-16-10-0
+I0426 20:17:09.635057       1 pod_expansion.go:36] [tanle] Attempting to bind job-vgg16-cpu-16-12-32-16-10-0 to k80-2
+I0426 20:17:09.635445       1 scheduler.go:404] attempt to bind pod: default/job-vgg16-cpu-16-12-32-16-10-0-rcpu
+I0426 20:17:09.635471       1 pod_expansion.go:36] [tanle] Attempting to bind job-vgg16-cpu-16-12-32-16-10-0-rcpu to k80-1
+I0426 20:17:14.888539       1 scheduler.go:404] attempt to bind pod: default/job-vgg16-cpu-16-12-32-16-10-1
+I0426 20:17:14.888721       1 pod_expansion.go:36] [tanle] Attempting to bind job-vgg16-cpu-16-12-32-16-10-1 to k80-2
+I0426 20:17:14.888821       1 scheduler.go:404] attempt to bind pod: default/job-vgg16-cpu-16-12-32-16-10-1-rcpu
+I0426 20:17:14.888842       1 pod_expansion.go:36] [tanle] Attempting to bind job-vgg16-cpu-16-12-32-16-10-1-rcpu to k80-1
+W0426 20:17:20.572878       1 factory.go:1484] Request for pod default/job-vgg16-cpu-16-12-32-16-10-2 already in flight, abandoning
+W0426 20:17:20.572981       1 factory.go:1484] Request for pod default/job-vgg16-cpu-16-12-32-16-10-2-rcpu already in flight, abandoning
+W0426 20:17:26.845501       1 factory.go:1484] Request for pod default/job-lenet-cpu-16-12-512-16-10-0-rcpu already in flight, abandoning
+W0426 20:17:27.338432       1 factory.go:1484] Request for pod default/job-lenet-cpu-16-12-512-16-10-0 already in flight, abandoning
+W0426 20:17:30.947235       1 factory.go:1484] Request for pod default/job-lenet-cpu-16-12-512-16-10-1 already in flight, abandoning
+W0426 20:17:30.947414       1 factory.go:1484] Request for pod default/job-lenet-cpu-16-12-512-16-10-1-rcpu already in flight, abandoning
+W0426 20:17:36.611703       1 factory.go:1484] Request for pod default/job-lenet-cpu-16-12-512-16-10-2 already in flight, abandoning
+W0426 20:17:36.612415       1 factory.go:1484] Request for pod default/job-lenet-cpu-16-12-512-16-10-2-rcpu already in flight, abandoning
+W0426 20:17:42.003930       1 factory.go:1484] Request for pod default/job-googlenet-cpu-16-12-32-16-10-0 already in flight, abandoning
+W0426 20:17:42.004128       1 factory.go:1484] Request for pod default/job-googlenet-cpu-16-12-32-16-10-0-rcpu already in flight, abandoning
+W0426 20:17:47.333362       1 factory.go:1484] Request for pod default/job-googlenet-cpu-16-12-32-16-10-1 already in flight, abandoning
+W0426 20:17:47.333481       1 factory.go:1484] Request for pod default/job-googlenet-cpu-16-12-32-16-10-1-rcpu already in flight, abandoning
+W0426 20:17:52.670362       1 factory.go:1484] Request for pod default/job-googlenet-cpu-16-12-32-16-10-2 already in flight, abandoning
+W0426 20:17:52.670488       1 factory.go:1484] Request for pod default/job-googlenet-cpu-16-12-32-16-10-2-rcpu already in flight, abandoning
+W0426 20:17:57.998748       1 factory.go:1484] Request for pod default/job-alexnet-cpu-16-12-512-16-10-0 already in flight, abandoning
+W0426 20:17:57.999176       1 factory.go:1484] Request for pod default/job-alexnet-cpu-16-12-512-16-10-0-rcpu already in flight, abandoning
+W0426 20:18:03.384796       1 factory.go:1484] Request for pod default/job-alexnet-cpu-16-12-512-16-10-1 already in flight, abandoning
+W0426 20:18:03.384977       1 factory.go:1484] Request for pod default/job-alexnet-cpu-16-12-512-16-10-1-rcpu already in flight, abandoning
+W0426 20:18:08.842889       1 factory.go:1484] Request for pod default/job-alexnet-cpu-16-12-512-16-10-2 already in flight, abandoning
+W0426 20:18:08.843133       1 factory.go:1484] Request for pod default/job-alexnet-cpu-16-12-512-16-10-2-rcpu already in flight, abandoning
+W0426 20:18:14.592114       1 factory.go:1484] Request for pod default/job-resnet50-cpu-16-12-64-16-10-0 already in flight, abandoning
+W0426 20:18:14.592466       1 factory.go:1484] Request for pod default/job-resnet50-cpu-16-12-64-16-10-0-rcpu already in flight, abandoning
+W0426 20:18:19.618151       1 factory.go:1484] Request for pod default/job-resnet50-cpu-16-12-64-16-10-1 already in flight, abandoning
+W0426 20:18:19.618341       1 factory.go:1484] Request for pod default/job-resnet50-cpu-16-12-64-16-10-1-rcpu already in flight, abandoning
+W0426 20:18:25.051495       1 factory.go:1484] Request for pod default/job-resnet50-cpu-16-12-64-16-10-2 already in flight, abandoning
+W0426 20:18:25.051586       1 factory.go:1484] Request for pod default/job-resnet50-cpu-16-12-64-16-10-2-rcpu already in flight, abandoning
+W0426 20:18:30.372527       1 factory.go:1484] Request for pod default/job-inception3-cpu-16-12-64-16-10-0 already in flight, abandoning
+W0426 20:18:30.372663       1 factory.go:1484] Request for pod default/job-inception3-cpu-16-12-64-16-10-0-rcpu already in flight, abandoning
+W0426 20:18:36.156332       1 factory.go:1484] Request for pod default/job-inception3-cpu-16-12-64-16-10-1 already in flight, abandoning
+W0426 20:18:36.163245       1 factory.go:1484] Request for pod default/job-inception3-cpu-16-12-64-16-10-1-rcpu already in flight, abandoning
+W0426 20:18:41.138653       1 factory.go:1484] Request for pod default/job-inception3-cpu-16-12-64-16-10-2 already in flight, abandoning
+W0426 20:18:41.138877       1 factory.go:1484] Request for pod default/job-inception3-cpu-16-12-64-16-10-2-rcpu already in flight, abandoning
+ %v map[job-vgg16-cpu-16-12-32-16-10-1-rcpu:34m41.968414402s]
+I0426 20:52:01.332341       1 scheduler.go:404] attempt to bind pod: default/job-alexnet-cpu-16-12-512-16-10-2-rcpu
+I0426 20:52:01.332362       1 pod_expansion.go:36] [tanle] Attempting to bind job-alexnet-cpu-16-12-512-16-10-2-rcpu to k80-1
+ %v map[job-vgg16-cpu-16-12-32-16-10-1-rcpu:34m41.968414402s job-vgg16-cpu-16-12-32-16-10-0-rcpu:34m58.867544453s]
+I0426 20:52:12.123471       1 scheduler.go:404] attempt to bind pod: default/job-resnet50-cpu-16-12-64-16-10-1
+I0426 20:52:12.123491       1 pod_expansion.go:36] [tanle] Attempting to bind job-resnet50-cpu-16-12-64-16-10-1 to k80-1
+ %v map[job-vgg16-cpu-16-12-32-16-10-1-rcpu:34m41.968414402s job-vgg16-cpu-16-12-32-16-10-0-rcpu:34m58.867544453s job-alexnet-cpu-16-12-512-16-10-2-rcpu:28m7.90490959s]
+I0426 21:20:13.781282       1 scheduler.go:404] attempt to bind pod: default/job-inception3-cpu-16-12-64-16-10-2-rcpu
+I0426 21:20:13.781306       1 pod_expansion.go:36] [tanle] Attempting to bind job-inception3-cpu-16-12-64-16-10-2-rcpu to k80-1
+ %v map[job-vgg16-cpu-16-12-32-16-10-1-rcpu:34m41.968414402s job-vgg16-cpu-16-12-32-16-10-0-rcpu:34m58.867544453s job-alexnet-cpu-16-12-512-16-10-2-rcpu:28m7.90490959s job-inception3-cpu-16-12-64-16-10-2-rcpu:41m19.53852974s]
+I0426 22:01:39.897111       1 scheduler.go:404] attempt to bind pod: default/job-inception3-cpu-16-12-64-16-10-1
+I0426 22:01:39.897136       1 pod_expansion.go:36] [tanle] Attempting to bind job-inception3-cpu-16-12-64-16-10-1 to k80-1

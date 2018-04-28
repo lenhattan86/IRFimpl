@@ -5,7 +5,43 @@ from job import *
 MILLI = 1000
 GI = 1024*1024*1024
 
-def DRF(capacity, isFDRF, users):
+def devide(array, maxVal):
+    for i in range(len(array)):
+        array[i] = array[i]/maxVal
+    return array
+
+def FDRF(capacity, users):
+    # foreach user 
+    shares = []    
+    dorminantRates = [0.0, 0.0, 0.0]
+    proportions = []
+    for user in users:
+    # convert to DRF or FDRF demands
+        proportion = [1.0, 1.0, 1.0]
+        proportion[2] = float(capacity.MilliCPU/user.demand.computation + capacity.NvidiaGPU/user.demand.gpu)/float(capacity.Memory)*user.demand.mem
+        maxProportion = max(proportion)
+        proportion = devide(proportion, maxProportion)
+        # maxDemands.append(proportion)
+        for i in range(len(dorminantRates)):
+            dorminantRates[i] = dorminantRates[i] + proportion[i] 
+        proportions.append(proportion)
+
+    # get total dorimant share for each all users
+    dorminantShare = max(dorminantRates)    
+    # compute the share for each users
+    for i in range(len(users)):
+        proportion = proportions[i]
+        ratio = devide(proportion,dorminantShare)
+        milliCPU = int(ratio[0]*capacity.MilliCPU )
+        NvidiaGPU = int(ratio[1] * capacity.NvidiaGPU)
+        memory = int(ratio[2]*capacity.Memory)
+        ## convert to 
+        shares.append(Resource(milliCPU, memory, NvidiaGPU))
+
+    # compute normalized demand
+    return shares
+
+def DRF_old(capacity, isFDRF, users):
     # foreach user 
     demands = []
     normalizedDemands = []
@@ -60,8 +96,6 @@ def DRF(capacity, isFDRF, users):
         NvidiaGPU = int(demands[i].NvidiaGPU  / ratio * capacity.NvidiaGPU)
 
         ## convert to 
-        
-
         shares.append(Resource(milliCPU, memory, NvidiaGPU))
 
     # compute normalized demand

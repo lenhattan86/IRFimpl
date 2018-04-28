@@ -41,13 +41,25 @@ def computeDemand_bk(jobs, capacity):
 
     return demand
 
-def computeDemand(jobs, capacity):
-    demand = Demand(0, 0, 0)    
+def computeDemandOld(jobs, capacity):
+    demand = Demand(0, 0, 0, 0)    
     job = jobs[0]
     absoluteBeta = job.cpuProfile.demand.MilliCPU / job.gpuProfile.demand.NvidiaGPU * job.cpuProfile.compl / job.gpuProfile.compl
     demand.computation = absoluteBeta
     demand.beta = absoluteBeta*capacity.NvidiaGPU/capacity.MilliCPU
     demand.mem = job.cpuProfile.demand.Memory*capacity.MilliCPU/capacity.Memory
+    return demand
+
+
+def computeDemand(jobs, capacity):
+    demand = Demand(0, 0, 0, 0)    
+    job = jobs[0]
+    absoluteBeta = job.cpuProfile.demand.MilliCPU / job.gpuProfile.demand.NvidiaGPU * job.cpuProfile.compl / job.gpuProfile.compl
+    demand.computation = job.cpuProfile.demand.MilliCPU
+    demand.beta = absoluteBeta
+    demand.mem  = job.cpuProfile.demand.Memory
+    demand.gpu  = job.gpuProfile.demand.NvidiaGPU
+
     return demand
 
 def main():
@@ -60,7 +72,7 @@ def main():
     stopTime = 4000
     extraTime = 30*60 # 30 minutes
     monitor_time = int(stopTime + extraTime)
-    interval = 1
+    interval = 5
 
     isOfficial = True
     if isOfficial:
@@ -113,25 +125,25 @@ def main():
     # return
 
     print("====================== ES ALLOCATION =====================")
-    expFolder = "ES"
-    shares = ES(capacity, users)   
-    printShares(shares) 
-    # given fill the jobs & allocation enforce,  prepare the job cripts
-    mainShell(users, expFolder, monitor_time, interval, startLogTime)
-    for i in range(len(users)):
-    # for i in range(1):
-        user = users[i]
-        share = shares[i]
-        jobs = user.jobs[:]
-        loggedJobs = enforceAllocation(share, jobs, stopTime, isBestFit) 
-        print("Number of admitted jobs for " + user.username + ": " + str(len(loggedJobs)))  
-        if isBestFit:
-            prepareKubernetesJobs(user.username, scheduler, expFolder, loggedJobs, isQueuedUp) 
-        else:
-            jobs = user.jobs[0:userJobNums[i]]
-            loggedJobs = toActiveJobs(jobs) 
-            #print("Prepare the jobs for " + user.username + ": " + str(userJobNums[i])) 
-            prepareKubernetesJobs(user.username, scheduler, expFolder, loggedJobs, isQueuedUp)         
+    # expFolder = "ES"
+    # shares = ES(capacity, users)   
+    # printShares(shares) 
+    # # given fill the jobs & allocation enforce,  prepare the job cripts
+    # mainShell(users, expFolder, monitor_time, interval, startLogTime)
+    # for i in range(len(users)):
+    # # for i in range(1):
+    #     user = users[i]
+    #     share = shares[i]
+    #     jobs = user.jobs[:]
+    #     loggedJobs = enforceAllocation(share, jobs, stopTime, isBestFit) 
+    #     print("Number of admitted jobs for " + user.username + ": " + str(len(loggedJobs)))  
+    #     if isBestFit:
+    #         prepareKubernetesJobs(user.username, scheduler, expFolder, loggedJobs, isQueuedUp) 
+    #     else:
+    #         jobs = user.jobs[0:userJobNums[i]]
+    #         loggedJobs = toActiveJobs(jobs) 
+    #         #print("Prepare the jobs for " + user.username + ": " + str(userJobNums[i])) 
+    #         prepareKubernetesJobs(user.username, scheduler, expFolder, loggedJobs, isQueuedUp)         
 
     # print("====================== DRF ALLOCATION =====================")
     # expFolder = "DRF"
@@ -155,25 +167,25 @@ def main():
     #         prepareKubernetesJobs(user.username, scheduler, expFolder, loggedJobs, isQueuedUp)     
 
     print("====================== Naive DRF ALLOCATION =====================")
-    expFolder = "naiveDRF"    
-    shares = naiveDRF(capacity, False, users, traditionalDemands)   
-    printShares(shares) 
-    # given fill the jobs & allocation enforce,  prepare the job cripts
-    mainShell(users, expFolder, monitor_time, interval, startLogTime)
-    for i in range(len(users)):
-    # for i in range(1):
-        user = users[i]
-        share = shares[i]
-        jobs = user.jobs[:]
-        loggedJobs = enforceAllocation(share, jobs, stopTime, isBestFit) 
-        print("Number of admitted jobs for " + user.username + ": " + str(len(loggedJobs)))  
-        if isBestFit: 
-            prepareKubernetesJobs(user.username, scheduler, expFolder, loggedJobs, isQueuedUp)
-        else:
-            jobs = user.jobs[0:userJobNums[i]]
-            loggedJobs = toActiveJobs(jobs) 
-            #print("Prepare the jobs for " + user.username + ": " + str(userJobNums[i])) 
-            prepareKubernetesJobs(user.username, scheduler, expFolder, loggedJobs, isQueuedUp)       
+    # expFolder = "naiveDRF"    
+    # shares = naiveDRF(capacity, False, users, traditionalDemands)   
+    # printShares(shares) 
+    # # given fill the jobs & allocation enforce,  prepare the job cripts
+    # mainShell(users, expFolder, monitor_time, interval, startLogTime)
+    # for i in range(len(users)):
+    # # for i in range(1):
+    #     user = users[i]
+    #     share = shares[i]
+    #     jobs = user.jobs[:]
+    #     loggedJobs = enforceAllocation(share, jobs, stopTime, isBestFit) 
+    #     print("Number of admitted jobs for " + user.username + ": " + str(len(loggedJobs)))  
+    #     if isBestFit: 
+    #         prepareKubernetesJobs(user.username, scheduler, expFolder, loggedJobs, isQueuedUp)
+    #     else:
+    #         jobs = user.jobs[0:userJobNums[i]]
+    #         loggedJobs = toActiveJobs(jobs) 
+    #         #print("Prepare the jobs for " + user.username + ": " + str(userJobNums[i])) 
+    #         prepareKubernetesJobs(user.username, scheduler, expFolder, loggedJobs, isQueuedUp)       
 
     if not isOfficial:
         print("====================== Static ALLOCATION =====================")
@@ -220,7 +232,7 @@ def main():
 
     print("====================== FDRF ALLOCATION =====================")
     expFolder = "FDRF"
-    shares = DRF(capacity, True, users)   
+    shares = FDRF(capacity, users)   
     printShares(shares) 
     # given fill the jobs & allocation enforce,  prepare the job cripts
     mainShell(users, expFolder, monitor_time, interval, startLogTime)

@@ -1,0 +1,50 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: job-lenet-cpu-19-12-40-0
+spec:
+  schedulerName: my-scheduler
+  containers:
+  - name: job-lenet-cpu-19-12-40-0
+    image: lenhattan86/ira:cpu
+    command:
+    - "/bin/bash"
+    - "-c"
+    - "python tf_cnn_benchmarks.py --device=cpu --data_format=NHWC --num_warmup_batches=0  --model=lenet --batch_size=32 --num_intra_threads=19 --num_batches=40"
+    - "python tf_cnn_benchmarks.py --device=gpu --num_warmup_batches=0  --model=lenet --batch_size=32 --num_batches=40"
+    - "19000,0,12"
+    - "1000,1,12"
+    resources:
+      requests:
+        alpha.kubernetes.io/nvidia-gpu: 0
+        cpu: 19.0
+        memory: 12Gi
+      limits:
+        alpha.kubernetes.io/nvidia-gpu: 0
+        cpu: 19.0
+        memory: 12Gi
+    volumeMounts:
+    - name: nvidia-driver-384-98
+      mountPath: /usr/local/nvidia
+      readOnly: true
+    - name: libcuda-so
+      mountPath: /usr/lib/x86_64-linux-gnu/libcuda.so
+    - name: libcuda-so-1
+      mountPath: /usr/lib/x86_64-linux-gnu/libcuda.so.1
+    - name: libcuda-so-384-98
+      mountPath: /usr/lib/x86_64-linux-gnu/libcuda.so.384.98
+      readOnly: true
+  restartPolicy: Never
+  volumes:
+  - name: nvidia-driver-384-98
+    hostPath:
+      path: /usr/lib/nvidia-384
+  - name: libcuda-so
+    hostPath:
+      path: /usr/lib/x86_64-linux-gnu/libcuda.so
+  - name: libcuda-so-1
+    hostPath:
+      path: /usr/lib/x86_64-linux-gnu/libcuda.so.1
+  - name: libcuda-so-384-98
+    hostPath:
+      path: /usr/lib/x86_64-linux-gnu/libcuda.so.384.98

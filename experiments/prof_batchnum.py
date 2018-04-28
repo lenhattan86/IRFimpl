@@ -13,30 +13,23 @@ benchmarks = "tf_cnn_benchmarks.py"
 
 # https://www.tensorflow.org/performance/benchmarks
 
-NUM_JOBS = 3
+NUM_JOBS = 1
 GPU_CPU = 1
-CPU = 16
-NUM_THREADs = 16
+CPU = 19
+NUM_THREADs = 19
 MEM = 12
 
-
-JOB_NAMEs   = ['vgg16', 'lenet', 'googlenet', 'alexnet',  'resnet50', 'inception3']
-BatchNUms = [200, 1000, 200, 200, 200, 200]
-BatchSizes  = [32     ,  512    ,          32,      512,           64,           64]
-# JOB_NAMEs   = ['lenet', 'alexnet',]
-# BatchSizes  = [32, 512]
-
-# kArray = [2, 5, 10, 15, 20]
-kArray = [10]
+JOB_NAMEs   = ['vgg16', 'lenet', 'googlenet', 'alexnet',  'resnet50', 'inception3', 'overfeat']
+BatchNUms   = [10, 20, 40, 100 , 200]
+batchSize  = 32
 
 CPU_COMMAND = "python tf_cnn_benchmarks.py --device=cpu --data_format=NHWC --num_warmup_batches=0 "
 GPU_COMMAND = "python tf_cnn_benchmarks.py --device=gpu --num_warmup_batches=0 "
 MILLI=1000
 
 ##########################
-
 STOP_TIME = -1
-FOLDER = "beta_estimation"
+FOLDER = "prof_batchnum"
 GI = 1024*1024*1024
 SCHEDULER = "my-scheduler"
 this_path = os.path.dirname(os.path.realpath(__file__))
@@ -67,7 +60,6 @@ def shellProfiling(job_folder, job_number, gpuCmd, exp_name, stopTime):
     os.chmod(shellFile, 0700)
 
 def shellJobs(job_folder, job_number, cmd, fileName):
-    
     ## create yaml files
     strShell = ""
     strLogShell = ""
@@ -75,15 +67,12 @@ def shellJobs(job_folder, job_number, cmd, fileName):
     mem = MEM*GI
     cpu_usage = Resource(miliCPU, mem, 0)
     gpu_usage = Resource(GPU_CPU*MILLI, mem, 1)
-    for iName in range(len(JOB_NAMEs)):
-        jobName = JOB_NAMEs[iName]
-        batchSize = BatchSizes[iName]
-        BatchNum = BatchNUms[iName]
-        for iK in range(len(kArray)):
+    for jobName in JOB_NAMEs:
+        for BatchNum in BatchNUms:   
             for iJob in range(NUM_JOBS):
-                commonName = str(CPU)+'-'+ str(MEM)+'-'+str(batchSize)+'-'+str(NUM_THREADs)+'-'+str(kArray[iK])+'-'+str(iJob)
-                cpuFullCommand = CPU_COMMAND + " --model=" + jobName + " --batch_size="+str(batchSize)+" --num_intra_threads=" + str(NUM_THREADs) +" --num_batches="+str(BatchNum*kArray[iK])
-                gpuFullCommand = GPU_COMMAND + " --model=" + jobName + " --batch_size="+str(batchSize)+" --num_batches="+str(BatchNum*kArray[iK])
+                commonName = str(CPU)+'-'+ str(MEM)+'-'+str(BatchNum) +'-' +str(iJob)
+                cpuFullCommand = CPU_COMMAND + " --model=" + jobName + " --batch_size="+str(batchSize)+" --num_intra_threads=" + str(NUM_THREADs) +" --num_batches="+str(BatchNum)
+                gpuFullCommand = GPU_COMMAND + " --model=" + jobName + " --batch_size="+str(batchSize)+" --num_batches="+str(BatchNum)
 
                 fNameCpu = jobName+'-cpu-'+commonName
                 cpuJobId    = jobName+'-cpu-'+commonName            
@@ -104,12 +93,11 @@ def shellJobs(job_folder, job_number, cmd, fileName):
                 # submit these two jobs
                 strShell = strShell + "sleep 5 \n" 
                 strShell = strShell + "kubectl create -f "+ fNameCpu +".yaml 2> " + fNameCpu +".log \n" 
-                # strShell = strShell + "kubectl create -f "+ fNameGpu +".yaml 2> " + fNameGpu +".log \n" 
+                strShell = strShell + "kubectl create -f "+ fNameGpu +".yaml 2> " + fNameGpu +".log \n" 
 
                 # log the pod
-
                 strLogShell = strLogShell + "kubectl logs job-"+ cpuJobId +"> " + fNameCpu +".log \n" 
-                # strLogShell = strLogShell + "kubectl logs job-"+ gpuJobId +"> " + fNameGpu +".log \n" 
+                strLogShell = strLogShell + "kubectl logs job-"+ gpuJobId +"> " + fNameGpu +".log \n" 
 
     shellFile = job_folder + "/" + fileName + ".sh"
     f = open(shellFile,'w')
@@ -126,7 +114,6 @@ def shellJobs(job_folder, job_number, cmd, fileName):
     f.write(strLogShell)        
     f.close()
     os.chmod(shellLogFile, 0700)
-
 
 def main():
     

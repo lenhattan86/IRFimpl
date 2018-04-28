@@ -30,6 +30,13 @@ c220g2-011319.wisc.cloudlab.us
 c220g2-011105.wisc.cloudlab.us		
 c220g2-011110.wisc.cloudlab.us		
 c220g2-011314.wisc.cloudlab.us
+c220g2-011018.wisc.cloudlab.us		
+c220g2-011129.wisc.cloudlab.us		
+c220g2-011324.wisc.cloudlab.us		
+c220g2-011332.wisc.cloudlab.us		
+c220g2-031132.wisc.cloudlab.us		
+c220g2-011122.wisc.cloudlab.us		
+c220g2-011021.wisc.cloudlab.us
 " # last one of ctl of slave1
 
 serversIP="$masterIP $slavesIP"

@@ -72,7 +72,7 @@ def shellProfiling(job_folder, job_number, gpuCmd, exp_name, stopTime):
     f = open(shellFile,'w')
     strShell = ""   
 
-    strShell = strShell + "kubectl delete pods --all --namespace=default --grace-period=0 --force \n"
+    strShell = strShell + "kubectl delete pods --all --namespace=default  \n"
     strShell = strShell + "echo wait... \n"
     strShell = strShell + "sleep 60 \n"
     

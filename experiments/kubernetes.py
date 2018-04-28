@@ -76,6 +76,9 @@ def strPodYaml(username, activeJob, scheduler, isGPU):
     return strYaml
     
 def prepareKubernetesJobs(username, scheduler, expFolder, loggedJobs, isQueuedUp):
+    print("=====TESTING do not generate job files===")
+    return
+
     this_path = os.path.dirname(os.path.realpath(__file__))
     job_folder = this_path + "/" + expFolder
     try:

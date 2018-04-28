@@ -6,14 +6,14 @@
 
 if [ -z "$1" ]
 then
-	token="5c2j5x.d7eat18h5ghzsyqm"
+	token="uhimlv.jre1n5ce1x3jez7s"
 else
 	token="$1"
 fi
 
 if [ -z "$2" ]
 then
-	sha256="sha256:2bd5988e414dba19e169a91144c061611c55a244401c6828130e0598a85a88a9"
+	sha256="sha256:f3b68e827933cdd6c348d40386b391344459c6e78dd1617828ba64ff410a1137"
 else
 	sha256="$2"
 fi

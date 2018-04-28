@@ -2,7 +2,7 @@
 
 # Copyright 2016 Tan N. Le
 # lenhattan86@gmail.com
-
+# kubectl delete pods --grace-period=0 --force job-vgg16-gpu-19-12-128-0
 import argparse
 import json
 import sys

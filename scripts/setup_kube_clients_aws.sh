@@ -6,7 +6,7 @@
 
 if [ -z "$1" ]
 then
-	token="uhimlv.jre1n5ce1x3jez7s"
+	token="f6cyge.vggo875dywsy9931"
 else
 	token="$1"
 fi
@@ -30,8 +30,7 @@ fi
 # slavesIP="18.188.165.51
 # 52.15.227.77
 # "
-slavesIP="18.191.7.104
-13.58.172.99
+slavesIP="18.216.182.131
 "
 
 username="ubuntu"

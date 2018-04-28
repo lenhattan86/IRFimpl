@@ -6,29 +6,32 @@
 
 if [ -z "$1" ]
 then
-	masterIP="128.104.222.165"
+	token="pqixjv.kxfu3xae89tdyu8u"
 else
-	masterIP="$1"
+	token="$1"
 fi
 
 if [ -z "$2" ]
 then
-	token="lzmo7g.rrp7ewxqs957piny"
+	sha256="sha256:2bd5988e414dba19e169a91144c061611c55a244401c6828130e0598a85a88a9"
 else
-	token="$2"
+	sha256="$2"
 fi
 
 if [ -z "$3" ]
 then
-	sha256="sha256:fb55d685d9b96fc86393ce1c0b6003d14831eb698272f3e91de85489f711f437"
+	masterIP="128.104.222.165"
 else
-	sha256="$3"
+	masterIP="$3"
 fi
+
+
 
 # slavesIP="18.188.165.51
 # 52.15.227.77
 # "
 slavesIP="18.188.98.220
+18.217.169.134
 "
 
 username="ubuntu"

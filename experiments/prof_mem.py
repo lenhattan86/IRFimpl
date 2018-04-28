@@ -13,13 +13,13 @@ benchmarks = "tf_cnn_benchmarks.py"
 
 # https://www.tensorflow.org/performance/benchmarks
 
-NUM_JOBS = 1
+NUM_JOBS = 3
 GPU_CPU = 1
 CPU = 19
 NUM_THREADs = 19
 
 IS_ON_CPU = True
-IS_ON_GPU = False
+IS_ON_GPU = True
 
 
 JOB_NAMEs   = ['vgg16', 'lenet', 'googlenet', 'alexnet',  'resnet50', 'inception3', 'overfeat']

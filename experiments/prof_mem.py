@@ -57,7 +57,9 @@ def shellProfiling(job_folder, job_number, gpuCmd, exp_name, stopTime):
     strShell = strShell + "./" +exp_name+".sh & cpuScript=$! \n"               
 
     strShell = strShell + "python ../get_user_info_timer.py " \
-        " --interval="+str(1) + " --stopTime="+str(stopTime)+" --file=pods.csv \n"  
+        " --interval="+str(1) + " --stopTime="+str(stopTime)+" --file=pods.csv &\n"  
+
+    strShell = strShell + "wait $cpuScript \n"  
 
     f.write(strShell)        
     f.close()
@@ -96,7 +98,7 @@ def shellJobs(job_folder, job_number, cmd, fileName):
                     f_yaml.close() 
 
                     # submit these two jobs
-                    strShell = strShell + "sleep 5 \n" 
+                    strShell = strShell + "sleep 1 \n" 
                     if IS_ON_CPU:
                         strShell = strShell + "kubectl create -f "+ fNameCpu +".yaml 2> " + fNameCpu +".log \n" 
                     if IS_ON_GPU:
@@ -137,7 +139,7 @@ def main():
     os.mkdir(job_folder)    
     print("======= generate profiling scripts ==============")
 
-    shellProfiling(job_folder, NUM_JOBS, CPU_COMMAND, "beta_mov", STOP_TIME)
+    shellProfiling(job_folder, NUM_JOBS, CPU_COMMAND, "jobs", STOP_TIME)
    
 
     print("======= DONE ==============")

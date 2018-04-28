@@ -20,7 +20,7 @@ def createDRFExperiement():
     f.close()
 
 def computeDemand_bk(jobs, capacity):
-    demand = Demand(0, 0, 0)
+    demand = Demand(0, 0, 0, 0)
     cpuTime = 0.0
     gpuTime = 0.0    
     gpuDemand = 0.0

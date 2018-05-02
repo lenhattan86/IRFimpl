@@ -21,7 +21,7 @@ JOB_NAMEs   = ['vgg16']
 BatchNum    = 50
 batchSize   = 32
 CPUs = [1, 2, 4, 6, 8, 12, 15, 19]
-MEM = 12*GI
+MEM = 12
 CPU_COMMAND = "python tf_cnn_benchmarks.py --device=cpu --data_format=NHWC --num_warmup_batches=0 "
 MILLI=1000
 
@@ -29,7 +29,7 @@ MILLI=1000
 STOP_TIME = -1
 FOLDER = "prof_cpu"
 GI = 1024*1024*1024
-SCHEDULER = "my-scheduler"
+SCHEDULER = "kube-scheduler"
 this_path = os.path.dirname(os.path.realpath(__file__))
 
 def shellProfiling(job_folder, job_number, gpuCmd, exp_name, stopTime):    
@@ -67,8 +67,8 @@ def shellJobs(job_folder, job_number, cmd, fileName):
         for NUM_THREAD in NUM_THREADs:
             for CPU in CPUs:
                 cpu = CPU*MILLI
-                cpu_usage = Resource(cpu, MEM, 0)
-                gpu_usage = Resource(1, MEM, 1)
+                cpu_usage = Resource(cpu, MEM*GI, 0)
+                gpu_usage = Resource(1, MEM*GI, 1)
                 for iJob in range(NUM_JOBS):
                     commonName = str(CPU)+'-'+ str(MEM)+'-' + str(NUM_THREAD)+'-'  +str(iJob)
                     cpuFullCommand = CPU_COMMAND + " --model=" + jobName + " --batch_size="+str(batchSize)+" --num_intra_threads=" + str(NUM_THREAD) +" --num_batches="+str(BatchNum)

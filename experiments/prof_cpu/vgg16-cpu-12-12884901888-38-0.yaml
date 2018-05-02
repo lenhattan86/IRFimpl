@@ -1,27 +1,27 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: job-alexnet-cpu-2-12884901888-0
+  name: job-vgg16-cpu-12-12884901888-38-0
 spec:
   schedulerName: my-scheduler
   containers:
-  - name: job-alexnet-cpu-2-12884901888-0
+  - name: job-vgg16-cpu-12-12884901888-38-0
     image: lenhattan86/ira:cpu
     command:
     - "/bin/bash"
     - "-c"
-    - "python tf_cnn_benchmarks.py --device=cpu --data_format=NHWC --num_warmup_batches=0  --model=alexnet --batch_size=32 --num_intra_threads=19 --num_batches=10"
+    - "python tf_cnn_benchmarks.py --device=cpu --data_format=NHWC --num_warmup_batches=0  --model=vgg16 --batch_size=32 --num_intra_threads=38 --num_batches=50"
     - ""
-    - "2000,0,12"
+    - "12000,0,12"
     - "1,1,12"
     resources:
       requests:
         alpha.kubernetes.io/nvidia-gpu: 0
-        cpu: 2.0
+        cpu: 12.0
         memory: 12Gi
       limits:
         alpha.kubernetes.io/nvidia-gpu: 0
-        cpu: 2.0
+        cpu: 12.0
         memory: 12Gi
     volumeMounts:
     - name: nvidia-driver-384-98

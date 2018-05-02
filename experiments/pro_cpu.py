@@ -13,13 +13,14 @@ benchmarks = "tf_cnn_benchmarks.py"
 
 # https://www.tensorflow.org/performance/benchmarks
 
-NUM_JOBS = 3
-NUM_THREADs = 19
-JOB_NAMEs   = ['vgg16', 'lenet', 'googlenet', 'alexnet',  'resnet50', 'inception3', 'overfeat']
+NUM_JOBS = 1
+NUM_THREADs = [19, 38]
+# JOB_NAMEs   = ['vgg16', 'lenet', 'googlenet', 'alexnet',  'resnet50', 'inception3', 'overfeat']
+JOB_NAMEs   = ['vgg16']
 # JOB_NAMEs   = ['alexnet']
 BatchNum    = 50
 batchSize   = 32
-CPUs = [1, 2, 4, 6, 8, 12, 16]
+CPUs = [1, 2, 4, 6, 8, 12, 15, 19]
 MEM = 12*GI
 CPU_COMMAND = "python tf_cnn_benchmarks.py --device=cpu --data_format=NHWC --num_warmup_batches=0 "
 MILLI=1000
@@ -63,13 +64,14 @@ def shellJobs(job_folder, job_number, cmd, fileName):
     strShell = ""
     strLogShell = ""
     for jobName in JOB_NAMEs:
+        for NUM_THREAD in NUM_THREADs:
             for CPU in CPUs:
                 cpu = CPU*MILLI
                 cpu_usage = Resource(cpu, MEM, 0)
                 gpu_usage = Resource(1, MEM, 1)
                 for iJob in range(NUM_JOBS):
-                    commonName = str(CPU)+'-'+ str(MEM)+'-' +str(iJob)
-                    cpuFullCommand = CPU_COMMAND + " --model=" + jobName + " --batch_size="+str(batchSize)+" --num_intra_threads=" + str(NUM_THREADs) +" --num_batches="+str(BatchNum)
+                    commonName = str(CPU)+'-'+ str(MEM)+'-' + str(NUM_THREAD)+'-'  +str(iJob)
+                    cpuFullCommand = CPU_COMMAND + " --model=" + jobName + " --batch_size="+str(batchSize)+" --num_intra_threads=" + str(NUM_THREAD) +" --num_batches="+str(BatchNum)
 
                     fNameCpu = jobName+'-cpu-'+commonName
                     cpuJobId    = jobName+'-cpu-'+commonName            

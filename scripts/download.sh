@@ -6,7 +6,7 @@ else
 fi
 if [ -z "$2" ]
 then
-	EVAL_FOLDER="."
+	EVAL_FOLDER="random"
 else
 	EVAL_FOLDER="$2"
 fi
@@ -34,9 +34,9 @@ fi
 # echo $user@$server
 # echo "rm -rf ~/$folder.tar.gz;
 # tar -czf ~/$folder.tar.gz /dev/projects/IRFimpl/experiments/$folder"
+ROOT_FOLDER="/ssd/projects/IRFevaluation/chameleon"
 ssh $user@$server "rm -rf ~/$folder.tar.gz;
-cd /dev/projects/IRFimpl/experiments/
-tar -czf ~/$folder.tar.gz $folder"
-mkdir $EVAL_FOLDER
-scp $user@$server:~/$folder.tar.gz $EVAL_FOLDER/$folder$extraStr.tar.gz
-echo $EVAL_FOLDER/$folder$extraStr.tar.gz
+cd ~/IRFimpl/experiments/
+tar --exclude='*.yaml' --exclude='*user*.log' --exclude='*.sh' -czf ~/$folder.tar.gz $folder"
+mkdir $ROOT_FOLDER/$EVAL_FOLDER
+scp $user@$server:~/$folder.tar.gz $ROOT_FOLDER/$EVAL_FOLDER/$folder$extraStr.tar.gz

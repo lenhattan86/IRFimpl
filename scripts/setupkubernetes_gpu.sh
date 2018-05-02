@@ -20,6 +20,16 @@ sudo apt-get update
 sudo apt-get install -y cuda # this also incall nvidia-384
 export PATH=/usr/local/cuda-8.0/bin${PATH:+:${PATH}}
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64"
+#wget https://developer.nvidia.com/compute/cuda/9.0/Prod/local_installers/cuda-repo-ubuntu1604-9-0-local_9.0.176-1_amd64-deb
+#mv cuda-repo-ubuntu1604-9-0-local_9.0.176-1_amd64-deb  cuda-repo-ubuntu1604-9-0-local_9.0.176-1_amd64.deb
+#sudo dpkg -i cuda-repo-ubuntu1604-9-0-local_9.0.176-1_amd64.deb
+#sudo apt-get update
+#sudo apt-get install -y cuda # this also incall nvidia-384
+#export PATH=/usr/local/cuda-9.0/bin${PATH:+:${PATH}}
+#export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64"
+
+#https://www.dropbox.com/s/zzk1u252b6vj72q/cudnn-8.0-linux-x64-v5.1.tgz
+#https://www.dropbox.com/s/e6uhqfwthn6o6x6/cudnn-9.0-linux-x64-v7.1.tgz
 wget https://www.dropbox.com/s/ygjvedybap9p577/cudnn-8.0-linux-x64-v5.1.tgz
 tar -xzvf cudnn-8.0-linux-x64-v5.1.tgz
 sudo cp cuda/include/cudnn.h /usr/local/cuda/include

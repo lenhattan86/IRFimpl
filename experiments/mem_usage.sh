@@ -1,9 +1,9 @@
-JOB_NAMES="vgg16 lenet"
-BATCH_SIZES="32 64"
-# JOB_NAMES="vgg16 lenet googlenet alexnet  resnet50 inception3 overfeat"
-# BATCH_SIZES="32 64 128"
+# JOB_NAMES="vgg16 lenet"
+# BATCH_SIZES="32 64"
+JOB_NAMES="vgg16 lenet googlenet alexnet  resnet50 inception3 overfeat"
+BATCH_SIZES="32 64 128"
 BENCH_FOLDER="../../benchmarks/scripts/tf_benchmarks"
-MEM_LOG="MEM"
+MEM_LOG="mem_usage"
 
 
 mkdir $MEM_LOG

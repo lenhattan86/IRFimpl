@@ -3,7 +3,7 @@
 echo "./localclientsetup.sh [username] [masterIPaddress] [keyfilelocation]"
 if [ -z "$1" ]
 then
-	username="cc"
+	username="tanle"
 else
 	username="$1"
 fi

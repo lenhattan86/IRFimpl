@@ -14,11 +14,11 @@ benchmarks = "tf_cnn_benchmarks.py"
 # https://www.tensorflow.org/performance/benchmarks
 
 NUM_JOBS = 1
-NUM_THREADs = [19, 38]
+NUM_THREADs = [19]
 # JOB_NAMEs   = ['vgg16', 'lenet', 'googlenet', 'alexnet',  'resnet50', 'inception3', 'overfeat']
-JOB_NAMEs   = ['vgg16']
+JOB_NAMEs   = ['vgg16','alexnet']
 # JOB_NAMEs   = ['alexnet']
-BatchNum    = 50
+BatchNum    = 10
 batchSize   = 32
 CPUs = [1, 2, 4, 6, 8, 12, 15, 19]
 MEM = 12

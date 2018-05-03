@@ -1,16 +1,16 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: job-vgg16-cpu-19-64-256-0
+  name: job-vgg16-cpu-19-64-256-32-0
 spec:
   containers:
-  - name: job-vgg16-cpu-19-64-256-0
+  - name: job-vgg16-cpu-19-64-256-32-0
     image: lenhattan86/ira:cpu
     command:
     - "/bin/bash"
     - "-c"
-    - "python tf_cnn_benchmarks.py --device=cpu --data_format=NHWC --num_warmup_batches=0  --model=vgg16 --num_warmup_batches=0 --batch_size=256 --num_intra_threads=19 --num_batches=256"
-    - "python tf_cnn_benchmarks.py --device=gpu --num_warmup_batches=0  --model=vgg16 --num_warmup_batches=0 --batch_size=256 --num_batches=256"
+    - "python tf_cnn_benchmarks.py --device=cpu --data_format=NHWC --num_warmup_batches=0  --model=vgg16 --num_warmup_batches=0 --batch_size=32 --num_intra_threads=19 --num_batches=256"
+    - "python tf_cnn_benchmarks.py --device=gpu --num_warmup_batches=0  --model=vgg16 --num_warmup_batches=0 --batch_size=32 --num_batches=256"
     - "19000,0,64"
     - "1000,1,64"
     resources:

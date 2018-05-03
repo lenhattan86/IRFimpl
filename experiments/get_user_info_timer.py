@@ -184,6 +184,6 @@ while True:
     if (stop_time > 0 and mTime*interval > stop_time):        
         break
     Timer(mTime*interval, capture, [mTime, writer]).start()        
-    if interval > 1:
+    if stop_time > 0:
         Timer(mTime*interval, captureResource, [mTime, resWriter]).start()
     mTime = mTime + 1

@@ -12,7 +12,7 @@ from kubernetes import *
 benchmarks = "tf_cnn_benchmarks.py"
 
 # https://www.tensorflow.org/performance/benchmarks
-
+Interval=5
 NUM_JOBS = 1
 NUM_THREADs = [19]
 JOB_NAMEs   = ['vgg16', 'lenet', 'googlenet', 'alexnet',  'resnet50', 'inception3', 'overfeat']
@@ -53,7 +53,7 @@ def shellProfiling(job_folder, job_number, gpuCmd, exp_name, stopTime):
     strShell = strShell + "./" +exp_name+".sh & cpuScript=$! \n"               
 
     strShell = strShell + "python ../get_user_info_timer.py " \
-        " --interval="+str(1) + " --stopTime="+str(stopTime)+" --file=pods.csv &\n"  
+        " --interval="+str(Interval) + " --stopTime="+str(stopTime)+" --file=pods.csv &\n"  
 
     strShell = strShell + "wait $cpuScript \n"  
 

@@ -13,10 +13,10 @@ benchmarks = "tf_cnn_benchmarks.py"
 
 # https://www.tensorflow.org/performance/benchmarks
 Interval=5
-NUM_JOBS = 1
+NUM_JOBS = 5
 NUM_THREADs = [19]
 JOB_NAMEs   = ['vgg16', 'lenet', 'googlenet', 'alexnet',  'resnet50', 'inception3', 'overfeat']
-# BatchNums   = [50     , 5000    , 500       , 2000     ,  100       , 100         , 250 ]
+BatchNums   = [50     , 5000    , 500       , 2000     ,  100       , 100         , 250 ]
 BatchNums   = [2     , 200    , 20       , 80     ,  4       , 4         , 10 ]
 # JOB_NAMEs   = ['vgg16','alexnet']
 # BatchNums   = [50, 1000 ]

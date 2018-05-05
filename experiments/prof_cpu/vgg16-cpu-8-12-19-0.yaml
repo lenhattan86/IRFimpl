@@ -9,7 +9,7 @@ spec:
     command:
     - "/bin/bash"
     - "-c"
-    - "python tf_cnn_benchmarks.py --device=cpu --data_format=NHWC --num_warmup_batches=0  --model=vgg16 --batch_size=32 --num_intra_threads=19 --num_batches=2"
+    - "python tf_cnn_benchmarks.py --device=cpu --data_format=NHWC --num_warmup_batches=0  --model=vgg16 --batch_size=32 --num_intra_threads=19 --num_batches=50"
     - ""
     - "8000,0,12"
     - "1,1,12"

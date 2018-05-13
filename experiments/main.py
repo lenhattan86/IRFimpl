@@ -54,7 +54,7 @@ def computeDemandOld(jobs, capacity):
 def computeDemand(jobs, capacity):
     demand = Demand(0, 0, 0, 0)    
     job = jobs[0]
-    absoluteBeta = job.cpuProfile.demand.MilliCPU / job.gpuProfile.demand.NvidiaGPU * job.cpuProfile.compl / job.gpuProfile.compl
+    absoluteBeta = job.cpuProfile.compl / job.gpuProfile.compl
     demand.computation = job.cpuProfile.demand.MilliCPU
     demand.beta = absoluteBeta
     demand.mem  = job.cpuProfile.demand.Memory
@@ -97,9 +97,6 @@ def main():
         traditionalDemands.append(Resource(1000,12*GI, 1))
     users = []
     
-    
-    
-
     for i in range(len(userStrArray)):
         strUser=userStrArray[i]
         # print("read " + strUser)
@@ -124,7 +121,7 @@ def main():
     
     # return
 
-    print("====================== ES ALLOCATION =====================")
+    # print("====================== ES ALLOCATION =====================")
     # expFolder = "ES"
     # shares = ES(capacity, users)   
     # printShares(shares) 
@@ -145,28 +142,8 @@ def main():
     #         #print("Prepare the jobs for " + user.username + ": " + str(userJobNums[i])) 
     #         prepareKubernetesJobs(user.username, scheduler, expFolder, loggedJobs, isQueuedUp)         
 
-    # print("====================== DRF ALLOCATION =====================")
-    # expFolder = "DRF"
-    # shares = DRF(capacity, False, users)   
-    # printShares(shares) 
-    # # given fill the jobs & allocation enforce,  prepare the job cripts
-    # mainShell(users, expFolder, monitor_time, interval, startLogTime)
-    # for i in range(len(users)):
-    # # for i in range(1):
-    #     user = users[i]
-    #     share = shares[i]
-    #     jobs = user.jobs[:]
-    #     loggedJobs = enforceAllocation(share, jobs, stopTime, isBestFit) 
-    #     print("Number of admitted jobs for " + user.username + ": " + str(len(loggedJobs)))  
-    #     if isBestFit:  
-    #         prepareKubernetesJobs(user.username, scheduler, expFolder, loggedJobs, isQueuedUp)  
-    #     else:
-    #         jobs = user.jobs[0:userJobNums[i]]
-    #         loggedJobs = toActiveJobs(jobs) 
-    #         #print("Prepare the jobs for " + user.username + ": " + str(userJobNums[i])) 
-    #         prepareKubernetesJobs(user.username, scheduler, expFolder, loggedJobs, isQueuedUp)     
-
-    print("====================== Naive DRF ALLOCATION =====================")
+    
+    # print("====================== Naive DRF ALLOCATION =====================")
     # expFolder = "naiveDRF"    
     # shares = naiveDRF(capacity, False, users, traditionalDemands)   
     # printShares(shares) 
@@ -230,48 +207,25 @@ def main():
                 #print("Prepare the jobs for " + user.username + ": " + str(userJobNums[i])) 
                 prepareKubernetesJobs(user.username, scheduler, expFolder, loggedJobs, isQueuedUp)             
 
-    print("====================== FDRF ALLOCATION =====================")
-    expFolder = "FDRF"
-    shares = FDRF(capacity, users)   
+    print("====================== AlloX ALLOCATION =====================")
+    expFolder = "allox"
+    shares = allox(capacity, users)
     printShares(shares) 
     # given fill the jobs & allocation enforce,  prepare the job cripts
     mainShell(users, expFolder, monitor_time, interval, startLogTime)
-    for i in range(len(users)):
-    # for i in range(1):
-        user = users[i]
-        share = shares[i]
-        jobs = user.jobs[:]
-        loggedJobs = enforceAllocation(share, jobs, stopTime, isBestFit) 
-        print("Number of admitted jobs for " + user.username + ": " + str(len(loggedJobs)))  
-        if isBestFit:
-            prepareKubernetesJobs(user.username, scheduler, expFolder, loggedJobs, isQueuedUp)  
-        else:
-            jobs = user.jobs[0:userJobNums[i]]
-            loggedJobs = toActiveJobs(jobs) 
-            #print("Prepare the jobs for " + user.username + ": " + str(userJobNums[i])) 
-            prepareKubernetesJobs(user.username, scheduler, expFolder, loggedJobs, isQueuedUp)     
-
-
-    print("====================== Pricing ALLOCATION =====================")
-    expFolder = "Pricing"
-    shares = Pricing(capacity, True, users)
-    printShares(shares) 
-    # given fill the jobs & allocation enforce,  prepare the job cripts
-    mainShell(users, expFolder, monitor_time, interval, startLogTime)
-    for i in range(len(users)):
-    # for i in range(1):
-        user = users[i]
-        share = shares[i]
-        jobs = user.jobs[:]
-        loggedJobs = enforceAllocation(share, jobs, stopTime, isBestFit) 
-        print("Number of admitted jobs for " + user.username + ": " + str(len(loggedJobs)))  
-        if isBestFit:
-            prepareKubernetesJobs(user.username, scheduler, expFolder, loggedJobs, isQueuedUp) 
-        else:
-            jobs = user.jobs[0:userJobNums[i]]
-            loggedJobs = toActiveJobs(jobs) 
-            #print("Prepare the jobs for " + user.username + ": " + str(userJobNums[i])) 
-            prepareKubernetesJobs(user.username, scheduler, expFolder, loggedJobs, isQueuedUp)      
+    # for i in range(len(users)):    
+    #     user = users[i]
+    #     share = shares[i]
+    #     jobs = user.jobs[:]
+    #     loggedJobs = enforceAllocation(share, jobs, stopTime, isBestFit) 
+    #     print("Number of admitted jobs for " + user.username + ": " + str(len(loggedJobs)))  
+    #     if isBestFit:
+    #         prepareKubernetesJobs(user.username, scheduler, expFolder, loggedJobs, isQueuedUp) 
+    #     else:
+    #         jobs = user.jobs[0:userJobNums[i]]
+    #         loggedJobs = toActiveJobs(jobs) 
+    #         #print("Prepare the jobs for " + user.username + ": " + str(userJobNums[i])) 
+    #         prepareKubernetesJobs(user.username, scheduler, expFolder, loggedJobs, isQueuedUp)      
 
 
     print("==================================================================")

@@ -20,7 +20,7 @@ NUM_THREADs = 19
 MEM = 12
 
 JOB_NAMEs   = ['vgg16', 'lenet', 'googlenet', 'alexnet',  'resnet50', 'inception3', 'overfeat']
-BatchNUms   = [10, 20, 40, 100 , 200]
+BatchNUms   = [0, 10, 20, 40, 100 , 200]
 batchSize   = 32
 
 CPU_COMMAND = "python tf_cnn_benchmarks.py --device=cpu --data_format=NHWC --num_warmup_batches=0 "

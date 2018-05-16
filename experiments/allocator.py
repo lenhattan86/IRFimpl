@@ -213,7 +213,7 @@ def allox(capacity, users):
     useralloc = userAlloc(betas, price)
 
     currLoad = sumResource(useralloc) # normalized load
-    gpumin = N - 1
+   
     flag = True
     
     finalAlloc = []
@@ -233,9 +233,10 @@ def allox(capacity, users):
     elif N ==1:
         finalAlloc.append(capacity)
 
+
     # step 4: pricing
+    gpumin = N
     error = 0.0001
-    step = 0.01
     while (abs(currLoad.MilliCPU - currLoad.NvidiaGPU) > error and flag):
         gpumin = gpumin -1 
         if(gpumin < 0):
@@ -243,52 +244,18 @@ def allox(capacity, users):
             break
         price[0] = 1
         price[1] = betas[gpumin]
-        useralloc = userAlloc(betas, price)
+        useralloc = userAlloc(betas, price)        
         currLoad = sumResource(useralloc)
-
+        
         if (currLoad.MilliCPU > currLoad.NvidiaGPU):
-            userAllocG = userAlloc(betas, price)
-            currLoadG = sumResource(userAllocG)
-            if (currLoadG.MilliCPU > currLoadG.NvidiaGPU):
-                continue
-            else :
-                finalAlloc = useralloc
-                finalAlloc[gpumin].MilliCPU = 0
-                finalAlloc[gpumin].NvidiaGPU = 0
-                currLoadG = sumResource(finalAlloc)
-                finalAlloc[gpumin].NvidiaGPU = (currLoadG.MilliCPU - currLoadG.NvidiaGPU + (finalAlloc[gpumin].Memory/ ratios[gpumin])) / (1 + betas[gpumin])
-                finalAlloc[gpumin].MilliCPU = currLoadG.NvidiaGPU + finalAlloc[gpumin].NvidiaGPU - currLoadG.MilliCPU
-                break
+            continue
         else:
+            useralloc[gpumin].MilliCPU  = useralloc[gpumin].MilliCPU + (currLoad.NvidiaGPU - currLoad.MilliCPU)/2
+            useralloc[gpumin].NvidiaGPU = useralloc[gpumin].NvidiaGPU - (currLoad.NvidiaGPU - currLoad.MilliCPU)/2
+            # currLoad = sumResource(useralloc)
+            break  
             
-            k = betas[gpumin+1]            
-            NUM_STEPS=10
-            if gpumin+1 > 0:
-                step = (k - betas[gpumin]) / NUM_STEPS
-            else:
-                step = betas[gpumin] / NUM_STEPS
-                
-            for iStep in range(NUM_STEPS):                
-                price[0] = 1
-                price[1] = k                
-                useralloc = userAlloc(betas, price)
-                currLoad = sumResource(useralloc)
-                if (abs(currLoad.MilliCPU - currLoad.NvidiaGPU) < 0.1) :
-                    finalAlloc = useralloc   
-                    flag = False                 
-                    break
-                k = k - step
-            # while k >= betas[gpumin]:
-            #     price[0] = 1
-            #     price[1] = k                
-            #     useralloc = userAlloc(betas, price)
-            #     currLoad = sumResource(useralloc)
-            #     if (abs(currLoad.MilliCPU - currLoad.NvidiaGPU) < error) :
-            #         finalAlloc = useralloc
-            #         flag = False
-            #         break
-            #     k = k - step
-
+    finalAlloc = useralloc
 
     if (N > 1) :
         sumAlloc = sumResource(finalAlloc)
@@ -321,7 +288,7 @@ def userAlloc(betas, currentPrices):
             alloc.NvidiaGPU = 0
         else: # if beta = price, put it in GPU.
             alloc.MilliCPU = 0
-            alloc.NvidiaGPU = 1/currentPrices[1]
+            alloc.NvidiaGPU = 1/currentPrices[1]*beta
         userAlloc.append(alloc)
 
     return userAlloc 

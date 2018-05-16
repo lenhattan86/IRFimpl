@@ -324,10 +324,10 @@ def userallocRes(betas, ratios, currentPrices):
         alloc = Resource(0, 0, 0)
         alloc.Memory = min(1 / currentPrices[2], max(ratio, beta * ratio/currentPrices[1]))
 
-        if (beta <= currentPrices[1]) :
+        if (beta <= currentPrices[1]) : # if beta = price, put it in CPU.
             alloc.MilliCPU = alloc.Memory/ ratio
             alloc.NvidiaGPU = 0
-        else: # if beta = price, put it in GPU.
+        else: 
             alloc.MilliCPU = 0
             alloc.NvidiaGPU = alloc.Memory/(ratio*beta)
         userAlloc.append(alloc)

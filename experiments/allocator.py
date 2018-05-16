@@ -204,40 +204,99 @@ def allox(capacity, users):
     for user in users:
         ratio = user.demand.mem / user.demand.computation  # normalized ratio 
         ratios.append(ratio)
-        betas.append(user.demand.beta)
+        # normalize beta
+        beta = user.demand.beta
+        betas.append(beta)
 
     # step 3: initialization
+    gpumin = N-1
     price = [0, 0, 0] # prices on CPU & GPU.
-    price[0] = 1 # for cpu
-    price[1] = users[N-1].demand.beta # for gpu    
+    price[0] = 1 # for cpu    
+    price[1] = betas[gpumin] # for gpu    
     useralloc = userAlloc(betas, price)
-
-    currLoad = sumResource(useralloc) # normalized load
+    currLoad = sumResourceNorm(useralloc, capacity) # normalized load
    
-    flag = True
-    
     finalAlloc = []
-    if(currLoad.NvidiaGPU > currLoad.MilliCPU):
-        finalAlloc = useralloc
-        finalAlloc[N-1].MilliCPU = 0
-        finalAlloc[N-1].NvidiaGPU = 0
-        currLoad = sumResource(finalAlloc)
-
-        finalAlloc[N-1].NvidiaGPU = (currLoad.MilliCPU - currLoad.NvidiaGPU + (finalAlloc[N-1].Memory/ratios[N-1])) / (1 + betas[N-1])
-        finalAlloc[N-1].MilliCPU = (currLoad.NvidiaGPU - currLoad.Memory + (finalAlloc[N-1].Memory/ratios[N-1])) / (1 + betas[N-1])
-        currLoad = sumResource(finalAlloc)
-
     
     if N == 0:
         return shares
     elif N ==1:
         finalAlloc.append(capacity)
 
+    # step 4: pricing
+    
+    while (True):
+        if (currLoad.MilliCPU <= currLoad.NvidiaGPU):            
+            useralloc[gpumin].MilliCPU  = prevUserAlloc[gpumin].MilliCPU + (prevLoad.NvidiaGPU - prevLoad.MilliCPU)*capacity.MilliCPU/2
+            useralloc[gpumin].NvidiaGPU = prevUserAlloc[gpumin].NvidiaGPU - (prevLoad.NvidiaGPU - prevLoad.MilliCPU)*capacity.NvidiaGPU/2
+            currLoad = sumResourceNorm(useralloc, capacity)
+            break
+
+        gpumin = gpumin -1 
+        if(gpumin < 0):
+            print("###gpumin is negative####")
+            break
+        price[0] = 1
+        price[1] = betas[gpumin]
+        prevUserAlloc = useralloc
+        prevLoad = currLoad
+        useralloc = userAlloc(betas, price)                    
+        currLoad = sumResourceNorm(useralloc, capacity)  
+
+    finalAlloc = useralloc
+
+    if (N > 1) :
+        sumAlloc = sumResource(finalAlloc)
+
+
+    # step 5: create the real shares.
+    for i in range(N):
+        cpu = finalAlloc[i].MilliCPU * capacity.MilliCPU / sumAlloc.MilliCPU
+        gpu = finalAlloc[i].NvidiaGPU * capacity.NvidiaGPU / sumAlloc.NvidiaGPU
+        mem = finalAlloc[i].Memory * capacity.Memory
+        shares.append(Resource(int(cpu), int(mem), round(gpu)))
+
+    return shares    
+
+def allox_bk(capacity, users):
+    shares = []
+    N = len(users)
+    # step 1: sort users based on beta (ascending)
+    users.sort(key=lambda x: x.demand.beta, reverse=False)
+    # step 2: compute the ratios
+    ratios = []
+    betas = []
+    for user in users:
+        ratio = user.demand.mem / user.demand.computation  # normalized ratio 
+        ratios.append(ratio)
+        # normalize beta
+        beta = user.demand.beta
+        betas.append(beta)
+
+    # step 3: initialization
+    gpumin = N-1
+    price = [0, 0, 0] # prices on CPU & GPU.
+    price[0] = 1 # for cpu    
+    price[1] = betas[gpumin] # for gpu    
+    useralloc = userAlloc(betas, price)
+    currLoad = sumNormalizedLoads(betas,useralloc) # normalized load
+   
+    finalAlloc = []
+    
+    if N == 0:
+        return shares
+    elif N ==1:
+        finalAlloc.append(capacity)
 
     # step 4: pricing
-    gpumin = N
-    error = 0.0001
-    while (abs(currLoad.MilliCPU - currLoad.NvidiaGPU) > error and flag):
+    
+    while (True):
+        if (currLoad.MilliCPU <= currLoad.NvidiaGPU):            
+            useralloc[gpumin].MilliCPU  = useralloc[gpumin].MilliCPU + (currLoad.NvidiaGPU - currLoad.MilliCPU)/2
+            useralloc[gpumin].NvidiaGPU = useralloc[gpumin].NvidiaGPU - (currLoad.NvidiaGPU - currLoad.MilliCPU)/2/betas[gpumin]
+            # currLoad = sumNormalizedLoads(betas,useralloc)
+            break
+
         gpumin = gpumin -1 
         if(gpumin < 0):
             print("###gpumin is negative####")
@@ -245,32 +304,18 @@ def allox(capacity, users):
         price[0] = 1
         price[1] = betas[gpumin]
         useralloc = userAlloc(betas, price)        
-        currLoad = sumResource(useralloc)
-        
-        if (currLoad.MilliCPU > currLoad.NvidiaGPU):
-            continue
-        else:
-            useralloc[gpumin].MilliCPU  = useralloc[gpumin].MilliCPU + (currLoad.NvidiaGPU - currLoad.MilliCPU)/2
-            useralloc[gpumin].NvidiaGPU = useralloc[gpumin].NvidiaGPU - (currLoad.NvidiaGPU - currLoad.MilliCPU)/2
-            # currLoad = sumResource(useralloc)
-            break  
-            
+        currLoad = sumNormalizedLoads(betas,useralloc)  
+
     finalAlloc = useralloc
 
     if (N > 1) :
         sumAlloc = sumResource(finalAlloc)
-        budget = max(sumAlloc.MilliCPU, sumAlloc.NvidiaGPU, sumAlloc.Memory) 
-        for i in range(3):
-            price[i] = price[i]* budget 
-        for j in range(N): 
-            finalAlloc[j].MilliCPU = finalAlloc[j].MilliCPU /budget
-            finalAlloc[j].NvidiaGPU = finalAlloc[j].NvidiaGPU /budget
-            finalAlloc[j].Memory = finalAlloc[j].Memory /budget
+
 
     # step 5: create the real shares.
     for i in range(N):
-        cpu = finalAlloc[i].MilliCPU * capacity.MilliCPU
-        gpu = finalAlloc[i].NvidiaGPU * capacity.NvidiaGPU
+        cpu = finalAlloc[i].MilliCPU * capacity.MilliCPU / sumAlloc.MilliCPU
+        gpu = finalAlloc[i].NvidiaGPU * capacity.NvidiaGPU / sumAlloc.NvidiaGPU
         mem = finalAlloc[i].Memory * capacity.Memory
         shares.append(Resource(int(cpu), int(mem), round(gpu)))
 
@@ -288,7 +333,7 @@ def userAlloc(betas, currentPrices):
             alloc.NvidiaGPU = 0
         else: # if beta = price, put it in GPU.
             alloc.MilliCPU = 0
-            alloc.NvidiaGPU = 1/currentPrices[1]*beta
+            alloc.NvidiaGPU = 1/currentPrices[1]
         userAlloc.append(alloc)
 
     return userAlloc 

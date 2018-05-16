@@ -56,7 +56,8 @@ def computeDemand(jobs, capacity):
     job = jobs[0]
     absoluteBeta = job.cpuProfile.compl / job.gpuProfile.compl
     demand.computation = job.cpuProfile.demand.MilliCPU
-    demand.beta = absoluteBeta
+    # demand.beta = absoluteBeta * job.cpuProfile.demand.MilliCPU / job.gpuProfile.demand.NvidiaGPU  * capacity.NvidiaGPU / capacity.MilliCPU
+    demand.beta = absoluteBeta * job.cpuProfile.demand.MilliCPU / job.gpuProfile.demand.NvidiaGPU
     demand.mem  = job.cpuProfile.demand.Memory
     demand.gpu  = job.gpuProfile.demand.NvidiaGPU
 

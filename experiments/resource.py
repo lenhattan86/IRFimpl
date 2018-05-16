@@ -43,6 +43,32 @@ def sumResource(resources):
 
     return result
 
+def sumResourceNorm(resources, capacity):
+    result = Resource(0,0,0)
+    for res in resources:
+        result.MilliCPU = result.MilliCPU + res.MilliCPU
+        result.Memory = result.Memory + res.Memory
+        result.NvidiaGPU = result.NvidiaGPU + res.NvidiaGPU
+
+    result.MilliCPU = 1.0*result.MilliCPU/capacity.MilliCPU
+    result.Memory = 1.0*result.Memory/capacity.Memory
+    result.NvidiaGPU = 1.0*result.NvidiaGPU/capacity.NvidiaGPU
+
+    return result    
+
+def sumNormalizedLoads(betas, resources):
+    result = Resource(0,0,0)
+    for i in range(len(resources)):
+    # for res in resources:
+        beta = betas[i]
+        res = resources[i]
+        result.MilliCPU = result.MilliCPU + res.MilliCPU
+        result.Memory = result.Memory + res.Memory
+        result.NvidiaGPU = result.NvidiaGPU + res.NvidiaGPU*beta
+
+    return result    
+
+
 def substract(aRes, bRes):
     result = Resource(0, 0, 0)
     result.MilliCPU = aRes.MilliCPU -bRes.MilliCPU

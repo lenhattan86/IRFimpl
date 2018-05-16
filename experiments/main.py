@@ -52,7 +52,7 @@ def computeDemandOld(jobs, capacity):
 
 
 def computeDemand(jobs, capacity):
-    demand = Demand(0, 0, 0, 0)    
+    demand = Demand(0, 0, 0, 0, 0)    
     job = jobs[0]
     absoluteBeta = job.cpuProfile.compl / job.gpuProfile.compl
     demand.computation = job.cpuProfile.demand.MilliCPU
@@ -60,6 +60,7 @@ def computeDemand(jobs, capacity):
     demand.beta = absoluteBeta * job.cpuProfile.demand.MilliCPU / job.gpuProfile.demand.NvidiaGPU
     demand.mem  = job.cpuProfile.demand.Memory
     demand.gpu  = job.gpuProfile.demand.NvidiaGPU
+    demand.gpu_mem  = job.gpuProfile.demand.Memory
 
     return demand
 

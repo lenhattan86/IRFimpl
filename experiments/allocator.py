@@ -248,13 +248,12 @@ def allox(capacity, users):
     if (N > 1) :
         sumAlloc = sumResource(finalAlloc)
 
-
     # step 5: create the real shares.
     for i in range(N):
         cpu = finalAlloc[i].MilliCPU * capacity.MilliCPU / sumAlloc.MilliCPU
         gpu = finalAlloc[i].NvidiaGPU * capacity.NvidiaGPU / sumAlloc.NvidiaGPU
-        mem = finalAlloc[i].Memory * capacity.Memory
-        shares.append(Resource(int(cpu), int(mem), round(gpu)))
+        mem = cpu / users[i].demand.computation * users[i].demand.mem + gpu / users[i].demand.gpu * users[i].demand.gpu_mem
+        shares.append(Resource(int(cpu), int(mem), gpu))
 
     return shares    
 

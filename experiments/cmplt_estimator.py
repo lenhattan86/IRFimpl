@@ -59,7 +59,7 @@ def readJobStatus(podName):
     (output, err) = p.communicate()    
     p_status = p.wait() 
     if IS_TEST:
-            output = """NAMESPACE     NAME                                       READY     STATUS      RESTARTS   AGE
+        output = """NAMESPACE     NAME                                       READY     STATUS      RESTARTS   AGE
 default       job-alexnet-cpu-0                          0/1       Completed   0          19h
 default       job-alexnet-cpu-1                          0/1       Completed   0          19h
 """

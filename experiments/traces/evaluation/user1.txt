@@ -4,10 +4,6 @@
 # cpu (milliCPU) gpu mem (byte) complTime (secs) # run on GPU
 # command to run the job
 #
-16000 0 4 100
-1000 1 2 20
-python tf_cnn_benchmarks.py --device=cpu --data_format=NHWC --num_warmup_batches=0  --model=googlenet --batch_size=16 --num_intra_threads=16 --num_batches=200
-python tf_cnn_benchmarks.py --device=gpu --num_warmup_batches=0  --model=googlenet --batch_size=16 --num_batches=200
 16000 0 12 310
 1000 1 12 44
 python tf_cnn_benchmarks.py --device=cpu --data_format=NHWC --num_warmup_batches=0  --model=googlenet --batch_size=16 --num_intra_threads=16 --num_batches=200

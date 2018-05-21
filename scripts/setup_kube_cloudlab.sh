@@ -18,18 +18,8 @@
 echo "This file need to be executed on the master node instead of your local machine for chameleon"
 echo "You also need to provide the chameleon.pem file"
 
-masterIP="128.104.222.165"
-slavesIP="c220g2-011308.wisc.cloudlab.us		
-c220g2-011316.wisc.cloudlab.us		
-c220g2-011330.wisc.cloudlab.us		
-c220g2-011310.wisc.cloudlab.us		
-c220g2-011303.wisc.cloudlab.us		
-c220g2-011317.wisc.cloudlab.us		
-c220g2-011322.wisc.cloudlab.us		
-c220g2-011319.wisc.cloudlab.us		
-c220g2-011105.wisc.cloudlab.us		
-c220g2-011110.wisc.cloudlab.us		
-c220g2-011314.wisc.cloudlab.us
+masterIP="128.104.222.145"
+slavesIP="c220g2-011332.wisc.cloudlab.us
 " # last one of ctl of slave1
 
 serversIP="$masterIP $slavesIP"

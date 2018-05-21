@@ -215,7 +215,9 @@ def allox(capacity, users):
     price[1] = betas[gpumin] # for gpu    
     useralloc = userAlloc(betas, price)
     currLoad = sumResourceNorm(useralloc, capacity) # normalized load
-   
+    prevLoad = currLoad
+    prevUserAlloc = useralloc
+
     finalAlloc = []
     
     if N == 0:
@@ -226,9 +228,21 @@ def allox(capacity, users):
     # step 4: pricing
     
     while (True):
-        if (currLoad.MilliCPU <= currLoad.NvidiaGPU):            
-            useralloc[gpumin].MilliCPU  = prevUserAlloc[gpumin].MilliCPU + (prevLoad.NvidiaGPU - prevLoad.MilliCPU)*capacity.MilliCPU/2
-            useralloc[gpumin].NvidiaGPU = prevUserAlloc[gpumin].NvidiaGPU - (prevLoad.NvidiaGPU - prevLoad.MilliCPU)*capacity.NvidiaGPU/2
+        if (currLoad.MilliCPU <= currLoad.NvidiaGPU):   
+            # method 1: using the previous allocation and balance it.
+            # useralloc = prevUserAlloc            
+            # useralloc[gpumin].MilliCPU  = useralloc[gpumin].MilliCPU - (prevLoad.MilliCPU - prevLoad.NvidiaGPU)*capacity.MilliCPU/2
+            # useralloc[gpumin].NvidiaGPU = useralloc[gpumin].NvidiaGPU + (prevLoad.MilliCPU - prevLoad.NvidiaGPU)*capacity.NvidiaGPU/2
+
+            # method 2: using the current allocation and balance it.
+            # useralloc[gpumin].MilliCPU  = useralloc[gpumin].MilliCPU  + (currLoad.NvidiaGPU - currLoad.MilliCPU)*capacity.MilliCPU/2
+            # useralloc[gpumin].NvidiaGPU = useralloc[gpumin].NvidiaGPU - (currLoad.NvidiaGPU - currLoad.MilliCPU)*capacity.NvidiaGPU/2
+            
+            # method 3: using the last allocation for others. find out the allocatino for gpumin      
+            userallocCPU =  userAllocCPU(betas, price)  
+            cpuCurrLoad =  sumResourceNorm(userallocCPU, capacity)
+            useralloc[gpumin].MilliCPU  = abs(cpuCurrLoad.MilliCPU - currLoad.NvidiaGPU)/2*capacity.MilliCPU
+            useralloc[gpumin].NvidiaGPU = abs(cpuCurrLoad.MilliCPU - currLoad.NvidiaGPU)/2*capacity.NvidiaGPU
             currLoad = sumResourceNorm(useralloc, capacity)
             break
 
@@ -238,7 +252,7 @@ def allox(capacity, users):
             break
         price[0] = 1
         price[1] = betas[gpumin]
-        prevUserAlloc = useralloc
+        prevUserAlloc = useralloc 
         prevLoad = currLoad
         useralloc = userAlloc(betas, price)                    
         currLoad = sumResourceNorm(useralloc, capacity)  
@@ -251,7 +265,8 @@ def allox(capacity, users):
     # step 5: create the real shares.
     for i in range(N):
         cpu = finalAlloc[i].MilliCPU * capacity.MilliCPU / sumAlloc.MilliCPU
-        gpu = finalAlloc[i].NvidiaGPU * capacity.NvidiaGPU / sumAlloc.NvidiaGPU
+        gpu = round(finalAlloc[i].NvidiaGPU * capacity.NvidiaGPU / sumAlloc.NvidiaGPU)
+        # gpu = finalAlloc[i].NvidiaGPU * capacity.NvidiaGPU / sumAlloc.NvidiaGPU
         mem = cpu / users[i].demand.computation * users[i].demand.mem + gpu / users[i].demand.gpu * users[i].demand.gpu_mem
         shares.append(Resource(int(cpu), int(mem), gpu))
 
@@ -331,6 +346,22 @@ def userAlloc(betas, currentPrices):
             alloc.MilliCPU = 1
             alloc.NvidiaGPU = 0
         else: # if beta = price, put it in GPU.
+            alloc.MilliCPU = 0
+            alloc.NvidiaGPU = 1/currentPrices[1]
+        userAlloc.append(alloc)
+
+    return userAlloc 
+
+
+def userAllocCPU(betas, currentPrices):
+    userAlloc = [] 
+    for j in range(len(betas)):
+        beta = betas[j]
+        alloc = Resource(0, 0, 0)
+        if (beta <= currentPrices[1]) : # if beta = price, put it in CPU.
+            alloc.MilliCPU = 1
+            alloc.NvidiaGPU = 0
+        else: 
             alloc.MilliCPU = 0
             alloc.NvidiaGPU = 1/currentPrices[1]
         userAlloc.append(alloc)

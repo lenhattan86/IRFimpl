@@ -134,9 +134,12 @@ f_yaml = open(job_folder + '/' + yamfile+ ".yaml",'w')
 f_yaml.write(strPodYaml('job', activeJob, SCHEDULER, False))
 f_yaml.close()
     # submit jobs
-
+podName = "job-"+str(jobId)
 print("Submit job " + cpuFullCommand)
 #kubectl delete pods job-1
+p = subprocess.Popen(["kubectl delete pods "+podName], 
+        stdout=subprocess.PIPE, shell=True)                   
+(output, err) = p.communicate()   
 p = subprocess.Popen(["kubectl create -f " + job_folder + '/' + yamfile+ ".yaml"], 
         stdout=subprocess.PIPE, shell=True)                   
 (output, err) = p.communicate()    
@@ -145,8 +148,8 @@ p_status = p.wait()
 # step 4: measure the job completion time.
 print("Start monitoring the job "+jobName)
 start = time()
-# podName = "job-"+str(jobId)
-podName = "job-alexnet-cpu-0"
+
+# podName = "job-alexnet-cpu-0"
 started = False
 rows = []
 while True: 
@@ -167,6 +170,6 @@ while True:
 print("completion time: " + str(complTime))
 
 # step 5: write results out
-ofile  = open(job_folder + '/' + 'online_tool.csv', "wb")
+ofile  = open(job_folder + '/' + 'cmplt_estimator.csv', "wb")
 writer = csv.writer(ofile, dialect='excel')
 writer.writerows(rows) 

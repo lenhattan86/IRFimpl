@@ -29,7 +29,7 @@ print "====== ONLINE-PERFORMANCE-ESTIMATION-TOOL ====="
 STOP_TIME = -1
 FOLDER = "cmplt_estimator"
 GI = 1024*1024*1024
-SCHEDULER = "my-scheduler"
+SCHEDULER = "kube-scheduler"
 this_path = os.path.dirname(os.path.realpath(__file__))
 
 
@@ -136,6 +136,7 @@ f_yaml.close()
     # submit jobs
 
 print("Submit job " + cpuFullCommand)
+#kubectl delete pods job-1
 p = subprocess.Popen(["kubectl create -f " + job_folder + '/' + yamfile+ ".yaml"], 
         stdout=subprocess.PIPE, shell=True)                   
 (output, err) = p.communicate()    

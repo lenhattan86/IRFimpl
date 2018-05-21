@@ -33,7 +33,7 @@ SCHEDULER = "my-scheduler"
 this_path = os.path.dirname(os.path.realpath(__file__))
 
 
-IS_TEST=True
+IS_TEST=False
 
 if not IS_TEST:
     parser = argparse.ArgumentParser()
@@ -54,6 +54,7 @@ def readJobStatus(podName):
     now = datetime.datetime.now()        
     # p = subprocess.Popen(["kubectl get pods --all-namespaces --field-selector=status.phase!=Pending"], 
     p = subprocess.Popen(["kubectl get pods --all-namespaces"], 
+    # p = subprocess.Popen(["kubectl get pods " + podName], 
         stdout=subprocess.PIPE, shell=True)                   
     (output, err) = p.communicate()    
     p_status = p.wait() 
@@ -62,7 +63,10 @@ def readJobStatus(podName):
 default       job-alexnet-cpu-0                          0/1       Completed   0          19h
 default       job-alexnet-cpu-1                          0/1       Completed   0          19h
 """
-            p_status=0    
+#         output = """NAME      READY     STATUS    RESTARTS   AGE
+# job-1     0/1       Pending   0          1m 
+# """
+        p_status=0    
 
     # completedJobs = 0
     # time_step = time_step + interval
@@ -117,8 +121,8 @@ shutil.rmtree(job_folder, ignore_errors=True) # delete previous folder.
 os.mkdir(job_folder)    
 
 smallNumBatches = 10
-cpu_usage = Resource(cpu*MILLI, mem, 0)
-gpu_usage = Resource(cpu     , mem, 1)
+cpu_usage = Resource(cpu*MILLI, mem *GI, 0)
+gpu_usage = Resource(cpu     , mem *GI, 1)
 cpuFullCommand = "python tf_cnn_benchmarks.py --device=cpu --data_format=NHWC --num_warmup_batches=0 " + common + str(smallNumBatches)
 gpuFullCommand = "python tf_cnn_benchmarks.py --device=gpu --num_warmup_batches=0  " + common + str(smallNumBatches)
 
@@ -159,10 +163,9 @@ while True:
         break
     sleep(1)
 
-print(complTime)
+print("completion time: " + str(complTime))
 
 # step 5: write results out
-print(job_folder)
 ofile  = open(job_folder + '/' + 'online_tool.csv', "wb")
 writer = csv.writer(ofile, dialect='excel')
 writer.writerows(rows) 

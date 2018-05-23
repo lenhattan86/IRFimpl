@@ -25,7 +25,14 @@ from allocator import *
 from kubernetes import *
 from job_info import *
 
-IS_TEST=False
+parser = argparse.ArgumentParser()
+parser.add_argument('--test', help='True or False', required=False, default="True")
+args = vars(parser.parse_args())
+IS_TEST = bool(args['test']=="True")
+
+if IS_TEST:
+    print("please indicate --test=False")
+
 interval=1
 def listJobStatus():
     startedPods   = []
@@ -92,24 +99,31 @@ def updateJobInfo(startedJobs, completedJobs, mJobs, currTime):
                 mJobs[jobIdKey].complTime = mJobs[jobIdKey].endTime - mJobs[jobIdKey].starTime
                 print("[INFO] " + mJobs[jobIdKey].jobName + "'s compl. time is "+ str(mJobs[jobIdKey].complTime ))
 
-def estimate(fJobs, sJobs1, sJobs2):
+def estimate(fJobs, sJobs1, sJobs2, isCPU):
     for keyId in fJobs:    
-        if (fJobs.get(keyId) is not None) and fJobs[keyId].estComplTime < 0:
-            if (sJobs1.get(keyId) is not None) and (sJobs2.get(keyId) is not None):
-                if (sJobs1.get(keyId).complTime >= 0) and (sJobs2.get(keyId).complTime >= 0):
-                    # linear model a * (numberofbatches) + b
-                    a = (sJobs1[keyId].complTime - sJobs2[keyId].complTime) / (sJobs1[keyId].numBatches - sJobs2[keyId].numBatches)
-                    b = sJobs1[keyId].complTime - a*sJobs1[keyId].numBatches
-                    fJobs[keyId].estComplTime = a*fJobs[keyId].numBatches + b
-                    print("[INFO] " + fJobs.get(keyId).jobName +"'s estiated compl. time is " + str(fJobs[keyId].estComplTime))
+        if isCPU:
+            if (fJobs.get(keyId) is not None) and fJobs[keyId].estComplTimeCpu < 0:
+                if (sJobs1.get(keyId) is not None) and (sJobs2.get(keyId) is not None):
+                    if (sJobs1.get(keyId).complTime >= 0) and (sJobs2.get(keyId).complTime >= 0):
+                        # linear model a * (numberofbatches) + b
+                        a = (sJobs1[keyId].complTime - sJobs2[keyId].complTime) / (sJobs1[keyId].numBatches - sJobs2[keyId].numBatches)
+                        b = sJobs1[keyId].complTime - a*sJobs1[keyId].numBatches                        
+                        fJobs[keyId].estComplTimeCpu = a*fJobs[keyId].numBatches + b
+                        print("[INFO] " + fJobs.get(keyId).jobName +"'s estiated compl. time on CPU is " + str(fJobs[keyId].estComplTimeCpu))
+                    
+        else:
+            if (fJobs.get(keyId) is not None) and fJobs[keyId].estComplTimeGpu < 0:
+                if (sJobs1.get(keyId) is not None) and (sJobs2.get(keyId) is not None):
+                    if (sJobs1.get(keyId).complTime >= 0) and (sJobs2.get(keyId).complTime >= 0):
+                        # linear model a * (numberofbatches) + b
+                        a = (sJobs1[keyId].complTime - sJobs2[keyId].complTime) / (sJobs1[keyId].numBatches - sJobs2[keyId].numBatches)
+                        b = sJobs1[keyId].complTime - a*sJobs1[keyId].numBatches
+                        fJobs[keyId].estComplTimeGpu = a*fJobs[keyId].numBatches + b
+                        print("[INFO] " + fJobs.get(keyId).jobName +"'s estiated compl. time on GPU is " + str(fJobs[keyId].estComplTimeGpu))        
 
 
 def submitJob(podName, job_folder, yamfile, username):
-    # for the small number of batches
-    # podName = "job-"+str(jobId)
-    # print("Submit job " + cpuFullCommand)
-    #kubectl delete pods job-1
-    # print("kubectl delete pods "+podName +" -n " + username)
+    print("Submit job " + podName)
     deleteJob(podName, username)
     p = subprocess.Popen(["kubectl create -f  " + job_folder + '/' + yamfile+ ".yaml -n " + username ],
             stdout=subprocess.PIPE, shell=True)                   
@@ -140,10 +154,10 @@ def createYamlFile(activeJob, prefix):
 def submitJobs(fJobs):
     deletedKeys = []
     for jobKey in fJobs:
-        if fJobs[jobKey].estComplTime >=0:
+        if fJobs[jobKey].estComplTimeCpu >=0:
+        # if fJobs[jobKey].estComplTimeCpu >=0 and fJobs[jobKey].estComplTimeGpu >=0::
             jobInfo = fJobs[jobKey]
-            job = jobInfo.job
-            print("submit job " + jobName) 
+            job = jobInfo.job            
             cpuCmd = job.cpuProfile.jobCmd
             gpuCmd = job.gpuProfile.jobCmd
 
@@ -267,8 +281,8 @@ for user in users:
         updateJobInfo(startedJobs, completedJobs, gpuShortJobs_1, currTime)
         updateJobInfo(startedJobs, completedJobs, gpuShortJobs_2, currTime)
         
-        estimate(fullJobs, cpuShortJobs_1, cpuShortJobs_2)
-        estimate(fullJobs, gpuShortJobs_1, gpuShortJobs_2)
+        estimate(fullJobs, cpuShortJobs_1, cpuShortJobs_2, True)
+        estimate(fullJobs, gpuShortJobs_1, gpuShortJobs_2, False)
 
         updateJobInfo(startedJobs, completedJobs, fullJobs, currTime)
 
@@ -290,8 +304,8 @@ while iTime < endTime or infiniteLoop:
 
     
     # step 5: estimation
-    estimate(fullJobs, cpuShortJobs_1, cpuShortJobs_2)
-    estimate(fullJobs, gpuShortJobs_1, gpuShortJobs_2)
+    estimate(fullJobs, cpuShortJobs_1, cpuShortJobs_2, True)
+    estimate(fullJobs, gpuShortJobs_1, gpuShortJobs_2, False)
     
     updateJobInfo(startedJobs, completedJobs, fullJobs, currTime)
     # step 6: submit profiled jobs to the system

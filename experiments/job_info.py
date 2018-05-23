@@ -9,7 +9,8 @@ class JobInfo:
         self.stopTime = -1
         self.numBatches = numBatches
         self.complTime = -1
-        self.estComplTime = -1
+        self.estComplTimeCpu = -1
+        self.estComplTimeGpu = -1
         self.estSpeedup = -1
         self.estCpuMemUsage = -1
         self.estGpuMemUsage = -1

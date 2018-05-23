@@ -75,7 +75,8 @@ user1       user1-1                          0/1       Completed   0          19
                     continue
                 if podStatus == "Completed":
                     completedPods.append(mPodName)
-                if podStatus == "ContainerCreating" or podStatus == "Running":
+                # if podStatus == "ContainerCreating" or podStatus == "Running":
+                if podStatus == "Running":
                     startedPods.append(mPodName)
     currTime = time()
     return startedPods, completedPods, currTime
@@ -205,7 +206,7 @@ mem=16
 gpuCpu=1
 gpu=1
 gpuMem=32
-workload = "traces/evaluation"
+workload = "traces/automation"
 userStrArray = ["user1"]
 
 users = []

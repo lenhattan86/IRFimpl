@@ -207,10 +207,19 @@ for i in range(len(userStrArray)):
     newUser = User(strUser, jobs)
     # print(newUser.toString())
     users.append(newUser)
+    # create user name space
+    f = open(job_folder + '/' + newUser.username + ".yaml",'w')
+    f.write(strUserYaml(newUser.username))
+    p = subprocess.Popen(["kubectl create -f  " + job_folder + '/' + newUser.username+ ".yaml" ],
+            stdout=subprocess.PIPE, shell=True)                   
+    (output, err) = p.communicate()    
+    p_status = p.wait()
 
 # create profiling jobs
 jobId = 0
 for user in users:
+    
+
     # create jobs
     for job in user.jobs:
         jobId = jobId + 1

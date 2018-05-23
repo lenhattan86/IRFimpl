@@ -166,18 +166,6 @@ GI = 1024*1024*1024
 SCHEDULER = "kube-scheduler"
 this_path = os.path.dirname(os.path.realpath(__file__))
 
-if not IS_TEST:
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--device', help='cpu or gpu', required=True)
-    parser.add_argument('--cmd', help='full command', required=True)
-    args = vars(parser.parse_args())
-    
-    device = args['device']
-    cmd = args['cmd']    
-else:
-    device='cpu'
-    cmd=''
-
 job_folder = this_path + "/" + FOLDER 
 shutil.rmtree(job_folder, ignore_errors=True) # delete previous folder.
 os.mkdir(job_folder)    

@@ -109,13 +109,17 @@ def submitJob(podName, job_folder, yamfile, username):
     # podName = "job-"+str(jobId)
     # print("Submit job " + cpuFullCommand)
     #kubectl delete pods job-1
-    print("kubectl delete pods "+podName +" -n " + username)
-    p = subprocess.Popen(["kubectl delete pods "+podName +" -n " + username], 
-            stdout=subprocess.PIPE, shell=True)                   
-    (output, err) = p.communicate()   
+    # print("kubectl delete pods "+podName +" -n " + username)
+    deleteJob(podName, username)
     p = subprocess.Popen(["kubectl create -f  " + job_folder + '/' + yamfile+ ".yaml -n " + username ],
             stdout=subprocess.PIPE, shell=True)                   
     (output, err) = p.communicate()    
+    p_status = p.wait()
+
+def deleteJob(podName, username):
+    p = subprocess.Popen(["kubectl delete pods "+podName +" -n " + username], 
+            stdout=subprocess.PIPE, shell=True)                   
+    (output, err) = p.communicate()   
     p_status = p.wait()
 
 def createSubCommands(cmd):
@@ -216,6 +220,7 @@ for user in users:
         jobName = user.username + "-" + str(jobId)
         fullJobs[jobIdKey]  = JobInfo(jobId, jobName, user.username, job.numBatches)
         fullJobs[jobIdKey].job = job
+        deleteJob(jobName, user.username)
         
         # read the number of batch from the job
         cpuCmd = job.cpuProfile.jobCmd
@@ -262,9 +267,10 @@ for user in users:
         updateJobInfo(startedJobs, completedJobs, gpuShortJobs_1, currTime)
         updateJobInfo(startedJobs, completedJobs, gpuShortJobs_2, currTime)
         
-        updateJobInfo(startedJobs, completedJobs, fullJobs, currTime)
         estimate(fullJobs, cpuShortJobs_1, cpuShortJobs_2)
         estimate(fullJobs, gpuShortJobs_1, gpuShortJobs_2)
+
+        updateJobInfo(startedJobs, completedJobs, fullJobs, currTime)
 
 # step 4: measure the job completion time.
 started = False
@@ -281,15 +287,17 @@ while iTime < endTime or infiniteLoop:
     updateJobInfo(startedJobs, completedJobs, cpuShortJobs_2,currTime)
     updateJobInfo(startedJobs, completedJobs, gpuShortJobs_1,currTime)
     updateJobInfo(startedJobs, completedJobs, gpuShortJobs_2,currTime)
+
+    
     # step 5: estimation
     estimate(fullJobs, cpuShortJobs_1, cpuShortJobs_2)
     estimate(fullJobs, gpuShortJobs_1, gpuShortJobs_2)
+    
+    updateJobInfo(startedJobs, completedJobs, fullJobs, currTime)
     # step 6: submit profiled jobs to the system
-    print ("size of full jobs: " + str(len(fullJobs)))
+    # print ("size of full jobs: " + str(len(fullJobs)))
     submitJobs(fullJobs)   
     iTime = iTime + 1       
-
-
 
 # step 6: write results out
 ofile  = open(job_folder + '/' + 'cmplt_estimator.csv', "wb")

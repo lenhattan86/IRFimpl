@@ -146,9 +146,9 @@ def createSubCommands(cmd):
 
     return subCmd1, subCmd2
 
-def createYamlFile(activeJob, prefix):
+def createYamlFile(activeJob, prefix, yamfile, isGPU):
     f_yaml = open(job_folder + '/' + yamfile+ ".yaml",'w')   
-    f_yaml.write(strPodYaml(prefix, activeJob, SCHEDULER, False))
+    f_yaml.write(strPodYaml(prefix, activeJob, SCHEDULER, isGPU))
     f_yaml.close()    
 
 def submitJobs(fJobs):
@@ -164,8 +164,11 @@ def submitJobs(fJobs):
             cpu_usage = Resource(cpu*MILLI, mem *GI, 0)
             gpu_usage = Resource(cpu*MILLI, gpuMem *GI, gpu)
             activeJob = ActiveJob(cpu_usage, gpu_usage, 0, 0, jobId, cpuCmd, gpuCmd)
-            createYamlFile(activeJob, jobInfo.userName)
-            submitJob(jobName, job_folder, yamfile, jobInfo.userName)            
+            prefix = jobInfo.userName
+            yamfile = jobInfo.jobName
+            createYamlFile(activeJob, prefix, yamfile, False)            
+
+            submitJob(jobInfo.jobName, job_folder, yamfile, jobInfo.userName)            
             deletedKeys.append(jobKey)
     
     for jobKey in deletedKeys:
@@ -252,7 +255,7 @@ for user in users:
         yamfile = jobName
         newJob = JobInfo(jobId, jobName, user.username, numBatch1)
         activeJob = ActiveJob(cpu_usage, gpu_usage, 0, 0, jobId, cpuCmd1, gpuCmd1)
-        createYamlFile(activeJob, prefix)
+        createYamlFile(activeJob, prefix, yamfile, False)
         submitJob(jobName, job_folder, yamfile, user.username)        
         cpuShortJobs_1[jobIdKey] = newJob
 
@@ -261,7 +264,7 @@ for user in users:
         yamfile = jobName
         newJob  = JobInfo(jobId, jobName, user.username, numBatch2)
         activeJob = ActiveJob(cpu_usage, gpu_usage, 0, 0, jobId,  cpuCmd2, gpuCmd2)
-        createYamlFile(activeJob, prefix)
+        createYamlFile(activeJob, prefix, yamfile, False)
         submitJob(jobName, job_folder, yamfile, user.username)        
         cpuShortJobs_2[jobIdKey] = newJob
 

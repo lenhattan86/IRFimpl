@@ -109,7 +109,7 @@ def submitJob(podName, job_folder, yamfile, username):
     # podName = "job-"+str(jobId)
     # print("Submit job " + cpuFullCommand)
     #kubectl delete pods job-1
-    p = subprocess.Popen(["kubectl delete pods "+podName], 
+    p = subprocess.Popen(["kubectl delete pods "+podName +" -n " + username], 
             stdout=subprocess.PIPE, shell=True)                   
     (output, err) = p.communicate()   
     p = subprocess.Popen(["kubectl create -f  " + job_folder + '/' + yamfile+ ".yaml -n " + username ],

@@ -45,12 +45,12 @@ def listJobStatus():
     p_status = p.wait() 
     if IS_TEST:
         output = """NAMESPACE     NAME                                       READY     STATUS      RESTARTS   AGE
-default       cpu1-1                          0/1       ContainerCreating   0          19h
-default       cpu1-1                          0/1       Completed   0          19h
-default       cpu2-1                          0/1       ContainerCreating   0          19h
-default       cpu2-1                          0/1       Completed   0          19h
-default       user1-1                          0/1       ContainerCreating   0          19h
-default       user1-1                          0/1       Completed   0          19h
+user1       cpu1-1                          0/1       ContainerCreating   0          19h
+user1       cpu1-1                          0/1       Completed   0          19h
+user1       cpu2-1                          0/1       ContainerCreating   0          19h
+user1       cpu2-1                          0/1       Completed   0          19h
+user1       user1-1                          0/1       ContainerCreating   0          19h
+user1       user1-1                          0/1       Completed   0          19h
 """
 #         output = """NAME      READY     STATUS    RESTARTS   AGE
 # job-1     0/1       Pending   0          1m 

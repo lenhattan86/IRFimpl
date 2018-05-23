@@ -206,7 +206,7 @@ gpuCpu=1
 gpu=1
 gpuMem=32
 workload = "traces/evaluation"
-userStrArray = ["user1", "user2"]
+userStrArray = ["user1"]
 
 users = []
 fullJobs = {}
@@ -296,7 +296,7 @@ for user in users:
         estimate(fullJobs, cpuShortJobs_1, cpuShortJobs_2, True)
         estimate(fullJobs, gpuShortJobs_1, gpuShortJobs_2, False)
 
-        updateJobInfo(startedJobs, completedJobs, fullJobs, currTime)
+        # updateJobInfo(startedJobs, completedJobs, fullJobs, currTime)
 
 # step 4: measure the job completion time.
 started = False

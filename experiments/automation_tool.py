@@ -126,7 +126,7 @@ def estimate(fJobs, sJobs1, sJobs2, isCPU):
 
 def submitJob(podName, job_folder, yamfile, username):
     print("Submit job " + podName)
-    deleteJob(podName, username)
+    # deleteJob(podName, username)
     p = subprocess.Popen(["kubectl create -f  " + job_folder + '/' + yamfile+ ".yaml -n " + username ],
             stdout=subprocess.PIPE, shell=True)                   
     (output, err) = p.communicate()    
@@ -139,7 +139,7 @@ def deleteJob(podName, username):
     p_status = p.wait()
 
 def deleteAllJobs(username):
-    p = subprocess.Popen(["kubectl delete pods --all -n" + username], 
+    p = subprocess.Popen(["kubectl delete pods --all -n" + username +"  --grace-period=0 --force "], 
             stdout=subprocess.PIPE, shell=True)                   
     (output, err) = p.communicate()   
     p_status = p.wait()    
@@ -171,7 +171,7 @@ def submitJobs(fJobs):
 
             cpu_usage = Resource(cpu*MILLI, mem *GI, 0)
             gpu_usage = Resource(cpu*MILLI, gpuMem *GI, gpu)
-            activeJob = ActiveJob(cpu_usage, gpu_usage, 0, 0, jobId, cpuCmd, gpuCmd)
+            activeJob = ActiveJob(cpu_usage, gpu_usage, 0, 0, jobKey, cpuCmd, gpuCmd)
             prefix = jobInfo.userName
             yamfile = jobInfo.jobName
             createYamlFile(activeJob, prefix, yamfile, False)            

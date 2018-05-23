@@ -210,8 +210,8 @@ userStrArray = ["user1", "user2"]
 
 users = []
 fullJobs = {}
-numBatch1 = 5
-numBatch2 = 10
+numBatch1 = 0
+numBatch2 = 20
 cpuShortJobs_1 = {}
 cpuShortJobs_2 = {}
 gpuShortJobs_1 = {}
@@ -246,7 +246,7 @@ for user in users:
         jobName = user.username + "-" + str(jobId)
         fullJobs[jobIdKey]  = JobInfo(jobId, jobName, user.username, job.numBatches)
         fullJobs[jobIdKey].job = job
-        deleteJob(jobName, user.username)
+        # deleteJob(jobName, user.username)
         
         # read the number of batch from the job
         cpuCmd = job.cpuProfile.jobCmd

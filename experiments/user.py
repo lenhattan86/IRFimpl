@@ -5,10 +5,24 @@ class User:
     # list of jobs
     # username
     # demand    
+        
     def __init__ (self, name, demand, jobs):
         self.username = name
         self.jobs = jobs
         self.demand = demand
+
+        self.shortCpuJobs1 = []
+        self.shortCpuJobs2 = []
+        self.shortGpuJobs1 = []
+        self.shortGpuJobs2 = []
+
+    def __init__ (self, name, jobs):
+        self.username = name
+        self.jobs = jobs
+        self.shortCpuJobs1 = []
+        self.shortCpuJobs2 = []
+        self.shortGpuJobs1 = []
+        self.shortGpuJobs2 = []
 
     def getUsername(self):
         return self.username

@@ -5,7 +5,13 @@ class Job:
         self.cpuProfile = cpuProfile
         self.gpuProfile = gpuProfile
         self.beta = beta        
-        self.jobId = jobId
+        self.jobId = jobId        
+        tempArray = cpuProfile.jobCmd.split("--num_batches=")
+        if len(tempArray) == 2:            
+            numBatches = int(tempArray[1])
+        else:
+            print("[ERROR] command shoud have --num_batches= at the end")
+        self.numBatches = numBatches
 
     def fit(self, alloc):
         # print("gpuProfile: " + self.gpuProfile.toString())
@@ -28,6 +34,10 @@ class Job:
         result.append(self.gpuProfile)
         result.append(self.cpuProfile)
         return result
+
+    def getBatchNum(self):
+        print("TODO: fix job.getBatchNum(self)")
+        return 100    
 
 
 class ActiveJob:
@@ -107,7 +117,7 @@ def readJobs(this_path, jobFile, numRepJobs):
         mJob=jobs[0] 
         jobIdStart = len(jobs)       
         for i in range(0,numRepJobs-1):
-            jobId= jobIdStart + i
+            jobId  = jobIdStart + i
             newJob = Job(jobId, mJob.cpuProfile, mJob.gpuProfile, mJob.beta)
             jobs.append(newJob)
 

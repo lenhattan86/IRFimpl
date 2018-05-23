@@ -79,8 +79,8 @@ def main():
 
     isOfficial = True
     if isOfficial:
-        # capacity = Resource(384*1000, 1152*GI, 12)
         capacity = Resource(384*1000, 1152*GI, 12)
+        # capacity = Resource(384*1000, 1152*GI, 12)
         workload = 'traces/evaluation'
         # userStrArray = ["user1", "user2", "user3", "user4"]
         # jobRepNums = [2000, 2000, 2000, 2000]

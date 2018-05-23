@@ -229,20 +229,11 @@ def allox(capacity, users):
     
     while (True):
         if (currLoad.MilliCPU <= currLoad.NvidiaGPU):   
-            # method 1: using the previous allocation and balance it.
-            # useralloc = prevUserAlloc            
-            # useralloc[gpumin].MilliCPU  = useralloc[gpumin].MilliCPU - (prevLoad.MilliCPU - prevLoad.NvidiaGPU)*capacity.MilliCPU/2
-            # useralloc[gpumin].NvidiaGPU = useralloc[gpumin].NvidiaGPU + (prevLoad.MilliCPU - prevLoad.NvidiaGPU)*capacity.NvidiaGPU/2
+            Y  = (currLoad.NvidiaGPU - currLoad.MilliCPU) /(betas[gpumin]/float(capacity.MilliCPU) + 1/float(capacity.NvidiaGPU))
+            Y  = min (Y, 1.0/betas[gpumin])
+            useralloc[gpumin].NvidiaGPU = useralloc[gpumin].NvidiaGPU - Y
+            useralloc[gpumin].MilliCPU  = betas[gpumin] * Y
 
-            # method 2: using the current allocation and balance it.
-            # useralloc[gpumin].MilliCPU  = useralloc[gpumin].MilliCPU  + (currLoad.NvidiaGPU - currLoad.MilliCPU)*capacity.MilliCPU/2
-            # useralloc[gpumin].NvidiaGPU = useralloc[gpumin].NvidiaGPU - (currLoad.NvidiaGPU - currLoad.MilliCPU)*capacity.NvidiaGPU/2
-            
-            # method 3: using the last allocation for others. find out the allocatino for gpumin      
-            userallocCPU =  userAllocCPU(betas, price)  
-            cpuCurrLoad =  sumResourceNorm(userallocCPU, capacity)
-            useralloc[gpumin].MilliCPU  = abs(cpuCurrLoad.MilliCPU - currLoad.NvidiaGPU)/2*capacity.MilliCPU
-            useralloc[gpumin].NvidiaGPU = abs(cpuCurrLoad.MilliCPU - currLoad.NvidiaGPU)/2*capacity.NvidiaGPU
             currLoad = sumResourceNorm(useralloc, capacity)
             break
 

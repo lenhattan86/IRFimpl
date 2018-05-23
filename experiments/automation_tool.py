@@ -49,6 +49,8 @@ default       cpu1-1                          0/1       ContainerCreating   0   
 default       cpu1-1                          0/1       Completed   0          19h
 default       cpu2-1                          0/1       ContainerCreating   0          19h
 default       cpu2-1                          0/1       Completed   0          19h
+default       user1-1                          0/1       ContainerCreating   0          19h
+default       user1-1                          0/1       Completed   0          19h
 """
 #         output = """NAME      READY     STATUS    RESTARTS   AGE
 # job-1     0/1       Pending   0          1m 
@@ -91,7 +93,7 @@ def updateJobInfo(startedJobs, completedJobs, mJobs, currTime):
         # get jobId from jobName
         temp = sJob.split("-")
         jobIdKey = temp[1]
-        if mJobs.get(jobIdKey)  is not None and mJobs.get(jobIdKey).jobName == sJob:
+        if mJobs.get(jobIdKey) is not None and mJobs.get(jobIdKey).jobName == sJob:
             if mJobs[jobIdKey].complTime < 0:
                 mJobs[jobIdKey].endTime = currTime    
                 if mJobs[jobIdKey].starTime < 0:
@@ -135,6 +137,12 @@ def deleteJob(podName, username):
             stdout=subprocess.PIPE, shell=True)                   
     (output, err) = p.communicate()   
     p_status = p.wait()
+
+def deleteAllJobs(username):
+    p = subprocess.Popen(["kubectl delete pods --all -n" + username], 
+            stdout=subprocess.PIPE, shell=True)                   
+    (output, err) = p.communicate()   
+    p_status = p.wait()    
 
 def createSubCommands(cmd):
     tempArray = cmd.split("--num_batches=")
@@ -228,6 +236,7 @@ for i in range(len(userStrArray)):
 # create profiling jobs
 jobId = 0
 for user in users:
+    deleteAllJobs(user.username)
     # create jobs
     for job in user.jobs:
         jobId = jobId + 1
@@ -304,7 +313,6 @@ while iTime < endTime or infiniteLoop:
     updateJobInfo(startedJobs, completedJobs, cpuShortJobs_2,currTime)
     updateJobInfo(startedJobs, completedJobs, gpuShortJobs_1,currTime)
     updateJobInfo(startedJobs, completedJobs, gpuShortJobs_2,currTime)
-
     
     # step 5: estimation
     estimate(fullJobs, cpuShortJobs_1, cpuShortJobs_2, True)

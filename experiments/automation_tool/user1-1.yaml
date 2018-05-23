@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: user1-2
+  name: user1-4
 spec:
   containers:
-  - name: user1-2
+  - name: user1-4
     image: lenhattan86/ira:cpu
     command:
     - "/bin/bash"

@@ -25,7 +25,7 @@ from allocator import *
 from kubernetes import *
 from job_info import *
 
-IS_TEST=True
+IS_TEST=False
 interval=1
 def listJobStatus():
     startedPods   = []
@@ -40,8 +40,8 @@ def listJobStatus():
         output = """NAMESPACE     NAME                                       READY     STATUS      RESTARTS   AGE
 default       cpu1-1                          0/1       ContainerCreating   0          19h
 default       cpu1-1                          0/1       Completed   0          19h
-default       cpu2-2                          0/1       ContainerCreating   0          19h
-default       cpu2-2                          0/1       Completed   0          19h
+default       cpu2-1                          0/1       ContainerCreating   0          19h
+default       cpu2-1                          0/1       Completed   0          19h
 """
 #         output = """NAME      READY     STATUS    RESTARTS   AGE
 # job-1     0/1       Pending   0          1m 
@@ -76,7 +76,7 @@ def updateJobInfo(startedJobs, completedJobs, mJobs, currTime):
         # get jobId from jobName
         temp = sJob.split("-")
         jobIdKey = temp[1]
-        if mJobs.get(jobIdKey) is not None:
+        if mJobs.get(jobIdKey) is not None and mJobs.get(jobIdKey).jobName == sJob:
             if mJobs[jobIdKey].starTime < 0:
                 mJobs[jobIdKey].starTime = currTime
 
@@ -84,27 +84,27 @@ def updateJobInfo(startedJobs, completedJobs, mJobs, currTime):
         # get jobId from jobName
         temp = sJob.split("-")
         jobIdKey = temp[1]
-        if mJobs.get(jobIdKey)  is not None:
+        if mJobs.get(jobIdKey)  is not None and mJobs.get(jobIdKey).jobName == sJob:
             if mJobs[jobIdKey].complTime < 0:
                 mJobs[jobIdKey].endTime = currTime    
                 if mJobs[jobIdKey].starTime < 0:
-                    print("[ERROR] " + mJobs[jobIdKey].jobName + "'s start time is negative.")
-                    
+                    print("[ERROR] " + mJobs[jobIdKey].jobName + "'s start time is negative.")                    
                 mJobs[jobIdKey].complTime = mJobs[jobIdKey].endTime - mJobs[jobIdKey].starTime
+                print("[INFO] " + mJobs[jobIdKey].jobName + "'s compl. time is "+ str(mJobs[jobIdKey].complTime ))
 
 def estimate(fJobs, sJobs1, sJobs2):
     for keyId in fJobs:    
         if (fJobs.get(keyId) is not None) and fJobs[keyId].estComplTime < 0:
             if (sJobs1.get(keyId) is not None) and (sJobs2.get(keyId) is not None):
-                # linear model a * (numberofbatches) + b
-                a = (sJobs1[keyId].complTime - sJobs2[keyId].complTime) / (sJobs1[keyId].numBatches - sJobs2[keyId].numBatches)
-                b = sJobs1[keyId].complTime - a*sJobs1[keyId].numBatches
-                fJobs[keyId].estComplTime = a*fJobs[keyId].numBatches + b
-                print(fJobs.get(keyId).jobName +" completion time is " + str(fJobs[keyId].estComplTime))
+                if (sJobs1.get(keyId).complTime >= 0) and (sJobs2.get(keyId).complTime >= 0):
+                    # linear model a * (numberofbatches) + b
+                    a = (sJobs1[keyId].complTime - sJobs2[keyId].complTime) / (sJobs1[keyId].numBatches - sJobs2[keyId].numBatches)
+                    b = sJobs1[keyId].complTime - a*sJobs1[keyId].numBatches
+                    fJobs[keyId].estComplTime = a*fJobs[keyId].numBatches + b
+                    print("[INFO] " + fJobs.get(keyId).jobName +"'s estiated compl. time is " + str(fJobs[keyId].estComplTime))
 
 
 def submitJob(podName, job_folder, yamfile, username):
-    print("submit file " + yamfile)
     # for the small number of batches
     # podName = "job-"+str(jobId)
     # print("Submit job " + cpuFullCommand)
@@ -218,15 +218,13 @@ for i in range(len(userStrArray)):
 # create profiling jobs
 jobId = 0
 for user in users:
-    
-
     # create jobs
     for job in user.jobs:
         jobId = jobId + 1
 
         jobIdKey = str(jobId)
         
-        jobName = "full-" + str(jobId)
+        jobName = user.username + "-" + str(jobId)
         fullJobs[jobIdKey]  = JobInfo(jobId, jobName, user.username, job.numBatches)
         fullJobs[jobIdKey].job = job
         
@@ -274,6 +272,8 @@ for user in users:
         updateJobInfo(startedJobs, completedJobs, cpuShortJobs_2, currTime)
         updateJobInfo(startedJobs, completedJobs, gpuShortJobs_1, currTime)
         updateJobInfo(startedJobs, completedJobs, gpuShortJobs_2, currTime)
+        
+        updateJobInfo(startedJobs, completedJobs, fullJobs, currTime)
         estimate(fullJobs, cpuShortJobs_1, cpuShortJobs_2)
         estimate(fullJobs, gpuShortJobs_1, gpuShortJobs_2)
 

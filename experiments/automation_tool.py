@@ -363,11 +363,11 @@ def main():
             cpuCmd = job.cpuProfile.jobCmd
             gpuCmd = job.gpuProfile.jobCmd
             cpuCmd1, cpuCmd2 = createSubCommands(cpuCmd)        
-            gpuCmd1, gpuCmd2 = createSubCommands(cpuCmd)
+            gpuCmd1, gpuCmd2 = createSubCommands(gpuCmd)
 
             # for the small number of batches
             cpu_usage = Resource(cpu*MILLI, mem *GI, 0)
-            gpu_usage = Resource(cpu*MILLI, gpuMem *GI, gpu)
+            gpu_usage = Resource(1*MILLI, gpuMem *GI, gpu)
 
             # prepare jobs for CPU        
             prefix = "cpu1"
@@ -459,7 +459,6 @@ def main():
             writeJobsToCsv(cpuShortJobs_2,'cpuShortJobs_2.csv') 
             writeJobsToCsv(gpuShortJobs_1,'gpuShortJobs_1.csv') 
             writeJobsToCsv(gpuShortJobs_2,'gpuShortJobs_2.csv') 
-            
         iTime = iTime + interval      
 
 if __name__ == "__main__": main()

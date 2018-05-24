@@ -33,8 +33,8 @@ fi
 slavesIP="18.216.182.131
 "
 
-username="ubuntu"
-SSH_CMD="ssh -i tanlesbuaws.pem "
+username="cc"
+SSH_CMD="ssh -i chameleon.pem "
 
 echo "please enter yes to connect to slaves"
 for server in $slavesIP; do

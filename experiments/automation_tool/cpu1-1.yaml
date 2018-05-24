@@ -9,8 +9,8 @@ spec:
     command:
     - "/bin/bash"
     - "-c"
-    - "python tf_cnn_benchmarks.py --device=cpu --data_format=NHWC --num_warmup_batches=0  --model=googlenet --batch_size=16 --num_intra_threads=16  --num_batches=0"
-    - "python tf_cnn_benchmarks.py --device=cpu --data_format=NHWC --num_warmup_batches=0  --model=googlenet --batch_size=16 --num_intra_threads=16  --num_batches=0"
+    - "python tf_cnn_benchmarks.py --device=cpu --data_format=NHWC --num_warmup_batches=0  --model=googlenet --batch_size=16 --num_intra_threads=16  --num_batches=100"
+    - "python tf_cnn_benchmarks.py --device=cpu --data_format=NHWC --num_warmup_batches=0  --model=googlenet --batch_size=16 --num_intra_threads=16  --num_batches=100"
     - "16000,0,16"
     - "16000,1,32"
     resources:

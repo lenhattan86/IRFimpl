@@ -30,15 +30,16 @@ parser.add_argument('--test', help='True or False', required=False, default="Tru
 args = vars(parser.parse_args())
 IS_TEST = bool(args['test']=="True")
 
-endTime = 10000
+interval=0.5
+endTime = 28800
 if IS_TEST:
     print("please indicate --test=False")
-    endTime
+    endTime = 2*interval
 
-interval=0.1
+
 
 IS_MEASURE = True
-
+GPU_PREFIX = "g-"
 def listJobStatus():
     startedPods   = []
     completedPods = []
@@ -54,8 +55,14 @@ user1       cpu1-1                          0/1       ContainerCreating   0     
 user1       cpu1-1                          0/1       Completed   0          19h
 user1       cpu2-1                          0/1       ContainerCreating   0          19h
 user1       cpu2-1                          0/1       Completed   0          19h
+user1       gpu1-1                          0/1       ContainerCreating   0          19h
+user1       gpu1-1                          0/1       Completed   0          19h
+user1       gpu2-1                          0/1       ContainerCreating   0          19h
+user1       gpu2-1                          0/1       Completed   0          19h
 user1       user1-1                          0/1      ContainerCreating   0          19h
 user1       user1-1                          0/1      Completed   0          19h
+user1       g-user1-1                          0/1      ContainerCreating   0          19h
+user1       g-user1-1                          0/1      Completed   0          19h
 """
 #         output = """NAME      READY     STATUS    RESTARTS   AGE
 # job-1     0/1       Pending   0          1m 
@@ -80,8 +87,8 @@ user1       user1-1                          0/1      Completed   0          19h
                     continue
                 if podStatus == "Completed":
                     completedPods.append(mPodName)
-                if podStatus == "ContainerCreating" or podStatus == "Running":
-                # if podStatus == "Running":
+                # if podStatus == "ContainerCreating" or podStatus == "Running":
+                if podStatus == "Running":
                     startedPods.append(mPodName)
     currTime = time()
     return startedPods, completedPods, currTime
@@ -107,6 +114,53 @@ def updateJobInfo(startedJobs, completedJobs, mJobs, currTime):
                 mJobs[jobIdKey].complTime = mJobs[jobIdKey].endTime - mJobs[jobIdKey].starTime
                 print("[INFO] " + mJobs[jobIdKey].jobName + "'s compl. time is "+ str(mJobs[jobIdKey].complTime ))
 
+def updateFullJobInfo(startedJobs, completedJobs, mJobs, currTime, isCPU):    
+    if isCPU:
+        for sJob in startedJobs:
+            # get jobId from jobName
+            temp = sJob.split("-")
+            jobIdKey = temp[1]
+            if mJobs.get(jobIdKey) is not None and (mJobs.get(jobIdKey).jobName) == sJob:
+                if mJobs[jobIdKey].starTime < 0:
+                    mJobs[jobIdKey].starTime = currTime
+
+        for sJob in completedJobs:
+            # get jobId from jobName
+            temp = sJob.split("-")
+            jobIdKey = temp[1]
+            if mJobs.get(jobIdKey) is not None and (mJobs.get(jobIdKey).jobName) == sJob:
+                if mJobs[jobIdKey].complTime < 0:
+                    mJobs[jobIdKey].endTime = currTime    
+                    if mJobs[jobIdKey].starTime < 0:
+                        print("[ERROR] " + mJobs[jobIdKey].jobName + "'s start time is negative.")                    
+                    mJobs[jobIdKey].complTime = mJobs[jobIdKey].endTime - mJobs[jobIdKey].starTime
+                    print("[INFO] " + mJobs[jobIdKey].jobName + "'s compl. time is "+ str(mJobs[jobIdKey].complTime ))
+    else:
+        for sJob in startedJobs:
+            # get jobId from jobName
+            temp = sJob.split("-")
+            jobIdKey = temp[len(temp)-1]
+            if mJobs.get(jobIdKey) is not None and (GPU_PREFIX + mJobs.get(jobIdKey).jobName) == sJob:
+                if mJobs[jobIdKey].starTimeGpu < 0:
+                    mJobs[jobIdKey].starTimeGpu = currTime
+
+        for sJob in completedJobs:
+            # get jobId from jobName
+            temp = sJob.split("-")
+            jobIdKey = temp[len(temp)-1]
+            if mJobs.get(jobIdKey) is not None and (GPU_PREFIX + mJobs.get(jobIdKey).jobName) == sJob:
+                if mJobs[jobIdKey].complTime < 0:
+                    mJobs[jobIdKey].endTimeGpu = currTime    
+                    if mJobs[jobIdKey].starTimeGpu < 0:
+                        print("[ERROR] " + mJobs[jobIdKey].jobName + "'s start time is negative.")                    
+                    mJobs[jobIdKey].complTimeGpu = mJobs[jobIdKey].endTimeGpu - mJobs[jobIdKey].starTimeGpu
+                    print("[INFO] " + mJobs[jobIdKey].jobName + "'s GPU compl. time is "+ str(mJobs[jobIdKey].complTimeGpu ))
+
+    for keyId in mJobs:   
+        if (mJobs.get(keyId) is not None):
+            if  mJobs[keyId].complTime > 0 and mJobs[keyId].complTimeGpu > 0:
+                mJobs[keyId].speedup = mJobs[keyId].complTime / mJobs[keyId].complTimeGpu
+
 def estimate(fJobs, sJobs1, sJobs2, isCPU):
     for keyId in fJobs:    
         if isCPU:
@@ -127,7 +181,10 @@ def estimate(fJobs, sJobs1, sJobs2, isCPU):
                         a = (sJobs1[keyId].complTime - sJobs2[keyId].complTime) / (sJobs1[keyId].numBatches - sJobs2[keyId].numBatches)
                         b = sJobs1[keyId].complTime - a*sJobs1[keyId].numBatches
                         fJobs[keyId].estComplTimeGpu = a*fJobs[keyId].numBatches + b
-                        print("[INFO] " + fJobs.get(keyId).jobName +"'s estimated compl. time on GPU is " + str(fJobs[keyId].estComplTimeGpu))        
+                        print("[INFO] " + fJobs.get(keyId).jobName +"'s estimated compl. time on GPU is " + str(fJobs[keyId].estComplTimeGpu))  
+
+        if  fJobs[keyId].estComplTimeCpu > 0 and fJobs[keyId].estComplTimeGpu > 0: 
+            fJobs[keyId].estSpeedup = fJobs[keyId].estComplTimeCpu / fJobs[keyId].estComplTimeGpu
 
 
 def submitJob(podName, job_folder, yamfile, username):
@@ -191,8 +248,8 @@ def submitJobs(fJobs):
     #     del fJobs[jobKey]
 
 
-numBatch1 = 0
-numBatch2 = 20
+numBatch1 = 100
+numBatch2 = 200
 FOLDER = "automation_tool"
 GI = 1024*1024*1024
 SCHEDULER = "kube-scheduler"
@@ -285,15 +342,25 @@ def main():
             submitJob(jobName, job_folder, yamfile, DEFAULT_NS)        
             cpuShortJobs_2[jobIdKey] = newJob
 
-            # prepare jobs for GPU
-            # jobId     = jobId + 1
-            # jobName = "job" + str(jobId)
-            # yamfile = jobName
-            # newJob = JobInfo(jobName, user.username)
-            # activeJob = ActiveJob(gpu_usage, cpu_usage, 0, 0, jobId,  gpuFullCommand, cpuFullCommand)
-            # createYamlFile(activeJob)
-            # submitJob(jobName, job_folder, yamfile)
-            # gpuShortJobs_1.append(newJob)
+            # prepare jobs for GPU        
+            prefix = "gpu1"
+            jobName = prefix + "-" + str(jobId)
+            yamfile = jobName
+            newJob = JobInfo(jobId, jobName, user.username, numBatch1)
+            activeJob = ActiveJob(gpu_usage, cpu_usage,  0, 0, jobId, gpuCmd1, cpuCmd1 )
+            createYamlFile(activeJob, prefix, yamfile, True)
+            submitJob(jobName, job_folder, yamfile, DEFAULT_NS)        
+            gpuShortJobs_1[jobIdKey] = newJob
+
+            prefix = "gpu2"
+            jobName = prefix + "-" + str(jobId)
+            yamfile = jobName
+            newJob  = JobInfo(jobId, jobName, user.username, numBatch2)
+            activeJob = ActiveJob(gpu_usage, cpu_usage,  0, 0, jobId, gpuCmd2,  cpuCmd2)
+            createYamlFile(activeJob, prefix, yamfile, True)
+            submitJob(jobName, job_folder, yamfile, DEFAULT_NS)        
+            gpuShortJobs_2[jobIdKey] = newJob
+ 
             
             startedJobs, completedJobs, currTime = listJobStatus()
             updateJobInfo(startedJobs, completedJobs, cpuShortJobs_1, currTime)
@@ -303,8 +370,11 @@ def main():
             
             estimate(fullJobs, cpuShortJobs_1, cpuShortJobs_2, True)
             estimate(fullJobs, gpuShortJobs_1, gpuShortJobs_2, False)
-
-            updateJobInfo(startedJobs, completedJobs, fullJobs, currTime)
+            if IS_MEASURE:
+                updateFullJobInfo(startedJobs, completedJobs, fullJobs, currTime, False)
+                updateFullJobInfo(startedJobs, completedJobs, fullJobs, currTime, True)
+            if IS_MEASURE:
+                updateJobInfo(startedJobs, completedJobs, fullJobs, currTime)
 
     # step 4: measure the job completion time.
     started = False
@@ -329,7 +399,9 @@ def main():
         # print("startedJobs: " + str(startedJobs))
         # print("completedJobs: " + str(completedJobs))
         # print("fullJobs: " + fullJobs["1"].jobName)
-        updateJobInfo(startedJobs, completedJobs, fullJobs, currTime)
+        if IS_MEASURE:
+            updateFullJobInfo(startedJobs, completedJobs, fullJobs, currTime, False)
+            updateFullJobInfo(startedJobs, completedJobs, fullJobs, currTime, True)
         # step 6: submit profiled jobs to the system
         # print ("size of full jobs: " + str(len(fullJobs)))
         submitJobs(fullJobs)   
@@ -338,10 +410,12 @@ def main():
     # step 6: write results out
     for jobKey in fullJobs:
         jobInfo = fullJobs[jobKey]
-        row = [jobKey, jobInfo.jobName , jobInfo.estComplTimeCpu, jobInfo.complTimeCpu, jobInfo.estComplTimeGpu, jobInfo.complTimeGpu, jobInfo.estSpeedup, jobInfo.speedup] 
+        row = [jobKey, jobInfo.jobName , jobInfo.estComplTimeCpu, jobInfo.estComplTimeGpu, 
+            jobInfo.complTime, jobInfo.complTime, jobInfo.estSpeedup, jobInfo.speedup, jobInfo.isGpuJob] 
         rows.append(row) 
-        ofile  = open(job_folder + '/' + 'est_results.csv', "wb")
-        writer = csv.writer(ofile, dialect='excel')
-        writer.writerows(rows) 
+
+    ofile  = open(job_folder + '/' + 'est_results.csv', "wb")
+    writer = csv.writer(ofile, dialect='excel')
+    writer.writerows(rows) 
 
 if __name__ == "__main__": main()

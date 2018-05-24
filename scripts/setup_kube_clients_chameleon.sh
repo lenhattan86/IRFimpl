@@ -20,17 +20,14 @@ fi
 
 if [ -z "$3" ]
 then
-	masterIP="128.104.222.145"
+	masterIP="128.104.222.123"
 else
 	masterIP="$3"
 fi
 
 
 
-# slavesIP="18.188.165.51
-# 52.15.227.77
-# "
-slavesIP="18.216.182.131
+slavesIP="129.114.108.226
 "
 
 username="cc"

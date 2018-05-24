@@ -11,16 +11,16 @@ spec:
     - "-c"
     - "python tf_cnn_benchmarks.py --device=cpu --data_format=NHWC --num_warmup_batches=0  --model=googlenet --batch_size=16 --num_intra_threads=16 --num_batches=2000"
     - "python tf_cnn_benchmarks.py --device=gpu --num_warmup_batches=0  --model=googlenet --batch_size=16 --num_batches=2000"
-    - "16000,0,16"
-    - "16000,1,32"
+    - "21000,0,16"
+    - "21000,1,32"
     resources:
       requests:
         alpha.kubernetes.io/nvidia-gpu: 0
-        cpu: 16.0
+        cpu: 21.0
         memory: 16Gi
       limits:
         alpha.kubernetes.io/nvidia-gpu: 0
-        cpu: 16.0
+        cpu: 21.0
         memory: 16Gi
     volumeMounts:
     - name: nvidia-driver-384-98

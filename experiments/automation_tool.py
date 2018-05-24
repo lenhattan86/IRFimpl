@@ -225,9 +225,24 @@ def createSubCommands(cmd):
 
     return subCmd1, subCmd2
 
-def createYamlFile(activeJob, prefix, yamfile, isGPU):
+def writeJobsToCsv(jobs, filename):
+    rows=[]
+    for jobKey in jobs:
+        jobInfo = jobs[jobKey]
+        row = [jobKey, jobInfo.jobName , jobInfo.userName, jobInfo.estComplTimeCpu, jobInfo.estComplTimeGpu, 
+            jobInfo.complTime, jobInfo.complTimeGpu, jobInfo.estSpeedup, jobInfo.speedup, jobInfo.isGpuJob] 
+        rows.append(row) 
+
+    ofile  = open(job_folder + '/' + filename + '.csv', "wb")
+    writer = csv.writer(ofile, dialect='excel')
+    writer.writerows(rows) 
+
+def createYamlFile(activeJob, prefix, yamfile, isGPU, isScheduled):
     f_yaml = open(job_folder + '/' + yamfile+ ".yaml",'w')   
-    f_yaml.write(strPodYaml(prefix, activeJob, SCHEDULER, isGPU))
+    if isScheduled:
+        f_yaml.write(strPodYaml(prefix, activeJob, MY_SCHEDULER, isGPU))
+    else:
+        f_yaml.write(strPodYaml(prefix, activeJob, SCHEDULER, isGPU))
     f_yaml.close()    
 
 def submitJobs(fJobs):
@@ -246,7 +261,7 @@ def submitJobs(fJobs):
                 activeJob = ActiveJob(cpu_usage, gpu_usage, 0, 0, jobKey, cpuCmd, gpuCmd)
                 prefix = jobInfo.userName
                 yamfile = jobInfo.jobName
-                createYamlFile(activeJob, prefix, yamfile, False)            
+                createYamlFile(activeJob, prefix, yamfile, False, (not IS_MEASURE))            
 
                 submitJob(jobInfo.jobName, job_folder, yamfile, jobInfo.userName) 
                 jobInfo.isSubmitted=True
@@ -266,7 +281,7 @@ def submitJobs(fJobs):
                     activeJob = ActiveJob(gpu_usage,cpu_usage,  0, 0, jobKey, gpuCmd, cpuCmd)
                     prefix = GPU_PREFIX + jobInfo.userName
                     yamfile = GPU_PREFIX + jobInfo.jobName
-                    createYamlFile(activeJob, prefix, yamfile, True)            
+                    createYamlFile(activeJob, prefix, yamfile, True, False)            
                     submitJob(yamfile, job_folder, yamfile, jobInfo.userName) 
                     jobInfo.isSubmittedGpu=True
     
@@ -360,7 +375,7 @@ def main():
             yamfile = jobName
             newJob = JobInfo(jobId, jobName, user.username, numBatch1)
             activeJob = ActiveJob(cpu_usage, gpu_usage, 0, 0, jobId, cpuCmd1, gpuCmd1)
-            createYamlFile(activeJob, prefix, yamfile, False)
+            createYamlFile(activeJob, prefix, yamfile, False, False)
             submitJob(jobName, job_folder, yamfile, DEFAULT_NS)        
             cpuShortJobs_1[jobIdKey] = newJob
 
@@ -369,7 +384,7 @@ def main():
             yamfile = jobName
             newJob  = JobInfo(jobId, jobName, user.username, numBatch2)
             activeJob = ActiveJob(cpu_usage, gpu_usage, 0, 0, jobId,  cpuCmd2, gpuCmd2)
-            createYamlFile(activeJob, prefix, yamfile, False)
+            createYamlFile(activeJob, prefix, yamfile, False, False)
             submitJob(jobName, job_folder, yamfile, DEFAULT_NS)        
             cpuShortJobs_2[jobIdKey] = newJob
 
@@ -379,7 +394,7 @@ def main():
             yamfile = jobName
             newJob = JobInfo(jobId, jobName, user.username, numBatch1)
             activeJob = ActiveJob(gpu_usage, cpu_usage,  0, 0, jobId, gpuCmd1, cpuCmd1 )
-            createYamlFile(activeJob, prefix, yamfile, True)
+            createYamlFile(activeJob, prefix, yamfile, True, False)
             submitJob(jobName, job_folder, yamfile, DEFAULT_NS)        
             gpuShortJobs_1[jobIdKey] = newJob
 
@@ -388,7 +403,7 @@ def main():
             yamfile = jobName
             newJob  = JobInfo(jobId, jobName, user.username, numBatch2)
             activeJob = ActiveJob(gpu_usage, cpu_usage,  0, 0, jobId, gpuCmd2,  cpuCmd2)
-            createYamlFile(activeJob, prefix, yamfile, True)
+            createYamlFile(activeJob, prefix, yamfile, True, False)
             submitJob(jobName, job_folder, yamfile, DEFAULT_NS)        
             gpuShortJobs_2[jobIdKey] = newJob
  
@@ -435,19 +450,16 @@ def main():
         # step 6: submit profiled jobs to the system
         # print ("size of full jobs: " + str(len(fullJobs)))
         submitJobs(fullJobs)   
-        iTime = iTime + interval       
+             
 
         if (iTime % 60 == 0): # write down every 1 min.
             # step 6: write results out
-            rows=[]
-            for jobKey in fullJobs:
-                jobInfo = fullJobs[jobKey]
-                row = [jobKey, jobInfo.jobName , jobInfo.userName, jobInfo.estComplTimeCpu, jobInfo.estComplTimeGpu, 
-                    jobInfo.complTime, jobInfo.complTimeGpu, jobInfo.estSpeedup, jobInfo.speedup, jobInfo.isGpuJob] 
-                rows.append(row) 
-
-            ofile  = open(job_folder + '/' + 'est_results.csv', "wb")
-            writer = csv.writer(ofile, dialect='excel')
-            writer.writerows(rows) 
+            writeJobsToCsv(fullJobs,'est_results.csv')
+            writeJobsToCsv(cpuShortJobs_1,'cpuShortJobs_1.csv')    
+            writeJobsToCsv(cpuShortJobs_2,'cpuShortJobs_2.csv') 
+            writeJobsToCsv(gpuShortJobs_1,'gpuShortJobs_1.csv') 
+            writeJobsToCsv(gpuShortJobs_2,'gpuShortJobs_2.csv') 
+            
+        iTime = iTime + interval      
 
 if __name__ == "__main__": main()

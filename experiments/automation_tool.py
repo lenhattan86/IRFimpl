@@ -149,7 +149,7 @@ def updateFullJobInfo(startedJobs, completedJobs, mJobs, currTime, isCPU):
             temp = sJob.split("-")
             jobIdKey = temp[len(temp)-1]
             if mJobs.get(jobIdKey) is not None and (GPU_PREFIX + mJobs.get(jobIdKey).jobName) == sJob:
-                if mJobs[jobIdKey].complTime < 0:
+                if mJobs[jobIdKey].complTimeGpu < 0:
                     mJobs[jobIdKey].endTimeGpu = currTime    
                     if mJobs[jobIdKey].starTimeGpu < 0:
                         print("[ERROR] " + mJobs[jobIdKey].jobName + "'s start time is negative.")                    

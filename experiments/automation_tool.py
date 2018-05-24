@@ -179,160 +179,159 @@ def submitJobs(fJobs):
                 createYamlFile(activeJob, prefix, yamfile, False)            
 
                 submitJob(jobInfo.jobName, job_folder, yamfile, jobInfo.userName) 
-                job.isSubmitted=True
+                jobInfo.isSubmitted=True
             # deletedKeys.append(jobKey)
     
     # for jobKey in deletedKeys:
     #     del fJobs[jobKey]
 
 
-
-################################### MAIN Script ###############################################
-
-## initialization
-print "====== ONLINE-PERFORMANCE-ESTIMATION-TOOL ====="
-
-STOP_TIME = -1
+numBatch1 = 0
+numBatch2 = 20
 FOLDER = "automation_tool"
 GI = 1024*1024*1024
 SCHEDULER = "kube-scheduler"
 DEFAULT_NS = "default"
-this_path = os.path.dirname(os.path.realpath(__file__))
-
-job_folder = this_path + "/" + FOLDER 
-shutil.rmtree(job_folder, ignore_errors=True) # delete previous folder.
-os.mkdir(job_folder)    
-
 cpu=16
 mem=16
 
 gpuCpu=1
 gpu=1
 gpuMem=32
-workload = "traces/automation"
+
 userStrArray = ["user1"]
 
-users = []
-fullJobs = {}
-numBatch1 = 0
-numBatch2 = 20
-cpuShortJobs_1 = {}
-cpuShortJobs_2 = {}
-gpuShortJobs_1 = {}
-gpuShortJobs_2 = {}
+this_path = os.path.dirname(os.path.realpath(__file__))
+job_folder = this_path + "/" + FOLDER 
+shutil.rmtree(job_folder, ignore_errors=True) # delete previous folder.
+os.mkdir(job_folder)    
+workload = "traces/automation"
+################################### MAIN Script ###############################################
+def main():
+    ## initialization
+    print "====== ONLINE-PERFORMANCE-ESTIMATION-TOOL ====="
 
-# read jobs from files to jobs
-for i in range(len(userStrArray)):
-    strUser=userStrArray[i]
-    # print("read " + strUser)
-    jobs    = readJobs(this_path+"/"+workload, strUser+".txt", 1)
-    newUser = User(strUser, jobs)
-    # print(newUser.toString())
-    users.append(newUser)
-    # create user name space
-    f = open(job_folder + '/' + newUser.username + ".yaml",'w')
-    f.write(strUserYaml(newUser.username))
-    p = subprocess.Popen(["kubectl create -f  " + job_folder + '/' + newUser.username+ ".yaml" ],
-            stdout=subprocess.PIPE, shell=True)                   
-    (output, err) = p.communicate()    
-    p_status = p.wait()
+    users = []
+    fullJobs = {}
+    cpuShortJobs_1 = {}
+    cpuShortJobs_2 = {}
+    gpuShortJobs_1 = {}
+    gpuShortJobs_2 = {}
 
-# create profiling jobs
-jobId = 0
-deleteAllJobs(DEFAULT_NS)
-for user in users:
-    deleteAllJobs(user.username)
-    # create jobs
-    for job in user.jobs:
-        jobId = jobId + 1
+    # read jobs from files to jobs
+    for i in range(len(userStrArray)):
+        strUser=userStrArray[i]
+        # print("read " + strUser)
+        jobs    = readJobs(this_path+"/"+workload, strUser+".txt", 1)
+        newUser = User(strUser, jobs)
+        # print(newUser.toString())
+        users.append(newUser)
+        # create user name space
+        f = open(job_folder + '/' + newUser.username + ".yaml",'w')
+        f.write(strUserYaml(newUser.username))
+        p = subprocess.Popen(["kubectl create -f  " + job_folder + '/' + newUser.username+ ".yaml" ],
+                stdout=subprocess.PIPE, shell=True)                   
+        (output, err) = p.communicate()    
+        p_status = p.wait()
 
-        jobIdKey = str(jobId)
-        
-        jobName = user.username + "-" + str(jobId)
-        fullJobs[jobIdKey]  = JobInfo(jobId, jobName, user.username, job.numBatches)
-        fullJobs[jobIdKey].job = job
-        # deleteJob(jobName, user.username)
-        
-        # read the number of batch from the job
-        cpuCmd = job.cpuProfile.jobCmd
-        gpuCmd = job.gpuProfile.jobCmd
-        cpuCmd1, cpuCmd2 = createSubCommands(cpuCmd)        
-        gpuCmd1, gpuCmd2 = createSubCommands(cpuCmd)
+    # create profiling jobs
+    jobId = 0
+    deleteAllJobs(DEFAULT_NS)
+    for user in users:
+        deleteAllJobs(user.username)
+        # create jobs
+        for job in user.jobs:
+            jobId = jobId + 1
 
-        # for the small number of batches
-        cpu_usage = Resource(cpu*MILLI, mem *GI, 0)
-        gpu_usage = Resource(cpu*MILLI, gpuMem *GI, gpu)
+            jobIdKey = str(jobId)
+            
+            jobName = user.username + "-" + str(jobId)
+            fullJobs[jobIdKey]  = JobInfo(jobId, jobName, user.username, job.numBatches)
+            fullJobs[jobIdKey].job = job
+            # deleteJob(jobName, user.username)
+            
+            # read the number of batch from the job
+            cpuCmd = job.cpuProfile.jobCmd
+            gpuCmd = job.gpuProfile.jobCmd
+            cpuCmd1, cpuCmd2 = createSubCommands(cpuCmd)        
+            gpuCmd1, gpuCmd2 = createSubCommands(cpuCmd)
 
-        # prepare jobs for CPU        
-        prefix = "cpu1"
-        jobName = prefix + "-" + str(jobId)
-        yamfile = jobName
-        newJob = JobInfo(jobId, jobName, user.username, numBatch1)
-        activeJob = ActiveJob(cpu_usage, gpu_usage, 0, 0, jobId, cpuCmd1, gpuCmd1)
-        createYamlFile(activeJob, prefix, yamfile, False)
-        submitJob(jobName, job_folder, yamfile, DEFAULT_NS)        
-        cpuShortJobs_1[jobIdKey] = newJob
+            # for the small number of batches
+            cpu_usage = Resource(cpu*MILLI, mem *GI, 0)
+            gpu_usage = Resource(cpu*MILLI, gpuMem *GI, gpu)
 
-        prefix = "cpu2"
-        jobName = prefix + "-" + str(jobId)
-        yamfile = jobName
-        newJob  = JobInfo(jobId, jobName, user.username, numBatch2)
-        activeJob = ActiveJob(cpu_usage, gpu_usage, 0, 0, jobId,  cpuCmd2, gpuCmd2)
-        createYamlFile(activeJob, prefix, yamfile, False)
-        submitJob(jobName, job_folder, yamfile, DEFAULT_NS)        
-        cpuShortJobs_2[jobIdKey] = newJob
+            # prepare jobs for CPU        
+            prefix = "cpu1"
+            jobName = prefix + "-" + str(jobId)
+            yamfile = jobName
+            newJob = JobInfo(jobId, jobName, user.username, numBatch1)
+            activeJob = ActiveJob(cpu_usage, gpu_usage, 0, 0, jobId, cpuCmd1, gpuCmd1)
+            createYamlFile(activeJob, prefix, yamfile, False)
+            submitJob(jobName, job_folder, yamfile, DEFAULT_NS)        
+            cpuShortJobs_1[jobIdKey] = newJob
 
-        # prepare jobs for GPU
-        # jobId     = jobId + 1
-        # jobName = "job" + str(jobId)
-        # yamfile = jobName
-        # newJob = JobInfo(jobName, user.username)
-        # activeJob = ActiveJob(gpu_usage, cpu_usage, 0, 0, jobId,  gpuFullCommand, cpuFullCommand)
-        # createYamlFile(activeJob)
-        # submitJob(jobName, job_folder, yamfile)
-        # gpuShortJobs_1.append(newJob)
-        
+            prefix = "cpu2"
+            jobName = prefix + "-" + str(jobId)
+            yamfile = jobName
+            newJob  = JobInfo(jobId, jobName, user.username, numBatch2)
+            activeJob = ActiveJob(cpu_usage, gpu_usage, 0, 0, jobId,  cpuCmd2, gpuCmd2)
+            createYamlFile(activeJob, prefix, yamfile, False)
+            submitJob(jobName, job_folder, yamfile, DEFAULT_NS)        
+            cpuShortJobs_2[jobIdKey] = newJob
+
+            # prepare jobs for GPU
+            # jobId     = jobId + 1
+            # jobName = "job" + str(jobId)
+            # yamfile = jobName
+            # newJob = JobInfo(jobName, user.username)
+            # activeJob = ActiveJob(gpu_usage, cpu_usage, 0, 0, jobId,  gpuFullCommand, cpuFullCommand)
+            # createYamlFile(activeJob)
+            # submitJob(jobName, job_folder, yamfile)
+            # gpuShortJobs_1.append(newJob)
+            
+            startedJobs, completedJobs, currTime = listJobStatus()
+            updateJobInfo(startedJobs, completedJobs, cpuShortJobs_1, currTime)
+            updateJobInfo(startedJobs, completedJobs, cpuShortJobs_2, currTime)
+            updateJobInfo(startedJobs, completedJobs, gpuShortJobs_1, currTime)
+            updateJobInfo(startedJobs, completedJobs, gpuShortJobs_2, currTime)
+            
+            estimate(fullJobs, cpuShortJobs_1, cpuShortJobs_2, True)
+            estimate(fullJobs, gpuShortJobs_1, gpuShortJobs_2, False)
+
+            updateJobInfo(startedJobs, completedJobs, fullJobs, currTime)
+
+    # step 4: measure the job completion time.
+    started = False
+    rows = []
+    endTime = 5
+    iTime = 0
+    infiniteLoop = True
+    if IS_TEST:
+        infiniteLoop = False
+    while iTime < endTime or infiniteLoop:
+        sleep(interval)
         startedJobs, completedJobs, currTime = listJobStatus()
-        updateJobInfo(startedJobs, completedJobs, cpuShortJobs_1, currTime)
-        updateJobInfo(startedJobs, completedJobs, cpuShortJobs_2, currTime)
-        updateJobInfo(startedJobs, completedJobs, gpuShortJobs_1, currTime)
-        updateJobInfo(startedJobs, completedJobs, gpuShortJobs_2, currTime)
+        updateJobInfo(startedJobs, completedJobs, cpuShortJobs_1,currTime)
+        updateJobInfo(startedJobs, completedJobs, cpuShortJobs_2,currTime)
+        updateJobInfo(startedJobs, completedJobs, gpuShortJobs_1,currTime)
+        updateJobInfo(startedJobs, completedJobs, gpuShortJobs_2,currTime)
         
+        # step 5: estimation
         estimate(fullJobs, cpuShortJobs_1, cpuShortJobs_2, True)
         estimate(fullJobs, gpuShortJobs_1, gpuShortJobs_2, False)
-
+        
+        # print("startedJobs: " + str(startedJobs))
+        # print("completedJobs: " + str(completedJobs))
+        # print("fullJobs: " + fullJobs["1"].jobName)
         updateJobInfo(startedJobs, completedJobs, fullJobs, currTime)
+        # step 6: submit profiled jobs to the system
+        # print ("size of full jobs: " + str(len(fullJobs)))
+        submitJobs(fullJobs)   
+        iTime = iTime + 1       
 
-# step 4: measure the job completion time.
-started = False
-rows = []
-endTime = 2
-iTime = 0
-infiniteLoop = True
-if IS_TEST:
-    infiniteLoop = False
-while iTime < endTime or infiniteLoop:
-    sleep(interval)
-    startedJobs, completedJobs, currTime = listJobStatus()
-    updateJobInfo(startedJobs, completedJobs, cpuShortJobs_1,currTime)
-    updateJobInfo(startedJobs, completedJobs, cpuShortJobs_2,currTime)
-    updateJobInfo(startedJobs, completedJobs, gpuShortJobs_1,currTime)
-    updateJobInfo(startedJobs, completedJobs, gpuShortJobs_2,currTime)
-    
-    # step 5: estimation
-    estimate(fullJobs, cpuShortJobs_1, cpuShortJobs_2, True)
-    estimate(fullJobs, gpuShortJobs_1, gpuShortJobs_2, False)
-    
-    # print("startedJobs: " + str(startedJobs))
-    # print("completedJobs: " + str(completedJobs))
-    # print("fullJobs: " + fullJobs["1"].jobName)
-    updateJobInfo(startedJobs, completedJobs, fullJobs, currTime)
-    # step 6: submit profiled jobs to the system
-    # print ("size of full jobs: " + str(len(fullJobs)))
-    submitJobs(fullJobs)   
-    iTime = iTime + 1       
+    # step 6: write results out
+    # ofile  = open(job_folder + '/' + 'cmplt_estimator.csv', "wb")
+    # writer = csv.writer(ofile, dialect='excel')
+    # writer.writerows(rows) 
 
-# step 6: write results out
-# ofile  = open(job_folder + '/' + 'cmplt_estimator.csv', "wb")
-# writer = csv.writer(ofile, dialect='excel')
-# writer.writerows(rows) 
+if __name__ == "__main__": main()

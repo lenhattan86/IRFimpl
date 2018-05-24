@@ -196,6 +196,7 @@ STOP_TIME = -1
 FOLDER = "automation_tool"
 GI = 1024*1024*1024
 SCHEDULER = "kube-scheduler"
+DEFAULT_NS = "default"
 this_path = os.path.dirname(os.path.realpath(__file__))
 
 job_folder = this_path + "/" + FOLDER 
@@ -238,6 +239,7 @@ for i in range(len(userStrArray)):
 
 # create profiling jobs
 jobId = 0
+deleteAllJobs(DEFAULT_NS)
 for user in users:
     deleteAllJobs(user.username)
     # create jobs
@@ -268,7 +270,7 @@ for user in users:
         newJob = JobInfo(jobId, jobName, user.username, numBatch1)
         activeJob = ActiveJob(cpu_usage, gpu_usage, 0, 0, jobId, cpuCmd1, gpuCmd1)
         createYamlFile(activeJob, prefix, yamfile, False)
-        submitJob(jobName, job_folder, yamfile, user.username)        
+        submitJob(jobName, job_folder, yamfile, DEFAULT_NS)        
         cpuShortJobs_1[jobIdKey] = newJob
 
         prefix = "cpu2"
@@ -277,7 +279,7 @@ for user in users:
         newJob  = JobInfo(jobId, jobName, user.username, numBatch2)
         activeJob = ActiveJob(cpu_usage, gpu_usage, 0, 0, jobId,  cpuCmd2, gpuCmd2)
         createYamlFile(activeJob, prefix, yamfile, False)
-        submitJob(jobName, job_folder, yamfile, user.username)        
+        submitJob(jobName, job_folder, yamfile, DEFAULT_NS)        
         cpuShortJobs_2[jobIdKey] = newJob
 
         # prepare jobs for GPU
@@ -321,9 +323,9 @@ while iTime < endTime or infiniteLoop:
     estimate(fullJobs, cpuShortJobs_1, cpuShortJobs_2, True)
     estimate(fullJobs, gpuShortJobs_1, gpuShortJobs_2, False)
     
-    print("startedJobs: " + str(startedJobs))
-    print("completedJobs: " + str(completedJobs))
-    print("fullJobs: " + fullJobs["1"].jobName)
+    # print("startedJobs: " + str(startedJobs))
+    # print("completedJobs: " + str(completedJobs))
+    # print("fullJobs: " + fullJobs["1"].jobName)
     updateJobInfo(startedJobs, completedJobs, fullJobs, currTime)
     # step 6: submit profiled jobs to the system
     # print ("size of full jobs: " + str(len(fullJobs)))
@@ -331,6 +333,6 @@ while iTime < endTime or infiniteLoop:
     iTime = iTime + 1       
 
 # step 6: write results out
-ofile  = open(job_folder + '/' + 'cmplt_estimator.csv', "wb")
-writer = csv.writer(ofile, dialect='excel')
-writer.writerows(rows) 
+# ofile  = open(job_folder + '/' + 'cmplt_estimator.csv', "wb")
+# writer = csv.writer(ofile, dialect='excel')
+# writer.writerows(rows) 

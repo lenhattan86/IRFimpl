@@ -260,10 +260,9 @@ def submitJobs(fJobs):
                     cpu_usage = Resource(cpu*MILLI, mem *GI, 0)
                     gpu_usage = Resource(cpu*MILLI, gpuMem *GI, gpu)
                     activeJob = ActiveJob(gpu_usage,cpu_usage,  0, 0, jobKey, gpuCmd, cpuCmd)
-                    prefix = jobInfo.userName
+                    prefix = GPU_PREFIX + jobInfo.userName
                     yamfile = GPU_PREFIX + jobInfo.jobName
                     createYamlFile(activeJob, prefix, yamfile, False)            
-
                     submitJob(yamfile, job_folder, yamfile, jobInfo.userName) 
                     jobInfo.isSubmittedGpu=True
     
@@ -436,7 +435,7 @@ def main():
     # step 6: write results out
     for jobKey in fullJobs:
         jobInfo = fullJobs[jobKey]
-        row = [jobKey, jobInfo.jobName , jobInfo.estComplTimeCpu, jobInfo.estComplTimeGpu, 
+        row = [jobKey, jobInfo.jobName , jobInfo.userName, jobInfo.estComplTimeCpu, jobInfo.estComplTimeGpu, 
             jobInfo.complTime, jobInfo.complTime, jobInfo.estSpeedup, jobInfo.speedup, jobInfo.isGpuJob] 
         rows.append(row) 
 

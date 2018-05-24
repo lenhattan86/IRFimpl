@@ -49,8 +49,8 @@ user1       cpu1-1                          0/1       ContainerCreating   0     
 user1       cpu1-1                          0/1       Completed   0          19h
 user1       cpu2-1                          0/1       ContainerCreating   0          19h
 user1       cpu2-1                          0/1       Completed   0          19h
-user1       user1-1                          0/1       ContainerCreating   0          19h
-user1       user1-1                          0/1       Completed   0          19h
+user1       user1-1                          0/1      ContainerCreating   0          19h
+user1       user1-1                          0/1      Completed   0          19h
 """
 #         output = """NAME      READY     STATUS    RESTARTS   AGE
 # job-1     0/1       Pending   0          1m 
@@ -75,8 +75,8 @@ user1       user1-1                          0/1       Completed   0          19
                     continue
                 if podStatus == "Completed":
                     completedPods.append(mPodName)
-                # if podStatus == "ContainerCreating" or podStatus == "Running":
-                if podStatus == "Running":
+                if podStatus == "ContainerCreating" or podStatus == "Running":
+                # if podStatus == "Running":
                     startedPods.append(mPodName)
     currTime = time()
     return startedPods, completedPods, currTime
@@ -161,27 +161,29 @@ def createYamlFile(activeJob, prefix, yamfile, isGPU):
     f_yaml.close()    
 
 def submitJobs(fJobs):
-    deletedKeys = []
+    # deletedKeys = []
     for jobKey in fJobs:
-        if fJobs[jobKey].estComplTimeCpu >=0:
+        if fJobs[jobKey].estComplTimeCpu >=0 :
         # if fJobs[jobKey].estComplTimeCpu >=0 and fJobs[jobKey].estComplTimeGpu >=0::
             jobInfo = fJobs[jobKey]
-            job = jobInfo.job            
-            cpuCmd = job.cpuProfile.jobCmd
-            gpuCmd = job.gpuProfile.jobCmd
+            if not jobInfo.isSubmitted:                
+                job = jobInfo.job            
+                cpuCmd = job.cpuProfile.jobCmd
+                gpuCmd = job.gpuProfile.jobCmd
 
-            cpu_usage = Resource(cpu*MILLI, mem *GI, 0)
-            gpu_usage = Resource(cpu*MILLI, gpuMem *GI, gpu)
-            activeJob = ActiveJob(cpu_usage, gpu_usage, 0, 0, jobKey, cpuCmd, gpuCmd)
-            prefix = jobInfo.userName
-            yamfile = jobInfo.jobName
-            createYamlFile(activeJob, prefix, yamfile, False)            
+                cpu_usage = Resource(cpu*MILLI, mem *GI, 0)
+                gpu_usage = Resource(cpu*MILLI, gpuMem *GI, gpu)
+                activeJob = ActiveJob(cpu_usage, gpu_usage, 0, 0, jobKey, cpuCmd, gpuCmd)
+                prefix = jobInfo.userName
+                yamfile = jobInfo.jobName
+                createYamlFile(activeJob, prefix, yamfile, False)            
 
-            submitJob(jobInfo.jobName, job_folder, yamfile, jobInfo.userName)            
-            deletedKeys.append(jobKey)
+                submitJob(jobInfo.jobName, job_folder, yamfile, jobInfo.userName) 
+                job.isSubmitted=True
+            # deletedKeys.append(jobKey)
     
-    for jobKey in deletedKeys:
-        del fJobs[jobKey]
+    # for jobKey in deletedKeys:
+    #     del fJobs[jobKey]
 
 
 
@@ -297,7 +299,7 @@ for user in users:
         estimate(fullJobs, cpuShortJobs_1, cpuShortJobs_2, True)
         estimate(fullJobs, gpuShortJobs_1, gpuShortJobs_2, False)
 
-        # updateJobInfo(startedJobs, completedJobs, fullJobs, currTime)
+        updateJobInfo(startedJobs, completedJobs, fullJobs, currTime)
 
 # step 4: measure the job completion time.
 started = False
@@ -319,6 +321,9 @@ while iTime < endTime or infiniteLoop:
     estimate(fullJobs, cpuShortJobs_1, cpuShortJobs_2, True)
     estimate(fullJobs, gpuShortJobs_1, gpuShortJobs_2, False)
     
+    print("startedJobs: " + str(startedJobs))
+    print("completedJobs: " + str(completedJobs))
+    print("fullJobs: " + fullJobs["1"].jobName)
     updateJobInfo(startedJobs, completedJobs, fullJobs, currTime)
     # step 6: submit profiled jobs to the system
     # print ("size of full jobs: " + str(len(fullJobs)))

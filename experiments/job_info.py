@@ -16,3 +16,4 @@ class JobInfo:
         self.estGpuMemUsage = -1
         self.isFinished = False
         self.job = None
+        self.isSubmitted=False

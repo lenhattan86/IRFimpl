@@ -31,7 +31,7 @@ args = vars(parser.parse_args())
 IS_TEST = bool(args['test']=="True")
 
 interval=0.5
-endTime = 28800
+endTime = 14400
 if IS_TEST:
     print("please indicate --test=False")
     endTime = 2*interval
@@ -51,17 +51,17 @@ def listJobStatus():
     p_status = p.wait() 
     if IS_TEST:
         output = """NAMESPACE     NAME                                       READY     STATUS      RESTARTS   AGE
-user1       cpu1-1                          0/1       ContainerCreating   0          19h
+user1       cpu1-1                          0/1       Running   0          19h
 user1       cpu1-1                          0/1       Completed   0          19h
-user1       cpu2-1                          0/1       ContainerCreating   0          19h
+user1       cpu2-1                          0/1       Running   0          19h
 user1       cpu2-1                          0/1       Completed   0          19h
-user1       gpu1-1                          0/1       ContainerCreating   0          19h
+user1       gpu1-1                          0/1       Running   0          19h
 user1       gpu1-1                          0/1       Completed   0          19h
-user1       gpu2-1                          0/1       ContainerCreating   0          19h
+user1       gpu2-1                          0/1       Running   0          19h
 user1       gpu2-1                          0/1       Completed   0          19h
-user1       user1-1                          0/1      ContainerCreating   0          19h
+user1       user1-1                          0/1      Running   0          19h
 user1       user1-1                          0/1      Completed   0          19h
-user1       g-user1-1                          0/1      ContainerCreating   0          19h
+user1       g-user1-1                          0/1      Running   0          19h
 user1       g-user1-1                          0/1      Completed   0          19h
 """
 #         output = """NAME      READY     STATUS    RESTARTS   AGE
@@ -158,7 +158,9 @@ def updateFullJobInfo(startedJobs, completedJobs, mJobs, currTime, isCPU):
 
     for keyId in mJobs:   
         if (mJobs.get(keyId) is not None):
-            if  mJobs[keyId].complTime > 0 and mJobs[keyId].complTimeGpu > 0:
+            if  mJobs[keyId].complTime >= 0 and mJobs[keyId].complTimeGpu >= 0:
+                if mJobs[keyId].complTimeGpu == 0:
+                    mJobs[keyId].complTimeGpu = 0.0001
                 mJobs[keyId].speedup = mJobs[keyId].complTime / mJobs[keyId].complTimeGpu
 
 def estimate(fJobs, sJobs1, sJobs2, isCPU):
@@ -183,7 +185,9 @@ def estimate(fJobs, sJobs1, sJobs2, isCPU):
                         fJobs[keyId].estComplTimeGpu = a*fJobs[keyId].numBatches + b
                         print("[INFO] " + fJobs.get(keyId).jobName +"'s estimated compl. time on GPU is " + str(fJobs[keyId].estComplTimeGpu))  
 
-        if  fJobs[keyId].estComplTimeCpu > 0 and fJobs[keyId].estComplTimeGpu > 0: 
+        if  fJobs[keyId].estComplTimeCpu >= 0 and fJobs[keyId].estComplTimeGpu >= 0: 
+            if fJobs[keyId].estComplTimeGpu == 0:
+                fJobs[keyId].estComplTimeGpu = 0.0001
             fJobs[keyId].estSpeedup = fJobs[keyId].estComplTimeCpu / fJobs[keyId].estComplTimeGpu
 
 

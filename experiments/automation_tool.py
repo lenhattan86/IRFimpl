@@ -162,6 +162,7 @@ def updateFullJobInfo(startedJobs, completedJobs, mJobs, currTime, isCPU):
                 if mJobs[keyId].complTimeGpu == 0:
                     mJobs[keyId].complTimeGpu = 0.0001
                 mJobs[keyId].speedup = mJobs[keyId].complTime / mJobs[keyId].complTimeGpu
+                print("[INFO] " + mJobs[keyId].jobName + "'s speedup is "+ str(mJobs[keyId].speedup))
 
 def estimate(fJobs, sJobs1, sJobs2, isCPU):
     for keyId in fJobs:    
@@ -189,6 +190,7 @@ def estimate(fJobs, sJobs1, sJobs2, isCPU):
             if fJobs[keyId].estComplTimeGpu == 0:
                 fJobs[keyId].estComplTimeGpu = 0.0001
             fJobs[keyId].estSpeedup = fJobs[keyId].estComplTimeCpu / fJobs[keyId].estComplTimeGpu
+            print("[INFO] " + fJobs[keyId].jobName + "'s estimated speedup is "+ str(fJobs[keyId].estSpeedup))
 
 
 def submitJob(podName, job_folder, yamfile, username):
@@ -262,7 +264,7 @@ def submitJobs(fJobs):
                     activeJob = ActiveJob(gpu_usage,cpu_usage,  0, 0, jobKey, gpuCmd, cpuCmd)
                     prefix = GPU_PREFIX + jobInfo.userName
                     yamfile = GPU_PREFIX + jobInfo.jobName
-                    createYamlFile(activeJob, prefix, yamfile, False)            
+                    createYamlFile(activeJob, prefix, yamfile, True)            
                     submitJob(yamfile, job_folder, yamfile, jobInfo.userName) 
                     jobInfo.isSubmittedGpu=True
     
@@ -317,6 +319,8 @@ def main():
         # create user name space
         f = open(job_folder + '/' + newUser.username + ".yaml",'w')
         f.write(strUserYaml(newUser.username))
+        f.close()
+        print("kubectl create -f  " + job_folder + '/' + newUser.username+ ".yaml" )
         p = subprocess.Popen(["kubectl create -f  " + job_folder + '/' + newUser.username+ ".yaml" ],
                 stdout=subprocess.PIPE, shell=True)                   
         (output, err) = p.communicate()    
@@ -432,15 +436,17 @@ def main():
         submitJobs(fullJobs)   
         iTime = iTime + interval       
 
-    # step 6: write results out
-    for jobKey in fullJobs:
-        jobInfo = fullJobs[jobKey]
-        row = [jobKey, jobInfo.jobName , jobInfo.userName, jobInfo.estComplTimeCpu, jobInfo.estComplTimeGpu, 
-            jobInfo.complTime, jobInfo.complTime, jobInfo.estSpeedup, jobInfo.speedup, jobInfo.isGpuJob] 
-        rows.append(row) 
+        if (iTime % 600 == 0):
+            # step 6: write results out
+            rows=[]
+            for jobKey in fullJobs:
+                jobInfo = fullJobs[jobKey]
+                row = [jobKey, jobInfo.jobName , jobInfo.userName, jobInfo.estComplTimeCpu, jobInfo.estComplTimeGpu, 
+                    jobInfo.complTime, jobInfo.complTime, jobInfo.estSpeedup, jobInfo.speedup, jobInfo.isGpuJob] 
+                rows.append(row) 
 
-    ofile  = open(job_folder + '/' + 'est_results.csv', "wb")
-    writer = csv.writer(ofile, dialect='excel')
-    writer.writerows(rows) 
+            ofile  = open(job_folder + '/' + 'est_results.csv', "wb")
+            writer = csv.writer(ofile, dialect='excel')
+            writer.writerows(rows) 
 
 if __name__ == "__main__": main()

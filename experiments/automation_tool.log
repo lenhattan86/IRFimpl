@@ -1,0 +1,56 @@
+[INFO] cpu1-1's compl. time is 122.888934135
+[INFO] gpu1-1's compl. time is 123.836580038
+[INFO] cpu1-3's compl. time is 185.969304085
+[INFO] cpu1-2's compl. time is 189.975045919
+[INFO] cpu2-1's compl. time is 237.973063946
+[INFO] user1-1's estimated compl. time on CPU is 2309.48740053
+[INFO] Submit job user1-1
+[INFO] cpu2-2's compl. time is 241.102579117
+[INFO] user1-2's estimated compl. time on CPU is 241.102579117
+[INFO] Submit job user1-2
+[INFO] gpu2-1's compl. time is 229.47458005
+[INFO] user1-1's estimated compl. time on GPU is 2130.95858026
+[INFO] Submit job g-user1-1
+[INFO] gpu2-2's compl. time is 230.855482817
+[INFO] cpu1-11's compl. time is 218.005952835
+[INFO] user1-2's compl. time is 236.453405142
+[INFO] cpu2-4's compl. time is 337.048296928
+[INFO] cpu2-5's compl. time is 238.899806976
+[INFO] cpu1-7's compl. time is 816.009763956
+[INFO] cpu1-6's compl. time is 572.635313988
+[INFO] cpu2-3's compl. time is 348.389652967
+[INFO] user1-3's estimated compl. time on CPU is 348.389652967
+[INFO] Submit job user1-3
+[INFO] cpu2-9's compl. time is 1076.35300589
+[INFO] cpu1-14's compl. time is 1592.7066319
+[INFO] cpu1-15's compl. time is 1630.86994219
+[INFO] cpu2-8's compl. time is 1484.21932006
+[INFO] cpu1-9's compl. time is 804.914117813
+[INFO] user2-9's estimated compl. time on CPU is 1076.35300589
+[INFO] Submit job user2-9
+[INFO] gpu2-13's compl. time is 399.725215912
+[INFO] cpu1-13's compl. time is 209.654978991
+[INFO] cpu1-8's compl. time is 613.931914091
+[INFO] user2-8's estimated compl. time on CPU is 1484.21932006
+[INFO] Submit job user2-8
+[INFO] cpu2-6's compl. time is 1080.06278706
+[INFO] user2-6's estimated compl. time on CPU is 1080.06278706
+[INFO] Submit job user2-6
+[INFO] gpu1-8's compl. time is 610.883183956
+[INFO] user1-1's compl. time is 2287.45891595
+[INFO] user2-9's compl. time is 1501.12176609
+[INFO] user2-6's compl. time is 1083.42162108
+[INFO] cpu1-4's compl. time is 126.403223991
+[INFO] user1-4's estimated compl. time on CPU is 337.048296928
+[INFO] Submit job user1-4
+[INFO] user1-4's compl. time is 235.928338051
+[INFO] gpu1-14's compl. time is 1597.782938
+[INFO] cpu1-5's compl. time is 128.184650898
+[INFO] user1-5's estimated compl. time on CPU is 238.899806976
+[INFO] Submit job user1-5
+[INFO] user2-8's compl. time is 1161.86635399
+[INFO] user1-5's compl. time is 236.26602602
+[INFO] cpu2-7's compl. time is 1085.52707505
+[INFO] user2-7's estimated compl. time on CPU is 1085.52707505
+[INFO] Submit job user2-7
+[INFO] user1-3's compl. time is 234.999586105

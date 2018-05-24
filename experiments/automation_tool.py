@@ -30,10 +30,15 @@ parser.add_argument('--test', help='True or False', required=False, default="Tru
 args = vars(parser.parse_args())
 IS_TEST = bool(args['test']=="True")
 
+endTime = 10000
 if IS_TEST:
     print("please indicate --test=False")
+    endTime
 
-interval=1
+interval=0.1
+
+IS_MEASURE = True
+
 def listJobStatus():
     startedPods   = []
     completedPods = []
@@ -112,7 +117,7 @@ def estimate(fJobs, sJobs1, sJobs2, isCPU):
                         a = (sJobs1[keyId].complTime - sJobs2[keyId].complTime) / (sJobs1[keyId].numBatches - sJobs2[keyId].numBatches)
                         b = sJobs1[keyId].complTime - a*sJobs1[keyId].numBatches                        
                         fJobs[keyId].estComplTimeCpu = a*fJobs[keyId].numBatches + b
-                        print("[INFO] " + fJobs.get(keyId).jobName +"'s estiated compl. time on CPU is " + str(fJobs[keyId].estComplTimeCpu))
+                        print("[INFO] " + fJobs.get(keyId).jobName +"'s estimated compl. time on CPU is " + str(fJobs[keyId].estComplTimeCpu))
                     
         else:
             if (fJobs.get(keyId) is not None) and fJobs[keyId].estComplTimeGpu < 0:
@@ -122,11 +127,11 @@ def estimate(fJobs, sJobs1, sJobs2, isCPU):
                         a = (sJobs1[keyId].complTime - sJobs2[keyId].complTime) / (sJobs1[keyId].numBatches - sJobs2[keyId].numBatches)
                         b = sJobs1[keyId].complTime - a*sJobs1[keyId].numBatches
                         fJobs[keyId].estComplTimeGpu = a*fJobs[keyId].numBatches + b
-                        print("[INFO] " + fJobs.get(keyId).jobName +"'s estiated compl. time on GPU is " + str(fJobs[keyId].estComplTimeGpu))        
+                        print("[INFO] " + fJobs.get(keyId).jobName +"'s estimated compl. time on GPU is " + str(fJobs[keyId].estComplTimeGpu))        
 
 
 def submitJob(podName, job_folder, yamfile, username):
-    print("Submit job " + podName)
+    print("[INFO] Submit job " + podName)
     # deleteJob(podName, username)
     p = subprocess.Popen(["kubectl create -f  " + job_folder + '/' + yamfile+ ".yaml -n " + username ],
             stdout=subprocess.PIPE, shell=True)                   
@@ -191,6 +196,7 @@ numBatch2 = 20
 FOLDER = "automation_tool"
 GI = 1024*1024*1024
 SCHEDULER = "kube-scheduler"
+MY_SCHEDULER = "my-scheduler"
 DEFAULT_NS = "default"
 cpu=16
 mem=16
@@ -303,7 +309,7 @@ def main():
     # step 4: measure the job completion time.
     started = False
     rows = []
-    endTime = 5
+  
     iTime = 0
     infiniteLoop = True
     if IS_TEST:
@@ -327,11 +333,15 @@ def main():
         # step 6: submit profiled jobs to the system
         # print ("size of full jobs: " + str(len(fullJobs)))
         submitJobs(fullJobs)   
-        iTime = iTime + 1       
+        iTime = iTime + interval       
 
     # step 6: write results out
-    # ofile  = open(job_folder + '/' + 'cmplt_estimator.csv', "wb")
-    # writer = csv.writer(ofile, dialect='excel')
-    # writer.writerows(rows) 
+    for jobKey in fullJobs:
+        jobInfo = fullJobs[jobKey]
+        row = [jobKey, jobInfo.jobName , jobInfo.estComplTimeCpu, jobInfo.complTimeCpu, jobInfo.estComplTimeGpu, jobInfo.complTimeGpu, jobInfo.estSpeedup, jobInfo.speedup] 
+        rows.append(row) 
+        ofile  = open(job_folder + '/' + 'est_results.csv', "wb")
+        writer = csv.writer(ofile, dialect='excel')
+        writer.writerows(rows) 
 
 if __name__ == "__main__": main()

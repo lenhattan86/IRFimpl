@@ -12,6 +12,7 @@ class JobInfo:
         self.estComplTimeCpu = -1
         self.estComplTimeGpu = -1
         self.estSpeedup = -1
+        self.speedup = -1
         self.estCpuMemUsage = -1
         self.estGpuMemUsage = -1
         self.isFinished = False

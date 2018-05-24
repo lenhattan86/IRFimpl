@@ -23,3 +23,4 @@ class JobInfo:
         self.isSubmitted=False
         self.isSubmittedGpu=False
         self.isGpuJob = False
+        isSubmittedGpu = False

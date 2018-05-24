@@ -247,6 +247,25 @@ def submitJobs(fJobs):
                 submitJob(jobInfo.jobName, job_folder, yamfile, jobInfo.userName) 
                 jobInfo.isSubmitted=True
             # deletedKeys.append(jobKey)
+
+        if IS_MEASURE:
+            if fJobs[jobKey].estComplTimeGpu >=0 :
+        # if fJobs[jobKey].estComplTimeCpu >=0 and fJobs[jobKey].estComplTimeGpu >=0::
+                jobInfo = fJobs[jobKey]
+                if not jobInfo.isSubmittedGpu:                
+                    job = jobInfo.job            
+                    cpuCmd = job.cpuProfile.jobCmd
+                    gpuCmd = job.gpuProfile.jobCmd
+
+                    cpu_usage = Resource(cpu*MILLI, mem *GI, 0)
+                    gpu_usage = Resource(cpu*MILLI, gpuMem *GI, gpu)
+                    activeJob = ActiveJob(gpu_usage,cpu_usage,  0, 0, jobKey, gpuCmd, cpuCmd)
+                    prefix = jobInfo.userName
+                    yamfile = GPU_PREFIX + jobInfo.jobName
+                    createYamlFile(activeJob, prefix, yamfile, False)            
+
+                    submitJob(yamfile, job_folder, yamfile, jobInfo.userName) 
+                    jobInfo.isSubmittedGpu=True
     
     # for jobKey in deletedKeys:
     #     del fJobs[jobKey]
@@ -266,7 +285,10 @@ gpuCpu=1
 gpu=1
 gpuMem=32
 
-userStrArray = ["user1"]
+if IS_TEST:
+    userStrArray = ["user1"]
+else:
+    userStrArray = ["user1", "user2", "user3", "user4"]   
 
 this_path = os.path.dirname(os.path.realpath(__file__))
 job_folder = this_path + "/" + FOLDER 

@@ -14,8 +14,12 @@ class JobInfo:
         self.complTimeGpu = -1
         self.estComplTimeCpu = -1
         self.estComplTimeGpu = -1
+
+        self.isEstimated=False
         self.estSpeedup = -1
+        self.isComputed=False
         self.speedup = -1
+
         self.estCpuMemUsage = -1
         self.estGpuMemUsage = -1
         self.isFinished = False
@@ -23,4 +27,5 @@ class JobInfo:
         self.isSubmitted=False
         self.isSubmittedGpu=False
         self.isGpuJob = False
-        isSubmittedGpu = False
+        self.isSubmittedGpu = False
+        

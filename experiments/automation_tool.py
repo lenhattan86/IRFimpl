@@ -158,11 +158,12 @@ def updateFullJobInfo(startedJobs, completedJobs, mJobs, currTime, isCPU):
 
     for keyId in mJobs:   
         if (mJobs.get(keyId) is not None):
-            if  mJobs[keyId].complTime >= 0 and mJobs[keyId].complTimeGpu >= 0:
+            if  mJobs[keyId].complTime >= 0 and mJobs[keyId].complTimeGpu >= 0 and (not mJobs[keyId].isComputed):
                 if mJobs[keyId].complTimeGpu == 0:
                     mJobs[keyId].complTimeGpu = 0.0001
                 mJobs[keyId].speedup = mJobs[keyId].complTime / mJobs[keyId].complTimeGpu
                 print("[INFO] " + mJobs[keyId].jobName + "'s speedup is "+ str(mJobs[keyId].speedup))
+                mJobs[keyId].isComputed = True
 
 def estimate(fJobs, sJobs1, sJobs2, isCPU):
     for keyId in fJobs:    
@@ -186,11 +187,12 @@ def estimate(fJobs, sJobs1, sJobs2, isCPU):
                         fJobs[keyId].estComplTimeGpu = a*fJobs[keyId].numBatches + b
                         print("[INFO] " + fJobs.get(keyId).jobName +"'s estimated compl. time on GPU is " + str(fJobs[keyId].estComplTimeGpu))  
 
-        if  fJobs[keyId].estComplTimeCpu >= 0 and fJobs[keyId].estComplTimeGpu >= 0: 
+        if  fJobs[keyId].estComplTimeCpu >= 0 and fJobs[keyId].estComplTimeGpu >= 0 and (not fJobs[keyId].isEstimated) : 
             if fJobs[keyId].estComplTimeGpu == 0:
                 fJobs[keyId].estComplTimeGpu = 0.0001
             fJobs[keyId].estSpeedup = fJobs[keyId].estComplTimeCpu / fJobs[keyId].estComplTimeGpu
             print("[INFO] " + fJobs[keyId].jobName + "'s estimated speedup is "+ str(fJobs[keyId].estSpeedup))
+            fJobs[keyId].isEstimated = True
 
 
 def submitJob(podName, job_folder, yamfile, username):
@@ -279,7 +281,7 @@ GI = 1024*1024*1024
 SCHEDULER = "kube-scheduler"
 MY_SCHEDULER = "my-scheduler"
 DEFAULT_NS = "default"
-cpu=16
+cpu=21
 mem=16
 
 gpuCpu=1
@@ -289,7 +291,7 @@ gpuMem=32
 if IS_TEST:
     userStrArray = ["user1"]
 else:
-    userStrArray = ["user1", "user2", "user3", "user4"]   
+    userStrArray = ["user1", "user2", "user3"]   
 
 this_path = os.path.dirname(os.path.realpath(__file__))
 job_folder = this_path + "/" + FOLDER 
@@ -399,11 +401,10 @@ def main():
             
             estimate(fullJobs, cpuShortJobs_1, cpuShortJobs_2, True)
             estimate(fullJobs, gpuShortJobs_1, gpuShortJobs_2, False)
+
             if IS_MEASURE:
                 updateFullJobInfo(startedJobs, completedJobs, fullJobs, currTime, False)
                 updateFullJobInfo(startedJobs, completedJobs, fullJobs, currTime, True)
-            if IS_MEASURE:
-                updateJobInfo(startedJobs, completedJobs, fullJobs, currTime)
 
     # step 4: measure the job completion time.
     started = False
@@ -436,13 +437,13 @@ def main():
         submitJobs(fullJobs)   
         iTime = iTime + interval       
 
-        if (iTime % 600 == 0):
+        if (iTime % 60 == 0): # write down every 1 min.
             # step 6: write results out
             rows=[]
             for jobKey in fullJobs:
                 jobInfo = fullJobs[jobKey]
                 row = [jobKey, jobInfo.jobName , jobInfo.userName, jobInfo.estComplTimeCpu, jobInfo.estComplTimeGpu, 
-                    jobInfo.complTime, jobInfo.complTime, jobInfo.estSpeedup, jobInfo.speedup, jobInfo.isGpuJob] 
+                    jobInfo.complTime, jobInfo.complTimeGpu, jobInfo.estSpeedup, jobInfo.speedup, jobInfo.isGpuJob] 
                 rows.append(row) 
 
             ofile  = open(job_folder + '/' + 'est_results.csv', "wb")

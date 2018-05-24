@@ -314,10 +314,12 @@ shutil.rmtree(job_folder, ignore_errors=True) # delete previous folder.
 os.mkdir(job_folder)    
 workload = "traces/automation"
 ################################### MAIN Script ###############################################
-def main():
-    ## initialization
-    print "====== ONLINE-PERFORMANCE-ESTIMATION-TOOL ====="
 
+print "====== AUTOMATION-TOOL ====="
+
+def main():
+    ## initialization   
+    print "====== main() ====="
     users = []
     fullJobs = {}
     cpuShortJobs_1 = {}
@@ -454,11 +456,11 @@ def main():
 
         if (iTime % 60 == 0): # write down every 1 min.
             # step 6: write results out
-            writeJobsToCsv(fullJobs,'est_results.csv')
-            writeJobsToCsv(cpuShortJobs_1,'cpuShortJobs_1.csv')    
-            writeJobsToCsv(cpuShortJobs_2,'cpuShortJobs_2.csv') 
-            writeJobsToCsv(gpuShortJobs_1,'gpuShortJobs_1.csv') 
-            writeJobsToCsv(gpuShortJobs_2,'gpuShortJobs_2.csv') 
+            writeJobsToCsv(fullJobs,'est_results')
+            writeJobsToCsv(cpuShortJobs_1,'cpuShortJobs_1')    
+            writeJobsToCsv(cpuShortJobs_2,'cpuShortJobs_2') 
+            writeJobsToCsv(gpuShortJobs_1,'gpuShortJobs_1') 
+            writeJobsToCsv(gpuShortJobs_2,'gpuShortJobs_2') 
         iTime = iTime + interval      
 
 if __name__ == "__main__": main()

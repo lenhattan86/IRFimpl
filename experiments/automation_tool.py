@@ -312,7 +312,7 @@ gpuMem=32
 if IS_TEST:
     userStrArray = ["user1"]
 else:
-    userStrArray = ["user1", "user2", "user3"]   
+    userStrArray = ["user1", "user2", "user3", "user4"]   
 
 this_path = os.path.dirname(os.path.realpath(__file__))
 job_folder = this_path + "/" + FOLDER 

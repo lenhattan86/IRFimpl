@@ -224,8 +224,8 @@ def deleteAllJobs(username):
 def createSubCommands(cmd, numbatches):
     tempArray = cmd.split("--num_batches=")
     if len(tempArray) == 2:            
-        subCmd1 = tempArray[0] + " --num_batches=" + str(numbatches*numBatch1Percent)
-        subCmd2 = tempArray[0] + " --num_batches=" + str(numbatches*numBatch2Percent)
+        subCmd1 = tempArray[0] + " --num_batches=" + str(int(numbatches*numBatch1Percent))
+        subCmd2 = tempArray[0] + " --num_batches=" + str(int(numbatches*numBatch2Percent))
     else:
         print("[ERROR] command shoud have --num_batches= at the end")
 

@@ -221,11 +221,11 @@ def deleteAllJobs(username):
     (output, err) = p.communicate()   
     p_status = p.wait()    
 
-def createSubCommands(cmd):
+def createSubCommands(cmd, numbatches):
     tempArray = cmd.split("--num_batches=")
     if len(tempArray) == 2:            
-        subCmd1 = tempArray[0] + " --num_batches=" + str(numBatch1)
-        subCmd2 = tempArray[0] + " --num_batches=" + str(numBatch2)
+        subCmd1 = tempArray[0] + " --num_batches=" + str(numbatches*numBatch1Percent)
+        subCmd2 = tempArray[0] + " --num_batches=" + str(numbatches*numBatch2Percent)
     else:
         print("[ERROR] command shoud have --num_batches= at the end")
 
@@ -295,8 +295,9 @@ def submitJobs(fJobs):
     #     del fJobs[jobKey]
 
 
-numBatch1 = 100
-numBatch2 = 200
+numBatch1Percent = 5.0/100
+numBatch2Percent = 10.0/100
+# numBatch2 = 200
 FOLDER = "automation_tool"
 GI = 1024*1024*1024
 SCHEDULER = "kube-scheduler"
@@ -370,8 +371,8 @@ def main():
             # read the number of batch from the job
             cpuCmd = job.cpuProfile.jobCmd
             gpuCmd = job.gpuProfile.jobCmd
-            cpuCmd1, cpuCmd2 = createSubCommands(cpuCmd)        
-            gpuCmd1, gpuCmd2 = createSubCommands(gpuCmd)
+            cpuCmd1, cpuCmd2 = createSubCommands(cpuCmd, job.numBatches)        
+            gpuCmd1, gpuCmd2 = createSubCommands(gpuCmd, job.numBatches)
 
             # for the small number of batches
             cpu_usage = Resource(cpu*MILLI, mem *GI, 0)
@@ -381,6 +382,7 @@ def main():
             prefix = "cpu1"
             jobName = prefix + "-" + str(jobId)
             yamfile = jobName
+            numBatch1 = job.numBatches * numBatch1Percent
             newJob = JobInfo(jobId, jobName, user.username, numBatch1)
             activeJob = ActiveJob(cpu_usage, gpu_usage, 0, 0, jobId, cpuCmd1, gpuCmd1)
             createYamlFile(activeJob, prefix, yamfile, False, False)

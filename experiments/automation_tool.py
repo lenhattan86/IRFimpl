@@ -30,13 +30,10 @@ parser.add_argument('--test', help='True or False', required=False, default="Tru
 args = vars(parser.parse_args())
 IS_TEST = bool(args['test']=="True")
 
-interval=0.5
-endTime = 14400
+interval=1.0
 if IS_TEST:
     print("please indicate --test=False")
     endTime = 2*interval
-
-
 
 IS_MEASURE = True
 GPU_PREFIX = "g-"
@@ -45,7 +42,6 @@ def listJobStatus():
     completedPods = []
     # p = subprocess.Popen(["kubectl get pods --all-namespaces --field-selector=status.phase!=Pending"], 
     p = subprocess.Popen(["kubectl get pods --all-namespaces"], 
-    # p = subprocess.Popen(["kubectl get pods " + podName], 
         stdout=subprocess.PIPE, shell=True)                   
     (output, err) = p.communicate()    
     p_status = p.wait() 
@@ -165,7 +161,7 @@ def updateFullJobInfo(startedJobs, completedJobs, mJobs, currTime, isCPU):
                 print("[INFO] " + mJobs[keyId].jobName + "'s speedup is "+ str(mJobs[keyId].speedup))
                 mJobs[keyId].isComputed = True
 
-def estimate(fJobs, sJobs1, sJobs2, isCPU):
+def estimateComplTime(fJobs, sJobs1, sJobs2, isCPU):
     for keyId in fJobs:    
         if isCPU:
             if (fJobs.get(keyId) is not None) and fJobs[keyId].estComplTimeCpu < 0:
@@ -194,6 +190,16 @@ def estimate(fJobs, sJobs1, sJobs2, isCPU):
             print("[INFO] " + fJobs[keyId].jobName + "'s estimated speedup is "+ str(fJobs[keyId].estSpeedup))
             fJobs[keyId].isEstimated = True
 
+def estimateSpeedup(fJobs, cJobs, gJobs):
+    for keyId in fJobs:    
+        if (fJobs.get(keyId) is not None) and fJobs[keyId].estComplTimeCpu < 0:
+            if (cJobs.get(keyId) is not None) and (gJobs.get(keyId) is not None):
+                if (cJobs.get(keyId).complTime >= 0) and (gJobs.get(keyId).complTime >= 0):
+                    # linear model a * (numberofbatches) + b
+                    fJobs[keyId].estSpeedup = cJobs[keyId].complTime / gJobs[keyId].complTimeGpu
+                    print("[INFO] " + fJobs[keyId].jobName + "'s estimated speedup is "+ str(fJobs[keyId].estSpeedup))
+                    fJobs[keyId].isEstimated = True
+                            
 
 def submitJob(podName, job_folder, yamfile, username):
     print("[INFO] Submit job " + podName)
@@ -381,14 +387,14 @@ def main():
             submitJob(jobName, job_folder, yamfile, DEFAULT_NS)        
             cpuShortJobs_1[jobIdKey] = newJob
 
-            prefix = "cpu2"
-            jobName = prefix + "-" + str(jobId)
-            yamfile = jobName
-            newJob  = JobInfo(jobId, jobName, user.username, numBatch2)
-            activeJob = ActiveJob(cpu_usage, gpu_usage, 0, 0, jobId,  cpuCmd2, gpuCmd2)
-            createYamlFile(activeJob, prefix, yamfile, False, False)
-            submitJob(jobName, job_folder, yamfile, DEFAULT_NS)        
-            cpuShortJobs_2[jobIdKey] = newJob
+            # prefix = "cpu2"
+            # jobName = prefix + "-" + str(jobId)
+            # yamfile = jobName
+            # newJob  = JobInfo(jobId, jobName, user.username, numBatch2)
+            # activeJob = ActiveJob(cpu_usage, gpu_usage, 0, 0, jobId,  cpuCmd2, gpuCmd2)
+            # createYamlFile(activeJob, prefix, yamfile, False, False)
+            # submitJob(jobName, job_folder, yamfile, DEFAULT_NS)        
+            # cpuShortJobs_2[jobIdKey] = newJob
 
             # prepare jobs for GPU        
             prefix = "gpu1"
@@ -400,24 +406,22 @@ def main():
             submitJob(jobName, job_folder, yamfile, DEFAULT_NS)        
             gpuShortJobs_1[jobIdKey] = newJob
 
-            prefix = "gpu2"
-            jobName = prefix + "-" + str(jobId)
-            yamfile = jobName
-            newJob  = JobInfo(jobId, jobName, user.username, numBatch2)
-            activeJob = ActiveJob(gpu_usage, cpu_usage,  0, 0, jobId, gpuCmd2,  cpuCmd2)
-            createYamlFile(activeJob, prefix, yamfile, True, False)
-            submitJob(jobName, job_folder, yamfile, DEFAULT_NS)        
-            gpuShortJobs_2[jobIdKey] = newJob
+            # prefix = "gpu2"
+            # jobName = prefix + "-" + str(jobId)
+            # yamfile = jobName
+            # newJob  = JobInfo(jobId, jobName, user.username, numBatch2)
+            # activeJob = ActiveJob(gpu_usage, cpu_usage,  0, 0, jobId, gpuCmd2,  cpuCmd2)
+            # createYamlFile(activeJob, prefix, yamfile, True, False)
+            # submitJob(jobName, job_folder, yamfile, DEFAULT_NS)        
+            # gpuShortJobs_2[jobIdKey] = newJob
  
             
             startedJobs, completedJobs, currTime = listJobStatus()
             updateJobInfo(startedJobs, completedJobs, cpuShortJobs_1, currTime)
-            updateJobInfo(startedJobs, completedJobs, cpuShortJobs_2, currTime)
             updateJobInfo(startedJobs, completedJobs, gpuShortJobs_1, currTime)
-            updateJobInfo(startedJobs, completedJobs, gpuShortJobs_2, currTime)
             
-            estimate(fullJobs, cpuShortJobs_1, cpuShortJobs_2, True)
-            estimate(fullJobs, gpuShortJobs_1, gpuShortJobs_2, False)
+            estimateSpeedup(fullJobs, cpuShortJobs_1, gpuShortJobs_1)
+            # estimateSpeedup(fullJobs, gpuShortJobs_1, gpuShortJobs_2, False)
 
             if IS_MEASURE:
                 updateFullJobInfo(startedJobs, completedJobs, fullJobs, currTime, False)
@@ -431,17 +435,16 @@ def main():
     infiniteLoop = True
     if IS_TEST:
         infiniteLoop = False
-    while iTime < endTime or infiniteLoop:
+    while infiniteLoop:
         sleep(interval)
         startedJobs, completedJobs, currTime = listJobStatus()
         updateJobInfo(startedJobs, completedJobs, cpuShortJobs_1,currTime)
-        updateJobInfo(startedJobs, completedJobs, cpuShortJobs_2,currTime)
+        # updateJobInfo(startedJobs, completedJobs, cpuShortJobs_2,currTime)
         updateJobInfo(startedJobs, completedJobs, gpuShortJobs_1,currTime)
-        updateJobInfo(startedJobs, completedJobs, gpuShortJobs_2,currTime)
+        # updateJobInfo(startedJobs, completedJobs, gpuShortJobs_2,currTime)
         
         # step 5: estimation
-        estimate(fullJobs, cpuShortJobs_1, cpuShortJobs_2, True)
-        estimate(fullJobs, gpuShortJobs_1, gpuShortJobs_2, False)
+        estimateSpeedup(fullJobs, cpuShortJobs_1, gpuShortJobs_1)
         
         # print("startedJobs: " + str(startedJobs))
         # print("completedJobs: " + str(completedJobs))
@@ -458,9 +461,7 @@ def main():
             # step 6: write results out
             writeJobsToCsv(fullJobs,'est_results')
             writeJobsToCsv(cpuShortJobs_1,'cpuShortJobs_1')    
-            writeJobsToCsv(cpuShortJobs_2,'cpuShortJobs_2') 
             writeJobsToCsv(gpuShortJobs_1,'gpuShortJobs_1') 
-            writeJobsToCsv(gpuShortJobs_2,'gpuShortJobs_2') 
         iTime = iTime + interval      
 
 if __name__ == "__main__": main()

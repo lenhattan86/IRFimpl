@@ -256,7 +256,7 @@ def createYamlFile(activeJob, prefix, yamfile, isGPU, isScheduled):
 def submitJobs(fJobs):
     # deletedKeys = []
     for jobKey in fJobs:
-        if fJobs[jobKey].isEstimated >=0 :
+        if fJobs[jobKey].isEstimated:
         # if fJobs[jobKey].estComplTimeCpu >=0 and fJobs[jobKey].estComplTimeGpu >=0::
             jobInfo = fJobs[jobKey]
             if not jobInfo.isSubmitted:                
@@ -276,7 +276,7 @@ def submitJobs(fJobs):
             # deletedKeys.append(jobKey)
 
         if IS_MEASURE:
-            if fJobs[jobKey].estSpeedup >=0 :
+            if fJobs[jobKey].isEstimated:
         # if fJobs[jobKey].estComplTimeCpu >=0 and fJobs[jobKey].estComplTimeGpu >=0::
                 jobInfo = fJobs[jobKey]
                 if not jobInfo.isSubmittedGpu:

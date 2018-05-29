@@ -1,3 +1,8 @@
+# ecp: An R Package for Nonparametric Multiple Change Point Analysis of Multivariate Data
+# Hierarchical estimation can be based upon either a divisive or agglomerative algorithm. Divisive estimation
+# sequentially identifies change points via a bisection algorithm. The agglomerative algorithm
+# estimates change point locations by determining an optimal segmentation.
+# This provides an advantage over many existing change point algorithms which are only able to detect changes within the marginal distributions
 # install.packages("ecp")
 set.seed(250)
 library("ecp")

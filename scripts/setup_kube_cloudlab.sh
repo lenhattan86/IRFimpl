@@ -19,7 +19,7 @@ echo "This file need to be executed on the master node instead of your local mac
 echo "You also need to provide the chameleon.pem file"
 
 masterIP="128.104.222.123"
-slavesIP="c220g2-011332.wisc.cloudlab.us
+slavesIP="cp-1
 " # last one of ctl of slave1
 
 serversIP="$masterIP $slavesIP"

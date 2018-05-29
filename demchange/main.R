@@ -6,26 +6,31 @@ data = rows[,3] # cpu cores requested
 library("changepoint")
 set.seed(10)
 m.data <- as.ts(data)
-# ts.plot(m.data, xlab = "hours")
+ts.plot(m.data, xlab = "hours", ylab = "cpu cores",  ylim = c(0, 8000))
 
-## CUSUM
-# m.cusum=cpt.mean(m.data,penalty="Manual",pen.value=0.01,method="AMOC",test.stat="CUSUM")
-# plot(m.cusum, type = "l", cpt.col = "blue", xlab = "Index", cpt.width = 4)
-# cpts(m.cusum)
-
-## PELT
-# m.pelt=cpt.mean(m.data,method="PELT")
-# plot(m.pelt, type = "l", cpt.col = "blue", xlab = "Index", cpt.width = 4)
-# cpts(m.pelt)
-
-## BinSeg ==> best for Google trace
-m.binseg=cpt.mean(m.data,method="BinSeg")
-plot(m.binseg, type = "l", cpt.col = "blue", xlab = "Index", cpt.width = 4)
+# BinSeg ==> best for Google trace
+m.binseg=cpt.mean(m.data, method="BinSeg", Q=15)
+plot(m.binseg, type = "l", cpt.col = "blue", , xlab = "hours", ylab = "cpu cores",  ylim = c(0, 8000), cpt.width = 4)
 cpts(m.binseg)
 
-## SegNeigh
-m.segneigh=cpt.mean(m.data,penalty="Asymptotic",pen.value=0.8,method="SegNeigh",Q=5,class=FALSE)
-plot(m.segneigh, type = "l", cpt.col = "blue", xlab = "Index", cpt.width = 4)
-# cpts(m.segneigh)
+# same without CUSUM.
+# m.binseg=cpt.mean(m.data, method="BinSeg", Q=10)
+# plot(m.binseg, type = "l", cpt.col = "blue", , xlab = "hours", ylab = "cpu cores",  ylim = c(0, 8000), cpt.width = 4)
+# cpts(m.binseg)
 
-## 
+
+#2. PELT
+# 100000 * log(n)
+# m.pelt=cpt.mean(m.data, method="PELT")
+# m.pelt=cpt.mean(m.data, penalty="Manual", pen.value = "200000 * log(n)", method="PELT")
+# # m.pelt=cpt.mean(m.data, penalty='Asymptotic', pen.value=0.99, method="PELT")
+# plot(m.pelt, type = "l", cpt.col = "blue", xlab = "hours", ylab = "cpu cores",  ylim = c(0, 8000), cpt.width = 4)
+# cpts(m.pelt)
+
+
+#sumary:
+# cpt.mean: test.stat = "Normal" or "CUSUM"
+# cpt.var: test.stat  = "Normal" or "CSS"
+# cpt.meanvar: test.stat = "Gamma", "Normal", "Poisson", "Exponential"
+
+# penalty type: SIC (log(n)), BIC, Manual (constant of function in text) ** n: number of data points.

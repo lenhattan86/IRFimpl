@@ -192,11 +192,13 @@ def estimateComplTime(fJobs, sJobs1, sJobs2, isCPU):
 
 def estimateSpeedup(fJobs, cJobs, gJobs):
     for keyId in fJobs:    
-        if (fJobs.get(keyId) is not None) and fJobs[keyId].estComplTimeCpu < 0:
+        if (fJobs.get(keyId) is not None) and (not fJobs[keyId].isEstimated):
             if (cJobs.get(keyId) is not None) and (gJobs.get(keyId) is not None):
                 if (cJobs.get(keyId).complTime >= 0) and (gJobs.get(keyId).complTime >= 0):
                     # linear model a * (numberofbatches) + b
-                    fJobs[keyId].estSpeedup = cJobs[keyId].complTime / gJobs[keyId].complTimeGpu
+                    if gJobs[keyId].complTime == 0:
+                        gJobs[keyId].complTime = 0.00001
+                    fJobs[keyId].estSpeedup = cJobs[keyId].complTime / gJobs[keyId].complTime
                     print("[INFO] " + fJobs[keyId].jobName + "'s estimated speedup is "+ str(fJobs[keyId].estSpeedup))
                     fJobs[keyId].isEstimated = True
                             
@@ -254,7 +256,7 @@ def createYamlFile(activeJob, prefix, yamfile, isGPU, isScheduled):
 def submitJobs(fJobs):
     # deletedKeys = []
     for jobKey in fJobs:
-        if fJobs[jobKey].estSpeedup >=0 :
+        if fJobs[jobKey].isEstimated >=0 :
         # if fJobs[jobKey].estComplTimeCpu >=0 and fJobs[jobKey].estComplTimeGpu >=0::
             jobInfo = fJobs[jobKey]
             if not jobInfo.isSubmitted:                
@@ -277,8 +279,8 @@ def submitJobs(fJobs):
             if fJobs[jobKey].estSpeedup >=0 :
         # if fJobs[jobKey].estComplTimeCpu >=0 and fJobs[jobKey].estComplTimeGpu >=0::
                 jobInfo = fJobs[jobKey]
-                if not jobInfo.isSubmittedGpu:                
-                    job = jobInfo.job            
+                if not jobInfo.isSubmittedGpu:
+                    job = jobInfo.job
                     cpuCmd = job.cpuProfile.jobCmd
                     gpuCmd = job.gpuProfile.jobCmd
 
@@ -290,10 +292,6 @@ def submitJobs(fJobs):
                     createYamlFile(activeJob, prefix, yamfile, True, False)            
                     submitJob(yamfile, job_folder, yamfile, jobInfo.userName) 
                     jobInfo.isSubmittedGpu=True
-    
-    # for jobKey in deletedKeys:
-    #     del fJobs[jobKey]
-
 
 numBatch1Percent = 5.0/100
 numBatch2Percent = 10.0/100
@@ -425,10 +423,13 @@ def main():
             estimateSpeedup(fullJobs, cpuShortJobs_1, gpuShortJobs_1)
             # estimateSpeedup(fullJobs, gpuShortJobs_1, gpuShortJobs_2, False)
 
+            # submitJobs(fullJobs)
+
             if IS_MEASURE:
                 updateFullJobInfo(startedJobs, completedJobs, fullJobs, currTime, False)
                 updateFullJobInfo(startedJobs, completedJobs, fullJobs, currTime, True)
 
+    submitJobs(fullJobs)        
     # step 4: measure the job completion time.
     started = False
     rows = []

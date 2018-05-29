@@ -1,0 +1,5 @@
+data("Lai2005fig4", package = "changepoint")
+Lai.default <- cpt.mean(Lai2005fig4[, 5], method = "PELT")
+plot(Lai.default, pch = 20, col = "grey", cpt.col = "black", type = "p", xlab = "Index")
+cpts(Lai.default)
+coef(Lai.default)

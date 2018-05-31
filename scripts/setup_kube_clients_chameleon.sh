@@ -6,14 +6,14 @@
 
 if [ -z "$1" ]
 then
-	token="h5qmha.7yrowxdjxl20z66d"
+	token="snjxkk.crtlqks7coc7jogo"
 else
 	token="$1"
 fi
 
 if [ -z "$2" ]
 then
-	sha256="sha256:3cff058f23387d097c14596773564fab0eb5d908ff4ef5b60aa539bc6e1dc922"
+	sha256="sha256:896c1bc82068fb7d8027560cef91f2fa1909311a2fccb248fb7e3a3cd8df4c1f"
 else
 	sha256="$2"
 fi
@@ -38,10 +38,10 @@ for server in $slavesIP; do
 		$SSH_CMD $username@$server " echo hello $server"
 done	
 
-# for server in $slavesIP; do
-#  	$SSH_CMD $username@$server 'bash -s' < ./setupkubernetes_gpu.sh &
-# done	
-# wait
+for server in $slavesIP; do
+  	$SSH_CMD $username@$server 'bash -s' < ./setupkubernetes_gpu.sh &
+done	
+wait
 
 # sudo sh -c "echo '127.0.0.1 $master' >> /etc/hosts"
 for server in $slavesIP; do

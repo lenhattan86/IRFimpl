@@ -265,7 +265,7 @@ def submitJobs(fJobs):
                 gpuCmd = job.gpuProfile.jobCmd
 
                 cpu_usage = Resource(cpu*MILLI, mem *GI, 0)
-                gpu_usage = Resource(cpu*MILLI, gpuMem *GI, gpu)
+                gpu_usage = Resource(1*MILLI, gpuMem *GI, gpu)
                 activeJob = ActiveJob(cpu_usage, gpu_usage, 0, 0, jobKey, cpuCmd, gpuCmd)
                 prefix = jobInfo.userName
                 yamfile = jobInfo.jobName
@@ -285,7 +285,7 @@ def submitJobs(fJobs):
                     gpuCmd = job.gpuProfile.jobCmd
 
                     cpu_usage = Resource(cpu*MILLI, mem *GI, 0)
-                    gpu_usage = Resource(cpu*MILLI, gpuMem *GI, gpu)
+                    gpu_usage = Resource(1*MILLI, gpuMem *GI, gpu)
                     activeJob = ActiveJob(gpu_usage,cpu_usage,  0, 0, jobKey, gpuCmd, cpuCmd)
                     prefix = GPU_PREFIX + jobInfo.userName
                     yamfile = GPU_PREFIX + jobInfo.jobName

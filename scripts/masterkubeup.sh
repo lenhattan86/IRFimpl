@@ -1,7 +1,7 @@
 #!/bin/bash
 #usage: ./masterkubeup.sh [masterIPaddress]
-# sudo kubeadm reset -f
-sudo kubeadm reset
+sudo kubeadm reset -f
+# sudo kubeadm reset
 if [ -z "$1" ]
 then
 	ipaddress="128.110.153.130"
@@ -9,8 +9,8 @@ else
 	ipaddress="$1"
 fi
 
-# sudo kubeadm reset -f
-sudo kubeadm reset
+sudo kubeadm reset -f
+# sudo kubeadm reset
 sudo systemctl enable docker
 sudo systemctl start docker
 sudo systemctl enable kubelet
@@ -26,8 +26,8 @@ sudo sed -i -e "s/ExecStart=\/usr\/bin\/kubelet /ExecStart=\/usr\/bin\/kubelet -
 #sudo sed -i -e "s/ExecStart=\/usr\/bin\/kubelet /ExecStart=\/usr\/bin\/kubelet --feature-gates=PodPriority=true --feature-gates="Accelerators=true" /g" $FILE_NAME
 sudo systemctl daemon-reload
 sudo systemctl restart kubelet
-# sudo kubeadm reset -f
-sudo kubeadm reset
+sudo kubeadm reset -f
+# sudo kubeadm reset
 sudo kubeadm init --apiserver-advertise-address=$ipaddress
 
 mkdir -p $HOME/.kube
@@ -35,8 +35,8 @@ sudo cp -f /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
 export KUBECONFIG=~/.kube/config
 sudo kubectl apply -f http://docs.projectcalico.org/v2.3/getting-started/kubernetes/installation/hosted/kubeadm/1.6/calico.yaml
+#kubectl apply -f https://docs.projectcalico.org/v3.1/getting-started/kubernetes/installation/hosted/rbac-kdd.yaml
 #sudo kubectl apply -f https://docs.projectcalico.org/v3.1/getting-started/kubernetes/installation/hosted/kubernetes-datastore/calico-networking/1.7/calico.yaml
-#sudo kubectl apply -f https://docs.projectcalico.org/v3.1/getting-started/kubernetes/installation/hosted/calico.yaml
 sudo kubectl taint nodes --all node-role.kubernetes.io/master-
 cd
 mkdir -p config

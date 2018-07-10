@@ -30,17 +30,17 @@ cat <<EOF >/etc/apt/sources.list.d/kubernetes.list
 deb http://apt.kubernetes.io/ kubernetes-xenial main
 EOF
 apt-get update'
-#sudo apt-get install -y kubelet kubeadm kubectl kubernetes-cni
-sudo apt-get install -qy kubelet=$kubeVer kubeadm=$kubeVer kubectl=$kubeVer 
-sudo apt-get install -y kubernetes-cni
+sudo apt-get install -y kubelet kubeadm kubectl kubernetes-cni
+# sudo apt-get install -qy kubelet=$kubeVer kubeadm=$kubeVer kubectl=$kubeVer 
+# sudo apt-get install -qy kubernetes-cni=0.5.0
 
 sudo iptables -F
 sudo swapoff -a
 sudo free -m
 
 echo "######################### KUBEADM RESET ##########################################"
-#sudo kubeadm reset -f
-sudo kubeadm reset
+sudo kubeadm reset -f
+# sudo kubeadm reset
 echo "######################### Clean-up ##########################################"
 sudo rm -rf *.tgz *.deb
 

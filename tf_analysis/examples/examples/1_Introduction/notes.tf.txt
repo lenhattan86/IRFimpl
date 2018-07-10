@@ -1,0 +1,15 @@
+## remove all cuda
+sudo apt-get --purge remove 'cuda*'
+
+## install cuda tool-kit 9.0
+`sudo dpkg -i cuda-repo-ubuntu1604-9-0-.deb`
+`sudo apt-key add /var/cuda-repo-<version>/7fa2af80.pub`
+`sudo apt-get update`
+`sudo apt-get install cuda`
+
+## install cuDNN 7.1.4 for cuda 9.0
+sudo dpkg -i libcudnn7_7.0.3.11-1+cuda9.0_amd64.deb
+
+## post isntallation
+export PATH=/usr/local/cuda-9.0/bin${PATH:+:${PATH}}
+export LD_LIBRARY_PATH=${LD_LIBRARY_PATH:+${LD_LIBRARY_PATH}:}/usr/local/cuda/extras/CUPTI/lib64

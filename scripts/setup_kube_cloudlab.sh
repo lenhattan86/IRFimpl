@@ -18,8 +18,11 @@
 echo "This file need to be executed on the master node instead of your local machine for chameleon"
 echo "You also need to provide the chameleon.pem file"
 
-masterIP="128.104.222.123"
+masterIP="128.110.153.130"
 slavesIP="cp-1
+cp-2
+cp-3
+cp-4
 " # last one of ctl of slave1
 
 serversIP="$masterIP $slavesIP"
@@ -34,7 +37,7 @@ for server in $slavesIP; do
 		$SSH_CMD $username@$server "echo hello $server" -y
 done	
 echo "Please stop here if one of the node is not connected...."
-sleep 30
+sleep 15
 # setup kubernetes
 ./setupkubernetes_cpu.sh &
 for server in $slavesIP; do

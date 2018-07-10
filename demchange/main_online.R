@@ -10,8 +10,8 @@ detectiontimes <- numeric()
 changepoints <- numeric()
 #use a Lepage CPM
 # cpm <- makeChangePointModel(cpmType="Lepage", ARL0=500)
-# cpm <- makeChangePointModel(cpmType="Student", ARL0=500)
-cpm <- makeChangePointModel(cpmType="normal", ARL0=500)
+cpm <- makeChangePointModel(cpmType="Student", ARL0=500)
+# cpm <- makeChangePointModel(cpmType="normal", ARL0=500)
 i <- 0
 DETECTION_VALUE = i
 DETECTION_VALUES = numeric()
@@ -30,8 +30,7 @@ while (i < length(m.data)) {
         Ds <- getStatistics(cpm)
         tau <- which.max(Ds)
         if (length(changepoints) > 0) {
-            tau <- tau + changepoints[length(changepoints)]
-            
+            tau <- tau + changepoints[length(changepoints)]            
         }
         changepoints <- c(changepoints,tau)
         CHANGE_POINT = m.data[tau]
@@ -46,7 +45,7 @@ while (i < length(m.data)) {
 }
 
 ts.plot(m.data, xlab = "hours", ylab = "cpu cores",  ylim = c(0, 8000))
-# lines(DETECTION_VALUES,col="blue")
+lines(DETECTION_VALUES,col="blue")
 abline(v=detectiontimes, col="blue")
 lines(CHANGE_POINTS,col="green")
 legend(1, 1000, legend=c("demand", "detection", "change points"),

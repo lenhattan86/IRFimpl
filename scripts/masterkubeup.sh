@@ -1,6 +1,6 @@
 #!/bin/bash
 #usage: ./masterkubeup.sh [masterIPaddress]
-sudo kubeadm reset 
+sudo kubeadm reset -f
 if [ -z "$1" ]
 then
 	ipaddress="129.114.109.80"

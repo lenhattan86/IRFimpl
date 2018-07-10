@@ -1,6 +1,7 @@
 #!/bin/bash
 #usage: ./masterkubeup.sh [masterIPaddress]
-sudo kubeadm reset -f
+# sudo kubeadm reset -f
+sudo kubeadm reset
 if [ -z "$1" ]
 then
 	ipaddress="129.114.109.80"
@@ -8,7 +9,8 @@ else
 	ipaddress="$1"
 fi
 
-sudo kubeadm reset -f
+# sudo kubeadm reset -f
+sudo kubeadm reset
 sudo systemctl enable docker
 sudo systemctl start docker
 sudo systemctl enable kubelet
@@ -23,7 +25,8 @@ echo "Chosen ${FILE_NAME} as kubeadm.conf"
 sudo sed -i -e "s/ExecStart=\/usr\/bin\/kubelet /ExecStart=\/usr\/bin\/kubelet --feature-gates="Accelerators=true" /g" $FILE_NAME
 sudo systemctl daemon-reload
 sudo systemctl restart kubelet
-sudo kubeadm reset -f
+# sudo kubeadm reset -f
+sudo kubeadm reset
 sudo kubeadm init --apiserver-advertise-address=$ipaddress
 
 mkdir -p $HOME/.kube

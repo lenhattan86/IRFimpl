@@ -1,7 +1,8 @@
 #!/bin/bash
 #usage: ./setupkubernetes.sh
 
-kubeVer="1.9.6-00"
+#kubeVer="1.9.6-00"
+kubeVer="1.9.2-00"
 sudo apt-get purge -y kubelet kubeadm kubectl kubernetes-cni
 
 echo "######################### DOCKER ##########################################"

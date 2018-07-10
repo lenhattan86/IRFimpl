@@ -35,7 +35,7 @@ sudo swapoff -a
 sudo free -m
 
 echo "######################### KUBEADM RESET ##########################################"
-sudo kubeadm reset
+sudo kubeadm reset -f
 echo "######################### Clean-up ##########################################"
 sudo rm -rf *.tgz *.deb
 

@@ -8,7 +8,7 @@ else
 	ipaddress="$1"
 fi
 
-sudo kubeadm reset
+sudo kubeadm reset -f
 sudo systemctl enable docker
 sudo systemctl start docker
 sudo systemctl enable kubelet
@@ -23,7 +23,7 @@ echo "Chosen ${FILE_NAME} as kubeadm.conf"
 sudo sed -i -e "s/ExecStart=\/usr\/bin\/kubelet /ExecStart=\/usr\/bin\/kubelet --feature-gates="Accelerators=true" /g" $FILE_NAME
 sudo systemctl daemon-reload
 sudo systemctl restart kubelet
-sudo kubeadm reset
+sudo kubeadm reset -f
 sudo kubeadm init --apiserver-advertise-address=$ipaddress
 
 mkdir -p $HOME/.kube

@@ -4,7 +4,7 @@ sudo kubeadm reset -f
 # sudo kubeadm reset
 if [ -z "$1" ]
 then
-	ipaddress="128.110.153.130"
+	ipaddress="128.110.155.25"
 else
 	ipaddress="$1"
 fi

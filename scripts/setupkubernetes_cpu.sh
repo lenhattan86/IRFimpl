@@ -30,7 +30,7 @@ deb http://apt.kubernetes.io/ kubernetes-xenial main
 EOF
 apt-get update'
 #sudo apt-get install -y kubelet kubeadm kubectl kubernetes-cni
-sudo apt-get install -qy kubelet=$kubeVer kubeadm=$kubeVer kubectl=$kubeVer kubernetes-cni=$kubeVer
+sudo apt-get install -qy kubelet=$kubeVer kubeadm=$kubeVer kubectl=$kubeVer kubernetes-cni
 
 sudo iptables -F
 sudo swapoff -a

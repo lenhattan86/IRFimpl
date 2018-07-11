@@ -3,9 +3,9 @@ sudo docker pull lenhattan86/ira:gpu
 kubectl delete pods --all
 kubectl delete priorityClasses --all
 
-kubectl create -f priority-40.yaml
-kubectl create -f priority-60.yaml
-kubectl create -f priority-120.yaml
+kubectl create -f priority-140.yaml
+kubectl create -f priority-160.yaml
+kubectl create -f priority-20.yaml
 echo wait.... ; 
 sleep 10
 ./user1.sh &

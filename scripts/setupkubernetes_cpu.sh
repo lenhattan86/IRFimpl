@@ -36,9 +36,7 @@ sudo apt-get install -y kubelet kubeadm kubectl kubernetes-cni
 # sudo apt-get install -qy kubernetes-cni=0.5.0
 
 # disable swap
-sudo iptables -F
-sudo swapoff -a
-sudo free -m
+sudo iptables -F; sudo swapoff -a; sudo free -m
 
 echo "######################### KUBEADM RESET ##########################################"
 sudo kubeadm reset -f

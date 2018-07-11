@@ -13,7 +13,7 @@ kubectl create -f user3-2.yaml &
 kubectl create -f user3-3.yaml &
 
 # resubmit user 1 jobs
-sleep 30
+sleep 40
 kubectl create -f user1-0.yaml &
 kubectl create -f user1-1.yaml &
 kubectl create -f user1-2.yaml &

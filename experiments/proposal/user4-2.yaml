@@ -3,7 +3,7 @@ kind: Pod
 metadata:
   name: user4-2
 spec:  
-  priorityClassName: priority-20
+  priorityClassName: priority-80
   containers:
   - name: user4-2
     image: lenhattan86/ira:cpu

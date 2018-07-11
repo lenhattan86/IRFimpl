@@ -1,10 +1,10 @@
 sleep 350
 
 # kill user 1 jobs
-kubectl delete -f user1-0.yaml 
-kubectl delete -f user1-1.yaml 
-kubectl delete -f user1-2.yaml 
-kubectl delete -f user1-3.yaml 
+# kubectl delete -f user1-0.yaml &
+# kubectl delete -f user1-1.yaml &
+# kubectl delete -f user1-2.yaml &
+# kubectl delete -f user1-3.yaml &
 
 # submit user 3 jobs
 kubectl create -f user3-0.yaml 

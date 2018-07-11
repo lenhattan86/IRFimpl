@@ -12,4 +12,4 @@ sleep 10
 ./user2.sh &
 ./user3.sh &
 ./user4.sh &
-sleep 0; python ../get_user_info_timer.py  --interval=1 --stopTime=800 --file=pods.csv 
+sleep 0; python ../get_user_info_timer.py  --interval=1 --stopTime=3000 --file=pods.csv 

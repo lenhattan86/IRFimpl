@@ -7,7 +7,7 @@ kubectl create -f priority-140.yaml
 kubectl create -f priority-160.yaml
 kubectl create -f priority-20.yaml
 echo wait.... ; 
-sleep 10
+sleep 60
 ./user1.sh &
 ./user2.sh &
 ./user3.sh &

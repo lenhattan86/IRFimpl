@@ -11,6 +11,7 @@ kubectl create -f user2-1.yaml &
 kubectl create -f user2-2.yaml &
 kubectl create -f user2-3.yaml &
 
+wait 5
 # resubmit user 1 jobs
 kubectl create -f user1-0.yaml &
 kubectl create -f user1-1.yaml &

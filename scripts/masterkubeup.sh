@@ -28,12 +28,9 @@ sudo systemctl start kubelet
 
 sudo kubeadm reset -f
 # sudo kubeadm reset
-sudo kubeadm init --apiserver-advertise-address=$ipaddress
+sudo kubeadm init  --pod-network-cidr=192.168.0.0/16 --apiserver-advertise-address=$ipaddress
 
-mkdir -p $HOME/.kube
-sudo cp -f /etc/kubernetes/admin.conf $HOME/.kube/config
-sudo chown $(id -u):$(id -g) $HOME/.kube/config
-export KUBECONFIG=~/.kube/config
+mkdir -p $HOME/.kube; sudo cp -f /etc/kubernetes/admin.conf $HOME/.kube/config; sudo chown $(id -u):$(id -g) $HOME/.kube/config; export KUBECONFIG=~/.kube/config
 
 # old
 #sudo kubectl apply -f http://docs.projectcalico.org/v2.3/getting-started/kubernetes/installation/hosted/kubeadm/1.6/calico.yaml
@@ -43,7 +40,4 @@ export KUBECONFIG=~/.kube/config
 sudo kubectl apply -f https://docs.projectcalico.org/v3.1/getting-started/kubernetes/installation/hosted/rbac-kdd.yaml
 sudo kubectl apply -f https://docs.projectcalico.org/v3.1/getting-started/kubernetes/installation/hosted/kubernetes-datastore/calico-networking/1.7/calico.yaml
 
-sudo kubectl taint nodes --all node-role.kubernetes.io/master-
-mkdir -p ~/config
-sudo cp -f /etc/kubernetes/admin.conf  ~/config/admin.conf
-sudo chmod 777  ~/config/admin.conf
+sudo kubectl taint nodes --all node-role.kubernetes.io/master-; mkdir -p $HOME//config; sudo cp -f /etc/kubernetes/admin.conf  $HOME//config/admin.conf; sudo chmod 777  $HOME//config/admin.conf

@@ -13,9 +13,9 @@ spec:
     - "sleep 10"
     resources:
       requests:
-        cpu: 19.0
+        cpu: 14.0
         memory: 12Gi
       limits:
-        cpu: 19.0
+        cpu: 14.0
         memory: 12Gi
   restartPolicy: Never

@@ -10,7 +10,7 @@ spec:
     command:
     - "/bin/bash"
     - "-c"
-    - "sleep 100"
+    - "sleep 500"
     resources:
       requests:
         cpu: 14.0

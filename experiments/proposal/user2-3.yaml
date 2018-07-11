@@ -1,16 +1,16 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: user1-0
+  name: user2-3
 spec:  
-  priorityClassName: priority-60
+  priorityClassName: priority-40
   containers:
-  - name: user1-0
+  - name: user2-3
     image: lenhattan86/ira:cpu
     command:
     - "/bin/bash"
     - "-c"
-    - "sleep 40"
+    - "sleep 10"
     resources:
       requests:
         cpu: 19.0

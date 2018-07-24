@@ -34,6 +34,7 @@ sudo docker pull lenhattan86/bench
 sudo docker pull lenhattan86/ira:cpu
 sudo docker pull lenhattan86/ira:gpu
 
+# TODO:  clients hang up here some time.
 sudo systemctl enable docker
 sudo systemctl start docker
 sudo systemctl enable kubelet

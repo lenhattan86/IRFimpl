@@ -16,3 +16,6 @@ kubectl create priorityclass
 
 2)  add priority to the pod
 priorityClassName: high-priority
+
+
+kubeadm join 128.110.153.125:6443 --token vbqtqf.pw50hsofs40nftt9 --discovery-token-ca-cert-hash sha256:76303a98eb0411c5e71918970762ee66e9402827175ba00a14be23c6cdaf8d7a

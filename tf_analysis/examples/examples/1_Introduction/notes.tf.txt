@@ -39,3 +39,5 @@ sudo pip install tensorflow-gpu
 
 ## other tools
 sudo python -m pip install matplotlib
+
+

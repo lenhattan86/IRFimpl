@@ -9,11 +9,14 @@ from __future__ import print_function
 
 import tensorflow as tf
 import numpy
-rng = numpy.random
+import time
 
+start = time.time()
+
+rng = numpy.random
 # Parameters
 learning_rate = 0.01
-training_epochs = 5000
+training_epochs = 10
 display_step = 50
 
 # Training Data
@@ -21,12 +24,14 @@ display_step = 50
 #train_Y = numpy.asarray([1.7,2.76,2.09,3.19,1.694,1.573,3.366,2.596,2.53,1.221, 2.827,3.465,1.65,2.904,2.42,2.94,1.3])
 #n_samples = train_X.shape[0]
 
-n_samples=17*10000
+# n_samples=17*10000
+# n_samples=17*1000 # cpu 51 seconds, gpu 99 seconds
+# n_samples=17*10000 # , gpu 999 seconds
+n_samples=17*100 # 5 seconds, gpu 10 seconds
 train_X=rng.rand(n_samples,1)
 train_Y=rng.rand(n_samples,1)
 
-
-with tf.device('/cpu:0'):
+with tf.device('/gpu:0'):
     # tf Graph Input
     X = tf.placeholder("float")
     Y = tf.placeholder("float")
@@ -55,3 +60,7 @@ with tf.Session() as sess:
     for epoch in range(training_epochs):
         for (x, y) in zip(train_X, train_Y):
             sess.run(optimizer, feed_dict={X: x, Y: y})
+
+end = time.time()
+
+print("End time "+str(end - start)+" seconds")

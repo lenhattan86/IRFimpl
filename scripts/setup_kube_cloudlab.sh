@@ -22,6 +22,7 @@ masterIP="128.110.153.125"
 slavesIP="cp-1
 cp-2
 cp-3
+cp-4
 " # last one of ctl of slave1
 
 serversIP="$masterIP $slavesIP"

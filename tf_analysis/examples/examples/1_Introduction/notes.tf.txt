@@ -1,15 +1,41 @@
+sudo apt-get install -y software-properties-common
+sudo add-apt-repository -y ppa:graphics-drivers
+sudo apt-get update
+sudo apt install -y nvidia-384
+# this to have libcuda.so
+sudo apt-get install nvidia-384-dev
+
 ## remove all cuda
 sudo apt-get --purge remove 'cuda*'
 
+## 
+
 ## install cuda tool-kit 9.0
-`sudo dpkg -i cuda-repo-ubuntu1604-9-0-.deb`
-`sudo apt-key add /var/cuda-repo-<version>/7fa2af80.pub`
-`sudo apt-get update`
-`sudo apt-get install cuda`
+wget https://developer.nvidia.com/compute/cuda/9.0/Prod/local_installers/cuda-repo-ubuntu1604-9-0-local_9.0.176-1_amd64-deb
+sudo dpkg -i cuda-repo-ubuntu1604-9-0-local_9.0.176-1_amd64-deb
+sudo apt-key add /var/cuda-repo-9-0-local/7fa2af80.pub
+sudo apt-get update
+sudo apt-get install -y cuda 
+# use command nvidia-smi to check if the driver is ready.
+# you may need to restart the PC to recorgnize the GPU driver
 
 ## install cuDNN 7.1.4 for cuda 9.0
 sudo dpkg -i libcudnn7_7.0.3.11-1+cuda9.0_amd64.deb
+#should I install it use tar file instead?
 
 ## post isntallation
 export PATH=/usr/local/cuda-9.0/bin${PATH:+:${PATH}}
-export LD_LIBRARY_PATH=${LD_LIBRARY_PATH:+${LD_LIBRARY_PATH}:}/usr/local/cuda/extras/CUPTI/lib64
+#export LD_LIBRARY_PATH=${LD_LIBRARY_PATH:+${LD_LIBRARY_PATH}:}/usr/local/cuda/extras/CUPTI/lib64
+export LD_LIBRARY_PATH='/usr/local/cuda-9.0/lib64'
+
+## install pip
+sudo apt-get install -y python-dev python-pip; pip install --upgrade pip; sudo -H pip install -U pip setuptools
+
+## install tensorflow
+sudo pip install tensorflow-gpu
+# install all required package for tensorflow-gpu.
+
+
+
+## other tools
+sudo python -m pip install matplotlib

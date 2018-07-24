@@ -5,7 +5,7 @@ kubectl delete priorityClasses --all
 
 kubectl create -f priority-140.yaml
 kubectl create -f priority-160.yaml
-kubectl create -f priority-20.yaml
+kubectl create -f priority-80.yaml
 echo wait.... ; 
 sleep 60
 ./user1.sh &

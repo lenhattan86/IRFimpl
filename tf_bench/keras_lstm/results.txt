@@ -1,0 +1,12 @@
+gpu-p4000
+
+- imdb_bidirectional_lstm
+batch_size=32
+cpu: 109
+gpu: 214
+batch_size=64
+- cpu: 78
+- gpu: 108
+batch_size=1024
+- cpu: 49
+- gpu: 

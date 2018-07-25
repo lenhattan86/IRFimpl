@@ -8,8 +8,13 @@ RUN DEBIAN_FRONTEND=noninteractive \
 	git \
 	&& rm -rf /var/lib/apt/lists/*
 
-#RUN cd / && git clone https://github.com/swiftdiaries/benchmarks
+# install python libraries
 RUN pip3 install keras
+RUN pip3 install keras
+
+#RUN cd / && git clone https://github.com/swiftdiaries/benchmarks
+
+
 RUN cd / && git clone https://lenhattan86:nhattan86@github.com/lenhattan86/IRFimpl.git && mv /IRFimpl/tf_bench /tf_benchmarks
 RUN rm -rf /IRFimpl
 

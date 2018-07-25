@@ -1,9 +1,8 @@
 
-servers="ms0917.utah.cloudlab.us
-ms0904.utah.cloudlab.us
-ms0911.utah.cloudlab.us
-ms0927.utah.cloudlab.us
-ms0941.utah.cloudlab.us"
+servers="ms1119.utah.cloudlab.us
+ms1130.utah.cloudlab.us
+ms1138.utah.cloudlab.us
+ms1121.utah.cloudlab.us"
 
 for server in $servers; do
 	scp ~/.ssh/id_rsa* $username@$server:~/.ssh/

@@ -128,7 +128,7 @@ for iteration in [1]:
     print('Iteration', iteration)
 
     model.fit(X, [y, y], batch_size=batch_size,
-                        epochs=10, callbacks=[logger])
+                        epochs=10, callbacks=[])
 
     start_index = random.randint(0, len(text) - maxlen - 1)
 

@@ -34,7 +34,10 @@ sudo docker pull lenhattan86/bench
 sudo docker pull lenhattan86/ira:cpu
 sudo docker pull lenhattan86/ira:gpu
 
-# TODO:  clients hang up here some time.
+echo "DONE downloading images"
+
+# TODO:  clients hang up here some time (happens on CloudLab) => just double check ssh cp-1, and user another worker hostname instead.
+
 sudo systemctl enable docker
 sudo systemctl start docker
 sudo systemctl enable kubelet

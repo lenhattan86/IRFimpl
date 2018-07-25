@@ -80,7 +80,8 @@ for iteration in [1]:
     model.fit(X, y,
               batch_size=128,
               epochs=10,
-              callbacks=[logger])
+        #   callbacks=[logger])
+            callbacks=[])
 
     start_index = random.randint(0, len(text) - maxlen - 1)
 

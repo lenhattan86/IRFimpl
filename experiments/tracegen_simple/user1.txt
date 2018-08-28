@@ -1,0 +1,15 @@
+0 user10
+16000 0 12
+2000 1 2 0
+python tf_cnn_benchmarks.py --device=cpu --data_format=NHWC --num_warmup_batches=0  --model=alexnet --batch_size=512 --num_intra_threads=512 --num_batches=1000
+python tf_cnn_benchmarks.py --device=gpu --num_warmup_batches=0  --model=alexnet --batch_size=512 --num_batches=1000
+0 user11
+16000 0 12
+2000 1 2 0
+python tf_cnn_benchmarks.py --device=cpu --data_format=NHWC --num_warmup_batches=0  --model=inception3 --batch_size=32 --num_intra_threads=32 --num_batches=1000
+python tf_cnn_benchmarks.py --device=gpu --num_warmup_batches=0  --model=inception3 --batch_size=32 --num_batches=1000
+0 user11
+16000 0 12
+2000 1 2 0
+python tf_cnn_benchmarks.py --device=cpu --data_format=NHWC --num_warmup_batches=0  --model=inception3 --batch_size=32 --num_intra_threads=32 --num_batches=1000
+python tf_cnn_benchmarks.py --device=gpu --num_warmup_batches=0  --model=inception3 --batch_size=32 --num_batches=1000

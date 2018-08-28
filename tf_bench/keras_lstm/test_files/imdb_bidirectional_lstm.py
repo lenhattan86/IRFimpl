@@ -15,6 +15,10 @@ from keras.datasets import imdb
 from CustomCallback import EpochStatsLogger
 logger = EpochStatsLogger()
 
+import os
+os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
+os.environ['CUDA_VISIBLE_DEVICES'] = '-1'
+
 
 
 max_features = 20000

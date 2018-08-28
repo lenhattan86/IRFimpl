@@ -21,6 +21,7 @@ sudo systemctl start kubelet
 #     FILE_NAME=$file
 # done
 # echo "Chosen ${FILE_NAME} as kubeadm.conf"
+# enable GPU for kubectl version < 1.10
 #sudo sed -i -e "s/ExecStart=\/usr\/bin\/kubelet /ExecStart=\/usr\/bin\/kubelet --feature-gates="Accelerators=true" /g" $FILE_NAME
 #sudo sed -i -e "s/ExecStart=\/usr\/bin\/kubelet /ExecStart=\/usr\/bin\/kubelet --feature-gates=PodPriority=true --feature-gates="Accelerators=true" /g" $FILE_NAME
 # sudo systemctl daemon-reload
@@ -41,3 +42,7 @@ sudo kubectl apply -f https://docs.projectcalico.org/v3.1/getting-started/kubern
 sudo kubectl apply -f https://docs.projectcalico.org/v3.1/getting-started/kubernetes/installation/hosted/kubernetes-datastore/calico-networking/1.7/calico.yaml
 
 sudo kubectl taint nodes --all node-role.kubernetes.io/master-; mkdir -p $HOME//config; sudo cp -f /etc/kubernetes/admin.conf  $HOME//config/admin.conf; sudo chmod 777  $HOME//config/admin.conf
+
+## install metrics-server for resource usage monitoring// metrics-server is not mature
+# git checkout https://github.com/kubernetes-incubator/metrics-server
+# 

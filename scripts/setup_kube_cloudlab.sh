@@ -18,16 +18,16 @@
 echo "This file need to be executed on the master node instead of your local machine for chameleon"
 echo "You also need to provide the chameleon.pem file"
 
-masterIP="110.153.0.125"
-slavesIP="ms1130
-ms1138
-ms1121
+masterIP="128.110.153.151"
+slavesIP="ms0916
 " # last one of ctl of slave1
 
 serversIP="$masterIP $slavesIP"
 
 username="tanle"
 SSH_CMD="ssh "
+
+kube-version="1.8"
 
 chmod 600 $keyfile
 

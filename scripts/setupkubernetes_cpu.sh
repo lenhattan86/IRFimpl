@@ -1,8 +1,8 @@
 #!/bin/bash
 #usage: ./setupkubernetes.sh
 
-#kubeVer="1.9.6-00"
-kubeVer="1.9.2-00"
+kubeVer="1.9.6-00"
+#kubeVer="1.11.1-00"
 sudo apt-get purge -y kubelet kubeadm kubectl kubernetes-cni
 
 echo "######################### DOCKER ##########################################"
@@ -32,7 +32,7 @@ deb http://apt.kubernetes.io/ kubernetes-xenial main
 EOF
 apt-get update'
 sudo apt-get install -y kubelet kubeadm kubectl kubernetes-cni
-# sudo apt-get install -qy kubelet=$kubeVer kubeadm=$kubeVer kubectl=$kubeVer 
+#sudo apt-get install -qy kubelet=$kubeVer kubeadm=$kubeVer kubectl=$kubeVer 
 # sudo apt-get install -qy kubernetes-cni=0.5.0
 
 # disable swap

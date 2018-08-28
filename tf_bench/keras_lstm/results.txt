@@ -5,8 +5,16 @@ batch_size=32
 cpu: 109
 gpu: 214
 batch_size=64
-- cpu: 78
+- cpu: 78 --> 0.8
 - gpu: 108
+
 batch_size=1024
-- cpu: 49
-- gpu: 
+- cpu: 49 --> acc: 0.63
+- gpu: 9 lsecs
+
+
+- minist_mlp: dense network + 
+  cpu: 6
+  gpu: 3
+
+- 

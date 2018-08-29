@@ -10,8 +10,8 @@ spec:
     command:
     - "/bin/bash"
     - "-c"
-    - "python tf_cnn_benchmarks.py --device=cpu --data_format=NHWC --num_warmup_batches=0  --model=alexnet --batch_size=32 --num_intra_threads=16 --num_batches=1"
-    - "python tf_cnn_benchmarks.py --device=gpu --num_warmup_batches=0  --model=alexnet --batch_size=32 --num_batches=200"    
+    - "sleep 20"
+    - "sleep 10"    
     - "10000,0,12, 20"
     - "1000,1,12, 10"    
     resources:

@@ -17,11 +17,11 @@ spec:
     resources:
       requests:
         alpha.kubernetes.io/nvidia-gpu: 0
-        cpu: 16.0
+        cpu: 10.0
         memory: 12Gi
       limits:
         alpha.kubernetes.io/nvidia-gpu: 0
-        cpu: 16.0
+        cpu: 10.0
         memory: 12Gi
     volumeMounts:
     - name: nvidia-driver-384-98

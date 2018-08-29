@@ -11,17 +11,17 @@ spec:
     - "/bin/bash"
     - "-c"
     - "sleep 5"
-    - "sleep 10"    
+    - "sleep 100"    
     - "10000,0,12, 5"
     - "1000,1,12, 10"    
     resources:
       requests:
         alpha.kubernetes.io/nvidia-gpu: 0
-        cpu: 16.0
+        cpu: 10.0
         memory: 12Gi
       limits:
         alpha.kubernetes.io/nvidia-gpu: 0
-        cpu: 16.0
+        cpu: 10.0
         memory: 12Gi
     volumeMounts:
     - name: nvidia-driver-384-98

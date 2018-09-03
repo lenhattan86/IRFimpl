@@ -10,9 +10,9 @@ spec:
     command:
     - "/bin/bash"
     - "-c"
-    - "sleep 100"
+    - "sleep 60"
     - "sleep 100"    
-    - "10000,0,12, 100"
+    - "10000,0,12, 60"
     - "1000,1,12, 10"    
     resources:
       requests:

@@ -1,6 +1,6 @@
 
-servers="ms0842.utah.cloudlab.us		
-ms0833.utah.cloudlab.us"
+servers="ms0816.utah.cloudlab.us		
+ms0839.utah.cloudlab.us"
 
 for server in $servers; do
 	scp ~/.ssh/id_rsa* $username@$server:~/.ssh/
@@ -9,4 +9,4 @@ for server in $servers; do
 		chmod 0600 ~/.ssh/authorized_keys; 
 		rm -rf ~/.ssh/known_hosts; 	
 		echo 'StrictHostKeyChecking no' >> ~/.ssh/config"
-done	
+done

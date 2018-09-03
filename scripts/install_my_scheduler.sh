@@ -15,7 +15,9 @@ kubectl delete -f $yamlFile
 #sudo docker rmi -f $image_id
 
 sleep 15 # wait for docker completely removes the image.
-docker rmi lenhattan86/my-kube-scheduler:$version
+echo "remove the local images"
+sudo docker rmi lenhattan86/my-kube-scheduler:$version
+echo "pull the latest version online"
 sudo docker pull lenhattan86/my-kube-scheduler:$version
 
 echo "apiVersion: apps/v1

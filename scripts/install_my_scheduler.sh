@@ -5,8 +5,10 @@ else
 	version="$1"
 fi
 kubectl delete pods --all --grace-period=0 --force
-# kubectl delete pods --all -n user1
-# kubectl delete pods --all -n user2
+kubectl delete pods --all -n user1 --grace-period=0 --force
+kubectl delete pods --all -n user2 --grace-period=0 --force
+kubectl delete pods --all -n user3 --grace-period=0 --force
+kubectl delete pods --all -n user4 --grace-period=0 --force
 yamlFile="my-scheduler.yaml"
 kubectl delete -f $yamlFile
 #sudo docker images
@@ -14,11 +16,12 @@ kubectl delete -f $yamlFile
 #read image_id
 #sudo docker rmi -f $image_id
 
-sleep 15 # wait for docker completely removes the image.
+echo '...'
+sleep 5 # wait for docker completely removes the image.
 echo "remove the local images"
 sudo docker rmi lenhattan86/my-kube-scheduler:$version
-echo "pull the latest version online"
-sudo docker pull lenhattan86/my-kube-scheduler:$version
+#echo "pull the latest version online"
+#sudo docker pull lenhattan86/my-kube-scheduler:$version
 
 echo "apiVersion: apps/v1
 kind: Deployment

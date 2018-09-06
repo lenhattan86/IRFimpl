@@ -10,10 +10,10 @@ from kubernetes import *
 #  gen simple yaml file
 
 job_folder = "experiments/testcases/simple_google"
-user = "user1"
-a = 2
-# user = "user2"
-# a = 6
+# user = "user1"
+# a = 2
+user = "user2"
+a = 6
 
 jobId = 0
 inputData="""# 0
@@ -117,7 +117,7 @@ for line in lines:
         seJobCmd = "sleep " + str(gpuComplt)
         activeJob = ActiveJob(cpu_usage, gpu_usage, 0, 0, jobId,cmd, seJobCmd, cpuComplt, gpuComplt)
         f_yaml = open(job_folder + '/' + user+ "-"+str(jobId)+ ".yaml",'w')   
-        f_yaml.write(strPodYaml('user', activeJob,SCHEDULER , False))
+        f_yaml.write(strPodYaml(user, activeJob,SCHEDULER , False))
         jobId= jobId + 1
 
     lineNum = lineNum + 1

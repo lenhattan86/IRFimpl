@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: user-5
+  name: user1-5
 spec:
   schedulerName: my-scheduler
   containers:
-  - name: user-5
+  - name: user1-5
     image: lenhattan86/ira:cpu
     command:
     - "/bin/bash"

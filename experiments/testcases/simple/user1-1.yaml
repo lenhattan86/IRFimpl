@@ -10,10 +10,10 @@ spec:
     command:
     - "/bin/bash"
     - "-c"
-    - "sleep 15"
-    - "sleep 40"    
-    - "10000,0,12, 15"
-    - "1000,1,12, 40"
+    - "sleep 40"
+    - "sleep 15"    
+    - "10000,0,12, 40"
+    - "1000,1,2, 15"
     resources:
       requests:
         alpha.kubernetes.io/nvidia-gpu: 0

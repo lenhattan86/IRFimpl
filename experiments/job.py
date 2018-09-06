@@ -41,7 +41,7 @@ class Job:
 
 
 class ActiveJob:
-    def __init__ (self, usage, secUsage, startTime, endTime, jobId, priJobCmd, seJobCmd):
+    def __init__ (self, usage, secUsage, startTime, endTime, jobId, priJobCmd, seJobCmd, priComplt, secComplt):
         self.usage = usage
         self.secUsage = secUsage
         self.startTime = startTime
@@ -49,6 +49,8 @@ class ActiveJob:
         self.jobId = jobId
         self.jobCmd = priJobCmd
         self.seJobCmd = seJobCmd
+        self.priComplt = priComplt
+        self.secComplt = secComplt
 
     def isFinished(self, currTime):
         if currTime >= self.endTime:

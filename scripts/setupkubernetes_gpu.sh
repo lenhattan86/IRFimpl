@@ -3,7 +3,7 @@
 
 sudo apt-get purge -y kubelet kubeadm kubectl kubernetes-cni
 
-echo "################################# Install nvidia-375 ######################################"
+echo "################################# Install nvidia-384 ######################################"
 sudo apt-get install -y software-properties-common
 sudo add-apt-repository ppa:graphics-drivers -y
 sudo apt-get update -y
@@ -75,10 +75,15 @@ deb http://apt.kubernetes.io/ kubernetes-xenial main
 EOF
 apt-get update'
 sudo apt-get install -y kubelet kubeadm kubectl kubernetes-cni
+
 echo "######################### NVIDIA-DOCKER ##########################################"
-wget https://github.com/NVIDIA/nvidia-docker/releases/download/v1.0.1/nvidia-docker_1.0.1-1_amd64.deb
-sudo dpkg -i nvidia-docker_1.0.1-1_amd64.deb
-sudo apt-get install -f -y
+
+# docker 1.0
+# wget https://github.com/NVIDIA/nvidia-docker/releases/download/v1.0.1/nvidia-docker_1.0.1-1_amd64.deb
+# sudo dpkg -i nvidia-docker_1.0.1-1_amd64.deb
+# sudo apt-get install -f -y
+
+##
 #wget -P /tmp https://github.com/NVIDIA/nvidia-docker/releases/download/v1.0.1/nvidia-docker_1.0.1-1_amd64.deb
 #sudo dpkg -i /tmp/nvidia-docker*.deb && rm /tmp/nvidia-docker*.deb
 #sudo apt-get install -f
@@ -92,6 +97,62 @@ sudo apt-get install -f -y
 #cd ..
 # test nvidia-docker: sudo nvidia-docker-plugin
 #apt-get install nvidia-modprobe
+
+echo "###################### install nvidia docker 2.0 & docker-ce ###############################"
+curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | \
+  sudo apt-key add -
+
+curl -s -L https://nvidia.github.io/nvidia-docker/debian9/amd64/nvidia-docker.list | \
+  sudo tee /etc/apt/sources.list.d/nvidia-docker.list
+
+sudo apt-get update && sudo apt-get install -y \
+     apt-transport-https \
+     ca-certificates \
+     curl \
+     gnupg2 \
+     software-properties-common
+     
+curl -fsSL https://download.docker.com/linux/$(. /etc/os-release; echo "$ID")/gpg | sudo apt-key add -
+
+sudo apt-key fingerprint 0EBFCD88
+
+sudo add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/$(. /etc/os-release; echo "$ID") \
+   $(lsb_release -cs) \
+   stable"
+
+sudo apt-get update && sudo apt-get install -y \
+  nvidia-docker2 \
+  docker-ce
+
+sudo vim /lib/systemd/system/docker.service
+  ExecStart=/usr/bin/dockerd -H fd:// -s=overlay2
+
+sudo systemctl daemon-reload
+
+sudo apt-get update && sudo apt-get install -y \
+  nvidia-docker2 \
+  docker-ce
+  
+sudo tee /etc/docker/daemon.json <<EOF
+{
+    "default-runtime": "nvidia",
+    "runtimes": {
+        "nvidia": {
+            "path": "/usr/bin/nvidia-container-runtime",
+            "runtimeArgs": []
+        }
+    }
+}
+EOF
+
+sudo pkill -SIGHUP dockerd
+
+sudo systemctl restart kubelet
+
+# Verify
+#sudo docker run --rm nvidia/cuda nvidia-smi
+
 echo "######################### PATH ##########################################"
 export PATH=/usr/local/cuda-8.0/bin${PATH:+:${PATH}}
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64"

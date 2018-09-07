@@ -22,8 +22,8 @@ sudo systemctl start kubelet
 # done
 # echo "Chosen ${FILE_NAME} as kubeadm.conf"
 # enable GPU for kubectl version < 1.10
-#sudo sed -i -e "s/ExecStart=\/usr\/bin\/kubelet /ExecStart=\/usr\/bin\/kubelet --feature-gates="Accelerators=true" /g" $FILE_NAME
-#sudo sed -i -e "s/ExecStart=\/usr\/bin\/kubelet /ExecStart=\/usr\/bin\/kubelet --feature-gates=PodPriority=true --feature-gates="Accelerators=true" /g" $FILE_NAME
+# sudo sed -i -e "s/ExecStart=\/usr\/bin\/kubelet /ExecStart=\/usr\/bin\/kubelet --feature-gates="Accelerators=true" /g" $FILE_NAME
+# sudo sed -i -e "s/ExecStart=\/usr\/bin\/kubelet /ExecStart=\/usr\/bin\/kubelet --feature-gates=PodPriority=true --feature-gates="Accelerators=true" /g" $FILE_NAME
 # sudo systemctl daemon-reload
 # sudo systemctl restart kubelet
 

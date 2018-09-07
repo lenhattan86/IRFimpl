@@ -124,6 +124,7 @@ sudo add-apt-repository \
 sudo apt-get update && sudo apt-get install -y \
   nvidia-docker2 \
   docker-ce
+# docker-ce=17.03.0~ce-0~ubuntu-xenial
 
 sudo vim /lib/systemd/system/docker.service
   ExecStart=/usr/bin/dockerd -H fd:// -s=overlay2

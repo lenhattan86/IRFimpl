@@ -5,14 +5,14 @@ kubeVer="1.9.6-00"
 #kubeVer="1.11.1-00"
 sudo apt-get purge -y kubelet kubeadm kubectl kubernetes-cni
 
-echo "######################### DOCKER ##########################################"
-sudo apt-get install libltdl7
-sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common
-wget https://apt.dockerproject.org/repo/pool/main/d/docker-engine/docker-engine_1.12.6-0~ubuntu-xenial_amd64.deb
-sudo dpkg -i docker-engine_1.12.6-0~ubuntu-xenial_amd64.deb
-#sudo apt install -y docker-engine_1.12.6-0~ubuntu-xenial_amd64.deb
-sudo groupadd docker
-sudo usermod -aG docker $USER
+# echo "######################### DOCKER ##########################################"
+# sudo apt-get install libltdl7
+# sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common
+# wget https://apt.dockerproject.org/repo/pool/main/d/docker-engine/docker-engine_1.12.6-0~ubuntu-xenial_amd64.deb
+# sudo dpkg -i docker-engine_1.12.6-0~ubuntu-xenial_amd64.deb
+# #sudo apt install -y docker-engine_1.12.6-0~ubuntu-xenial_amd64.deb
+# sudo groupadd docker
+# sudo usermod -aG docker $USER
 
 ## move docker images to another folder
 # sudo mkdir /dev/projects; sudo chmod 777 /dev/projects; mkdir /dev/projects/docker
@@ -20,9 +20,32 @@ sudo usermod -aG docker $USER
 # sudo systemctl stop docker
 # sudo systemctl daemon-reload
 # sudo rsync -aqxP /var/lib/docker/ /dev/projects/docker
+# sudo systemctl start docker
+# echo 'You might need to reboot / relogin to make docker work correctly'
 
-sudo systemctl start docker
-echo 'You might need to reboot / relogin to make docker work correctly'
+
+echo "##############install docker-ce ###########"
+sudo apt-get update 
+
+sudo apt-get install -y \
+     apt-transport-https \
+     ca-certificates \
+     curl \
+     gnupg2 \
+     software-properties-common
+
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+sudo apt-key fingerprint 0EBFCD88
+
+sudo add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable"
+
+sudo apt-get update
+
+sudo apt-get install docker-ce   
 
 echo "######################### KUBERNETES ##########################################"
 sudo bash -c 'apt-get update && apt-get install -y apt-transport-https

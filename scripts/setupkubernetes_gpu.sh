@@ -67,8 +67,6 @@ echo "######################### DOCKER #########################################
 # sudo systemctl start docker
 # echo 'You might need to reboot / relogin to make docker work correctly'
 
-
-
 echo "######################### NVIDIA-DOCKER ##########################################"
 
 # docker 1.0
@@ -166,7 +164,7 @@ echo "######################### PATH ##########################################"
 export PATH=/usr/local/cuda-8.0/bin${PATH:+:${PATH}}
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64"
 echo "######################### KUBEADM RESET ##########################################"
-sudo kubeadm reset
+sudo kubeadm reset -f
 echo "######################### Clean-up ##########################################"
 sudo rm -rf *.tgz *.deb
 

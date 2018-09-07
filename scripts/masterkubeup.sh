@@ -48,4 +48,5 @@ sudo kubectl taint nodes --all node-role.kubernetes.io/master-; mkdir -p $HOME//
 # 
 
 ## install gpu plugin
-kubectl create -f https://raw.githubusercontent.com/NVIDIA/k8s-device-plugin/v1.9/nvidia-device-plugin.yml
+#kubectl create -f https://raw.githubusercontent.com/NVIDIA/k8s-device-plugin/v1.9/nvidia-device-plugin.yml
+kubectl create -f https://raw.githubusercontent.com/NVIDIA/k8s-device-plugin/v1.11/nvidia-device-plugin.yml

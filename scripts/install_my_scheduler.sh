@@ -73,7 +73,14 @@ spec:
 
 kubectl create clusterrolebinding --user system:serviceaccount:kube-system:default kube-system-cluster-admin --clusterrole cluster-admin
 kubectl create -f $yamlFile
+
+# kubectl delete -f $yamlFile
+# sleep 10
+# sudo docker rmi lenhattan86/my-kube-scheduler:$version
+# kubectl create -f $yamlFile
+
 kubectl get pods -n kube-system
+
 echo "kubectl logs --namespace=kube-system [pod name]"
 
 # kubectl get pods --all-namespaces --field-selector=status.phase==Running

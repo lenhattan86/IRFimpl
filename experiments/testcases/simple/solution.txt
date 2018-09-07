@@ -1,0 +1,29 @@
+ES:
+
+expected: 
+GPU: 2-2 , 1-2 --> 1-0, 2-0 
+CPU: 1-1 , 2-1; 
+
+DRF:
+
+expected: 
+GPU: 2-2 , 1-2 --> 1-0, 2-0
+CPU: 1-1 , 2-1; 
+
+DRFExp:
+
+expected: 
+GPU: 2-2 , 1-2 --> 1-0, 2-0 
+CPU: 1-1 , 2-1; 
+
+AlloX:
+
+expected: 
+GPU: 2-2 , 1-2 --> 1-0, 2-0 
+CPU: 1-1 , 2-1; 
+
+JSF:
+
+expected: 
+GPU: 2-2 , 1-2 --> 1-0, 2-0 
+CPU: 1-1 , 2-1; 

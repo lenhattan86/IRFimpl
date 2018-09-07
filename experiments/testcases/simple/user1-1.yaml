@@ -11,9 +11,9 @@ spec:
     - "/bin/bash"
     - "-c"
     - "sleep 35"
-    - "sleep 15"    
+    - "sleep 14"    
     - "10000,0,12, 35"
-    - "1000,1,2, 15"
+    - "1000,1,2, 14"
     resources:
       requests:
         alpha.kubernetes.io/nvidia-gpu: 0

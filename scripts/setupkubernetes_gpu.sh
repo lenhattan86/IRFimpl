@@ -90,48 +90,49 @@ echo "######################### NVIDIA-DOCKER ##################################
 #cd ..
 # test nvidia-docker: sudo nvidia-docker-plugin
 #apt-get install nvidia-modprobe
+echo "##############install docker-ce ###########"
+sudo apt-get update 
 
-echo "###################### install nvidia docker 2.0 & docker-ce ###############################"
-# If you have nvidia-docker 1.0 installed: we need to remove it and all existing GPU containers
-docker volume ls -q -f driver=nvidia-docker | xargs -r -I{} -n1 docker ps -q -a -f volume={} | xargs -r docker rm -f
-sudo apt-get purge -y nvidia-docker
-
-curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | \
-  sudo apt-key add -
-
-curl -s -L https://nvidia.github.io/nvidia-docker/debian9/amd64/nvidia-docker.list | \
-  sudo tee /etc/apt/sources.list.d/nvidia-docker.list
-
-sudo apt-get update && sudo apt-get install -y \
+sudo apt-get install -y \
      apt-transport-https \
      ca-certificates \
      curl \
      gnupg2 \
      software-properties-common
-     
-curl -fsSL https://download.docker.com/linux/$(. /etc/os-release; echo "$ID")/gpg | sudo apt-key add -
+
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 
 sudo apt-key fingerprint 0EBFCD88
 
 sudo add-apt-repository \
-   "deb [arch=amd64] https://download.docker.com/linux/$(. /etc/os-release; echo "$ID") \
+   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
    $(lsb_release -cs) \
    stable"
 
-sudo apt-get update && sudo apt-get install -y \
-  nvidia-docker2 \
-  docker-ce
-# docker-ce=17.03.0~ce-0~ubuntu-xenial
+sudo apt-get update
 
-sudo vim /lib/systemd/system/docker.service
-  ExecStart=/usr/bin/dockerd -H fd:// -s=overlay2
+sudo apt-get install docker-ce   
 
-sudo systemctl daemon-reload
+echo "###################### install nvidia docker 2.0  ###############################"
+# If you have nvidia-docker 1.0 installed: we need to remove it and all existing GPU containers
+docker volume ls -q -f driver=nvidia-docker | xargs -r -I{} -n1 docker ps -q -a -f volume={} | xargs -r docker rm -f
+sudo apt-get purge -y nvidia-docker
 
-sudo apt-get update && sudo apt-get install -y \
-  nvidia-docker2 \
-  docker-ce
-  
+# Add the package repositories
+curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | \
+  sudo apt-key add -
+distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
+curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | \
+  sudo tee /etc/apt/sources.list.d/nvidia-docker.list
+sudo apt-get update
+
+# Install nvidia-docker2 and reload the Docker daemon configuration
+sudo apt-get install -y nvidia-docker2
+sudo pkill -SIGHUP dockerd
+
+# Test nvidia-smi with the latest official CUDA image
+docker run --runtime=nvidia --rm nvidia/cuda nvidia-smi
+
 sudo tee /etc/docker/daemon.json <<EOF
 {
     "default-runtime": "nvidia",

@@ -51,21 +51,21 @@ sudo apt-get update -y
 sudo apt-get install -y libcupti-dev
 sudo rm *.deb
 echo "######################### DOCKER ##########################################"
-sudo apt-get libltdl7
-sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common
-wget https://apt.dockerproject.org/repo/pool/main/d/docker-engine/docker-engine_1.12.6-0~ubuntu-xenial_amd64.deb
-sudo dpkg -i docker-engine_1.12.6-0~ubuntu-xenial_amd64.deb
-#sudo apt install -y docker-engine_1.12.6-0~ubuntu-xenial_amd64.deb
-sudo groupadd docker
-sudo usermod -aG docker $USER
+# sudo apt-get libltdl7
+# sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common
+# wget https://apt.dockerproject.org/repo/pool/main/d/docker-engine/docker-engine_1.12.6-0~ubuntu-xenial_amd64.deb
+# sudo dpkg -i docker-engine_1.12.6-0~ubuntu-xenial_amd64.deb
+# sudo groupadd docker
+# sudo usermod -aG docker $USER
 
-sudo mkdir /dev/projects; sudo chmod 777 /dev/projects; mkdir /dev/projects/docker
-sudo sed -i -e "s/ExecStart=\/usr\/bin\/dockerd -H /ExecStart=\/usr\/bin\/dockerd -g \/dev\/projects\/docker -H /g" /lib/systemd/system/docker.service
-sudo systemctl stop docker
-sudo systemctl daemon-reload
-sudo rsync -aqxP /var/lib/docker/ /dev/projects/docker
-sudo systemctl start docker
-echo 'You might need to reboot / relogin to make docker work correctly'
+## move docker images to another folder
+# sudo mkdir /dev/projects; sudo chmod 777 /dev/projects; mkdir /dev/projects/docker
+# sudo sed -i -e "s/ExecStart=\/usr\/bin\/dockerd -H /ExecStart=\/usr\/bin\/dockerd -g \/dev\/projects\/docker -H /g" /lib/systemd/system/docker.service
+# sudo systemctl stop docker
+# sudo systemctl daemon-reload
+# sudo rsync -aqxP /var/lib/docker/ /dev/projects/docker
+# sudo systemctl start docker
+# echo 'You might need to reboot / relogin to make docker work correctly'
 
 echo "######################### KUBERNETES ##########################################"
 sudo bash -c 'apt-get update && apt-get install -y apt-transport-https
@@ -99,6 +99,10 @@ echo "######################### NVIDIA-DOCKER ##################################
 #apt-get install nvidia-modprobe
 
 echo "###################### install nvidia docker 2.0 & docker-ce ###############################"
+# If you have nvidia-docker 1.0 installed: we need to remove it and all existing GPU containers
+docker volume ls -q -f driver=nvidia-docker | xargs -r -I{} -n1 docker ps -q -a -f volume={} | xargs -r docker rm -f
+sudo apt-get purge -y nvidia-docker
+
 curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | \
   sudo apt-key add -
 
@@ -123,7 +127,7 @@ sudo add-apt-repository \
 
 sudo apt-get update && sudo apt-get install -y \
   nvidia-docker2 \
-  docker-ce
+  docker-ce=18.06.1~ce~3-0~debian
 # docker-ce=17.03.0~ce-0~ubuntu-xenial
 
 sudo vim /lib/systemd/system/docker.service

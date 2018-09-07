@@ -67,14 +67,7 @@ echo "######################### DOCKER #########################################
 # sudo systemctl start docker
 # echo 'You might need to reboot / relogin to make docker work correctly'
 
-echo "######################### KUBERNETES ##########################################"
-sudo bash -c 'apt-get update && apt-get install -y apt-transport-https
-curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
-cat <<EOF >/etc/apt/sources.list.d/kubernetes.list
-deb http://apt.kubernetes.io/ kubernetes-xenial main
-EOF
-apt-get update'
-sudo apt-get install -y kubelet kubeadm kubectl kubernetes-cni
+
 
 echo "######################### NVIDIA-DOCKER ##########################################"
 
@@ -127,7 +120,7 @@ sudo add-apt-repository \
 
 sudo apt-get update && sudo apt-get install -y \
   nvidia-docker2 \
-  docker-ce=18.06.1~ce~3-0~debian
+  docker-ce
 # docker-ce=17.03.0~ce-0~ubuntu-xenial
 
 sudo vim /lib/systemd/system/docker.service
@@ -153,7 +146,17 @@ EOF
 
 sudo pkill -SIGHUP dockerd
 
-sudo systemctl restart kubelet
+
+echo "######################### KUBERNETES ##########################################"
+sudo bash -c 'apt-get update && apt-get install -y apt-transport-https
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+cat <<EOF >/etc/apt/sources.list.d/kubernetes.list
+deb http://apt.kubernetes.io/ kubernetes-xenial main
+EOF
+apt-get update'
+sudo apt-get install -y kubelet kubeadm kubectl kubernetes-cni
+
+# sudo systemctl restart kubelet
 
 # Verify
 #sudo docker run --rm nvidia/cuda nvidia-smi
@@ -167,13 +170,13 @@ echo "######################### Clean-up #######################################
 sudo rm -rf *.tgz *.deb
 
 echo "######################### DOCKER-PULL ##########################################"
-sudo docker rmi lenhattan86/bench
-sudo docker rmi lenhattan86/ira:cpu
-sudo docker rmi lenhattan86/ira:gpu
+# sudo docker rmi lenhattan86/bench
+# sudo docker rmi lenhattan86/ira:cpu
+# sudo docker rmi lenhattan86/ira:gpu
 
-sudo docker pull lenhattan86/bench
-sudo docker pull lenhattan86/ira:cpu
-sudo docker pull lenhattan86/ira:gpu
+# sudo docker pull lenhattan86/bench
+# sudo docker pull lenhattan86/ira:cpu
+# sudo docker pull lenhattan86/ira:gpu
 
 # tensorflow
 #https://pypi.python.org/packages/1b/36/478c5cc40b280061130c30acad118940b442d35b36e11c7ffedd652db58f/tensorflow_gpu-1.1.0-cp27-cp27mu-manylinux1_x86_64.whl#md5=bd1bc90cbd2957947c16b08a4535bc21

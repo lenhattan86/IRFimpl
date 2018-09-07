@@ -16,11 +16,11 @@ spec:
     - "1000,1,2,130"
     resources:
       requests:
-        alpha.kubernetes.io/nvidia-gpu: 0
+        nvidia.com/gpu: 0
         cpu: 5.0
         memory: 2Gi
       limits:
-        alpha.kubernetes.io/nvidia-gpu: 0
+        nvidia.com/gpu: 0
         cpu: 5.0
         memory: 2Gi
     volumeMounts:

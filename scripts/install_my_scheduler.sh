@@ -79,6 +79,7 @@ kubectl create -f $yamlFile
 # sudo docker rmi lenhattan86/my-kube-scheduler:$version
 # kubectl create -f $yamlFile
 
+sleep 3
 kubectl get pods -n kube-system
 
 echo "kubectl logs --namespace=kube-system [pod name]"

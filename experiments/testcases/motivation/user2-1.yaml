@@ -12,16 +12,16 @@ spec:
     - "-c"
     - "python tf_cnn_benchmarks.py --device=cpu --data_format=NHWC --num_warmup_batches=0  --model=alexnet --batch_size=32 --num_intra_threads=19 --num_batches=10"
     - "python tf_cnn_benchmarks.py --device=gpu --num_warmup_batches=0  --model=alexnet --batch_size=32 --num_batches=10"
-    - "19000,0,12,30"
-    - "1000,2,1,10"
+    - "16000,0,12,30"
+    - "1000,1,2,10"
     resources:
       requests:
         nvidia.com/gpu: 0
-        cpu: 19.0
+        cpu: 16.0
         memory: 12Gi
       limits:
         nvidia.com/gpu: 0
-        cpu: 19.0
+        cpu: 16.0
         memory: 12Gi
     volumeMounts:
     - name: nvidia-driver-384-98

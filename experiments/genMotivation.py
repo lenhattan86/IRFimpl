@@ -8,7 +8,7 @@ from allocator import *
 from kubernetes import *
 
 #  gen simple yaml file
-
+nUsers=2
 job_folder = "experiments/testcases/motivation"
 SCHEDULER = "my-scheduler"
 jobId = 0
@@ -62,8 +62,10 @@ for line in lines:
         pri_usage = Resource(priCpu*MILLI, priMem *GI, priGpu)
         sec_usage = Resource(secCpu*MILLI, secMem *GI, secGpu)
 
-        activeJob = ActiveJob(pri_usage, sec_usage, 0, 0, jobId, priCmd, secCmd, primComplt, secComplt)
-        f_yaml = open(job_folder + '/' + user+ "-"+str(jobId)+ ".yaml",'w')   
+        userJobId = int(jobId/nUsers)
+
+        activeJob = ActiveJob(pri_usage, sec_usage, 0, 0, userJobId, priCmd, secCmd, primComplt, secComplt)
+        f_yaml = open(job_folder + '/' + user+ "-"+str(userJobId)+ ".yaml",'w')   
         f_yaml.write(strPodYaml(user, activeJob, SCHEDULER , priGpu>0))
         jobId= jobId + 1
 

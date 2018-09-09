@@ -10,14 +10,18 @@ from kubernetes import *
 #  gen simple yaml file
 
 job_folder = "experiments/testcases/motivation"
-a = 6
 SCHEDULER = "my-scheduler"
 jobId = 0
 inputData="""user1
-sleep 30
-sleep 20
-4.0 0 6 3
-1 1 2 1 1
+python tf_cnn_benchmarks.py --device=cpu --data_format=NHWC --num_warmup_batches=0  --model=alexnet --batch_size=32 --num_intra_threads=19 --num_batches=10
+python tf_cnn_benchmarks.py --device=gpu --num_warmup_batches=0  --model=alexnet --batch_size=32 --num_batches=10
+16.0 0 12 30
+1.0 2 1 10
+user2
+python tf_cnn_benchmarks.py --device=cpu --data_format=NHWC --num_warmup_batches=0  --model=alexnet --batch_size=32 --num_intra_threads=19 --num_batches=10
+python tf_cnn_benchmarks.py --device=gpu --num_warmup_batches=0  --model=alexnet --batch_size=32 --num_batches=10
+16.0 0 12 30
+1.0 2 1 10
 """
 
 lineNum = 0
@@ -45,12 +49,12 @@ for line in lines:
         secMem = int(strs[2])        
         secComplt = int(strs[3])
 
-        cpu_usage = Resource(priCpu*MILLI, priMem *GI, priGpu)
-        gpu_usage = Resource(secCpu*MILLI, secMem *GI, secGpu)
+        pri_usage = Resource(priCpu*MILLI, priMem *GI, priGpu)
+        sec_usage = Resource(secCpu*MILLI, secMem *GI, secGpu)
 
-        activeJob = ActiveJob(cpu_usage, gpu_usage, 0, 0, jobId, priCmd, secCmd, primComplt, secComplt)
+        activeJob = ActiveJob(pri_usage, sec_usage, 0, 0, jobId, priCmd, secCmd, primComplt, secComplt)
         f_yaml = open(job_folder + '/' + user+ "-"+str(jobId)+ ".yaml",'w')   
-        f_yaml.write(strPodYaml(user, activeJob,SCHEDULER , priGpu>0))
+        f_yaml.write(strPodYaml(user, activeJob, SCHEDULER , priGpu>0))
         jobId= jobId + 1
 
     lineNum = lineNum + 1

@@ -1,0 +1,4 @@
+# view dir/files.
+sudo docker run [image] ls /
+# view workdir/home.
+sudo docker run [image] ls

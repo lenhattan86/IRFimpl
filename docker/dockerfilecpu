@@ -1,4 +1,4 @@
-FROM tensorflow/tensorflow:1.1.0
+FROM tensorflow/tensorflow:1.9.0
 #FROM tensorflow/tensorflow:1.9.0-devel-py3
 
 MAINTAINER Tan N. Le <lenhattan86@gmail.com>
@@ -9,14 +9,13 @@ RUN DEBIAN_FRONTEND=noninteractive \
 	&& rm -rf /var/lib/apt/lists/*
 
 # install python libraries
-RUN pip3 install keras
+# RUN pip3 install keras
 
 # download benchmarks
-RUN cd / && git clone https://github.com/swiftdiaries/benchmarks
-#RUN cd / && git clone https://lenhattan86:nhattan86@github.com/lenhattan86/IRFimpl.git && mv /IRFimpl/tf_bench /tf_benchmarks
-#RUN rm -rf /IRFimpl
-
-# git clone https://lenhattan86:nhattan86@github.com/lenhattan86/IRFimpl.git
+#RUN cd / && git clone https://github.com/swiftdiaries/benchmarks
+RUN cd / && git clone https://lenhattan86:nhattan86@github.com/lenhattan86/IRFimpl.git 
+RUN mv /IRFimpl/tf_bench /tf_bench
+RUN rm -rf /IRFimpl
 
 ENV LD_LIBRARY_PATH /usr/local/nvidia${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 
@@ -26,8 +25,10 @@ ENV LD_LIBRARY_PATH /usr/local/cuda-8.0/targets/x86_64-linux/lib/stubs${LD_LIBRA
 
 ENV LD_LIBRARY_PATH /usr/lib/nvidia-384${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 
-WORKDIR "/benchmarks/scripts/tf_benchmarks"
+#WORKDIR "/benchmarks/scripts/tf_cnn_benchmarks"
+WORKDIR "/tf_bench/scripts/tf_cnn_benchmarks"
 #WORKDIR "/IRFimpl/tf_bench/scripts/tf_benchmarks/keras_lstm/test_files"
+#WORKDIR "/IRFimpl/tf_bench/scripts/tf_cnn_benchmarks/
 #WORKDIR "/tf_benchmarks/keras_lstm/test_files"
 
 CMD exec /bin/bash -c "ls"

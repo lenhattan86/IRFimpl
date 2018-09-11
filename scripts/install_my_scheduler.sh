@@ -83,5 +83,5 @@ sleep 3
 kubectl get pods -n kube-system
 
 echo "kubectl logs --namespace=kube-system [pod name]"
-
 # kubectl get pods --all-namespaces --field-selector=status.phase==Running
+date

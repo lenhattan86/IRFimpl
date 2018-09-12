@@ -77,8 +77,8 @@ default       job-alexnet-cpu-1                          0/1       Completed   0
                 continue
             podName=strArr[1]
             podStatus=strArr[3]
-            if podStatus == "Pending":
-                continue    
+            # if podStatus == "Pending":
+                # continue    
             row = [now, timeStep, user, podName, podStatus] 
             rows.append(row) 
             # if (podStatus == "Completed") or (podStatus == "OOMKilled") or(podStatus == "Error"):

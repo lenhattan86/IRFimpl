@@ -27,16 +27,18 @@ fi
 
 if [ -z "$5" ]
 then
-	server="chameleon"
+	server="129.114.109.143"
 else
 	server="$5"
 fi
+
 # echo $user@$server
 # echo "rm -rf ~/$folder.tar.gz;
 # tar -czf ~/$folder.tar.gz /dev/projects/IRFimpl/experiments/$folder"
-ROOT_FOLDER="/ssd/projects/IRFevaluation/chameleon"
-ssh $user@$server "rm -rf ~/$folder.tar.gz;
-cd ~/IRFimpl/experiments/
-tar --exclude='*.yaml' --exclude='*user*.log' --exclude='*.sh' -czf ~/$folder.tar.gz $folder"
+ROOT_FOLDER="/ssd/projects/IRFevaluation/chameleon/"
+CC_FOLDER="~/IRFimpl/experiments/testcases/"
+ssh $user@$server -i chameleon.pem "rm -rf ~/$folder.tar.gz;
+cd $CC_FOLDER
+tar --exclude='*user*.log' --exclude='*.sh' -czf ~/$folder.tar.gz $folder"
 mkdir $ROOT_FOLDER/$EVAL_FOLDER
-scp $user@$server:~/$folder.tar.gz $ROOT_FOLDER/$EVAL_FOLDER/$folder$extraStr.tar.gz
+scp  -i chameleon.pem $user@$server:~/$folder.tar.gz $ROOT_FOLDER/$EVAL_FOLDER/$folder$extraStr.tar.gz

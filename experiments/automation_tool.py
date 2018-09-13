@@ -38,6 +38,7 @@ if IS_TEST:
 IS_MEASURE = True
 IS_MY_SCHEDULER = True
 GPU_PREFIX = "g-"
+
 def listJobStatus():
     startedPods   = []
     completedPods = []
@@ -312,9 +313,9 @@ gpuMem=32
 workload = "traces/automation"
 
 if IS_TEST:
-    userStrArray = ["user1", "user2"]
+    userStrArray = ["user1"]
 else:
-    userStrArray = ["user1", "user2", "user3", "user4"]   
+    userStrArray = ["user1", "user2"]   
 
 this_path = os.path.dirname(os.path.realpath(__file__))
 job_folder = this_path + "/" + FOLDER 
@@ -417,8 +418,7 @@ def main():
             activeJob = ActiveJob(gpu_usage, cpu_usage,  0, 0, jobId, gpuCmd2,  cpuCmd2, 0, 0)
             createYamlFile(activeJob, prefix, yamfile, True, False)
             submitJob(jobName, job_folder, yamfile, DEFAULT_NS)        
-            gpuShortJobs_2[jobIdKey] = newJob
- 
+            gpuShortJobs_2[jobIdKey] = newJob 
             
             startedJobs, completedJobs, currTime = listJobStatus()
             updateJobInfo(startedJobs, completedJobs, cpuShortJobs_1, currTime)
@@ -445,10 +445,10 @@ def main():
     while infiniteLoop:
         sleep(interval)
         startedJobs, completedJobs, currTime = listJobStatus()
-        updateJobInfo(startedJobs, completedJobs, cpuShortJobs_1,currTime)
-        updateJobInfo(startedJobs, completedJobs, cpuShortJobs_2,currTime)
-        updateJobInfo(startedJobs, completedJobs, gpuShortJobs_1,currTime)
-        updateJobInfo(startedJobs, completedJobs, gpuShortJobs_2,currTime)
+        updateJobInfo(startedJobs, completedJobs, cpuShortJobs_1, currTime)
+        updateJobInfo(startedJobs, completedJobs, cpuShortJobs_2, currTime)
+        updateJobInfo(startedJobs, completedJobs, gpuShortJobs_1, currTime)
+        updateJobInfo(startedJobs, completedJobs, gpuShortJobs_2, currTime)
         
         # step 5: estimation
         # estimateSpeedup(fullJobs, cpuShortJobs_1, gpuShortJobs_1)

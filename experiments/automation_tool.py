@@ -26,16 +26,18 @@ from kubernetes import *
 from job_info import *
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--test', help='True or False', required=False, default="True")
+parser.add_argument('--test', help='True or False', required=False, default="False")
+parser.add_argument('--measure', help='True or False', required=False, default="False")
 args = vars(parser.parse_args())
-IS_TEST = bool(args['test']=="True")
+IS_TEST    = bool(args['test']=="True")
+IS_MEASURE = bool(args['test']=="True")
 
 interval=1.0
 if IS_TEST:
     print("please indicate --test=False")
     endTime = 2*interval
 
-IS_MEASURE = True
+
 IS_MY_SCHEDULER = True
 GPU_PREFIX = "g-"
 
@@ -310,7 +312,7 @@ gpuCpu=1
 gpu=1
 gpuMem=32
 
-workload = "traces/automation"
+workload = "traces/simple"
 
 if IS_TEST:
     userStrArray = ["user1"]
@@ -454,7 +456,7 @@ def main():
         # estimateSpeedup(fullJobs, cpuShortJobs_1, gpuShortJobs_1)
         estimateComplTime(fullJobs, cpuShortJobs_1, cpuShortJobs_2, True)
         estimateComplTime(fullJobs, gpuShortJobs_1, gpuShortJobs_2, False)
-        
+
         # print("startedJobs: " + str(startedJobs))
         # print("completedJobs: " + str(completedJobs))
         # print("fullJobs: " + fullJobs["1"].jobName)

@@ -36,6 +36,7 @@ if IS_TEST:
     endTime = 2*interval
 
 IS_MEASURE = True
+IS_MY_SCHEDULER = True
 GPU_PREFIX = "g-"
 def listJobStatus():
     startedPods   = []
@@ -256,8 +257,8 @@ def createYamlFile(activeJob, prefix, yamfile, isGPU, isScheduled):
 def submitJobs(fJobs):
     # deletedKeys = []
     for jobKey in fJobs:
-        if fJobs[jobKey].isEstimated:
-        # if fJobs[jobKey].estComplTimeCpu >=0 and fJobs[jobKey].estComplTimeGpu >=0::
+        # if fJobs[jobKey].isEstimated:
+        if fJobs[jobKey].estComplTimeCpu >=0 and fJobs[jobKey].estComplTimeGpu >=0:
             jobInfo = fJobs[jobKey]
             if not jobInfo.isSubmitted:                
                 job = jobInfo.job            
@@ -266,10 +267,10 @@ def submitJobs(fJobs):
 
                 cpu_usage = Resource(cpu*MILLI, mem *GI, 0)
                 gpu_usage = Resource(1*MILLI, gpuMem *GI, gpu)
-                activeJob = ActiveJob(cpu_usage, gpu_usage, 0, 0, jobKey, cpuCmd, gpuCmd)
+                activeJob = ActiveJob(cpu_usage, gpu_usage, 0, 0, jobKey, cpuCmd, gpuCmd, jobInfo.estComplTimeCpu, jobInfo.estComplTimegpu)
                 prefix = jobInfo.userName
                 yamfile = jobInfo.jobName
-                createYamlFile(activeJob, prefix, yamfile, False, (not IS_MEASURE))            
+                createYamlFile(activeJob, prefix, yamfile, False, IS_MY_SCHEDULER)            
 
                 submitJob(jobInfo.jobName, job_folder, yamfile, jobInfo.userName) 
                 jobInfo.isSubmitted=True
@@ -286,15 +287,15 @@ def submitJobs(fJobs):
 
                     cpu_usage = Resource(cpu*MILLI, mem *GI, 0)
                     gpu_usage = Resource(1*MILLI, gpuMem *GI, gpu)
-                    activeJob = ActiveJob(gpu_usage,cpu_usage,  0, 0, jobKey, gpuCmd, cpuCmd)
+                    activeJob = ActiveJob(gpu_usage,cpu_usage,  0, 0, jobKey, gpuCmd, cpuCmd, 0, 0)
                     prefix = GPU_PREFIX + jobInfo.userName
                     yamfile = GPU_PREFIX + jobInfo.jobName
-                    createYamlFile(activeJob, prefix, yamfile, True, False)            
+                    createYamlFile(activeJob, prefix, yamfile, True, IS_MY_SCHEDULER)            
                     submitJob(yamfile, job_folder, yamfile, jobInfo.userName) 
                     jobInfo.isSubmittedGpu=True
 
-numBatch1Percent = 5.0/100
-numBatch2Percent = 10.0/100
+numBatch1Percent = 1.0/100
+numBatch2Percent = 2.0/100
 # numBatch2 = 200
 FOLDER = "automation_tool"
 GI = 1024*1024*1024
@@ -308,8 +309,10 @@ gpuCpu=1
 gpu=1
 gpuMem=32
 
+workload = "traces/automation"
+
 if IS_TEST:
-    userStrArray = ["user1"]
+    userStrArray = ["user1", "user2"]
 else:
     userStrArray = ["user1", "user2", "user3", "user4"]   
 
@@ -317,7 +320,7 @@ this_path = os.path.dirname(os.path.realpath(__file__))
 job_folder = this_path + "/" + FOLDER 
 shutil.rmtree(job_folder, ignore_errors=True) # delete previous folder.
 os.mkdir(job_folder)    
-workload = "traces/automation"
+
 ################################### MAIN Script ###############################################
 
 print "====== AUTOMATION-TOOL ====="
@@ -382,38 +385,39 @@ def main():
             yamfile = jobName
             numBatch1 = job.numBatches * numBatch1Percent
             newJob = JobInfo(jobId, jobName, user.username, numBatch1)
-            activeJob = ActiveJob(cpu_usage, gpu_usage, 0, 0, jobId, cpuCmd1, gpuCmd1)
+            activeJob = ActiveJob(cpu_usage, gpu_usage, 0, 0, jobId, cpuCmd1, gpuCmd, 0, 0)
             createYamlFile(activeJob, prefix, yamfile, False, False)
             submitJob(jobName, job_folder, yamfile, DEFAULT_NS)        
             cpuShortJobs_1[jobIdKey] = newJob
 
-            # prefix = "cpu2"
-            # jobName = prefix + "-" + str(jobId)
-            # yamfile = jobName
-            # newJob  = JobInfo(jobId, jobName, user.username, numBatch2)
-            # activeJob = ActiveJob(cpu_usage, gpu_usage, 0, 0, jobId,  cpuCmd2, gpuCmd2)
-            # createYamlFile(activeJob, prefix, yamfile, False, False)
-            # submitJob(jobName, job_folder, yamfile, DEFAULT_NS)        
-            # cpuShortJobs_2[jobIdKey] = newJob
+            prefix = "cpu2"
+            jobName = prefix + "-" + str(jobId)
+            yamfile = jobName
+            numBatch2 = job.numBatches * numBatch2Percent
+            newJob  = JobInfo(jobId, jobName, user.username, numBatch2)
+            activeJob = ActiveJob(cpu_usage, gpu_usage, 0, 0, jobId,  cpuCmd2, gpuCmd2, 0, 0)
+            createYamlFile(activeJob, prefix, yamfile, False, False)
+            submitJob(jobName, job_folder, yamfile, DEFAULT_NS)        
+            cpuShortJobs_2[jobIdKey] = newJob
 
             # prepare jobs for GPU        
             prefix = "gpu1"
             jobName = prefix + "-" + str(jobId)
             yamfile = jobName
             newJob = JobInfo(jobId, jobName, user.username, numBatch1)
-            activeJob = ActiveJob(gpu_usage, cpu_usage,  0, 0, jobId, gpuCmd1, cpuCmd1 )
+            activeJob = ActiveJob(gpu_usage, cpu_usage,  0, 0, jobId, gpuCmd1, cpuCmd1, 0, 0 )
             createYamlFile(activeJob, prefix, yamfile, True, False)
             submitJob(jobName, job_folder, yamfile, DEFAULT_NS)        
             gpuShortJobs_1[jobIdKey] = newJob
 
-            # prefix = "gpu2"
-            # jobName = prefix + "-" + str(jobId)
-            # yamfile = jobName
-            # newJob  = JobInfo(jobId, jobName, user.username, numBatch2)
-            # activeJob = ActiveJob(gpu_usage, cpu_usage,  0, 0, jobId, gpuCmd2,  cpuCmd2)
-            # createYamlFile(activeJob, prefix, yamfile, True, False)
-            # submitJob(jobName, job_folder, yamfile, DEFAULT_NS)        
-            # gpuShortJobs_2[jobIdKey] = newJob
+            prefix = "gpu2"
+            jobName = prefix + "-" + str(jobId)
+            yamfile = jobName
+            newJob  = JobInfo(jobId, jobName, user.username, numBatch2)
+            activeJob = ActiveJob(gpu_usage, cpu_usage,  0, 0, jobId, gpuCmd2,  cpuCmd2, 0, 0)
+            createYamlFile(activeJob, prefix, yamfile, True, False)
+            submitJob(jobName, job_folder, yamfile, DEFAULT_NS)        
+            gpuShortJobs_2[jobIdKey] = newJob
  
             
             startedJobs, completedJobs, currTime = listJobStatus()
@@ -442,12 +446,14 @@ def main():
         sleep(interval)
         startedJobs, completedJobs, currTime = listJobStatus()
         updateJobInfo(startedJobs, completedJobs, cpuShortJobs_1,currTime)
-        # updateJobInfo(startedJobs, completedJobs, cpuShortJobs_2,currTime)
+        updateJobInfo(startedJobs, completedJobs, cpuShortJobs_2,currTime)
         updateJobInfo(startedJobs, completedJobs, gpuShortJobs_1,currTime)
-        # updateJobInfo(startedJobs, completedJobs, gpuShortJobs_2,currTime)
+        updateJobInfo(startedJobs, completedJobs, gpuShortJobs_2,currTime)
         
         # step 5: estimation
-        estimateSpeedup(fullJobs, cpuShortJobs_1, gpuShortJobs_1)
+        # estimateSpeedup(fullJobs, cpuShortJobs_1, gpuShortJobs_1)
+        estimateComplTime(fullJobs, cpuShortJobs_1, cpuShortJobs_2, True)
+        estimateComplTime(fullJobs, gpuShortJobs_1, gpuShortJobs_2, False)
         
         # print("startedJobs: " + str(startedJobs))
         # print("completedJobs: " + str(completedJobs))
@@ -458,7 +464,6 @@ def main():
         # step 6: submit profiled jobs to the system
         # print ("size of full jobs: " + str(len(fullJobs)))
         submitJobs(fullJobs)   
-             
 
         if (iTime % 60 == 0): # write down every 1 min.
             # step 6: write results out

@@ -7,11 +7,14 @@ class Job:
         self.beta = beta        
         self.jobId = jobId        
         tempArray = cpuProfile.jobCmd.split("--num_batches=")
+        tempArray2 = gpuProfile.jobCmd.split("--num_batches=")
         if len(tempArray) == 2:            
             numBatches = int(tempArray[1])
+            numBatches2 = int(tempArray2[1])
         else:
             print("[ERROR] command shoud have --num_batches= at the end")
         self.numBatches = numBatches
+        self.numBatches2 = numBatches2
 
     def fit(self, alloc):
         # print("gpuProfile: " + self.gpuProfile.toString())

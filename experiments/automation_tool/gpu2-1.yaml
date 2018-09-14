@@ -10,7 +10,7 @@ spec:
     command:
     - "/bin/bash"
     - "-c"
-    - "python tf_cnn_benchmarks.py --device=gpu --num_warmup_batches=0  --model=lenet --batch_size=32  --num_batches=75"
+    - "python tf_cnn_benchmarks.py --device=gpu --num_warmup_batches=0  --model=lenet --batch_size=32  --num_batches=1350"
     - "python tf_cnn_benchmarks.py --device=cpu --data_format=NHWC --num_warmup_batches=0  --model=lenet --batch_size=32 --num_intra_threads=19  --num_batches=75"
     - "1000,1,32,0"
     - "21000,0,16,0"

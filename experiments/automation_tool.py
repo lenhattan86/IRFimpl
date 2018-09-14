@@ -219,7 +219,7 @@ def estimateComplTime(fJobs, sJobs1, sJobs2, isCPU):
                         # linear model a * (numberofbatches) + b
                         a = (sJobs1[keyId].complTime - sJobs2[keyId].complTime) / (sJobs1[keyId].numBatches - sJobs2[keyId].numBatches)
                         b = sJobs1[keyId].complTime - a*sJobs1[keyId].numBatches
-                        fJobs[keyId].estComplTimeGpu = a*fJobs[keyId].numBatches + b
+                        fJobs[keyId].estComplTimeGpu = a*fJobs[keyId].numBatches2 + b
                         if fJobs[keyId].estComplTimeGpu < 0:
                             fJobs[keyId].estComplTimeGpu = (sJobs1[keyId].complTime + sJobs1[keyId].complTime)/2
                             print("[ERROR] " + fJobs.get(keyId).jobName +" is TOO SHORT ")  
@@ -393,15 +393,15 @@ def main():
             jobIdKey = str(jobId)
             
             jobName = user.username + "-" + str(jobId)
-            fullJobs[jobIdKey]  = JobInfo(jobId, jobName, user.username, job.numBatches)
+            fullJobs[jobIdKey]  = JobInfo(jobId, jobName, user.username, job.numBatches, job.numBatches2)
             fullJobs[jobIdKey].job = job
             # deleteJob(jobName, user.username)
             
             # read the number of batch from the job
             cpuCmd = job.cpuProfile.jobCmd
             gpuCmd = job.gpuProfile.jobCmd
-            cpuCmd1, cpuCmd2 = createSubCommands(cpuCmd, job.numBatches)        
-            gpuCmd1, gpuCmd2 = createSubCommands(gpuCmd, job.numBatches)
+            cpuCmd1, cpuCmd2 = createSubCommands(cpuCmd, job.numBatches, True)        
+            gpuCmd1, gpuCmd2 = createSubCommands(gpuCmd, job.numBatches2, False)
 
             # for the small number of batches
             cpu_usage = Resource(cpu*MILLI, mem *GI, 0)
@@ -411,8 +411,8 @@ def main():
             prefix = "cpu1"
             jobName = prefix + "-" + str(jobId)
             yamfile = jobName
-            numBatch1 = job.numBatches * numBatch1Percent
-            newJob = JobInfo(jobId, jobName, user.username, numBatch1)
+            numBatch1 = job.numBatches * numBatch1Percent_CPU
+            newJob = JobInfo(jobId, jobName, user.username, numBatch1, 0)
             activeJob = ActiveJob(cpu_usage, gpu_usage, 0, 0, jobId, cpuCmd1, gpuCmd, 0, 0)
             createYamlFile(activeJob, prefix, yamfile, False, IS_MY_SCHEDULER)
             submitJob(jobName, job_folder, yamfile, DEFAULT_NS)        
@@ -421,8 +421,8 @@ def main():
             prefix = "cpu2"
             jobName = prefix + "-" + str(jobId)
             yamfile = jobName
-            numBatch2 = job.numBatches * numBatch2Percent
-            newJob  = JobInfo(jobId, jobName, user.username, numBatch2)
+            numBatch2 = job.numBatches * numBatch2Percent_CPU
+            newJob  = JobInfo(jobId, jobName, user.username, numBatch2, 0)
             activeJob = ActiveJob(cpu_usage, gpu_usage, 0, 0, jobId,  cpuCmd2, gpuCmd2, 0, 0)
             createYamlFile(activeJob, prefix, yamfile, False, IS_MY_SCHEDULER)
             submitJob(jobName, job_folder, yamfile, DEFAULT_NS)        
@@ -432,7 +432,8 @@ def main():
             prefix = "gpu1"
             jobName = prefix + "-" + str(jobId)
             yamfile = jobName
-            newJob = JobInfo(jobId, jobName, user.username, numBatch1)
+            numBatch1 = job.numBatches2 * numBatch1Percent_GPU
+            newJob = JobInfo(jobId, jobName, user.username, numBatch1, 0)
             activeJob = ActiveJob(gpu_usage, cpu_usage,  0, 0, jobId, gpuCmd1, cpuCmd1, 0, 0 )
             createYamlFile(activeJob, prefix, yamfile, True, IS_MY_SCHEDULER)
             submitJob(jobName, job_folder, yamfile, DEFAULT_NS)        
@@ -441,7 +442,8 @@ def main():
             prefix = "gpu2"
             jobName = prefix + "-" + str(jobId)
             yamfile = jobName
-            newJob  = JobInfo(jobId, jobName, user.username, numBatch2)
+            numBatch2 = job.numBatches2 * numBatch2Percent_GPU
+            newJob  = JobInfo(jobId, jobName, user.username, numBatch2, 0)
             activeJob = ActiveJob(gpu_usage, cpu_usage,  0, 0, jobId, gpuCmd2,  cpuCmd2, 0, 0)
             createYamlFile(activeJob, prefix, yamfile, True, IS_MY_SCHEDULER)
             submitJob(jobName, job_folder, yamfile, DEFAULT_NS)        

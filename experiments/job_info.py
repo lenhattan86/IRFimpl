@@ -1,7 +1,7 @@
 from resource import *
 
 class JobInfo:    
-    def __init__ (self, jobId, jobName, userName, numBatches):
+    def __init__ (self, jobId, jobName, userName, numBatches, numBatches2):
         self.jobId = jobId
         self.jobName = jobName
         self.userName = userName
@@ -10,6 +10,7 @@ class JobInfo:
         self.stopTime = -1
         self.stopTimeGpu = -1
         self.numBatches = numBatches
+        self.numBatche2 = numBatches2
         self.complTime = -1
         self.complTimeGpu = -1
         self.estComplTimeCpu = -1

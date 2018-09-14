@@ -299,6 +299,7 @@ def createYamlFile(activeJob, prefix, yamfile, isGPU, isScheduled):
         f_yaml.write(strPodYaml(prefix, activeJob, SCHEDULER, isGPU))
     f_yaml.close()    
 
+## only submit jobs if they are estimated.
 def submitJobs(fJobs):
     # deletedKeys = []
     nSubmittedJobs = 0
@@ -462,15 +463,15 @@ def main():
                 updateFullJobInfo(startedJobs, completedJobs, fullJobs, currTime, False)
                 updateFullJobInfo(startedJobs, completedJobs, fullJobs, currTime, True)
 
-    submitJobs(fullJobs)        
+    # submitJobs(fullJobs)        
     # step 4: measure the job completion time.
     started = False
     rows = []
   
     iTime = 0
     infiniteLoop = True
-    if IS_TEST:
-        infiniteLoop = False
+    # if IS_TEST:
+    #     infiniteLoop = True
     while infiniteLoop:
         sleep(interval)
         startedJobs, completedJobs, currTime = listJobStatus()

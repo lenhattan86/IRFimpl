@@ -447,8 +447,7 @@ def main():
             gpuShortJobs_1[jobIdKey] = newJob
 
             prefix = PROFILING_PREFIX + "-gpu2"
-            jobName = str(user) + "-" + str(jobId) +"-"+ prefix
-            print jobName
+            jobName = str(user.username) + "-" + str(jobId) +"-"+ prefix
             yamfile = jobName
             numBatch2 = job.numBatches2 * numBatch2Percent_GPU
             newJob  = JobInfo(jobId, jobName, user.username, numBatch2, 0)

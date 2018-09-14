@@ -206,7 +206,7 @@ def estimateComplTime(fJobs, sJobs1, sJobs2, isCPU):
                         a = (sJobs1[keyId].complTime - sJobs2[keyId].complTime) / (sJobs1[keyId].numBatches - sJobs2[keyId].numBatches)
                         b = sJobs1[keyId].complTime - a*sJobs1[keyId].numBatches                        
                         fJobs[keyId].estComplTimeCpu = a*fJobs[keyId].numBatches + b
-                        if fJobs[keyId].estComplTimeCpu < 0:
+                        if fJobs[keyId].estComplTimeCpu < 0 or sJobs1[keyId].complTime < sJobs1[keyId].complTime:
                             fJobs[keyId].estComplTimeCpu = (sJobs1[keyId].complTime + sJobs1[keyId].complTime)/2
                             print("[ERROR] " + fJobs.get(keyId).jobName +" is TOO SHORT ")  
                         print("[INFO] " + fJobs.get(keyId).jobName +"'s estimated compl. time on CPU is " + str(fJobs[keyId].estComplTimeCpu))
@@ -220,10 +220,10 @@ def estimateComplTime(fJobs, sJobs1, sJobs2, isCPU):
                         a = (sJobs1[keyId].complTime - sJobs2[keyId].complTime) / (sJobs1[keyId].numBatches - sJobs2[keyId].numBatches)
                         b = sJobs1[keyId].complTime - a*sJobs1[keyId].numBatches
                         fJobs[keyId].estComplTimeGpu = a*fJobs[keyId].numBatches2 + b
-                        if fJobs[keyId].estComplTimeGpu < 0:
+                        if fJobs[keyId].estComplTimeGpu < 0 or sJobs1[keyId].complTime < sJobs1[keyId].complTime:
                             fJobs[keyId].estComplTimeGpu = (sJobs1[keyId].complTime + sJobs1[keyId].complTime)/2
-                            print("[ERROR] " + fJobs.get(keyId).jobName +" is TOO SHORT ")  
-                        print("[INFO] " + fJobs.get(keyId).jobName +"'s estimated compl. time on GPU is " + str(fJobs[keyId].estComplTimeGpu))  
+                            print("[ERROR] " + fJobs.get(keyId).jobName +" is TOO SHORT ")
+                        print("[INFO] " + fJobs.get(keyId).jobName +"'s estimated compl. time on GPU is " + str(fJobs[keyId].estComplTimeGpu))
 
         # if  fJobs[keyId].estComplTimeCpu >= 0 and fJobs[keyId].estComplTimeGpu >= 0 and (not fJobs[keyId].isEstimated) : 
         #     if fJobs[keyId].estComplTimeGpu == 0:

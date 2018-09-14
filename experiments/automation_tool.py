@@ -195,12 +195,12 @@ def estimateComplTime(fJobs, sJobs1, sJobs2, isCPU):
                             print("[ERROR] " + fJobs.get(keyId).jobName +" is TOO SHORT ")  
                         print("[INFO] " + fJobs.get(keyId).jobName +"'s estimated compl. time on GPU is " + str(fJobs[keyId].estComplTimeGpu))  
 
-        if  fJobs[keyId].estComplTimeCpu >= 0 and fJobs[keyId].estComplTimeGpu >= 0 and (not fJobs[keyId].isEstimated) : 
-            if fJobs[keyId].estComplTimeGpu == 0:
-                fJobs[keyId].estComplTimeGpu = 0.0001
-            fJobs[keyId].estSpeedup = fJobs[keyId].estComplTimeCpu / fJobs[keyId].estComplTimeGpu
-            print("[INFO] " + fJobs[keyId].jobName + "'s estimated speedup is "+ str(fJobs[keyId].estSpeedup))
-            fJobs[keyId].isEstimated = True
+        # if  fJobs[keyId].estComplTimeCpu >= 0 and fJobs[keyId].estComplTimeGpu >= 0 and (not fJobs[keyId].isEstimated) : 
+        #     if fJobs[keyId].estComplTimeGpu == 0:
+        #         fJobs[keyId].estComplTimeGpu = 0.0001
+        #     fJobs[keyId].estSpeedup = fJobs[keyId].estComplTimeCpu / fJobs[keyId].estComplTimeGpu
+        #     print("[INFO] " + fJobs[keyId].jobName + "'s estimated speedup is "+ str(fJobs[keyId].estSpeedup))
+        #     fJobs[keyId].isEstimated = True
 
 def estimateSpeedup(fJobs, cJobs, gJobs):
     for keyId in fJobs:    
@@ -434,7 +434,7 @@ def main():
             updateJobInfo(startedJobs, completedJobs, cpuShortJobs_1, currTime)
             updateJobInfo(startedJobs, completedJobs, gpuShortJobs_1, currTime)
             
-            estimateSpeedup(fullJobs, cpuShortJobs_1, gpuShortJobs_1)
+            # estimateSpeedup(fullJobs, cpuShortJobs_1, gpuShortJobs_1)
             # estimateSpeedup(fullJobs, gpuShortJobs_1, gpuShortJobs_2, False)
 
             # submitJobs(fullJobs)
@@ -473,7 +473,7 @@ def main():
             updateFullJobInfo(startedJobs, completedJobs, fullJobs, currTime, True)
         # step 6: submit profiled jobs to the system
         # print ("size of full jobs: " + str(len(fullJobs)))
-        submitJobs(fullJobs)   
+        submitJobs(fullJobs)
 
         if (iTime % 60 == 0): # write down every 1 min.
             # step 6: write results out

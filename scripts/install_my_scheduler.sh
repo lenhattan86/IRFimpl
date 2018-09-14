@@ -9,6 +9,11 @@ kubectl delete pods --all -n user1 --grace-period=0 --force
 kubectl delete pods --all -n user2 --grace-period=0 --force
 kubectl delete pods --all -n user3 --grace-period=0 --force
 kubectl delete pods --all -n user4 --grace-period=0 --force
+kubectl delete pods --all -n user5 --grace-period=0 --force
+kubectl delete pods --all -n user6 --grace-period=0 --force
+kubectl delete pods --all -n user7 --grace-period=0 --force
+kubectl delete pods --all -n user8 --grace-period=0 --force
+
 yamlFile="my-scheduler.yaml"
 kubectl delete -f $yamlFile
 #sudo docker images

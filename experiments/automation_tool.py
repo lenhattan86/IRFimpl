@@ -41,6 +41,28 @@ if IS_TEST:
 
 IS_MY_SCHEDULER = True
 GPU_PREFIX = "g-"
+numBatch1Percent = 1.0/100
+numBatch2Percent = 2.0/100
+# numBatch2 = 200
+FOLDER = "automation_tool"
+GI = 1024*1024*1024
+SCHEDULER = "kube-scheduler"
+MY_SCHEDULER = "my-scheduler"
+DEFAULT_NS = "default"
+cpu=21
+mem=16
+
+gpuCpu=1
+gpu=1
+gpuMem=32
+
+workload = "traces/simple"
+
+if IS_TEST:
+    userStrArray = ["user1"]
+else:
+    userStrArray = ["user1", "user2"]   
+
 
 def listJobStatus():
     startedPods   = []
@@ -267,6 +289,7 @@ def createYamlFile(activeJob, prefix, yamfile, isGPU, isScheduled):
 
 def submitJobs(fJobs):
     # deletedKeys = []
+    nSubmittedJobs = 0
     for jobKey in fJobs:
         # if fJobs[jobKey].isEstimated:
         if fJobs[jobKey].estComplTimeCpu >=0 and fJobs[jobKey].estComplTimeGpu >=0:
@@ -305,28 +328,10 @@ def submitJobs(fJobs):
                     createYamlFile(activeJob, prefix, yamfile, True, IS_MY_SCHEDULER)            
                     submitJob(yamfile, job_folder, yamfile, jobInfo.userName) 
                     jobInfo.isSubmittedGpu=True
+    if nSubmittedJobs >= len(fJobs):
+        return True
+    return False
 
-numBatch1Percent = 1.0/100
-numBatch2Percent = 2.0/100
-# numBatch2 = 200
-FOLDER = "automation_tool"
-GI = 1024*1024*1024
-SCHEDULER = "kube-scheduler"
-MY_SCHEDULER = "my-scheduler"
-DEFAULT_NS = "default"
-cpu=21
-mem=16
-
-gpuCpu=1
-gpu=1
-gpuMem=32
-
-workload = "traces/simple"
-
-if IS_TEST:
-    userStrArray = ["user1"]
-else:
-    userStrArray = ["user1", "user2"]   
 
 this_path = os.path.dirname(os.path.realpath(__file__))
 job_folder = this_path + "/" + FOLDER 
@@ -473,13 +478,17 @@ def main():
             updateFullJobInfo(startedJobs, completedJobs, fullJobs, currTime, True)
         # step 6: submit profiled jobs to the system
         # print ("size of full jobs: " + str(len(fullJobs)))
-        submitJobs(fullJobs)
+        isExit = submitJobs(fullJobs)        
 
         if (iTime % 60 == 0): # write down every 1 min.
             # step 6: write results out
             writeJobsToCsv(fullJobs,'est_results')
             writeJobsToCsv(cpuShortJobs_1,'cpuShortJobs_1')    
             writeJobsToCsv(gpuShortJobs_1,'gpuShortJobs_1') 
-        iTime = iTime + interval      
+        iTime = iTime + interval     
+
+        if (isExit):
+            print("[INFO] All jobs are submitted ==> Please wait for jobs to be finished")
+            break 
 
 if __name__ == "__main__": main()

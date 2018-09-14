@@ -41,6 +41,7 @@ if IS_TEST:
 
 IS_MY_SCHEDULER = True
 GPU_PREFIX = "g-"
+PROFILING_PREFIX = "profiling"
 numBatch1Percent_CPU = 1.0/100
 numBatch2Percent_CPU = 2.0/100
 numBatch1Percent_GPU = 5.0/100
@@ -268,7 +269,12 @@ def deleteAllJobs(username):
 def createSubCommands(cmd, numbatches, isCPU):
     tempArray = cmd.split("--num_batches=")
     if len(tempArray) == 2:       
-        if isCPU:     
+        if isCPU:
+            # b1 = int(numbatches*numBatch1Percent_CPU)
+            # b2 = int(numbatches*numBatch1Percent_CPU)
+            # if b1 <= 10: # prevent unknown pod error
+            #     b1 = b1 + 10
+            #     b2 = b2 + 10
             subCmd1 = tempArray[0] + " --num_batches=" + str(int(numbatches*numBatch1Percent_CPU))
             subCmd2 = tempArray[0] + " --num_batches=" + str(int(numbatches*numBatch2Percent_CPU))
         else:
@@ -409,7 +415,7 @@ def main():
             gpu_usage = Resource(1*MILLI, gpuMem *GI, gpu)
 
             # prepare jobs for CPU     
-            prefix = "cpu1"
+            prefix = PROFILING_PREFIX + "cpu1"
             jobName = prefix + "-" + str(jobId)
             yamfile = jobName
             numBatch1 = job.numBatches * numBatch1Percent_CPU
@@ -419,7 +425,7 @@ def main():
             submitJob(jobName, job_folder, yamfile, DEFAULT_NS)        
             cpuShortJobs_1[jobIdKey] = newJob
 
-            prefix = "cpu2"
+            prefix = PROFILING_PREFIX + "cpu2"
             jobName = prefix + "-" + str(jobId)
             yamfile = jobName
             numBatch2 = job.numBatches * numBatch2Percent_CPU
@@ -430,7 +436,7 @@ def main():
             cpuShortJobs_2[jobIdKey] = newJob
 
             # prepare jobs for GPU        
-            prefix = "gpu1"
+            prefix = PROFILING_PREFIX + "gpu1"
             jobName = prefix + "-" + str(jobId)
             yamfile = jobName
             numBatch1 = job.numBatches2 * numBatch1Percent_GPU
@@ -440,7 +446,7 @@ def main():
             submitJob(jobName, job_folder, yamfile, DEFAULT_NS)        
             gpuShortJobs_1[jobIdKey] = newJob
 
-            prefix = "gpu2"
+            prefix = PROFILING_PREFIX + "gpu2"
             jobName = prefix + "-" + str(jobId)
             yamfile = jobName
             numBatch2 = job.numBatches2 * numBatch2Percent_GPU

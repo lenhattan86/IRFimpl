@@ -3,14 +3,15 @@ kind: Pod
 metadata:
   name: gpu1-2
 spec:
+  schedulerName: my-scheduler
   containers:
   - name: gpu1-2
     image: lenhattan86/ira:gpu
     command:
     - "/bin/bash"
     - "-c"
-    - "python tf_cnn_benchmarks.py --device=gpu --num_warmup_batches=0  --model=vgg16 --batch_size=32  --num_batches=100"
-    - "python tf_cnn_benchmarks.py --device=cpu --data_format=NHWC --num_warmup_batches=0  --model=vgg16 --batch_size=32 --num_intra_threads=16  --num_batches=100"
+    - "python tf_cnn_benchmarks.py --device=gpu --num_warmup_batches=0  --model=lenet --batch_size=32  --num_batches=37"
+    - "python tf_cnn_benchmarks.py --device=cpu --data_format=NHWC --num_warmup_batches=0  --model=lenet --batch_size=32 --num_intra_threads=19  --num_batches=37"
     - "1000,1,32,0"
     - "21000,0,16,0"
     resources:

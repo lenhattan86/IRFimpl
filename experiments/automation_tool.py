@@ -16,7 +16,6 @@ from time import sleep
 import sched
 from threading import Timer
 import threading
-import time
 
 from job import *
 from user import *
@@ -26,8 +25,9 @@ from allocator import *
 from kubernetes import *
 from job_info import *
 
+print ("python automation_tool.py --test=False")
 parser = argparse.ArgumentParser()
-parser.add_argument('--test', help='True or False', required=False, default="False")
+parser.add_argument('--test', help='True or False', required=False, default="True")
 parser.add_argument('--measure', help='True or False', required=False, default="False")
 args = vars(parser.parse_args())
 IS_TEST    = bool(args['test']=="True")

@@ -16,6 +16,7 @@ from time import sleep
 import sched
 from threading import Timer
 import threading
+import time
 
 from job import *
 from user import *
@@ -166,7 +167,7 @@ def updateFullJobInfo(startedJobs, completedJobs, mJobs, currTime, isCPU):
                 mJobs[keyId].isComputed = True
 
 def estimateComplTime(fJobs, sJobs1, sJobs2, isCPU):
-    for keyId in fJobs:    
+    for keyId in fJobs:
         if isCPU:
             if (fJobs.get(keyId) is not None) and fJobs[keyId].estComplTimeCpu < 0:
                 if (sJobs1.get(keyId) is not None) and (sJobs2.get(keyId) is not None):
@@ -175,7 +176,11 @@ def estimateComplTime(fJobs, sJobs1, sJobs2, isCPU):
                         a = (sJobs1[keyId].complTime - sJobs2[keyId].complTime) / (sJobs1[keyId].numBatches - sJobs2[keyId].numBatches)
                         b = sJobs1[keyId].complTime - a*sJobs1[keyId].numBatches                        
                         fJobs[keyId].estComplTimeCpu = a*fJobs[keyId].numBatches + b
+                        if fJobs[keyId].estComplTimeCpu < 0:
+                            fJobs[keyId].estComplTimeCpu = (sJobs1[keyId].complTime + sJobs1[keyId].complTime)/2
+                            print("[ERROR] " + fJobs.get(keyId).jobName +" is TOO SHORT ")  
                         print("[INFO] " + fJobs.get(keyId).jobName +"'s estimated compl. time on CPU is " + str(fJobs[keyId].estComplTimeCpu))
+
                     
         else:
             if (fJobs.get(keyId) is not None) and fJobs[keyId].estComplTimeGpu < 0:
@@ -185,6 +190,9 @@ def estimateComplTime(fJobs, sJobs1, sJobs2, isCPU):
                         a = (sJobs1[keyId].complTime - sJobs2[keyId].complTime) / (sJobs1[keyId].numBatches - sJobs2[keyId].numBatches)
                         b = sJobs1[keyId].complTime - a*sJobs1[keyId].numBatches
                         fJobs[keyId].estComplTimeGpu = a*fJobs[keyId].numBatches + b
+                        if fJobs[keyId].estComplTimeGpu < 0:
+                            fJobs[keyId].estComplTimeGpu = (sJobs1[keyId].complTime + sJobs1[keyId].complTime)/2
+                            print("[ERROR] " + fJobs.get(keyId).jobName +" is TOO SHORT ")  
                         print("[INFO] " + fJobs.get(keyId).jobName +"'s estimated compl. time on GPU is " + str(fJobs[keyId].estComplTimeGpu))  
 
         if  fJobs[keyId].estComplTimeCpu >= 0 and fJobs[keyId].estComplTimeGpu >= 0 and (not fJobs[keyId].isEstimated) : 
@@ -270,11 +278,12 @@ def submitJobs(fJobs):
 
                 cpu_usage = Resource(cpu*MILLI, mem *GI, 0)
                 gpu_usage = Resource(1*MILLI, gpuMem *GI, gpu)
-                activeJob = ActiveJob(cpu_usage, gpu_usage, 0, 0, jobKey, cpuCmd, gpuCmd, jobInfo.estComplTimeCpu, jobInfo.estComplTimegpu)
+                activeJob = ActiveJob(cpu_usage, gpu_usage, 0, 0, jobKey, cpuCmd, gpuCmd, jobInfo.estComplTimeCpu, jobInfo.estComplTimeGpu)
                 prefix = jobInfo.userName
                 yamfile = jobInfo.jobName
-                createYamlFile(activeJob, prefix, yamfile, False, IS_MY_SCHEDULER)            
+                createYamlFile(activeJob, prefix, yamfile, False, IS_MY_SCHEDULER) 
 
+                print("[INFO] Submit job " +jobInfo.userName +"/" + jobInfo.jobName)
                 submitJob(jobInfo.jobName, job_folder, yamfile, jobInfo.userName) 
                 jobInfo.isSubmitted=True
             # deletedKeys.append(jobKey)
@@ -327,7 +336,6 @@ os.mkdir(job_folder)
 ################################### MAIN Script ###############################################
 
 print "====== AUTOMATION-TOOL ====="
-
 def main():
     ## initialization   
     print "====== main() ====="
@@ -382,14 +390,14 @@ def main():
             cpu_usage = Resource(cpu*MILLI, mem *GI, 0)
             gpu_usage = Resource(1*MILLI, gpuMem *GI, gpu)
 
-            # prepare jobs for CPU        
+            # prepare jobs for CPU     
             prefix = "cpu1"
             jobName = prefix + "-" + str(jobId)
             yamfile = jobName
             numBatch1 = job.numBatches * numBatch1Percent
             newJob = JobInfo(jobId, jobName, user.username, numBatch1)
             activeJob = ActiveJob(cpu_usage, gpu_usage, 0, 0, jobId, cpuCmd1, gpuCmd, 0, 0)
-            createYamlFile(activeJob, prefix, yamfile, False, False)
+            createYamlFile(activeJob, prefix, yamfile, False, IS_MY_SCHEDULER)
             submitJob(jobName, job_folder, yamfile, DEFAULT_NS)        
             cpuShortJobs_1[jobIdKey] = newJob
 
@@ -399,7 +407,7 @@ def main():
             numBatch2 = job.numBatches * numBatch2Percent
             newJob  = JobInfo(jobId, jobName, user.username, numBatch2)
             activeJob = ActiveJob(cpu_usage, gpu_usage, 0, 0, jobId,  cpuCmd2, gpuCmd2, 0, 0)
-            createYamlFile(activeJob, prefix, yamfile, False, False)
+            createYamlFile(activeJob, prefix, yamfile, False, IS_MY_SCHEDULER)
             submitJob(jobName, job_folder, yamfile, DEFAULT_NS)        
             cpuShortJobs_2[jobIdKey] = newJob
 
@@ -409,7 +417,7 @@ def main():
             yamfile = jobName
             newJob = JobInfo(jobId, jobName, user.username, numBatch1)
             activeJob = ActiveJob(gpu_usage, cpu_usage,  0, 0, jobId, gpuCmd1, cpuCmd1, 0, 0 )
-            createYamlFile(activeJob, prefix, yamfile, True, False)
+            createYamlFile(activeJob, prefix, yamfile, True, IS_MY_SCHEDULER)
             submitJob(jobName, job_folder, yamfile, DEFAULT_NS)        
             gpuShortJobs_1[jobIdKey] = newJob
 
@@ -418,7 +426,7 @@ def main():
             yamfile = jobName
             newJob  = JobInfo(jobId, jobName, user.username, numBatch2)
             activeJob = ActiveJob(gpu_usage, cpu_usage,  0, 0, jobId, gpuCmd2,  cpuCmd2, 0, 0)
-            createYamlFile(activeJob, prefix, yamfile, True, False)
+            createYamlFile(activeJob, prefix, yamfile, True, IS_MY_SCHEDULER)
             submitJob(jobName, job_folder, yamfile, DEFAULT_NS)        
             gpuShortJobs_2[jobIdKey] = newJob 
             

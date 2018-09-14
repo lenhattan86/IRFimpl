@@ -41,8 +41,10 @@ if IS_TEST:
 
 IS_MY_SCHEDULER = True
 GPU_PREFIX = "g-"
-numBatch1Percent = 1.0/100
-numBatch2Percent = 2.0/100
+numBatch1Percent_CPU = 1.0/100
+numBatch2Percent_CPU = 2.0/100
+numBatch1Percent_GPU = 5.0/100
+numBatch2Percent_GPU = 10.0/100
 # numBatch2 = 200
 FOLDER = "automation_tool"
 GI = 1024*1024*1024
@@ -55,6 +57,10 @@ mem=16
 gpuCpu=1
 gpu=1
 gpuMem=32
+
+MAX_CPU = 20
+MAX_GPU = 1
+MAX_MEM = 16
 
 workload = "traces/simple"
 
@@ -133,7 +139,9 @@ def updateJobInfo(startedJobs, completedJobs, mJobs, currTime):
             if mJobs[jobIdKey].complTime < 0:
                 mJobs[jobIdKey].endTime = currTime    
                 if mJobs[jobIdKey].starTime < 0:
-                    print("[ERROR] " + mJobs[jobIdKey].jobName + "'s start time is negative.")                    
+                    print("[ERROR] " + mJobs[jobIdKey].jobName + "'s start time is negative. (this job is too short)")
+                    mJobs[jobIdKey].starTime = 0
+
                 mJobs[jobIdKey].complTime = mJobs[jobIdKey].endTime - mJobs[jobIdKey].starTime
                 print("[INFO] " + mJobs[jobIdKey].jobName + "'s compl. time is "+ str(mJobs[jobIdKey].complTime ))
 
@@ -257,11 +265,15 @@ def deleteAllJobs(username):
     (output, err) = p.communicate()   
     p_status = p.wait()    
 
-def createSubCommands(cmd, numbatches):
+def createSubCommands(cmd, numbatches, isCPU):
     tempArray = cmd.split("--num_batches=")
-    if len(tempArray) == 2:            
-        subCmd1 = tempArray[0] + " --num_batches=" + str(int(numbatches*numBatch1Percent))
-        subCmd2 = tempArray[0] + " --num_batches=" + str(int(numbatches*numBatch2Percent))
+    if len(tempArray) == 2:       
+        if isCPU:     
+            subCmd1 = tempArray[0] + " --num_batches=" + str(int(numbatches*numBatch1Percent_CPU))
+            subCmd2 = tempArray[0] + " --num_batches=" + str(int(numbatches*numBatch2Percent_CPU))
+        else:
+            subCmd1 = tempArray[0] + " --num_batches=" + str(int(numbatches*numBatch1Percent_GPU))
+            subCmd2 = tempArray[0] + " --num_batches=" + str(int(numbatches*numBatch2Percent_GPU))
     else:
         print("[ERROR] command shoud have --num_batches= at the end")
 

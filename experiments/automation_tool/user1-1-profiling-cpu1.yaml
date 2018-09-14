@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: cpu1-2
+  name: profiling-cpu1-1
 spec:
   schedulerName: my-scheduler
   containers:
-  - name: cpu1-2
+  - name: profiling-cpu1-1
     image: lenhattan86/ira:cpu
     command:
     - "/bin/bash"

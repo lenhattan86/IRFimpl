@@ -81,14 +81,14 @@ def listJobStatus():
     p_status = p.wait() 
     if IS_TEST:
         output = """NAMESPACE     NAME                                       READY     STATUS      RESTARTS   AGE
-user1       user1-1-profiling-cpu1                          0/1       Running   0          19h
-user1       user1-1-profiling-cpu1                          0/1       Completed   0          19h
-user1       user1-1-profiling-cpu2                          0/1       Running   0          19h
-user1       user1-1-profiling-cpu2                          0/1       Completed   0          19h
-user1       user1-1-profiling-gpu1                          0/1       Running   0          19h
-user1       user1-1-profiling-gpu1                          0/1       Completed   0          19h
-user1       user1-1-profiling-gpu2                          0/1       Running   0          19h
-user1       user1-1-profiling-gpu2                          0/1       Completed   0          19h
+user1       user1-profiling-cpu1-1                          0/1       Running   0          19h
+user1       user1-profiling-cpu1-1                          0/1       Completed   0          19h
+user1       user1-profiling-cpu2-1                        0/1       Running   0          19h
+user1       user1-profiling-cpu2-1                          0/1       Completed   0          19h
+user1       user1-profiling-gpu1-1                          0/1       Running   0          19h
+user1       user1-profiling-gpu1-1                          0/1       Completed   0          19h
+user1       user1-profiling-gpu2-1                          0/1       Running   0          19h
+user1       user1-profiling-gpu2-1                          0/1       Completed   0          19h
 user1       user1-1                          0/1      Running   0          19h
 user1       user1-1                          0/1      Completed   0          19h
 user1       g-user1-1                          0/1      Running   0          19h
@@ -415,7 +415,7 @@ def main():
 
             # prepare jobs for CPU     
             prefix = PROFILING_PREFIX + "-cpu1"
-            jobName = str(user.username) + "-" + str(jobId) +"-"+ prefix
+            jobName = str(user.username) +"-"+ prefix
             yamfile = jobName
             numBatch1 = job.numBatches * numBatch1Percent_CPU
             newJob = JobInfo(jobId, jobName, user.username, numBatch1, 0)
@@ -425,7 +425,7 @@ def main():
             cpuShortJobs_1[jobIdKey] = newJob
 
             prefix = PROFILING_PREFIX + "-cpu2"
-            jobName = str(user.username) + "-" + str(jobId) +"-"+ prefix
+            jobName = str(user.username)  +"-"+ prefix
             yamfile = jobName
             numBatch2 = job.numBatches * numBatch2Percent_CPU
             newJob  = JobInfo(jobId, jobName, user.username, numBatch2, 0)
@@ -436,7 +436,7 @@ def main():
 
             # prepare jobs for GPU        
             prefix = PROFILING_PREFIX + "-gpu1"
-            jobName = str(user.username) + "-" + str(jobId) +"-"+ prefix
+            jobName = str(user.username) +"-"+ prefix
             yamfile = jobName
             numBatch1 = job.numBatches2 * numBatch1Percent_GPU
             newJob = JobInfo(jobId, jobName, user.username, numBatch1, 0)
@@ -446,7 +446,7 @@ def main():
             gpuShortJobs_1[jobIdKey] = newJob
 
             prefix = PROFILING_PREFIX + "-gpu2"
-            jobName = str(user.username) + "-" + str(jobId) +"-"+ prefix
+            jobName = str(user.username) +"-"+ prefix
             yamfile = jobName
             numBatch2 = job.numBatches2 * numBatch2Percent_GPU
             newJob  = JobInfo(jobId, jobName, user.username, numBatch2, 0)

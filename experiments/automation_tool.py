@@ -396,7 +396,6 @@ def main():
         # create jobs
         for job in user.jobs:
             jobId = jobId + 1
-
             jobIdKey = str(jobId)
             
             jobName = user.username + "-" + str(jobId)
@@ -421,7 +420,7 @@ def main():
             numBatch1 = job.numBatches * numBatch1Percent_CPU
             newJob = JobInfo(jobId, jobName, user.username, numBatch1, 0)
             activeJob = ActiveJob(cpu_usage, gpu_usage, 0, 0, jobId, cpuCmd1, gpuCmd, 0, 0)
-            createYamlFile(activeJob, prefix, yamfile, False, IS_MY_SCHEDULER)
+            createYamlFile(activeJob, yamfile, yamfile, False, IS_MY_SCHEDULER)
             submitJob(jobName, job_folder, yamfile, DEFAULT_NS)        
             cpuShortJobs_1[jobIdKey] = newJob
 
@@ -431,7 +430,7 @@ def main():
             numBatch2 = job.numBatches * numBatch2Percent_CPU
             newJob  = JobInfo(jobId, jobName, user.username, numBatch2, 0)
             activeJob = ActiveJob(cpu_usage, gpu_usage, 0, 0, jobId,  cpuCmd2, gpuCmd2, 0, 0)
-            createYamlFile(activeJob, prefix, yamfile, False, IS_MY_SCHEDULER)
+            createYamlFile(activeJob, yamfile, yamfile, False, IS_MY_SCHEDULER)
             submitJob(jobName, job_folder, yamfile, DEFAULT_NS)        
             cpuShortJobs_2[jobIdKey] = newJob
 
@@ -442,7 +441,7 @@ def main():
             numBatch1 = job.numBatches2 * numBatch1Percent_GPU
             newJob = JobInfo(jobId, jobName, user.username, numBatch1, 0)
             activeJob = ActiveJob(gpu_usage, cpu_usage,  0, 0, jobId, gpuCmd1, cpuCmd1, 0, 0 )
-            createYamlFile(activeJob, prefix, yamfile, True, IS_MY_SCHEDULER)
+            createYamlFile(activeJob, yamfile, yamfile, True, IS_MY_SCHEDULER)
             submitJob(jobName, job_folder, yamfile, DEFAULT_NS)        
             gpuShortJobs_1[jobIdKey] = newJob
 
@@ -452,7 +451,7 @@ def main():
             numBatch2 = job.numBatches2 * numBatch2Percent_GPU
             newJob  = JobInfo(jobId, jobName, user.username, numBatch2, 0)
             activeJob = ActiveJob(gpu_usage, cpu_usage,  0, 0, jobId, gpuCmd2,  cpuCmd2, 0, 0)
-            createYamlFile(activeJob, prefix, yamfile, True, IS_MY_SCHEDULER)
+            createYamlFile(activeJob, yamfile, yamfile, True, IS_MY_SCHEDULER)
             submitJob(jobName, job_folder, yamfile, DEFAULT_NS)        
             gpuShortJobs_2[jobIdKey] = newJob 
             

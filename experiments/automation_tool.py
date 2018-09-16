@@ -127,7 +127,7 @@ def updateJobInfo(startedJobs, completedJobs, mJobs, currTime):
     for sJob in startedJobs:
         # get jobId from jobName
         temp = sJob.split("-")
-        jobIdKey = temp[1]
+        jobIdKey = temp[len(temp)-1]
         if mJobs.get(jobIdKey) is not None and mJobs.get(jobIdKey).jobName == sJob:
             if mJobs[jobIdKey].starTime < 0:
                 mJobs[jobIdKey].starTime = currTime
@@ -135,7 +135,7 @@ def updateJobInfo(startedJobs, completedJobs, mJobs, currTime):
     for sJob in completedJobs:
         # get jobId from jobName
         temp = sJob.split("-")
-        jobIdKey = temp[1]
+        jobIdKey = temp[len(temp)-1]
         if mJobs.get(jobIdKey) is not None and mJobs.get(jobIdKey).jobName == sJob:
             if mJobs[jobIdKey].complTime < 0:
                 mJobs[jobIdKey].endTime = currTime    
@@ -151,7 +151,7 @@ def updateFullJobInfo(startedJobs, completedJobs, mJobs, currTime, isCPU):
         for sJob in startedJobs:
             # get jobId from jobName
             temp = sJob.split("-")
-            jobIdKey = temp[1]
+            jobIdKey = temp[len(temp)-1]
             if mJobs.get(jobIdKey) is not None and (mJobs.get(jobIdKey).jobName) == sJob:
                 if mJobs[jobIdKey].starTime < 0:
                     mJobs[jobIdKey].starTime = currTime
@@ -159,7 +159,7 @@ def updateFullJobInfo(startedJobs, completedJobs, mJobs, currTime, isCPU):
         for sJob in completedJobs:
             # get jobId from jobName
             temp = sJob.split("-")
-            jobIdKey = temp[1]
+            jobIdKey = temp[len(temp)-1]
             if mJobs.get(jobIdKey) is not None and (mJobs.get(jobIdKey).jobName) == sJob:
                 if mJobs[jobIdKey].complTime < 0:
                     mJobs[jobIdKey].endTime = currTime    
@@ -418,7 +418,7 @@ def main():
             jobName = str(user.username) +"-"+ prefix
             yamfile = jobName + "-" + str(jobId)
             numBatch1 = job.numBatches * numBatch1Percent_CPU
-            newJob = JobInfo(jobId, jobName, user.username, numBatch1, 0)
+            newJob = JobInfo(jobId, yamfile, user.username, numBatch1, 0)
             activeJob = ActiveJob(cpu_usage, gpu_usage, 0, 0, jobId, cpuCmd1, gpuCmd, 0, 0)
             createYamlFile(activeJob, jobName, yamfile, False, IS_MY_SCHEDULER)
             submitJob(yamfile, job_folder, yamfile, DEFAULT_NS)        
@@ -428,7 +428,7 @@ def main():
             jobName = str(user.username)  +"-"+ prefix
             yamfile = jobName + "-" + str(jobId)
             numBatch2 = job.numBatches * numBatch2Percent_CPU
-            newJob  = JobInfo(jobId, jobName, user.username, numBatch2, 0)
+            newJob  = JobInfo(jobId, yamfile, user.username, numBatch2, 0)
             activeJob = ActiveJob(cpu_usage, gpu_usage, 0, 0, jobId,  cpuCmd2, gpuCmd2, 0, 0)
             createYamlFile(activeJob, jobName, yamfile, False, IS_MY_SCHEDULER)
             submitJob(yamfile, job_folder, yamfile, DEFAULT_NS)        
@@ -439,7 +439,7 @@ def main():
             jobName = str(user.username) +"-"+ prefix
             yamfile = jobName + "-" + str(jobId)
             numBatch1 = job.numBatches2 * numBatch1Percent_GPU
-            newJob = JobInfo(jobId, jobName, user.username, numBatch1, 0)
+            newJob = JobInfo(jobId, yamfile, user.username, numBatch1, 0)
             activeJob = ActiveJob(gpu_usage, cpu_usage,  0, 0, jobId, gpuCmd1, cpuCmd1, 0, 0 )
             createYamlFile(activeJob, jobName, yamfile, True, IS_MY_SCHEDULER)
             submitJob(yamfile, job_folder, yamfile, DEFAULT_NS)        
@@ -449,7 +449,7 @@ def main():
             jobName = str(user.username) +"-"+ prefix
             yamfile = jobName + "-" + str(jobId)
             numBatch2 = job.numBatches2 * numBatch2Percent_GPU
-            newJob  = JobInfo(jobId, jobName, user.username, numBatch2, 0)
+            newJob  = JobInfo(jobId, yamfile, user.username, numBatch2, 0)
             activeJob = ActiveJob(gpu_usage, cpu_usage,  0, 0, jobId, gpuCmd2,  cpuCmd2, 0, 0)
             createYamlFile(activeJob, jobName, yamfile, True, IS_MY_SCHEDULER)
             submitJob(yamfile, job_folder, yamfile, DEFAULT_NS)        
@@ -458,6 +458,8 @@ def main():
             startedJobs, completedJobs, currTime = listJobStatus()
             updateJobInfo(startedJobs, completedJobs, cpuShortJobs_1, currTime)
             updateJobInfo(startedJobs, completedJobs, gpuShortJobs_1, currTime)
+            updateJobInfo(startedJobs, completedJobs, gpuShortJobs_2, currTime)
+            updateJobInfo(startedJobs, completedJobs, gpuShortJobs_2, currTime)
             
             # estimateSpeedup(fullJobs, cpuShortJobs_1, gpuShortJobs_1)
             # estimateSpeedup(fullJobs, gpuShortJobs_1, gpuShortJobs_2, False)

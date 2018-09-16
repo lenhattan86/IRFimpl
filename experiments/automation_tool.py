@@ -117,8 +117,8 @@ user1       g-user1-1                          0/1      Completed   0          1
                     continue
                 if podStatus == "Completed":
                     completedPods.append(mPodName)
-                # if podStatus == "ContainerCreating" or podStatus == "Running":
-                if podStatus == "Running":
+                if podStatus == "ContainerCreating" or podStatus == "Running":
+                # if podStatus == "Running":
                     startedPods.append(mPodName)
     currTime = time()
     return startedPods, completedPods, currTime
@@ -209,7 +209,7 @@ def estimateComplTime(fJobs, sJobs1, sJobs2, isCPU):
                         fJobs[keyId].estComplTimeCpu = a*fJobs[keyId].numBatches + b
                         if fJobs[keyId].estComplTimeCpu < 0 or sJobs1[keyId].complTime < sJobs1[keyId].complTime:
                             fJobs[keyId].estComplTimeCpu = (sJobs1[keyId].complTime + sJobs1[keyId].complTime)/2
-                            print("[ERROR] " + fJobs.get(keyId).jobName +" is TOO SHORT ")  
+                            print("[ERROR] " + fJobs.get(keyId).jobName +" is TOO SHORT on CPU ")  
                         print("[INFO] " + fJobs.get(keyId).jobName +"'s estimated compl. time on CPU is " + str(fJobs[keyId].estComplTimeCpu))
 
                     
@@ -223,7 +223,7 @@ def estimateComplTime(fJobs, sJobs1, sJobs2, isCPU):
                         fJobs[keyId].estComplTimeGpu = a*fJobs[keyId].numBatches2 + b
                         if fJobs[keyId].estComplTimeGpu < 0 or sJobs1[keyId].complTime < sJobs1[keyId].complTime:
                             fJobs[keyId].estComplTimeGpu = (sJobs1[keyId].complTime + sJobs1[keyId].complTime)/2
-                            print("[ERROR] " + fJobs.get(keyId).jobName +" is TOO SHORT ")
+                            print("[ERROR] " + fJobs.get(keyId).jobName +" is TOO SHORT on GPU ")
                         print("[INFO] " + fJobs.get(keyId).jobName +"'s estimated compl. time on GPU is " + str(fJobs[keyId].estComplTimeGpu))
 
         # if  fJobs[keyId].estComplTimeCpu >= 0 and fJobs[keyId].estComplTimeGpu >= 0 and (not fJobs[keyId].isEstimated) : 
@@ -328,6 +328,8 @@ def submitJobs(fJobs):
                 print("[INFO] Submit job " +jobInfo.userName +"/" + jobInfo.jobName)
                 submitJob(jobInfo.jobName, job_folder, yamfile, jobInfo.userName) 
                 jobInfo.isSubmitted=True
+            else:
+                nSubmittedJobs = nSubmittedJobs + 1
             # deletedKeys.append(jobKey)
 
         if IS_MEASURE:
@@ -347,8 +349,10 @@ def submitJobs(fJobs):
                     createYamlFile(activeJob, prefix, yamfile, True, IS_MY_SCHEDULER)            
                     submitJob(yamfile, job_folder, yamfile, jobInfo.userName) 
                     jobInfo.isSubmittedGpu=True
+
     if nSubmittedJobs >= len(fJobs):
         return True
+        
     return False
 
 

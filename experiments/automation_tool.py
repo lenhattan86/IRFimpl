@@ -42,10 +42,10 @@ if IS_TEST:
 IS_MY_SCHEDULER = True
 GPU_PREFIX = "g-"
 PROFILING_PREFIX = "profiling"
-numBatch1Percent_CPU = 1.0/100
-numBatch2Percent_CPU = 2.0/100
-numBatch1Percent_GPU = 5.0/100
-numBatch2Percent_GPU = 10.0/100
+numBatch1Percent_CPU = 15.0/100
+numBatch2Percent_CPU = 30.0/100
+numBatch1Percent_GPU = 15.0/100
+numBatch2Percent_GPU = 30.0/100
 # numBatch2 = 200
 FOLDER = "automation_tool"
 GI = 1024*1024*1024
@@ -207,8 +207,8 @@ def estimateComplTime(fJobs, sJobs1, sJobs2, isCPU):
                         a = (sJobs1[keyId].complTime - sJobs2[keyId].complTime) / (sJobs1[keyId].numBatches - sJobs2[keyId].numBatches)
                         b = sJobs1[keyId].complTime - a*sJobs1[keyId].numBatches                        
                         fJobs[keyId].estComplTimeCpu = a*fJobs[keyId].numBatches + b
-                        if fJobs[keyId].estComplTimeCpu < 0 or sJobs1[keyId].complTime < sJobs1[keyId].complTime:
-                            fJobs[keyId].estComplTimeCpu = (sJobs1[keyId].complTime + sJobs1[keyId].complTime)/2
+                        if fJobs[keyId].estComplTimeCpu < 0 or sJobs2[keyId].complTime < sJobs1[keyId].complTime:
+                            fJobs[keyId].estComplTimeCpu = max(sJobs2keyId].complTime, sJobs1[keyId].complTime)/2
                             print("[ERROR] " + fJobs.get(keyId).jobName +" is TOO SHORT on CPU ")  
                         print("[INFO] " + fJobs.get(keyId).jobName +"'s estimated compl. time on CPU is " + str(fJobs[keyId].estComplTimeCpu))
 
@@ -221,8 +221,8 @@ def estimateComplTime(fJobs, sJobs1, sJobs2, isCPU):
                         a = (sJobs1[keyId].complTime - sJobs2[keyId].complTime) / (sJobs1[keyId].numBatches - sJobs2[keyId].numBatches)
                         b = sJobs1[keyId].complTime - a*sJobs1[keyId].numBatches
                         fJobs[keyId].estComplTimeGpu = a*fJobs[keyId].numBatches2 + b
-                        if fJobs[keyId].estComplTimeGpu < 0 or sJobs1[keyId].complTime < sJobs1[keyId].complTime:
-                            fJobs[keyId].estComplTimeGpu = (sJobs1[keyId].complTime + sJobs1[keyId].complTime)/2
+                        if fJobs[keyId].estComplTimeGpu < 0 or sJobs2[keyId].complTime < sJobs1[keyId].complTime:
+                            fJobs[keyId].estComplTimeGpu = max(sJobs2[keyId].complTime, sJobs1[keyId].complTime)
                             print("[ERROR] " + fJobs.get(keyId).jobName +" is TOO SHORT on GPU ")
                         print("[INFO] " + fJobs.get(keyId).jobName +"'s estimated compl. time on GPU is " + str(fJobs[keyId].estComplTimeGpu))
 
@@ -352,9 +352,8 @@ def submitJobs(fJobs):
 
     if nSubmittedJobs >= len(fJobs):
         return True
-        
-    return False
 
+    return False
 
 this_path = os.path.dirname(os.path.realpath(__file__))
 job_folder = this_path + "/" + FOLDER 
@@ -373,6 +372,7 @@ def main():
     cpuShortJobs_2 = {}
     gpuShortJobs_1 = {}
     gpuShortJobs_2 = {}
+   
 
     # read jobs from files to jobs
     for i in range(len(userStrArray)):
@@ -485,6 +485,12 @@ def main():
     #     infiniteLoop = True
     while infiniteLoop:
         sleep(interval)
+
+        # TODO: submit jobs when jobs arrive
+
+        # 
+
+
         startedJobs, completedJobs, currTime = listJobStatus()
         updateJobInfo(startedJobs, completedJobs, cpuShortJobs_1, currTime)
         updateJobInfo(startedJobs, completedJobs, cpuShortJobs_2, currTime)
@@ -513,7 +519,7 @@ def main():
             writeJobsToCsv(gpuShortJobs_1,'gpuShortJobs_1') 
         iTime = iTime + interval     
 
-        if (isExit):
+        if (isExit and (not IS_MEASURE):
             print("[INFO] All jobs are submitted ==> Please wait for jobs to be finished")
             break 
 

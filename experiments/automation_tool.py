@@ -31,7 +31,7 @@ parser.add_argument('--test', help='True or False', required=False, default="Tru
 parser.add_argument('--measure', help='True or False', required=False, default="False")
 args = vars(parser.parse_args())
 IS_TEST    = bool(args['test']=="True")
-IS_MEASURE = bool(args['test']=="True")
+IS_MEASURE = bool(args['measure']=="True")
 
 IS_DEBUG = True
 

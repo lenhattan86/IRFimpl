@@ -208,7 +208,7 @@ def estimateComplTime(fJobs, sJobs1, sJobs2, isCPU):
                         b = sJobs1[keyId].complTime - a*sJobs1[keyId].numBatches                        
                         fJobs[keyId].estComplTimeCpu = a*fJobs[keyId].numBatches + b
                         if fJobs[keyId].estComplTimeCpu < 0 or sJobs2[keyId].complTime < sJobs1[keyId].complTime:
-                            fJobs[keyId].estComplTimeCpu = max(sJobs2keyId].complTime, sJobs1[keyId].complTime)/2
+                            fJobs[keyId].estComplTimeCpu = max(sJobs2[keyId].complTime, sJobs1[keyId].complTime)
                             print("[ERROR] " + fJobs.get(keyId).jobName +" is TOO SHORT on CPU ")  
                         print("[INFO] " + fJobs.get(keyId).jobName +"'s estimated compl. time on CPU is " + str(fJobs[keyId].estComplTimeCpu))
 
@@ -519,7 +519,7 @@ def main():
             writeJobsToCsv(gpuShortJobs_1,'gpuShortJobs_1') 
         iTime = iTime + interval     
 
-        if (isExit and (not IS_MEASURE):
+        if (isExit and (not IS_MEASURE)):
             print("[INFO] All jobs are submitted ==> Please wait for jobs to be finished")
             break 
 

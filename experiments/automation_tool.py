@@ -364,8 +364,8 @@ def submitFullJobs(fJobs):
 
 this_path = os.path.dirname(os.path.realpath(__file__))
 job_folder = this_path + "/" + FOLDER 
-shutil.rmtree(job_folder, ignore_errors=True) # delete previous folder.
-os.mkdir(job_folder)    
+#shutil.rmtree(job_folder, ignore_errors=True) # delete previous folder.
+#os.mkdir(job_folder)    
 
 ################################### MAIN Script ###############################################
 
@@ -521,6 +521,8 @@ def main():
             writeJobsToCsv(fullJobs,'est_results')
             writeJobsToCsv(cpuShortJobs_1,'cpuShortJobs_1')    
             writeJobsToCsv(gpuShortJobs_1,'gpuShortJobs_1') 
+            writeJobsToCsv(cpuShortJobs_2'cpuShortJobs_2')    
+            writeJobsToCsv(gpuShortJobs_2,'gpuShortJobs_2') 
         iTime = iTime + interval     
 
         if (isExit and (not IS_MEASURE)):

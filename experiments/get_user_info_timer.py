@@ -21,7 +21,7 @@ import threading
 IS_TEST=False
 if IS_TEST:
     print("=====get_user_info_timer TEST MODE====")
-    # sys.exit()
+    sys.exit()
 
 if not IS_TEST:
     parser = argparse.ArgumentParser()

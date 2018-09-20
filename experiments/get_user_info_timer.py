@@ -21,29 +21,32 @@ import threading
 IS_TEST=False
 if IS_TEST:
     print("=====get_user_info_timer TEST MODE====")
-    sys.exit()
+    # sys.exit()
 
 if not IS_TEST:
     parser = argparse.ArgumentParser()
     parser.add_argument('--interval', help='Polling interval  (secs)', required=True)
-    parser.add_argument('--file', help='csv file', required=True)
+    parser.add_argument('--folder', help='folder to save csv files', required=False, default=".")
     parser.add_argument('--stopTime', help='stop time (secs)', required=True)
     args = vars(parser.parse_args())
 
     interval = float(args['interval'])
-    file_name = args['file']
+    folder = args['folder']
     stop_time = int(args['stopTime'])
     writeStep=60
     resCommandStep=1
     resWriteStep=writeStep*resCommandStep
 else:
     interval=1
-    file_name="pods.csv"
     stop_time=4
     writeStep=2
     resCommandStep=2
     resWriteStep=writeStep*resCommandStep
+    folder="automation_tool"
 
+
+podFile = folder+"/""pods.csv"
+resFile = folder+"/"+'allocatedRes.csv'
 podRows=[]
 resRows=[]
 podLock = threading.Lock()
@@ -167,13 +170,13 @@ Events:         <none>
             writer.writerows(resRows) 
             resRows[:]=[]
 
-if os.path.exists(file_name): 
-    os.remove(file_name)
-resFile = 'allocatedRes.csv'
+if os.path.exists(podFile): 
+    os.remove(podFile)
+
 if os.path.exists(resFile): 
     os.remove(resFile)
 
-ofile  = open(file_name, "wb")
+ofile  = open(podFile, "wb")
 writer = csv.writer(ofile, dialect='excel')
 oResfile  = open(resFile, "wb")
 resWriter = csv.writer(oResfile, dialect='excel')

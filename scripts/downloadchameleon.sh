@@ -36,7 +36,7 @@ fi
 # echo "rm -rf ~/$folder.tar.gz;
 # tar -czf ~/$folder.tar.gz /dev/projects/IRFimpl/experiments/$folder"
 ROOT_FOLDER="/ssd/projects/IRFevaluation/chameleon/"
-CC_FOLDER="~/IRFimpl/experiments/testcases/"
+CC_FOLDER="~/IRFimpl/experiments/"
 ssh $user@$server -i chameleon.pem "rm -rf ~/$folder.tar.gz;
 cd $CC_FOLDER
 tar --exclude='*user*.log' --exclude='*.sh' -czf ~/$folder.tar.gz $folder"

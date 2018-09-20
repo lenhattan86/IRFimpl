@@ -129,7 +129,7 @@ user1       g-user1-1                          0/1      Completed   0          1
                     startedPods.append(mPodName)                
                     
     currTime = time()
-    return startedPods, completedPods, currTime
+    return pendingJobs, startedPods, completedPods, currTime
 
 def updateJobInfo(startedJobs, completedJobs, mJobs, currTime):    
     for sJob in startedJobs:
@@ -467,7 +467,7 @@ def main():
             submitJob(yamfile, job_folder, yamfile, DEFAULT_NS)        
             gpuShortJobs_2[jobIdKey] = newJob 
             
-            startedJobs, completedJobs, currTime = listJobStatus()
+            pendingJobs, startedJobs, completedJobs, currTime = listJobStatus()
             updateJobInfo(startedJobs, completedJobs, cpuShortJobs_1, currTime)
             updateJobInfo(startedJobs, completedJobs, gpuShortJobs_1, currTime)
             updateJobInfo(startedJobs, completedJobs, gpuShortJobs_2, currTime)
@@ -497,7 +497,7 @@ def main():
 
         # TODO: submit jobs when jobs arrive
 
-        startedJobs, completedJobs, currTime = listJobStatus()
+        pendingJobs, startedJobs, completedJobs, currTime = listJobStatus()
         updateJobInfo(startedJobs, completedJobs, cpuShortJobs_1, currTime)
         updateJobInfo(startedJobs, completedJobs, cpuShortJobs_2, currTime)
         updateJobInfo(startedJobs, completedJobs, gpuShortJobs_1, currTime)

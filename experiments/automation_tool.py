@@ -44,8 +44,8 @@ if IS_TEST:
 IS_MY_SCHEDULER = True
 GPU_PREFIX = "g-"
 PROFILING_PREFIX = "profiling"
-numBatch1Percent_CPU = 1.0/100
-numBatch2Percent_CPU = 2.0/100
+numBatch1Percent_CPU = 0.5/100
+numBatch2Percent_CPU = 1.0/100
 numBatch1Percent_GPU = 1.0/100
 numBatch2Percent_GPU = 2.0/100
 # numBatch2 = 200

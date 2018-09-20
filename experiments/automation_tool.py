@@ -80,6 +80,7 @@ def log(str):
 def listJobStatus():
     startedPods   = []
     completedPods = []
+    pendingJobs = []
     # p = subprocess.Popen(["kubectl get pods --all-namespaces --field-selector=status.phase!=Pending"], 
     p = subprocess.Popen(["kubectl get pods --all-namespaces"], 
         stdout=subprocess.PIPE, shell=True)                   
@@ -120,12 +121,13 @@ user1       g-user1-1                          0/1      Completed   0          1
             podStatus=strArr[3]
             if user != "kube-system":
                 if podStatus == "Pending":
-                    continue
-                if podStatus == "Completed":
+                    pendingJobs.append(mPodName)                    
+                elif podStatus == "Completed":
                     completedPods.append(mPodName)
-                if podStatus == "ContainerCreating" or podStatus == "Running":
+                elif podStatus == "ContainerCreating" or podStatus == "Running":
                 # if podStatus == "Running":
-                    startedPods.append(mPodName)
+                    startedPods.append(mPodName)                
+                    
     currTime = time()
     return startedPods, completedPods, currTime
 
@@ -324,9 +326,8 @@ def submitFullJobs(fJobs):
                 cpuCmd = job.cpuProfile.jobCmd
                 gpuCmd = job.gpuProfile.jobCmd
 
-                # TODO: using the estimated demand
-                cpu_usage = Resource(cpu*MILLI, mem *GI, 0)
-                gpu_usage = Resource(1*MILLI, gpuMem *GI, gpu)
+                cpu_usage = Resource(job.cpuProfile.demand.MilliCPU,job.cpuProfile.demand.Memory, job.cpuProfile.demand.NvidiaGPU)
+                gpu_usage = Resource(job.gpuProfile.demand.MilliCPU, job.gpuProfile.demand.Memory, job.gpuProfile.demand.NvidiaGPU)
                 activeJob = ActiveJob(cpu_usage, gpu_usage, 0, 0, jobKey, cpuCmd, gpuCmd, jobInfo.estComplTimeCpu, jobInfo.estComplTimeGpu)
                 prefix = jobInfo.userName
                 yamfile = jobInfo.jobName
@@ -340,16 +341,16 @@ def submitFullJobs(fJobs):
             # deletedKeys.append(jobKey)
 
         if IS_MEASURE:
-            if fJobs[jobKey].isEstimated:
-        # if fJobs[jobKey].estComplTimeCpu >=0 and fJobs[jobKey].estComplTimeGpu >=0::
+            # if fJobs[jobKey].isEstimated:
+            if fJobs[jobKey].estComplTimeCpu >=0 and fJobs[jobKey].estComplTimeGpu >=0:
                 jobInfo = fJobs[jobKey]
                 if not jobInfo.isSubmittedGpu:
                     job = jobInfo.job
                     cpuCmd = job.cpuProfile.jobCmd
                     gpuCmd = job.gpuProfile.jobCmd
 
-                    cpu_usage = Resource(cpu*MILLI, mem *GI, 0)
-                    gpu_usage = Resource(1*MILLI, gpuMem *GI, gpu)
+                    cpu_usage = Resource(job.cpuProfile.demand.MilliCPU,job.cpuProfile.demand.Memory, job.cpuProfile.demand.NvidiaGPU)
+                    gpu_usage = Resource(job.gpuProfile.demand.MilliCPU, job.gpuProfile.demand.Memory, job.gpuProfile.demand.NvidiaGPU)
                     activeJob = ActiveJob(gpu_usage,cpu_usage,  0, 0, jobKey, gpuCmd, cpuCmd, 0, 0)
                     prefix = GPU_PREFIX + jobInfo.userName
                     yamfile = GPU_PREFIX + jobInfo.jobName
@@ -478,8 +479,9 @@ def main():
             # submitFullJobs(fullJobs)
 
             if IS_MEASURE:
-                updateFullJobInfo(startedJobs, completedJobs, fullJobs, currTime, False)
                 updateFullJobInfo(startedJobs, completedJobs, fullJobs, currTime, True)
+                # updateFullJobInfo(startedJobs, completedJobs, fullJobs, currTime, False)
+                
 
     # submitFullJobs(fullJobs)        
     # step 4: measure the job completion time.
@@ -510,8 +512,9 @@ def main():
         # log("completedJobs: " + str(completedJobs))
         # log("fullJobs: " + fullJobs["1"].jobName)
         if IS_MEASURE:
-            updateFullJobInfo(startedJobs, completedJobs, fullJobs, currTime, False)
             updateFullJobInfo(startedJobs, completedJobs, fullJobs, currTime, True)
+            # updateFullJobInfo(startedJobs, completedJobs, fullJobs, currTime, False)
+            
         # step 6: submit profiled jobs to the system
         # log ("size of full jobs: " + str(len(fullJobs)))
         isExit = submitFullJobs(fullJobs)        
@@ -521,7 +524,7 @@ def main():
             writeJobsToCsv(fullJobs,'est_results')
             writeJobsToCsv(cpuShortJobs_1,'cpuShortJobs_1')    
             writeJobsToCsv(gpuShortJobs_1,'gpuShortJobs_1') 
-            writeJobsToCsv(cpuShortJobs_2'cpuShortJobs_2')    
+            writeJobsToCsv(cpuShortJobs_2,'cpuShortJobs_2')    
             writeJobsToCsv(gpuShortJobs_2,'gpuShortJobs_2') 
         iTime = iTime + interval     
 

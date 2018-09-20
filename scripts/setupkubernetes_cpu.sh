@@ -1,8 +1,7 @@
 #!/bin/bash
 #usage: ./setupkubernetes.sh
 
-kubeVer="1.9.6-00"
-#kubeVer="1.11.1-00"
+kubeVer="1.11.3-00"
 sudo apt-get purge -y kubelet kubeadm kubectl kubernetes-cni
 
 # echo "######################### DOCKER ##########################################"
@@ -54,8 +53,10 @@ cat <<EOF >/etc/apt/sources.list.d/kubernetes.list
 deb http://apt.kubernetes.io/ kubernetes-xenial main
 EOF
 apt-get update'
-sudo apt-get install -y kubelet kubeadm kubectl kubernetes-cni
-#sudo apt-get install -qy kubelet=$kubeVer kubeadm=$kubeVer kubectl=$kubeVer 
+# sudo apt-get install -y kubelet kubeadm kubectl 
+sudo apt-get install -qy kubelet=$kubeVer kubeadm=$kubeVer kubectl=$kubeVer 
+sudo apt-get install -y kubernetes-cni
+
 # sudo apt-get install -qy kubernetes-cni=0.5.0
 
 # disable swap
@@ -68,9 +69,9 @@ echo "######################### Clean-up #######################################
 sudo rm -rf *.tgz *.deb
 
 echo "######################### DOCKER-PULL ##########################################"
-sudo docker rmi lenhattan86/bench
+# sudo docker rmi lenhattan86/bench
 sudo docker rmi lenhattan86/ira:cpu
 
-sudo docker pull lenhattan86/bench
+# sudo docker pull lenhattan86/bench
 sudo docker pull lenhattan86/ira:cpu
 

@@ -314,12 +314,19 @@ def createYamlFile(activeJob, prefix, yamfile, isGPU, isScheduled):
     f_yaml.close()    
 
 ## only submit jobs if they are estimated.
+def isAllJobsReady(fJobs):
+    for jobKey in fJobs:
+        if fJobs[jobKey].estComplTimeCpu <0 or fJobs[jobKey].estComplTimeGpu <0:
+            return False
+
+    return True
 def submitFullJobs(fJobs):
     # deletedKeys = []
     nSubmittedJobs = 0
     for jobKey in fJobs:
         # if fJobs[jobKey].isEstimated:
-        if fJobs[jobKey].estComplTimeCpu >=0 and fJobs[jobKey].estComplTimeGpu >=0:
+        # if fJobs[jobKey].estComplTimeCpu >=0 and fJobs[jobKey].estComplTimeGpu >=0:
+        if isAllJobsReady(fJobs):
             jobInfo = fJobs[jobKey]
             if not jobInfo.isSubmitted:                
                 job = jobInfo.job            
@@ -342,7 +349,8 @@ def submitFullJobs(fJobs):
 
         if IS_MEASURE:
             # if fJobs[jobKey].isEstimated:
-            if fJobs[jobKey].estComplTimeCpu >=0 and fJobs[jobKey].estComplTimeGpu >=0:
+            # if fJobs[jobKey].estComplTimeCpu >=0 and fJobs[jobKey].estComplTimeGpu >=0:
+            if isAllJobsReady(fJobs):    
                 jobInfo = fJobs[jobKey]
                 if not jobInfo.isSubmittedGpu:
                     job = jobInfo.job

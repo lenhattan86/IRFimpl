@@ -6,17 +6,17 @@
 #
 19000 0 12 125
 1000 1 2 87
-python tf_cnn_benchmarks.py --device=cpu --data_format=NHWC --num_warmup_batches=0  --model=lenet --batch_size=32 --num_intra_threads=19 --num_batches=40000
-python tf_cnn_benchmarks.py --device=gpu --num_warmup_batches=0  --model=lenet --batch_size=32 --num_batches=40000
+python tf_cnn_benchmarks.py --device=cpu --data_format=NHWC --num_warmup_batches=0  --model=lenet --batch_size=32 --num_intra_threads=19 --num_batches=100000
+python tf_cnn_benchmarks.py --device=gpu --num_warmup_batches=0  --model=lenet --batch_size=32 --num_batches=100000
 19000 0 12 125
 1000 1 2 87
-python tf_cnn_benchmarks.py --device=cpu --data_format=NHWC --num_warmup_batches=0  --model=lenet --batch_size=32 --num_intra_threads=19 --num_batches=40000
-python tf_cnn_benchmarks.py --device=gpu --num_warmup_batches=0  --model=lenet --batch_size=32 --num_batches=40000
+python tf_cnn_benchmarks.py --device=cpu --data_format=NHWC --num_warmup_batches=0  --model=lenet --batch_size=32 --num_intra_threads=19 --num_batches=100000
+python tf_cnn_benchmarks.py --device=gpu --num_warmup_batches=0  --model=lenet --batch_size=32 --num_batches=200000
 19000 0 12 125
 1000 1 2 87
-python tf_cnn_benchmarks.py --device=cpu --data_format=NHWC --num_warmup_batches=0  --model=lenet --batch_size=32 --num_intra_threads=19 --num_batches=40000
-python tf_cnn_benchmarks.py --device=gpu --num_warmup_batches=0  --model=lenet --batch_size=32 --num_batches=40000
+python tf_cnn_benchmarks.py --device=cpu --data_format=NHWC --num_warmup_batches=0  --model=lenet --batch_size=32 --num_intra_threads=19 --num_batches=100000
+python tf_cnn_benchmarks.py --device=gpu --num_warmup_batches=0  --model=lenet --batch_size=32 --num_batches=100000
 19000 0 12 125
 1000 1 2 87
-python tf_cnn_benchmarks.py --device=cpu --data_format=NHWC --num_warmup_batches=0  --model=lenet --batch_size=32 --num_intra_threads=19 --num_batches=40000
-python tf_cnn_benchmarks.py --device=gpu --num_warmup_batches=0  --model=lenet --batch_size=32 --num_batches=40000
+python tf_cnn_benchmarks.py --device=cpu --data_format=NHWC --num_warmup_batches=0  --model=lenet --batch_size=32 --num_intra_threads=19 --num_batches=100000
+python tf_cnn_benchmarks.py --device=gpu --num_warmup_batches=0  --model=lenet --batch_size=32 --num_batches=100000

@@ -12,27 +12,30 @@ from kubernetes import *
 benchmarks = "tf_cnn_benchmarks.py"
 
 # https://www.tensorflow.org/performance/benchmarks
-NUM_JOBS = 12
+NUM_JOBS = 2
 GPU_CPU = 1
 # GPU_CPU = 16
 
-JOB_NAMEs   = ['vgg16', 'googlenet', 'alexnet',  'inception3']
-BatchSizes  = [32     ,  16        ,        64,         16]
+JOB_NAMEs    =  ['lenet' , 'googlenet', 'alexnet' ,  'inception3', 'resnet50', 'vgg6']
+BatchSizes   =  [32      , 32         ,         32,            32,         32,    32]
+BatchNUms     = [100000  , 4000       , 10000      ,          1000,       1000,  1000]
+# JOB_NAMEs   =  ['vgg11', 'vgg16', 'vgg19', 'lenet', 'googlenet', 'overfeat', 'alexnet', 'trivial', 'inception3', 'inception4', 'resnet50', 'resnet101', 'resnet152']
+# BatchSizes  =  [32,      32,      32,      32,      32,          32,         512,       32,        32,           64,           64,         64,          64, ]
+# BatchNUms    = [1000   , 1000   , 1000   , 100000,       1000]
 
 # 64 esnet50, vgg16, inception3 out of memory
 # 512 googlenet out of memory
 # 2048 Alexnet out of memory
 # BatchSizes  = [32768] # all are out of memory.
 
-CPU = 16
-NUM_THREADs = 16
+CPU = 19
+NUM_THREADs = 19
 MEM = 12
-BatchNUm = 200
+
 CPU_COMMAND = "python tf_cnn_benchmarks.py --device=cpu --data_format=NHWC --num_warmup_batches=0 "
 GPU_COMMAND = "python tf_cnn_benchmarks.py --device=gpu --num_warmup_batches=0 "
 #--model=alexnet --batch_size=16 --num_batches=200 --num_gpus=1
 MILLI=1000
-
 
 ##########################
 
@@ -80,13 +83,14 @@ def shellJobs(job_folder, job_number, cmd, fileName):
     for iName in range(len(JOB_NAMEs)):
         jobName = JOB_NAMEs[iName]
         batchSize = BatchSizes[iName]
+        BatchNUm = BatchNUms[iName]
         for iJob in range(NUM_JOBS):
             commonName = str(CPU)+'-'+ str(MEM)+'-'+str(batchSize)+'-'+str(NUM_THREADs)+'-'+str(iJob)
 
             fNameCpu = jobName+'-cpu-'+commonName
             cpuJobId    = jobName+'-cpu-'+commonName            
             fullCommand = CPU_COMMAND + " --model=" + jobName + " --batch_size="+str(batchSize)+" --num_intra_threads=" + str(NUM_THREADs) +" --num_batches="+str(BatchNUm)
-            activeJob = ActiveJob(cpu_usage,gpu_usage, 0, 0, cpuJobId, fullCommand,"")
+            activeJob = ActiveJob(cpu_usage, gpu_usage, 0, 0, cpuJobId, fullCommand,fullCommand, 0, 0)
             f_yaml = open(job_folder + '/' + fNameCpu+ ".yaml",'w')   
             f_yaml.write(strPodYaml('job', activeJob, SCHEDULER, False))
             f_yaml.close()
@@ -94,7 +98,7 @@ def shellJobs(job_folder, job_number, cmd, fileName):
             fNameGpu = jobName+'-gpu-'+ commonName
             gpuJobId    = jobName+'-gpu-'+ commonName           
             fullCommand = GPU_COMMAND + " --model=" + jobName + " --batch_size="+str(batchSize)+" --num_batches="+str(BatchNUm)
-            activeJob = ActiveJob(gpu_usage, cpu_usage, 0, 0, gpuJobId, fullCommand,"")
+            activeJob = ActiveJob(gpu_usage, cpu_usage, 0, 0, gpuJobId, fullCommand,fullCommand, 0, 0)
             f_yaml = open(job_folder + '/' + fNameGpu+ ".yaml",'w')   
             f_yaml.write(strPodYaml('job', activeJob, SCHEDULER, True))
             f_yaml.close() 

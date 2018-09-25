@@ -96,7 +96,7 @@ def shellJobs(job_folder, job_number, job_resource, cmd, fileName):
     ## create yaml files
     for i in range(job_number):
         usage = Resource(job_resource.MilliCPU, job_resource.Memory, job_resource.NvidiaGPU)
-        activeJob = ActiveJob(usage, 0, 0, fileName+'-'+str(i),cmd)
+        activeJob = ActiveJob(usage, usage, 0, 0, fileName+'-'+str(i), cmd, cmd, 0, 0)
         f_yaml = open(job_folder + '/' + fileName + '-'+str(i) + ".yaml",'w')
         if job_resource.NvidiaGPU > 0:
             isGPU = True

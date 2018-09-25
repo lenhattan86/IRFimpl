@@ -8,12 +8,30 @@ Project: https://github.com/aymericdamien/TensorFlow-Examples/
 from __future__ import print_function
 
 import tensorflow as tf
+import argparse
+
 import numpy
 rng = numpy.random
 
+#"python tf_cnn_benchmarks.py --device=cpu --data_format=NHWC --num_warmup_batches=0  --model=lenet --batch_size=32 --num_intra_threads=19 --num_batches=3750"
+
+parser = argparse.ArgumentParser()
+parser.add_argument('--batch_size', help='batch_size', required=False, default=32)
+parser.add_argument('--num_intra_threads', help='num_intra_threads', required=False, default=19)
+parser.add_argument('--num_batches', help='num_batches', required=False, default=5000000)
+parser.add_argument('--device', help='device', required=False, default='gpu')
+
+args = vars(parser.parse_args())
+
+batch_size = int(args['batch_size'])
+num_intra_threads =int(args['batch_size'])
+num_batches =int(args['num_batches'])
+num_intra_threads =int(args['batch_size'])
+device =args['device']
+
 # Parameters
 learning_rate = 0.01
-training_epochs = 5000000
+training_epochs = num_batches
 display_step = 50
 
 # Training Data
@@ -26,7 +44,7 @@ train_X=rng.rand(1,n_samples)
 train_Y=rng.rand(1,n_samples)
 
 
-with tf.device('/gpu:0'):
+with tf.device('/'+device+':0'):
     # tf Graph Input
     X = tf.placeholder("float")
     Y = tf.placeholder("float")

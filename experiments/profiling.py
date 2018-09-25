@@ -16,7 +16,7 @@ NUM_JOBS = 2
 GPU_CPU = 1
 # GPU_CPU = 16
 
-JOB_NAMEs    =  ['lenet' , 'googlenet', 'alexnet' ,  'inception3', 'resnet50', 'vgg6']
+JOB_NAMEs    =  ['lenet' , 'googlenet', 'alexnet' ,  'inception3', 'resnet50', 'vgg16']
 BatchSizes   =  [32      , 32         ,         32,            32,         32,    32]
 BatchNUms     = [100000  , 4000       , 10000      ,          1000,       1000,  1000]
 # JOB_NAMEs   =  ['vgg11', 'vgg16', 'vgg19', 'lenet', 'googlenet', 'overfeat', 'alexnet', 'trivial', 'inception3', 'inception4', 'resnet50', 'resnet101', 'resnet152']
@@ -52,16 +52,11 @@ def shellProfiling(job_folder, job_number, gpuCmd, exp_name, stopTime):
 
     strShell = strShell + "kubectl delete pods --all --namespace=default  \n"
     strShell = strShell + "echo wait... \n"
-    strShell = strShell + "sleep 60 \n"
-    
-    strShell = strShell + "sudo docker pull lenhattan86/gpu \n"
-    strShell = strShell + "sudo docker pull lenhattan86/cpu \n"
-
     strShell = strShell + "sleep 15 \n"
     strShell = strShell + "./" +exp_name+".sh & \n"
     
     strShell = strShell + "python ../get_user_info_timer.py " \
-        " --interval="+str(1) + " --stopTime="+str(stopTime)+" --file="+exp_name+".csv \n"  
+        " --interval="+str(1) + " --stopTime="+str(stopTime)+" \n"  
 
     f.write(strShell)        
     f.close()

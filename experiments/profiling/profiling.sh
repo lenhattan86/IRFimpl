@@ -18,7 +18,7 @@ kubectl create -f resnet50-cpu-19-12-32-19-0.yaml 2> resnet50-cpu-19-12-32-19-0.
 kubectl create -f resnet50-gpu-19-12-32-19-0.yaml 2> resnet50-gpu-19-12-32-19-0.log & 
 kubectl create -f resnet50-cpu-19-12-32-19-1.yaml 2> resnet50-cpu-19-12-32-19-1.log & 
 kubectl create -f resnet50-gpu-19-12-32-19-1.yaml 2> resnet50-gpu-19-12-32-19-1.log & 
-kubectl create -f vgg6-cpu-19-12-32-19-0.yaml 2> vgg6-cpu-19-12-32-19-0.log & 
-kubectl create -f vgg6-gpu-19-12-32-19-0.yaml 2> vgg6-gpu-19-12-32-19-0.log & 
-kubectl create -f vgg6-cpu-19-12-32-19-1.yaml 2> vgg6-cpu-19-12-32-19-1.log & 
-kubectl create -f vgg6-gpu-19-12-32-19-1.yaml 2> vgg6-gpu-19-12-32-19-1.log & 
+kubectl create -f vgg16-cpu-19-12-32-19-0.yaml 2> vgg16-cpu-19-12-32-19-0.log & 
+kubectl create -f vgg16-gpu-19-12-32-19-0.yaml 2> vgg16-gpu-19-12-32-19-0.log & 
+kubectl create -f vgg16-cpu-19-12-32-19-1.yaml 2> vgg16-cpu-19-12-32-19-1.log & 
+kubectl create -f vgg16-gpu-19-12-32-19-1.yaml 2> vgg16-gpu-19-12-32-19-1.log & 

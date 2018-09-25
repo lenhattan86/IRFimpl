@@ -42,7 +42,7 @@ else:
     writeStep=2
     resCommandStep=2
     resWriteStep=writeStep*resCommandStep
-    folder="automation_tool"
+    folder="."
 
 
 podFile = folder+"/""pods.csv"

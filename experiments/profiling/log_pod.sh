@@ -18,7 +18,7 @@ kubectl logs job-resnet50-cpu-19-12-32-19-0> resnet50-cpu-19-12-32-19-0.log &
 kubectl logs job-resnet50-gpu-19-12-32-19-0> resnet50-gpu-19-12-32-19-0.log & 
 kubectl logs job-resnet50-cpu-19-12-32-19-1> resnet50-cpu-19-12-32-19-1.log & 
 kubectl logs job-resnet50-gpu-19-12-32-19-1> resnet50-gpu-19-12-32-19-1.log & 
-kubectl logs job-vgg6-cpu-19-12-32-19-0> vgg6-cpu-19-12-32-19-0.log & 
-kubectl logs job-vgg6-gpu-19-12-32-19-0> vgg6-gpu-19-12-32-19-0.log & 
-kubectl logs job-vgg6-cpu-19-12-32-19-1> vgg6-cpu-19-12-32-19-1.log & 
-kubectl logs job-vgg6-gpu-19-12-32-19-1> vgg6-gpu-19-12-32-19-1.log & 
+kubectl logs job-vgg16-cpu-19-12-32-19-0> vgg16-cpu-19-12-32-19-0.log & 
+kubectl logs job-vgg16-gpu-19-12-32-19-0> vgg16-gpu-19-12-32-19-0.log & 
+kubectl logs job-vgg16-cpu-19-12-32-19-1> vgg16-cpu-19-12-32-19-1.log & 
+kubectl logs job-vgg16-gpu-19-12-32-19-1> vgg16-gpu-19-12-32-19-1.log & 

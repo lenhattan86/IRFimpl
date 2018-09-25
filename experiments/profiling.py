@@ -17,7 +17,9 @@ GPU_CPU = 1
 # GPU_CPU = 16
 
 JOB_NAMEs    =  ['lenet' , 'googlenet', 'alexnet' ,  'inception3', 'resnet50', 'vgg16']
-BatchSizes   =  [32      , 32         ,         32,            32,         32,    32]
+# BatchSizes   =  [32      , 32         ,         32,            32,         32,    32]
+# BatchSizes   =  [16      , 16         ,         16,            16,         16,     16]
+BatchSizes   =  [8      , 8         ,         8,            8,         8,     8]
 BatchNUms     = [100000  , 4000       , 10000      ,          1000,       1000,  1000]
 # JOB_NAMEs   =  ['vgg11', 'vgg16', 'vgg19', 'lenet', 'googlenet', 'overfeat', 'alexnet', 'trivial', 'inception3', 'inception4', 'resnet50', 'resnet101', 'resnet152']
 # BatchSizes  =  [32,      32,      32,      32,      32,          32,         512,       32,        32,           64,           64,         64,          64, ]

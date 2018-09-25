@@ -1,16 +1,16 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: job-alexnet-gpu-19-12-32-19-1
+  name: job-lenet-gpu-19-12-8-19-1
 spec:
   containers:
-  - name: job-alexnet-gpu-19-12-32-19-1
+  - name: job-lenet-gpu-19-12-8-19-1
     image: lenhattan86/ira:gpu
     command:
     - "/bin/bash"
     - "-c"
-    - "python tf_cnn_benchmarks.py --device=gpu --num_warmup_batches=0  --model=alexnet --batch_size=32 --num_batches=10000"
-    - "python tf_cnn_benchmarks.py --device=gpu --num_warmup_batches=0  --model=alexnet --batch_size=32 --num_batches=10000"
+    - "python tf_cnn_benchmarks.py --device=gpu --num_warmup_batches=0  --model=lenet --batch_size=8 --num_batches=100000"
+    - "python tf_cnn_benchmarks.py --device=gpu --num_warmup_batches=0  --model=lenet --batch_size=8 --num_batches=100000"
     - "1000,1,12,0"
     - "19000,0,12,0"
     resources:

@@ -1,16 +1,16 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: job-alexnet-cpu-19-12-32-19-1
+  name: job-inception3-cpu-19-12-8-19-1
 spec:
   containers:
-  - name: job-alexnet-cpu-19-12-32-19-1
+  - name: job-inception3-cpu-19-12-8-19-1
     image: lenhattan86/ira:cpu
     command:
     - "/bin/bash"
     - "-c"
-    - "python tf_cnn_benchmarks.py --device=cpu --data_format=NHWC --num_warmup_batches=0  --model=alexnet --batch_size=32 --num_intra_threads=19 --num_batches=10000"
-    - "python tf_cnn_benchmarks.py --device=cpu --data_format=NHWC --num_warmup_batches=0  --model=alexnet --batch_size=32 --num_intra_threads=19 --num_batches=10000"
+    - "python tf_cnn_benchmarks.py --device=cpu --data_format=NHWC --num_warmup_batches=0  --model=inception3 --batch_size=8 --num_intra_threads=19 --num_batches=1000"
+    - "python tf_cnn_benchmarks.py --device=cpu --data_format=NHWC --num_warmup_batches=0  --model=inception3 --batch_size=8 --num_intra_threads=19 --num_batches=1000"
     - "19000,0,12,0"
     - "1000,1,12,0"
     resources:

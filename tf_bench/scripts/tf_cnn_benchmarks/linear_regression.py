@@ -72,7 +72,6 @@ with tf.device('/'+device+':0'):
 #with tf.Session(config=tf.ConfigProto(gpu_options=gpu_options)) as sess:
 with tf.Session() as sess:
     sess.run(init)
-
     # Fit all training data
     for epoch in range(training_epochs):
         for (x, y) in zip(train_X, train_Y):

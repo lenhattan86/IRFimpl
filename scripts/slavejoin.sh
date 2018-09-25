@@ -26,13 +26,13 @@ fi
 
 # sudo iptables -F; sudo swapoff -a ;sudo free -m
 
-sudo docker rmi lenhattan86/bench
-sudo docker rmi lenhattan86/ira:cpu
-sudo docker rmi lenhattan86/ira:gpu
+# sudo docker rmi lenhattan86/bench
+# sudo docker rmi lenhattan86/ira:cpu
+# sudo docker rmi lenhattan86/ira:gpu
 
-sudo docker pull lenhattan86/bench
-sudo docker pull lenhattan86/ira:cpu
-sudo docker pull lenhattan86/ira:gpu
+# sudo docker pull lenhattan86/bench
+# sudo docker pull lenhattan86/ira:cpu
+# sudo docker pull lenhattan86/ira:gpu
 
 echo "DONE downloading images"
 

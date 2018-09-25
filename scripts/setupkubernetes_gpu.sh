@@ -110,7 +110,7 @@ sudo add-apt-repository \
 
 sudo apt-get update
 
-sudo apt-get install docker-ce   
+sudo apt-get install -y docker-ce
 
 echo "###################### install nvidia docker 2.0  ###############################"
 # If you have nvidia-docker 1.0 installed: we need to remove it and all existing GPU containers

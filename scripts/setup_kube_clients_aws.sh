@@ -4,17 +4,17 @@
 # using the following command to create token on server
 # sudo kubeadm token create --print-join-command
 
-#kubeadm join 128.104.222.154:6443 --token zl1pjj.xrrkncz0leqqwvit --discovery-token-ca-cert-hash sha256:8d7329f797b4045a7eda11fcf6087317b95328f449854df6d641940d8793f353
+#kubeadm join 128.104.222.154:6443 --token f5wkdp.so57sxcurzacf9fs --discovery-token-ca-cert-hash sha256:87e8674de5aa719b2b03c0fe545e36f38bd253ad0ac628f0678f24156493459f
 if [ -z "$1" ]
 then
-	token="zl1pjj.xrrkncz0leqqwvit"
+	token="x7u62c.ketr1rlg95zhjlnk"
 else
 	token="$1"
 fi
 
 if [ -z "$2" ]
 then
-	sha256="sha256:8d7329f797b4045a7eda11fcf6087317b95328f449854df6d641940d8793f353"
+	sha256="sha256:87e8674de5aa719b2b03c0fe545e36f38bd253ad0ac628f0678f24156493459f"
 else
 	sha256="$2"
 fi
@@ -28,7 +28,7 @@ fi
 
 
 
-slavesIP="18.220.84.115
+slavesIP="18.220.20.132
 "
 
 username="ubuntu"
@@ -39,10 +39,10 @@ for server in $slavesIP; do
 		$SSH_CMD $username@$server " echo hello $server"
 done	
 
-for server in $slavesIP; do
-  	$SSH_CMD $username@$server 'bash -s' < ./setupkubernetes_gpu.sh &
-done	
-wait
+# for server in $slavesIP; do
+#   	$SSH_CMD $username@$server 'bash -s' < ./setupkubernetes_gpu.sh &
+# done	
+# wait
 
 # sudo sh -c "echo '127.0.0.1 $master' >> /etc/hosts"
 for server in $slavesIP; do

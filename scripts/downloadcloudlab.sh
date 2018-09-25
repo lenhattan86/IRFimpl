@@ -27,7 +27,7 @@ fi
 
 if [ -z "$5" ]
 then
-	server="ctl"
+	server="128.104.222.154"
 else
 	server="$5"
 fi

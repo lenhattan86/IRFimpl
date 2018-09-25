@@ -30,19 +30,17 @@ chmod 600 $keyfile
 username="cc"
 SSH_CMD="ssh -i $keyfile "
 
-
-
 echo "please enter yes to connect to slaves"
 for server in $slavesIP; do
 		$SSH_CMD $username@$server "echo hello $server" -y
-done	
+done
 echo "Please stop here if one of the node is not connected...."
 sleep 15
 # setup kubernetes
 ./setupkubernetes_gpu.sh &
 for server in $slavesIP; do
 	$SSH_CMD $username@$server 'bash -s' < ./setupkubernetes_gpu.sh &
-done	
+done
 wait
 
 # configure kubernetes master

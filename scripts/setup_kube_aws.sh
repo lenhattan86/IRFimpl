@@ -15,6 +15,8 @@
 # remember the git user/pass
 # cd..; git config credential.helper store; cd scripts
 
+
+
 echo "This file need to be executed on the master node instead of your local machine for chameleon"
 echo "You also need to provide the chameleon.pem file"
 # master is GPU or CPU?

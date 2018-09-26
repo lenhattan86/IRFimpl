@@ -65,3 +65,8 @@ sudo kubeadm join --token $token $masterIPaddress:6443 --discovery-token-ca-cert
 #KUBELET_OPTS=--node-labels='alpha.kubernetes.io/nvidia-gpu-name=Tesla M40'
 # sudo systemctl daemon-reload
 # sudo systemctl restart kubelet
+
+# sudo docker rmi lenhattan86/ira:cpu
+# sudo docker rmi lenhattan86/ira:gpu
+# sudo docker pull lenhattan86/ira:cpu
+# sudo docker pull lenhattan86/ira:gpu

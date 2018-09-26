@@ -55,6 +55,8 @@ SCHEDULER = "kube-scheduler"
 MY_SCHEDULER = "my-scheduler"
 DEFAULT_NS = "default"
 
+workload = "traces/small"
+
 MAX_CPU = 19
 MAX_GPU = 1
 MAX_MEM = 12
@@ -64,7 +66,7 @@ gpuCpu=1
 gpu=1
 gpuMem=2
 
-workload = "traces/small"
+
 
 if IS_TEST:
     userStrArray = ["user1"]

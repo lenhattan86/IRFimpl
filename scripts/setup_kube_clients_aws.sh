@@ -3,18 +3,18 @@
 
 # using the following command to create token on server
 # sudo kubeadm token create --print-join-command
- 
-#kubeadm join 128.110.154.191:6443 --token b5jebd.21z2c0sc3enu904b --discovery-token-ca-cert-hash sha256:80142cbe589638f31c31393f3e897436440e584504c60021026326162911c644
+ #kubeadm join 128.110.154.154:6443 --token erulu6.5p6rpigef2g3oxou --discovery-token-ca-cert-hash sha256:46638d849c6c93df09b02b199a78327e15b8720de49fa73a7524918ce689de4e
+
 if [ -z "$1" ]
 then
-	token="b5jebd.21z2c0sc3enu904b"
+	token="erulu6.5p6rpigef2g3oxou"
 else
 	token="$1"
 fi
 
 if [ -z "$2" ]
 then
-	sha256="sha256:80142cbe589638f31c31393f3e897436440e584504c60021026326162911c644"
+	sha256="sha256:46638d849c6c93df09b02b199a78327e15b8720de49fa73a7524918ce689de4e"
 else
 	sha256="$2"
 fi
@@ -22,7 +22,8 @@ fi
 if [ -z "$3" ]
 then
 	# masterIP="128.104.222.154" # 4 cloudlab nodes
-	masterIP="128.110.154.191" # 2 cloudlab nodes
+	# masterIP="128.110.154.191" # single1
+	masterIP="128.110.154.154" # single2
 else
 	masterIP="$3"
 fi
@@ -33,12 +34,14 @@ fi
 # 18.191.216.238
 # "
 
-# slavesIP="18.223.164.117
-# 18.191.185.180
-# "
-slavesIP="52.14.191.65
-18.221.107.190
+slavesIP="18.223.164.117
+18.191.185.180
 "
+# slavesIP="52.14.191.65
+# 18.221.107.190
+# "
+
+
 
 username="ubuntu"
 SSH_CMD="ssh -i tanlesbuaws.pem "
@@ -48,10 +51,10 @@ for server in $slavesIP; do
 		$SSH_CMD $username@$server " echo hello $server"
 done	
 
-for server in $slavesIP; do
-  	$SSH_CMD $username@$server 'bash -s' < ./setupkubernetes_gpu.sh &
-done	
-wait
+# for server in $slavesIP; do
+#   	$SSH_CMD $username@$server 'bash -s' < ./setupkubernetes_gpu.sh &
+# done	
+# wait
 
 # sudo sh -c "echo '127.0.0.1 $master' >> /etc/hosts"
 for server in $slavesIP; do

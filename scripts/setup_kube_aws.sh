@@ -17,7 +17,7 @@
 
 echo "This file need to be executed on the master node instead of your local machine for chameleon"
 echo "You also need to provide the chameleon.pem file"
-# master is GPU
+# master is GPU or CPU?
 masterIP="18.191.65.248" 
 slavesIPCpu="18.221.21.243
 " 

@@ -65,7 +65,7 @@ MAX_CPU = 20
 MAX_GPU = 1
 MAX_MEM = 16
 
-workload = "traces/simple"
+workload = "traces/small"
 
 if IS_TEST:
     userStrArray = ["user1"]

@@ -18,9 +18,13 @@
 echo "This file need to be executed on the master node instead of your local machine for chameleon"
 echo "You also need to provide the chameleon.pem file"
 
-masterIP="128.110.154.191"
+#masterIP="128.110.154.191" #singcpu1
 slavesIP="hp112
 " # last one of ctl of slave1
+masterIP="128.110.154.154" #singcpu2
+slavesIP="hp080
+" # last one of ctl of slave1
+
 
 serversIP="$masterIP $slavesIP"
 

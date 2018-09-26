@@ -54,16 +54,15 @@ GI = 1024*1024*1024
 SCHEDULER = "kube-scheduler"
 MY_SCHEDULER = "my-scheduler"
 DEFAULT_NS = "default"
-cpu=21
-mem=16
 
+MAX_CPU = 19
+MAX_GPU = 1
+MAX_MEM = 12
+cpu=19
+mem=12
 gpuCpu=1
 gpu=1
-gpuMem=32
-
-MAX_CPU = 20
-MAX_GPU = 1
-MAX_MEM = 16
+gpuMem=2
 
 workload = "traces/small"
 

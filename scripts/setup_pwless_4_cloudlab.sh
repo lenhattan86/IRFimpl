@@ -1,8 +1,8 @@
 
-servers="c220g2-011102.wisc.cloudlab.us		
-c220g2-011106.wisc.cloudlab.us
-c220g2-011101.wisc.cloudlab.us
-220g2-011111.wisc.cloudlab.us"
+servers="c220g2-011014.wisc.cloudlab.us		
+c220g2-011024.wisc.cloudlab.us		
+c220g2-011015.wisc.cloudlab.us		
+c220g2-011021.wisc.cloudlab.us"
 
 for server in $servers; do
 	scp ~/.ssh/id_rsa* $username@$server:~/.ssh/

@@ -24,9 +24,8 @@ parser.add_argument('--device', help='device', required=False, default='gpu')
 args = vars(parser.parse_args())
 
 batch_size = int(args['batch_size'])
-num_intra_threads =int(args['batch_size'])
+num_intra_threads =int(args['num_intra_threads'])
 num_batches =int(args['num_batches'])
-num_intra_threads =int(args['batch_size'])
 device =args['device']
 
 # Parameters
@@ -69,8 +68,10 @@ with tf.device('/'+device+':0'):
 #gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction=0.2)
 
 # Launch the graph
-#with tf.Session(config=tf.ConfigProto(gpu_options=gpu_options)) as sess:
-with tf.Session() as sess:
+newConfig = tf.ConfigProto()
+newConfig.intra_op_parallelism_threads = num_intra_threads
+with tf.Session(config=newConfig) as sess:
+# with tf.Session() as sess:
     sess.run(init)
     # Fit all training data
     for epoch in range(training_epochs):

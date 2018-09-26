@@ -15,7 +15,8 @@ docker push $username/$repo:$tagname
 ## build TF-GPU
 tagname="gpu"
 docker_file="dockerfilegpu"
-sudo docker rmi $username/$repo:$tagname
+sudo docker rmi -f $repo:$tagname --force
+sudo docker rmi -f $username/$repo:$tagname --force
 docker build -f $docker_file -t $repo:$tagname .
 docker tag $repo:$tagname $username/$repo:$tagname
 docker push $username/$repo:$tagname

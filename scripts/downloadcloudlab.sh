@@ -13,23 +13,16 @@ fi
 
 if [ -z "$3" ]
 then
-	extraStr=""
+	user="tanle"
 else
-	extraStr="$3"
+	user="$3"
 fi
 
 if [ -z "$4" ]
 then
-	user="tanle"
-else
-	user="$4"
-fi
-
-if [ -z "$5" ]
-then
 	server="128.104.222.154"
 else
-	server="$5"
+	server="$4"
 fi
 # echo $user@$server
 # echo "rm -rf ~/$folder.tar.gz;
@@ -40,4 +33,4 @@ cd ~/IRFimpl/experiments/
 tar --exclude='*.yaml' --exclude='*.sh' -czf ~/$folder.tar.gz $folder"
 #tar --exclude='*.yaml' --exclude='*user*.log' --exclude='*.sh' -czf ~/$folder.tar.gz $folder"
 mkdir $ROOT_FOLDER/$EVAL_FOLDER
-scp $user@$server:~/$folder.tar.gz $ROOT_FOLDER/$EVAL_FOLDER/$folder$extraStr.tar.gz
+scp $user@$server:~/$folder.tar.gz $ROOT_FOLDER/$EVAL_FOLDER/$folder.tar.gz

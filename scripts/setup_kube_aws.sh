@@ -9,8 +9,6 @@
 #done	
 #wait
 
-
-
 # cp ~/.ssh/config.chameleon ~/.ssh/config;  005b93.59de673135d75968
 
 # kubeadm join 128.104.222.165:6443 --token z6kryk.l5tbb0xoy9gqcwas --discovery-token-ca-cert-hash sha256:fb55d685d9b96fc86393ce1c0b6003d14831eb698272f3e91de85489f711f437
@@ -19,37 +17,47 @@
 
 echo "This file need to be executed on the master node instead of your local machine for chameleon"
 echo "You also need to provide the chameleon.pem file"
+# master is GPU
+masterIP="52.14.191.65" 
+slavesIPCpu="18.191.65.248
+18.221.21.243
+" 
 
-masterIP="129.114.109.143"
-slavesIP="
-" # last one of ctl of slave1
+slavesIPGpu="18.221.107.190
+" 
 
-serversIP="$masterIP $slavesIP"
+slavesIP="$slavesIPCpu $slavesIPGpu"
 
-keyfile="chameleon.pem"
-chmod 600 $keyfile
+username="ubuntu"
+SSH_CMD="ssh -i tanlesbuaws.pem "
 
-username="cc"
-SSH_CMD="ssh -i $keyfile "
+#chmod 600 $keyfile
 
 echo "please enter yes to connect to slaves"
-for server in $slavesIP; do
+$SSH_CMD $username@$masterIP "echo hello $masterIP" -y
+for server in $slavesIPCpu; do
 		$SSH_CMD $username@$server "echo hello $server" -y
 done
+for server in $slavesIPGpu; do
+		$SSH_CMD $username@$server "echo hello $server" -y
+done		
 echo "Please stop here if one of the node is not connected...."
 sleep 15
 # setup kubernetes
-./setupkubernetes_gpu.sh &
-for server in $slavesIP; do
-	$SSH_CMD $username@$server 'bash -s' < ./setupkubernetes_gpu.sh &
-done
+$SSH_CMD $username@$masterIP 'bash -s' < ./setupkubernetes_cpu.sh &
+for server in $slavesIPGpu; do
+	$SSH_CMD $username@$server 'bash -s' < ./setupkubernetes_cpu.sh &
+done	
+for server in $slavesIPCpu; do
+	$SSH_CMD $username@$server 'bash -s' < ./setupkubernetes_cpu.sh &
+done	
 wait
 
 # configure kubernetes master
 #$SSH_CMD $username@$master 'bash -s' < ./masterkubeup.sh $masterIP
 
 sudo sh -c "echo '127.0.0.1 $master' >> /etc/hosts"
-./masterkubeup.sh $masterIP
+$SSH_CMD $username@$masterIP 'bash -s' < ./masterkubeup.sh $masterIP
 #kubeadm join --token c91d8c.c90c8bb2666e5eab 10.52.1.213:6443 --discovery-token-ca-cert-hash sha256:f3f3d8a49a371628f7086f29d78601bc8e0ff1c2ab48f5a8ffc9696520dd2102
 echo "Enter token:"
 read token
@@ -63,5 +71,3 @@ done
 wait
 #git config credential.helper store
 #https://kukulinski.com/10-most-common-reasons-kubernetes-deployments-fail-part-1/
-
-# https://www.assistanz.com/steps-to-install-kubernetes-dashboard/

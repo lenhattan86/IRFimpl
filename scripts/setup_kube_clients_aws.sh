@@ -4,10 +4,10 @@
 # using the following command to create token on server
 # sudo kubeadm token create --print-join-command
 
-#kubeadm join 128.104.222.154:6443 --token f5wkdp.so57sxcurzacf9fs --discovery-token-ca-cert-hash sha256:87e8674de5aa719b2b03c0fe545e36f38bd253ad0ac628f0678f24156493459f
+#kubeadm join 128.104.222.154:6443 --token 5x3sgy.zt0sl5segqr7f296 --discovery-token-ca-cert-hash sha256:87e8674de5aa719b2b03c0fe545e36f38bd253ad0ac628f0678f24156493459f
 if [ -z "$1" ]
 then
-	token="zzgnqj.3nk523nw9jufgojr"
+	token="5x3sgy.zt0sl5segqr7f296"
 else
 	token="$1"
 fi
@@ -28,8 +28,12 @@ fi
 
 
 
-slavesIP="18.222.200.149
-18.191.216.238
+# slavesIP="18.222.200.149
+# 18.191.216.238
+# "
+
+slavesIP="18.223.164.117
+18.191.185.180
 "
 
 username="ubuntu"

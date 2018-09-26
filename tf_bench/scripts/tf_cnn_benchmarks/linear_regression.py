@@ -17,6 +17,7 @@ rng = numpy.random
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--batch_size', help='batch_size', required=False, default=32)
+parser.add_argument('--data_size', help='data_size', required=False, default=1700)
 parser.add_argument('--num_intra_threads', help='num_intra_threads', required=False, default=19)
 parser.add_argument('--num_batches', help='num_batches', required=False, default=5000000)
 parser.add_argument('--device', help='device', required=False, default='gpu')
@@ -24,6 +25,7 @@ parser.add_argument('--device', help='device', required=False, default='gpu')
 args = vars(parser.parse_args())
 
 batch_size = int(args['batch_size'])
+data_size = int(args['data_size'])
 num_intra_threads =int(args['num_intra_threads'])
 num_batches =int(args['num_batches'])
 device =args['device']

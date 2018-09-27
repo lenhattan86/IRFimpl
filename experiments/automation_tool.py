@@ -55,7 +55,7 @@ IS_MY_SCHEDULER = True
 if IS_MEASURE_SEC:
     IS_MY_SCHEDULER = False
     IS_MEASURE = True
-    
+
 GPU_PREFIX = "g-"
 PROFILING_PREFIX = "profiling"
 numBatch1Percent_CPU = 2.0/100
@@ -80,13 +80,10 @@ gpuCpu=1
 gpu=1
 gpuMem=2
 
-
-
 if IS_TEST:
     userStrArray = ["user1"]
 else:
     userStrArray = ["user1", "user2"]   
-
 
 def log(str):
     if (IS_DEBUG):

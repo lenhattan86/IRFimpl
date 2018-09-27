@@ -397,6 +397,7 @@ def main():
     gpuShortJobs_2 = {}
     userStrArray=[]
     for i in range(nusers):
+        print('user'+str(i+1))
         userStrArray.append("user"+str(i+1))   
 
     # read jobs from files to jobs

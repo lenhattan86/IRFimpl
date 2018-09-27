@@ -7,7 +7,6 @@ else
 fi
 
 #find ./* -size +50M | cat >> .gitignore
-
-git add --all ./
+git add --all
 git commit -m "$message"
 git push

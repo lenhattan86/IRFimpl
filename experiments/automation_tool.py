@@ -40,6 +40,10 @@ interval = float(args['interval'])
 isProfiling = bool(args['profiling']=="True")
 workload = args['workload']
 
+IS_MEASURE_SEC = False
+
+    
+
 IS_DEBUG = True
 
 if IS_TEST:
@@ -48,6 +52,10 @@ if IS_TEST:
 
 
 IS_MY_SCHEDULER = True
+if IS_MEASURE_SEC:
+    IS_MY_SCHEDULER = False
+    IS_MEASURE = True
+    
 GPU_PREFIX = "g-"
 PROFILING_PREFIX = "profiling"
 numBatch1Percent_CPU = 2.0/100
@@ -354,24 +362,22 @@ def submitFullJobs(fJobs):
                 nSubmittedJobs = nSubmittedJobs + 1
             # deletedKeys.append(jobKey)
 
-        # if IS_MEASURE:
-        #     # if fJobs[jobKey].isEstimated:
-        #     # if fJobs[jobKey].estComplTimeCpu >=0 and fJobs[jobKey].estComplTimeGpu >=0:
-        #     if isAllJobsReady(fJobs):    
-        #         jobInfo = fJobs[jobKey]
-        #         if not jobInfo.isSubmittedGpu:
-        #             job = jobInfo.job
-        #             cpuCmd = job.cpuProfile.jobCmd
-        #             gpuCmd = job.gpuProfile.jobCmd
+        if IS_MEASURE_SEC:
+            if isAllJobsReady(fJobs)  or (not isProfiling):    
+                jobInfo = fJobs[jobKey]
+                if not jobInfo.isSubmittedGpu:
+                    job = jobInfo.job
+                    cpuCmd = job.cpuProfile.jobCmd
+                    gpuCmd = job.gpuProfile.jobCmd
 
-        #             cpu_usage = Resource(job.cpuProfile.demand.MilliCPU,job.cpuProfile.demand.Memory, job.cpuProfile.demand.NvidiaGPU)
-        #             gpu_usage = Resource(job.gpuProfile.demand.MilliCPU, job.gpuProfile.demand.Memory, job.gpuProfile.demand.NvidiaGPU)
-        #             activeJob = ActiveJob(gpu_usage,cpu_usage,  0, 0, jobKey, gpuCmd, cpuCmd, 0, 0)
-        #             prefix = GPU_PREFIX + jobInfo.userName
-        #             yamfile = GPU_PREFIX + jobInfo.jobName
-        #             createYamlFile(activeJob, prefix, yamfile, True, IS_MY_SCHEDULER)            
-        #             submitJob(yamfile, job_folder, yamfile, jobInfo.userName) 
-        #             jobInfo.isSubmittedGpu=True
+                    cpu_usage = Resource(job.cpuProfile.demand.MilliCPU,job.cpuProfile.demand.Memory, job.cpuProfile.demand.NvidiaGPU)
+                    gpu_usage = Resource(job.gpuProfile.demand.MilliCPU, job.gpuProfile.demand.Memory, job.gpuProfile.demand.NvidiaGPU)
+                    activeJob = ActiveJob(gpu_usage,cpu_usage,  0, 0, jobKey, gpuCmd, cpuCmd, 0, 0)
+                    prefix = GPU_PREFIX + jobInfo.userName
+                    yamfile = GPU_PREFIX + jobInfo.jobName
+                    createYamlFile(activeJob, prefix, yamfile, True, IS_MY_SCHEDULER)            
+                    submitJob(yamfile, job_folder, yamfile, jobInfo.userName) 
+                    jobInfo.isSubmittedGpu=True
 
     if nSubmittedJobs >= len(fJobs):
         return True
@@ -496,7 +502,8 @@ def main():
 
                 if IS_MEASURE:
                     updateFullJobInfo(startedJobs, completedJobs, fullJobs, currTime, True)
-                    # updateFullJobInfo(startedJobs, completedJobs, fullJobs, currTime, False)
+                if IS_MEASURE_SEC:    
+                    updateFullJobInfo(startedJobs, completedJobs, fullJobs, currTime, False)
                 
 
     # submitFullJobs(fullJobs)        
@@ -530,7 +537,8 @@ def main():
         # log("fullJobs: " + fullJobs["1"].jobName)
         if IS_MEASURE:
             updateFullJobInfo(startedJobs, completedJobs, fullJobs, currTime, True)
-            # updateFullJobInfo(startedJobs, completedJobs, fullJobs, currTime, False)
+        if IS_MEASURE_SEC:    
+            updateFullJobInfo(startedJobs, completedJobs, fullJobs, currTime, False)
             
         # step 6: submit profiled jobs to the system
         # log ("size of full jobs: " + str(len(fullJobs)))

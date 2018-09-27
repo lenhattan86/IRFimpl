@@ -9,6 +9,8 @@ else
 	ipaddress="$1"
 fi
 
+sudo iptables -F; sudo swapoff -a ;sudo free -m
+
 sudo kubeadm reset -f
 # sudo kubeadm reset
 sudo systemctl enable docker

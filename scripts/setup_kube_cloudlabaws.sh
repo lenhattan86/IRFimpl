@@ -65,12 +65,12 @@ SSH_CMD_aws="ssh -i tanlesbuaws.pem "
 
 # #chmod 600 $keyfile
 
-# for server in $slavesIP; do
-# 	$SSH_CMD $username@$server "echo hello $server" -y
-# done
-# for server in $slavesAWS; do
-# 	$SSH_CMD_aws $username_aws@$server "echo hello $server" -y
-# done	
+for server in $slavesIP; do
+	$SSH_CMD $username@$server "echo hello $server" -y
+done
+for server in $slavesAWS; do
+	$SSH_CMD_aws $username_aws@$server "echo hello $server" -y
+done	
 # echo "Please stop here if one of the node is not connected...."
 # sleep 15
 # # setup kubernetes

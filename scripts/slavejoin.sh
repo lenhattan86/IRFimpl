@@ -24,7 +24,7 @@ else
 	masterIPaddress="$3"
 fi
 
-# sudo iptables -F; sudo swapoff -a ;sudo free -m
+sudo iptables -F; sudo swapoff -a ;sudo free -m
 
 # sudo docker rmi lenhattan86/bench
 # sudo docker rmi lenhattan86/ira:cpu

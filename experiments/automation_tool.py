@@ -34,6 +34,7 @@ parser.add_argument('--profiling', help='profiling True/False', required=False, 
 parser.add_argument('--workload', help='workload folder', required=False, default="traces/small")
 parser.add_argument('--nusers', help='number of users', required=False, default="2")
 parser.add_argument('--measuresec', help='number of users', required=False, default="False")
+parser.add_argument('--folder', help='output folder', required=False, default="automation_tool")
 
 args = vars(parser.parse_args())
 IS_TEST    = bool(args['test']=="True")
@@ -43,6 +44,7 @@ isProfiling = bool(args['profiling']=="True")
 workload = args['workload']
 nusers = int(args['nusers'])
 IS_MEASURE_SEC=bool(args['measuresec']=="True")
+FOLDER=args['folder']
 
 IS_DEBUG = True
 
@@ -63,7 +65,7 @@ numBatch2Percent_CPU = 4.0/100
 numBatch1Percent_GPU = 2.0/100
 numBatch2Percent_GPU = 4.0/100
 # numBatch2 = 200
-FOLDER = "automation_tool"
+
 GI = 1024*1024*1024
 SCHEDULER = "kube-scheduler"
 MY_SCHEDULER = "my-scheduler"
@@ -543,6 +545,7 @@ def main():
         isExit = submitFullJobs(fullJobs)        
 
         if (iTime % (interval*30) == 0): # write down every 1 min.
+            log("[INFO] update results")
             # step 6: write results out
             writeJobsToCsv(fullJobs,'fullJobs')
             if (isProfiling):

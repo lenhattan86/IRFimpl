@@ -1,2 +1,2 @@
-python automation_tool.py --test False --profiling=True --measure=True --interval=2 --nusers=3 --workload=traces/small > automation_tool/automation_tool.log 2>&1 & 
+python automation_tool.py --test False --profiling=True --measure=True --interval=2 --nusers=4 --workload=traces/large > automation_tool/automation_tool.log 2>&1 & 
 python get_user_info_timer.py --interval=2 --stopTime=36000 --folder=automation_tool > automation_tool/get_user_info_timer.log 2>&1

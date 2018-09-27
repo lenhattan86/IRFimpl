@@ -1,0 +1,50 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: user4-profiling-cpu1-17
+spec:
+  schedulerName: my-scheduler
+  containers:
+  - name: user4-profiling-cpu1-17
+    image: lenhattan86/ira:cpu
+    command:
+    - "/bin/bash"
+    - "-c"
+    - "python linear_regression.py --device=cpu  --data_size=800000 --num_intra_threads=19  --num_batches=8000"
+    - "python linear_regression.py --device=gpu  --data_size=800000 --num_batches=400000"
+    - "19000,0,12,0"
+    - "1000,1,2,0"
+    resources:
+      requests:
+        nvidia.com/gpu: 0
+        cpu: 19.0
+        memory: 12Gi
+      limits:
+        nvidia.com/gpu: 0
+        cpu: 19.0
+        memory: 12Gi
+    volumeMounts:
+    - name: nvidia-driver-384-98
+      mountPath: /usr/local/nvidia
+      readOnly: true
+    - name: libcuda-so
+      mountPath: /usr/lib/x86_64-linux-gnu/libcuda.so
+    - name: libcuda-so-1
+      mountPath: /usr/lib/x86_64-linux-gnu/libcuda.so.1
+    - name: libcuda-so-384-98
+      mountPath: /usr/lib/x86_64-linux-gnu/libcuda.so.384.98
+      readOnly: true
+  restartPolicy: Never
+  volumes:
+  - name: nvidia-driver-384-98
+    hostPath:
+      path: /usr/lib/nvidia-384
+  - name: libcuda-so
+    hostPath:
+      path: /usr/lib/x86_64-linux-gnu/libcuda.so
+  - name: libcuda-so-1
+    hostPath:
+      path: /usr/lib/x86_64-linux-gnu/libcuda.so.1
+  - name: libcuda-so-384-98
+    hostPath:
+      path: /usr/lib/x86_64-linux-gnu/libcuda.so.384.98

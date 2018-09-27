@@ -1,0 +1,213 @@
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+python automation_tool.py --test=False
+====== AUTOMATION-TOOL =====
+====== main() =====
+user1
+user2
+user3
+user4
+kubectl create -f  /ssd/projects/IRFimpl/experiments/automation_tool/user1.yaml
+kubectl create -f  /ssd/projects/IRFimpl/experiments/automation_tool/user2.yaml
+kubectl create -f  /ssd/projects/IRFimpl/experiments/automation_tool/user3.yaml
+kubectl create -f  /ssd/projects/IRFimpl/experiments/automation_tool/user4.yaml
+[INFO] Submit job user1-profiling-cpu1-1 on CPU:  on GPU: 
+[INFO] Submit job user1-profiling-cpu2-1 on CPU:  on GPU: 
+[INFO] Submit job user1-profiling-gpu1-1 on CPU:  on GPU: 
+[INFO] Submit job user1-profiling-gpu2-1 on CPU:  on GPU: 
+Could not access the kubernetes
+[INFO] Submit job user1-profiling-cpu1-2 on CPU:  on GPU: 
+[INFO] Submit job user1-profiling-cpu2-2 on CPU:  on GPU: 
+[INFO] Submit job user1-profiling-gpu1-2 on CPU:  on GPU: 
+[INFO] Submit job user1-profiling-gpu2-2 on CPU:  on GPU: 
+Could not access the kubernetes
+[INFO] Submit job user1-profiling-cpu1-3 on CPU:  on GPU: 
+[INFO] Submit job user1-profiling-cpu2-3 on CPU:  on GPU: 
+[INFO] Submit job user1-profiling-gpu1-3 on CPU:  on GPU: 
+[INFO] Submit job user1-profiling-gpu2-3 on CPU:  on GPU: 
+Could not access the kubernetes
+[INFO] Submit job user1-profiling-cpu1-4 on CPU:  on GPU: 
+[INFO] Submit job user1-profiling-cpu2-4 on CPU:  on GPU: 
+[INFO] Submit job user1-profiling-gpu1-4 on CPU:  on GPU: 
+[INFO] Submit job user1-profiling-gpu2-4 on CPU:  on GPU: 
+Could not access the kubernetes
+[INFO] Submit job user1-profiling-cpu1-5 on CPU:  on GPU: 
+[INFO] Submit job user1-profiling-cpu2-5 on CPU:  on GPU: 
+[INFO] Submit job user1-profiling-gpu1-5 on CPU:  on GPU: 
+[INFO] Submit job user1-profiling-gpu2-5 on CPU:  on GPU: 
+Could not access the kubernetes
+[INFO] Submit job user2-profiling-cpu1-6 on CPU:  on GPU: 
+[INFO] Submit job user2-profiling-cpu2-6 on CPU:  on GPU: 
+[INFO] Submit job user2-profiling-gpu1-6 on CPU:  on GPU: 
+[INFO] Submit job user2-profiling-gpu2-6 on CPU:  on GPU: 
+Could not access the kubernetes
+[INFO] Submit job user2-profiling-cpu1-7 on CPU:  on GPU: 
+[INFO] Submit job user2-profiling-cpu2-7 on CPU:  on GPU: 
+[INFO] Submit job user2-profiling-gpu1-7 on CPU:  on GPU: 
+[INFO] Submit job user2-profiling-gpu2-7 on CPU:  on GPU: 
+Could not access the kubernetes
+[INFO] Submit job user2-profiling-cpu1-8 on CPU:  on GPU: 
+[INFO] Submit job user2-profiling-cpu2-8 on CPU:  on GPU: 
+[INFO] Submit job user2-profiling-gpu1-8 on CPU:  on GPU: 
+[INFO] Submit job user2-profiling-gpu2-8 on CPU:  on GPU: 
+Could not access the kubernetes
+[INFO] Submit job user2-profiling-cpu1-9 on CPU:  on GPU: 
+[INFO] Submit job user2-profiling-cpu2-9 on CPU:  on GPU: 
+[INFO] Submit job user2-profiling-gpu1-9 on CPU:  on GPU: 
+[INFO] Submit job user2-profiling-gpu2-9 on CPU:  on GPU: 
+Could not access the kubernetes
+[INFO] Submit job user2-profiling-cpu1-10 on CPU:  on GPU: 
+[INFO] Submit job user2-profiling-cpu2-10 on CPU:  on GPU: 
+[INFO] Submit job user2-profiling-gpu1-10 on CPU:  on GPU: 
+[INFO] Submit job user2-profiling-gpu2-10 on CPU:  on GPU: 
+Could not access the kubernetes
+[INFO] Submit job user3-profiling-cpu1-11 on CPU:  on GPU: 
+[INFO] Submit job user3-profiling-cpu2-11 on CPU:  on GPU: 
+[INFO] Submit job user3-profiling-gpu1-11 on CPU:  on GPU: 
+[INFO] Submit job user3-profiling-gpu2-11 on CPU:  on GPU: 
+Could not access the kubernetes
+[INFO] Submit job user3-profiling-cpu1-12 on CPU:  on GPU: 
+[INFO] Submit job user3-profiling-cpu2-12 on CPU:  on GPU: 
+[INFO] Submit job user3-profiling-gpu1-12 on CPU:  on GPU: 
+[INFO] Submit job user3-profiling-gpu2-12 on CPU:  on GPU: 
+Could not access the kubernetes
+[INFO] Submit job user3-profiling-cpu1-13 on CPU:  on GPU: 
+[INFO] Submit job user3-profiling-cpu2-13 on CPU:  on GPU: 
+[INFO] Submit job user3-profiling-gpu1-13 on CPU:  on GPU: 
+[INFO] Submit job user3-profiling-gpu2-13 on CPU:  on GPU: 
+Could not access the kubernetes
+[INFO] Submit job user3-profiling-cpu1-14 on CPU:  on GPU: 
+[INFO] Submit job user3-profiling-cpu2-14 on CPU:  on GPU: 
+[INFO] Submit job user3-profiling-gpu1-14 on/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found
+/bin/sh: 1: kubectl: not found

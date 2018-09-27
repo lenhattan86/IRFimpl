@@ -46,6 +46,9 @@ hp101.utah.cloudlab.us
 servers="$masterIP
 $slavesIP"
 slavesAWS="52.15.155.109
+18.188.137.10
+18.221.235.253
+52.15.64.33
 "
 ############################################# 
 username="tanle"
@@ -79,10 +82,10 @@ done
 # 	$SSH_CMD $username@$server 'bash -s' < ./setupkubernetes_cpu.sh &
 # done
 # wait	
-# for server in $slavesAWS; do
-# 	$SSH_CMD_aws $username_aws@$server 'bash -s' < ./setupkubernetes_gpu.sh &
-# done
-# wait
+for server in $slavesAWS; do
+	$SSH_CMD_aws $username_aws@$server 'bash -s' < ./setupkubernetes_gpu.sh &
+done
+wait
 
 # configure kubernetes master
 $SSH_CMD $username@$masterIP 'bash -s' < ./masterkubeup.sh $masterIP

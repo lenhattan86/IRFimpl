@@ -132,7 +132,7 @@ sudo pkill -SIGHUP dockerd
 # Test nvidia-smi with the latest official CUDA image
 docker run --runtime=nvidia --rm nvidia/cuda nvidia-smi
 
-sudo tee /etc/docker/daemon.json <<EOF
+sudo tee -i /etc/docker/daemon.json <<EOF
 {
     "default-runtime": "nvidia",
     "runtimes": {

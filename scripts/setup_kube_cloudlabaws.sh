@@ -18,32 +18,54 @@
 echo "This file need to be executed on the master node instead of your local machine for chameleon"
 echo "You also need to provide the chameleon.pem file"
 
-#masterIP="128.110.154.191" #singcpu1
-# slavesIP="hp112
-" # last one of ctl of slave1
-masterIP="128.110.154.154" #singcpu2
-slavesIP="hp080
-" # last one of ctl of slave1
+masterIP="128.110.154.191" #singcpu1
+slavesIP="hp112.utah.cloudlab.us
+" 
+servers="$masterIP
+$slavesIP"
+slavesAWS="52.14.191.65
+52.14.191.65
+"
 
-
-serversIP="$masterIP $slavesIP"
+# last one of ctl of slave1
+# masterIP="128.110.154.154" #singcpu2
+# slavesIP="hp080
+# " # last one of ctl of slave1
 
 username="tanle"
 SSH_CMD="ssh "
 
+username_aws="ubuntu"
+SSH_CMD_aws="ssh -i tanlesbuaws.pem "
+
+for server in $servers; do
+	scp ~/.ssh/id_rsa* $username@$server:~/.ssh/
+	ssh $server "cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys ;
+		chmod 0600 ~/.ssh/id_rsa*; 
+		chmod 0600 ~/.ssh/authorized_keys; 
+		rm -rf ~/.ssh/known_hosts; 	
+		echo 'StrictHostKeyChecking no' >> ~/.ssh/config"
+done
+
 #chmod 600 $keyfile
 
-echo "please enter yes to connect to slaves"
 for server in $slavesIP; do
-		$SSH_CMD $username@$server "echo hello $server" -y
+	$SSH_CMD $username@$server "echo hello $server" -y
+done
+for server in $slavesAWS; do
+	$SSH_CMD_aws $username_aws@$server "echo hello $server" -y
 done	
 echo "Please stop here if one of the node is not connected...."
 sleep 15
 # setup kubernetes
-./setupkubernetes_cpu.sh &
+$SSH_CMD $username@$masterIP 'bash -s' < ./setupkubernetes_cpu.sh &
 for server in $slavesIP; do
 	$SSH_CMD $username@$server 'bash -s' < ./setupkubernetes_cpu.sh &
-done	
+done
+wait	
+for server in $slavesAWS; do
+	$SSH_CMD_aws $username_aws@$server 'bash -s' < ./setupkubernetes_gpu.sh &
+done
 wait
 
 # configure kubernetes master
@@ -59,6 +81,10 @@ read sha256
 echo $token > token.txt # save command for using later
 echo $sha256 > sha256.txt
 for server in $slavesIP; do
+	$SSH_CMD $username@$server 'bash -s' < ./slavejoin.sh $token $sha256 $masterIP &
+done
+wait
+for server in $slavesAWS; do
 	$SSH_CMD $username@$server 'bash -s' < ./slavejoin.sh $token $sha256 $masterIP &
 done
 wait

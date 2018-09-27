@@ -4,17 +4,18 @@
 # using the following command to create token on server
 # sudo kubeadm token create --print-join-command
  #kubeadm join 128.110.154.154:6443 --token erulu6.5p6rpigef2g3oxou --discovery-token-ca-cert-hash sha256:46638d849c6c93df09b02b199a78327e15b8720de49fa73a7524918ce689de4e
+#kubeadm join 128.110.154.191:6443 --token uq7t7s.5s7p4v28woye5c23 --discovery-token-ca-cert-hash sha256:ba3e91a43d3f664da4ec9e8ea97e7d63aba2a68089b33ecab6668aa00bd2dafd
 
 if [ -z "$1" ]
 then
-	token="erulu6.5p6rpigef2g3oxou"
+	token="uq7t7s.5s7p4v28woye5c23"
 else
 	token="$1"
 fi
 
 if [ -z "$2" ]
 then
-	sha256="sha256:46638d849c6c93df09b02b199a78327e15b8720de49fa73a7524918ce689de4e"
+	sha256="sha256:ba3e91a43d3f664da4ec9e8ea97e7d63aba2a68089b33ecab6668aa00bd2dafd"
 else
 	sha256="$2"
 fi
@@ -22,8 +23,8 @@ fi
 if [ -z "$3" ]
 then
 	# masterIP="128.104.222.154" # 4 cloudlab nodes
-	# masterIP="128.110.154.191" # single1
-	masterIP="128.110.154.154" # single2
+	masterIP="128.110.154.191" # single1
+	# masterIP="128.110.154.154" # single2
 else
 	masterIP="$3"
 fi
@@ -34,12 +35,12 @@ fi
 # 18.191.216.238
 # "
 
-slavesIP="18.223.164.117
-18.191.185.180
-"
-# slavesIP="52.14.191.65
-# 18.221.107.190
+# slavesIP="18.223.164.117
+# 18.191.185.180
 # "
+slavesIP="52.14.191.65
+18.221.107.190
+"
 
 
 

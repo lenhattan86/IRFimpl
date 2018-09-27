@@ -1,0 +1,27 @@
+# jobId
+# beta
+# cpu (milliCPU) 0   mem (byte) complTime (secs)  # run on CPU
+# cpu (milliCPU) gpu mem (byte) complTime (secs) # run on GPU
+# command for cpu job
+# command for gpu job
+#
+19000 0 3 146
+1000 1 2 23
+python tf_cnn_benchmarks.py --device=cpu --data_format=NHWC --num_warmup_batches=0  --model=alexnet --batch_size=4 --num_intra_threads=19 --num_batches=10
+python tf_cnn_benchmarks.py --device=gpu --num_warmup_batches=0  --model=alexnet --batch_size=4 --num_batches=10
+19000 0 4 146
+1000 1 2 23
+python tf_cnn_benchmarks.py --device=cpu --data_format=NHWC --num_warmup_batches=0  --model=alexnet --batch_size=8 --num_intra_threads=19 --num_batches=10
+python tf_cnn_benchmarks.py --device=gpu --num_warmup_batches=0  --model=alexnet --batch_size=8 --num_batches=10
+19000 0 5 146
+1000 1 2 23
+python tf_cnn_benchmarks.py --device=cpu --data_format=NHWC --num_warmup_batches=0  --model=alexnet --batch_size=16 --num_intra_threads=19 --num_batches=10
+python tf_cnn_benchmarks.py --device=gpu --num_warmup_batches=0  --model=alexnet --batch_size=16 --num_batches=10
+19000 0 7 146
+1000 1 2 23
+python tf_cnn_benchmarks.py --device=cpu --data_format=NHWC --num_warmup_batches=0  --model=alexnet --batch_size=32 --num_intra_threads=19 --num_batches=10
+python tf_cnn_benchmarks.py --device=gpu --num_warmup_batches=0  --model=alexnet --batch_size=32 --num_batches=10
+19000 0 10 146
+1000 1 2 23
+python tf_cnn_benchmarks.py --device=cpu --data_format=NHWC --num_warmup_batches=0  --model=alexnet --batch_size=64 --num_intra_threads=19 --num_batches=10
+python tf_cnn_benchmarks.py --device=gpu --num_warmup_batches=0  --model=alexnet --batch_size=64 --num_batches=10

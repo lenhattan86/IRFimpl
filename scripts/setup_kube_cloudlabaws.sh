@@ -18,74 +18,87 @@
 echo "This file need to be executed on the master node instead of your local machine for chameleon"
 echo "You also need to provide the chameleon.pem file"
 
-masterIP="128.110.154.191" #singcpu1
-slavesIP="hp112.utah.cloudlab.us
-" 
-servers="$masterIP
-$slavesIP"
-slavesAWS="52.14.191.65
-52.14.191.65
-"
+############# SMALLL ###################
+# masterIP="128.110.154.191" #singcpu1
+# slavesIP="hp112.utah.cloudlab.us
+# " 
+# servers="$masterIP
+# $slavesIP"
+# slavesAWS="52.14.191.65
+# 52.14.191.65
+# "
 
 # last one of ctl of slave1
 # masterIP="128.110.154.154" #singcpu2
 # slavesIP="hp080
 # " # last one of ctl of slave1
 
+############### LARGE #################
+masterIP="128.110.154.192" #singcpu1
+slavesIP="hp115.utah.cloudlab.us
+hp108.utah.cloudlab.us
+hp104.utah.cloudlab.us	
+hp117.utah.cloudlab.us	
+hp114.utah.cloudlab.us	
+hp106.utah.cloudlab.us	
+hp101.utah.cloudlab.us
+" 
+servers="$masterIP
+$slavesIP"
+slavesAWS="52.15.155.109
+"
+############################################# 
 username="tanle"
 SSH_CMD="ssh "
 
 username_aws="ubuntu"
 SSH_CMD_aws="ssh -i tanlesbuaws.pem "
 
-for server in $servers; do
-	scp ~/.ssh/id_rsa* $username@$server:~/.ssh/
-	ssh $server "cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys ;
-		chmod 0600 ~/.ssh/id_rsa*; 
-		chmod 0600 ~/.ssh/authorized_keys; 
-		rm -rf ~/.ssh/known_hosts; 	
-		echo 'StrictHostKeyChecking no' >> ~/.ssh/config"
-done
+# for server in $servers; do
+# 	scp ~/.ssh/id_rsa* $username@$server:~/.ssh/
+# 	ssh $server "cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys ;
+# 		chmod 0600 ~/.ssh/id_rsa*; 
+# 		chmod 0600 ~/.ssh/authorized_keys; 
+# 		rm -rf ~/.ssh/known_hosts; 	
+# 		echo 'StrictHostKeyChecking no' >> ~/.ssh/config"
+# done
 
-#chmod 600 $keyfile
+# #chmod 600 $keyfile
 
-for server in $slavesIP; do
-	$SSH_CMD $username@$server "echo hello $server" -y
-done
-for server in $slavesAWS; do
-	$SSH_CMD_aws $username_aws@$server "echo hello $server" -y
-done	
-echo "Please stop here if one of the node is not connected...."
-sleep 15
-# setup kubernetes
-$SSH_CMD $username@$masterIP 'bash -s' < ./setupkubernetes_cpu.sh &
-for server in $slavesIP; do
-	$SSH_CMD $username@$server 'bash -s' < ./setupkubernetes_cpu.sh &
-done
-wait	
-for server in $slavesAWS; do
-	$SSH_CMD_aws $username_aws@$server 'bash -s' < ./setupkubernetes_gpu.sh &
-done
-wait
+# for server in $slavesIP; do
+# 	$SSH_CMD $username@$server "echo hello $server" -y
+# done
+# for server in $slavesAWS; do
+# 	$SSH_CMD_aws $username_aws@$server "echo hello $server" -y
+# done	
+# echo "Please stop here if one of the node is not connected...."
+# sleep 15
+# # setup kubernetes
+# $SSH_CMD $username@$masterIP 'bash -s' < ./setupkubernetes_cpu.sh &
+# for server in $slavesIP; do
+# 	$SSH_CMD $username@$server 'bash -s' < ./setupkubernetes_cpu.sh &
+# done
+# wait	
+# for server in $slavesAWS; do
+# 	$SSH_CMD_aws $username_aws@$server 'bash -s' < ./setupkubernetes_gpu.sh &
+# done
+# wait
 
 # configure kubernetes master
-#$SSH_CMD $username@$master 'bash -s' < ./masterkubeup.sh $masterIP
-
-sudo sh -c "echo '127.0.0.1 $master' >> /etc/hosts"
-./masterkubeup.sh $masterIP
+$SSH_CMD $username@$masterIP 'bash -s' < ./masterkubeup.sh $masterIP
 #kubeadm join --token c91d8c.c90c8bb2666e5eab 10.52.1.213:6443 --discovery-token-ca-cert-hash sha256:f3f3d8a49a371628f7086f29d78601bc8e0ff1c2ab48f5a8ffc9696520dd2102
 echo "Enter token:"
 read token
 echo "Enter sha256:"
 read sha256
-echo $token > token.txt # save command for using later
-echo $sha256 > sha256.txt
+# echo $token > token.txt # save command for using later
+# echo $sha256 > sha256.txt
 for server in $slavesIP; do
 	$SSH_CMD $username@$server 'bash -s' < ./slavejoin.sh $token $sha256 $masterIP &
 done
 wait
 for server in $slavesAWS; do
-	$SSH_CMD $username@$server 'bash -s' < ./slavejoin.sh $token $sha256 $masterIP &
+	$SSH_CMD_aws $username_aws@$server 'bash -s' < ./slavejoin.sh $token $sha256 $masterIP &
 done
 wait
 #git config credential.helper store

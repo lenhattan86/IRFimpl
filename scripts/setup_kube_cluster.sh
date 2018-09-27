@@ -48,7 +48,7 @@ echo "please enter yes to connect to slaves"
 for server in $slavesIP; do
 		$SSH_CMD $username@$server "echo hello $slavesIP" -y
 done	
-
+wait
 
 # setup kubernetes
 ./setupkubernetes_gpu.sh &

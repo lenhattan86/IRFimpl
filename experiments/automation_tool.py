@@ -32,6 +32,8 @@ parser.add_argument('--measure', help='True or False', required=False, default="
 parser.add_argument('--interval', help='Polling interval  (secs)', required=False, default="1")
 parser.add_argument('--profiling', help='profiling True/False', required=False, default="True")
 parser.add_argument('--workload', help='workload folder', required=False, default="traces/small")
+parser.add_argument('--nusers', help='number of users', required=False, default="2")
+parser.add_argument('--measuresec', help='number of users', required=False, default="False")
 
 args = vars(parser.parse_args())
 IS_TEST    = bool(args['test']=="True")
@@ -39,10 +41,8 @@ IS_MEASURE = bool(args['measure']=="True")
 interval = float(args['interval'])
 isProfiling = bool(args['profiling']=="True")
 workload = args['workload']
-
-IS_MEASURE_SEC = False
-
-    
+nusers = int(args['nusers'])
+IS_MEASURE_SEC=bool(args['measuresec']=="True")
 
 IS_DEBUG = True
 
@@ -69,8 +69,6 @@ SCHEDULER = "kube-scheduler"
 MY_SCHEDULER = "my-scheduler"
 DEFAULT_NS = "default"
 
-
-
 MAX_CPU = 19
 MAX_GPU = 1
 MAX_MEM = 12
@@ -81,9 +79,8 @@ gpu=1
 gpuMem=2
 
 if IS_TEST:
+    nusers=1
     userStrArray = ["user1"]
-else:
-    userStrArray = ["user1", "user2"]   
 
 def log(str):
     if (IS_DEBUG):
@@ -398,7 +395,9 @@ def main():
     cpuShortJobs_2 = {}
     gpuShortJobs_1 = {}
     gpuShortJobs_2 = {}
-   
+    userStrArray=[]
+    for i in range(nusers):
+        userStrArray.append("user"+str(i+1))   
 
     # read jobs from files to jobs
     for i in range(len(userStrArray)):

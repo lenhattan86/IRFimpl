@@ -424,16 +424,17 @@ def main():
     for user in users:
         deleteAllJobs(user.username)
         # create jobs
-        if (isProfiling):
-            for job in user.jobs:
-                jobId = jobId + 1
-                jobIdKey = str(jobId)
-                
-                jobName = user.username + "-" + str(jobId)
-                fullJobs[jobIdKey]  = JobInfo(jobId, jobName, user.username, job.numBatches, job.numBatches2)
-                fullJobs[jobIdKey].job = job
-                # deleteJob(jobName, user.username)
-                
+        
+        for job in user.jobs:
+            jobId = jobId + 1
+            jobIdKey = str(jobId)
+            
+            jobName = user.username + "-" + str(jobId)
+            fullJobs[jobIdKey]  = JobInfo(jobId, jobName, user.username, job.numBatches, job.numBatches2)
+            fullJobs[jobIdKey].job = job
+            # deleteJob(jobName, user.username)
+            
+            if (isProfiling):
                 # read the number of batch from the job
                 cpuCmd = job.cpuProfile.jobCmd
                 gpuCmd = job.gpuProfile.jobCmd
@@ -491,7 +492,7 @@ def main():
                 updateJobInfo(startedJobs, completedJobs, gpuShortJobs_1, currTime)
                 updateJobInfo(startedJobs, completedJobs, gpuShortJobs_2, currTime)
                 updateJobInfo(startedJobs, completedJobs, gpuShortJobs_2, currTime)
-                
+            
                 # estimateSpeedup(fullJobs, cpuShortJobs_1, gpuShortJobs_1)
                 # estimateSpeedup(fullJobs, gpuShortJobs_1, gpuShortJobs_2, False)
 
@@ -544,10 +545,12 @@ def main():
         if (iTime % (interval*30) == 0): # write down every 1 min.
             # step 6: write results out
             writeJobsToCsv(fullJobs,'fullJobs')
-            writeJobsToCsv(cpuShortJobs_1,'cpuShortJobs_1')    
-            writeJobsToCsv(gpuShortJobs_1,'gpuShortJobs_1') 
-            writeJobsToCsv(cpuShortJobs_2,'cpuShortJobs_2')    
-            writeJobsToCsv(gpuShortJobs_2,'gpuShortJobs_2') 
+            if (isProfiling):
+                writeJobsToCsv(cpuShortJobs_1,'cpuShortJobs_1')    
+                writeJobsToCsv(gpuShortJobs_1,'gpuShortJobs_1') 
+                writeJobsToCsv(cpuShortJobs_2,'cpuShortJobs_2')    
+                writeJobsToCsv(gpuShortJobs_2,'gpuShortJobs_2') 
+                
         iTime = iTime + interval     
 
         if (isExit and (not IS_MEASURE)):

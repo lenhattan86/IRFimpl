@@ -54,6 +54,7 @@ while True:
     time_step = time_step + interval
     if p_status != 0:        
         print 'Could not access the kubernetes'
+        print(err)
     else:
         lines=output.split("\n")                
         for line in lines[1:len(lines)-1]:            

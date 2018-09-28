@@ -3,6 +3,7 @@
 # cpu (milliCPU) 0   mem (byte) complTime (secs)  # run on CPU
 # cpu (milliCPU) gpu mem (byte) complTime (secs) # run on GPU
 # command to run the job
+# command for gpu job
 #
 19000 0 4 125
 1000 1 2 87

@@ -25,9 +25,9 @@ if IS_TEST:
 
 if not IS_TEST:
     parser = argparse.ArgumentParser()
-    parser.add_argument('--interval', help='Polling interval  (secs)', required=True)
+    parser.add_argument('--interval', help='Polling interval  (secs)', required=False, default="1")
     parser.add_argument('--folder', help='folder to save csv files', required=False, default=".")
-    parser.add_argument('--stopTime', help='stop time (secs)', required=True)
+    parser.add_argument('--stopTime', help='stop time (secs)', required=False, default="1")
     args = vars(parser.parse_args())
 
     interval = float(args['interval'])
@@ -69,8 +69,9 @@ default       job-alexnet-cpu-1                          0/1       Completed   0
 
     # completedJobs = 0
     # time_step = time_step + interval
-    if p_status != 0:        
+    if p_status != 0 or err != None:        
         print 'Could not access the kubernetes'
+        print err
     else:
         lines=output.split("\n")            
         for line in lines[1:len(lines)-1]:            
@@ -183,10 +184,18 @@ resWriter = csv.writer(oResfile, dialect='excel')
 
 mTime = 1
 # for mTime in range(int(stop_time/interval)):
+# while True:        
+#     if (stop_time > 0 and mTime*interval > stop_time):        
+#         break
+#     Timer(mTime*interval, capture, [mTime, writer]).start()        
+#     if stop_time > 0:
+#         Timer(mTime*interval, captureResource, [mTime, resWriter]).start()
+#     mTime = mTime + 
+    
 while True:        
     if (stop_time > 0 and mTime*interval > stop_time):        
         break
-    Timer(mTime*interval, capture, [mTime, writer]).start()        
-    if stop_time > 0:
-        Timer(mTime*interval, captureResource, [mTime, resWriter]).start()
-    mTime = mTime + 1
+    capture(mTime, writer)
+    captureResource(mTime, resWriter)    
+    mTime = mTime + interval
+    sleep(interval)

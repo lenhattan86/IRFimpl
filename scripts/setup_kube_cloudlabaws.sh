@@ -36,6 +36,7 @@ echo "You also need to provide the chameleon.pem file"
 LARGE1=false
 LARGE2=true
 LARGE3=false
+
 isPasswordLess=true
 isKubernetes=true
 
@@ -55,11 +56,11 @@ then
 	" 
 	servers="$masterIP
 	$slavesIP"
-	slavesAWS="13.58.136.182
-	18.191.180.248
-	18.216.168.78
-	18.222.192.21
-	"
+	slavesAWS="18.223.162.237
+18.188.217.9
+18.191.197.161
+18.220.148.52
+"
 fi
 
 
@@ -79,7 +80,10 @@ hp152.utah.cloudlab.us
 " 
 	servers="$masterIP
 	$slavesIP"
-	slavesAWS="
+	slavesAWS="13.59.12.54
+18.191.187.173
+18.218.178.114
+18.219.1.29
 	"
 fi
 ############################################# 

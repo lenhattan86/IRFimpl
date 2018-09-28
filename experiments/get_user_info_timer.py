@@ -197,5 +197,5 @@ while True:
         break
     capture(mTime, writer)
     captureResource(mTime, resWriter)    
-    mTime = mTime + interval
+    mTime = mTime + 1
     sleep(interval)

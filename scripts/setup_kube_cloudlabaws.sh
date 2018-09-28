@@ -33,23 +33,55 @@ echo "You also need to provide the chameleon.pem file"
 # slavesIP="hp080
 # " # last one of ctl of slave1
 
-############### LARGE #################
-masterIP="128.110.154.192" #singcpu1
-slavesIP="hp115.utah.cloudlab.us
-hp108.utah.cloudlab.us
-hp104.utah.cloudlab.us	
-hp117.utah.cloudlab.us	
-hp114.utah.cloudlab.us	
-hp106.utah.cloudlab.us	
-hp101.utah.cloudlab.us
+LARGE1=false
+LARGE2=true
+LARGE3=false
+isPasswordLess=true
+isKubernetes=true
+
+############### LARGE 1 #################
+if $LARGE1
+then
+	echo "======  LARGE 1 ======"
+	sleep 5
+	masterIP="128.110.154.192"
+	slavesIP="hp115.utah.cloudlab.us
+	hp108.utah.cloudlab.us
+	hp104.utah.cloudlab.us	
+	hp117.utah.cloudlab.us	
+	hp114.utah.cloudlab.us	
+	hp106.utah.cloudlab.us	
+	hp101.utah.cloudlab.us
+	" 
+	servers="$masterIP
+	$slavesIP"
+	slavesAWS="13.58.136.182
+	18.191.180.248
+	18.216.168.78
+	18.222.192.21
+	"
+fi
+
+
+############### LARGE 2 #################
+if $LARGE2
+then
+	echo "======  LARGE 2 ======"
+	sleep 5
+	masterIP="128.110.154.227"
+	slavesIP="hp137.utah.cloudlab.us
+hp140.utah.cloudlab.us
+hp154.utah.cloudlab.us
+hp134.utah.cloudlab.us
+hp145.utah.cloudlab.us
+hp150.utah.cloudlab.us
+hp152.utah.cloudlab.us
 " 
-servers="$masterIP
-$slavesIP"
-slavesAWS="52.15.155.109
-18.188.137.10
-18.221.235.253
-52.15.64.33
-"
+	servers="$masterIP
+	$slavesIP"
+	slavesAWS="
+	"
+fi
 ############################################# 
 username="tanle"
 SSH_CMD="ssh "
@@ -57,14 +89,17 @@ SSH_CMD="ssh "
 username_aws="ubuntu"
 SSH_CMD_aws="ssh -i tanlesbuaws.pem "
 
-# for server in $servers; do
-# 	scp ~/.ssh/id_rsa* $username@$server:~/.ssh/
-# 	ssh $server "cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys ;
-# 		chmod 0600 ~/.ssh/id_rsa*; 
-# 		chmod 0600 ~/.ssh/authorized_keys; 
-# 		rm -rf ~/.ssh/known_hosts; 	
-# 		echo 'StrictHostKeyChecking no' >> ~/.ssh/config"
-# done
+if $isPasswordLess
+then
+	for server in $servers; do
+		scp ~/.ssh/id_rsa* $username@$server:~/.ssh/
+		ssh $server "cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys ;
+			chmod 0600 ~/.ssh/id_rsa*; 
+			chmod 0600 ~/.ssh/authorized_keys; 
+			rm -rf ~/.ssh/known_hosts; 	
+			echo 'StrictHostKeyChecking no' >> ~/.ssh/config"
+	done
+fi
 
 # #chmod 600 $keyfile
 
@@ -82,10 +117,13 @@ done
 # 	$SSH_CMD $username@$server 'bash -s' < ./setupkubernetes_cpu.sh &
 # done
 # wait	
-for server in $slavesAWS; do
-	$SSH_CMD_aws $username_aws@$server 'bash -s' < ./setupkubernetes_gpu.sh &
-done
-wait
+if $isKubernetes
+then
+	for server in $slavesAWS; do
+		$SSH_CMD_aws $username_aws@$server 'bash -s' < ./setupkubernetes_gpu.sh &
+	done
+	wait
+fi
 
 # configure kubernetes master
 $SSH_CMD $username@$masterIP 'bash -s' < ./masterkubeup.sh $masterIP

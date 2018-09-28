@@ -545,7 +545,6 @@ def main():
         isExit = submitFullJobs(fullJobs)        
 
         if (iTime % (interval*30) == 0): # write down every 1 min.
-            log("[INFO] update results")
             # step 6: write results out
             writeJobsToCsv(fullJobs,'fullJobs')
             if (isProfiling):
@@ -557,6 +556,12 @@ def main():
         iTime = iTime + interval     
 
         if (isExit and (not IS_MEASURE)):
+            writeJobsToCsv(fullJobs,'fullJobs')
+            if (isProfiling):
+                writeJobsToCsv(cpuShortJobs_1,'cpuShortJobs_1')    
+                writeJobsToCsv(gpuShortJobs_1,'gpuShortJobs_1') 
+                writeJobsToCsv(cpuShortJobs_2,'cpuShortJobs_2')    
+                writeJobsToCsv(gpuShortJobs_2,'gpuShortJobs_2') 
             log("[INFO] All jobs are submitted ==> Please wait for jobs to be finished")
             break 
 

@@ -15,8 +15,6 @@
 # remember the git user/pass
 # cd..; git config credential.helper store; cd scripts
 
-echo "This file need to be executed on the master node instead of your local machine for chameleon"
-echo "You also need to provide the chameleon.pem file"
 
 ############# SMALLL ###################
 # masterIP="128.110.154.191" #singcpu1
@@ -35,10 +33,9 @@ echo "You also need to provide the chameleon.pem file"
 
 LARGE1=false
 LARGE2=true
-LARGE3=false
 
-isPasswordLess=true
-isKubernetes=true
+isPasswordLess=false
+isKubernetes=false
 
 ############### LARGE 1 #################
 if $LARGE1
@@ -56,10 +53,10 @@ then
 	" 
 	servers="$masterIP
 	$slavesIP"
-	slavesAWS="18.223.162.237
-18.188.217.9
-18.191.197.161
-18.220.148.52
+	slavesAWS="13.58.243.126
+18.216.201.165
+18.191.185.81
+52.15.94.213
 "
 fi
 
@@ -80,11 +77,11 @@ hp152.utah.cloudlab.us
 " 
 	servers="$masterIP
 	$slavesIP"
-	slavesAWS="13.59.12.54
-18.191.187.173
-18.218.178.114
-18.219.1.29
-	"
+	slavesAWS="18.219.57.250
+52.15.179.34
+18.222.183.217
+18.188.201.248
+"
 fi
 ############################################# 
 username="tanle"

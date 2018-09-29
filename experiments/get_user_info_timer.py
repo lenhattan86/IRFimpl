@@ -70,7 +70,7 @@ default       job-alexnet-cpu-1                          0/1       Completed   0
     # completedJobs = 0
     # time_step = time_step + interval
     if p_status != 0 or err != None:        
-        print 'Could not access the kubernetes'
+        print '[capture] Could not access the kubernetes'
         print err
     else:
         lines=output.split("\n")            
@@ -109,8 +109,9 @@ k80-2
 """
         p_status=0    
 
-    if p_status != 0:        
-        print 'Could not access the kubernetes'
+    if p_status != 0 or err != None:        
+        print '[captureResource] Could not access the kubernetes'
+        print err
     else:
         lines=output.split("\n")   
         # rows = []             

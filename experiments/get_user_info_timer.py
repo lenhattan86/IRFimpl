@@ -190,7 +190,7 @@ mTime = 1
 #     Timer(mTime*interval, capture, [mTime, writer]).start()        
 #     if stop_time > 0:
 #         Timer(mTime*interval, captureResource, [mTime, resWriter]).start()
-#     mTime = mTime + 
+#     mTime = mTime + 1
     
 while True:        
     if (stop_time > 0 and mTime*interval > stop_time):        

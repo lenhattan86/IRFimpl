@@ -115,18 +115,19 @@ for server in $slavesAWS; do
 done	
 # echo "Please stop here if one of the node is not connected...."
 # sleep 15
-# # setup kubernetes
-# $SSH_CMD $username@$masterIP 'bash -s' < ./setupkubernetes_cpu.sh &
-# for server in $slavesIP; do
-# 	$SSH_CMD $username@$server 'bash -s' < ./setupkubernetes_cpu.sh &
-# done
-# wait	
+# setup kubernetes
+	
 if $isKubernetes
 then
-	for server in $slavesAWS; do
-		$SSH_CMD_aws $username_aws@$server 'bash -s' < ./setupkubernetes_gpu.sh &
+	$SSH_CMD $username@$masterIP 'bash -s' < ./setupkubernetes_cpu.sh &
+	for server in $slavesIP; do
+		$SSH_CMD $username@$server 'bash -s' < ./setupkubernetes_cpu.sh &
 	done
 	wait
+	# for server in $slavesAWS; do
+	# 	$SSH_CMD_aws $username_aws@$server 'bash -s' < ./setupkubernetes_gpu.sh &
+	# done
+	# wait
 fi
 
 # configure kubernetes master

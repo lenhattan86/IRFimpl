@@ -1,0 +1,47 @@
+# jobId
+# beta
+# cpu (milliCPU) 0   mem (byte) complTime (secs)  # run on CPU
+# cpu (milliCPU) gpu mem (byte) complTime (secs) # run on GPU
+# command to run the job
+# command for gpu job
+#
+19000 0 6 125
+1000 1 2 87
+python linear_regression.py --device=cpu  --data_size=200000 --num_intra_threads=19 --num_batches=1000000
+python linear_regression.py --device=gpu  --data_size=200000 --num_batches=1000000
+19000 0 3 312
+1000 1 2 67
+python tf_cnn_benchmarks.py --device=cpu --data_format=NHWC --num_warmup_batches=0  --model=googlenet --batch_size=4 --num_intra_threads=19 --num_batches=7500
+python tf_cnn_benchmarks.py --device=gpu --num_warmup_batches=0  --model=googlenet --batch_size=4 --num_batches=7500
+19000 0 6 125
+1000 1 2 87
+python linear_regression.py --device=cpu  --data_size=200000 --num_intra_threads=19 --num_batches=800000
+python linear_regression.py --device=gpu  --data_size=200000 --num_batches=800000
+19000 0 6 125
+1000 1 2 87
+python linear_regression.py --device=cpu  --data_size=200000 --num_intra_threads=19 --num_batches=200000
+python linear_regression.py --device=gpu  --data_size=200000 --num_batches=200000
+19000 0 6 125
+1000 1 2 87
+python linear_regression.py --device=cpu  --data_size=200000 --num_intra_threads=19 --num_batches=300000
+python linear_regression.py --device=gpu  --data_size=200000 --num_batches=300000
+19000 0 6 125
+1000 1 2 87
+python linear_regression.py --device=cpu  --data_size=200000 --num_intra_threads=19 --num_batches=700000
+python linear_regression.py --device=gpu  --data_size=200000 --num_batches=700000
+19000 0 6 125
+1000 1 2 87
+python linear_regression.py --device=cpu  --data_size=200000 --num_intra_threads=19 --num_batches=500000
+python linear_regression.py --device=gpu  --data_size=200000 --num_batches=500000
+19000 0 6 125
+1000 1 2 87
+python linear_regression.py --device=cpu  --data_size=200000 --num_intra_threads=19 --num_batches=200000
+python linear_regression.py --device=gpu  --data_size=200000 --num_batches=200000
+19000 0 6 125
+1000 1 2 87
+python linear_regression.py --device=cpu  --data_size=200000 --num_intra_threads=19 --num_batches=300000
+python linear_regression.py --device=gpu  --data_size=200000 --num_batches=300000
+19000 0 6 125
+1000 1 2 87
+python linear_regression.py --device=cpu  --data_size=200000 --num_intra_threads=19 --num_batches=700000
+python linear_regression.py --device=gpu  --data_size=200000 --num_batches=700000

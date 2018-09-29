@@ -1,0 +1,46 @@
+# jobId
+# beta
+# cpu (milliCPU) 0   mem (byte) complTime (secs)  # run on CPU
+# cpu (milliCPU) gpu mem (byte) complTime (secs) # run on GPU
+# command to run the job
+#
+19000 0 3 312
+1000 1 2 67
+python tf_cnn_benchmarks.py --device=cpu --data_format=NHWC --num_warmup_batches=0  --model=googlenet --batch_size=4 --num_intra_threads=19 --num_batches=7500
+python tf_cnn_benchmarks.py --device=gpu --num_warmup_batches=0  --model=googlenet --batch_size=4 --num_batches=7500
+19000 0 12 125
+1000 1 2 87
+python linear_regression.py --device=cpu  --data_size=1600000 --num_intra_threads=19 --num_batches=50000
+python linear_regression.py --device=gpu  --data_size=1600000 --num_batches=50000
+19000 0 8 125
+1000 1 2 87
+python linear_regression.py --device=cpu  --data_size=800000 --num_intra_threads=19 --num_batches=100000
+python linear_regression.py --device=gpu  --data_size=800000 --num_batches=100000
+19000 0 8 125
+1000 1 2 87
+python linear_regression.py --device=cpu  --data_size=800000 --num_intra_threads=19 --num_batches=150000
+python linear_regression.py --device=gpu  --data_size=800000 --num_batches=150000
+19000 0 12 125
+1000 1 2 87
+python linear_regression.py --device=cpu  --data_size=1600000 --num_intra_threads=19 --num_batches=150000
+python linear_regression.py --device=gpu  --data_size=1600000 --num_batches=150000
+19000 0 8 125
+1000 1 2 87
+python linear_regression.py --device=cpu  --data_size=800000 --num_intra_threads=19 --num_batches=200000
+python linear_regression.py --device=gpu  --data_size=800000 --num_batches=200000
+19000 0 8 125
+1000 1 2 87
+python linear_regression.py --device=cpu  --data_size=800000 --num_intra_threads=19 --num_batches=250000
+python linear_regression.py --device=gpu  --data_size=800000 --num_batches=250000
+19000 0 3 312
+1000 1 2 67
+python tf_cnn_benchmarks.py --device=cpu --data_format=NHWC --num_warmup_batches=0  --model=googlenet --batch_size=4 --num_intra_threads=19 --num_batches=10000
+python tf_cnn_benchmarks.py --device=gpu --num_warmup_batches=0  --model=googlenet --batch_size=4 --num_batches=10000
+19000 0 3 312
+1000 1 2 67
+python tf_cnn_benchmarks.py --device=cpu --data_format=NHWC --num_warmup_batches=0  --model=googlenet --batch_size=4 --num_intra_threads=19 --num_batches=25000
+python tf_cnn_benchmarks.py --device=gpu --num_warmup_batches=0  --model=googlenet --batch_size=4 --num_batches=25000
+19000 0 7 125
+1000 1 2 87
+python linear_regression.py --device=cpu  --data_size=400000 --num_intra_threads=19 --num_batches=200000
+python linear_regression.py --device=gpu  --data_size=400000 --num_batches=200000

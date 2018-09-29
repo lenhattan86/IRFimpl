@@ -346,7 +346,12 @@ def submitFullJobs(fJobs):
 
                 cpu_usage = Resource(job.cpuProfile.demand.MilliCPU,job.cpuProfile.demand.Memory, job.cpuProfile.demand.NvidiaGPU)
                 gpu_usage = Resource(job.gpuProfile.demand.MilliCPU, job.gpuProfile.demand.Memory, job.gpuProfile.demand.NvidiaGPU)
-                activeJob = ActiveJob(cpu_usage, gpu_usage, 0, 0, jobKey, cpuCmd, gpuCmd, jobInfo.estComplTimeCpu, jobInfo.estComplTimeGpu)
+                
+                if (isProfiling):
+                    activeJob = ActiveJob(cpu_usage, gpu_usage, 0, 0, jobKey, cpuCmd, gpuCmd, jobInfo.estComplTimeCpu, jobInfo.estComplTimeGpu)
+                else:
+                    activeJob = ActiveJob(cpu_usage, gpu_usage, 0, 0, jobKey, cpuCmd, gpuCmd, job.cpuProfile.compl, job.gpuProfile.compl)
+
                 prefix = jobInfo.userName
                 yamfile = jobInfo.jobName
                 createYamlFile(activeJob, prefix, yamfile, False, IS_MY_SCHEDULER) 
@@ -368,7 +373,7 @@ def submitFullJobs(fJobs):
 
                     cpu_usage = Resource(job.cpuProfile.demand.MilliCPU,job.cpuProfile.demand.Memory, job.cpuProfile.demand.NvidiaGPU)
                     gpu_usage = Resource(job.gpuProfile.demand.MilliCPU, job.gpuProfile.demand.Memory, job.gpuProfile.demand.NvidiaGPU)
-                    activeJob = ActiveJob(gpu_usage,cpu_usage,  0, 0, jobKey, gpuCmd, cpuCmd, 0, 0)
+                    activeJob = ActiveJob(gpu_usage,cpu_usage,  0, 0, jobKey, gpuCmd, cpuCmd, 0, 0)                    
                     prefix = GPU_PREFIX + jobInfo.userName
                     yamfile = GPU_PREFIX + jobInfo.jobName
                     createYamlFile(activeJob, prefix, yamfile, True, IS_MY_SCHEDULER)            

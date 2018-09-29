@@ -44,18 +44,20 @@ then
 	sleep 5
 	masterIP="128.110.154.192"
 	slavesIP="hp115.utah.cloudlab.us
-	" 
-
-	# hp108.utah.cloudlab.us
-	# hp104.utah.cloudlab.us	
-	# hp117.utah.cloudlab.us	
-	# hp114.utah.cloudlab.us	
-	# hp106.utah.cloudlab.us	
-	# hp101.utah.cloudlab.us
+	hp108.utah.cloudlab.us
+	hp104.utah.cloudlab.us	
+	hp117.utah.cloudlab.us	
+	hp114.utah.cloudlab.us	
+	hp106.utah.cloudlab.us	
+	hp101.utah.cloudlab.us
+" 
 
 	servers="$masterIP
 	$slavesIP"
 	slavesAWS="52.15.94.213
+	18.224.82.19
+	18.188.94.113
+	18.222.153.88
 "
 fi
 

@@ -10,8 +10,8 @@ spec:
     command:
     - "/bin/bash"
     - "-c"
-    - "python linear_regression.py --device=gpu  --data_size=600000  --num_batches=8000"
-    - "python linear_regression.py --device=cpu  --data_size=600000 --num_intra_threads=19  --num_batches=8000"
+    - "python linear_regression.py --device=gpu  --data_size=100000  --num_batches=6000"
+    - "python linear_regression.py --device=cpu  --data_size=100000 --num_intra_threads=19  --num_batches=6000"
     - "1000,1,2,0"
     - "19000,0,12,0"
     resources:

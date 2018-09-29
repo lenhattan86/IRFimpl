@@ -31,8 +31,8 @@
 # slavesIP="hp080
 # " # last one of ctl of slave1
 
-LARGE1=false
-LARGE2=true
+LARGE1=true
+LARGE2=false
 
 isPasswordLess=false
 isKubernetes=false
@@ -44,19 +44,18 @@ then
 	sleep 5
 	masterIP="128.110.154.192"
 	slavesIP="hp115.utah.cloudlab.us
-	hp108.utah.cloudlab.us
-	hp104.utah.cloudlab.us	
-	hp117.utah.cloudlab.us	
-	hp114.utah.cloudlab.us	
-	hp106.utah.cloudlab.us	
-	hp101.utah.cloudlab.us
 	" 
+
+	# hp108.utah.cloudlab.us
+	# hp104.utah.cloudlab.us	
+	# hp117.utah.cloudlab.us	
+	# hp114.utah.cloudlab.us	
+	# hp106.utah.cloudlab.us	
+	# hp101.utah.cloudlab.us
+
 	servers="$masterIP
 	$slavesIP"
-	slavesAWS="13.58.243.126
-18.216.201.165
-18.191.185.81
-52.15.94.213
+	slavesAWS="52.15.94.213
 "
 fi
 
@@ -77,7 +76,7 @@ hp152.utah.cloudlab.us
 " 
 	servers="$masterIP
 	$slavesIP"
-	slavesAWS="18.219.57.250
+	slavesAWS="18.224.95.20
 52.15.179.34
 18.222.183.217
 18.188.201.248
@@ -121,10 +120,10 @@ then
 		$SSH_CMD $username@$server 'bash -s' < ./setupkubernetes_cpu.sh &
 	done
 	wait
-	# for server in $slavesAWS; do
-	# 	$SSH_CMD_aws $username_aws@$server 'bash -s' < ./setupkubernetes_gpu.sh &
-	# done
-	# wait
+	for server in $slavesAWS; do
+		$SSH_CMD_aws $username_aws@$server 'bash -s' < ./setupkubernetes_gpu.sh &
+	done
+	wait
 fi
 
 # configure kubernetes master

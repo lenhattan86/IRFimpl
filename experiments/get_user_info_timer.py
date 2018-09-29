@@ -32,10 +32,10 @@ if not IS_TEST:
 
     interval = float(args['interval'])
     folder = args['folder']
-    stop_time = int(args['stopTime'])
-    writeStep=60
+    stop_time = int(args['stopTime'])    
+    writeStep=60/interval
     resCommandStep=1
-    resWriteStep=writeStep*resCommandStep
+    resWriteStep=writeStep*resCommandStep    
 else:
     interval=1
     stop_time=4

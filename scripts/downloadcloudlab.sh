@@ -30,7 +30,7 @@ fi
 ROOT_FOLDER="/ssd/projects/IRFevaluation/awscloudlab"
 ssh $user@$server "rm -rf ~/$folder.tar.gz;
 cd ~/IRFimpl/experiments/
-tar --exclude='*.yaml' --exclude='*.sh' -czf ~/$folder.tar.gz $folder"
+tar -czf ~/$folder.tar.gz $folder"
 #tar --exclude='*.yaml' --exclude='*user*.log' --exclude='*.sh' -czf ~/$folder.tar.gz $folder"
 mkdir $ROOT_FOLDER/$EVAL_FOLDER
 scp $user@$server:~/$folder.tar.gz $ROOT_FOLDER/$EVAL_FOLDER/$folder.tar.gz

@@ -408,6 +408,9 @@ print "====== AUTOMATION-TOOL ====="
 def main():
     ## initialization   
     print "====== main() ====="
+    start_time = time.time()
+    # your code
+    
     users = []
     fullJobs = {}
     cpuShortJobs_1 = {}
@@ -443,7 +446,9 @@ def main():
     for user in users:
         deleteAllJobs(user.username)
         # create jobs
-        
+        start_time = time.time()
+# your code
+elapsed_time = time.time() - start_time
         for job in user.jobs:
             jobId = jobId + 1
             jobIdKey = str(jobId)
@@ -587,6 +592,8 @@ def main():
                 writeJobsToCsv(gpuShortJobs_1,'gpuShortJobs_1') 
                 writeJobsToCsv(cpuShortJobs_2,'cpuShortJobs_2')    
                 writeJobsToCsv(gpuShortJobs_2,'gpuShortJobs_2') 
+                elapsed_time = time.time() - start_time
+            log("[INFO] Estimation lasts " + elapsed_time + " seconds")
             log("[INFO] All jobs are submitted ==> Please wait for jobs to be finished")
             break 
 

@@ -326,6 +326,7 @@ def createYamlFile(activeJob, prefix, yamfile, isGPU, isScheduled):
         f_yaml.write(strPodYaml(prefix, activeJob, SCHEDULER, isGPU))
     f_yaml.close()    
 
+start_time = time()
 ## only submit jobs if they are estimated.
 def isAllJobsReady(fJobs):
     for jobKey in fJobs:
@@ -334,7 +335,7 @@ def isAllJobsReady(fJobs):
         # if fJobs[jobKey].estComplTimeCpu <0:
         #     return False  
 
-    elapsed_time = time.time() - start_time
+    elapsed_time = time() - start_time
     log("[INFO] Profiling lasts " + elapsed_time + " seconds")
     return True
 
@@ -412,7 +413,7 @@ print "====== AUTOMATION-TOOL ====="
 def main():
     ## initialization   
     print "====== main() ====="
-    start_time = time.time()
+    start_time = time()
     # your code
     
     users = []
@@ -449,10 +450,7 @@ def main():
     deleteAllJobs(DEFAULT_NS)
     for user in users:
         deleteAllJobs(user.username)
-        # create jobs
-        start_time = time.time()
-# your code
-elapsed_time = time.time() - start_time
+        # create jobs        
         for job in user.jobs:
             jobId = jobId + 1
             jobIdKey = str(jobId)
@@ -596,7 +594,7 @@ elapsed_time = time.time() - start_time
                 writeJobsToCsv(gpuShortJobs_1,'gpuShortJobs_1') 
                 writeJobsToCsv(cpuShortJobs_2,'cpuShortJobs_2')    
                 writeJobsToCsv(gpuShortJobs_2,'gpuShortJobs_2') 
-            elapsed_time = time.time() - start_time
+            elapsed_time = time() - start_time
             log("[INFO] Estimation lasts " + elapsed_time + " seconds")
             log("[INFO] All jobs are submitted ==> Please wait for jobs to be finished")
             break 

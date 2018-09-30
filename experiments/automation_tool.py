@@ -411,7 +411,7 @@ def main():
     for i in range(len(userStrArray)):
         strUser=userStrArray[i]
         # log("read " + strUser)
-        jobs    = readJobs(this_path+"/"+workload, strUser+".txt", 1)
+        jobs    = readJobRR(this_path+"/"+workload, strUser+".txt", i-1, len(userStrArray))
         newUser = User(strUser, jobs)
         # log(newUser.toString())
         users.append(newUser)

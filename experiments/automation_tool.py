@@ -16,6 +16,7 @@ from time import sleep
 import sched
 from threading import Timer
 import threading
+from threading import Thread
 
 from job import *
 from user import *
@@ -45,6 +46,8 @@ workload = args['workload']
 nusers = int(args['nusers'])
 IS_MEASURE_SEC=bool(args['measuresec']=="True")
 FOLDER=args['folder']
+
+jobSubmissionLock = threading.Lock()
 
 IS_DEBUG = True
 
@@ -160,7 +163,7 @@ def updateJobInfo(startedJobs, completedJobs, mJobs, currTime):
                 mJobs[jobIdKey].endTime = currTime    
                 if mJobs[jobIdKey].starTime < 0:
                     log("[ERROR] " + mJobs[jobIdKey].jobName + "'s start time is negative. (this job is too short)")
-                    mJobs[jobIdKey].starTime = currTime-interval # This job finishes shorter than a interval
+                    mJobs[jobIdKey].starTime = currTime-(interval/2) # This job finishes shorter than a interval
                 mJobs[jobIdKey].complTime = mJobs[jobIdKey].endTime - mJobs[jobIdKey].starTime
                 log("[INFO] " + mJobs[jobIdKey].jobName + "'s compl. time is "+ str(mJobs[jobIdKey].complTime ))
 
@@ -330,6 +333,16 @@ def isAllJobsReady(fJobs):
             return False
 
     return True
+
+def isAllSubmitted(fJobs):
+    nSubmittedJobs = 0
+    for jobKey in fJobs:
+        jobInfo = fJobs[jobKey]
+        if jobInfo.isSubmitted: 
+            nSubmittedJobs=nSubmittedJobs+1
+
+    return nSubmittedJobs >= len(fJobs)
+
 def submitFullJobs(fJobs):
     # deletedKeys = []
     nSubmittedJobs = 0
@@ -459,7 +472,9 @@ def main():
                 newJob = JobInfo(jobId, yamfile, user.username, numBatch1, 0)
                 activeJob = ActiveJob(cpu_usage, gpu_usage, 0, 0, jobId, cpuCmd1, gpuCmd, 0, 0)
                 createYamlFile(activeJob, jobName, yamfile, False, IS_MY_SCHEDULER)
-                submitJob(yamfile, job_folder, yamfile, DEFAULT_NS)        
+                # submitJob(yamfile, job_folder, yamfile, DEFAULT_NS)     
+                thread1 = Thread(target = submitJob, args = (yamfile, job_folder, yamfile, DEFAULT_NS))   
+                thread1.start()    
                 cpuShortJobs_1[jobIdKey] = newJob
 
                 prefix = PROFILING_PREFIX + "-cpu2"
@@ -469,7 +484,9 @@ def main():
                 newJob  = JobInfo(jobId, yamfile, user.username, numBatch2, 0)
                 activeJob = ActiveJob(cpu_usage, gpu_usage, 0, 0, jobId,  cpuCmd2, gpuCmd2, 0, 0)
                 createYamlFile(activeJob, jobName, yamfile, False, IS_MY_SCHEDULER)
-                submitJob(yamfile, job_folder, yamfile, DEFAULT_NS)        
+                # submitJob(yamfile, job_folder, yamfile, DEFAULT_NS)     
+                thread2 = Thread(target = submitJob, args = (yamfile, job_folder, yamfile, DEFAULT_NS))   
+                thread2.start()        
                 cpuShortJobs_2[jobIdKey] = newJob
 
                 # prepare jobs for GPU        
@@ -480,7 +497,9 @@ def main():
                 newJob = JobInfo(jobId, yamfile, user.username, numBatch1, 0)
                 activeJob = ActiveJob(gpu_usage, cpu_usage,  0, 0, jobId, gpuCmd1, cpuCmd1, 0, 0 )
                 createYamlFile(activeJob, jobName, yamfile, True, IS_MY_SCHEDULER)
-                submitJob(yamfile, job_folder, yamfile, DEFAULT_NS)        
+                # submitJob(yamfile, job_folder, yamfile, DEFAULT_NS)     
+                thread3 = Thread(target = submitJob, args = (yamfile, job_folder, yamfile, DEFAULT_NS))   
+                thread3.start()          
                 gpuShortJobs_1[jobIdKey] = newJob
 
                 prefix = PROFILING_PREFIX + "-gpu2"
@@ -490,7 +509,9 @@ def main():
                 newJob  = JobInfo(jobId, yamfile, user.username, numBatch2, 0)
                 activeJob = ActiveJob(gpu_usage, cpu_usage,  0, 0, jobId, gpuCmd2,  cpuCmd2, 0, 0)
                 createYamlFile(activeJob, jobName, yamfile, True, IS_MY_SCHEDULER)
-                submitJob(yamfile, job_folder, yamfile, DEFAULT_NS)        
+                # submitJob(yamfile, job_folder, yamfile, DEFAULT_NS)     
+                thread4 = Thread(target = submitJob, args = (yamfile, job_folder, yamfile, DEFAULT_NS))   
+                thread4.start()         
                 gpuShortJobs_2[jobIdKey] = newJob 
                 
                 pendingJobs, startedJobs, completedJobs, currTime = listJobStatus()
@@ -508,7 +529,6 @@ def main():
                     updateFullJobInfo(startedJobs, completedJobs, fullJobs, currTime, True)
                 if IS_MEASURE_SEC:    
                     updateFullJobInfo(startedJobs, completedJobs, fullJobs, currTime, False)
-                
 
     # submitFullJobs(fullJobs)        
     # step 4: measure the job completion time.
@@ -546,7 +566,8 @@ def main():
             
         # step 6: submit profiled jobs to the system
         # log ("size of full jobs: " + str(len(fullJobs)))
-        isExit = submitFullJobs(fullJobs)        
+       
+        submitFullJobs(fullJobs)
 
         if (iTime % (interval*30) == 0): # write down every 1 min.
             # step 6: write results out
@@ -558,7 +579,7 @@ def main():
                 writeJobsToCsv(gpuShortJobs_2,'gpuShortJobs_2') 
                 
         iTime = iTime + interval     
-
+        isExit = isAllSubmitted(fullJobs)
         if (isExit and (not IS_MEASURE)):
             writeJobsToCsv(fullJobs,'fullJobs')
             if (isProfiling):

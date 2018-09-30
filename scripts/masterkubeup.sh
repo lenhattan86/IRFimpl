@@ -31,7 +31,7 @@ sudo systemctl start kubelet
 
 sudo kubeadm reset -f
 # sudo kubeadm reset
-sudo kubeadm init  --pod-network-cidr=192.168.0.0/16 --apiserver-advertise-address=$ipaddress
+sudo kubeadm init  --pod-network-cidr=192.168.0.0/16 --apiserver-advertise-address=$ipaddress --skip-preflight-checks=true
 
 mkdir -p $HOME/.kube; sudo cp -f /etc/kubernetes/admin.conf $HOME/.kube/config; sudo chown $(id -u):$(id -g) $HOME/.kube/config; export KUBECONFIG=~/.kube/config
 

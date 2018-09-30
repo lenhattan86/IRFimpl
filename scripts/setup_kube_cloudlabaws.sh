@@ -31,9 +31,13 @@
 # slavesIP="hp080
 # " # last one of ctl of slave1
 
-LARGE1=true
-LARGE2=false
+# LARGE1=true
+# LARGE2=false
+LARGE1=false
+LARGE2=true
 
+# isPasswordLess=true
+# isKubernetes=true
 isPasswordLess=false
 isKubernetes=false
 
@@ -42,20 +46,20 @@ if $LARGE1
 then
 	echo "======  LARGE 1 ======"
 	sleep 5
-	masterIP="128.110.154.192"
-	slavesIP="hp115.utah.cloudlab.us
-	"
-	# hp108.utah.cloudlab.us
-	# hp104.utah.cloudlab.us	
-	# hp117.utah.cloudlab.us	
-	# hp114.utah.cloudlab.us	
-	# hp106.utah.cloudlab.us	
-	# hp101.utah.cloudlab.us
-# " 
-
-	servers="$masterIP
-	$slavesIP"
+	masterIP="128.110.154.179"
+	slavesIP="hp090.utah.cloudlab.us
+	hp100.utah.cloudlab.us
+	hp092.utah.cloudlab.us
+	hp085.utah.cloudlab.us
+	hp082.utah.cloudlab.us
+	hp086.utah.cloudlab.us
+	hp084.utah.cloudlab.us
+	hp083.utah.cloudlab.us
+" 
 	slavesAWS="18.222.170.128
+	18.191.152.23
+	18.222.158.11
+	18.218.187.124
 "
 fi
 
@@ -65,21 +69,20 @@ if $LARGE2
 then
 	echo "======  LARGE 2 ======"
 	sleep 5
-	masterIP="128.110.154.227"
-	slavesIP="hp137.utah.cloudlab.us
-hp140.utah.cloudlab.us
-hp154.utah.cloudlab.us
-hp134.utah.cloudlab.us
-hp145.utah.cloudlab.us
-hp150.utah.cloudlab.us
-hp152.utah.cloudlab.us
+	masterIP="128.110.154.239"
+	slavesIP="hp157.utah.cloudlab.us		
+hp131.utah.cloudlab.us
+hp143.utah.cloudlab.us
+hp136.utah.cloudlab.us
+hp138.utah.cloudlab.us
+hp153.utah.cloudlab.us
+hp122.utah.cloudlab.us
+hp151.utah.cloudlab.us
 " 
-	servers="$masterIP
-	$slavesIP"
-	slavesAWS="18.224.95.20
-52.15.179.34
-18.222.183.217
-18.188.201.248
+	slavesAWS="18.221.129.175
+	18.188.242.229
+	18.216.235.61
+	18.219.57.74
 "
 fi
 ############################################# 

@@ -31,15 +31,15 @@
 # slavesIP="hp080
 # " # last one of ctl of slave1
 
-# LARGE1=true
-# LARGE2=false
-LARGE1=false
-LARGE2=true
+LARGE1=true
+LARGE2=false
+# LARGE1=false
+# LARGE2=true
 
 # isPasswordLess=true
 # isKubernetes=true
 isPasswordLess=false
-isKubernetes=false
+isKubernetes=true
 
 ############### LARGE 1 #################
 if $LARGE1
@@ -123,10 +123,10 @@ then
 		$SSH_CMD $username@$server 'bash -s' < ./setupkubernetes_cpu.sh &
 	done
 	wait
-	for server in $slavesAWS; do
-		$SSH_CMD_aws $username_aws@$server 'bash -s' < ./setupkubernetes_gpu.sh &
-	done
-	wait
+	# for server in $slavesAWS; do
+	# 	$SSH_CMD_aws $username_aws@$server 'bash -s' < ./setupkubernetes_gpu.sh &
+	# done
+	# wait
 fi
 
 # configure kubernetes master

@@ -329,9 +329,13 @@ def createYamlFile(activeJob, prefix, yamfile, isGPU, isScheduled):
 ## only submit jobs if they are estimated.
 def isAllJobsReady(fJobs):
     for jobKey in fJobs:
-        if fJobs[jobKey].estComplTimeCpu <0 or fJobs[jobKey].estComplTimeGpu <0:
-            return False
-
+        # if fJobs[jobKey].estComplTimeCpu <0 or fJobs[jobKey].estComplTimeGpu <0:
+        #     return False
+        if fJobs[jobKey].estComplTimeCpu <0:
+            return False  
+          
+    elapsed_time = time.time() - start_time
+    log("[INFO] Profiling lasts " + elapsed_time + " seconds")
     return True
 
 def isAllSubmitted(fJobs):
@@ -592,7 +596,7 @@ elapsed_time = time.time() - start_time
                 writeJobsToCsv(gpuShortJobs_1,'gpuShortJobs_1') 
                 writeJobsToCsv(cpuShortJobs_2,'cpuShortJobs_2')    
                 writeJobsToCsv(gpuShortJobs_2,'gpuShortJobs_2') 
-                elapsed_time = time.time() - start_time
+            elapsed_time = time.time() - start_time
             log("[INFO] Estimation lasts " + elapsed_time + " seconds")
             log("[INFO] All jobs are submitted ==> Please wait for jobs to be finished")
             break 

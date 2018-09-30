@@ -60,10 +60,10 @@ if IS_MEASURE_SEC:
 
 GPU_PREFIX = "g-"
 PROFILING_PREFIX = "profiling"
-numBatch1Percent_CPU = 2.0/100
-numBatch2Percent_CPU = 4.0/100
-numBatch1Percent_GPU = 2.0/100
-numBatch2Percent_GPU = 4.0/100
+numBatch1Percent_CPU = 0.0/100
+numBatch2Percent_CPU = 1.0/100
+numBatch1Percent_GPU = 0.0/100
+numBatch2Percent_GPU = 1.0/100
 # numBatch2 = 200
 
 GI = 1024*1024*1024

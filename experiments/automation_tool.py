@@ -133,9 +133,9 @@ user1       g-user1-1                          0/1      Completed   0          1
             if user != "kube-system":
                 if podStatus == "Pending":
                     pendingJobs.append(mPodName)                    
-                elif podStatus == "Completed":
+                if podStatus == "Completed":
                     completedPods.append(mPodName)
-                elif podStatus == "ContainerCreating" or podStatus == "Running":
+                if podStatus == "ContainerCreating" or podStatus == "Running":
                 # if podStatus == "Running":
                     startedPods.append(mPodName)                
                     
@@ -160,8 +160,7 @@ def updateJobInfo(startedJobs, completedJobs, mJobs, currTime):
                 mJobs[jobIdKey].endTime = currTime    
                 if mJobs[jobIdKey].starTime < 0:
                     log("[ERROR] " + mJobs[jobIdKey].jobName + "'s start time is negative. (this job is too short)")
-                    mJobs[jobIdKey].starTime = 0
-
+                    mJobs[jobIdKey].starTime = currTime-interval # This job finishes shorter than a interval
                 mJobs[jobIdKey].complTime = mJobs[jobIdKey].endTime - mJobs[jobIdKey].starTime
                 log("[INFO] " + mJobs[jobIdKey].jobName + "'s compl. time is "+ str(mJobs[jobIdKey].complTime ))
 

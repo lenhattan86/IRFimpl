@@ -36,25 +36,25 @@ LARGE2=false
 # LARGE1=false
 # LARGE2=true
 
-# isPasswordLess=true
-# isKubernetes=true
-isPasswordLess=false
+isPasswordLess=true
 isKubernetes=true
+# isPasswordLess=false
+# isKubernetes=false
 
 ############### LARGE 1 #################
 if $LARGE1
 then
 	echo "======  LARGE 1 ======"
 	sleep 5
-	masterIP="128.110.154.179"
-	slavesIP="hp090.utah.cloudlab.us
-	hp100.utah.cloudlab.us
-	hp092.utah.cloudlab.us
-	hp085.utah.cloudlab.us
-	hp082.utah.cloudlab.us
-	hp086.utah.cloudlab.us
-	hp084.utah.cloudlab.us
-	hp083.utah.cloudlab.us
+	masterIP="128.110.154.161"
+	slavesIP="hp060.utah.cloudlab.us		
+hp046.utah.cloudlab.us
+hp043.utah.cloudlab.us
+hp057.utah.cloudlab.us		
+hp054.utah.cloudlab.us		
+hp042.utah.cloudlab.us		
+hp076.utah.cloudlab.us		
+hp050.utah.cloudlab.us
 " 
 	slavesAWS="18.222.170.128
 	18.191.152.23
@@ -63,6 +63,16 @@ then
 "
 fi
 
+# masterIP="128.110.154.179"
+# 	slavesIP="hp090.utah.cloudlab.us
+# 	hp100.utah.cloudlab.us
+# 	hp092.utah.cloudlab.us
+# 	hp085.utah.cloudlab.us
+# 	hp082.utah.cloudlab.us
+# 	hp086.utah.cloudlab.us
+# 	hp084.utah.cloudlab.us
+# 	hp083.utah.cloudlab.us
+# " 
 
 ############### LARGE 2 #################
 if $LARGE2

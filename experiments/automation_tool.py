@@ -64,9 +64,9 @@ if IS_MEASURE_SEC:
 GPU_PREFIX = "g-"
 PROFILING_PREFIX = "profiling"
 numBatch1Percent_CPU = 0.0/100
-numBatch2Percent_CPU = 1.0/100
+numBatch2Percent_CPU = 1.5/100
 numBatch1Percent_GPU = 0.0/100
-numBatch2Percent_GPU = 1.0/100
+numBatch2Percent_GPU = 1.5/100
 # numBatch2 = 200
 
 GI = 1024*1024*1024
@@ -332,13 +332,12 @@ start_time = time()
 ## only submit jobs if they are estimated.
 def isAllJobsReady(fJobs):
     for jobKey in fJobs:
-        # if fJobs[jobKey].estComplTimeCpu <0 or fJobs[jobKey].estComplTimeGpu <0:
-        #     return False
-        if fJobs[jobKey].estComplTimeCpu <0:
-            return False  
-
-    elapsed_time = time() - start_time
-    log("[INFO] Profiling lasts " + str(elapsed_time) + " seconds")
+        if fJobs[jobKey].estComplTimeCpu <0 or fJobs[jobKey].estComplTimeGpu <0:
+            return False
+        # if fJobs[jobKey].estComplTimeCpu <0:
+        #     return False  
+    # elapsed_time = time() - start_time
+    # log("[INFO] Profiling lasts " + str(elapsed_time) + " seconds")
     return True
 
 def isAllSubmitted(fJobs):
@@ -547,6 +546,7 @@ def main():
                 thread4.start()         
                 gpuShortJobs_2[jobIdKey] = newJob 
                 
+                sleep(0.1)
                 ###################################################################
                 pendingJobs, startedJobs, completedJobs, currTime = listJobStatus()                
                 updateJobInfo(startedJobs, completedJobs, cpuShortJobs_1, currTime)

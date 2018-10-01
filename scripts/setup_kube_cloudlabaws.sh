@@ -31,13 +31,13 @@
 # slavesIP="hp080
 # " # last one of ctl of slave1
 
-LARGE1=true
-LARGE2=false
+LARGE1=false
+LARGE2=true
 # LARGE1=false
 # LARGE2=true
 
-isPasswordLess=true
-isKubernetes=true
+isPasswordLess=false
+isKubernetes=false
 # isPasswordLess=false
 # isKubernetes=false
 
@@ -56,10 +56,7 @@ hp042.utah.cloudlab.us
 hp076.utah.cloudlab.us		
 hp050.utah.cloudlab.us
 " 
-	slavesAWS="18.222.170.128
-	18.191.152.23
-	18.222.158.11
-	18.218.187.124
+	slavesAWS="
 "
 fi
 
@@ -89,10 +86,7 @@ hp153.utah.cloudlab.us
 hp122.utah.cloudlab.us
 hp151.utah.cloudlab.us
 " 
-	slavesAWS="18.221.129.175
-	18.188.242.229
-	18.216.235.61
-	18.219.57.74
+	slavesAWS="
 "
 fi
 ############################################# 

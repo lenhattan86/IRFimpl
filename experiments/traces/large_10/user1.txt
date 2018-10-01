@@ -1,0 +1,41 @@
+# Generated workload for user1
+19000 0 3 1869
+1000 1 2 1128
+python tf_cnn_benchmarks.py --device=cpu --data_format=NHWC --num_warmup_batches=0  --model=googlenet --batch_size=1 --num_intra_threads=19 --num_batches=27000
+python tf_cnn_benchmarks.py --device=gpu --num_warmup_batches=0  --model=googlenet --batch_size=1 --num_batches=27000
+19000 0 3 1869
+1000 1 2 1128
+python tf_cnn_benchmarks.py --device=cpu --data_format=NHWC --num_warmup_batches=0  --model=googlenet --batch_size=1 --num_intra_threads=19 --num_batches=27000
+python tf_cnn_benchmarks.py --device=gpu --num_warmup_batches=0  --model=googlenet --batch_size=1 --num_batches=27000
+19000 0 3 1869
+1000 1 2 1128
+python tf_cnn_benchmarks.py --device=cpu --data_format=NHWC --num_warmup_batches=0  --model=googlenet --batch_size=1 --num_intra_threads=19 --num_batches=27000
+python tf_cnn_benchmarks.py --device=gpu --num_warmup_batches=0  --model=googlenet --batch_size=1 --num_batches=27000
+19000 0 3 1869
+1000 1 2 1128
+python tf_cnn_benchmarks.py --device=cpu --data_format=NHWC --num_warmup_batches=0  --model=googlenet --batch_size=1 --num_intra_threads=19 --num_batches=27000
+python tf_cnn_benchmarks.py --device=gpu --num_warmup_batches=0  --model=googlenet --batch_size=1 --num_batches=27000
+19000 0 3 1869
+1000 1 2 1128
+python tf_cnn_benchmarks.py --device=cpu --data_format=NHWC --num_warmup_batches=0  --model=googlenet --batch_size=1 --num_intra_threads=19 --num_batches=27000
+python tf_cnn_benchmarks.py --device=gpu --num_warmup_batches=0  --model=googlenet --batch_size=1 --num_batches=27000
+19000 0 3 1869
+1000 1 2 1128
+python tf_cnn_benchmarks.py --device=cpu --data_format=NHWC --num_warmup_batches=0  --model=googlenet --batch_size=1 --num_intra_threads=19 --num_batches=27000
+python tf_cnn_benchmarks.py --device=gpu --num_warmup_batches=0  --model=googlenet --batch_size=1 --num_batches=27000
+19000 0 3 1869
+1000 1 2 1128
+python tf_cnn_benchmarks.py --device=cpu --data_format=NHWC --num_warmup_batches=0  --model=googlenet --batch_size=1 --num_intra_threads=19 --num_batches=27000
+python tf_cnn_benchmarks.py --device=gpu --num_warmup_batches=0  --model=googlenet --batch_size=1 --num_batches=27000
+19000 0 3 1869
+1000 1 2 1128
+python tf_cnn_benchmarks.py --device=cpu --data_format=NHWC --num_warmup_batches=0  --model=googlenet --batch_size=1 --num_intra_threads=19 --num_batches=27000
+python tf_cnn_benchmarks.py --device=gpu --num_warmup_batches=0  --model=googlenet --batch_size=1 --num_batches=27000
+19000 0 3 1869
+1000 1 2 1128
+python tf_cnn_benchmarks.py --device=cpu --data_format=NHWC --num_warmup_batches=0  --model=googlenet --batch_size=1 --num_intra_threads=19 --num_batches=27000
+python tf_cnn_benchmarks.py --device=gpu --num_warmup_batches=0  --model=googlenet --batch_size=1 --num_batches=27000
+19000 0 3 403
+1000 1 2 531
+python tf_cnn_benchmarks.py --device=cpu --data_format=NHWC --num_warmup_batches=0  --model=googlenet --batch_size=1 --num_intra_threads=19 --num_batches=6000
+python tf_cnn_benchmarks.py --device=gpu --num_warmup_batches=0  --model=googlenet --batch_size=1 --num_batches=6000

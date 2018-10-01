@@ -330,13 +330,13 @@ start_time = time()
 ## only submit jobs if they are estimated.
 def isAllJobsReady(fJobs):
     for jobKey in fJobs:
-        if fJobs[jobKey].estComplTimeCpu <0 or fJobs[jobKey].estComplTimeGpu <0:
-            return False
-        # if fJobs[jobKey].estComplTimeCpu <0:
-        #     return False  
+        # if fJobs[jobKey].estComplTimeCpu <0 or fJobs[jobKey].estComplTimeGpu <0:
+        #     return False
+        if fJobs[jobKey].estComplTimeCpu <0:
+            return False  
 
     elapsed_time = time() - start_time
-    log("[INFO] Profiling lasts " + elapsed_time + " seconds")
+    log("[INFO] Profiling lasts " + str(elapsed_time) + " seconds")
     return True
 
 def isAllSubmitted(fJobs):
@@ -479,10 +479,18 @@ def main():
                 newJob = JobInfo(jobId, yamfile, user.username, numBatch1, 0)
                 activeJob = ActiveJob(cpu_usage, gpu_usage, 0, 0, jobId, cpuCmd1, gpuCmd, 0, 0)
                 createYamlFile(activeJob, jobName, yamfile, False, IS_MY_SCHEDULER)
-                # submitJob(yamfile, job_folder, yamfile, DEFAULT_NS)     
-                thread1 = Thread(target = submitJob, args = (yamfile, job_folder, yamfile, DEFAULT_NS))   
-                thread1.start()    
+                submitJob(yamfile, job_folder, yamfile, DEFAULT_NS)     
+                # thread1 = Thread(target = submitJob, args = (yamfile, job_folder, yamfile, DEFAULT_NS))   
+                # thread1.start()    
                 cpuShortJobs_1[jobIdKey] = newJob
+
+                ###################################################################
+                pendingJobs, startedJobs, completedJobs, currTime = listJobStatus()
+                updateJobInfo(startedJobs, completedJobs, cpuShortJobs_1, currTime)
+                updateJobInfo(startedJobs, completedJobs, gpuShortJobs_1, currTime)
+                updateJobInfo(startedJobs, completedJobs, gpuShortJobs_2, currTime)
+                updateJobInfo(startedJobs, completedJobs, gpuShortJobs_2, currTime)
+                ###################################################################
 
                 prefix = PROFILING_PREFIX + "-cpu2"
                 jobName = str(user.username)  +"-"+ prefix
@@ -491,10 +499,18 @@ def main():
                 newJob  = JobInfo(jobId, yamfile, user.username, numBatch2, 0)
                 activeJob = ActiveJob(cpu_usage, gpu_usage, 0, 0, jobId,  cpuCmd2, gpuCmd2, 0, 0)
                 createYamlFile(activeJob, jobName, yamfile, False, IS_MY_SCHEDULER)
-                # submitJob(yamfile, job_folder, yamfile, DEFAULT_NS)     
-                thread2 = Thread(target = submitJob, args = (yamfile, job_folder, yamfile, DEFAULT_NS))   
-                thread2.start()        
+                submitJob(yamfile, job_folder, yamfile, DEFAULT_NS)     
+                # thread2 = Thread(target = submitJob, args = (yamfile, job_folder, yamfile, DEFAULT_NS))   
+                # thread2.start()        
                 cpuShortJobs_2[jobIdKey] = newJob
+
+                ###################################################################
+                pendingJobs, startedJobs, completedJobs, currTime = listJobStatus()
+                updateJobInfo(startedJobs, completedJobs, cpuShortJobs_1, currTime)
+                updateJobInfo(startedJobs, completedJobs, gpuShortJobs_1, currTime)
+                updateJobInfo(startedJobs, completedJobs, gpuShortJobs_2, currTime)
+                updateJobInfo(startedJobs, completedJobs, gpuShortJobs_2, currTime)
+                ###################################################################
 
                 # prepare jobs for GPU        
                 prefix = PROFILING_PREFIX + "-gpu1"
@@ -504,10 +520,18 @@ def main():
                 newJob = JobInfo(jobId, yamfile, user.username, numBatch1, 0)
                 activeJob = ActiveJob(gpu_usage, cpu_usage,  0, 0, jobId, gpuCmd1, cpuCmd1, 0, 0 )
                 createYamlFile(activeJob, jobName, yamfile, True, IS_MY_SCHEDULER)
-                # submitJob(yamfile, job_folder, yamfile, DEFAULT_NS)     
-                thread3 = Thread(target = submitJob, args = (yamfile, job_folder, yamfile, DEFAULT_NS))   
-                thread3.start()          
+                submitJob(yamfile, job_folder, yamfile, DEFAULT_NS)     
+                # thread3 = Thread(target = submitJob, args = (yamfile, job_folder, yamfile, DEFAULT_NS))   
+                # thread3.start()          
                 gpuShortJobs_1[jobIdKey] = newJob
+
+                ###################################################################
+                pendingJobs, startedJobs, completedJobs, currTime = listJobStatus()
+                updateJobInfo(startedJobs, completedJobs, cpuShortJobs_1, currTime)
+                updateJobInfo(startedJobs, completedJobs, gpuShortJobs_1, currTime)
+                updateJobInfo(startedJobs, completedJobs, gpuShortJobs_2, currTime)
+                updateJobInfo(startedJobs, completedJobs, gpuShortJobs_2, currTime)
+                ###################################################################
 
                 prefix = PROFILING_PREFIX + "-gpu2"
                 jobName = str(user.username) +"-"+ prefix
@@ -516,17 +540,19 @@ def main():
                 newJob  = JobInfo(jobId, yamfile, user.username, numBatch2, 0)
                 activeJob = ActiveJob(gpu_usage, cpu_usage,  0, 0, jobId, gpuCmd2,  cpuCmd2, 0, 0)
                 createYamlFile(activeJob, jobName, yamfile, True, IS_MY_SCHEDULER)
-                # submitJob(yamfile, job_folder, yamfile, DEFAULT_NS)     
-                thread4 = Thread(target = submitJob, args = (yamfile, job_folder, yamfile, DEFAULT_NS))   
-                thread4.start()         
+                submitJob(yamfile, job_folder, yamfile, DEFAULT_NS)     
+                # thread4 = Thread(target = submitJob, args = (yamfile, job_folder, yamfile, DEFAULT_NS))   
+                # thread4.start()         
                 gpuShortJobs_2[jobIdKey] = newJob 
                 
+                ###################################################################
                 pendingJobs, startedJobs, completedJobs, currTime = listJobStatus()
                 updateJobInfo(startedJobs, completedJobs, cpuShortJobs_1, currTime)
                 updateJobInfo(startedJobs, completedJobs, gpuShortJobs_1, currTime)
                 updateJobInfo(startedJobs, completedJobs, gpuShortJobs_2, currTime)
                 updateJobInfo(startedJobs, completedJobs, gpuShortJobs_2, currTime)
-            
+                ###################################################################
+
                 # estimateSpeedup(fullJobs, cpuShortJobs_1, gpuShortJobs_1)
                 # estimateSpeedup(fullJobs, gpuShortJobs_1, gpuShortJobs_2, False)
 
@@ -595,7 +621,7 @@ def main():
                 writeJobsToCsv(cpuShortJobs_2,'cpuShortJobs_2')    
                 writeJobsToCsv(gpuShortJobs_2,'gpuShortJobs_2') 
             elapsed_time = time() - start_time
-            log("[INFO] Estimation lasts " + elapsed_time + " seconds")
+            log("[INFO] Estimation lasts " + str(elapsed_time) + " seconds")
             log("[INFO] All jobs are submitted ==> Please wait for jobs to be finished")
             break 
 

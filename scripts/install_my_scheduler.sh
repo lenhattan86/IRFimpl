@@ -68,7 +68,7 @@ spec:
             port: 10251
         resources:
           requests:
-            cpu: '0.1'
+            cpu: '10.0'
         securityContext:
           privileged: false
         volumeMounts: []

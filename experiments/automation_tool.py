@@ -548,12 +548,16 @@ def main():
                 gpuShortJobs_2[jobIdKey] = newJob 
                 
                 ###################################################################
-                pendingJobs, startedJobs, completedJobs, currTime = listJobStatus()
+                pendingJobs, startedJobs, completedJobs, currTime = listJobStatus()                
                 updateJobInfo(startedJobs, completedJobs, cpuShortJobs_1, currTime)
                 updateJobInfo(startedJobs, completedJobs, gpuShortJobs_1, currTime)
                 updateJobInfo(startedJobs, completedJobs, gpuShortJobs_2, currTime)
                 updateJobInfo(startedJobs, completedJobs, gpuShortJobs_2, currTime)
                 ###################################################################
+                thread1.join
+                thread2.join
+                thread3.join
+                thread4.join
 
                 # estimateSpeedup(fullJobs, cpuShortJobs_1, gpuShortJobs_1)
                 # estimateSpeedup(fullJobs, gpuShortJobs_1, gpuShortJobs_2, False)

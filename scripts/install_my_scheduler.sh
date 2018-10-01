@@ -72,6 +72,8 @@ spec:
         securityContext:
           privileged: false
         volumeMounts: []
+        nodeSelector:
+          disktype: ssd
       hostNetwork: false
       hostPID: false
       volumes: []" > $yamlFile

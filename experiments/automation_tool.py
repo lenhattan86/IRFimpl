@@ -546,7 +546,7 @@ def main():
                 thread4.start()         
                 gpuShortJobs_2[jobIdKey] = newJob 
                 
-                sleep(0.1)
+                sleep(0.2) # give some time for kubernetes
                 ###################################################################
                 pendingJobs, startedJobs, completedJobs, currTime = listJobStatus()                
                 updateJobInfo(startedJobs, completedJobs, cpuShortJobs_1, currTime)
@@ -554,10 +554,10 @@ def main():
                 updateJobInfo(startedJobs, completedJobs, gpuShortJobs_2, currTime)
                 updateJobInfo(startedJobs, completedJobs, gpuShortJobs_2, currTime)
                 ###################################################################
-                thread1.join
-                thread2.join
-                thread3.join
-                thread4.join
+                # thread1.join
+                # thread2.join
+                # thread3.join
+                # thread4.join
 
                 # estimateSpeedup(fullJobs, cpuShortJobs_1, gpuShortJobs_1)
                 # estimateSpeedup(fullJobs, gpuShortJobs_1, gpuShortJobs_2, False)

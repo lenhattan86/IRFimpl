@@ -56,7 +56,10 @@ hp042.utah.cloudlab.us
 hp076.utah.cloudlab.us		
 hp050.utah.cloudlab.us
 " 
-	slavesAWS="
+	slavesAWS="18.188.38.52
+18.218.73.13
+18.217.111.202
+18.221.8.164
 "
 fi
 
@@ -86,7 +89,10 @@ hp153.utah.cloudlab.us
 hp122.utah.cloudlab.us
 hp151.utah.cloudlab.us
 " 
-	slavesAWS="
+	slavesAWS="18.222.158.122
+18.222.240.32
+18.218.215.177
+18.216.94.125
 "
 fi
 ############################################# 
@@ -127,10 +133,10 @@ then
 		$SSH_CMD $username@$server 'bash -s' < ./setupkubernetes_cpu.sh &
 	done
 	wait
-	# for server in $slavesAWS; do
-	# 	$SSH_CMD_aws $username_aws@$server 'bash -s' < ./setupkubernetes_gpu.sh &
-	# done
-	# wait
+	for server in $slavesAWS; do
+		$SSH_CMD_aws $username_aws@$server 'bash -s' < ./setupkubernetes_gpu.sh &
+	done
+	wait
 fi
 
 # configure kubernetes master

@@ -229,8 +229,8 @@ def estimateComplTime(fJobs, sJobs1, sJobs2, isCPU):
                         b = sJobs1[keyId].complTime - a*sJobs1[keyId].numBatches                        
                         fJobs[keyId].estComplTimeCpu = a*fJobs[keyId].numBatches + b
                         if fJobs[keyId].estComplTimeCpu < 0 or sJobs2[keyId].complTime < sJobs1[keyId].complTime:
-                            # fJobs[keyId].estComplTimeCpu = max(sJobs2[keyId].complTime, sJobs1[keyId].complTime)
-                            fJobs[keyId].estComplTimeCpu = (100/numBatch2Percent_CPU) * interval
+                            fJobs[keyId].estComplTimeCpu = max(sJobs2[keyId].complTime, sJobs1[keyId].complTime)
+                            fJobs[keyId].estComplTimeCpu = max((100/numBatch2Percent_CPU) * interval, fJobs[keyId].estComplTimeCpu )
                             log("[ERROR] " + fJobs.get(keyId).jobName +" is TOO SHORT on CPU ")  
                         log("[INFO] " + fJobs.get(keyId).jobName +"'s estimated compl. time on CPU is " + str(fJobs[keyId].estComplTimeCpu))
 
@@ -244,8 +244,8 @@ def estimateComplTime(fJobs, sJobs1, sJobs2, isCPU):
                         b = sJobs1[keyId].complTime - a*sJobs1[keyId].numBatches
                         fJobs[keyId].estComplTimeGpu = a*fJobs[keyId].numBatches2 + b
                         if fJobs[keyId].estComplTimeGpu < 0 or sJobs2[keyId].complTime < sJobs1[keyId].complTime:
-                            # fJobs[keyId].estComplTimeGpu = max(sJobs2[keyId].complTime, sJobs1[keyId].complTime)
-                            fJobs[keyId].estComplTimeGpu = (100/numBatch2Percent_CPU) * interval
+                            fJobs[keyId].estComplTimeGpu = max(sJobs2[keyId].complTime, sJobs1[keyId].complTime)
+                            fJobs[keyId].estComplTimeGpu = max((100/numBatch2Percent_CPU) * interval,fJobs[keyId].estComplTimeGpu)
                             log("[ERROR] " + fJobs.get(keyId).jobName +" is TOO SHORT on GPU ")
                         log("[INFO] " + fJobs.get(keyId).jobName +"'s estimated compl. time on GPU is " + str(fJobs[keyId].estComplTimeGpu))
 
@@ -520,7 +520,7 @@ def main():
                 yamfile = jobName + "-" + str(jobId)
                 numBatch1 = job.numBatches2 * numBatch1Percent_GPU
                 newJob = JobInfo(jobId, yamfile, user.username, numBatch1, 0)
-                activeJob = ActiveJob(gpu_usage, cpu_usage,  0, 0, jobId, gpuCmd1, cpuCmd1, 0, 0 )
+                activeJob = ActiveJob(gpu_usage, cpu_usage,  0, 0, jobId, gpuCmd1, cpuCmd1, 1, 0 )
                 createYamlFile(activeJob, jobName, yamfile, True, IS_MY_SCHEDULER)
                 # submitJob(yamfile, job_folder, yamfile, DEFAULT_NS)     
                 thread3 = Thread(target = submitJob, args = (yamfile, job_folder, yamfile, DEFAULT_NS))   
@@ -540,7 +540,7 @@ def main():
                 yamfile = jobName + "-" + str(jobId)
                 numBatch2 = job.numBatches2 * numBatch2Percent_GPU
                 newJob  = JobInfo(jobId, yamfile, user.username, numBatch2, 0)
-                activeJob = ActiveJob(gpu_usage, cpu_usage,  0, 0, jobId, gpuCmd2,  cpuCmd2, 0, 0)
+                activeJob = ActiveJob(gpu_usage, cpu_usage,  0, 0, jobId, gpuCmd2,  cpuCmd2, 1, 0)
                 createYamlFile(activeJob, jobName, yamfile, True, IS_MY_SCHEDULER)
                 # submitJob(yamfile, job_folderinterval, yamfile, DEFAULT_NS)     
                 thread4 = Thread(target = submitJob, args = (yamfile, job_folder, yamfile, DEFAULT_NS))   

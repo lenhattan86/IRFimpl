@@ -31,8 +31,8 @@
 # slavesIP="hp080
 # " # last one of ctl of slave1
 
-LARGE1=false
-LARGE2=true
+LARGE1=true
+LARGE2=false
 # LARGE1=false
 # LARGE2=true
 

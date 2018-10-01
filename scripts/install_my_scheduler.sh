@@ -1,4 +1,4 @@
-echo "PLEASE do kubectl label nodes <master node> disktype=ssd"
+echo "PLEASE do: kubectl label nodes <master node> disktype=ssd"
 if [ -z "$1" ]
 then
 	version=1.0
@@ -73,8 +73,8 @@ spec:
         securityContext:
           privileged: false
         volumeMounts: []
-        nodeSelector:
-          disktype: ssd
+      nodeSelector:
+        disktype: ssd
       hostNetwork: false
       hostPID: false
       volumes: []" > $yamlFile

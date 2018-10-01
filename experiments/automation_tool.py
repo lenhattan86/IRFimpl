@@ -92,6 +92,7 @@ def log(str):
         print(str)
 
 def listJobStatus():
+    currTime = time()
     startedPods   = []
     completedPods = []
     pendingJobs = []
@@ -122,6 +123,7 @@ user1       g-user1-1                          0/1      Completed   0          1
 
     # completedJobs = 0
     # time_step = time_step + interval
+    
     if p_status != 0:        
         print('Could not access the kubernetes')
     else:
@@ -140,9 +142,7 @@ user1       g-user1-1                          0/1      Completed   0          1
                     completedPods.append(mPodName)
                 if podStatus == "ContainerCreating" or podStatus == "Running":
                 # if podStatus == "Running":
-                    startedPods.append(mPodName)                
-                    
-    currTime = time()
+                    startedPods.append(mPodName)                                        
     return pendingJobs, startedPods, completedPods, currTime
 
 def updateJobInfo(startedJobs, completedJobs, mJobs, currTime):    
@@ -449,6 +449,7 @@ def main():
     # create profiling jobs
     jobId = 0
     deleteAllJobs(DEFAULT_NS)
+    sleep(5)
     for user in users:
         deleteAllJobs(user.username)
         # create jobs        

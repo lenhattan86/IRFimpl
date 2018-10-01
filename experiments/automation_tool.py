@@ -479,7 +479,7 @@ def main():
                 yamfile = jobName + "-" + str(jobId)
                 numBatch1 = job.numBatches * numBatch1Percent_CPU
                 newJob = JobInfo(jobId, yamfile, user.username, numBatch1, 0)
-                activeJob = ActiveJob(cpu_usage, gpu_usage, 0, 0, jobId, cpuCmd1, gpuCmd, 0, 0)
+                activeJob = ActiveJob(cpu_usage, gpu_usage, 0, 0, jobId, cpuCmd1, gpuCmd, 0, 1)
                 createYamlFile(activeJob, jobName, yamfile, False, IS_MY_SCHEDULER)
                 # submitJob(yamfile, job_folder, yamfile, DEFAULT_NS)     
                 thread1 = Thread(target = submitJob, args = (yamfile, job_folder, yamfile, DEFAULT_NS))   
@@ -499,7 +499,7 @@ def main():
                 yamfile = jobName + "-" + str(jobId)
                 numBatch2 = job.numBatches * numBatch2Percent_CPU
                 newJob  = JobInfo(jobId, yamfile, user.username, numBatch2, 0)
-                activeJob = ActiveJob(cpu_usage, gpu_usage, 0, 0, jobId,  cpuCmd2, gpuCmd2, 0, 0)
+                activeJob = ActiveJob(cpu_usage, gpu_usage, 0, 0, jobId,  cpuCmd2, gpuCmd2, 0, 1)
                 createYamlFile(activeJob, jobName, yamfile, False, IS_MY_SCHEDULER)
                 # submitJob(yamfile, job_folder, yamfile, DEFAULT_NS)     
                 thread2 = Thread(target = submitJob, args = (yamfile, job_folder, yamfile, DEFAULT_NS))   
@@ -520,7 +520,7 @@ def main():
                 yamfile = jobName + "-" + str(jobId)
                 numBatch1 = job.numBatches2 * numBatch1Percent_GPU
                 newJob = JobInfo(jobId, yamfile, user.username, numBatch1, 0)
-                activeJob = ActiveJob(gpu_usage, cpu_usage,  0, 0, jobId, gpuCmd1, cpuCmd1, 1, 0 )
+                activeJob = ActiveJob(gpu_usage, cpu_usage,  0, 0, jobId, gpuCmd1, cpuCmd1, 0, 1 )
                 createYamlFile(activeJob, jobName, yamfile, True, IS_MY_SCHEDULER)
                 # submitJob(yamfile, job_folder, yamfile, DEFAULT_NS)     
                 thread3 = Thread(target = submitJob, args = (yamfile, job_folder, yamfile, DEFAULT_NS))   

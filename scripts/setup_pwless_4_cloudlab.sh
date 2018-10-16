@@ -1,6 +1,6 @@
 
-servers="hp073.utah.cloudlab.us		
-hp080.utah.cloudlab.us"
+servers="clnode036.clemson.cloudlab.us
+clnode021.clemson.cloudlab.us"
 
 for server in $servers; do
 	scp ~/.ssh/id_rsa* $username@$server:~/.ssh/

@@ -76,7 +76,7 @@ DEFAULT_NS = "default"
 
 MAX_CPU = 19
 MAX_GPU = 1
-MAX_MEM = 12
+MAX_MEM = 56
 cpu=19
 mem=12
 gpuCpu=1
@@ -361,13 +361,14 @@ def submitFullJobs(fJobs):
                 job = jobInfo.job            
                 cpuCmd = job.cpuProfile.jobCmd
                 gpuCmd = job.gpuProfile.jobCmd
-
-                cpu_usage = Resource(job.cpuProfile.demand.MilliCPU,job.cpuProfile.demand.Memory, job.cpuProfile.demand.NvidiaGPU)
-                gpu_usage = Resource(job.gpuProfile.demand.MilliCPU, job.gpuProfile.demand.Memory, job.gpuProfile.demand.NvidiaGPU)
                 
                 if (isProfiling):
+                    cpu_usage = Resource(job.cpuProfile.demand.MilliCPU,job.cpuProfile.demand.Memory, job.cpuProfile.demand.NvidiaGPU)
+                    gpu_usage = Resource(job.gpuProfile.demand.MilliCPU, job.gpuProfile.demand.Memory, job.gpuProfile.demand.NvidiaGPU)
                     activeJob = ActiveJob(cpu_usage, gpu_usage, 0, 0, jobKey, cpuCmd, gpuCmd, jobInfo.estComplTimeCpu, jobInfo.estComplTimeGpu)
                 else:
+                    cpu_usage = Resource(job.cpuProfile.demand.MilliCPU, MAX_MEM, job.cpuProfile.demand.NvidiaGPU)
+                    gpu_usage = Resource(job.gpuProfile.demand.MilliCPU, MAX_MEM, job.gpuProfile.demand.NvidiaGPU)
                     activeJob = ActiveJob(cpu_usage, gpu_usage, 0, 0, jobKey, cpuCmd, gpuCmd, job.cpuProfile.compl, job.gpuProfile.compl)
 
                 prefix = jobInfo.userName

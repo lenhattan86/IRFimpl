@@ -40,15 +40,15 @@ if $LARGE1
 then
 	echo "======  LARGE 1 ======"
 	sleep 5
-	masterIP="128.110.155.22"
-	slavesIP="hp167.utah.cloudlab.us
-hp175.utah.cloudlab.us
-hp162.utah.cloudlab.us
-hp184.utah.cloudlab.us
-hp198.utah.cloudlab.us
-hp180.utah.cloudlab.us
-hp196.utah.cloudlab.us
-hp181.utah.cloudlab.us
+	masterIP="128.110.154.224"
+	slavesIP="hp138.utah.cloudlab.us
+hp154.utah.cloudlab.us
+hp153.utah.cloudlab.us
+hp158.utah.cloudlab.us
+hp136.utah.cloudlab.us
+hp152.utah.cloudlab.us		
+hp145.utah.cloudlab.us		
+hp150.utah.cloudlab.us
 " 
 	slavesAWS="
 "

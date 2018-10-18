@@ -1,4 +1,8 @@
+kubectl get nodes
 echo "PLEASE do: kubectl label nodes <master node> disktype=ssd"
+echo "Enter master node:"
+read masterNode
+kubectl label nodes $masterNode disktype=ssd
 if [ -z "$1" ]
 then
 	version=1.0

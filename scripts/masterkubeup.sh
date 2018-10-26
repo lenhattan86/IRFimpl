@@ -40,8 +40,11 @@ mkdir -p $HOME/.kube; sudo cp -f /etc/kubernetes/admin.conf $HOME/.kube/config; 
 # 1.9
 #kubectl apply -f https://docs.projectcalico.org/v3.0/getting-started/kubernetes/installation/hosted/kubeadm/1.7/calico.yaml 
 # 1.11
-sudo kubectl apply -f https://docs.projectcalico.org/v3.1/getting-started/kubernetes/installation/hosted/rbac-kdd.yaml
-sudo kubectl apply -f https://docs.projectcalico.org/v3.1/getting-started/kubernetes/installation/hosted/kubernetes-datastore/calico-networking/1.7/calico.yaml
+# sudo kubectl apply -f https://docs.projectcalico.org/v3.1/getting-started/kubernetes/installation/hosted/rbac-kdd.yaml
+# sudo kubectl apply -f https://docs.projectcalico.org/v3.1/getting-started/kubernetes/installation/hosted/kubernetes-datastore/calico-networking/1.7/calico.yaml
+# 1.12
+kubectl apply -f https://docs.projectcalico.org/v3.3/getting-started/kubernetes/installation/rbac.yaml
+kubectl apply -f https://docs.projectcalico.org/v3.3/getting-started/kubernetes/installation/hosted/calico.yaml
 
 sudo kubectl taint nodes --all node-role.kubernetes.io/master-; mkdir -p $HOME//config; sudo cp -f /etc/kubernetes/admin.conf  $HOME//config/admin.conf; sudo chmod 777  $HOME//config/admin.conf
 

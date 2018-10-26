@@ -1,7 +1,7 @@
 #!/bin/bash
 #usage: ./setupkubernetes.sh
 
-kubeVer="1.11.3-00"
+kubeVer=$1
 sudo apt-get purge -y kubelet kubeadm kubectl kubernetes-cni
 
 # echo "######################### DOCKER ##########################################"
@@ -54,7 +54,12 @@ deb http://apt.kubernetes.io/ kubernetes-xenial main
 EOF
 apt-get update'
 # sudo apt-get install -y kubelet kubeadm kubectl 
-sudo apt-get install -qy kubelet=$kubeVer kubeadm=$kubeVer kubectl=$kubeVer 
+if [ -z "$1" ]
+then
+	sudo apt-get install -y kubelet kubeadm kubectl
+else	
+    sudo apt-get install -qy kubelet=$1 kubeadm=$1 kubectl=$1
+fi
 sudo apt-get install -y kubernetes-cni
 
 # sudo apt-get install -qy kubernetes-cni=0.5.0

@@ -20,7 +20,7 @@ fi
 
 if [ -z "$4" ]
 then
-	server="128.104.222.154"
+	server="128.110.154.224"
 else
 	server="$4"
 fi

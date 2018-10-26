@@ -31,24 +31,45 @@
 # slavesIP="hp080
 # " # last one of ctl of slave1
 
-LARGE1=true
-isPasswordLess=true
-isKubernetes=true
+LARGE1=false
+isPasswordLess=false
+isKubernetesCloudlab=true
+isKubernetesAWS=false
+kubeVersion="1.11.3-00"
+# kubeVersion=""
 
 ############### LARGE 1 #################
 if $LARGE1
 then
-	echo "======  LARGE 1 ======"
+	echo "======  large1 ======"
 	sleep 5
-	masterIP="128.110.154.224"
-	slavesIP="hp138.utah.cloudlab.us
-hp154.utah.cloudlab.us
-hp153.utah.cloudlab.us
-hp158.utah.cloudlab.us
-hp136.utah.cloudlab.us
-hp152.utah.cloudlab.us		
-hp145.utah.cloudlab.us		
-hp150.utah.cloudlab.us
+	masterIP="128.110.154.91"
+	slavesIP="hp028.utah.cloudlab.us
+hp035.utah.cloudlab.us
+hp025.utah.cloudlab.us
+hp023.utah.cloudlab.us
+hp011.utah.cloudlab.us
+hp034.utah.cloudlab.us
+hp033.utah.cloudlab.us
+hp026.utah.cloudlab.us
+hp010.utah.cloudlab.us
+" 
+	slavesAWS="
+"
+else
+	echo "======  kube ======"
+	sleep 5
+	masterIP="128.110.155.10"
+	# slavesIP="hp175.utah.cloudlab.us
+# " 
+	slavesIP="hp175.utah.cloudlab.us
+hp167.utah.cloudlab.us
+hp183.utah.cloudlab.us
+hp184.utah.cloudlab.us
+hp180.utah.cloudlab.us
+hp192.utah.cloudlab.us
+hp162.utah.cloudlab.us
+hp164.utah.cloudlab.us
 " 
 	slavesAWS="
 "
@@ -80,26 +101,30 @@ done
 for server in $slavesAWS; do
 	$SSH_CMD_aws $username_aws@$server "echo hello $server" -y
 done	
-# echo "Please stop here if one of the node is not connected...."
-# sleep 15
+echo "Please stop here if one of the node is not connected...."
+sleep 15
 # setup kubernetes
-	
-if $isKubernetes
+
+if $isKubernetesCloudlab
 then
-	$SSH_CMD $username@$masterIP 'bash -s' < ./setupkubernetes_cpu.sh &
+	$SSH_CMD $username@$masterIP 'bash -s' < ./setupkubernetes_cpu.sh $kubeVersion &
 	for server in $slavesIP; do
-		$SSH_CMD $username@$server 'bash -s' < ./setupkubernetes_cpu.sh &
+		$SSH_CMD $username@$server 'bash -s' < ./setupkubernetes_cpu.sh $kubeVersion &
 	done
 	wait
+fi
+if $isKubernetesAWS	
+then
 	for server in $slavesAWS; do
-		$SSH_CMD_aws $username_aws@$server 'bash -s' < ./setupkubernetes_gpu.sh &
+		$SSH_CMD_aws $username_aws@$server 'bash -s' < ./setupkubernetes_gpu.sh $kubeVersion  &
 	done
 	wait
 fi
 
 # configure kubernetes master
 $SSH_CMD $username@$masterIP 'bash -s' < ./masterkubeup.sh $masterIP
-#kubeadm join --token c91d8c.c90c8bb2666e5eab 10.52.1.213:6443 --discovery-token-ca-cert-hash sha256:f3f3d8a49a371628f7086f29d78601bc8e0ff1c2ab48f5a8ffc9696520dd2102
+# c91d8c.c90c8bb2666e5eab  sha256:f3f3d8a49a371628f7086f29d78601bc8e0ff1c2ab48f5a8ffc9696520dd2102
+
 echo "Enter token:"
 read token
 echo "Enter sha256:"

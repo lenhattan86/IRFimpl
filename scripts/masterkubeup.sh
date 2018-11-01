@@ -11,7 +11,7 @@ fi
 
 sudo iptables -F; sudo swapoff -a ;sudo free -m
 
-sudo kubeadm reset -f
+# sudo kubeadm reset -f
 # sudo kubeadm reset
 sudo systemctl enable docker
 sudo systemctl start docker
@@ -40,18 +40,19 @@ mkdir -p $HOME/.kube; sudo cp -f /etc/kubernetes/admin.conf $HOME/.kube/config; 
 # 1.9
 #kubectl apply -f https://docs.projectcalico.org/v3.0/getting-started/kubernetes/installation/hosted/kubeadm/1.7/calico.yaml 
 # 1.11
-# sudo kubectl apply -f https://docs.projectcalico.org/v3.1/getting-started/kubernetes/installation/hosted/rbac-kdd.yaml
-# sudo kubectl apply -f https://docs.projectcalico.org/v3.1/getting-started/kubernetes/installation/hosted/kubernetes-datastore/calico-networking/1.7/calico.yaml
+sudo kubectl apply -f https://docs.projectcalico.org/v3.1/getting-started/kubernetes/installation/hosted/rbac-kdd.yaml
+sudo kubectl apply -f https://docs.projectcalico.org/v3.1/getting-started/kubernetes/installation/hosted/kubernetes-datastore/calico-networking/1.7/calico.yaml
 # 1.12
-kubectl apply -f https://docs.projectcalico.org/v3.3/getting-started/kubernetes/installation/rbac.yaml
-kubectl apply -f https://docs.projectcalico.org/v3.3/getting-started/kubernetes/installation/hosted/calico.yaml
+# kubectl apply -f https://docs.projectcalico.org/v3.3/getting-started/kubernetes/installation/rbac.yaml
+# kubectl apply -f https://docs.projectcalico.org/v3.3/getting-started/kubernetes/installation/hosted/calico.yaml
 
 sudo kubectl taint nodes --all node-role.kubernetes.io/master-; mkdir -p $HOME//config; sudo cp -f /etc/kubernetes/admin.conf  $HOME//config/admin.conf; sudo chmod 777  $HOME//config/admin.conf
 
 ## install metrics-server for resource usage monitoring// metrics-server is not mature
 # git checkout https://github.com/kubernetes-incubator/metrics-server
 # 
-
+# sleep 15
+echo "wait for all nodes tainted..."
 ## install gpu plugin
 #kubectl create -f https://raw.githubusercontent.com/NVIDIA/k8s-device-plugin/v1.9/nvidia-device-plugin.yml
-kubectl create -f https://raw.githubusercontent.com/NVIDIA/k8s-device-plugin/v1.11/nvidia-device-plugin.yml
+# kubectl create -f https://raw.githubusercontent.com/NVIDIA/k8s-device-plugin/v1.11/nvidia-device-plugin.yml

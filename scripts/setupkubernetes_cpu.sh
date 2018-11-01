@@ -3,6 +3,7 @@
 
 kubeVer=$1
 sudo apt-get purge -y kubelet kubeadm kubectl kubernetes-cni
+sudo apt-get purge -y docker-ce
 
 # echo "######################### DOCKER ##########################################"
 # sudo apt-get install libltdl7
@@ -74,9 +75,5 @@ echo "######################### Clean-up #######################################
 sudo rm -rf *.tgz *.deb
 
 echo "######################### DOCKER-PULL ##########################################"
-# sudo docker rmi lenhattan86/bench
 sudo docker rmi lenhattan86/ira:cpu
-
-# sudo docker pull lenhattan86/bench
 sudo docker pull lenhattan86/ira:cpu
-

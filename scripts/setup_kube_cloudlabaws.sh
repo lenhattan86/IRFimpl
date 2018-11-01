@@ -30,38 +30,43 @@
 # masterIP="128.110.154.154" #singcpu2
 # slavesIP="hp080
 # " # last one of ctl of slave1
-
-LARGE1=false
+# use old version of OpenStack "before Puke"
+LARGE1=true
 isPasswordLess=false
-isKubernetesCloudlab=true
-isKubernetesAWS=false
+isKubernetesCloudlab=false
+isKubernetesAWS=true
 kubeVersion="1.11.3-00"
 # kubeVersion=""
+if $isKubernetesAWS
+then
+	echo "set Kubernetes on AWS"
+fi
 
 ############### LARGE 1 #################
 if $LARGE1
 then
 	echo "======  large1 ======"
 	sleep 5
-	masterIP="128.110.154.91"
-	slavesIP="hp028.utah.cloudlab.us
-hp035.utah.cloudlab.us
-hp025.utah.cloudlab.us
-hp023.utah.cloudlab.us
-hp011.utah.cloudlab.us
-hp034.utah.cloudlab.us
-hp033.utah.cloudlab.us
-hp026.utah.cloudlab.us
-hp010.utah.cloudlab.us
-" 
-	slavesAWS="
-"
+	masterIP="128.110.154.129"
+	slavesIP="hp090.utah.cloudlab.us
+hp096.utah.cloudlab.us
+hp058.utah.cloudlab.us
+hp084.utah.cloudlab.us
+hp098.utah.cloudlab.us
+hp095.utah.cloudlab.us
+hp049.utah.cloudlab.us
+hp061.utah.cloudlab.us"
+
+	slavesAWS="3.16.43.102
+18.218.248.248
+18.223.99.98
+18.222.233.82"
 else
 	echo "======  kube ======"
 	sleep 5
 	masterIP="128.110.155.10"
-	# slavesIP="hp175.utah.cloudlab.us
-# " 
+	# slavesIP=""
+
 	slavesIP="hp175.utah.cloudlab.us
 hp167.utah.cloudlab.us
 hp183.utah.cloudlab.us
@@ -71,8 +76,7 @@ hp192.utah.cloudlab.us
 hp162.utah.cloudlab.us
 hp164.utah.cloudlab.us
 " 
-	slavesAWS="
-"
+	slavesAWS=""
 fi
 ############################################# 
 username="tanle"
@@ -94,7 +98,7 @@ then
 fi
 
 # #chmod 600 $keyfile
-
+$SSH_CMD $username@$masterIP "echo hello $masterIP" -y
 for server in $slavesIP; do
 	$SSH_CMD $username@$server "echo hello $server" -y
 done
@@ -107,14 +111,18 @@ sleep 15
 
 if $isKubernetesCloudlab
 then
+	echo "install Kubernetes on CC"
 	$SSH_CMD $username@$masterIP 'bash -s' < ./setupkubernetes_cpu.sh $kubeVersion &
+
 	for server in $slavesIP; do
 		$SSH_CMD $username@$server 'bash -s' < ./setupkubernetes_cpu.sh $kubeVersion &
 	done
 	wait
 fi
+
 if $isKubernetesAWS	
 then
+	echo "install Kubernetes on AWS"
 	for server in $slavesAWS; do
 		$SSH_CMD_aws $username_aws@$server 'bash -s' < ./setupkubernetes_gpu.sh $kubeVersion  &
 	done
@@ -141,3 +149,7 @@ done
 wait
 #git config credential.helper store
 #https://kukulinski.com/10-most-common-reasons-kubernetes-deployments-fail-part-1/
+
+## install gpu plugin
+#kubectl create -f https://raw.githubusercontent.com/NVIDIA/k8s-device-plugin/v1.9/nvidia-device-plugin.yml
+$SSH_CMD $username@$masterIP "kubectl create -f https://raw.githubusercontent.com/NVIDIA/k8s-device-plugin/v1.11/nvidia-device-plugin.yml"

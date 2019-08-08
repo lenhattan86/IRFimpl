@@ -1,0 +1,28 @@
+version: "2"
+
+services:
+  caffe:
+    image: lenhattan86/caffe:cpu
+    pid: host
+    ports:
+    - "1000:1000"
+    restart: on-failure
+    environment:
+      CAFFE_ENV: "caffe"
+    networks:
+      caffe_cluster:
+        ipv4_address: 192.168.33.2
+    # logging:
+    #   driver: none 
+    volumes:
+      - /Users/nhatle/projects/caffe_benchmark:/caffe_benchmark
+    # entrypoint:
+    #   - caffe_benchmark/keepalive.sh
+
+networks:
+  caffe_cluster:
+    driver: bridge
+    ipam:
+      config:
+      - subnet: 192.168.33.0/16
+        gateway: 192.168.33.1

@@ -1,5 +1,11 @@
-FROM nvidia/cuda:8.0-cudnn6-devel-ubuntu16.04
-LABEL maintainer caffe-maint@googlegroups.com
+FROM nvidia/cuda:9.2-cudnn7-devel-ubuntu18.04
+# FROM ubuntu:18.04
+
+ARG DEBIAN_FRONTEND=noninteractive
+
+RUN apt update 
+RUN apt install -y git
+RUN apt install -y caffe-cuda
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
         build-essential \
@@ -24,24 +30,14 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         python-scipy && \
     rm -rf /var/lib/apt/lists/*
 
-ENV CAFFE_ROOT=/opt/caffe
-WORKDIR $CAFFE_ROOT
+RUN git clone https://github.com/lenhattan86/caffe_benchmark/
+WORKDIR caffe_benchmark
+RUN data/mnist/get_mnist.sh
+RUN examples/mnist/create_mnist.sh
 
-# FIXME: use ARG instead of ENV once DockerHub supports this
-# https://github.com/docker/hub-feedback/issues/460
-ENV CLONE_TAG=1.0
-
-RUN git clone -b ${CLONE_TAG} --depth 1 https://github.com/BVLC/caffe.git . && \
-    pip install --upgrade pip && \
-    cd python && for req in $(cat requirements.txt) pydot; do pip install $req; done && cd .. && \
-    git clone https://github.com/NVIDIA/nccl.git && cd nccl && make -j install && cd .. && rm -rf nccl && \
-    mkdir build && cd build && \
-    cmake -DUSE_CUDNN=1 -DUSE_NCCL=1 .. && \
-    make -j"$(nproc)"
-
-ENV PYCAFFE_ROOT $CAFFE_ROOT/python
-ENV PYTHONPATH $PYCAFFE_ROOT:$PYTHONPATH
-ENV PATH $CAFFE_ROOT/build/tools:$PYCAFFE_ROOT:$PATH
-RUN echo "$CAFFE_ROOT/build/lib" >> /etc/ld.so.conf.d/caffe.conf && ldconfig
-
-WORKDIR /workspace
+# work around to fix nvidia driver/library mismatch.
+# RUN apt install -y lsof
+# RUN lsof /dev/nvidia*
+# RUN rmmod nvidia_drm
+# RUN rmmod nvidia_modeset
+# RUN rmmod nvidia_uvm
